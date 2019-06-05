@@ -301,6 +301,20 @@ export class Calculator extends Component {
           </h2>
           <Container>
             {this.state.ShowStash && (
+              <Form.Row>
+                <Form.Group as={Col} md="4" controlId="searchYourStash">
+                  <Form.Label>Search your stash</Form.Label>
+                  <InputGroup>
+                    <Form.Control
+                      name="searchYourStash"
+                      type="text"
+                      placeholder="TFA Bacon"
+                    />
+                  </InputGroup>
+                </Form.Group>
+              </Form.Row>
+            )}
+            {this.state.ShowStash && (
               <Table size="sm" borderless striped>
                 <tbody>
                   {this.state.stash.map((flavor, index) => (
