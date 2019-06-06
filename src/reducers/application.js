@@ -75,9 +75,11 @@ export const actions = {
 
 export const initialState = {
   loggingIn: false,
+  loggingOut: false,
   user: null,
   error: null,
   registration: {
+    registering: false,
     complete: false,
     error: null
   }
@@ -90,9 +92,23 @@ export const reducer = (state = initialState, action = {}) => {
         ...state,
         loggingIn: true
       };
+    case types.LOGOUT_USER:
+      return {
+        ...state,
+        loggingOut: true
+      };
+    case types.REGISTER_USER:
+      return {
+        ...state,
+        registration: {
+          ...state.registration,
+          registering: true
+        }
+      };
     case types.LOGOUT_USER_SUCCESS:
       return {
         ...state,
+        loggingOut: false,
         user: null
       };
     case types.LOGIN_USER_SUCCESS:
@@ -106,12 +122,14 @@ export const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         loggingIn: false,
+        loggingOut: false,
         error: action.error
       };
     case types.REGISTER_USER_SUCCESS:
       return {
         ...state,
         registration: {
+          registering: false,
           complete: true,
           error: null
         }
@@ -120,6 +138,7 @@ export const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         registration: {
+          registering: false,
           complete: true,
           error: action.error
         }
