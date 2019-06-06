@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<App /> renders correctly 1`] = `
+Array [
+  <nav
+    className="navbar navbar-expand-lg navbar-light bg-light"
+  >
+    <span
+      className="navbar-brand"
+    >
+      MixNJuice
+    </span>
+    <button
+      aria-controls="basic-navbar-nav"
+      aria-label="Toggle navigation"
+      className="navbar-toggler"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      aria-expanded={null}
+      className="navbar-collapse collapse"
+      id="basic-navbar-nav"
+    >
+      <div
+        className="mr-auto navbar-nav"
+        onKeyDown={[Function]}
+      >
+        <a
+          className="nav-link"
+          data-rb-event-key={null}
+          disabled={false}
+          href="/"
+          onClick={[Function]}
+        >
+          Home
+        </a>
+        <a
+          className="nav-link"
+          data-rb-event-key={null}
+          disabled={false}
+          href="/login"
+          onClick={[Function]}
+        >
+          Login
+        </a>
+        <a
+          className="nav-link"
+          data-rb-event-key={null}
+          disabled={false}
+          href="/register"
+          onClick={[Function]}
+        >
+          Register
+        </a>
+      </div>
+    </div>
+  </nav>,
+  <div
+    className="container"
+  >
+    <h1>
+      Home
+    </h1>
+  </div>,
+]
+`;
