@@ -1,0 +1,210 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Register /> renders correctly 1`] = `
+<div
+  className="container"
+>
+  <h1>
+    User Registration
+  </h1>
+  <form
+    className=""
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-group col-md-4"
+      >
+        <label
+          className="form-label"
+          htmlFor="validationUsername"
+        >
+          Username
+        </label>
+        <div
+          className="input-group"
+        >
+          <div
+            className="input-group-prepend"
+          >
+            <span
+              className="input-group-text"
+              id="inputGroupPrepend"
+            >
+              @
+            </span>
+          </div>
+          <input
+            aria-describedby="inputGroupPrepend"
+            className="form-control"
+            id="validationUsername"
+            placeholder="Username"
+            required={true}
+            type="text"
+          />
+          <div
+            className="invalid-feedback"
+          >
+            Please choose a username.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-group col-md-6"
+      >
+        <label
+          className="form-label"
+          htmlFor="email"
+        >
+          Email Address
+        </label>
+        <input
+          className="form-control"
+          id="email"
+          name="email"
+          onChange={[Function]}
+          placeholder="Enter email"
+          required={true}
+          type="email"
+          value=""
+        />
+        <div
+          className="invalid-feedback"
+        >
+          Please provide a valid email address.
+        </div>
+      </div>
+      <div
+        className="form-group col-md-6"
+      >
+        <label
+          className="form-label"
+          htmlFor="emailConf"
+        >
+          Confirm Email Address
+        </label>
+        <input
+          className="form-control"
+          id="emailConf"
+          name="emailConf"
+          onChange={[Function]}
+          placeholder="Confirm Enter email"
+          required={true}
+          type="email"
+        />
+        <div
+          className="invalid-feedback"
+        >
+          Please provide a valid email address.
+        </div>
+        <div
+          as="span"
+          className="fade alert alert-danger show"
+          role="alert"
+        >
+          Email Addresses do not match
+        </div>
+      </div>
+    </div>
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-group col-md-6"
+      >
+        <label
+          className="form-label"
+          htmlFor="passw"
+        >
+          Password
+        </label>
+        <input
+          className="form-control"
+          id="passw"
+          name="passw"
+          onChange={[Function]}
+          placeholder="Enter Password"
+          required={true}
+          type="password"
+        />
+        <div
+          className="invalid-feedback"
+        >
+          Please provide a valid Password.
+        </div>
+      </div>
+      <div
+        className="form-group col-md-6"
+      >
+        <label
+          className="form-label"
+          htmlFor="passwConf"
+        >
+          Confirm Password
+        </label>
+        <input
+          className="form-control"
+          id="passwConf"
+          name="passwConf"
+          onChange={[Function]}
+          placeholder="Confirm Password"
+          required={true}
+          type="password"
+        />
+        <div
+          className="invalid-feedback"
+        >
+          Please provide a valid Password.
+        </div>
+      </div>
+    </div>
+    <div
+      className="form-group"
+    >
+      <div
+        className="form-check"
+      >
+        <input
+          className="form-check-input"
+          disabled={false}
+          required={true}
+          type="checkbox"
+        />
+        <label
+          className="form-check-label"
+          title=""
+          type="checkbox"
+        >
+          Agree to terms and conditions
+        </label>
+      </div>
+    </div>
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-group col-md-2"
+      >
+        <button
+          className="btn btn-primary"
+          disabled={false}
+          type="submit"
+        >
+          Register
+        </button>
+         
+      </div>
+      <div
+        className="form-group col-md-3"
+      />
+    </div>
+  </form>
+</div>
+`;
