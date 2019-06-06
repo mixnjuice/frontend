@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login /> renders correctly 1`] = `
+<div
+  className="container"
+>
+  <h1>
+    Login
+  </h1>
+  <form
+    className=""
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        className="form-label"
+      >
+        Email address
+      </label>
+      <input
+        className="form-control"
+        name="emailAddress"
+        onChange={[Function]}
+        placeholder="someone@widget.co"
+        type="email"
+        value=""
+      />
+      <small
+        className="text-muted form-text"
+      >
+        We'll never share your email with anyone else.
+      </small>
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        className="form-label"
+      >
+        Password
+      </label>
+      <input
+        className="form-control"
+        name="password"
+        onChange={[Function]}
+        placeholder="Your password"
+        type="password"
+        value=""
+      />
+    </div>
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+      type="submit"
+    >
+      Login
+    </button>
+  </form>
+</div>
+`;
