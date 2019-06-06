@@ -6,6 +6,8 @@ import configureStore from 'redux-mock-store';
 import App from './App';
 import { withMemoryRouter } from 'utils';
 
+jest.mock('components/Header/Header');
+
 describe('<App />', () => {
   const initialState = {};
   const mockStore = configureStore();
