@@ -1,4 +1,7 @@
-import { createElement } from 'react';
+import React, { createElement } from 'react';
+import { MemoryRouter } from 'react-router-dom';
+
+/* eslint-disable react/display-name, react/prop-types */
 
 /**
  * Creates an object containing action constants namespaced under the specified reducer.
@@ -27,3 +30,14 @@ export function buildActions(reducer, actions) {
 export function mockComponent(name, props = {}) {
   return () => createElement(name, props, props.children);
 }
+
+/**
+ * Wraps a React component in a <MemoryRouter> suitable for testing
+ *
+ * @param {Component} WrappedComponent React component to wrap
+ */
+export const withMemoryRouter = WrappedComponent => props => (
+  <MemoryRouter>
+    <WrappedComponent {...props} />
+  </MemoryRouter>
+);
