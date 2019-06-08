@@ -20,3 +20,6 @@ export const length = (minimum = 0, maximum = Infinity) => value => {
     return 'min-length';
   }
 };
+
+export const composeValidators = (...validators) => value =>
+  validators.reduce((error, validator) => error || validator(value), undefined);
