@@ -1,4 +1,4 @@
-import { required, email, length } from './validation';
+import { required, email, length, composeValidators } from './validation';
 
 describe('validators', () => {
   describe('required', () => {
@@ -37,6 +37,23 @@ describe('validators', () => {
       expect(length(1)('')).toBe('min-length');
       expect(length(8)('bogus')).toBe('min-length');
       expect(length(1, 8)('longstringhamham')).toBe('max-length');
+    });
+  });
+
+  describe('composeValidators', () => {
+    it('works with a single validator', () => {
+      const composite = composeValidators(required);
+
+      expect(composite(null)).toBe('required');
+      expect(composite('value')).toBeUndefined();
+    });
+
+    it('works with multiple validators', () => {
+      const composite = composeValidators(required, length(8));
+
+      expect(composite(null)).toBe('required');
+      expect(composite('short')).toBe('min-length');
+      expect(composite('completelyvalid')).toBeUndefined();
     });
   });
 });
