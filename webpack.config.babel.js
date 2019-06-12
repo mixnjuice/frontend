@@ -19,7 +19,8 @@ export default {
     overlay: true,
     historyApiFallback: true,
     hot: dev,
-    port: 9000
+    port: 9000,
+    host: '0.0.0.0'
   },
   module: {
     rules: [

@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Quicksand&display=swap");
+$lightest-blue: #e7f0ff;
+$lighter-blue: #d3e3fc;
+$light-blue: #b1cefd;
+$blue: #77a6f7;
+$teal: #00887a;
+$lighter-red: #ffccbc;
+$white: #fff;
+
+// Changes the font site-wide
+* {
+  font-family: "Quicksand", sans-serif;
+}
+
+// Forces scrollbar to always be present, to combat the center being offset when switching between pages
+html {
+  overflow-y: scroll;
+}
+
+// Setting the scrollbar width
+::-webkit-scrollbar {
+  width: 0.45vw;
+}
+
+// Styling the scrollbar "track"
+::-webkit-scrollbar-track {
+  background-color: $white;
+}
+
+// Styling the scrollbar "thumb"
+::-webkit-scrollbar-thumb {
+  background-color: $teal;
+  border-radius: 4px;
+}
+
+// Full page background color
+body {
+  background-color: $white;
+}
+
+// Style for links
+a {
+  color: $teal;
+}
+
+// When toggling certain elements off the screen (e.g. "no nicotine" in calculator)
+// it changes the width of the container and the width of the other elements around it
+// Switching the container to "fluid" didn't fix it, so this was unfortunately the best way I could
+// find to solve the issue; by fixing the container width for medium screens and up
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    width: 800px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .container {
+    width: 1000px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1200px;
+  }
+}
+
+// Styling for the navbar
+.navbar {
+  background-color: $lighter-blue;
+  border-radius: 0 0 20px 20px;
+}
+
+// On screen sizes below ~1200px width, the nav links look a little weird by
+// vertically aligning to the top, this puts them in the center
+// This also centers everything for the mobile dropdown nav
+.nav-link,
+.nav-item {
+  align-self: center;
+}
+
+// Styling for dropdown links in the nav
+.dropdown-toggle {
+  color: #000 !important;
+}
+
+// Styling for the dropdown menu
+.dropdown-menu {
+  text-align: center;
+  background-color: $lightest-blue;
+}
+
+// Styling for active navigation link
+a.active {
+  font-weight: bold !important;
+  color: $teal !important;
+  //border-bottom: 1px solid $teal;
+}
+
+// Styling for nav "brand" (MixNJuice "logo")
+.navbar-brand {
+  font-family: "Architects Daughter", cursive;
+  font-size: 3em;
+}
+
+// Styling for checkboxes
+.form-check-input {
+  -webkit-appearance: none;
+  background-color: #fff;
+  border: 1px solid #000;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  outline: 0;
+}
+
+.form-check-input:checked {
+  background-color: $teal;
+}
+
+// Changing disabled buttons to grey
+.btn-primary.disabled,
+.btn-primary:disabled {
+  background-color: #777;
+  border-color: #333;
+}
+
+// Changing the border of any form fields
+.form-control {
+  border: 1px solid #000;
+  outline: 0 none;
+}
+
+// Changing the focused state of form fields
+.form-control:focus {
+  border: 3px solid $blue;
+  box-shadow: none;
+  outline: 0 none;
+}
+
+// Changing the background for the text next to an input field
+.input-group-text {
+  background-color: #eee;
+}
+
+// Changing the column width of the ingredient percent input
+.recipe-percent {
+  width: 27.5%;
+}
+
+// Card titles
+div.h5 {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+// Card bodies
+p.card-text {
+  font-size: 0.9em;
+}
+
+// Card headers
+div.card-header {
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+// Link animations in the header links
+// Credit to: https://emilkowalski.github.io/css-effects-snippets/
+.borderLeftRight {
+  display: inline-block;
+  position: relative;
+  color: #000 !important;
+}
+
+.borderLeftRight:hover,
+.borderLeftRight:focus {
+  color: $teal !important;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .borderLeftRight::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid $teal;
+    color: $teal;
+    transform-origin: bottom right;
+    transition: none;
+  }
+}
+
+.borderLeftRight::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid $teal;
+  color: $teal;
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.borderLeftRight:hover::after,
+.borderLeftRight:focus::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+// Button animations
+// Credit to: https://emilkowalski.github.io/css-effects-snippets/
+.btn {
+  height: 40px;
+  padding: 0 14px;
+  overflow: hidden;
+  background: $teal;
+  position: relative;
+  line-height: 40px;
+  color: #fff;
+  border: 1px solid #000;
+  margin: 5px;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX(-100%);
+    background: $blue;
+    transition: none;
+  }
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateX(-100%);
+  background: $blue;
+  transition: transform 0.2s ease-in-out;
+}
+
+.btn:hover,
+.btn:focus {
+  border: 1px solid $teal;
+  background-color: $teal;
+}
+
+.btn:hover::before,
+.btn:focus::before {
+  transform: translateX(0);
+}
+
+.btn span {
+  position: relative;
+  z-index: 1;
+}

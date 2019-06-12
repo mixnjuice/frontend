@@ -1,12 +1,9 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-
+import '@babel/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { applyMiddleware, createStore, compose } from 'redux';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -14,7 +11,7 @@ import { faFire, faUser } from '@fortawesome/free-solid-svg-icons';
 library.add(faFire, faUser);
 
 import './index.scss';
-import App from './components/App/App';
+import App from './components/App';
 
 import rootSaga from './sagas';
 import rootReducer from './reducers';
@@ -38,9 +35,7 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
+    <App />
   </Provider>,
   document.getElementById('root')
 );

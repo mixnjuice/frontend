@@ -163,7 +163,7 @@ module.exports = {
     'valid-typeof': 2,
     'vars-on-top': 2,
     yoda: 2,
-    'no-console': 2,
+    'no-console': 0,
     'no-debugger': 2,
     'prettier/prettier': 2,
     'jsx-a11y/label-has-for': 0
