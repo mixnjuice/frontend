@@ -12,7 +12,8 @@ $white: #fff;
   font-family: "Quicksand", sans-serif;
 }
 
-// Forces scrollbar to always be present, to combat the center being offset when switching between pages
+// Forces scrollbar to always be present, to combat the center being
+// offset when switching between pages
 html {
   overflow-y: scroll;
 }
@@ -43,6 +44,12 @@ a {
   color: $teal;
 }
 
+// Style for horizontal rules
+hr {
+  border-bottom: 1px solid $teal;
+  opacity: 0.5;
+}
+
 // When toggling certain elements off the screen (e.g. "no nicotine" in calculator)
 // it changes the width of the container and the width of the other elements around it
 // Switching the container to "fluid" didn't fix it, so this was unfortunately the best way I could
@@ -68,7 +75,7 @@ a {
 // Styling for the navbar
 .navbar {
   background-color: $lighter-blue;
-  border-radius: 0 0 20px 20px;
+  border-radius: 0 0 1rem 1rem;
 }
 
 // On screen sizes below ~1200px width, the nav links look a little weird by
@@ -92,7 +99,7 @@ a {
 
 // Styling for active navigation link
 a.active {
-  font-weight: bold !important;
+  font-weight: 900 !important;
   color: $teal !important;
   //border-bottom: 1px solid $teal;
 }
@@ -105,12 +112,13 @@ a.active {
 
 // Styling for checkboxes
 .form-check-input {
-  -webkit-appearance: none;
+  //-webkit-appearance: none;
+  appearance: none;
   background-color: #fff;
   border: 1px solid #000;
   width: 20px;
   height: 20px;
-  border-radius: 5px;
+  border-radius: 0.3rem;
   outline: 0;
 }
 
@@ -151,7 +159,7 @@ a.active {
 // Card titles
 div.h5 {
   font-size: 1.1em;
-  font-weight: bold;
+  font-weight: 900;
 }
 
 // Card bodies
@@ -162,7 +170,18 @@ p.card-text {
 // Card headers
 div.card-header {
   font-size: 1.4em;
-  font-weight: bold;
+  font-weight: 900;
+}
+
+// Style for all inputs
+input {
+  text-align: center;
+}
+
+input[type="file"] {
+  border: 1px solid #000;
+  border-radius: 0.25rem;
+  padding: 5px;
 }
 
 // Link animations in the header links
@@ -222,7 +241,7 @@ div.card-header {
   overflow: hidden;
   background: $teal;
   position: relative;
-  line-height: 40px;
+  line-height: auto;
   color: #fff;
   border: 1px solid #000;
   margin: 5px;

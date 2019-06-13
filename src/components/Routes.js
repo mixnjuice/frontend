@@ -10,7 +10,7 @@ import Flavors from './pages/Flavors';
 
 import Home from './pages/Home';
 
-import User from './pages/User';
+import Profile from './pages/user/Profile';
 
 // import NotFound from './pages/NotFound';
 
@@ -19,7 +19,7 @@ export class Routes extends Component {
     return (
       <Router primary={false}>
         <Home path="/" />
-        <User path="user/*" />
+        <Profile path="user/*" />
         <Calculator path="calculator" />
         <Flavors path="flavors" />
       </Router>

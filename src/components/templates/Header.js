@@ -42,20 +42,40 @@ export class Header extends Component {
               Create Recipe
             </Nav.Link>
             <NavDropdown title="User" id="basic-nav-dropdown">
-              <NavDropdown.Item as={Link} to="user" getProps={this.isActive}>
+              <NavDropdown.Item as={Link} to="profile" getProps={this.isActive}>
                 Profile
               </NavDropdown.Item>
               <br />
-              <NavDropdown.Item as={Link} to="user" getProps={this.isActive}>
+              <NavDropdown.Item
+                as={Link}
+                to="userRecipes"
+                getProps={this.isActive}
+              >
                 Recipes
               </NavDropdown.Item>
               <br />
-              <NavDropdown.Item as={Link} to="user" getProps={this.isActive}>
+              <NavDropdown.Item
+                as={Link}
+                to="favorites"
+                getProps={this.isActive}
+              >
                 Favorites
               </NavDropdown.Item>
               <br />
-              <NavDropdown.Item as={Link} to="user" getProps={this.isActive}>
+              <NavDropdown.Item
+                as={Link}
+                to="flavorStash"
+                getProps={this.isActive}
+              >
                 Flavor Stash
+              </NavDropdown.Item>
+              <br />
+              <NavDropdown.Item
+                as={Link}
+                to="userSettings"
+                getProps={this.isActive}
+              >
+                Settings
               </NavDropdown.Item>
               <br />
             </NavDropdown>

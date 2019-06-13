@@ -16,7 +16,11 @@ import Flavors from './pages/Flavors';
 
 import Home from './pages/Home';
 
-import User from './pages/User';
+import Profile from './pages/user/Profile';
+import UserRecipes from './pages/user/Recipes';
+import Favorites from './pages/user/Favorites';
+import FlavorStash from './pages/user/FlavorStash';
+import UserSettings from './pages/user/Settings';
 
 import Login from './pages/Login';
 
@@ -30,7 +34,11 @@ export class App extends Component {
         <Row>
           <Router primary={false}>
             <Home path="/" />
-            <User path="user" />
+            <Profile path="profile" />
+            <UserRecipes path="userRecipes" />
+            <Favorites path="favorites" />
+            <FlavorStash path="flavorStash" />
+            <UserSettings path="userSettings" />
             <Login path="login" />
             <Register path="register" />
             <Calculator path="calculator" />

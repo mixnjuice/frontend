@@ -4,11 +4,11 @@ import { connect } from 'react-redux';
 
 import { Container } from 'react-bootstrap';
 
-export class User extends Component {
+export class UserRecipes extends Component {
   render() {
     return (
       <Container>
-        <h1>User Page</h1>
+        <h1>User Recipes</h1>
       </Container>
     );
   }
@@ -17,4 +17,4 @@ export class User extends Component {
 export default connect(
   null,
   null
-)(User);
+)(UserRecipes);
