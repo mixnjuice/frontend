@@ -34,7 +34,6 @@ export class Login extends Component {
           render={({ handleSubmit, submitting }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Field
-                type="email"
                 name="emailAddress"
                 validate={composeValidators(required, email)}
               >
