@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
-
-import { connect } from 'react-redux';
-
 import {
   Alert,
   Button,
-  Col,
   Container,
   Form,
-  InputGroup
+  InputGroup,
+  Col
 } from 'react-bootstrap';
 
-export class Register extends Component {
+export default class Register extends Component {
   constructor(...args) {
     super(...args);
 
     this.state = {
       validated: false,
       email: '',
-      emailConf: '',
-      passw: '',
-      passwConf: '',
+      emailConfirmed: '',
+      password: '',
+      passwordConfirmed: '',
       message: '',
       errorMessage: false
     };
@@ -56,9 +53,7 @@ export class Register extends Component {
   }
 
   render() {
-    const { validated } = this.state;
-
-    const errorMessage = this.state.errorMessage;
+    const { validated, errorMessage } = this.state;
 
     return (
       <Container>
@@ -166,10 +161,7 @@ export class Register extends Component {
           </Form.Group>
           <Form.Row>
             <Form.Group as={Col} md="2">
-              <Button type="submit">
-                <span>Register</span>
-              </Button>
-              &nbsp;
+              <Button type="submit">Register</Button>&nbsp;
             </Form.Group>
             <Form.Group as={Col} md="3">
               {errorMessage && (
@@ -184,8 +176,3 @@ export class Register extends Component {
     );
   }
 }
-
-export default connect(
-  null,
-  null
-)(Register);
