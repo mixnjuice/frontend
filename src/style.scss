@@ -104,6 +104,12 @@ a.active {
   //border-bottom: 1px solid $teal;
 }
 
+// Overriding Bootstrap background color for active dropdown items
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: inherit;
+}
+
 // Styling for nav "brand" (MixNJuice "logo")
 .navbar-brand {
   font-family: "Architects Daughter", cursive;

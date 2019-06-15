@@ -13,7 +13,6 @@ import {
   NavDropdown
 } from 'react-bootstrap';
 
-console.log(window.location);
 export class Header extends Component {
   constructor(...args) {
     super(...args);
