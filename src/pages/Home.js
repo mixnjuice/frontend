@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from '@reach/router';
 
-import TopRecipesDay from 'components/templates/TopRecipesDay';
-import NewRecipes from 'components/templates/NewRecipes';
-import FeaturedMixer from 'components/templates/FeaturedMixer';
+import TopRecipesDay from 'components/Home/TopRecipesDay';
+import NewRecipes from 'components/Home/NewRecipes';
+import FeaturedMixer from 'components/Home/FeaturedMixer';
 
 export default class Home extends Component {
   render() {
