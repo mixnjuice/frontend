@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
-
 import {
   Button,
   Col,
@@ -12,11 +10,11 @@ import {
   Table
 } from 'react-bootstrap';
 
-import FlavorData from '../../data/flavors.json';
+import FlavorData from '../data/flavors.json';
 
-import FlavorStash from '../../data/flavorstash.json';
+import FlavorStash from '../data/flavorstash.json';
 
-export class Calculator extends Component {
+export default class Calculator extends Component {
   constructor(...args) {
     super(...args);
 
@@ -455,8 +453,3 @@ export class Calculator extends Component {
     );
   }
 }
-
-export default connect(
-  null,
-  null
-)(Calculator);

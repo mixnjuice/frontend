@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
-
 import { Container } from 'react-bootstrap';
 
-import FlavorData from '../../data/flavors.json';
+import FlavorData from '../data/flavors.json';
 
-export class Flavors extends Component {
+export default class Flavors extends Component {
   constructor(...args) {
     super(...args);
 
@@ -49,8 +47,3 @@ export class Flavors extends Component {
     );
   }
 }
-
-export default connect(
-  null,
-  null
-)(Flavors);
