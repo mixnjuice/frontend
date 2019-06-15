@@ -11,6 +11,7 @@ export class UserSettings extends Component {
     this.state = {
       username: 'xXTeddyBearSlayer69Xx',
       email: 'SlayTeddiesAllDay@aol.com',
+      filename: '',
       frontPageList: [
         {
           id: 1,
@@ -28,6 +29,10 @@ export class UserSettings extends Component {
       droppedItems: [],
       draggedItem: {}
     };
+  }
+
+  handleFileInput(event) {
+    this.setState({ filename: event.target.files[0].name });
   }
 
   render() {
@@ -86,9 +91,16 @@ export class UserSettings extends Component {
                     name="profilePic"
                     type="file"
                     className="custom-file-input"
+                    id="inputFile"
+                    onChange={event => this.handleFileInput(event)}
                   />
-                  <Form.Label className="custom-file-label text-left">
-                    Choose file
+                  <Form.Label
+                    className="custom-file-label text-left"
+                    for="inputFile"
+                  >
+                    {this.state.filename
+                      ? this.state.filename
+                      : 'Choose a picture'}
                   </Form.Label>
                 </div>
                 <InputGroup.Prepend>
