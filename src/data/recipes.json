@@ -1,0 +1,179 @@
+[
+  {
+    "id": 1,
+    "name": "Thanks, Obama",
+    "maxvg": false,
+    "pg": 30,
+    "vg": 70,
+    "flavors": [
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Blue Raspberry",
+        "percent": 3
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Cherry Extract",
+        "percent": 1.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Lemon Lime",
+        "percent": 4
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Super Sweet",
+        "percent": 0.5
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "DaMomma's RY4 Delight",
+    "maxvg": false,
+    "pg": 30,
+    "vg": 70,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Catalan Cream",
+        "percent": 1
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "RY4 Double",
+        "percent": 8
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Sweet Cream",
+        "percent": 2.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Vanilla Custard v2",
+        "percent": 2
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Strawberry Fog",
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Bavarian Cream",
+        "percent": 3
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Cheesecake (Graham Crust)",
+        "percent": 5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Strawberry Ripe",
+        "percent": 10
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Vanilla Custard",
+        "percent": 2
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Mother's Unicorn Milk",
+    "maxvg": false,
+    "pg": 50,
+    "vg": 50,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Bavarian Cream",
+        "percent": 4
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Cheesecake (Graham Crust)",
+        "percent": 5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Strawberry Ripe",
+        "percent": 10
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Sweet Cream",
+        "percent": 4
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Vanilla Custard",
+        "percent": 3
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Ella's Shortbread Biscuit",
+    "maxvg": false,
+    "pg": 20,
+    "vg": 80,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Acetyl Pyrazine 5%",
+        "percent": 0.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Biscuit",
+        "percent": 1.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Shisha Vanilla",
+        "percent": 1
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Sugar Cookie",
+        "percent": 4
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Vanilla Custard",
+        "percent": 2
+      }
+    ]
+  }
+]
