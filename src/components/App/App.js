@@ -16,6 +16,7 @@ import UserRecipes from 'pages/user/Recipes';
 import Favorites from 'pages/user/Favorites';
 import FlavorStash from 'pages/user/FlavorStash';
 import UserSettings from 'pages/user/Settings';
+import ShoppingList from 'pages/user/ShoppingList';
 import Calculator from 'pages/Calculator';
 import Flavors from 'pages/Flavors';
 
@@ -45,6 +46,7 @@ export class App extends Component {
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/flavorStash" component={FlavorStash} />
           <Route exact path="/userSettings" component={UserSettings} />
+          <Route exact path="/shoppingList" component={ShoppingList} />
           <Route exact path="/calculator" component={Calculator} />
           <Route exact path="/flavors" component={Flavors} />
           <Route component={NotFound} />
