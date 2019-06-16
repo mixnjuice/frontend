@@ -51,7 +51,7 @@ export default class UserSettings extends Component {
                 <Form.Control
                   name="username"
                   type="text"
-                  value={this.state.username}
+                  defaultValue={this.state.username}
                   placeholder={this.state.username}
                   aria-describedby="Username"
                 />
@@ -65,7 +65,7 @@ export default class UserSettings extends Component {
                 <Form.Control
                   name="e-mail"
                   type="email"
-                  value={this.state.email}
+                  defaultValue={this.state.email}
                   placeholder={this.state.email}
                   aria-describedby="E-mail address"
                 />
@@ -89,13 +89,9 @@ export default class UserSettings extends Component {
                     name="profilePic"
                     type="file"
                     className="custom-file-input"
-                    id="inputFile"
                     onChange={event => this.handleFileInput(event)}
                   />
-                  <Form.Label
-                    className="custom-file-label text-left"
-                    for="inputFile"
-                  >
+                  <Form.Label className="custom-file-label text-left">
                     {this.state.filename
                       ? this.state.filename
                       : 'Choose a picture'}
