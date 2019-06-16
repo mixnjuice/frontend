@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
-
 import { Container, Row, Col, Form, InputGroup, Button } from 'react-bootstrap';
 
-export class UserSettings extends Component {
+export default class UserSettings extends Component {
   constructor(...args) {
     super(...args);
 
@@ -127,8 +125,3 @@ export class UserSettings extends Component {
     );
   }
 }
-
-export default connect(
-  null,
-  null
-)(UserSettings);

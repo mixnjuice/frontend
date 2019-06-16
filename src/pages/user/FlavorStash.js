@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
-
 import { Container } from 'react-bootstrap';
 
-export class FlavorStash extends Component {
+export default class FlavorStash extends Component {
   render() {
     return (
       <Container>
@@ -13,8 +11,3 @@ export class FlavorStash extends Component {
     );
   }
 }
-
-export default connect(
-  null,
-  null
-)(FlavorStash);

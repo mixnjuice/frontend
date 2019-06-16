@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
-import { connect } from 'react-redux';
-
 import { Link } from '@reach/router';
 
 import { Container, Row, Col } from 'react-bootstrap';
 
-export class Profile extends Component {
+export default class Profile extends Component {
   render() {
     return (
       <Container>
@@ -28,8 +26,3 @@ export class Profile extends Component {
     );
   }
 }
-
-export default connect(
-  null,
-  null
-)(Profile);
