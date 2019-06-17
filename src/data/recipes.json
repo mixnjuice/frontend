@@ -2,6 +2,12 @@
   {
     "id": 1,
     "name": "Thanks, Obama",
+    "user": "JosefBud",
+    "userId": 5420,
+    "date": "March 20 2019, 16:39:00",
+    "notes": "IMPORTANT: CAP Lemon Lime's gravity (g per ml) by default is way above what it should be. If you mix by weight, mix CAP Lemon Lime as 1g = 1ml.\n \n CAP Super Sweet is optional. \n \n VapeWild doesn't add cooling, but 2 drops per 30ml of WS-23 works well if you're into that.\n \n No steep required, shake and vape!",
+    "shakeNVape": true,
+    "steepTime": 0,
     "maxvg": false,
     "pg": 30,
     "vg": 70,
@@ -10,24 +16,28 @@
         "vendor": "Flavor West",
         "abbreviation": "FW",
         "name": "Blue Raspberry",
+        "id": 1,
         "percent": 3
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Cherry Extract",
+        "id": 2,
         "percent": 1.5
       },
       {
         "vendor": "Capella",
         "abbreviation": "CAP",
         "name": "Lemon Lime",
+        "id": 3,
         "percent": 4
       },
       {
         "vendor": "Capella",
         "abbreviation": "CAP",
         "name": "Super Sweet",
+        "id": 4,
         "percent": 0.5
       }
     ]
@@ -35,6 +45,12 @@
   {
     "id": 2,
     "name": "DaMomma's RY4 Delight",
+    "user": "Alisa",
+    "userId": 1024,
+    "date": "May 26 2016, 08:10:00",
+    "notes": "I am really enjoying this one. The Catalan Cream just works really well with RY4 too.\n \n Aged only a few days and it's YUMMY.",
+    "shakeNVape": false,
+    "steepTime": 4,
     "maxvg": false,
     "pg": 30,
     "vg": 70,
@@ -43,24 +59,28 @@
         "vendor": "FlavourArt",
         "abbreviation": "FA",
         "name": "Catalan Cream",
+        "id": 5,
         "percent": 1
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "RY4 Double",
+        "id": 6,
         "percent": 8
       },
       {
         "vendor": "Flavor West",
         "abbreviation": "FW",
         "name": "Sweet Cream",
+        "id": 7,
         "percent": 2.5
       },
       {
         "vendor": "Capella",
         "abbreviation": "CAP",
         "name": "Vanilla Custard v2",
+        "id": 8,
         "percent": 2
       }
     ]
@@ -68,6 +88,12 @@
   {
     "id": 3,
     "name": "Strawberry Fog",
+    "user": "spectrometer",
+    "userId": 5823,
+    "date": "August 14 2015, 23:09:00",
+    "notes": "",
+    "shakeNVape": true,
+    "steepTime": 0,
     "maxvg": true,
     "pg": null,
     "vg": null,
@@ -76,24 +102,28 @@
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Bavarian Cream",
+        "id": 9,
         "percent": 3
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Cheesecake (Graham Crust)",
+        "id": 10,
         "percent": 5
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Strawberry Ripe",
+        "id": 11,
         "percent": 10
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Vanilla Custard",
+        "id": 12,
         "percent": 2
       }
     ]
@@ -101,6 +131,12 @@
   {
     "id": 4,
     "name": "Mother's Unicorn Milk",
+    "user": "apwroblewski",
+    "userId": 9395,
+    "date": "March 20 2015, 07:41:00",
+    "notes": "",
+    "shakeNVape": true,
+    "steepTime": 0,
     "maxvg": false,
     "pg": 50,
     "vg": 50,
@@ -109,30 +145,35 @@
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Bavarian Cream",
+        "id": 9,
         "percent": 4
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Cheesecake (Graham Crust)",
+        "id": 10,
         "percent": 5
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Strawberry Ripe",
+        "id": 11,
         "percent": 10
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Sweet Cream",
+        "id": 13,
         "percent": 4
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Vanilla Custard",
+        "id": 12,
         "percent": 3
       }
     ]
@@ -140,6 +181,12 @@
   {
     "id": 5,
     "name": "Ella's Shortbread Biscuit",
+    "user": "VHM",
+    "userId": 7582,
+    "date": "March 26 2016, 07:38:00",
+    "notes": "Comforting crumbly buttery vanilla Scottish shortbread, great as a stand alone or as a base for fruits, creams and all sorts of other flavours.\n \n I enjoy this fresh but if you find INW Biscuit too raw the mix really starts to settle after three days getting richer as it ages.\n \n CAP Sugar Cookie and INW Biscuit - they are great cookie bases that pack a punch. Together they work well at mimicking a proper butter shortbread.\n \n AP brings forward the grain of the mix, adding just the right amount of bite and the CAP V.Custard (v.1) keeps the mix from being too dry on the pallet giving that overall buttery feel.\n \n INW Vanilla Shisha added for its inherent bakery notes and general vanilla decadence.\n \n Feeling lazy? Buy the one shot here: \n UK: https://www.chefsflavours.co.uk/vaping-home-mixers/4160-ellas-shortbread-biscuit.html\n USA: http://www.onestopdiyshop.com/product-p/vhmella30.html\n \n Credit: Betamax (Ella Robinson)",
+    "shakeNVape": false,
+    "steepTime": 14,
     "maxvg": false,
     "pg": 20,
     "vg": 80,
@@ -148,30 +195,35 @@
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Acetyl Pyrazine 5%",
+        "id": 14,
         "percent": 0.5
       },
       {
         "vendor": "Inawera",
         "abbreviation": "INW",
         "name": "Biscuit",
+        "id": 15,
         "percent": 1.5
       },
       {
         "vendor": "Inawera",
         "abbreviation": "INW",
         "name": "Shisha Vanilla",
+        "id": 16,
         "percent": 1
       },
       {
         "vendor": "Capella",
         "abbreviation": "CAP",
         "name": "Sugar Cookie",
+        "id": 17,
         "percent": 4
       },
       {
         "vendor": "Capella",
         "abbreviation": "CAP",
         "name": "Vanilla Custard",
+        "id": 18,
         "percent": 2
       }
     ]
