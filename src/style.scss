@@ -191,6 +191,14 @@ input[type="file"] {
   padding: 5px;
 }
 
+h1.recipeTitle {
+  font-size: 3em;
+}
+
+.img-thumbnail {
+  border: 1px solid $teal;
+}
+
 // Link animations in the header links
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
 .borderLeftRight {

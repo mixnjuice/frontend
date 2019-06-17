@@ -19,6 +19,7 @@ import UserSettings from 'pages/user/Settings';
 import ShoppingList from 'pages/user/ShoppingList';
 import Calculator from 'pages/Calculator';
 import Flavors from 'pages/Flavors';
+import Recipe from 'pages/Recipe';
 
 import { actions as appActions } from 'reducers/application';
 
@@ -49,6 +50,7 @@ export class App extends Component {
           <Route exact path="/shoppingList" component={ShoppingList} />
           <Route exact path="/calculator" component={Calculator} />
           <Route exact path="/flavors" component={Flavors} />
+          <Route exact path="/recipe" component={Recipe} />
           <Route component={NotFound} />
         </Switch>
       </Fragment>
