@@ -21,5 +21,8 @@ export const length = (minimum = 0, maximum = Infinity) => value => {
   }
 };
 
-export const composeValidators = (...validators) => value =>
-  validators.reduce((error, validator) => error || validator(value), undefined);
+export const composeValidators = (...validators) => (...args) =>
+  validators.reduce(
+    (error, validator) => error || validator(...args),
+    undefined
+  );
