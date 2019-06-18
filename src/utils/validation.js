@@ -1,3 +1,6 @@
+export const matches = fieldName => (value, allValues) =>
+  value === allValues[fieldName] ? undefined : 'matches';
+
 export const required = value => (value ? undefined : 'required');
 
 export const email = value =>
