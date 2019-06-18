@@ -1,4 +1,10 @@
-import { required, email, length, composeValidators } from './validation';
+import {
+  required,
+  email,
+  length,
+  matches,
+  composeValidators
+} from './validation';
 
 describe('validators', () => {
   describe('required', () => {
@@ -8,9 +14,11 @@ describe('validators', () => {
     });
 
     it('returns a string for invalid values', () => {
-      expect(required(null)).toBe('required');
-      expect(required('')).toBe('required');
-      expect(required(false)).toBe('required');
+      const error = 'required';
+
+      expect(required(null)).toBe(error);
+      expect(required('')).toBe(error);
+      expect(required(false)).toBe(error);
     });
   });
 
@@ -21,9 +29,11 @@ describe('validators', () => {
     });
 
     it('returns a string for invalid values', () => {
-      expect(email(null)).toBe('email');
-      expect(email('bogus')).toBe('email');
-      expect(email('jsf89weah328t99t8ht2@jsafkjifoaj')).toBe('email');
+      const error = 'email';
+
+      expect(email(null)).toBe(error);
+      expect(email('bogus')).toBe(error);
+      expect(email('jsf89weah328t99t8ht2@jsafkjifoaj')).toBe(error);
     });
   });
 
@@ -37,6 +47,20 @@ describe('validators', () => {
       expect(length(1)('')).toBe('min-length');
       expect(length(8)('bogus')).toBe('min-length');
       expect(length(1, 8)('longstringhamham')).toBe('max-length');
+    });
+  });
+
+  describe('matches', () => {
+    it('returns undefined for valid values', () => {
+      expect(matches('field')('test', { field: 'test' })).toBeUndefined();
+    });
+
+    it('returns a string for invalid values', () => {
+      const error = 'matches';
+
+      expect(matches('empty')('test', {})).toBe(error);
+      expect(matches('notPresent')('test', { present: 'test' })).toBe(error);
+      expect(matches('')('test', { present: 'test' })).toBe(error);
     });
   });
 
