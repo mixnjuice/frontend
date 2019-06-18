@@ -1,178 +1,229 @@
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { Form as FinalForm, Field } from 'react-final-form';
+import { Button, Container, Form, InputGroup, Col } from 'react-bootstrap';
+
+import { actions as appActions } from 'reducers/application';
 import {
-  Alert,
-  Button,
-  Container,
-  Form,
-  InputGroup,
-  Col
-} from 'react-bootstrap';
+  composeValidators,
+  required,
+  matches,
+  email,
+  length
+} from 'utils/validation';
 
-export default class Register extends Component {
-  constructor(...args) {
-    super(...args);
+export class Register extends Component {
+  static propTypes = {
+    actions: PropTypes.object
+  };
 
-    this.state = {
-      validated: false,
-      email: '',
-      emailConfirmed: '',
-      password: '',
-      passwordConfirmed: '',
-      message: '',
-      errorMessage: false
-    };
+  constructor(props) {
+    super(props);
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleUserInput(e) {
-    const name = e.target.name;
-    const value = e.target.value;
+  handleSubmit(values) {
+    const { actions } = this.props;
 
-    this.setState({ [name]: value });
-  }
-
-  handleSubmit(event) {
-    const form = event.currentTarget;
-
-    if (this.state.passwConf !== this.state.passw) {
-      this.setState({ passwConf: '' });
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    if (this.state.emailConf !== this.state.email) {
-      this.setState({ emailConf: '' });
-      event.preventDefault();
-      event.stopPropagation();
-    }
-
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    this.setState({ validated: true });
+    actions.registerUser(values);
   }
 
   render() {
-    const { validated, errorMessage } = this.state;
-
     return (
       <Container>
         <h1>User Registration</h1>
-        <Form
-          noValidate
-          validated={validated}
-          onSubmit={e => this.handleSubmit(e)}
-        >
-          <Form.Row>
-            <Form.Group as={Col} md="4" controlId="validationUsername">
-              <Form.Label>Username</Form.Label>
-              <InputGroup>
-                <InputGroup.Prepend>
-                  <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
-                </InputGroup.Prepend>
-                <Form.Control
-                  type="text"
-                  placeholder="Username"
-                  aria-describedby="inputGroupPrepend"
-                  required
-                />
-                <Form.Control.Feedback type="invalid">
-                  Please choose a username.
-                </Form.Control.Feedback>
-              </InputGroup>
-            </Form.Group>
-          </Form.Row>
-          <Form.Row>
-            <Form.Group as={Col} md="6" controlId="email">
-              <Form.Label>Email Address</Form.Label>
-              <Form.Control
-                name="email"
-                type="email"
-                value={this.state.email}
-                onChange={event => this.handleUserInput(event)}
-                placeholder="Enter email"
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-                Please provide a valid email address.
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group as={Col} md="6" controlId="emailConf">
-              <Form.Label>Confirm Email Address</Form.Label>
-              <Form.Control
-                name="emailConf"
-                type="email"
-                value={this.state.emailConf}
-                onChange={event => this.handleUserInput(event)}
-                placeholder="Confirm Enter email"
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-                Please provide a valid email address.
-              </Form.Control.Feedback>
-              {this.state.email !== this.state.emailConf && (
-                <Alert as="span" variant="danger">
-                  Email Addresses do not match
-                </Alert>
-              )}
-            </Form.Group>
-          </Form.Row>
-          <Form.Row>
-            <Form.Group as={Col} md="6" controlId="passw">
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                name="passw"
-                type="password"
-                value={this.state.passw}
-                onChange={event => this.handleUserInput(event)}
-                placeholder="Enter Password"
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-                Please provide a valid Password.
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group as={Col} md="6" controlId="passwConf">
-              <Form.Label>Confirm Password</Form.Label>
-              <Form.Control
-                name="passwConf"
-                type="password"
-                value={this.state.passwConf}
-                onChange={event => this.handleUserInput(event)}
-                placeholder="Confirm Password"
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-                Please provide a valid Password.
-              </Form.Control.Feedback>
-              {this.state.passw !== this.state.passwConf && (
-                <Alert as="span" variant="danger">
-                  Passwords do not match
-                </Alert>
-              )}
-            </Form.Group>
-          </Form.Row>
-          <Form.Group>
-            <Form.Check
-              required
-              label="Agree to terms and conditions"
-              feedback="You must agree before submitting."
-            />
-          </Form.Group>
-          <Form.Row>
-            <Form.Group as={Col} md="2">
-              <Button type="submit">Register</Button>&nbsp;
-            </Form.Group>
-            <Form.Group as={Col} md="3">
-              {errorMessage && (
-                <Alert as="span" variant="danger">
-                  {this.state.message}
-                </Alert>
-              )}
-            </Form.Group>
-          </Form.Row>
-        </Form>
+        <FinalForm
+          onSubmit={this.handleSubmit}
+          render={({ handleSubmit, submitting }) => (
+            <Form noValidate onSubmit={handleSubmit}>
+              <Form.Row>
+                <Field
+                  name="username"
+                  validate={composeValidators(required, length(3, 50))}
+                >
+                  {({ input, meta }) => (
+                    <Form.Group as={Col} md="4">
+                      <Form.Label>Username</Form.Label>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text id="inputGroupPrepend">
+                            @
+                          </InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control
+                          {...input}
+                          type="text"
+                          placeholder="Username"
+                          aria-describedby="inputGroupPrepend"
+                          isInvalid={meta.error && meta.touched}
+                        />
+                        {meta.error && (
+                          <Form.Control.Feedback type="invalid">
+                            {meta.error === 'required'
+                              ? 'Please enter a username'
+                              : 'Username must be between 3 and 50 characters'}
+                          </Form.Control.Feedback>
+                        )}
+                      </InputGroup>
+                    </Form.Group>
+                  )}
+                </Field>
+              </Form.Row>
+              <Form.Row>
+                <Field
+                  name="emailAddress"
+                  validate={composeValidators(required, email)}
+                >
+                  {({ input, meta }) => (
+                    <Form.Group as={Col} md="6">
+                      <Form.Label>Email Address</Form.Label>
+                      <Form.Control
+                        {...input}
+                        type="email"
+                        placeholder="Enter email"
+                        isInvalid={meta.error && meta.touched}
+                      />
+                      {meta.error && (
+                        <Form.Control.Feedback type="invalid">
+                          {meta.error === 'required'
+                            ? 'Please enter your email address'
+                            : 'Please enter a valid email address'}
+                        </Form.Control.Feedback>
+                      )}
+                    </Form.Group>
+                  )}
+                </Field>
+                <Field
+                  name="emailAddressConfirm"
+                  validate={composeValidators(
+                    required,
+                    email,
+                    matches('emailAddress')
+                  )}
+                >
+                  {({ input, meta }) => (
+                    <Form.Group as={Col} md="6" controlId="emailConf">
+                      <Form.Label>Confirm Email Address</Form.Label>
+                      <Form.Control
+                        {...input}
+                        type="email"
+                        placeholder="Confirm Enter email"
+                        isInvalid={meta.error && meta.touched}
+                      />
+                      {meta.error === 'required' && (
+                        <Form.Control.Feedback type="invalid">
+                          Please re-enter your email address
+                        </Form.Control.Feedback>
+                      )}
+                      {meta.error === 'matches' && (
+                        <Form.Control.Feedback type="invalid">
+                          Please ensure both email addresses match
+                        </Form.Control.Feedback>
+                      )}
+                      {meta.error === 'email' && (
+                        <Form.Control.Feedback type="invalid">
+                          Please enter a valid email address
+                        </Form.Control.Feedback>
+                      )}
+                    </Form.Group>
+                  )}
+                </Field>
+              </Form.Row>
+              <Form.Row>
+                <Field
+                  name="password"
+                  validate={composeValidators(required, length(8))}
+                >
+                  {({ input, meta }) => (
+                    <Form.Group as={Col} md="6">
+                      <Form.Label>Password</Form.Label>
+                      <Form.Control
+                        {...input}
+                        type="password"
+                        placeholder="Enter Password"
+                        isInvalid={meta.error && meta.touched}
+                      />
+                      {meta.error === 'required' && (
+                        <Form.Control.Feedback type="invalid">
+                          Please enter a password
+                        </Form.Control.Feedback>
+                      )}
+                    </Form.Group>
+                  )}
+                </Field>
+                <Field
+                  name="passwordConfirm"
+                  validate={composeValidators(required, matches('password'))}
+                >
+                  {({ input, meta }) => (
+                    <Form.Group as={Col} md="6">
+                      <Form.Label>Confirm Password</Form.Label>
+                      <Form.Control
+                        {...input}
+                        type="password"
+                        placeholder="Confirm Password"
+                        isInvalid={meta.error && meta.touched}
+                      />
+                      {meta.error === 'required' && (
+                        <Form.Control.Feedback type="invalid">
+                          Please re-enter your password
+                        </Form.Control.Feedback>
+                      )}
+                      {meta.error === 'matches' && (
+                        <Form.Control.Feedback type="invalid">
+                          Please ensure both passwords match
+                        </Form.Control.Feedback>
+                      )}
+                    </Form.Group>
+                  )}
+                </Field>
+              </Form.Row>
+              <Form.Row>
+                <Field name="termsAgreed" validate={required}>
+                  {({ input, meta }) => (
+                    <Form.Group>
+                      <Form.Check
+                        {...input}
+                        label="I agree to comply with the Terms of Service"
+                        isInvalid={meta.error && meta.touched}
+                      />
+                      {meta.error && (
+                        <Form.Control.Feedback type="invalid">
+                          Please accept the Terms of Service
+                        </Form.Control.Feedback>
+                      )}
+                    </Form.Group>
+                  )}
+                </Field>
+              </Form.Row>
+              <Form.Row>
+                <Form.Group as={Col} md="2">
+                  <Button variant="primary" type="submit" disabled={submitting}>
+                    Register
+                  </Button>
+                </Form.Group>
+              </Form.Row>
+            </Form>
+          )}
+        />
       </Container>
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(
+    {
+      ...appActions
+    },
+    dispatch
+  )
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Register);

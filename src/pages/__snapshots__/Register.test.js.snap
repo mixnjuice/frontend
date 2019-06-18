@@ -20,7 +20,6 @@ exports[`<Register /> renders correctly 1`] = `
       >
         <label
           className="form-label"
-          htmlFor="validationUsername"
         >
           Username
         </label>
@@ -40,16 +39,14 @@ exports[`<Register /> renders correctly 1`] = `
           <input
             aria-describedby="inputGroupPrepend"
             className="form-control"
-            id="validationUsername"
+            name="username"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
             placeholder="Username"
-            required={true}
             type="text"
+            value=""
           />
-          <div
-            className="invalid-feedback"
-          >
-            Please choose a username.
-          </div>
         </div>
       </div>
     </div>
@@ -61,25 +58,19 @@ exports[`<Register /> renders correctly 1`] = `
       >
         <label
           className="form-label"
-          htmlFor="email"
         >
           Email Address
         </label>
         <input
           className="form-control"
-          id="email"
-          name="email"
+          name="emailAddress"
+          onBlur={[Function]}
           onChange={[Function]}
+          onFocus={[Function]}
           placeholder="Enter email"
-          required={true}
           type="email"
           value=""
         />
-        <div
-          className="invalid-feedback"
-        >
-          Please provide a valid email address.
-        </div>
       </div>
       <div
         className="form-group col-md-6"
@@ -93,24 +84,14 @@ exports[`<Register /> renders correctly 1`] = `
         <input
           className="form-control"
           id="emailConf"
-          name="emailConf"
+          name="emailAddressConfirm"
+          onBlur={[Function]}
           onChange={[Function]}
+          onFocus={[Function]}
           placeholder="Confirm Enter email"
-          required={true}
           type="email"
+          value=""
         />
-        <div
-          className="invalid-feedback"
-        >
-          Please provide a valid email address.
-        </div>
-        <div
-          as="span"
-          className="fade alert alert-danger show"
-          role="alert"
-        >
-          Email Addresses do not match
-        </div>
       </div>
     </div>
     <div
@@ -121,69 +102,67 @@ exports[`<Register /> renders correctly 1`] = `
       >
         <label
           className="form-label"
-          htmlFor="passw"
         >
           Password
         </label>
         <input
           className="form-control"
-          id="passw"
-          name="passw"
+          name="password"
+          onBlur={[Function]}
           onChange={[Function]}
+          onFocus={[Function]}
           placeholder="Enter Password"
-          required={true}
           type="password"
+          value=""
         />
-        <div
-          className="invalid-feedback"
-        >
-          Please provide a valid Password.
-        </div>
       </div>
       <div
         className="form-group col-md-6"
       >
         <label
           className="form-label"
-          htmlFor="passwConf"
         >
           Confirm Password
         </label>
         <input
           className="form-control"
-          id="passwConf"
-          name="passwConf"
+          name="passwordConfirm"
+          onBlur={[Function]}
           onChange={[Function]}
+          onFocus={[Function]}
           placeholder="Confirm Password"
-          required={true}
           type="password"
+          value=""
         />
-        <div
-          className="invalid-feedback"
-        >
-          Please provide a valid Password.
-        </div>
       </div>
     </div>
     <div
-      className="form-group"
+      className="form-row"
     >
       <div
-        className="form-check"
+        className="form-group"
       >
-        <input
-          className="form-check-input"
-          disabled={false}
-          required={true}
-          type="checkbox"
-        />
-        <label
-          className="form-check-label"
-          title=""
-          type="checkbox"
+        <div
+          className="form-check"
         >
-          Agree to terms and conditions
-        </label>
+          <input
+            className="form-check-input"
+            disabled={false}
+            name="termsAgreed"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="checkbox"
+            value=""
+          />
+          <label
+            className="form-check-label"
+            title=""
+            type="checkbox"
+          >
+            I agree to comply with the Terms of Service
+          </label>
+        </div>
       </div>
     </div>
     <div
@@ -199,11 +178,7 @@ exports[`<Register /> renders correctly 1`] = `
         >
           Register
         </button>
-         
       </div>
-      <div
-        className="form-group col-md-3"
-      />
     </div>
   </form>
 </div>
