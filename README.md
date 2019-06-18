@@ -20,7 +20,7 @@ The following VS Code extensions will improve your development experience:
 - `esbenp.prettier-vscode`
 - `shinnn.stylelint`
 
-The following settings are recommended: 
+The following settings are recommended:
 
 ```json
   "editor.tabSize": 2,
