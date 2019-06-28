@@ -37,6 +37,7 @@ html {
 // Full page background color
 body {
   background-color: $white;
+  //background: linear-gradient(180deg, $light-blue 0%, $white 18%, $white 100%);
 }
 
 // Style for links
@@ -74,8 +75,13 @@ hr {
 
 // Styling for the navbar
 .navbar {
-  background-color: $lighter-blue;
+  background: none;
   border-radius: 0 0 1rem 1rem;
+}
+
+// Gradient background for the navigation container
+.navigation-container {
+  background: linear-gradient(180deg, $light-blue 0%, $white 100%);
 }
 
 // On screen sizes below ~1200px width, the nav links look a little weird by
@@ -84,6 +90,7 @@ hr {
 .nav-link,
 .nav-item {
   align-self: center;
+  font-size: 1.4rem;
 }
 
 // Styling for dropdown links in the nav
@@ -113,7 +120,7 @@ a.active {
 // Styling for nav "brand" (MixNJuice "logo")
 .navbar-brand {
   font-family: "Architects Daughter", cursive;
-  font-size: 3em;
+  font-size: 4em;
 }
 
 // Styling for checkboxes

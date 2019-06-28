@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Container, Row, Col } from 'react-bootstrap';
 
 export default class Header extends Component {
   isActive({ isCurrent }) {
@@ -15,7 +15,7 @@ export default class Header extends Component {
         as={NavLink}
         exact
         to={to}
-        className="borderLeftRight"
+        className="borderLeftRight px-3"
         activeClassName="active"
       >
         {text}
@@ -40,26 +40,43 @@ export default class Header extends Component {
 
   render() {
     return (
-      <Navbar expand="lg">
-        <Navbar.Brand>MixNJuice</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            {this.renderNavItem('/', 'Home')}
-            {this.renderNavItem('/calculator', 'Create Recipe')}
-            <NavDropdown title="User" id="basic-nav-dropdown">
-              {this.renderNavDropdownItem('/profile', 'Profile')}
-              {this.renderNavDropdownItem('/userRecipes', 'Recipes')}
-              {this.renderNavDropdownItem('/favorites', 'Favorites')}
-              {this.renderNavDropdownItem('/flavorStash', 'Flavor Stash')}
-              {this.renderNavDropdownItem('/shoppingList', 'Shopping List')}
-              {this.renderNavDropdownItem('/userSettings', 'Settings')}
-            </NavDropdown>
-            {this.renderNavItem('/login', 'Login')}
-            {this.renderNavItem('/register', 'Register')}
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <Container className="navigation-container" fluid>
+        <Row className="text-center">
+          <Col>
+            <Navbar.Brand>MixNJuice</Navbar.Brand>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Navbar expand="lg" className="justify-content-center">
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse
+                id="basic-navbar-nav"
+                className="justify-content-center"
+              >
+                <Nav>
+                  {this.renderNavItem('/', 'Home')}
+                  {this.renderNavItem('/calculator', 'Create Recipe')}
+                  <NavDropdown title="User" id="basic-nav-dropdown">
+                    {this.renderNavDropdownItem('/profile', 'Profile')}
+                    {this.renderNavDropdownItem('/userRecipes', 'Recipes')}
+                    {this.renderNavDropdownItem('/favorites', 'Favorites')}
+                    {this.renderNavDropdownItem('/flavorStash', 'Flavor Stash')}
+                    {this.renderNavDropdownItem(
+                      '/shoppingList',
+                      'Shopping List'
+                    )}
+                    {this.renderNavDropdownItem('/userSettings', 'Settings')}
+                  </NavDropdown>
+                  {this.renderNavItem('/login', 'Login')}
+                  {this.renderNavItem('/register', 'Register')}
+                </Nav>
+              </Navbar.Collapse>
+            </Navbar>
+            <hr />
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
