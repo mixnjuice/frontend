@@ -1,11 +1,19 @@
 import axios from 'axios';
 
-export default async ({ endpoint, payload }) => {
+/**
+ * Make an XMLHttpRequest to the specified endpoint with the specified request data.
+ *
+ * @param {object} endpoint An object with `url` and `method` keys
+ * @param {object} data An object to use as the request body
+ */
+export default async ({ endpoint, data }) => {
   try {
+    // ensure the endpoint was supplied
     if (!endpoint) {
       throw new Error('No endpoint provided!');
     }
 
+    // ensure properties required by axios are present
     const { url, method } = endpoint;
 
     if (!url || !method) {
@@ -15,7 +23,7 @@ export default async ({ endpoint, payload }) => {
     const response = await axios({
       url,
       method,
-      data: payload
+      data
     });
     const { status } = response;
 
