@@ -102,10 +102,7 @@ class Request {
 
       return success ? successResponse(response) : failureResponse(response);
     } catch (error) {
-      return {
-        success: false,
-        error
-      };
+      return failureResponse(error);
     }
   }
 }
