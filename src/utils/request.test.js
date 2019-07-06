@@ -1,12 +1,14 @@
+import dayjs from 'dayjs';
 import axios from 'jest-mock-axios';
-import { race, call, delay } from 'redux-saga/effects';
+import { race, call, delay, select } from 'redux-saga/effects';
 
 import request from './request';
 import { buildUrl } from './index';
+import { getAuthorization } from 'selectors/application';
 
 describe('request', () => {
   const endpoint = {
-    url: '/api/test',
+    url: '/test',
     method: 'POST'
   };
   const defaultTimeout = 30000;
@@ -169,7 +171,7 @@ describe('request', () => {
   });
 
   it('can handle missing endpoint', async () => {
-    const error = new Error('No endpoint provided!');
+    const error = { message: 'No endpoint provided!' };
     const response = {
       done: true,
       value: {
@@ -192,7 +194,7 @@ describe('request', () => {
       done: true,
       value: {
         success: false,
-        error: new Error('Endpoint is missing URL!')
+        error: { message: 'Endpoint is missing URL!' }
       }
     };
     const gen = request.execute({ endpoint: invalidEndpoint });
@@ -210,7 +212,7 @@ describe('request', () => {
       done: true,
       value: {
         success: false,
-        error: new Error('Endpoint is missing method!')
+        error: { message: 'Endpoint is missing method!' }
       }
     };
     const gen = request.execute({ endpoint: invalidEndpoint });
@@ -225,7 +227,7 @@ describe('request', () => {
       done: true,
       value: {
         success: false,
-        error: new Error('Request timed out!')
+        error: { message: 'Request timed out!' }
       }
     };
     const options = {
@@ -255,5 +257,42 @@ describe('request', () => {
     result = gen.next({ timeout: 'Operation timed out!' });
 
     expect(result).toEqual(timeoutResponse);
+  });
+
+  it('can handle authorized routes', () => {
+    const authedEndpoint = {
+      url: '/api/user/current',
+      method: 'GET'
+    };
+    const authInfo = {
+      accessToken: 'dummy',
+      expiration: dayjs().add(7, 'day')
+    };
+    const { url, method } = authedEndpoint;
+    const gen = request.execute({ endpoint: authedEndpoint });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(select(getAuthorization));
+
+    result = gen.next(authInfo);
+
+    expect(result.value).toEqual(call(buildUrl, authedEndpoint));
+
+    result = gen.next(url);
+
+    expect(result.value).toEqual(
+      race({
+        response: call(axios, {
+          url,
+          method,
+          data: undefined,
+          headers: {
+            Authorization: `Bearer ${authInfo.accessToken}`
+          }
+        }),
+        timeout: delay(defaultTimeout)
+      })
+    );
   });
 });
