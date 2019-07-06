@@ -95,7 +95,7 @@ describe('request', () => {
   });
 
   it('can handle bad request', async () => {
-    const response = {
+    const axiosResponse = {
       status: 400,
       data: {}
     };
@@ -119,22 +119,20 @@ describe('request', () => {
       })
     );
 
-    result = gen.next({ response });
+    result = gen.next({ axiosResponse });
+    const { done, value } = result;
 
-    expect(result.done).toBeTruthy();
-    expect(result.value).toBeDefined();
-    const {
-      success,
-      response: { status, data }
-    } = result.value;
+    expect(done).toBeTruthy();
+    expect(value).toBeDefined();
+    const { success, response, error } = result.value;
 
     expect(success).toBeFalsy();
-    expect(status).toBe(response.status);
-    expect(data).toBe(response.data);
+    expect(response).not.toBeDefined();
+    expect(error).toBeDefined();
   });
 
   it('can handle internal server error', async () => {
-    const response = {
+    const axiosResponse = {
       status: 500,
       data: {}
     };
@@ -158,18 +156,16 @@ describe('request', () => {
       })
     );
 
-    result = gen.next({ response });
+    result = gen.next({ axiosResponse });
+    const { done, value } = result;
 
-    expect(result.done).toBeTruthy();
-    expect(result.value).toBeDefined();
-    const {
-      success,
-      response: { status, data }
-    } = result.value;
+    expect(done).toBeTruthy();
+    expect(value).toBeDefined();
+    const { success, response, error } = result.value;
 
     expect(success).toBeFalsy();
-    expect(status).toBe(response.status);
-    expect(data).toBe(response.data);
+    expect(response).not.toBeDefined();
+    expect(error).toBeDefined();
   });
 
   it('can handle missing endpoint', async () => {
