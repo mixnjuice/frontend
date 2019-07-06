@@ -18,7 +18,7 @@ describe('request', () => {
     axios.mockClear();
   });
 
-  it('can handle success', async () => {
+  it('can handle success', () => {
     const response = {
       status: 200,
       data: {}
@@ -57,7 +57,7 @@ describe('request', () => {
     expect(data).toBe(response.data);
   });
 
-  it('can handle no content', async () => {
+  it('can handle no content', () => {
     const response = {
       status: 204,
       data: null
@@ -96,7 +96,7 @@ describe('request', () => {
     expect(data).toBeFalsy();
   });
 
-  it('can handle bad request', async () => {
+  it('can handle bad request', () => {
     const axiosResponse = {
       status: 400,
       data: {}
@@ -121,7 +121,7 @@ describe('request', () => {
       })
     );
 
-    result = gen.next({ axiosResponse });
+    result = gen.next({ response: axiosResponse });
     const { done, value } = result;
 
     expect(done).toBeTruthy();
@@ -133,10 +133,13 @@ describe('request', () => {
     expect(error).toBeDefined();
   });
 
-  it('can handle internal server error', async () => {
+  it('can handle internal server error', () => {
     const axiosResponse = {
       status: 500,
-      data: {}
+      data: {
+        message: 'Something bad',
+        code: 1001
+      }
     };
     const { url, method } = endpoint;
     const gen = request.execute({ endpoint });
@@ -158,7 +161,7 @@ describe('request', () => {
       })
     );
 
-    result = gen.next({ axiosResponse });
+    result = gen.next({ response: axiosResponse });
     const { done, value } = result;
 
     expect(done).toBeTruthy();
@@ -167,10 +170,10 @@ describe('request', () => {
 
     expect(success).toBeFalsy();
     expect(response).not.toBeDefined();
-    expect(error).toBeDefined();
+    expect(error).toEqual(axiosResponse);
   });
 
-  it('can handle missing endpoint', async () => {
+  it('can handle missing endpoint', () => {
     const error = { message: 'No endpoint provided!' };
     const response = {
       done: true,
@@ -186,7 +189,9 @@ describe('request', () => {
     expect(result).toEqual(response);
   });
 
-  it('can handle missing URL', async () => {
+  it('can handle extra headers', () => {});
+
+  it('can handle missing URL', () => {
     const invalidEndpoint = {
       method: 'POST'
     };
@@ -204,7 +209,7 @@ describe('request', () => {
     expect(result).toEqual(response);
   });
 
-  it('can handle missing method', async () => {
+  it('can handle missing method', () => {
     const invalidEndpoint = {
       url: '/missing/method'
     };
@@ -259,6 +264,27 @@ describe('request', () => {
     expect(result).toEqual(timeoutResponse);
   });
 
+  it('can handle unexpected error', () => {
+    const { url } = endpoint;
+    const gen = request.execute({ endpoint });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(call(buildUrl, endpoint));
+
+    result = gen.next(url);
+    result = gen.next(null);
+    const { done, value } = result;
+
+    expect(done).toBeTruthy();
+    expect(value).toBeDefined();
+    const { success, response, error } = result.value;
+
+    expect(success).toBeFalsy();
+    expect(response).not.toBeDefined();
+    expect(error).toBeDefined();
+  });
+
   it('can handle authorized routes', () => {
     const authedEndpoint = {
       url: '/api/user/current',
@@ -294,5 +320,26 @@ describe('request', () => {
         timeout: delay(defaultTimeout)
       })
     );
+  });
+
+  it('can handle missing auth info', () => {
+    const authedEndpoint = {
+      url: '/api/user/current',
+      method: 'GET'
+    };
+    const gen = request.execute({ endpoint: authedEndpoint });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(select(getAuthorization));
+
+    result = gen.next({});
+
+    expect(result.value).toEqual({
+      success: false,
+      error: {
+        message: 'Missing authorization information!'
+      }
+    });
   });
 });
