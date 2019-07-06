@@ -46,11 +46,19 @@ class Request {
       }
 
       const { status } = response;
+      const success = status >= 200 && status < 400;
 
-      return {
-        success: status >= 200 && status < 400,
-        response
-      };
+      if (success) {
+        return {
+          success,
+          response
+        };
+      } else {
+        return {
+          success,
+          error: response
+        };
+      }
     } catch (error) {
       return {
         success: false,
