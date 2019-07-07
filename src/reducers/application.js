@@ -3,6 +3,10 @@ import { buildActions } from 'utils';
 export const types = buildActions('application', [
   'INIT_APP',
   'LOGIN_USER',
+  'REQUEST_TOKEN',
+  'RECEIVE_TOKEN',
+  'REQUEST_CURRENT_USER',
+  'RECEIVE_CURRENT_USER',
   'LOGIN_USER_SUCCESS',
   'LOGIN_USER_FAILURE',
   'LOGOUT_USER',
@@ -21,6 +25,27 @@ const loginUser = (emailAddress, password) => ({
   type: types.LOGIN_USER,
   emailAddress,
   password
+});
+
+const requestToken = (emailAddress, password) => ({
+  type: types.REQUEST_TOKEN,
+  emailAddress,
+  password
+});
+
+const receiveToken = (token, expiration) => ({
+  type: types.RECEIVE_TOKEN,
+  expiration,
+  token
+});
+
+const requestCurrentUser = () => ({
+  type: types.REQUEST_CURRENT_USER
+});
+
+const receiveCurrentUser = user => ({
+  type: types.RECEIVE_CURRENT_USER,
+  user
 });
 
 const loginUserSuccess = user => ({
@@ -63,6 +88,10 @@ const registerUserFailure = error => ({
 export const actions = {
   initApp,
   loginUser,
+  requestToken,
+  receiveToken,
+  requestCurrentUser,
+  receiveCurrentUser,
   loginUserSuccess,
   loginUserFailure,
   logoutUser,
@@ -78,6 +107,11 @@ export const initialState = {
   loggingOut: false,
   user: null,
   error: null,
+  authorization: {
+    accessToken: null,
+    refreshToken: null,
+    expiration: null
+  },
   registration: {
     registering: false,
     complete: false,
@@ -102,20 +136,34 @@ export const reducer = (state = initialState, action = {}) => {
         ...state,
         registration: {
           ...state.registration,
-          registering: true
+          registering: true,
+          details: action.details
         }
+      };
+    case types.RECEIVE_TOKEN:
+      return {
+        ...state,
+        authorization: {
+          accessToken: action.token,
+          expiration: action.expiration
+        }
+      };
+    case types.RECEIVE_CURRENT_USER:
+      return {
+        ...state,
+        user: action.user
       };
     case types.LOGOUT_USER_SUCCESS:
       return {
         ...state,
         loggingOut: false,
-        user: null
+        user: null,
+        authorization: initialState.authorization
       };
     case types.LOGIN_USER_SUCCESS:
       return {
         ...state,
-        loggingIn: false,
-        user: action.user
+        loggingIn: false
       };
     case types.LOGIN_USER_FAILURE:
     case types.LOGOUT_USER_FAILURE:

@@ -41,3 +41,24 @@ export const withMemoryRouter = WrappedComponent => props => (
     <WrappedComponent {...props} />
   </MemoryRouter>
 );
+
+/**
+ * Interpolate strings from the `params` object into the `url`.
+ *
+ * @param {object} endpoint Object with `url` and optional `params` object
+ */
+export const buildUrl = endpoint => {
+  const { url, params } = endpoint;
+
+  if (!params) {
+    return url;
+  }
+
+  let builtUrl = url;
+
+  for (const [key, value] of Object.entries(params)) {
+    builtUrl = builtUrl.replace(`{${key}}`, value);
+  }
+
+  return builtUrl;
+};

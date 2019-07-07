@@ -1,13 +1,15 @@
 import path from 'path';
 import webpack from 'webpack';
+import { CLIEngine } from 'eslint';
 import HtmlPlugin from 'html-webpack-plugin';
-import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import StylelintPlugin from 'stylelint-webpack-plugin';
 import MiniCSSExtractPlugin from 'mini-css-extract-plugin';
+import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
 const dev = process.env.NODE_ENV === 'development';
+const apiPort = process.env.API_PORT || 3000;
 
 export default {
   mode: dev ? 'development' : 'production',
@@ -19,14 +21,27 @@ export default {
     overlay: true,
     historyApiFallback: true,
     hot: dev,
-    port: 9000
+    port: 9000,
+    proxy: {
+      '/api': `http://localhost:${apiPort}`,
+      '/oauth': `http://localhost:${apiPort}`,
+      '/register': `http://localhost:${apiPort}`
+    }
   },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
+        use: [
+          'babel-loader',
+          {
+            loader: 'eslint-loader',
+            options: {
+              formatter: CLIEngine.getFormatter('stylish')
+            }
+          }
+        ]
       },
       {
         test: /\.(sa|sc|c)ss$/,

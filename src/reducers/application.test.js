@@ -1,6 +1,13 @@
+import dayjs from 'dayjs';
 import { reducer, types, actions, initialState } from './application';
 
 describe('application reducer', () => {
+  const user = { id: 123, name: 'Dave' };
+  const emailAddress = 'test@test.org';
+  const password = 'excellent';
+  const token = 'testing';
+  const expiration = dayjs();
+
   it('has INIT_APP action', () => {
     expect(actions.initApp()).toEqual({
       type: types.INIT_APP
@@ -14,9 +21,6 @@ describe('application reducer', () => {
   });
 
   it('has LOGIN_USER action', () => {
-    const emailAddress = 'test@test.org';
-    const password = 'excellent';
-
     expect(actions.loginUser(emailAddress, password)).toEqual({
       type: types.LOGIN_USER,
       emailAddress,
@@ -30,9 +34,65 @@ describe('application reducer', () => {
     expect(reducer({}, action)).toEqual({ loggingIn: true });
   });
 
-  it('has LOGIN_USER_SUCCESS action', () => {
-    const user = { id: 123, name: 'Dave' };
+  it('has REQUEST_TOKEN action', () => {
+    expect(actions.requestToken(emailAddress, password)).toEqual({
+      type: types.REQUEST_TOKEN,
+      emailAddress,
+      password
+    });
+  });
 
+  it('reduces REQUEST_TOKEN action', () => {
+    const action = actions.requestToken();
+
+    expect(reducer({}, action)).toEqual({});
+  });
+
+  it('has RECEIVE_TOKEN action', () => {
+    expect(actions.receiveToken(token, expiration)).toEqual({
+      type: types.RECEIVE_TOKEN,
+      expiration,
+      token
+    });
+  });
+
+  it('reduces RECEIVE_TOKEN action', () => {
+    const action = actions.receiveToken(token, expiration);
+
+    expect(reducer({}, action)).toEqual({
+      authorization: {
+        accessToken: token,
+        expiration
+      }
+    });
+  });
+
+  it('has REQUEST_CURRENT_USER action', () => {
+    expect(actions.requestCurrentUser()).toEqual({
+      type: types.REQUEST_CURRENT_USER
+    });
+  });
+
+  it('reduces REQUEST_CURRENT_USER action', () => {
+    const action = actions.requestCurrentUser();
+
+    expect(reducer({}, action)).toEqual({});
+  });
+
+  it('has RECEIVE_CURRENT_USER action', () => {
+    expect(actions.receiveCurrentUser(user)).toEqual({
+      type: types.RECEIVE_CURRENT_USER,
+      user
+    });
+  });
+
+  it('reduces RECEIVE_CURRENT_USER action', () => {
+    const action = actions.receiveCurrentUser(user);
+
+    expect(reducer({}, action)).toEqual({ user });
+  });
+
+  it('has LOGIN_USER_SUCCESS action', () => {
     expect(actions.loginUserSuccess(user)).toEqual({
       type: types.LOGIN_USER_SUCCESS,
       user
@@ -40,12 +100,10 @@ describe('application reducer', () => {
   });
 
   it('reduces LOGIN_USER_SUCCESS action', () => {
-    const user = { id: 123, name: 'Dave' };
-    const action = actions.loginUserSuccess(user);
+    const action = actions.loginUserSuccess({ id: 123, name: 'Dave' });
 
     expect(reducer({}, action)).toEqual({
-      loggingIn: false,
-      user
+      loggingIn: false
     });
   });
 
@@ -89,10 +147,17 @@ describe('application reducer', () => {
 
   it('reduces LOGOUT_USER_SUCCESS action', () => {
     const action = actions.logoutUserSuccess();
+    const mockState = {
+      user: 1,
+      authorization: {
+        accessToken: 'testing'
+      }
+    };
 
-    expect(reducer({ user: 1 }, action)).toEqual({
+    expect(reducer(mockState, action)).toEqual({
       loggingOut: false,
-      user: null
+      user: null,
+      authorization: initialState.authorization
     });
   });
 
