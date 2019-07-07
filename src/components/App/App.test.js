@@ -7,6 +7,9 @@ import App from './App';
 import { withMemoryRouter } from 'utils';
 
 jest.mock('components/Header/Header');
+jest.mock('components/Home/NewRecipes');
+jest.mock('components/Home/FeaturedMixer');
+jest.mock('components/Home/TopRecipesDay');
 
 describe('<App />', () => {
   const initialState = {};
