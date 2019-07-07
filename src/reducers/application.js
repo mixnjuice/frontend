@@ -102,7 +102,8 @@ export const reducer = (state = initialState, action = {}) => {
         ...state,
         registration: {
           ...state.registration,
-          registering: true
+          registering: true,
+          details: action.details
         }
       };
     case types.LOGOUT_USER_SUCCESS:

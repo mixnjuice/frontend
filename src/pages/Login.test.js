@@ -28,29 +28,11 @@ describe('<Login />', () => {
   it('can handleSubmit', () => {
     const emailAddress = 'some@one.org';
     const password = 'testing';
-    const mockEvent = {
-      preventDefault: jest.fn()
-    };
     const component = renderer.create(<Login actions={actions} />);
     const { instance } = component.root.findByType(Login);
 
     expect(instance).toBeDefined();
-    instance.handleTextChange({
-      target: {
-        name: 'emailAddress',
-        value: emailAddress
-      }
-    });
-    instance.handleTextChange({
-      target: {
-        name: 'password',
-        value: password
-      }
-    });
-    instance.handleSubmit(mockEvent);
+    instance.handleSubmit({ emailAddress, password });
     expect(actions.loginUser).toHaveBeenCalledWith(emailAddress, password);
-    expect(mockEvent.preventDefault).toHaveBeenCalled();
   });
-
-  it('can handleTextChange', () => {});
 });

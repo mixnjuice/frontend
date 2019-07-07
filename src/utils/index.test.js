@@ -1,4 +1,4 @@
-import { buildActions, mockComponent } from './index';
+import { buildActions, mockComponent, buildUrl } from './index';
 
 describe('utilities', () => {
   it('can buildActions', () => {
@@ -42,6 +42,30 @@ describe('utilities', () => {
       expect(component).toBeDefined();
       expect(component.type).toBe(type);
       expect(component.props).toEqual(expect.objectContaining(props));
+    });
+  });
+
+  describe('buildUrl', () => {
+    it('exists', () => {
+      expect(buildUrl).toBeInstanceOf(Function);
+    });
+
+    it('returns a URL with no parameters', () => {
+      const url = 'http://localhost/test';
+      const result = buildUrl({ url });
+
+      expect(result).toBe(url);
+    });
+
+    it('returns a URL with interpolated parameters', () => {
+      const url = 'http://localhost/{aValue}/{somethingElse}';
+      const params = {
+        aValue: 'test',
+        somethingElse: 'another'
+      };
+      const result = buildUrl({ url, params });
+
+      expect(result).toEqual('http://localhost/test/another');
     });
   });
 });
