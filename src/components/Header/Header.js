@@ -3,12 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Container, Row, Col } from 'react-bootstrap';
 
 export default class Header extends Component {
-  isActive({ isCurrent }) {
-    return isCurrent
-      ? { className: 'nav-link borderLeftRight active' }
-      : { className: 'nav-link borderLeftRight' };
-  }
-
   renderNavItem(to, text) {
     return (
       <Nav.Link
