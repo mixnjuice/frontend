@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import { Row, Col, CardGroup, Card } from 'react-bootstrap';
 
 export class NewRecipes extends Component {

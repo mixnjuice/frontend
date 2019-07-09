@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 
 import TopRecipesDay from 'components/Home/TopRecipesDay';
 import NewRecipes from 'components/Home/NewRecipes';

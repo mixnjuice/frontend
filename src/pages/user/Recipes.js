@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Table } from 'react-bootstrap';
 
 export default class UserRecipes extends Component {

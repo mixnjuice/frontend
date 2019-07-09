@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { Link } from '@reach/router';
 import { Row, Col, Card, Button } from 'react-bootstrap';
 
 export class FeaturedMixer extends Component {
