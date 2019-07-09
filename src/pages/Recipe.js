@@ -31,7 +31,7 @@ export default class Recipe extends Component {
       recipe.flavorTotal += flavor.percent;
     });
 
-    this.setState(recipe);
+    this.setState({ recipe });
   }
 
   render() {
