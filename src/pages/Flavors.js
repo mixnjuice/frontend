@@ -19,8 +19,7 @@ export default class Flavors extends Component {
   componentDidMount() {}
 
   handleUserInput(e) {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value } = e.target;
 
     this.setState({ [name]: value });
   }
