@@ -21,7 +21,7 @@ exports[`<Home /> renders correctly 1`] = `
         }
       >
         <a
-          href="/#"
+          href="/"
           onClick={[Function]}
         >
           Click here to customize your front page!
@@ -55,7 +55,7 @@ exports[`<Home /> renders correctly 1`] = `
               className="card-title h5"
             >
               <a
-                href="/#"
+                href="/"
                 onClick={[Function]}
               >
                 Strawberry Milkshake
@@ -95,7 +95,7 @@ exports[`<Home /> renders correctly 1`] = `
               className="card-title h5"
             >
               <a
-                href="/#"
+                href="/"
                 onClick={[Function]}
               >
                 Bomb Pop
@@ -135,7 +135,7 @@ exports[`<Home /> renders correctly 1`] = `
               className="card-title h5"
             >
               <a
-                href="/#"
+                href="/"
                 onClick={[Function]}
               >
                 Tiramisu
@@ -176,7 +176,7 @@ exports[`<Home /> renders correctly 1`] = `
               className="card-title h5"
             >
               <a
-                href="/#"
+                href="/"
                 onClick={[Function]}
               >
                 RY4 Tobaccy
@@ -216,7 +216,7 @@ exports[`<Home /> renders correctly 1`] = `
               className="card-title h5"
             >
               <a
-                href="/#"
+                href="/"
                 onClick={[Function]}
               >
                 Fruit Punch
@@ -273,7 +273,7 @@ exports[`<Home /> renders correctly 1`] = `
               className="card-title h5"
             >
               <a
-                href="/#"
+                href="/"
                 onClick={[Function]}
               >
                 Strawberry Milkshake
@@ -313,7 +313,7 @@ exports[`<Home /> renders correctly 1`] = `
               className="card-title h5"
             >
               <a
-                href="/#"
+                href="/"
                 onClick={[Function]}
               >
                 Bomb Pop
@@ -353,7 +353,7 @@ exports[`<Home /> renders correctly 1`] = `
               className="card-title h5"
             >
               <a
-                href="/#"
+                href="/"
                 onClick={[Function]}
               >
                 Tiramisu
@@ -394,7 +394,7 @@ exports[`<Home /> renders correctly 1`] = `
               className="card-title h5"
             >
               <a
-                href="/#"
+                href="/"
                 onClick={[Function]}
               >
                 RY4 Tobaccy
@@ -434,7 +434,7 @@ exports[`<Home /> renders correctly 1`] = `
               className="card-title h5"
             >
               <a
-                href="/#"
+                href="/"
                 onClick={[Function]}
               >
                 Fruit Punch
