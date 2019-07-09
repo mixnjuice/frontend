@@ -13,7 +13,7 @@ export default class Home extends Component {
         <Row className="text-center">
           <Col>
             <h1>Welcome to MixNJuice!</h1>
-            <p style={{ 'font-size': '0.8em' }}>
+            <p style={{ fontSize: '0.8em' }}>
               <Link to="#">Click here to customize your front page!</Link>
             </p>
           </Col>
