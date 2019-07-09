@@ -1,62 +1,178 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Header /> renders correctly 1`] = `
-<nav
-  className="navbar navbar-expand-lg navbar-light bg-light"
+<div
+  className="navigation-container container-fluid"
 >
-  <span
-    className="navbar-brand"
-  >
-    MixNJuice
-  </span>
-  <button
-    aria-controls="basic-navbar-nav"
-    aria-label="Toggle navigation"
-    className="navbar-toggler"
-    onClick={[Function]}
-    type="button"
-  >
-    <span
-      className="navbar-toggler-icon"
-    />
-  </button>
   <div
-    aria-expanded={null}
-    className="navbar-collapse collapse"
-    id="basic-navbar-nav"
+    className="text-center row"
   >
     <div
-      className="mr-auto navbar-nav"
-      onKeyDown={[Function]}
+      className="col"
     >
-      <a
-        className="nav-link"
-        data-rb-event-key={null}
-        disabled={false}
-        href="/"
-        onClick={[Function]}
+      <span
+        className="navbar-brand"
       >
-        Home
-      </a>
-      <a
-        className="nav-link"
-        data-rb-event-key={null}
-        disabled={false}
-        href="/login"
-        onClick={[Function]}
-      >
-        Login
-      </a>
-      <a
-        className="nav-link"
-        data-rb-event-key={null}
-        disabled={false}
-        href="/register"
-        onClick={[Function]}
-      >
-        Register
-      </a>
+        MixNJuice
+      </span>
     </div>
   </div>
-</nav>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <nav
+        className="justify-content-center navbar navbar-expand-lg navbar-light"
+      >
+        <button
+          aria-controls="basic-navbar-nav"
+          aria-label="Toggle navigation"
+          className="navbar-toggler"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            className="navbar-toggler-icon"
+          />
+        </button>
+        <div
+          aria-expanded={null}
+          className="justify-content-center navbar-collapse collapse"
+          id="basic-navbar-nav"
+        >
+          <div
+            className="navbar-nav"
+            onKeyDown={[Function]}
+          >
+            <a
+              aria-current="page"
+              className="borderLeftRight px-3 nav-link active"
+              data-rb-event-key={null}
+              disabled={false}
+              href="/"
+              onClick={[Function]}
+              style={Object {}}
+            >
+              Home
+            </a>
+            <a
+              aria-current={null}
+              className="borderLeftRight px-3 nav-link"
+              data-rb-event-key={null}
+              disabled={false}
+              href="/calculator"
+              onClick={[Function]}
+            >
+              Create Recipe
+            </a>
+            <div
+              className="dropdown nav-item"
+              onKeyDown={[Function]}
+            >
+              <a
+                aria-expanded={false}
+                aria-haspopup={true}
+                className="dropdown-toggle nav-link"
+                data-rb-event-key={null}
+                href="#"
+                onClick={[Function]}
+                onKeyDown={[Function]}
+                role="button"
+              >
+                User
+              </a>
+              <div
+                className="dropdown-menu"
+              >
+                <a
+                  aria-current={null}
+                  className="borderLeftRight dropdown-item"
+                  disabled={false}
+                  href="/profile"
+                  onClick={[Function]}
+                >
+                  Profile
+                  <br />
+                </a>
+                <a
+                  aria-current={null}
+                  className="borderLeftRight dropdown-item"
+                  disabled={false}
+                  href="/userRecipes"
+                  onClick={[Function]}
+                >
+                  Recipes
+                  <br />
+                </a>
+                <a
+                  aria-current={null}
+                  className="borderLeftRight dropdown-item"
+                  disabled={false}
+                  href="/favorites"
+                  onClick={[Function]}
+                >
+                  Favorites
+                  <br />
+                </a>
+                <a
+                  aria-current={null}
+                  className="borderLeftRight dropdown-item"
+                  disabled={false}
+                  href="/flavorStash"
+                  onClick={[Function]}
+                >
+                  Flavor Stash
+                  <br />
+                </a>
+                <a
+                  aria-current={null}
+                  className="borderLeftRight dropdown-item"
+                  disabled={false}
+                  href="/shoppingList"
+                  onClick={[Function]}
+                >
+                  Shopping List
+                  <br />
+                </a>
+                <a
+                  aria-current={null}
+                  className="borderLeftRight dropdown-item"
+                  disabled={false}
+                  href="/userSettings"
+                  onClick={[Function]}
+                >
+                  Settings
+                  <br />
+                </a>
+              </div>
+            </div>
+            <a
+              aria-current={null}
+              className="borderLeftRight px-3 nav-link"
+              data-rb-event-key={null}
+              disabled={false}
+              href="/login"
+              onClick={[Function]}
+            >
+              Login
+            </a>
+            <a
+              aria-current={null}
+              className="borderLeftRight px-3 nav-link"
+              data-rb-event-key={null}
+              disabled={false}
+              href="/register"
+              onClick={[Function]}
+            >
+              Register
+            </a>
+          </div>
+        </div>
+      </nav>
+      <hr />
+    </div>
+  </div>
+</div>
 `;

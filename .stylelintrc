@@ -196,7 +196,7 @@
     "selector-max-id": 1,
     "selector-max-pseudo-class": 2,
     "selector-max-specificity": [
-      "0,5,1",
+      "1,5,1",
       { "severity": "error" }
     ],
     "selector-max-type": 2,

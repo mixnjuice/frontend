@@ -4,8 +4,32 @@ exports[`<App /> renders correctly 1`] = `
 <div
   className="container"
 >
-  <h1>
-    Home
-  </h1>
+  <div
+    className="text-center row"
+  >
+    <div
+      className="col"
+    >
+      <h1>
+        Welcome to MixNJuice!
+      </h1>
+      <p
+        style={
+          Object {
+            "font-size": "0.8em",
+          }
+        }
+      >
+        <a
+          href="/"
+          onClick={[Function]}
+        >
+          Click here to customize your front page!
+        </a>
+      </p>
+    </div>
+  </div>
+  <hr />
+  <hr />
 </div>
 `;

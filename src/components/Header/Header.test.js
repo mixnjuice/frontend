@@ -3,6 +3,10 @@ import renderer from 'react-test-renderer';
 
 import Header from './Header';
 import { withMemoryRouter } from 'utils';
+// Prevent findDOMNode error in test from Dropdown component in react-bootstrap
+jest.mock('react-dom', () => ({
+  findDOMNode: () => ({})
+}));
 
 describe('<Header />', () => {
   it('renders correctly', () => {
