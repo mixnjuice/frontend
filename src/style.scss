@@ -206,6 +206,11 @@ h1.recipeTitle {
   border: 1px solid $teal;
 }
 
+// Style for "striped" tables
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: $lightest-blue;
+}
+
 // Link animations in the header links
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
 .borderLeftRight {
