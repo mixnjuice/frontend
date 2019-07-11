@@ -16,7 +16,7 @@ exports[`<Home /> renders correctly 1`] = `
       <p
         style={
           Object {
-            "font-size": "0.8em",
+            "fontSize": "0.8em",
           }
         }
       >
