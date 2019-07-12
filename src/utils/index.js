@@ -27,17 +27,19 @@ export function buildActions(reducer, actions) {
  * @param {object} props An object containing props to setup
  * @return {object} Mock component with specified name and props
  */
-export function mockComponent(name, props = {}) {
-  return () => createElement(name, props, props.children);
-}
+export const mockComponent = (name, props = {}) => () =>
+  createElement(name, props, props.children);
 
 /**
  * Wraps a React component in a <MemoryRouter> suitable for testing
  *
  * @param {Component} WrappedComponent React component to wrap
  */
-export const withMemoryRouter = WrappedComponent => props => (
-  <MemoryRouter>
+export const withMemoryRouter = (
+  WrappedComponent,
+  routerProps = {}
+) => props => (
+  <MemoryRouter {...routerProps}>
     <WrappedComponent {...props} />
   </MemoryRouter>
 );
