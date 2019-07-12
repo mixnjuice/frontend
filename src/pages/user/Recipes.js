@@ -9,7 +9,7 @@ export default class UserRecipes extends Component {
 
     for (let i = 0; i < 20; i++) {
       listItems.push(
-        <tr>
+        <tr key={i}>
           <Link to="#">Recipe {i}</Link>
         </tr>
       );
