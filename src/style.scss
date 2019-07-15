@@ -148,7 +148,10 @@ a.active {
 
 // Changing the border of any form fields
 .form-control {
-  border: 1px solid #000;
+  border: 1px solid #000;// Style for "striped" tables
+  .table-striped tbody tr:nth-of-type(odd) {
+    background-color: $lightest-blue;
+  }
   outline: 0 none;
 }
 
@@ -204,6 +207,11 @@ h1.recipeTitle {
 
 .img-thumbnail {
   border: 1px solid $teal;
+}
+
+// Style for "striped" tables
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: $lightest-blue;
 }
 
 // Link animations in the header links

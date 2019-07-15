@@ -10,7 +10,9 @@ export default class UserRecipes extends Component {
     for (let i = 0; i < 20; i++) {
       listItems.push(
         <tr key={i}>
-          <Link to="#">Recipe {i}</Link>
+          <td>
+            <Link to="#">Recipe {i}</Link>
+          </td>
         </tr>
       );
     }
@@ -20,13 +22,13 @@ export default class UserRecipes extends Component {
         <Row>
           <Col>
             <h1>Your Original Recipes</h1>
-            <Table striped bordered hover>
+            <Table striped bordered>
               <tbody>{listItems}</tbody>
             </Table>
           </Col>
           <Col>
             <h1>Your Adapted Recipes</h1>
-            <Table striped bordered hover>
+            <Table striped bordered>
               <tbody>{listItems}</tbody>
             </Table>
           </Col>
