@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "es5",
+    "module": "commonjs",
     "jsx": "react",
     "baseUrl": "./src"
   },
