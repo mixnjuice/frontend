@@ -94,7 +94,7 @@ hr {
 
 // Styling for dropdown links in the nav
 .dropdown-toggle {
-  color: #000 !important;
+  color: $black;
 }
 
 // Styling for the dropdown menu
@@ -126,8 +126,8 @@ a.active {
 .form-check-input {
   //-webkit-appearance: none;
   appearance: none;
-  background-color: #fff;
-  border: 1px solid #000;
+  background-color: $white;
+  border: 1px solid $black;
   width: 20px;
   height: 20px;
   border-radius: 0.3rem;
@@ -141,13 +141,14 @@ a.active {
 // Changing disabled buttons to grey
 .btn-primary.disabled,
 .btn-primary:disabled {
-  background-color: #777;
-  border-color: #333;
+  color: gray("800");
+  background-color: gray("300");
+  border-color: gray("800");
 }
 
 // Changing the border of any form fields
 .form-control {
-  border: 1px solid #000;// Style for "striped" tables
+  border: 1px solid $black; // Style for "striped" tables
   .table-striped tbody tr:nth-of-type(odd) {
     background-color: $lightest-blue;
   }
@@ -163,7 +164,7 @@ a.active {
 
 // Changing the background for the text next to an input field
 .input-group-text {
-  background-color: #eee;
+  background-color: gray("200");
 }
 
 // Changing the column width of the ingredient percent input
@@ -195,7 +196,7 @@ input {
 
 // Style for file inputs
 input[type="file"] {
-  border: 1px solid #000;
+  border: 1px solid $black;
   border-radius: 0.25rem;
   padding: 5px;
 }
@@ -218,7 +219,7 @@ h1.recipeTitle {
 .borderLeftRight {
   display: inline-block;
   position: relative;
-  color: #000 !important;
+  color: $black !important;
 }
 
 .borderLeftRight:hover,
@@ -271,8 +272,8 @@ h1.recipeTitle {
   background: $teal;
   position: relative;
   line-height: auto;
-  color: #fff;
-  border: 1px solid #000;
+  color: $white;
+  border: 1px solid $black;
   margin: 5px;
 }
 
