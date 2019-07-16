@@ -93,7 +93,7 @@ hr {
 }
 
 // Styling for dropdown links in the nav
-.dropdown-toggle {
+.navbar-nav .nav-link.dropdown-toggle {
   color: $black;
 }
 
@@ -101,6 +101,11 @@ hr {
 .dropdown-menu {
   text-align: center;
   background-color: $lightest-blue;
+
+  & .dropdown-item.active,
+  & .dropdown-item:active {
+    background-color: inherit;
+  }
 }
 
 // Styling for active navigation link
@@ -108,12 +113,6 @@ a.active {
   font-weight: 900 !important;
   color: $teal !important;
   //border-bottom: 1px solid $teal;
-}
-
-// Overriding Bootstrap background color for active dropdown items
-.dropdown-item.active,
-.dropdown-item:active {
-  background-color: inherit;
 }
 
 // Styling for nav "brand" (MixNJuice "logo")
