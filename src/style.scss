@@ -115,7 +115,7 @@ hr {
 }
 
 // Styling for active navigation link
-a.active {
+.navbar-nav .nav-link.active {
   font-weight: 900;
   color: $teal;
   //border-bottom: 1px solid $teal;
