@@ -189,14 +189,14 @@
     "selector-list-comma-space-after": "always-single-line",
     "selector-list-comma-space-before": null,
     "selector-max-attribute": 1,
-    "selector-max-class": 3,
+    "selector-max-class": 4,
     "selector-max-combinators": 2,
     "selector-max-compound-selectors": 3,
     "selector-max-empty-lines": 0,
     "selector-max-id": 1,
     "selector-max-pseudo-class": 2,
     "selector-max-specificity": [
-      "1,5,1",
+      "0,5,1",
       { "severity": "error" }
     ],
     "selector-max-type": 2,
