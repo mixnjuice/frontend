@@ -152,18 +152,20 @@ hr {
 
 // Changing the border of any form fields
 .form-control {
-  border: 1px solid $black; // Style for "striped" tables
+  outline: 0 none;
+  border: 1px solid $black;
+
+  // Style for "striped" tables
   .table-striped tbody tr:nth-of-type(odd) {
     background-color: $lightest-blue;
   }
-  outline: 0 none;
-}
 
-// Changing the focused state of form fields
-.form-control:focus {
-  border: 3px solid $blue;
-  box-shadow: none;
-  outline: 0 none;
+  // Changing the focused state of form fields
+  &:focus {
+    border: 3px solid $blue;
+    box-shadow: none;
+    outline: 0 none;
+  }
 }
 
 // Changing the background for the text next to an input field
