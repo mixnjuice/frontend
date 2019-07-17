@@ -96,6 +96,11 @@ hr {
 // Styling for dropdown links in the nav
 .navbar-nav .nav-link.dropdown-toggle {
   color: $black;
+
+  &:hover,
+  &:focus {
+    color: $black;
+  }
 }
 
 // Styling for the dropdown menu
