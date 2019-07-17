@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  mattermost-notify: bulletlogic/mattermost-notify@0.0.1
+  mattermost-notify: bulletlogic/mattermost-notify@dev:0.0.3
 
 jobs:
   build:
