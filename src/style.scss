@@ -215,7 +215,7 @@ h1.recipeTitle {
 
 // Link animations in the header links
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
-.navbar-nav .nav-link.borderLeftRight.active {
+.navbar-nav .nav-link.borderLeftRight {
   display: inline-block;
   position: relative;
   color: $black;
@@ -275,6 +275,11 @@ h1.recipeTitle {
   &:focus::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+  }
+
+  &.active {
+    font-weight: 900;
+    color: $teal;
   }
 }
 
