@@ -114,13 +114,6 @@ hr {
   }
 }
 
-// Styling for active navigation link
-.navbar-nav .nav-link.active {
-  font-weight: 900;
-  color: $teal;
-  //border-bottom: 1px solid $teal;
-}
-
 // Styling for nav "brand" (MixNJuice "logo")
 .navbar-brand {
   font-family: "Architects Daughter", cursive;
@@ -222,14 +215,14 @@ h1.recipeTitle {
 
 // Link animations in the header links
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
-.navbar-nav .nav-link.borderLeftRight {
+.navbar-nav .nav-link.borderLeftRight.active {
   display: inline-block;
   position: relative;
-  color: $black !important;
+  color: $black;
 
   &:hover,
   &:focus {
-    color: $teal !important;
+    color: $teal;
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
