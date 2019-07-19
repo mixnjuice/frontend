@@ -31,7 +31,7 @@ jobs:
     steps:
       - mattermost-notify/notify_on_success:
           branches: '*'
-          reponame: 'gusta-project/website'
+          reponame: 'gusta-project/frontend'
           webhook: '$MATTERMOST_WEBHOOK_FRONTEND'
   notify_failure:
     docker:
@@ -39,7 +39,7 @@ jobs:
     steps:
       - mattermost-notify/notify_on_failure:
           branches: '*'
-          reponame: 'gusta-project/website'
+          reponame: 'gusta-project/frontend'
           webhook: '$MATTERMOST_WEBHOOK_FRONTEND'
 
 workflows:
