@@ -30,16 +30,12 @@ jobs:
       - image: byrnedo/alpine-curl:latest
     steps:
       - mattermost-notify/notify_on_success:
-          branches: '*'
-          reponame: 'gusta-project/frontend'
           webhook: '$MATTERMOST_WEBHOOK_FRONTEND'
   notify_failure:
     docker:
       - image: byrnedo/alpine-curl:latest
     steps:
       - mattermost-notify/notify_on_failure:
-          branches: '*'
-          reponame: 'gusta-project/frontend'
           webhook: '$MATTERMOST_WEBHOOK_FRONTEND'
 
 workflows:
