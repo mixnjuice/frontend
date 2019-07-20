@@ -9,10 +9,7 @@ import createSagaMiddleware from 'redux-saga';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { applyMiddleware, createStore, compose } from 'redux';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faFire, faUser } from '@fortawesome/free-solid-svg-icons';
-library.add(faFire, faUser);
-
+import './icons';
 import './index.scss';
 import App from './components/App/App';
 
