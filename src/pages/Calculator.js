@@ -347,7 +347,7 @@ export default class Calculator extends Component {
                               <td>{flavor.vendor.name}</td>
                               <td>{flavor.name}</td>
                               <td>
-                                {this.state.inuse[index] && (
+                                {this.state.inuse[index] ? (
                                   <Button
                                     onClick={this.addIngredient.bind(
                                       this,
@@ -357,8 +357,7 @@ export default class Calculator extends Component {
                                   >
                                     <span>Add to Recipe</span>
                                   </Button>
-                                )}
-                                {!this.state.inuse[index] && (
+                                ) : (
                                   <Button
                                     className="button-animation"
                                     onClick={this.addIngredient.bind(
