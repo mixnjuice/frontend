@@ -376,35 +376,27 @@ h1.recipeTitle {
   }
 }
 
-// Ideally the default class for an alert, hidden
-.alert-hidden {
-  opacity: 0;
+// Class for alert specifically on the recipe page, used for its positioning
+.recipe-alert {
   z-index: 100;
   position: absolute;
   display: block;
   float: right;
-  left: 55%;
-  top: 0;
+  left: 65%;
+  top: 15%;
+}
+
+// The default class for an alert, hidden
+.alert-hidden {
+  opacity: 0;
 }
 
 // After an alert is called upon, the class is changed to this to initiate a fade in
 .alert-fade-in {
   animation: fadeIn 0.5s linear 0s 1 normal;
-  z-index: 100;
-  position: absolute;
-  display: block;
-  float: right;
-  left: 55%;
-  top: 0;
 
   @media screen and (prefers-reduced-motion: reduce) {
     animation: none;
-    z-index: 100;
-    position: absolute;
-    display: block;
-    float: right;
-    left: 55%;
-    top: 0;
   }
 }
 
@@ -412,21 +404,9 @@ h1.recipeTitle {
 // and goes back to alert-hidden
 .alert-fade-out {
   animation: fadeOut 0.5s linear 0s 1 normal;
-  z-index: 100;
-  position: absolute;
-  display: block;
-  float: right;
-  left: 55%;
-  top: 0;
 
   @media screen and (prefers-reduced-motion: reduce) {
     animation: none;
-    z-index: 100;
-    position: absolute;
-    display: block;
-    float: right;
-    left: 55%;
-    top: 0;
   }
 }
 

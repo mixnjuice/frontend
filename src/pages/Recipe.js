@@ -15,7 +15,7 @@ export default class Recipe extends Component {
       flavors: [],
       favorited: false,
       favoriteIcon: ['far', 'heart'],
-      alertClass: 'alert-hidden'
+      alertClass: 'recipe-alert alert-hidden'
     };
 
     this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
@@ -30,18 +30,18 @@ export default class Recipe extends Component {
       this.setState({
         favorited: false,
         favoriteIcon: ['far', 'heart'],
-        alertClass: 'alert-fade-in'
+        alertClass: 'recipe-alert alert-fade-in'
       });
     } else {
       this.setState({
         favorited: true,
         favoriteIcon: ['fas', 'heart'],
-        alertClass: 'alert-fade-in'
+        alertClass: 'recipe-alert alert-fade-in'
       });
     }
 
     setTimeout(() => {
-      this.setState({ alertClass: 'alert-fade-out, alert-hidden' });
+      this.setState({ alertClass: 'recipe-alert alert-fade-out alert-hidden' });
     }, 2500);
   }
 
