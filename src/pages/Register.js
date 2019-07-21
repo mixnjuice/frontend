@@ -182,7 +182,7 @@ export class Register extends Component {
                 </Field>
               </Form.Row>
               <Form.Row>
-                <Field name="termsAgreed" validate={required}>
+                <Field type="checkbox" name="termsAgreed" validate={required}>
                   {({ input, meta }) => (
                     <Form.Group>
                       <Form.Check

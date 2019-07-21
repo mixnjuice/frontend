@@ -146,6 +146,7 @@ exports[`<Register /> renders correctly 1`] = `
           className="form-check"
         >
           <input
+            checked={false}
             className="form-check-input"
             disabled={false}
             name="termsAgreed"
