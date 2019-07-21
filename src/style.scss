@@ -431,4 +431,20 @@ h1.recipeTitle {
   &:first-child {
     border-left: 1px solid $black;
   }
+
+  &:hover,
+  &:focus {
+    background: $teal;
+    border-color: $black;
+    box-shadow: inset 0 -3px $blue;
+  }
+}
+
+.button--favorite {
+  &:hover,
+  &:focus {
+    background: $teal;
+    border-color: $black;
+    box-shadow: inset 0 -3px $blue;
+  }
 }
