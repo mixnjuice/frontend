@@ -63,8 +63,13 @@ export default class Recipe extends Component {
   render() {
     return (
       <Container className="text-center">
-        <Row>
-          <Col>
+        <Row className="justify-content-md-center">
+          <Col md="auto">
+            <Button>
+              <span>Make this recipe</span>
+            </Button>
+          </Col>
+          <Col md="auto">
             <Button onClick={this.handleFavoriteClick}>
               <span>
                 <FontAwesomeIcon icon={this.state.favoriteIcon} />
