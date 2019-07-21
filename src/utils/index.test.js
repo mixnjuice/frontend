@@ -51,21 +51,22 @@ describe('utilities', () => {
     });
 
     it('returns a URL with no parameters', () => {
-      const url = 'http://localhost/test';
+      const url = '/test';
       const result = buildUrl({ url });
 
-      expect(result).toBe(url);
+      expect(result).toBe(`http://localhost:3000${url}`);
     });
 
     it('returns a URL with interpolated parameters', () => {
-      const url = 'http://localhost/{aValue}/{somethingElse}';
+      const url = '/{aValue}/{somethingElse}';
       const params = {
         aValue: 'test',
         somethingElse: 'another'
       };
+      const expectedUrl = 'http://localhost:3000/test/another';
       const result = buildUrl({ url, params });
 
-      expect(result).toEqual('http://localhost/test/another');
+      expect(result).toEqual(expectedUrl);
     });
   });
 });

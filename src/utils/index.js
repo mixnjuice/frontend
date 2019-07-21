@@ -50,17 +50,17 @@ export const withMemoryRouter = (
  * @param {object} endpoint Object with `url` and optional `params` object
  */
 export const buildUrl = endpoint => {
+  // this is defined by webpack.DefinePlugin
+  const baseUrl = API_URL;
   const { url, params } = endpoint;
 
   if (!params) {
-    return url;
+    return `${baseUrl}${url}`;
   }
 
-  let builtUrl = url;
+  return Object.entries(params).reduce((resultUrl, entry) => {
+    const [key, value] = entry;
 
-  for (const [key, value] of Object.entries(params)) {
-    builtUrl = builtUrl.replace(`{${key}}`, value);
-  }
-
-  return builtUrl;
+    return resultUrl.replace(`{${key}}`, value);
+  }, `${baseUrl}${url}`);
 };
