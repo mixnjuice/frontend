@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 
-import { Container, Row, Col, Table, Button, Alert } from 'react-bootstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Table,
+  Button,
+  ButtonGroup,
+  Alert
+} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import queryString from 'query-string';
@@ -15,10 +23,13 @@ export default class Recipe extends Component {
       flavors: [],
       favorited: false,
       favoriteIcon: ['far', 'heart'],
-      alertClass: 'recipe-alert alert-hidden'
+      alertClass: 'recipe-alert alert-hidden',
+      rating: 0
     };
 
     this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
+    this.handleRatingClick = this.handleRatingClick.bind(this);
+    this.renderRatingButtons = this.renderRatingButtons.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +56,16 @@ export default class Recipe extends Component {
     }, 2500);
   }
 
+  handleRatingClick(ratingNumber) {
+    if (ratingNumber === this.state.rating) {
+      this.setState({ rating: 0 });
+    } else {
+      this.setState({
+        rating: ratingNumber
+      });
+    }
+  }
+
   findRecipe() {
     const query = this.props.location.search;
     const queryValues = queryString.parse(query);
@@ -58,6 +79,46 @@ export default class Recipe extends Component {
     });
 
     this.setState(recipe);
+  }
+
+  renderRatingButtons(ratingNum) {
+    const buttons = [];
+
+    let ratingKey = 1;
+
+    for (let i = 0; i < ratingNum; i++) {
+      buttons.push(
+        <Button
+          className="rating-button"
+          // eslint-disable-next-line
+          onClick={() => this.handleRatingClick(i + 1)}
+        >
+          <span>
+            <FontAwesomeIcon icon={['fas', 'star']} />
+          </span>
+        </Button>
+      );
+      ratingKey++;
+    }
+
+    for (let a = ratingNum; a < 5; a++) {
+      buttons.push(
+        <Button
+          className="rating-button"
+          // eslint-disable-next-line
+          onClick={() => this.handleRatingClick(a + 1)}
+        >
+          <span>
+            <FontAwesomeIcon icon={['far', 'star']} />
+          </span>
+        </Button>
+      );
+      ratingKey++;
+    }
+
+    if (ratingKey === 6) {
+      return <ButtonGroup>{buttons}</ButtonGroup>;
+    }
   }
 
   render() {
@@ -84,6 +145,7 @@ export default class Recipe extends Component {
               </span>
             </Button>
           </Col>
+          <Col md="auto">{this.renderRatingButtons(this.state.rating)}</Col>
         </Row>
         <Row>
           <Col md={{ span: 2, offset: 3 }}>
