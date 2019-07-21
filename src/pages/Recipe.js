@@ -64,6 +64,14 @@ export default class Recipe extends Component {
     return (
       <Container className="text-center">
         <Row className="justify-content-md-center">
+          <Alert variant="success" className={this.state.alertClass}>
+            {this.state.favorited && (
+              <span>Recipe added to your favorites</span>
+            )}
+            {!this.state.favorited && (
+              <span>Recipe removed from your favorites</span>
+            )}
+          </Alert>
           <Col md="auto">
             <Button>
               <span>Make this recipe</span>
@@ -75,14 +83,6 @@ export default class Recipe extends Component {
                 <FontAwesomeIcon icon={this.state.favoriteIcon} />
               </span>
             </Button>
-            <Alert variant="success" className={this.state.alertClass}>
-              {this.state.favorited && (
-                <span>Recipe added to your favorites</span>
-              )}
-              {!this.state.favorited && (
-                <span>Recipe removed from your favorites</span>
-              )}
-            </Alert>
           </Col>
         </Row>
         <Row>
