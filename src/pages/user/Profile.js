@@ -21,7 +21,7 @@ export default class Profile extends Component {
             <p>
               This is what other users see when they look at your profile.
               <br />
-              <Link to="/userSettings">Click here to edit your profile</Link>
+              <Link to="/user-settings">Click here to edit your profile</Link>
             </p>
           </Col>
         </Row>

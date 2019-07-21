@@ -100,7 +100,7 @@ exports[`<Header /> renders correctly 1`] = `
                   aria-current={null}
                   className="borderLeftRight dropdown-item"
                   disabled={false}
-                  href="/userRecipes"
+                  href="/user-recipes"
                   onClick={[Function]}
                 >
                   Recipes
@@ -120,7 +120,7 @@ exports[`<Header /> renders correctly 1`] = `
                   aria-current={null}
                   className="borderLeftRight dropdown-item"
                   disabled={false}
-                  href="/flavorStash"
+                  href="/flavor-stash"
                   onClick={[Function]}
                 >
                   Flavor Stash
@@ -130,7 +130,7 @@ exports[`<Header /> renders correctly 1`] = `
                   aria-current={null}
                   className="borderLeftRight dropdown-item"
                   disabled={false}
-                  href="/shoppingList"
+                  href="/shopping-list"
                   onClick={[Function]}
                 >
                   Shopping List
@@ -140,7 +140,7 @@ exports[`<Header /> renders correctly 1`] = `
                   aria-current={null}
                   className="borderLeftRight dropdown-item"
                   disabled={false}
-                  href="/userSettings"
+                  href="/user-settings"
                   onClick={[Function]}
                 >
                   Settings
