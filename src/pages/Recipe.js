@@ -126,10 +126,9 @@ export default class Recipe extends Component {
       <Container className="text-center">
         <Row className="justify-content-md-center">
           <Alert variant="success" className={this.state.alertClass}>
-            {this.state.favorited && (
+            {this.state.favorited ? (
               <span>Recipe added to your favorites</span>
-            )}
-            {!this.state.favorited && (
+            ) : (
               <span>Recipe removed from your favorites</span>
             )}
           </Alert>
@@ -191,14 +190,16 @@ export default class Recipe extends Component {
         </Row>
         <Row>
           <Col>
-            {this.state.maxvg && <h3>Max VG</h3>}
-            {!this.state.maxvg && (
+            {this.state.maxvg ? (
+              <h3>Max VG</h3>
+            ) : (
               <h3>
                 {this.state.pg}% PG / {this.state.vg}% VG
               </h3>
             )}
-            {this.state.shakeNVape && <h3>Shake & Vape</h3>}
-            {!this.state.shakeNVape && (
+            {this.state.shakeNVape ? (
+              <h3>Shake & Vape</h3>
+            ) : (
               <h3>Steep for {this.state.steepTime} days</h3>
             )}
             <h3>Flavor total: {this.state.flavorTotal}%</h3>
