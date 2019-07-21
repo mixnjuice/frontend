@@ -63,7 +63,7 @@ export default class Header extends Component {
                       '/shopping-list',
                       'Shopping List'
                     )}
-                    {this.renderNavDropdownItem('/userSettings', 'Settings')}
+                    {this.renderNavDropdownItem('/user-settings', 'Settings')}
                   </NavDropdown>
                   {this.renderNavItem('/login', 'Login')}
                   {this.renderNavItem('/register', 'Register')}

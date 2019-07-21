@@ -46,7 +46,7 @@ export class App extends Component {
           <Route exact path="/user-recipes" component={UserRecipes} />
           <Route exact path="/favorites" component={Favorites} />
           <Route exact path="/flavor-stash" component={FlavorStash} />
-          <Route exact path="/userSettings" component={UserSettings} />
+          <Route exact path="/user-settings" component={UserSettings} />
           <Route exact path="/shopping-list" component={ShoppingList} />
           <Route exact path="/calculator" component={Calculator} />
           <Route exact path="/flavors" component={Flavors} />

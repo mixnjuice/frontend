@@ -125,7 +125,7 @@ describe('<App />', () => {
 
   it('renders user settings page', () => {
     const RoutedApp = withMemoryRouter(App, {
-      initialEntries: ['/userSettings']
+      initialEntries: ['/user-settings']
     });
     const component = renderer.create(
       <Provider store={store}>

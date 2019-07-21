@@ -140,7 +140,7 @@ exports[`<Header /> renders correctly 1`] = `
                   aria-current={null}
                   className="borderLeftRight dropdown-item"
                   disabled={false}
-                  href="/userSettings"
+                  href="/user-settings"
                   onClick={[Function]}
                 >
                   Settings
