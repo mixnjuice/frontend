@@ -291,7 +291,7 @@ export default class Calculator extends Component {
           <h2>
             Flavor Stash
             <span>&nbsp;&nbsp;&nbsp;</span>
-            {this.state.ShowStash && (
+            {this.state.showStash ? (
               <Button
                 variant="info"
                 className="button-animation"
@@ -300,8 +300,7 @@ export default class Calculator extends Component {
               >
                 <span>Hide</span>
               </Button>
-            )}
-            {!this.state.ShowStash && (
+            ) : (
               <Button
                 variant="info"
                 className="button-animation"
