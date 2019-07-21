@@ -172,11 +172,13 @@ exports[`<Register /> renders correctly 1`] = `
         className="form-group col-md-2"
       >
         <button
-          className="btn btn-primary"
+          className="button-animation btn btn-primary"
           disabled={false}
           type="submit"
         >
-          Register
+          <span>
+            Register
+          </span>
         </button>
       </div>
     </div>

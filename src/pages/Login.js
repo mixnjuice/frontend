@@ -81,8 +81,13 @@ export class Login extends Component {
                   </Form.Group>
                 )}
               </Field>
-              <Button variant="primary" type="submit" disabled={submitting}>
-                Login
+              <Button
+                className="button-animation"
+                variant="primary"
+                type="submit"
+                disabled={submitting}
+              >
+                <span>Login</span>
               </Button>
             </Form>
           )}
