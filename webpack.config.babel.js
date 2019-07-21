@@ -9,7 +9,7 @@ import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
 const dev = process.env.NODE_ENV === 'development';
-const apiPort = process.env.API_PORT || 3000;
+const apiUrl = process.env.API_URL;
 
 export default {
   mode: dev ? 'development' : 'production',
@@ -21,12 +21,7 @@ export default {
     overlay: true,
     historyApiFallback: true,
     hot: dev,
-    port: 9000,
-    proxy: {
-      '/api': `http://localhost:${apiPort}`,
-      '/oauth': `http://localhost:${apiPort}`,
-      '/register': `http://localhost:${apiPort}`
-    }
+    port: 9000
   },
   module: {
     rules: [
@@ -94,7 +89,10 @@ export default {
     new HtmlPlugin({
       template: './src/index.html'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      API_URL: JSON.stringify(dev || !apiUrl ? 'http://localhost:3000' : apiUrl)
+    })
   ],
   resolve: {
     extensions: ['.js', '.json'],
