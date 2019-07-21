@@ -88,7 +88,7 @@ describe('<App />', () => {
 
   it('renders user recipes page', () => {
     const RoutedApp = withMemoryRouter(App, {
-      initialEntries: ['/userRecipes']
+      initialEntries: ['/user-recipes']
     });
     const component = renderer.create(
       <Provider store={store}>
@@ -112,7 +112,7 @@ describe('<App />', () => {
 
   it('renders flavor stash page', () => {
     const RoutedApp = withMemoryRouter(App, {
-      initialEntries: ['/flavorStash']
+      initialEntries: ['/flavor-stash']
     });
     const component = renderer.create(
       <Provider store={store}>
@@ -138,7 +138,7 @@ describe('<App />', () => {
 
   it('renders shopping list page', () => {
     const RoutedApp = withMemoryRouter(App, {
-      initialEntries: ['/shoppingList']
+      initialEntries: ['/shopping-list']
     });
     const component = renderer.create(
       <Provider store={store}>
