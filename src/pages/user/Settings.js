@@ -98,7 +98,10 @@ export default class UserSettings extends Component {
                   </Form.Label>
                 </div>
                 <InputGroup.Prepend>
-                  <Button style={{ margin: '0px 10px' }}>
+                  <Button
+                    className="button-animation"
+                    style={{ margin: '0px 10px' }}
+                  >
                     <span>Upload</span>
                   </Button>
                 </InputGroup.Prepend>
@@ -111,7 +114,7 @@ export default class UserSettings extends Component {
           </Row>
           <Row className="text-center">
             <Col>
-              <Button>
+              <Button className="button-animation">
                 <span>Save</span>
               </Button>
             </Col>

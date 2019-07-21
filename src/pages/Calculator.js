@@ -292,12 +292,22 @@ export default class Calculator extends Component {
             Flavor Stash
             <span>&nbsp;&nbsp;&nbsp;</span>
             {this.state.ShowStash && (
-              <Button variant="info" size="sm" onClick={e => this.hideStash(e)}>
+              <Button
+                variant="info"
+                className="button-animation"
+                size="sm"
+                onClick={e => this.hideStash(e)}
+              >
                 <span>Hide</span>
               </Button>
             )}
             {!this.state.ShowStash && (
-              <Button variant="info" size="sm" onClick={e => this.showStash(e)}>
+              <Button
+                variant="info"
+                className="button-animation"
+                size="sm"
+                onClick={e => this.showStash(e)}
+              >
                 <span>Show</span>
               </Button>
             )}
@@ -337,12 +347,29 @@ export default class Calculator extends Component {
                               <td>{flavor.vendor.name}</td>
                               <td>{flavor.name}</td>
                               <td>
-                                <Button
-                                  onClick={this.addIngredient.bind(this, index)}
-                                  disabled={this.state.inuse[index]}
-                                >
-                                  <span>Add to Recipe</span>
-                                </Button>
+                                {this.state.inuse[index] && (
+                                  <Button
+                                    onClick={this.addIngredient.bind(
+                                      this,
+                                      index
+                                    )}
+                                    disabled={this.state.inuse[index]}
+                                  >
+                                    <span>Add to Recipe</span>
+                                  </Button>
+                                )}
+                                {!this.state.inuse[index] && (
+                                  <Button
+                                    className="button-animation"
+                                    onClick={this.addIngredient.bind(
+                                      this,
+                                      index
+                                    )}
+                                    disabled={this.state.inuse[index]}
+                                  >
+                                    <span>Add to Recipe</span>
+                                  </Button>
+                                )}
                               </td>
                             </tr>
                           );
@@ -385,6 +412,7 @@ export default class Calculator extends Component {
                         </td>
                         <td>
                           <Button
+                            className="button-animation"
                             onClick={this.removeIngredient.bind(this, index)}
                           >
                             <span>Remove</span>
@@ -442,7 +470,7 @@ export default class Calculator extends Component {
           </Form.Group>
           <Form.Row className="justify-content-center">
             <Form.Group as={Col} md="2">
-              <Button type="submit">
+              <Button className="button-animation" type="submit">
                 <span>Save</span>
               </Button>
               &nbsp;

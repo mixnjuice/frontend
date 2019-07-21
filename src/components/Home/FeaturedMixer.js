@@ -20,7 +20,7 @@ export class FeaturedMixer extends Component {
                   <Card.Text>
                     To figure out what could go here, but it&apos;s an idea.
                   </Card.Text>
-                  <Button variant="primary">
+                  <Button variant="primary" className="button-animation">
                     <span>Check out their recipes</span>
                   </Button>
                 </Col>

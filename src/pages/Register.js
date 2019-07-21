@@ -201,8 +201,13 @@ export class Register extends Component {
               </Form.Row>
               <Form.Row>
                 <Form.Group as={Col} md="2">
-                  <Button variant="primary" type="submit" disabled={submitting}>
-                    Register
+                  <Button
+                    className="button-animation"
+                    variant="primary"
+                    type="submit"
+                    disabled={submitting}
+                  >
+                    <span>Register</span>
                   </Button>
                 </Form.Group>
               </Form.Row>

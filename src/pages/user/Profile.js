@@ -34,13 +34,13 @@ export default class Profile extends Component {
         <Row className="text-center">
           <Col>
             <ButtonGroup>
-              <Button variant="primary">
+              <Button className="button-animation" variant="primary">
                 <span>Message</span>
               </Button>
-              <Button variant="primary">
+              <Button className="button-animation" variant="primary">
                 <span>Follow</span>
               </Button>
-              <Button variant="primary">
+              <Button className="button-animation" variant="primary">
                 <span>Report</span>
               </Button>
             </ButtonGroup>
