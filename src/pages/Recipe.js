@@ -90,7 +90,7 @@ export default class Recipe extends Component {
       buttons.push(
         <Button
           className="rating-button"
-          // eslint-disable-next-line
+          key={i + 1}
           onClick={() => this.handleRatingClick(i + 1)}
         >
           <span>
@@ -105,7 +105,7 @@ export default class Recipe extends Component {
       buttons.push(
         <Button
           className="rating-button"
-          // eslint-disable-next-line
+          key={a + 1}
           onClick={() => this.handleRatingClick(a + 1)}
         >
           <span>
