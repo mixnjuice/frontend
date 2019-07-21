@@ -147,6 +147,7 @@ export default class Recipe extends Component {
           </Col>
           <Col md="auto">{this.renderRatingButtons(this.state.rating)}</Col>
         </Row>
+        <hr />
         <Row>
           <Col md={{ span: 2, offset: 3 }}>
             <img
