@@ -283,18 +283,21 @@ h1.recipeTitle {
   }
 }
 
-// Button animations
-// Credit to: https://emilkowalski.github.io/css-effects-snippets/
+// Universal button styling
 .btn {
   height: 40px;
   padding: 0 14px;
+  line-height: auto;
+}
+
+// Button animations
+// Credit to: https://emilkowalski.github.io/css-effects-snippets/
+.button-animation {
   overflow: hidden;
   background: $teal;
   position: relative;
-  line-height: auto;
   color: $white;
   border: 1px solid $black;
-  margin: 5px;
 
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
