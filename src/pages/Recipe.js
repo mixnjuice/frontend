@@ -133,12 +133,15 @@ export default class Recipe extends Component {
             )}
           </Alert>
           <Col md="auto">
-            <Button>
+            <Button className="button-animation">
               <span>Make this recipe</span>
             </Button>
           </Col>
           <Col md="auto">
-            <Button onClick={this.handleFavoriteClick}>
+            <Button
+              onClick={this.handleFavoriteClick}
+              className="button--favorite"
+            >
               <span>
                 <FontAwesomeIcon icon={this.state.favoriteIcon} />
               </span>
