@@ -289,16 +289,16 @@ h1.recipeTitle {
   height: 40px;
   padding: 0 14px;
   line-height: auto;
+  background: $teal;
+  border: 1px solid $black;
 }
 
 // Button animations
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
 .button-animation {
   overflow: hidden;
-  background: $teal;
   position: relative;
   color: $white;
-  border: 1px solid $black;
 
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
