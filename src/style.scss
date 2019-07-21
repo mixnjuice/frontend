@@ -5,6 +5,7 @@ $lighter-blue: #d3e3fc;
 $light-blue: #b1cefd;
 $blue: #77a6f7;
 $teal: #00887a;
+$light-red: #fd8383;
 $lighter-red: #ffccbc;
 
 // Changes the font site-wide
@@ -351,4 +352,85 @@ h1.recipeTitle {
     position: relative;
     z-index: 1;
   }
+}
+
+// Keyframes for fade in animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+// Keyframes for fade out animation
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+// Ideally the default class for an alert, hidden
+.alert-hidden {
+  opacity: 0;
+  z-index: 100;
+  position: absolute;
+  display: block;
+  float: right;
+  left: 55%;
+  top: 0;
+}
+
+// After an alert is called upon, the class is changed to this to initiate a fade in
+.alert-fade-in {
+  animation: fadeIn 0.5s linear 0s 1 normal;
+  z-index: 100;
+  position: absolute;
+  display: block;
+  float: right;
+  left: 55%;
+  top: 0;
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    animation: none;
+    z-index: 100;
+    position: absolute;
+    display: block;
+    float: right;
+    left: 55%;
+    top: 0;
+  }
+}
+
+// After a set amount of time, the class is changed to this to initiate a fade out
+// and goes back to alert-hidden
+.alert-fade-out {
+  animation: fadeOut 0.5s linear 0s 1 normal;
+  z-index: 100;
+  position: absolute;
+  display: block;
+  float: right;
+  left: 55%;
+  top: 0;
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    animation: none;
+    z-index: 100;
+    position: absolute;
+    display: block;
+    float: right;
+    left: 55%;
+    top: 0;
+  }
+}
+
+// Changing the color of the heart SVG icon
+.fa-heart {
+  color: $light-red;
 }

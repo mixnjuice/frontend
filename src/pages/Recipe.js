@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-import { Container, Row, Col, Table } from 'react-bootstrap';
+import { Container, Row, Col, Table, Button, Alert } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import queryString from 'query-string';
 import PropTypes from 'prop-types';
@@ -11,12 +12,37 @@ export default class Recipe extends Component {
     super(...args);
 
     this.state = {
-      flavors: []
+      flavors: [],
+      favorited: false,
+      favoriteIcon: ['far', 'heart'],
+      alertClass: 'alert-hidden'
     };
+
+    this.handleFavoriteClick = this.handleFavoriteClick.bind(this);
   }
 
   componentDidMount() {
     this.findRecipe();
+  }
+
+  handleFavoriteClick() {
+    if (this.state.favorited) {
+      this.setState({
+        favorited: false,
+        favoriteIcon: ['far', 'heart'],
+        alertClass: 'alert-fade-in'
+      });
+    } else {
+      this.setState({
+        favorited: true,
+        favoriteIcon: ['fas', 'heart'],
+        alertClass: 'alert-fade-in'
+      });
+    }
+
+    setTimeout(() => {
+      this.setState({ alertClass: 'alert-fade-out, alert-hidden' });
+    }, 2500);
   }
 
   findRecipe() {
@@ -37,6 +63,23 @@ export default class Recipe extends Component {
   render() {
     return (
       <Container className="text-center">
+        <Row>
+          <Col>
+            <Button onClick={this.handleFavoriteClick}>
+              <span>
+                <FontAwesomeIcon icon={this.state.favoriteIcon} />
+              </span>
+            </Button>
+            <Alert variant="success" className={this.state.alertClass}>
+              {this.state.favorited && (
+                <span>Recipe added to your favorites</span>
+              )}
+              {!this.state.favorited && (
+                <span>Recipe removed from your favorites</span>
+              )}
+            </Alert>
+          </Col>
+        </Row>
         <Row>
           <Col md={{ span: 2, offset: 3 }}>
             <img
