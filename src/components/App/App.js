@@ -5,6 +5,7 @@ import React, { Component, Fragment } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
 import Header from 'components/Header/Header';
+import ToastDrawer from 'components/ToastDrawer/ToastDrawer';
 
 import Home from 'pages/Home';
 import Login from 'pages/Login';
@@ -38,6 +39,7 @@ export class App extends Component {
     return (
       <Fragment>
         <Header />
+        <ToastDrawer />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
