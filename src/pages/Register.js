@@ -6,6 +6,7 @@ import { Form as FinalForm, Field } from 'react-final-form';
 import { Button, Container, Form, InputGroup, Col } from 'react-bootstrap';
 
 import { actions as appActions } from 'reducers/application';
+import { isRegistering } from 'selectors/application';
 import {
   composeValidators,
   required,
@@ -16,7 +17,10 @@ import {
 
 export class Register extends Component {
   static propTypes = {
-    actions: PropTypes.object
+    registering: PropTypes.bool.isRequired,
+    actions: PropTypes.shape({
+      registerUser: PropTypes.func.isRequired
+    })
   };
 
   constructor(props) {
@@ -32,6 +36,8 @@ export class Register extends Component {
   }
 
   render() {
+    const { registering } = this.props;
+
     return (
       <Container>
         <h1>User Registration</h1>
@@ -205,7 +211,7 @@ export class Register extends Component {
                     className="button-animation"
                     variant="primary"
                     type="submit"
-                    disabled={submitting}
+                    disabled={submitting && !registering}
                   >
                     <span>Register</span>
                   </Button>
@@ -219,6 +225,10 @@ export class Register extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  registering: isRegistering(state)
+});
+
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
@@ -229,6 +239,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Register);

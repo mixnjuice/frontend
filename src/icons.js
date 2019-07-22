@@ -1,6 +1,11 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faFire, faUser } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFire,
+  faUser,
+  faCheck,
+  faTimesCircle
+} from '@fortawesome/free-solid-svg-icons';
 
-library.add(faFire, faUser);
+library.add(faFire, faUser, faCheck, faTimesCircle);
 
 export default library;
