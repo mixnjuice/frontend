@@ -36,3 +36,18 @@ export const getTokenExpiration = createSelector(
   getAuthorization,
   authorization => authorization.expiration
 );
+
+export const getRegistration = createSelector(
+  getApplication,
+  application => application.registration
+);
+
+export const isRegistering = createSelector(
+  getRegistration,
+  registration => registration.registering && !registration.complete
+);
+
+export const getToasts = createSelector(
+  getApplication,
+  application => application.toasts
+);
