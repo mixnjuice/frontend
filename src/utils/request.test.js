@@ -1,15 +1,24 @@
 import dayjs from 'dayjs';
 import axios from 'jest-mock-axios';
-import { race, call, delay, select } from 'redux-saga/effects';
+import { race, call, delay, select, take } from 'redux-saga/effects';
 
 import request from './request';
 import { buildUrl } from './index';
 import { getAuthorization } from 'selectors/application';
+import { types } from 'reducers/application';
 
 describe('request', () => {
   const endpoint = {
-    url: '/test',
+    url: '/oauth/token',
     method: 'POST'
+  };
+  const authedEndpoint = {
+    url: '/api/user/current',
+    method: 'GET'
+  };
+  const authInfo = {
+    accessToken: 'dummy',
+    expiration: dayjs().add(7, 'day')
   };
   const defaultTimeout = 30000;
 
@@ -189,8 +198,6 @@ describe('request', () => {
     expect(result).toEqual(response);
   });
 
-  it('can handle extra headers', () => {});
-
   it('can handle missing URL', () => {
     const invalidEndpoint = {
       method: 'POST'
@@ -286,14 +293,6 @@ describe('request', () => {
   });
 
   it('can handle authorized routes', () => {
-    const authedEndpoint = {
-      url: '/api/user/current',
-      method: 'GET'
-    };
-    const authInfo = {
-      accessToken: 'dummy',
-      expiration: dayjs().add(7, 'day')
-    };
     const { url, method } = authedEndpoint;
     const gen = request.execute({ endpoint: authedEndpoint });
 
@@ -322,11 +321,8 @@ describe('request', () => {
     );
   });
 
-  it('can handle missing auth info', () => {
-    const authedEndpoint = {
-      url: '/api/user/current',
-      method: 'GET'
-    };
+  it('can handle successful auth call', () => {
+    const { url } = endpoint;
     const gen = request.execute({ endpoint: authedEndpoint });
 
     let result = gen.next();
@@ -334,6 +330,38 @@ describe('request', () => {
     expect(result.value).toEqual(select(getAuthorization));
 
     result = gen.next({});
+
+    expect(result.value).toEqual(
+      race({
+        authorization: take(types.RECEIVE_TOKEN),
+        timeout: delay(defaultTimeout)
+      })
+    );
+
+    result = gen.next({ authorization: authInfo });
+
+    expect(result.value).toEqual(call(buildUrl, authedEndpoint));
+
+    result = gen.next(url);
+  });
+
+  it('can handle failed auth call', () => {
+    const gen = request.execute({ endpoint: authedEndpoint });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(select(getAuthorization));
+
+    result = gen.next({});
+
+    expect(result.value).toEqual(
+      race({
+        authorization: take(types.RECEIVE_TOKEN),
+        timeout: delay(defaultTimeout)
+      })
+    );
+
+    result = gen.next({ timeout: defaultTimeout });
 
     expect(result.value).toEqual({
       success: false,

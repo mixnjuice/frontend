@@ -1,8 +1,9 @@
 import axios from 'axios';
 import dayjs from 'dayjs';
 import { buildUrl } from 'utils';
-import { call, race, delay, select } from 'redux-saga/effects';
+import { call, race, delay, select, take } from 'redux-saga/effects';
 
+import { types } from 'reducers/application';
 import { getAuthorization } from 'selectors/application';
 
 /**
@@ -44,6 +45,51 @@ const failureResponse = error => ({
  * @param {object} data An object to use as the request body
  */
 class Request {
+  constructor() {
+    this.execute = this.execute.bind(this);
+  }
+
+  isUrlProtected(url) {
+    const unprotectedResources = ['oauth', 'register'];
+
+    for (const resource of unprotectedResources) {
+      if (url.startsWith(`/${resource}`)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  /**
+   * Fetches an access token or returns from the store if present
+   *
+   * @param {Number} timeout
+   */
+  *getAccessToken(timeout) {
+    const { accessToken, expiration } = yield select(getAuthorization);
+
+    // sanity check authorization information
+    if (accessToken && dayjs().isBefore(expiration)) {
+      return accessToken;
+    }
+
+    try {
+      const { authorization } = yield race({
+        authorization: take(types.RECEIVE_TOKEN),
+        timeout: delay(timeout)
+      });
+
+      if (authorization) {
+        return authorization.accessToken;
+      } else {
+        return null;
+      }
+    } catch (error) {
+      return null;
+    }
+  }
+
   *execute({ endpoint, data, headers, options = {} }) {
     try {
       // ensure the endpoint was supplied
@@ -62,11 +108,13 @@ class Request {
         return failureMessage('Endpoint is missing method!');
       }
 
-      if (url.startsWith('/api')) {
-        const { accessToken, expiration } = yield select(getAuthorization);
+      // default timeout of 30 seconds
+      const { timeout = 30000 } = options;
 
-        // sanity check authorization information
-        if (!accessToken || dayjs().isAfter(expiration)) {
+      if (this.isUrlProtected(url)) {
+        const accessToken = yield* this.getAccessToken(timeout);
+
+        if (!accessToken) {
           return failureMessage('Missing authorization information!');
         }
 
@@ -78,8 +126,6 @@ class Request {
         headers.Authorization = `Bearer ${accessToken}`;
       }
 
-      // default timeout of 30 seconds
-      const { timeout = 30000 } = options;
       const requestUrl = yield call(buildUrl, endpoint);
 
       // start a race between the request and a timer, cancel the loser
