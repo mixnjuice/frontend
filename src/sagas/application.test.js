@@ -7,12 +7,6 @@ import { actions } from 'reducers/application';
 import { getUser } from 'selectors/application';
 import appSaga, { watchers, workers } from './application';
 
-const {
-  loginWatcher,
-  requestTokenWatcher,
-  requestCurrentUserWatcher
-} = watchers;
-
 /* eslint-disable camelcase */
 describe('application sagas', () => {
   const accessToken = 'testing';
@@ -55,7 +49,12 @@ describe('application sagas', () => {
     result = gen.next(response);
 
     expect(result.value).toEqual(
-      put(actions.receiveToken(accessToken, dayjs().add(expiresIn, 'second')))
+      put(
+        actions.requestTokenSuccess(
+          accessToken,
+          dayjs().add(expiresIn, 'second')
+        )
+      )
     );
     MockDate.reset();
   });
@@ -65,56 +64,62 @@ describe('application sagas', () => {
     const error = new Error(`Unable to use token of type ${tokenType}`);
     const gen = workers.requestTokenWorker({ emailAddress, password });
 
-    const result = gen.next();
+    let result = gen.next();
 
     expect(result.value).toEqual(
       call(request.execute, { endpoint: tokenEndpoint, data: tokenData })
     );
 
-    expect(() => {
-      gen.next({
-        success: true,
-        data: {
-          access_token: accessToken,
-          token_type: tokenType,
-          expires_in: expiresIn
-        }
-      });
-    }).toThrow(error);
+    result = gen.next({
+      success: true,
+      data: {
+        access_token: accessToken,
+        token_type: tokenType,
+        expires_in: expiresIn
+      }
+    });
+
+    expect(result.value).toEqual(put(actions.requestTokenFailure(error)));
   });
 
   it('handles expected error in requestTokenWorker', () => {
     const error = new Error('Something went wrong.');
     const gen = workers.requestTokenWorker({ emailAddress, password });
 
-    const result = gen.next();
+    let result = gen.next();
 
     expect(result.value).toEqual(
       call(request.execute, { endpoint: tokenEndpoint, data: tokenData })
     );
 
-    expect(() => {
-      gen.next({
-        success: false,
-        error
-      });
-    }).toThrow(error);
+    result = gen.next({
+      success: false,
+      error
+    });
+
+    expect(result.value).toEqual(put(actions.requestTokenFailure(error)));
   });
 
   it('handles unexpected error in requestTokenWorker', () => {
     const gen = workers.requestTokenWorker({ emailAddress, password });
 
-    const result = gen.next();
+    let result = gen.next();
 
     expect(result.value).toEqual(
       call(request.execute, { endpoint: tokenEndpoint, data: tokenData })
     );
 
-    expect(() => {
-      gen.next({
-        success: false
-      });
-    }).toThrow(new Error('Request failed for an unspecified reason!'));
+    result = gen.next({
+      success: false
+    });
+
+    expect(result.value).toEqual(
+      put(
+        actions.requestTokenFailure(
+          new Error('Request failed for an unspecified reason!')
+        )
+      )
+    );
   });
 
   it('handles success in requestCurrentUserWorker', () => {
@@ -223,7 +228,7 @@ describe('application sagas', () => {
     const result = gen.next();
 
     expect(result.value).toEqual(
-      all([loginWatcher(), requestTokenWatcher(), requestCurrentUserWatcher()])
+      all(Object.values(watchers).map(watcher => watcher()))
     );
   });
 });

@@ -8,7 +8,8 @@ export const types = buildActions('application', [
   'REMOVE_TOAST',
   'HIDE_TOAST',
   'REQUEST_TOKEN',
-  'RECEIVE_TOKEN',
+  'REQUEST_TOKEN_SUCCESS',
+  'REQUEST_TOKEN_FAILURE',
   'REQUEST_CURRENT_USER',
   'RECEIVE_CURRENT_USER',
   'LOGIN_USER_SUCCESS',
@@ -57,10 +58,15 @@ const requestToken = (emailAddress, password) => ({
   password
 });
 
-const receiveToken = (token, expiration) => ({
-  type: types.RECEIVE_TOKEN,
+const requestTokenSuccess = (token, expiration) => ({
+  type: types.REQUEST_TOKEN_SUCCESS,
   expiration,
   token
+});
+
+const requestTokenFailure = error => ({
+  type: types.REQUEST_TOKEN_FAILURE,
+  error
 });
 
 const requestCurrentUser = () => ({
@@ -117,7 +123,8 @@ export const actions = {
   removeToast,
   hideToast,
   requestToken,
-  receiveToken,
+  requestTokenSuccess,
+  requestTokenFailure,
   requestCurrentUser,
   receiveCurrentUser,
   loginUserSuccess,
@@ -194,12 +201,21 @@ export const reducer = (state = initialState, action = {}) => {
           details: action.details
         }
       };
-    case types.RECEIVE_TOKEN:
+    case types.REQUEST_TOKEN_SUCCESS:
       return {
         ...state,
         authorization: {
+          ...state.authorization,
           accessToken: action.token,
           expiration: action.expiration
+        }
+      };
+    case types.REQUEST_TOKEN_FAILURE:
+      return {
+        ...state,
+        authorization: {
+          ...state.authorization,
+          error: action.error
         }
       };
     case types.RECEIVE_CURRENT_USER:

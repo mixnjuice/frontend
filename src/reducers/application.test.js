@@ -7,6 +7,7 @@ describe('application reducer', () => {
   const password = 'excellent';
   const token = 'testing';
   const expiration = dayjs();
+  const error = { message: 'Failed' };
 
   it('has INIT_APP action', () => {
     expect(actions.initApp()).toEqual({
@@ -48,21 +49,38 @@ describe('application reducer', () => {
     expect(reducer({}, action)).toEqual({});
   });
 
-  it('has RECEIVE_TOKEN action', () => {
-    expect(actions.receiveToken(token, expiration)).toEqual({
-      type: types.RECEIVE_TOKEN,
+  it('has REQUEST_TOKEN_SUCCESS action', () => {
+    expect(actions.requestTokenSuccess(token, expiration)).toEqual({
+      type: types.REQUEST_TOKEN_SUCCESS,
       expiration,
       token
     });
   });
 
-  it('reduces RECEIVE_TOKEN action', () => {
-    const action = actions.receiveToken(token, expiration);
+  it('reduces REQUEST_TOKEN_SUCCESS action', () => {
+    const action = actions.requestTokenSuccess(token, expiration);
 
     expect(reducer({}, action)).toEqual({
       authorization: {
         accessToken: token,
         expiration
+      }
+    });
+  });
+
+  it('has REQUEST_TOKEN_FAILURE action', () => {
+    expect(actions.requestTokenFailure(error)).toEqual({
+      type: types.REQUEST_TOKEN_FAILURE,
+      error
+    });
+  });
+
+  it('reduces REQUEST_TOKEN_FAILURE action', () => {
+    const action = actions.requestTokenFailure(error);
+
+    expect(reducer({}, action)).toEqual({
+      authorization: {
+        error
       }
     });
   });
@@ -108,8 +126,6 @@ describe('application reducer', () => {
   });
 
   it('has LOGIN_USER_FAILURE action', () => {
-    const error = { message: 'Nope' };
-
     expect(actions.loginUserFailure(error)).toEqual({
       type: types.LOGIN_USER_FAILURE,
       error
@@ -117,7 +133,6 @@ describe('application reducer', () => {
   });
 
   it('reduces LOGIN_USER_FAILURE action', () => {
-    const error = { message: 'Nope' };
     const action = actions.loginUserFailure(error);
 
     expect(reducer({}, action)).toEqual({
@@ -162,8 +177,6 @@ describe('application reducer', () => {
   });
 
   it('has LOGOUT_USER_FAILURE action', () => {
-    const error = { message: 'Nope' };
-
     expect(actions.logoutUserFailure(error)).toEqual({
       type: types.LOGOUT_USER_FAILURE,
       error
@@ -171,7 +184,6 @@ describe('application reducer', () => {
   });
 
   it('reduces LOGOUT_USER_FAILURE action', () => {
-    const error = { message: 'Nope' };
     const action = actions.logoutUserFailure(error);
 
     expect(reducer({}, action)).toEqual({
@@ -216,8 +228,6 @@ describe('application reducer', () => {
   });
 
   it('has REGISTER_USER_FAILURE action', () => {
-    const error = { message: 'Nope' };
-
     expect(actions.registerUserFailure(error)).toEqual({
       type: types.REGISTER_USER_FAILURE,
       error
@@ -225,7 +235,6 @@ describe('application reducer', () => {
   });
 
   it('reduces REGISTER_USER_FAILURE action', () => {
-    const error = { message: 'Nope' };
     const action = actions.registerUserFailure(error);
 
     expect(reducer({}, action)).toEqual({

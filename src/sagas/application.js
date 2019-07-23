@@ -17,38 +17,42 @@ import { actions, types } from 'reducers/application';
 // snake_cased variables here come from RFC 6749
 /* eslint-disable camelcase */
 function* requestTokenWorker({ emailAddress, password }) {
-  const endpoint = {
-    url: '/oauth/token',
-    method: 'POST'
-  };
-  const data = {
-    grant_type: 'password',
-    username: emailAddress,
-    password
-  };
-  const result = yield call(request.execute, { endpoint, data });
+  try {
+    const endpoint = {
+      url: '/oauth/token',
+      method: 'POST'
+    };
+    const data = {
+      grant_type: 'password',
+      username: emailAddress,
+      password
+    };
+    const result = yield call(request.execute, { endpoint, data });
 
-  // update token info in state or throw an error
-  if (result.success) {
-    const {
-      data: {
-        access_token: accessToken,
-        token_type: tokenType,
-        expires_in: expiresIn
+    // update token info in state or throw an error
+    if (result.success) {
+      const {
+        data: {
+          access_token: accessToken,
+          token_type: tokenType,
+          expires_in: expiresIn
+        }
+      } = result;
+
+      if (tokenType !== 'Bearer') {
+        throw new Error(`Unable to use token of type ${tokenType}`);
       }
-    } = result;
 
-    if (tokenType !== 'Bearer') {
-      throw new Error(`Unable to use token of type ${tokenType}`);
+      const expiration = dayjs().add(expiresIn, 'seconds');
+
+      yield put(actions.requestTokenSuccess(accessToken, expiration));
+    } else if (result.error) {
+      throw result.error;
+    } else {
+      throw new Error('Request failed for an unspecified reason!');
     }
-
-    const expiration = dayjs().add(expiresIn, 'seconds');
-
-    yield put(actions.receiveToken(accessToken, expiration));
-  } else if (result.error) {
-    throw result.error;
-  } else {
-    throw new Error('Request failed for an unspecified reason!');
+  } catch (error) {
+    yield put(actions.requestTokenFailure(error));
   }
 }
 /* eslint-enable camelcase */

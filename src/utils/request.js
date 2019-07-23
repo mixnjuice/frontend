@@ -76,7 +76,7 @@ class Request {
 
     try {
       const { authorization } = yield race({
-        authorization: take(types.RECEIVE_TOKEN),
+        authorization: take(types.REQUEST_TOKEN_SUCCESS),
         timeout: delay(timeout)
       });
 

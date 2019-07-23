@@ -292,7 +292,7 @@ describe('request', () => {
     expect(error).toBeDefined();
   });
 
-  it('can handle authorized routes', () => {
+  it('can use auth info if present', () => {
     const { url, method } = authedEndpoint;
     const gen = request.execute({ endpoint: authedEndpoint });
 
@@ -321,8 +321,8 @@ describe('request', () => {
     );
   });
 
-  it('can handle successful auth call', () => {
-    const { url } = endpoint;
+  it('can handle fetching auth info if missing', () => {
+    const { url, method } = authedEndpoint;
     const gen = request.execute({ endpoint: authedEndpoint });
 
     let result = gen.next();
@@ -333,7 +333,7 @@ describe('request', () => {
 
     expect(result.value).toEqual(
       race({
-        authorization: take(types.RECEIVE_TOKEN),
+        authorization: take(types.REQUEST_TOKEN_SUCCESS),
         timeout: delay(defaultTimeout)
       })
     );
@@ -343,6 +343,49 @@ describe('request', () => {
     expect(result.value).toEqual(call(buildUrl, authedEndpoint));
 
     result = gen.next(url);
+
+    expect(result.value).toEqual(
+      race({
+        response: call(axios, {
+          url,
+          method,
+          data: undefined,
+          headers: {
+            Authorization: `Bearer ${authInfo.accessToken}`
+          }
+        }),
+        timeout: delay(defaultTimeout)
+      })
+    );
+  });
+
+  it('can handle successful auth call', () => {
+    const { url, method } = authedEndpoint;
+    const gen = request.execute({ endpoint: authedEndpoint });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(select(getAuthorization));
+
+    result = gen.next(authInfo);
+
+    expect(result.value).toEqual(call(buildUrl, authedEndpoint));
+
+    result = gen.next(url);
+
+    expect(result.value).toEqual(
+      race({
+        response: call(axios, {
+          url,
+          method,
+          data: undefined,
+          headers: {
+            Authorization: `Bearer ${authInfo.accessToken}`
+          }
+        }),
+        timeout: delay(defaultTimeout)
+      })
+    );
   });
 
   it('can handle failed auth call', () => {
@@ -356,7 +399,7 @@ describe('request', () => {
 
     expect(result.value).toEqual(
       race({
-        authorization: take(types.RECEIVE_TOKEN),
+        authorization: take(types.REQUEST_TOKEN_SUCCESS),
         timeout: delay(defaultTimeout)
       })
     );
