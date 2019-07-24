@@ -11,14 +11,14 @@ describe('<Register />', () => {
   const actions = {
     registerUser: jest.fn()
   };
+  const props = {
+    registering: false
+  };
   const mockStore = configureStore();
   const store = mockStore({ application: initialState });
   const RoutedRegister = withMemoryRouter(ConnectedRegister);
 
   it('renders correctly', () => {
-    const props = {
-      registering: false
-    };
     const component = renderer.create(<Register {...props} />);
 
     expect(component.toJSON()).toMatchSnapshot();
@@ -36,7 +36,9 @@ describe('<Register />', () => {
 
   it('can handleSubmit', () => {
     const formData = { test: 'value' };
-    const component = renderer.create(<Register actions={actions} />);
+    const component = renderer.create(
+      <Register actions={actions} {...props} />
+    );
     const { instance } = component.root.findByType(Register);
 
     expect(instance).toBeDefined();
