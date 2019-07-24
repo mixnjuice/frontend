@@ -7,7 +7,9 @@ import {
   putResolve,
   select,
   takeLatest,
-  delay
+  delay,
+  take,
+  takeEvery
 } from 'redux-saga/effects';
 
 import request from 'utils/request';
@@ -80,6 +82,15 @@ function* loginWorker({ emailAddress, password }) {
     // then, obtain current user information
     // use putResolve because it is blocking
     yield putResolve(actions.requestToken(emailAddress, password));
+    const result = yield take([
+      types.REQUEST_TOKEN_SUCCESS,
+      types.REQUEST_TOKEN_FAILURE
+    ]);
+
+    if (result.type === types.REQUEST_TOKEN_FAILURE) {
+      throw new Error('Failed to log in!');
+    }
+
     yield putResolve(actions.requestCurrentUser());
     const user = yield select(getUser);
 
@@ -105,6 +116,26 @@ function* popToastWorker({ toast }) {
   // this is the default Fade transition time
   yield delay(500);
   yield put(actions.removeToast(id));
+}
+
+function* requestTokenSuccessWorker() {
+  yield put(
+    actions.popToast({
+      title: 'Logged in',
+      icon: 'check',
+      message: 'You have been authenticated.'
+    })
+  );
+}
+
+function* requestTokenFailureWorker({ error }) {
+  yield put(
+    actions.popToast({
+      title: 'Error!',
+      icon: 'times-circle',
+      message: `The following error occurred: ${error.message}`
+    })
+  );
 }
 
 function* registerUserWorker({
@@ -157,11 +188,19 @@ function* loginWatcher() {
 }
 
 function* popToastWatcher() {
-  yield takeLatest(types.POP_TOAST, popToastWorker);
+  yield takeEvery(types.POP_TOAST, popToastWorker);
 }
 
 function* requestTokenWatcher() {
   yield takeLatest(types.REQUEST_TOKEN, requestTokenWorker);
+}
+
+function* requestTokenSuccessWatcher() {
+  yield takeLatest(types.REQUEST_TOKEN_SUCCESS, requestTokenSuccessWorker);
+}
+
+function* requestTokenFailureWatcher() {
+  yield takeLatest(types.REQUEST_TOKEN_FAILURE, requestTokenFailureWorker);
 }
 
 function* requestCurrentUserWatcher() {
@@ -185,6 +224,8 @@ export const workers = {
   popToastWorker,
   registerUserWorker,
   requestTokenWorker,
+  requestTokenSuccessWorker,
+  requestTokenFailureWorker,
   requestCurrentUserWorker,
   registerUserSuccessWorker,
   registerUserFailureWorker
@@ -195,6 +236,8 @@ export const watchers = {
   popToastWatcher,
   registerUserWatcher,
   requestTokenWatcher,
+  requestTokenSuccessWatcher,
+  requestTokenFailureWatcher,
   requestCurrentUserWatcher,
   registerUserSuccessWatcher,
   registerUserFailureWatcher
