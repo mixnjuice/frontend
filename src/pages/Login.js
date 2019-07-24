@@ -7,10 +7,12 @@ import { Button, Container, Form } from 'react-bootstrap';
 
 import { actions as appActions } from 'reducers/application';
 import { required, email, length, composeValidators } from 'utils/validation';
+import { isLoggingIn } from 'selectors/application';
 
 export class Login extends Component {
   static propTypes = {
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    loggingIn: PropTypes.bool.isRequired
   };
 
   constructor(props) {
@@ -26,6 +28,8 @@ export class Login extends Component {
   }
 
   render() {
+    const { loggingIn } = this.props;
+
     return (
       <Container>
         <h1>Login</h1>
@@ -85,7 +89,7 @@ export class Login extends Component {
                 className="button-animation"
                 variant="primary"
                 type="submit"
-                disabled={submitting}
+                disabled={submitting || loggingIn}
               >
                 <span>Login</span>
               </Button>
@@ -97,6 +101,10 @@ export class Login extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  loggingIn: isLoggingIn(state)
+});
+
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
@@ -107,6 +115,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Login);
