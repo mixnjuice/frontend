@@ -108,8 +108,8 @@ class Request {
         return failureMessage('Endpoint is missing method!');
       }
 
-      // default timeout of 30 seconds
-      const { timeout = 30000 } = options;
+      // default timeout of 10 seconds
+      const { timeout = 10000 } = options;
 
       if (this.isUrlProtected(url)) {
         const accessToken = yield* this.getAccessToken(timeout);

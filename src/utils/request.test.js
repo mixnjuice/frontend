@@ -20,7 +20,7 @@ describe('request', () => {
     accessToken: 'dummy',
     expiration: dayjs().add(7, 'day')
   };
-  const defaultTimeout = 30000;
+  const defaultTimeout = 10000;
 
   afterEach(() => {
     axios.reset();
