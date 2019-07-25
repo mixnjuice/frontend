@@ -39,7 +39,7 @@ function* requestTokenWorker({ emailAddress, password }) {
           token_type: tokenType,
           expires_in: expiresIn
         }
-      } = result;
+      } = result.response;
 
       if (tokenType !== 'Bearer') {
         throw new Error(`Unable to use token of type ${tokenType}`);

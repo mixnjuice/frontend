@@ -32,10 +32,12 @@ describe('application sagas', () => {
     MockDate.set(new Date());
     const response = {
       success: true,
-      data: {
-        access_token: accessToken,
-        token_type: 'Bearer',
-        expires_in: expiresIn
+      response: {
+        data: {
+          access_token: accessToken,
+          token_type: 'Bearer',
+          expires_in: expiresIn
+        }
       }
     };
     const gen = workers.requestTokenWorker({ emailAddress, password });
