@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import React, { Component, Fragment } from 'react';
@@ -38,6 +39,7 @@ export class App extends Component {
   render() {
     return (
       <Fragment>
+        <Helmet defaultTitle="MixNJuice" titleTemplate="MixNJuice - %s" />
         <Header />
         <ToastDrawer />
         <Switch>

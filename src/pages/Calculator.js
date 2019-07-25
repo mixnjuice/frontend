@@ -1,5 +1,5 @@
+import { Helmet } from 'react-helmet';
 import React, { Component } from 'react';
-
 import {
   Button,
   Col,
@@ -11,7 +11,6 @@ import {
 } from 'react-bootstrap';
 
 import FlavorData from '../data/flavors.json';
-
 import FlavorStash from '../data/flavorstash.json';
 
 export default class Calculator extends Component {
@@ -34,8 +33,6 @@ export default class Calculator extends Component {
       ShowStash: false
     };
   }
-
-  componentDidMount() {}
 
   showStash() {
     this.setState({ ShowStash: true });
@@ -106,6 +103,7 @@ export default class Calculator extends Component {
 
     return (
       <Container className="justify-content-center align-items-center text-center">
+        <Helmet title="Calculator" />
         <h1>Calculator</h1>
         <Form
           noValidate

@@ -1,9 +1,9 @@
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+import queryString from 'query-string';
 import React, { Component } from 'react';
-
 import { Container, Row, Col, Table } from 'react-bootstrap';
 
-import queryString from 'query-string';
-import PropTypes from 'prop-types';
 import recipes from '../data/recipes.json';
 
 export default class Recipe extends Component {
@@ -37,6 +37,7 @@ export default class Recipe extends Component {
   render() {
     return (
       <Container className="text-center">
+        <Helmet title="Recipe" />
         <Row>
           <Col md={{ span: 2, offset: 3 }}>
             <img

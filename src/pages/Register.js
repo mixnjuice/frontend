@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
@@ -40,6 +41,7 @@ export class Register extends Component {
 
     return (
       <Container>
+        <Helmet title="Register" />
         <h1>User Registration</h1>
         <FinalForm
           onSubmit={this.handleSubmit}
