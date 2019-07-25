@@ -30,7 +30,7 @@ export class ToastDrawer extends Component {
     }
 
     return (
-      <section className="float-right">
+      <section className="toast-drawer">
         {toasts.map(toast => {
           const { id, title, message, icon, show } = toast;
 

@@ -2,7 +2,7 @@
 
 exports[`<ToastDrawer /> renders connected component correctly 1`] = `
 <section
-  className="float-right"
+  className="toast-drawer"
 >
   <div
     aria-atomic="true"
@@ -47,7 +47,7 @@ exports[`<ToastDrawer /> renders connected component correctly 1`] = `
 
 exports[`<ToastDrawer /> renders correctly 1`] = `
 <section
-  className="float-right"
+  className="toast-drawer"
 >
   <div
     aria-atomic="true"
