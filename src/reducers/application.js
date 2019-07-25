@@ -11,7 +11,8 @@ export const types = buildActions('application', [
   'REQUEST_TOKEN_SUCCESS',
   'REQUEST_TOKEN_FAILURE',
   'REQUEST_CURRENT_USER',
-  'RECEIVE_CURRENT_USER',
+  'REQUEST_CURRENT_USER_SUCCESS',
+  'REQUEST_CURRENT_USER_FAILURE',
   'LOGIN_USER_SUCCESS',
   'LOGIN_USER_FAILURE',
   'LOGOUT_USER',
@@ -73,9 +74,14 @@ const requestCurrentUser = () => ({
   type: types.REQUEST_CURRENT_USER
 });
 
-const receiveCurrentUser = user => ({
-  type: types.RECEIVE_CURRENT_USER,
+const requestCurrentUserSuccess = user => ({
+  type: types.REQUEST_CURRENT_USER_SUCCESS,
   user
+});
+
+const requestCurrentUserFailure = error => ({
+  type: types.REQUEST_CURRENT_USER_FAILURE,
+  error
 });
 
 const loginUserSuccess = user => ({
@@ -126,7 +132,8 @@ export const actions = {
   requestTokenSuccess,
   requestTokenFailure,
   requestCurrentUser,
-  receiveCurrentUser,
+  requestCurrentUserSuccess,
+  requestCurrentUserFailure,
   loginUserSuccess,
   loginUserFailure,
   logoutUser,
@@ -218,7 +225,7 @@ export const reducer = (state = initialState, action = {}) => {
           error: action.error
         }
       };
-    case types.RECEIVE_CURRENT_USER:
+    case types.REQUEST_CURRENT_USER_SUCCESS:
       return {
         ...state,
         user: action.user

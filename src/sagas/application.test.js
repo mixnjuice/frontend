@@ -1,10 +1,9 @@
 import dayjs from 'dayjs';
 import MockDate from 'mockdate';
-import { all, putResolve, select, put, call } from 'redux-saga/effects';
+import { all, putResolve, put, call, take } from 'redux-saga/effects';
 
 import request from 'utils/request';
-import { actions } from 'reducers/application';
-import { getUser } from 'selectors/application';
+import { actions, types } from 'reducers/application';
 import appSaga, { watchers, workers } from './application';
 
 /* eslint-disable camelcase */
@@ -74,10 +73,12 @@ describe('application sagas', () => {
 
     result = gen.next({
       success: true,
-      data: {
-        access_token: accessToken,
-        token_type: tokenType,
-        expires_in: expiresIn
+      response: {
+        data: {
+          access_token: accessToken,
+          token_type: tokenType,
+          expires_in: expiresIn
+        }
       }
     });
 
@@ -138,41 +139,56 @@ describe('application sagas', () => {
       data: user
     });
 
-    expect(result.value).toEqual(put(actions.receiveCurrentUser(user)));
+    expect(result.value).toEqual(put(actions.requestCurrentUserSuccess(user)));
   });
 
   it('handles expected error in requestCurrentUserWorker', () => {
     const error = new Error('An error occurred.');
     const gen = workers.requestCurrentUserWorker();
 
-    const result = gen.next();
+    let result = gen.next();
 
     expect(result.value).toEqual(
       call(request.execute, { endpoint: currentUserEndpoint })
     );
 
-    expect(() => {
-      gen.next({
-        success: false,
-        error
-      });
-    }).toThrow(error);
+    result = gen.next({
+      success: false,
+      error
+    });
+
+    expect(result.value).toEqual(put(actions.requestCurrentUserFailure(error)));
   });
 
   it('handles unexpected error in requestCurrentUserWorker', () => {
+    const error = new Error('An error occurred.');
+    const { message } = error;
     const gen = workers.requestCurrentUserWorker();
 
-    const result = gen.next();
+    let result = gen.next();
 
     expect(result.value).toEqual(
       call(request.execute, { endpoint: currentUserEndpoint })
     );
 
-    expect(() => {
-      gen.next({
-        success: false
-      });
-    }).toThrow(new Error('Request failed for an unspecified reason!'));
+    result = gen.next({
+      success: false,
+      error
+    });
+
+    expect(result.value).toEqual(put(actions.requestCurrentUserFailure(error)));
+
+    result = gen.next();
+
+    expect(result.value).toEqual(
+      put(
+        actions.popToast({
+          title: 'Error',
+          icon: 'times-circle',
+          message
+        })
+      )
+    );
   });
 
   it('runs loginWorker', () => {
@@ -186,18 +202,36 @@ describe('application sagas', () => {
 
     result = gen.next();
 
+    expect(result.value).toEqual(
+      take([types.REQUEST_TOKEN_SUCCESS, types.REQUEST_TOKEN_FAILURE])
+    );
+
+    result = gen.next(
+      actions.requestTokenSuccess(
+        accessToken,
+        dayjs().add(expiresIn, 'seconds')
+      )
+    );
+
     expect(result.value).toEqual(putResolve(actions.requestCurrentUser()));
 
     result = gen.next();
 
-    expect(result.value).toEqual(select(getUser));
+    expect(result.value).toEqual(
+      take([
+        types.REQUEST_CURRENT_USER_SUCCESS,
+        types.REQUEST_CURRENT_USER_FAILURE
+      ])
+    );
 
-    result = gen.next(user);
+    result = gen.next(actions.requestCurrentUserSuccess(user));
 
     expect(result.value).toEqual(put(actions.loginUserSuccess(user)));
   });
 
   it('handles invalid user in loginWorker', () => {
+    const error = new Error('Failed to fetch current user!');
+    const { message } = error;
     const gen = workers.loginWorker({ emailAddress, password });
 
     let result = gen.next();
@@ -208,19 +242,41 @@ describe('application sagas', () => {
 
     result = gen.next();
 
+    expect(result.value).toEqual(
+      take([types.REQUEST_TOKEN_SUCCESS, types.REQUEST_TOKEN_FAILURE])
+    );
+
+    result = gen.next(
+      actions.requestTokenSuccess(
+        accessToken,
+        dayjs().add(expiresIn, 'seconds')
+      )
+    );
+
     expect(result.value).toEqual(putResolve(actions.requestCurrentUser()));
 
     result = gen.next();
 
-    expect(result.value).toEqual(select(getUser));
+    expect(result.value).toEqual(
+      take([
+        types.REQUEST_CURRENT_USER_SUCCESS,
+        types.REQUEST_CURRENT_USER_FAILURE
+      ])
+    );
 
-    result = gen.next(null);
+    result = gen.next(actions.requestCurrentUserFailure());
+
+    expect(result.value).toEqual(put(actions.loginUserFailure(error)));
+
+    result = gen.next(error);
 
     expect(result.value).toEqual(
       put(
-        actions.loginUserFailure(
-          new Error('Failed to request user information!')
-        )
+        actions.popToast({
+          title: 'Error',
+          icon: 'times-circle',
+          message
+        })
       )
     );
   });

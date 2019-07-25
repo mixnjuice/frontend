@@ -5,7 +5,6 @@ import {
   call,
   put,
   putResolve,
-  select,
   takeLatest,
   delay,
   take,
@@ -13,7 +12,6 @@ import {
 } from 'redux-saga/effects';
 
 import request from 'utils/request';
-import { getUser } from 'selectors/application';
 import { actions, types } from 'reducers/application';
 
 // snake_cased variables here come from RFC 6749
@@ -48,31 +46,60 @@ function* requestTokenWorker({ emailAddress, password }) {
       const expiration = dayjs().add(expiresIn, 'seconds');
 
       yield put(actions.requestTokenSuccess(accessToken, expiration));
+      yield put(
+        actions.popToast({
+          title: 'Logged in',
+          icon: 'check',
+          message: 'You have been authenticated.'
+        })
+      );
     } else if (result.error) {
       throw result.error;
     } else {
       throw new Error('Request failed for an unspecified reason!');
     }
   } catch (error) {
+    const { message } = error;
+
     yield put(actions.requestTokenFailure(error));
+    yield put(
+      actions.popToast({
+        title: 'Error!',
+        icon: 'times-circle',
+        message
+      })
+    );
   }
 }
 /* eslint-enable camelcase */
 
 function* requestCurrentUserWorker() {
-  const endpoint = {
-    url: '/api/user/current',
-    method: 'GET'
-  };
-  const result = yield call(request.execute, { endpoint });
+  try {
+    const endpoint = {
+      url: '/api/user/current',
+      method: 'GET'
+    };
+    const result = yield call(request.execute, { endpoint });
 
-  // update user in state or throw an error
-  if (result.success) {
-    yield put(actions.receiveCurrentUser(result.data));
-  } else if (result.error) {
-    throw result.error;
-  } else {
-    throw new Error('Request failed for an unspecified reason!');
+    // update user in state or throw an error
+    if (result.success) {
+      yield put(actions.requestCurrentUserSuccess(result.data));
+    } else if (result.error) {
+      throw result.error;
+    } else {
+      throw new Error('Request failed for an unspecified reason!');
+    }
+  } catch (error) {
+    const { message } = error;
+
+    yield put(actions.requestCurrentUserFailure(error));
+    yield put(
+      actions.popToast({
+        title: 'Error',
+        icon: 'times-circle',
+        message
+      })
+    );
   }
 }
 
@@ -82,25 +109,43 @@ function* loginWorker({ emailAddress, password }) {
     // then, obtain current user information
     // use putResolve because it is blocking
     yield putResolve(actions.requestToken(emailAddress, password));
-    const result = yield take([
+    const tokenResult = yield take([
       types.REQUEST_TOKEN_SUCCESS,
       types.REQUEST_TOKEN_FAILURE
     ]);
 
-    if (result.type === types.REQUEST_TOKEN_FAILURE) {
+    if (tokenResult.type === types.REQUEST_TOKEN_FAILURE) {
       throw new Error('Failed to log in!');
     }
 
     yield putResolve(actions.requestCurrentUser());
-    const user = yield select(getUser);
+    const currentUserResult = yield take([
+      types.REQUEST_CURRENT_USER_SUCCESS,
+      types.REQUEST_CURRENT_USER_FAILURE
+    ]);
+
+    if (currentUserResult.type === types.REQUEST_CURRENT_USER_FAILURE) {
+      throw new Error('Failed to fetch current user!');
+    }
+
+    const { user } = currentUserResult;
 
     if (!user) {
-      throw new Error('Failed to request user information!');
+      throw new Error('Got invalid response to current user request!');
     }
 
     yield put(actions.loginUserSuccess(user));
   } catch (error) {
+    const { message } = error;
+
     yield put(actions.loginUserFailure(error));
+    yield put(
+      actions.popToast({
+        title: 'Error',
+        icon: 'times-circle',
+        message
+      })
+    );
   }
 }
 
@@ -116,26 +161,6 @@ function* popToastWorker({ toast }) {
   // this is the default Fade transition time
   yield delay(500);
   yield put(actions.removeToast(id));
-}
-
-function* requestTokenSuccessWorker() {
-  yield put(
-    actions.popToast({
-      title: 'Logged in',
-      icon: 'check',
-      message: 'You have been authenticated.'
-    })
-  );
-}
-
-function* requestTokenFailureWorker({ error }) {
-  yield put(
-    actions.popToast({
-      title: 'Error!',
-      icon: 'times-circle',
-      message: `The following error occurred: ${error.message}`
-    })
-  );
 }
 
 function* registerUserWorker({
@@ -155,32 +180,28 @@ function* registerUserWorker({
 
     if (result.success) {
       yield put(actions.registerUserSuccess());
+      yield put(
+        actions.popToast({
+          title: 'Success!',
+          icon: 'check',
+          message: 'Check your email for an activation link.'
+        })
+      );
     } else {
       throw result.error;
     }
   } catch (error) {
+    const { message } = error;
+
     yield put(actions.registerUserFailure(error));
+    yield put(
+      actions.popToast({
+        title: 'Error',
+        icon: 'times-circle',
+        message
+      })
+    );
   }
-}
-
-function* registerUserSuccessWorker() {
-  yield put(
-    actions.popToast({
-      title: 'Success!',
-      icon: 'check',
-      message: 'Check your email for an activation link.'
-    })
-  );
-}
-
-function* registerUserFailureWorker({ error: { message } }) {
-  yield put(
-    actions.popToast({
-      title: 'Error',
-      icon: 'times-circle',
-      message
-    })
-  );
 }
 
 function* loginWatcher() {
@@ -195,14 +216,6 @@ function* requestTokenWatcher() {
   yield takeLatest(types.REQUEST_TOKEN, requestTokenWorker);
 }
 
-function* requestTokenSuccessWatcher() {
-  yield takeLatest(types.REQUEST_TOKEN_SUCCESS, requestTokenSuccessWorker);
-}
-
-function* requestTokenFailureWatcher() {
-  yield takeLatest(types.REQUEST_TOKEN_FAILURE, requestTokenFailureWorker);
-}
-
 function* requestCurrentUserWatcher() {
   yield takeLatest(types.REQUEST_CURRENT_USER, requestCurrentUserWorker);
 }
@@ -211,24 +224,12 @@ function* registerUserWatcher() {
   yield takeLatest(types.REGISTER_USER, registerUserWorker);
 }
 
-function* registerUserSuccessWatcher() {
-  yield takeLatest(types.REGISTER_USER_SUCCESS, registerUserSuccessWorker);
-}
-
-function* registerUserFailureWatcher() {
-  yield takeLatest(types.REGISTER_USER_FAILURE, registerUserFailureWorker);
-}
-
 export const workers = {
   loginWorker,
   popToastWorker,
   registerUserWorker,
   requestTokenWorker,
-  requestTokenSuccessWorker,
-  requestTokenFailureWorker,
-  requestCurrentUserWorker,
-  registerUserSuccessWorker,
-  registerUserFailureWorker
+  requestCurrentUserWorker
 };
 
 export const watchers = {
@@ -236,11 +237,7 @@ export const watchers = {
   popToastWatcher,
   registerUserWatcher,
   requestTokenWatcher,
-  requestTokenSuccessWatcher,
-  requestTokenFailureWatcher,
-  requestCurrentUserWatcher,
-  registerUserSuccessWatcher,
-  registerUserFailureWatcher
+  requestCurrentUserWatcher
 };
 
 export default function* saga() {
