@@ -4,18 +4,6 @@ orbs:
   mattermost-notify: bulletlogic/mattermost-notify@0.0.4
 
 jobs:
-  cover:
-    working_directory: ~/gusta-frontend
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - checkout
-      - run:
-          name: install_codecov
-          command: 'sudo npm install -g codecov'
-      - run:
-          name: run_codecov
-          command: 'npm test && codecov'
   build:
     working_directory: ~/gusta-frontend
     docker:
@@ -36,7 +24,7 @@ jobs:
             - ./node_modules
       - run:
           name: test
-          command: npm test
+          command: 'npm test && codecov'
   notify_success:
     docker:
       - image: byrnedo/alpine-curl:latest
@@ -55,7 +43,6 @@ workflows:
   main_workflow:
     jobs:
       - build
-      - cover
       - notify_success:
           context: webhooks
           requires:
