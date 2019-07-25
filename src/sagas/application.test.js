@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import MockDate from 'mockdate';
-import { all, putResolve, put, call, take } from 'redux-saga/effects';
+import { all, put, call, take } from 'redux-saga/effects';
 
 import request from 'utils/request';
 import { actions, types } from 'reducers/application';
@@ -197,7 +197,7 @@ describe('application sagas', () => {
     let result = gen.next();
 
     expect(result.value).toEqual(
-      putResolve(actions.requestToken(emailAddress, password))
+      put(actions.requestToken(emailAddress, password))
     );
 
     result = gen.next();
@@ -213,7 +213,7 @@ describe('application sagas', () => {
       )
     );
 
-    expect(result.value).toEqual(putResolve(actions.requestCurrentUser()));
+    expect(result.value).toEqual(put(actions.requestCurrentUser()));
 
     result = gen.next();
 
@@ -237,7 +237,7 @@ describe('application sagas', () => {
     let result = gen.next();
 
     expect(result.value).toEqual(
-      putResolve(actions.requestToken(emailAddress, password))
+      put(actions.requestToken(emailAddress, password))
     );
 
     result = gen.next();
@@ -253,7 +253,7 @@ describe('application sagas', () => {
       )
     );
 
-    expect(result.value).toEqual(putResolve(actions.requestCurrentUser()));
+    expect(result.value).toEqual(put(actions.requestCurrentUser()));
 
     result = gen.next();
 

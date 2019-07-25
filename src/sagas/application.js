@@ -4,7 +4,6 @@ import {
   all,
   call,
   put,
-  putResolve,
   takeLatest,
   delay,
   take,
@@ -108,7 +107,7 @@ function* loginWorker({ emailAddress, password }) {
     // first, obtain a bearer token
     // then, obtain current user information
     // use putResolve because it is blocking
-    yield putResolve(actions.requestToken(emailAddress, password));
+    yield put(actions.requestToken(emailAddress, password));
     const tokenResult = yield take([
       types.REQUEST_TOKEN_SUCCESS,
       types.REQUEST_TOKEN_FAILURE
@@ -118,7 +117,7 @@ function* loginWorker({ emailAddress, password }) {
       throw new Error('Failed to log in!');
     }
 
-    yield putResolve(actions.requestCurrentUser());
+    yield put(actions.requestCurrentUser());
     const currentUserResult = yield take([
       types.REQUEST_CURRENT_USER_SUCCESS,
       types.REQUEST_CURRENT_USER_FAILURE
