@@ -89,3 +89,5 @@ exports[`<ToastDrawer /> renders correctly 1`] = `
   </div>
 </section>
 `;
+
+exports[`<ToastDrawer /> renders null if empty 1`] = `null`;

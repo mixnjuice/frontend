@@ -21,6 +21,13 @@ describe('<ToastDrawer />', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
+  it('renders null if empty', () => {
+    const props = { toasts: [] };
+    const component = renderer.create(<ToastDrawer {...props} />);
+
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
   it('renders connected component correctly', () => {
     const initialState = { application: { toasts } };
     const mockStore = configureStore();
