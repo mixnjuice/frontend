@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React from 'react';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
@@ -5,6 +6,7 @@ import configureStore from 'redux-mock-store';
 
 import ConnectedApp, { App } from './App';
 import { withMemoryRouter } from 'utils';
+import { initialState } from 'reducers/application';
 
 jest.mock('components/Header/Header', () =>
   require('utils').mockComponent('Header')
@@ -44,9 +46,21 @@ describe('<App />', () => {
   const actions = {
     initApp: jest.fn()
   };
-  const initialState = {};
   const mockStore = configureStore();
-  const store = mockStore(initialState);
+  const store = mockStore({ application: initialState });
+  const authedStore = mockStore({
+    application: {
+      ...initialState,
+      authorization: {
+        accessToken: '1234',
+        expiration: dayjs().add(60, 'minutes')
+      },
+      user: {
+        id: 123,
+        name: 'Doe'
+      }
+    }
+  });
 
   afterEach(() => {
     actions.initApp.mockReset();
@@ -104,10 +118,10 @@ describe('<App />', () => {
 
   it('renders profile page', () => {
     const RoutedApp = withMemoryRouter(ConnectedApp, {
-      initialEntries: ['/profile']
+      initialEntries: ['/user/profile']
     });
     const component = renderer.create(
-      <Provider store={store}>
+      <Provider store={authedStore}>
         <RoutedApp />
       </Provider>
     );
@@ -117,10 +131,10 @@ describe('<App />', () => {
 
   it('renders user recipes page', () => {
     const RoutedApp = withMemoryRouter(ConnectedApp, {
-      initialEntries: ['/user-recipes']
+      initialEntries: ['/user/recipes']
     });
     const component = renderer.create(
-      <Provider store={store}>
+      <Provider store={authedStore}>
         <RoutedApp />
       </Provider>
     );
@@ -130,10 +144,10 @@ describe('<App />', () => {
 
   it('renders favorites page', () => {
     const RoutedApp = withMemoryRouter(ConnectedApp, {
-      initialEntries: ['/favorites']
+      initialEntries: ['/user/favorites']
     });
     const component = renderer.create(
-      <Provider store={store}>
+      <Provider store={authedStore}>
         <RoutedApp />
       </Provider>
     );
@@ -143,10 +157,10 @@ describe('<App />', () => {
 
   it('renders flavor stash page', () => {
     const RoutedApp = withMemoryRouter(ConnectedApp, {
-      initialEntries: ['/flavor-stash']
+      initialEntries: ['/user/flavor-stash']
     });
     const component = renderer.create(
-      <Provider store={store}>
+      <Provider store={authedStore}>
         <RoutedApp />
       </Provider>
     );
@@ -156,10 +170,10 @@ describe('<App />', () => {
 
   it('renders user settings page', () => {
     const RoutedApp = withMemoryRouter(ConnectedApp, {
-      initialEntries: ['/user-settings']
+      initialEntries: ['/user/settings']
     });
     const component = renderer.create(
-      <Provider store={store}>
+      <Provider store={authedStore}>
         <RoutedApp />
       </Provider>
     );
@@ -169,10 +183,10 @@ describe('<App />', () => {
 
   it('renders shopping list page', () => {
     const RoutedApp = withMemoryRouter(ConnectedApp, {
-      initialEntries: ['/shopping-list']
+      initialEntries: ['/user/shopping-list']
     });
     const component = renderer.create(
-      <Provider store={store}>
+      <Provider store={authedStore}>
         <RoutedApp />
       </Provider>
     );
@@ -209,6 +223,19 @@ describe('<App />', () => {
   it('renders recipe page', () => {
     const RoutedApp = withMemoryRouter(ConnectedApp, {
       initialEntries: ['/recipe']
+    });
+    const component = renderer.create(
+      <Provider store={store}>
+        <RoutedApp />
+      </Provider>
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('redirects to login for private route', () => {
+    const RoutedApp = withMemoryRouter(ConnectedApp, {
+      initialEntries: ['/user/recipes']
     });
     const component = renderer.create(
       <Provider store={store}>

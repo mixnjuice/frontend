@@ -7,6 +7,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 
 import Header from 'components/Header/Header';
 import ToastDrawer from 'components/ToastDrawer/ToastDrawer';
+import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 
 import Home from 'pages/Home';
 import Login from 'pages/Login';
@@ -46,15 +47,23 @@ export class App extends Component {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/user-recipes" component={UserRecipes} />
-          <Route exact path="/favorites" component={Favorites} />
-          <Route exact path="/flavor-stash" component={FlavorStash} />
-          <Route exact path="/user-settings" component={UserSettings} />
-          <Route exact path="/shopping-list" component={ShoppingList} />
           <Route exact path="/calculator" component={Calculator} />
           <Route exact path="/flavors" component={Flavors} />
           <Route exact path="/recipe" component={Recipe} />
+          <PrivateRoute exact path="/user/profile" component={Profile} />
+          <PrivateRoute exact path="/user/recipes" component={UserRecipes} />
+          <PrivateRoute exact path="/user/favorites" component={Favorites} />
+          <PrivateRoute
+            exact
+            path="/user/flavor-stash"
+            component={FlavorStash}
+          />
+          <PrivateRoute
+            exact
+            path="/user/shopping-list"
+            component={ShoppingList}
+          />
+          <PrivateRoute exact path="/user/settings" component={UserSettings} />
           <Route component={NotFound} />
         </Switch>
       </Fragment>

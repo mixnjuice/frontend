@@ -44,26 +44,25 @@ export default class Header extends Component {
           <Col>
             <Navbar expand="lg" className="justify-content-center">
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse
-                id="basic-navbar-nav"
-                className="justify-content-center"
-              >
+              <Navbar.Collapse className="justify-content-center">
                 <Nav>
                   {this.renderNavItem('/', 'Home')}
-                  {this.renderNavItem('/calculator', 'Create Recipe')}
-                  <NavDropdown title="User" id="basic-nav-dropdown">
-                    {this.renderNavDropdownItem('/profile', 'Profile')}
-                    {this.renderNavDropdownItem('/user-recipes', 'Recipes')}
-                    {this.renderNavDropdownItem('/favorites', 'Favorites')}
+                  {this.renderNavItem('/calculator', 'Calculator')}
+                  {this.renderNavItem('/recipe', 'Recipes')}
+                  {this.renderNavItem('/flavors', 'Flavors')}
+                  <NavDropdown title="User">
+                    {this.renderNavDropdownItem('/user/profile', 'Profile')}
+                    {this.renderNavDropdownItem('/user/recipes', 'Recipes')}
+                    {this.renderNavDropdownItem('/user/favorites', 'Favorites')}
                     {this.renderNavDropdownItem(
-                      '/flavor-stash',
+                      '/user/flavor-stash',
                       'Flavor Stash'
                     )}
                     {this.renderNavDropdownItem(
-                      '/shopping-list',
+                      '/user/shopping-list',
                       'Shopping List'
                     )}
-                    {this.renderNavDropdownItem('/user-settings', 'Settings')}
+                    {this.renderNavDropdownItem('/user/settings', 'Settings')}
                   </NavDropdown>
                   {this.renderNavItem('/login', 'Login')}
                   {this.renderNavItem('/register', 'Register')}

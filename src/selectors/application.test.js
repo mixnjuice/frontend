@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 import { initialState } from 'reducers/application';
 import {
   getApplication,
@@ -9,7 +11,8 @@ import {
   getTokenExpiration,
   getRegistration,
   isRegistering,
-  getToasts
+  getToasts,
+  isLoggedIn
 } from './application';
 
 describe('application selectors', () => {
@@ -58,5 +61,51 @@ describe('application selectors', () => {
 
   it('can getToasts', () => {
     expect(getToasts(state)).toBe(toasts);
+  });
+
+  describe('can get isLoggedIn', () => {
+    it('when logged in', () => {
+      const authorization = {
+        accessToken: 'valid',
+        expiration: dayjs().add(1, 'days')
+      };
+
+      expect(
+        isLoggedIn({
+          application: {
+            authorization
+          }
+        })
+      ).toEqual(true);
+    });
+
+    it('with no token', () => {
+      const authorization = {
+        expiration: dayjs().add(1, 'days')
+      };
+
+      expect(
+        isLoggedIn({
+          application: {
+            authorization
+          }
+        })
+      ).toEqual(false);
+    });
+
+    it('with an expired token', () => {
+      const authorization = {
+        accessToken: 'valid',
+        expiration: dayjs().add(-1, 'days')
+      };
+
+      expect(
+        isLoggedIn({
+          application: {
+            authorization
+          }
+        })
+      ).toEqual(false);
+    });
   });
 });

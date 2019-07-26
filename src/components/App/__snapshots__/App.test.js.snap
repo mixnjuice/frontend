@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<App /> redirects to login for private route 1`] = `
+Array [
+  <Header />,
+  <ToastDrawer />,
+  <Login />,
+]
+`;
+
 exports[`<App /> renders calculator page 1`] = `
 Array [
   <Header />,
