@@ -6,6 +6,7 @@ $light-blue: #b1cefd;
 $blue: #77a6f7;
 $teal: #00887a;
 $lighter-red: #ffccbc;
+$shadow-grey: #777;
 
 // Changes the font site-wide
 * {
@@ -81,7 +82,12 @@ hr {
 
 // Gradient background for the navigation container
 .navigation-container {
-  background: linear-gradient(180deg, $light-blue 0%, $white 100%);
+  background: $lighter-blue;
+  height: 10%;
+  margin: 1em;
+  border: 2px solid $teal;
+  border-radius: 20px;
+  box-shadow: 8px 8px 20px $shadow-grey;
 }
 
 // On screen sizes below ~1200px width, the nav links look a little weird by
@@ -117,7 +123,7 @@ hr {
 // Styling for nav "brand" (MixNJuice "logo")
 .navbar-brand {
   font-family: "Architects Daughter", cursive;
-  font-size: 4em;
+  font-size: 3em;
 }
 
 // Styling for checkboxes
