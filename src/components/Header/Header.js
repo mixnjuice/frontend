@@ -34,17 +34,13 @@ export default class Header extends Component {
 
   render() {
     return (
-      <Container className="navigation-container" fluid>
-        <Row className="text-center">
+      <Container fluid>
+        <Row className="navigation-container">
           <Col>
-            <Navbar.Brand>MixNJuice</Navbar.Brand>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Navbar expand="lg" className="justify-content-center">
+            <Navbar expand="lg">
+              <Navbar.Brand>MixNJuice</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse className="justify-content-center">
+              <Navbar.Collapse id="basic-navbar-nav">
                 <Nav>
                   {this.renderNavItem('/', 'Home')}
                   {this.renderNavItem('/calculator', 'Calculator')}
@@ -69,7 +65,6 @@ export default class Header extends Component {
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
-            <hr />
           </Col>
         </Row>
       </Container>
