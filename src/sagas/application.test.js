@@ -1,8 +1,9 @@
 import dayjs from 'dayjs';
 import MockDate from 'mockdate';
-import { all, put, call, take } from 'redux-saga/effects';
+import { all, put, call, take, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
+import { isLoggedIn } from 'selectors/application';
 import { actions, types } from 'reducers/application';
 import appSaga, { watchers, workers } from './application';
 
@@ -191,10 +192,14 @@ describe('application sagas', () => {
     );
   });
 
-  it('runs loginWorker', () => {
-    const gen = workers.loginWorker({ emailAddress, password });
+  it('runs loginUserWorker', () => {
+    const gen = workers.loginUserWorker({ emailAddress, password });
 
     let result = gen.next();
+
+    expect(result.value).toEqual(select(isLoggedIn));
+
+    result = gen.next(false);
 
     expect(result.value).toEqual(
       put(actions.requestToken(emailAddress, password))
@@ -229,12 +234,32 @@ describe('application sagas', () => {
     expect(result.value).toEqual(put(actions.loginUserSuccess(user)));
   });
 
-  it('handles invalid user in loginWorker', () => {
-    const error = new Error('Failed to fetch current user!');
-    const { message } = error;
-    const gen = workers.loginWorker({ emailAddress, password });
+  it('exits loginUserWorker early if logged in', () => {
+    const gen = workers.loginUserWorker({ emailAddress, password });
 
     let result = gen.next();
+
+    expect(result.value).toEqual(select(isLoggedIn));
+
+    result = gen.next(true);
+
+    expect(result.value).toEqual(put(actions.loginUserSuccess()));
+
+    result = gen.next();
+
+    expect(result.done).toBeTruthy();
+  });
+
+  it('handles invalid user in loginUserWorker', () => {
+    const error = new Error('Failed to fetch current user!');
+    const { message } = error;
+    const gen = workers.loginUserWorker({ emailAddress, password });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(select(isLoggedIn));
+
+    result = gen.next(false);
 
     expect(result.value).toEqual(
       put(actions.requestToken(emailAddress, password))
