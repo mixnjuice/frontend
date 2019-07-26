@@ -225,6 +225,7 @@ h1.recipeTitle {
   display: inline-block;
   position: relative;
   color: $black;
+  transition: 0.5s;
 
   &:hover,
   &:focus {
@@ -232,6 +233,8 @@ h1.recipeTitle {
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
+    transition: none;
+
     &::after {
       content: "";
       position: absolute;
