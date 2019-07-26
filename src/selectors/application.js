@@ -40,7 +40,7 @@ export const getTokenExpiration = createSelector(
 
 export const isLoggedIn = createSelector(
   [getToken, getTokenExpiration],
-  (token, expiration) => token && dayjs().isBefore(dayjs(expiration))
+  (token, expiration) => Boolean(token && dayjs().isBefore(dayjs(expiration)))
 );
 
 export const getRegistration = createSelector(
