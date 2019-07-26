@@ -8,9 +8,6 @@ import { getToasts } from 'selectors/application';
 
 export class ToastDrawer extends Component {
   static propTypes = {
-    actions: PropTypes.shape({
-      hideToast: PropTypes.func.isRequired
-    }),
     toasts: PropTypes.arrayOf(
       PropTypes.shape({
         icon: PropTypes.string,
@@ -37,7 +34,7 @@ export class ToastDrawer extends Component {
           return (
             <Toast key={id} show={show}>
               <Toast.Header>
-                {icon && <FontAwesomeIcon icon={toast.icon} />}
+                {icon && <FontAwesomeIcon icon={icon} />}
                 <strong className="mr-auto">{title}</strong>
               </Toast.Header>
               <Toast.Body>{message}</Toast.Body>
