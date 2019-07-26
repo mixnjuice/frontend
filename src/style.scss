@@ -250,22 +250,6 @@ h1.recipeTitle {
     }
   }
 
-  @media screen and (prefers-reduced-motion: reduce) {
-    &::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      border-bottom: 1px solid $teal;
-      color: $teal;
-      transform-origin: bottom right;
-      transition: none;
-    }
-  }
-
   &::after {
     content: "";
     position: absolute;
