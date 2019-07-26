@@ -159,9 +159,10 @@ function* loginUserWorker({ emailAddress, password }) {
 
 function* popToastWorker({ toast }) {
   // ensure there is a unique key for each toast
-  const id = nanoid();
+  const id = toast.id || nanoid();
 
-  toast.id = toast.id || id;
+  toast.id = id;
+  toast.show = true;
 
   yield put(actions.addToast(toast));
   yield delay(toast.interval || 5000);
