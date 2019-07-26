@@ -7,10 +7,12 @@ import {
   takeLatest,
   delay,
   take,
-  takeEvery
+  takeEvery,
+  select
 } from 'redux-saga/effects';
 
 import request from 'utils/request';
+import { isLoggedIn } from 'selectors/application';
 import { actions, types } from 'reducers/application';
 
 // snake_cased variables here come from RFC 6749
@@ -102,9 +104,16 @@ function* requestCurrentUserWorker() {
   }
 }
 
-function* loginWorker({ emailAddress, password }) {
+function* loginUserWorker({ emailAddress, password }) {
   try {
-    // first, obtain a bearer token
+    // first, check to see if we are already logged in
+    const loggedIn = yield select(isLoggedIn);
+
+    if (loggedIn) {
+      return yield put(actions.loginUserSuccess());
+    }
+
+    // obtain a bearer token
     // then, obtain current user information
     // use putResolve because it is blocking
     yield put(actions.requestToken(emailAddress, password));
@@ -203,8 +212,8 @@ function* registerUserWorker({
   }
 }
 
-function* loginWatcher() {
-  yield takeLatest(types.LOGIN_USER, loginWorker);
+function* loginUserWatcher() {
+  yield takeLatest(types.LOGIN_USER, loginUserWorker);
 }
 
 function* popToastWatcher() {
@@ -224,7 +233,7 @@ function* registerUserWatcher() {
 }
 
 export const workers = {
-  loginWorker,
+  loginUserWorker,
   popToastWorker,
   registerUserWorker,
   requestTokenWorker,
@@ -232,7 +241,7 @@ export const workers = {
 };
 
 export const watchers = {
-  loginWatcher,
+  loginUserWatcher,
   popToastWatcher,
   registerUserWatcher,
   requestTokenWatcher,

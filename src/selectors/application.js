@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import { createSelector } from 'reselect';
 
 export const getApplication = state => state.application;
@@ -35,6 +36,11 @@ export const getToken = createSelector(
 export const getTokenExpiration = createSelector(
   getAuthorization,
   authorization => authorization.expiration
+);
+
+export const isLoggedIn = createSelector(
+  [getToken, getTokenExpiration],
+  (token, expiration) => token && dayjs().isBefore(dayjs(expiration))
 );
 
 export const getRegistration = createSelector(
