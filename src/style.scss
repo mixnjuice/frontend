@@ -180,18 +180,18 @@ hr {
 }
 
 // Card titles
-div.h5 {
+.h5 {
   font-size: 1.1em;
   font-weight: 900;
 }
 
 // Card bodies
-p.card-text {
+.card-text {
   font-size: 0.9em;
 }
 
 // Card headers
-div.card-header {
+.card-header {
   font-size: 1.4em;
   font-weight: 900;
 }
@@ -202,13 +202,13 @@ input {
 }
 
 // Style for file inputs
-input[type="file"] {
+.custom-file-input[type="file"] {
   border: 1px solid $black;
   border-radius: 0.25rem;
   padding: 5px;
 }
 
-h1.recipeTitle {
+.recipeTitle {
   font-size: 3em;
 }
 
