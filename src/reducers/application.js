@@ -176,6 +176,11 @@ export const reducer = (state = initialState, action = {}) => {
       };
     case types.HIDE_TOAST: {
       const originalToast = state.toasts.find(toast => toast.id === action.id);
+
+      if (!originalToast) {
+        return state;
+      }
+
       const newToast = {
         ...originalToast,
         show: false

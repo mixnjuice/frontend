@@ -315,6 +315,10 @@ describe('application reducer', () => {
     expect(reducer({ toasts: [toast] }, action)).toEqual({
       toasts: [{ ...toast, show: false }]
     });
+
+    expect(reducer({ toasts: [] }, action)).toEqual({
+      toasts: []
+    });
   });
 
   it('handles default case', () => {
