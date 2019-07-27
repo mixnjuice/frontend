@@ -128,6 +128,13 @@ hr {
   font-size: 3em;
 }
 
+// Centering nav contents for phone screens
+@media (max-width: 700px) {
+  .navbar {
+    justify-content: center;
+  }
+}
+
 // Styling for checkboxes
 .form-check-input {
   appearance: none;
