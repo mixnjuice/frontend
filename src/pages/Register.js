@@ -101,6 +101,9 @@ export class Register extends Component {
                             : 'Please enter a valid email address'}
                         </Form.Control.Feedback>
                       )}
+                      <Form.Text className="text-muted">
+                        We&apos;ll never share your email with anyone else.
+                      </Form.Text>
                     </Form.Group>
                   )}
                 </Field>

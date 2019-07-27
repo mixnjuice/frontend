@@ -59,9 +59,6 @@ export class Login extends Component {
                           : 'Not a valid email address'}
                       </Form.Control.Feedback>
                     )}
-                    <Form.Text className="text-muted">
-                      We&apos;ll never share your email with anyone else.
-                    </Form.Text>
                   </Form.Group>
                 )}
               </Field>
