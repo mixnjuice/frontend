@@ -232,6 +232,7 @@ input {
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
 .navbar-nav .nav-link.borderLeftRight {
   display: inline-block;
+  text-align: center;
   position: relative;
   color: $black;
   transition: 0.5s;
