@@ -9,7 +9,7 @@ export default class Header extends Component {
         as={NavLink}
         exact
         to={to}
-        className="borderLeftRight px-3"
+        className="nav--link-custom px-3"
         activeClassName="active"
       >
         {text}
@@ -23,7 +23,7 @@ export default class Header extends Component {
         as={NavLink}
         exact
         to={to}
-        className="borderLeftRight"
+        className="nav--link-custom"
         activeClassName="active"
       >
         {text}
@@ -46,6 +46,7 @@ export default class Header extends Component {
                   {this.renderNavItem('/calculator', 'Calculator')}
                   {this.renderNavItem('/recipe', 'Recipes')}
                   {this.renderNavItem('/flavors', 'Flavors')}
+                  {this.renderNavItem('/recipes', 'Recipes')}
                   <NavDropdown title="User">
                     {this.renderNavDropdownItem('/user/profile', 'Profile')}
                     {this.renderNavDropdownItem('/user/recipes', 'Recipes')}
