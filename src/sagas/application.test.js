@@ -1,11 +1,13 @@
 import dayjs from 'dayjs';
 import MockDate from 'mockdate';
-import { all, put, call, take, select } from 'redux-saga/effects';
+import { all, put, call, take, select, delay } from 'redux-saga/effects';
 
 import request from 'utils/request';
 import { isLoggedIn } from 'selectors/application';
 import { actions, types } from 'reducers/application';
 import appSaga, { watchers, workers } from './application';
+
+jest.mock('nanoid', () => () => 'testing');
 
 /* eslint-disable camelcase */
 describe('application sagas', () => {
@@ -58,6 +60,18 @@ describe('application sagas', () => {
         )
       )
     );
+
+    result = gen.next();
+
+    expect(result.value).toEqual(
+      put(
+        actions.popToast({
+          title: 'Logged in',
+          icon: 'check',
+          message: 'You have been authenticated.'
+        })
+      )
+    );
     MockDate.reset();
   });
 
@@ -84,6 +98,18 @@ describe('application sagas', () => {
     });
 
     expect(result.value).toEqual(put(actions.requestTokenFailure(error)));
+
+    result = gen.next();
+
+    expect(result.value).toEqual(
+      put(
+        actions.popToast({
+          title: 'Error!',
+          icon: 'times-circle',
+          message: error.message
+        })
+      )
+    );
   });
 
   it('handles expected error in requestTokenWorker', () => {
@@ -304,6 +330,41 @@ describe('application sagas', () => {
         })
       )
     );
+  });
+
+  it('runs popToastWorker', () => {
+    const defaultInterval = 5000;
+    const toast = {
+      title: 'Test',
+      icon: 'heart',
+      message: 'Testing'
+    };
+    const modifiedToast = {
+      ...toast,
+      id: 'testing',
+      show: true
+    };
+    const gen = workers.popToastWorker({ toast });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(put(actions.addToast(modifiedToast)));
+
+    result = gen.next();
+
+    expect(result.value).toEqual(delay(defaultInterval));
+
+    result = gen.next();
+
+    expect(result.value).toEqual(put(actions.hideToast(modifiedToast.id)));
+
+    result = gen.next();
+
+    expect(result.value).toEqual(delay(500));
+
+    result = gen.next();
+
+    expect(result.value).toEqual(put(actions.removeToast(modifiedToast.id)));
   });
 
   it('forks all watchers', () => {
