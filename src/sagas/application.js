@@ -126,6 +126,14 @@ function* loginUserWorker({ emailAddress, password }) {
       throw new Error('Failed to log in!');
     }
 
+    const { token, expiration } = tokenResult;
+
+    localStorage.setItem('accessToken', JSON.stringify(token));
+    localStorage.setItem(
+      'expiration',
+      JSON.stringify(expiration.toISOString())
+    );
+
     yield put(actions.requestCurrentUser());
     const currentUserResult = yield take([
       types.REQUEST_CURRENT_USER_SUCCESS,

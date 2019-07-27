@@ -237,12 +237,21 @@ describe('application sagas', () => {
       take([types.REQUEST_TOKEN_SUCCESS, types.REQUEST_TOKEN_FAILURE])
     );
 
-    result = gen.next(
-      actions.requestTokenSuccess(
-        accessToken,
-        dayjs().add(expiresIn, 'seconds')
-      )
-    );
+    expect(window.localStorage.setItem).not.toHaveBeenCalled();
+
+    const expiration = dayjs().add(expiresIn, 'seconds');
+
+    result = gen.next(actions.requestTokenSuccess(accessToken, expiration));
+
+    expect(window.localStorage.setItem).toHaveBeenCalledTimes(2);
+
+    const [firstCall, secondCall] = window.localStorage.setItem.mock.calls;
+
+    expect(firstCall).toEqual(['accessToken', JSON.stringify(accessToken)]);
+    expect(secondCall).toEqual([
+      'expiration',
+      JSON.stringify(expiration.toISOString())
+    ]);
 
     expect(result.value).toEqual(put(actions.requestCurrentUser()));
 

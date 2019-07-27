@@ -1,4 +1,10 @@
-import { buildActions, mockComponent, buildUrl } from './index';
+import dayjs from 'dayjs';
+import {
+  buildActions,
+  mockComponent,
+  buildUrl,
+  getInitialState
+} from './index';
 
 describe('utilities', () => {
   it('can buildActions', () => {
@@ -67,6 +73,62 @@ describe('utilities', () => {
       const result = buildUrl({ url, params });
 
       expect(result).toEqual(expectedUrl);
+    });
+  });
+
+  describe('getInitialState', () => {
+    it('exists', () => {
+      expect(getInitialState).toBeInstanceOf(Function);
+    });
+
+    it('returns application state if data found', () => {
+      const accessToken = 'testing';
+      const expiration = '2030-01-01T00:00:00.000Z';
+
+      localStorage.getItem.mockImplementation(key => {
+        if (key === 'accessToken') {
+          return `"${accessToken}"`;
+        } else if (key === 'expiration') {
+          return `"${expiration}"`;
+        } else {
+          return null;
+        }
+      });
+
+      expect(getInitialState()).toEqual({
+        application: {
+          authorization: {
+            accessToken,
+            expiration: dayjs(expiration)
+          }
+        }
+      });
+    });
+
+    it('returns an empty object if no data found', () => {
+      localStorage.getItem.mockReturnValue(null);
+
+      expect(getInitialState()).toEqual({});
+    });
+
+    it('returns an empty object if token is expired', () => {
+      localStorage.getItem.mockImplementation(key => {
+        if (key === 'accessToken') {
+          return '"testing"';
+        } else if (key === 'expiration') {
+          return '"2010-01-01T00:00:00.000Z"';
+        } else {
+          return null;
+        }
+      });
+
+      expect(getInitialState()).toEqual({});
+    });
+
+    it('returns an empty object if an error occurs', () => {
+      localStorage.getItem.mockReturnValue('baddate');
+
+      expect(getInitialState()).toEqual({});
     });
   });
 });

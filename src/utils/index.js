@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React, { createElement } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -63,4 +64,36 @@ export const buildUrl = endpoint => {
 
     return resultUrl.replace(`{${key}}`, value);
   }, `${baseUrl}${url}`);
+};
+
+export const getInitialState = () => {
+  try {
+    const [accessToken, expiration] = [
+      localStorage.getItem('accessToken'),
+      localStorage.getItem('expiration')
+    ];
+
+    if (!accessToken) {
+      return {};
+    }
+
+    const expirationDate = dayjs(JSON.parse(expiration));
+
+    if (!expirationDate.isValid() || expirationDate.isBefore(dayjs())) {
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('expiration');
+      return {};
+    }
+
+    return {
+      application: {
+        authorization: {
+          accessToken: JSON.parse(accessToken),
+          expiration: expirationDate
+        }
+      }
+    };
+  } catch {
+    return {};
+  }
 };
