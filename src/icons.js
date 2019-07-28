@@ -9,7 +9,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faHeart as farHeart,
-  faStar as farStar
+  faStar as farStar,
+  faCheckSquare,
+  faSquare
 } from '@fortawesome/free-regular-svg-icons';
 
 library.add(
@@ -20,7 +22,9 @@ library.add(
   fasHeart,
   farHeart,
   fasStar,
-  farStar
+  farStar,
+  faCheckSquare,
+  faSquare
 );
 
 export default library;
