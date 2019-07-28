@@ -151,14 +151,14 @@ export default class Recipe extends Component {
         </Row>
         <hr />
         <Row>
-          <Col md={{ span: 2, offset: 3 }} xs={{ span: 4, offset: 4 }}>
+          <Col lg={{ span: 3, offset: 3 }} xs={{ span: 3, offset: 2 }}>
             <img
               src="/media/card-test-1.jpg"
               alt="card test"
               className="w-100 img-thumbnail"
             />
           </Col>
-          <Col md={{ span: 4 }}>
+          <Col lg={{ span: 3 }} xs={{ span: 6 }}>
             <h1 className="recipeTitle">{this.state.name}</h1>
             <h2>
               Created by{' '}
@@ -168,7 +168,7 @@ export default class Recipe extends Component {
           </Col>
         </Row>
         <Row>
-          <Col md={{ span: 6, offset: 3 }}>
+          <Col lg={{ span: 8, offset: 2 }} xs={{ span: 12 }}>
             <Table striped bordered>
               <thead>
                 <tr>
@@ -192,7 +192,7 @@ export default class Recipe extends Component {
           </Col>
         </Row>
         <Row>
-          <Col md={{ span: 6, offset: 3 }}>
+          <Col lg={{ span: 6, offset: 3 }} xs={{ span: 12 }}>
             <p>
               {this.state.maxvg ? (
                 <span>Max VG |&nbsp;</span>
@@ -212,7 +212,7 @@ export default class Recipe extends Component {
         </Row>
         {this.state.notes && (
           <Row>
-            <Col md={{ span: 6, offset: 3 }}>
+            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 12 }}>
               <h2>Notes</h2>
               <p>{this.state.notes}</p>
             </Col>
