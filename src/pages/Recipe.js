@@ -123,7 +123,7 @@ export default class Recipe extends Component {
 
   render() {
     return (
-      <Container className="text-center">
+      <Container className="text-center container--recipe">
         <Row className="justify-content-center">
           <Alert variant="success" className={this.state.alertClass}>
             {this.state.favorited ? (
