@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+import queryString from 'query-string';
 import React, { Component } from 'react';
 
 import {
@@ -11,8 +14,6 @@ import {
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import queryString from 'query-string';
-import PropTypes from 'prop-types';
 import recipes from '../data/recipes.json';
 
 export default class Recipe extends Component {
@@ -124,6 +125,7 @@ export default class Recipe extends Component {
   render() {
     return (
       <Container className="text-center container--recipe">
+        <Helmet title="Recipe" />
         <Row className="justify-content-center">
           <Alert variant="success" className={this.state.alertClass}>
             {this.state.favorited ? (

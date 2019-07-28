@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
@@ -6,6 +7,7 @@ import { Form as FinalForm, Field } from 'react-final-form';
 import { Button, Container, Form, InputGroup, Col } from 'react-bootstrap';
 
 import { actions as appActions } from 'reducers/application';
+import { isRegistering } from 'selectors/application';
 import {
   composeValidators,
   required,
@@ -16,7 +18,10 @@ import {
 
 export class Register extends Component {
   static propTypes = {
-    actions: PropTypes.object
+    registering: PropTypes.bool.isRequired,
+    actions: PropTypes.shape({
+      registerUser: PropTypes.func.isRequired
+    })
   };
 
   constructor(props) {
@@ -32,8 +37,11 @@ export class Register extends Component {
   }
 
   render() {
+    const { registering } = this.props;
+
     return (
       <Container>
+        <Helmet title="Register" />
         <h1>User Registration</h1>
         <FinalForm
           onSubmit={this.handleSubmit}
@@ -93,6 +101,9 @@ export class Register extends Component {
                             : 'Please enter a valid email address'}
                         </Form.Control.Feedback>
                       )}
+                      <Form.Text className="text-muted">
+                        We&apos;ll never share your email with anyone else.
+                      </Form.Text>
                     </Form.Group>
                   )}
                 </Field>
@@ -182,7 +193,7 @@ export class Register extends Component {
                 </Field>
               </Form.Row>
               <Form.Row>
-                <Field name="termsAgreed" validate={required}>
+                <Field type="checkbox" name="termsAgreed" validate={required}>
                   {({ input, meta }) => (
                     <Form.Group>
                       <Form.Check
@@ -205,7 +216,7 @@ export class Register extends Component {
                     className="button-animation"
                     variant="primary"
                     type="submit"
-                    disabled={submitting}
+                    disabled={submitting && !registering}
                   >
                     <span>Register</span>
                   </Button>
@@ -219,6 +230,10 @@ export class Register extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  registering: isRegistering(state)
+});
+
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
@@ -229,6 +244,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Register);

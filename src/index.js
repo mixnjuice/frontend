@@ -12,6 +12,7 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import './icons';
 import './index.scss';
 import App from './components/App/App';
+import { getInitialState } from 'utils';
 
 import rootSaga from './sagas';
 import rootReducer from './reducers';
@@ -23,7 +24,7 @@ const composer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
 const enhancers = composer(applyMiddleware(sagaMiddleware));
 
-export const store = createStore(rootReducer, {}, enhancers);
+export const store = createStore(rootReducer, getInitialState(), enhancers);
 
 if (module.hot) {
   module.hot.accept('./reducers', () => {
@@ -34,11 +35,11 @@ if (module.hot) {
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
+  <Router>
+    <Provider store={store}>
       <App />
-    </Router>
-  </Provider>,
+    </Provider>
+  </Router>,
   document.getElementById('root')
 );
 

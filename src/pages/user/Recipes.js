@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 import { Container, Row, Col, Table } from 'react-bootstrap';
 
 export default class UserRecipes extends Component {
-  listRecipes() {}
   render() {
     const listItems = [];
 
@@ -19,6 +19,7 @@ export default class UserRecipes extends Component {
 
     return (
       <Container className="text-center">
+        <Helmet title="Recipes" />
         <Row>
           <Col>
             <h1>Your Original Recipes</h1>

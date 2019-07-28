@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-
+import React, { Component } from 'react';
 import {
   Container,
   Row,
@@ -16,12 +15,13 @@ export default class Profile extends Component {
   render() {
     return (
       <Container>
+        <Helmet title="Your Profile" />
         <Row className="text-center">
           <Col>
             <p>
               This is what other users see when they look at your profile.
               <br />
-              <Link to="/userSettings">Click here to edit your profile</Link>
+              <Link to="/user-settings">Click here to edit your profile</Link>
             </p>
           </Col>
         </Row>

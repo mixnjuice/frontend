@@ -44,23 +44,25 @@ export default class Header extends Component {
           <Col>
             <Navbar expand="lg" className="justify-content-center">
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse
-                id="basic-navbar-nav"
-                className="justify-content-center"
-              >
+              <Navbar.Collapse className="justify-content-center">
                 <Nav>
                   {this.renderNavItem('/', 'Home')}
-                  {this.renderNavItem('/calculator', 'Create Recipe')}
-                  <NavDropdown title="User" id="basic-nav-dropdown">
-                    {this.renderNavDropdownItem('/profile', 'Profile')}
-                    {this.renderNavDropdownItem('/userRecipes', 'Recipes')}
-                    {this.renderNavDropdownItem('/favorites', 'Favorites')}
-                    {this.renderNavDropdownItem('/flavorStash', 'Flavor Stash')}
+                  {this.renderNavItem('/calculator', 'Calculator')}
+                  {this.renderNavItem('/recipe', 'Recipes')}
+                  {this.renderNavItem('/flavors', 'Flavors')}
+                  <NavDropdown title="User">
+                    {this.renderNavDropdownItem('/user/profile', 'Profile')}
+                    {this.renderNavDropdownItem('/user/recipes', 'Recipes')}
+                    {this.renderNavDropdownItem('/user/favorites', 'Favorites')}
                     {this.renderNavDropdownItem(
-                      '/shoppingList',
+                      '/user/flavor-stash',
+                      'Flavor Stash'
+                    )}
+                    {this.renderNavDropdownItem(
+                      '/user/shopping-list',
                       'Shopping List'
                     )}
-                    {this.renderNavDropdownItem('/userSettings', 'Settings')}
+                    {this.renderNavDropdownItem('/user/settings', 'Settings')}
                   </NavDropdown>
                   {this.renderNavItem('/login', 'Login')}
                   {this.renderNavItem('/register', 'Register')}

@@ -30,11 +30,6 @@ exports[`<Login /> renders correctly 1`] = `
         type="email"
         value=""
       />
-      <small
-        className="text-muted form-text"
-      >
-        We'll never share your email with anyone else.
-      </small>
     </div>
     <div
       className="form-group"
