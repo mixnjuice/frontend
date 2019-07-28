@@ -2,30 +2,22 @@
 
 exports[`<Header /> renders correctly 1`] = `
 <div
-  className="navigation-container container-fluid"
+  className="container-fluid"
 >
   <div
-    className="text-center row"
-  >
-    <div
-      className="col"
-    >
-      <span
-        className="navbar-brand"
-      >
-        MixNJuice
-      </span>
-    </div>
-  </div>
-  <div
-    className="row"
+    className="navigation-container row"
   >
     <div
       className="col"
     >
       <nav
-        className="justify-content-center navbar navbar-expand-lg navbar-light"
+        className="navbar navbar-expand-lg navbar-light"
       >
+        <span
+          className="navbar-brand"
+        >
+          MixNJuice
+        </span>
         <button
           aria-controls="basic-navbar-nav"
           aria-label="Toggle navigation"
@@ -39,7 +31,7 @@ exports[`<Header /> renders correctly 1`] = `
         </button>
         <div
           aria-expanded={null}
-          className="justify-content-center navbar-collapse collapse"
+          className="navbar-collapse collapse"
         >
           <div
             className="navbar-nav"
@@ -47,7 +39,7 @@ exports[`<Header /> renders correctly 1`] = `
           >
             <a
               aria-current="page"
-              className="borderLeftRight px-3 nav-link active"
+              className="nav--link-custom px-3 nav-link active"
               data-rb-event-key={null}
               disabled={false}
               href="/"
@@ -58,7 +50,17 @@ exports[`<Header /> renders correctly 1`] = `
             </a>
             <a
               aria-current={null}
-              className="borderLeftRight px-3 nav-link"
+              className="nav--link-custom px-3 nav-link"
+              data-rb-event-key={null}
+              disabled={false}
+              href="/recipes"
+              onClick={[Function]}
+            >
+              Recipes
+            </a>
+            <a
+              aria-current={null}
+              className="nav--link-custom px-3 nav-link"
               data-rb-event-key={null}
               disabled={false}
               href="/calculator"
@@ -107,7 +109,7 @@ exports[`<Header /> renders correctly 1`] = `
               >
                 <a
                   aria-current={null}
-                  className="borderLeftRight dropdown-item"
+                  className="nav--link-custom dropdown-item"
                   disabled={false}
                   href="/user/profile"
                   onClick={[Function]}
@@ -117,7 +119,7 @@ exports[`<Header /> renders correctly 1`] = `
                 </a>
                 <a
                   aria-current={null}
-                  className="borderLeftRight dropdown-item"
+                  className="nav--link-custom dropdown-item"
                   disabled={false}
                   href="/user/recipes"
                   onClick={[Function]}
@@ -127,7 +129,7 @@ exports[`<Header /> renders correctly 1`] = `
                 </a>
                 <a
                   aria-current={null}
-                  className="borderLeftRight dropdown-item"
+                  className="nav--link-custom dropdown-item"
                   disabled={false}
                   href="/user/favorites"
                   onClick={[Function]}
@@ -137,7 +139,7 @@ exports[`<Header /> renders correctly 1`] = `
                 </a>
                 <a
                   aria-current={null}
-                  className="borderLeftRight dropdown-item"
+                  className="nav--link-custom dropdown-item"
                   disabled={false}
                   href="/user/flavor-stash"
                   onClick={[Function]}
@@ -147,7 +149,7 @@ exports[`<Header /> renders correctly 1`] = `
                 </a>
                 <a
                   aria-current={null}
-                  className="borderLeftRight dropdown-item"
+                  className="nav--link-custom dropdown-item"
                   disabled={false}
                   href="/user/shopping-list"
                   onClick={[Function]}
@@ -157,7 +159,7 @@ exports[`<Header /> renders correctly 1`] = `
                 </a>
                 <a
                   aria-current={null}
-                  className="borderLeftRight dropdown-item"
+                  className="nav--link-custom dropdown-item"
                   disabled={false}
                   href="/user/settings"
                   onClick={[Function]}
@@ -169,7 +171,17 @@ exports[`<Header /> renders correctly 1`] = `
             </div>
             <a
               aria-current={null}
-              className="borderLeftRight px-3 nav-link"
+              className="nav--link-custom px-3 nav-link"
+              data-rb-event-key={null}
+              disabled={false}
+              href="/flavors"
+              onClick={[Function]}
+            >
+              Flavors
+            </a>
+            <a
+              aria-current={null}
+              className="nav--link-custom px-3 nav-link"
               data-rb-event-key={null}
               disabled={false}
               href="/login"
@@ -179,7 +191,7 @@ exports[`<Header /> renders correctly 1`] = `
             </a>
             <a
               aria-current={null}
-              className="borderLeftRight px-3 nav-link"
+              className="nav--link-custom px-3 nav-link"
               data-rb-event-key={null}
               disabled={false}
               href="/register"
@@ -190,7 +202,6 @@ exports[`<Header /> renders correctly 1`] = `
           </div>
         </div>
       </nav>
-      <hr />
     </div>
   </div>
 </div>
