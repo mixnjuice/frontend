@@ -10,7 +10,8 @@ import {
   Table,
   Button,
   ButtonGroup,
-  Alert
+  Alert,
+  Card
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -188,20 +189,42 @@ export default class Recipe extends Component {
         </Row>
         <hr />
         <Row>
-          <Col lg={{ span: 3, offset: 3 }} xs={{ span: 3, offset: 2 }}>
-            <img
-              src="/media/card-test-1.jpg"
-              alt="card test"
-              className="w-100 img-thumbnail"
-            />
-          </Col>
-          <Col lg={{ span: 3 }} xs={{ span: 6 }}>
-            <h1 className="recipeTitle">{this.state.name}</h1>
-            <h2>
-              Created by{' '}
-              <a href={'/user?id=' + this.state.userId}>{this.state.user}</a>
-            </h2>
-            <p>on {this.state.date}</p>
+          <Col lg={{ span: 8, offset: 2 }} xs={{ span: 12 }}>
+            <Card className="text-center">
+              <Card.Header>{this.state.name}</Card.Header>
+              <Card.Body>
+                <Row>
+                  <Col>
+                    <img
+                      src="/media/card-test-1.jpg"
+                      alt="card test"
+                      className="w-50"
+                    />
+                  </Col>
+                  <Col>
+                    <Card.Title>Notes</Card.Title>
+                    <Card.Text>
+                      {this.state.notes ? (
+                        <div>{this.state.notes}</div>
+                      ) : (
+                        <div>
+                          This user did not enter any notes for this recipe.
+                        </div>
+                      )}
+                    </Card.Text>
+                  </Col>
+                </Row>
+              </Card.Body>
+              <Card.Footer className="text-muted">
+                <span>
+                  Created by{' '}
+                  <a href={'/user?id=' + this.state.userId}>
+                    {this.state.user}
+                  </a>{' '}
+                  on {this.state.date}
+                </span>
+              </Card.Footer>
+            </Card>
           </Col>
         </Row>
         <Row>
@@ -255,14 +278,6 @@ export default class Recipe extends Component {
             </p>
           </Col>
         </Row>
-        {this.state.notes && (
-          <Row>
-            <Col lg={{ span: 6, offset: 3 }} xs={{ span: 12 }}>
-              <h2>Notes</h2>
-              <p>{this.state.notes}</p>
-            </Col>
-          </Row>
-        )}
       </Container>
     );
   }
