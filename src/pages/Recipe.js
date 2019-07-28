@@ -124,7 +124,7 @@ export default class Recipe extends Component {
   render() {
     return (
       <Container className="text-center">
-        <Row className="justify-content-md-center">
+        <Row className="justify-content-center">
           <Alert variant="success" className={this.state.alertClass}>
             {this.state.favorited ? (
               <span>Recipe added to your favorites</span>
@@ -132,12 +132,12 @@ export default class Recipe extends Component {
               <span>Recipe removed from your favorites</span>
             )}
           </Alert>
-          <Col md="auto">
+          <Col xs="auto">
             <Button className="button-animation">
               <span>Make this recipe</span>
             </Button>
           </Col>
-          <Col md="auto">
+          <Col xs="auto">
             <Button
               onClick={this.handleFavoriteClick}
               className="button--favorite"
@@ -147,11 +147,11 @@ export default class Recipe extends Component {
               </span>
             </Button>
           </Col>
-          <Col md="auto">{this.renderRatingButtons(this.state.rating)}</Col>
+          <Col xs="auto">{this.renderRatingButtons(this.state.rating)}</Col>
         </Row>
         <hr />
         <Row>
-          <Col md={{ span: 2, offset: 3 }}>
+          <Col md={{ span: 2, offset: 3 }} xs={{ span: 4, offset: 4 }}>
             <img
               src="/media/card-test-1.jpg"
               alt="card test"
@@ -192,25 +192,27 @@ export default class Recipe extends Component {
           </Col>
         </Row>
         <Row>
-          <Col>
-            {this.state.maxvg ? (
-              <h3>Max VG</h3>
-            ) : (
-              <h3>
-                {this.state.pg}% PG / {this.state.vg}% VG
-              </h3>
-            )}
-            {this.state.shakeNVape ? (
-              <h3>Shake & Vape</h3>
-            ) : (
-              <h3>Steep for {this.state.steepTime} days</h3>
-            )}
-            <h3>Flavor total: {this.state.flavorTotal}%</h3>
+          <Col md={{ span: 6, offset: 3 }}>
+            <p>
+              {this.state.maxvg ? (
+                <span>Max VG |&nbsp;</span>
+              ) : (
+                <span>
+                  {this.state.pg}% PG / {this.state.vg}% VG |&nbsp;
+                </span>
+              )}
+              {this.state.shakeNVape ? (
+                <span>Shake & Vape |&nbsp;</span>
+              ) : (
+                <span>Steep for {this.state.steepTime} days |&nbsp;</span>
+              )}
+              <span>Flavor total: {this.state.flavorTotal}%</span>
+            </p>
           </Col>
         </Row>
         {this.state.notes && (
           <Row>
-            <Col>
+            <Col md={{ span: 6, offset: 3 }}>
               <h2>Notes</h2>
               <p>{this.state.notes}</p>
             </Col>
