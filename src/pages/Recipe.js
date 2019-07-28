@@ -14,6 +14,7 @@ import {
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import flavorStash from '../data/flavorstash.json';
 import recipes from '../data/recipes.json';
 
 export default class Recipe extends Component {
@@ -77,6 +78,40 @@ export default class Recipe extends Component {
     recipe.flavorTotal = 0;
     recipe.flavors.forEach(flavor => {
       recipe.flavorTotal += flavor.percent;
+    });
+
+    this.setState(recipe);
+    this.compareWithStash();
+  }
+
+  compareWithStash() {
+    // eslint-disable-next-line
+    console.log(this.state);
+    const query = this.props.location.search;
+    const queryValues = queryString.parse(query);
+    const pageId = parseFloat(queryValues.id);
+
+    const recipe = recipes.filter(e => e.id === pageId)[0];
+
+    let index = 0;
+
+    recipe.flavors.forEach(recipeFlavor => {
+      let stashIndex = 0;
+
+      flavorStash.forEach(stashFlavor => {
+        if (recipeFlavor.id === stashFlavor.id) {
+          recipe.flavors[index].inStash = true;
+          return;
+        }
+
+        stashIndex++;
+        if (stashIndex === flavorStash.length) {
+          recipe.flavors[index].inStash = false;
+          return;
+        }
+      });
+
+      index++;
     });
 
     this.setState(recipe);
@@ -176,6 +211,7 @@ export default class Recipe extends Component {
                 <tr>
                   <th>Flavor</th>
                   <th>Percent</th>
+                  <th>Stash</th>
                 </tr>
               </thead>
               <tbody>
@@ -187,6 +223,13 @@ export default class Recipe extends Component {
                       </a>
                     </td>
                     <td>{flavor.percent.toFixed(1)}%</td>
+                    <td>
+                      {flavor.inStash ? (
+                        <FontAwesomeIcon icon={['far', 'check-square']} />
+                      ) : (
+                        <FontAwesomeIcon icon={['far', 'square']} />
+                      )}
+                    </td>
                   </tr>
                 ))}
               </tbody>
