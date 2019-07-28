@@ -169,7 +169,7 @@ export default class Recipe extends Component {
         </Row>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
-            <Table striped bordered hover>
+            <Table striped bordered>
               <thead>
                 <tr>
                   <th>Flavor</th>
