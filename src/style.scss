@@ -5,6 +5,7 @@ $lighter-blue: #d3e3fc;
 $light-blue: #b1cefd;
 $blue: #77a6f7;
 $teal: #00887a;
+$baby-blue: #00bad3;
 $lighter-red: #ffccbc;
 $shadow-grey: #777;
 
@@ -311,7 +312,7 @@ input {
       width: 100%;
       height: 100%;
       transform: translateX(-100%);
-      background: $blue;
+      background: $baby-blue;
       transition: none;
     }
   }
@@ -325,7 +326,7 @@ input {
       width: 100%;
       height: 100%;
       transform: translateX(-100%);
-      background: $blue;
+      background: $baby-blue;
       transition: none;
     }
   }
@@ -338,13 +339,13 @@ input {
     width: 100%;
     height: 100%;
     transform: translateX(-100%);
-    background: $blue;
+    background: $baby-blue;
     transition: transform 0.2s ease-in-out;
   }
 
   &:hover,
   &:focus {
-    border: 1px solid $teal;
+    border: 1px solid $black;
     background-color: $teal;
   }
 
