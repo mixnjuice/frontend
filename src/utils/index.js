@@ -1,3 +1,4 @@
+import dayjs from 'dayjs';
 import React, { createElement } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
@@ -50,17 +51,49 @@ export const withMemoryRouter = (
  * @param {object} endpoint Object with `url` and optional `params` object
  */
 export const buildUrl = endpoint => {
+  // this is defined by webpack.DefinePlugin
+  const baseUrl = API_URL;
   const { url, params } = endpoint;
 
   if (!params) {
-    return url;
+    return `${baseUrl}${url}`;
   }
 
-  let builtUrl = url;
+  return Object.entries(params).reduce((resultUrl, entry) => {
+    const [key, value] = entry;
 
-  for (const [key, value] of Object.entries(params)) {
-    builtUrl = builtUrl.replace(`{${key}}`, value);
+    return resultUrl.replace(`{${key}}`, value);
+  }, `${baseUrl}${url}`);
+};
+
+export const getInitialState = () => {
+  try {
+    const [accessToken, expiration] = [
+      localStorage.getItem('accessToken'),
+      localStorage.getItem('expiration')
+    ];
+
+    if (!accessToken) {
+      return {};
+    }
+
+    const expirationDate = dayjs(JSON.parse(expiration));
+
+    if (!expirationDate.isValid() || expirationDate.isBefore(dayjs())) {
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('expiration');
+      return {};
+    }
+
+    return {
+      application: {
+        authorization: {
+          accessToken: JSON.parse(accessToken),
+          expiration: expirationDate
+        }
+      }
+    };
+  } catch {
+    return {};
   }
-
-  return builtUrl;
 };

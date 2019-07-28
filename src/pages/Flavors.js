@@ -1,5 +1,5 @@
+import { Helmet } from 'react-helmet';
 import React, { Component } from 'react';
-
 import { Container } from 'react-bootstrap';
 
 import FlavorData from '../data/flavors.json';
@@ -15,8 +15,6 @@ export default class Flavors extends Component {
       data: FlavorData
     };
   }
-
-  componentDidMount() {}
 
   handleUserInput(e) {
     const { name, value } = e.target;
@@ -35,9 +33,12 @@ export default class Flavors extends Component {
   }
 
   render() {
+    const { data } = this.state;
+
     return (
       <Container>
-        {this.state.data.map((flavor, index) => (
+        <Helmet title="Flavors" />
+        {data.map((flavor, index) => (
           <div key={index}>
             {flavor.vendor.abbreviation} {flavor.name}
           </div>

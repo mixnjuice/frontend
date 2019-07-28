@@ -8,12 +8,16 @@ module.exports = {
     jest: true,
     node: true
   },
+  globals: {
+    API_URL: 'readonly'
+  },
   plugins: ['import', 'react', 'prettier', 'jest', 'jsx-a11y'],
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:prettier/recommended',
     'plugin:jsx-a11y/recommended',
+    'plugin:jest/recommended',
     'plugin:import/errors',
     'prettier',
     'prettier/react'

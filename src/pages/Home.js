@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet';
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
@@ -10,6 +11,7 @@ export default class Home extends Component {
   render() {
     return (
       <Container>
+        <Helmet title="Home" />
         <Row className="text-center">
           <Col>
             <h1>Welcome to MixNJuice!</h1>

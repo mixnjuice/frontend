@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           name: update-npm
-          command: 'sudo npm install -g npm@latest'
+          command: 'sudo npm install -g npm@latest codecov'
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
@@ -24,7 +24,7 @@ jobs:
             - ./node_modules
       - run:
           name: test
-          command: npm test
+          command: 'npm test && codecov'
   notify_success:
     docker:
       - image: byrnedo/alpine-curl:latest

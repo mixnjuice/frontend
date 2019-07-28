@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-
+import React, { Component } from 'react';
 import {
   Container,
   Row,
@@ -16,6 +15,7 @@ export default class Profile extends Component {
   render() {
     return (
       <Container>
+        <Helmet title="Your Profile" />
         <Row className="text-center">
           <Col>
             <p>
