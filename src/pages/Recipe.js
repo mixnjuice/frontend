@@ -89,7 +89,7 @@ export default class Recipe extends Component {
     for (let i = 0; i < ratingNum; i++) {
       buttons.push(
         <Button
-          className="rating-button"
+          className="rating-button button--recipe"
           key={i + 1}
           onClick={() => this.handleRatingClick(i + 1)}
         >
@@ -104,7 +104,7 @@ export default class Recipe extends Component {
     for (let a = ratingNum; a < 5; a++) {
       buttons.push(
         <Button
-          className="rating-button"
+          className="rating-button button--recipe"
           key={a + 1}
           onClick={() => this.handleRatingClick(a + 1)}
         >
@@ -133,14 +133,14 @@ export default class Recipe extends Component {
             )}
           </Alert>
           <Col xs="auto">
-            <Button className="button-animation">
+            <Button className="button-animation button--recipe">
               <span>Make this recipe</span>
             </Button>
           </Col>
           <Col xs="auto">
             <Button
               onClick={this.handleFavoriteClick}
-              className="button--favorite"
+              className="button--favorite button--recipe"
             >
               <span>
                 <FontAwesomeIcon icon={this.state.favoriteIcon} />
