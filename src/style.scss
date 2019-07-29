@@ -468,5 +468,6 @@ h1.recipeTitle {
   &:focus {
     text-decoration: none;
     color: $blue;
+    background-color: $lightest-blue;
   }
 }
