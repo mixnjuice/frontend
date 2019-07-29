@@ -248,6 +248,21 @@ export default class Recipe extends Component {
         <Row>
           <Col lg={{ span: 8, offset: 2 }} xs={{ span: 12 }}>
             <Table striped bordered>
+              <caption className="text-center">
+                {this.state.maxvg ? (
+                  <span>Max VG |&nbsp;</span>
+                ) : (
+                  <span>
+                    {this.state.pg}% PG / {this.state.vg}% VG |&nbsp;
+                  </span>
+                )}
+                {this.state.shakeNVape ? (
+                  <span>Shake & Vape |&nbsp;</span>
+                ) : (
+                  <span>Steep for {this.state.steepTime} days |&nbsp;</span>
+                )}
+                <span>Flavor total: {this.state.flavorTotal}%</span>
+              </caption>
               <thead>
                 <tr>
                   <th>Flavor</th>
@@ -275,25 +290,6 @@ export default class Recipe extends Component {
                 ))}
               </tbody>
             </Table>
-          </Col>
-        </Row>
-        <Row>
-          <Col lg={{ span: 6, offset: 3 }} xs={{ span: 12 }}>
-            <p>
-              {this.state.maxvg ? (
-                <span>Max VG |&nbsp;</span>
-              ) : (
-                <span>
-                  {this.state.pg}% PG / {this.state.vg}% VG |&nbsp;
-                </span>
-              )}
-              {this.state.shakeNVape ? (
-                <span>Shake & Vape |&nbsp;</span>
-              ) : (
-                <span>Steep for {this.state.steepTime} days |&nbsp;</span>
-              )}
-              <span>Flavor total: {this.state.flavorTotal}%</span>
-            </p>
           </Col>
         </Row>
         <Row>
