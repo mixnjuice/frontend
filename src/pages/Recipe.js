@@ -298,6 +298,7 @@ export default class Recipe extends Component {
         </Row>
         <Row>
           <Col lg={{ span: 6, offset: 3 }} xs={{ span: 12 }}>
+            <h3>Tags:</h3>
             {this.state.tags}
           </Col>
         </Row>
