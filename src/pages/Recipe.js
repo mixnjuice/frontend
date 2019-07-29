@@ -90,6 +90,16 @@ export default class Recipe extends Component {
       recipe.notes = newNotes;
     }
 
+    const newTags = recipe.tags.map((tag, i) => {
+      return (
+        <a className="link--tags" key={i} href="/">
+          {tag}
+        </a>
+      );
+    });
+
+    recipe.tags = newTags;
+
     this.setState(recipe);
   }
 
@@ -284,6 +294,11 @@ export default class Recipe extends Component {
               )}
               <span>Flavor total: {this.state.flavorTotal}%</span>
             </p>
+          </Col>
+        </Row>
+        <Row>
+          <Col lg={{ span: 6, offset: 3 }} xs={{ span: 12 }}>
+            {this.state.tags}
           </Col>
         </Row>
       </Container>
