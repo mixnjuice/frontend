@@ -81,6 +81,14 @@ export default class Recipe extends Component {
       recipe.flavorTotal += flavor.percent;
     });
 
+    if (recipe.notes) {
+      const newNotes = recipe.notes.split('\n').map((line, i) => {
+        return <p key={i}>{line}</p>;
+      });
+
+      recipe.notes = newNotes;
+    }
+
     this.setState(recipe);
     this.compareWithStash();
   }
