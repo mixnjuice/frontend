@@ -37,6 +37,7 @@ export default class Recipe extends Component {
 
   componentDidMount() {
     this.findRecipe();
+    this.compareWithStash();
   }
 
   handleFavoriteClick() {
@@ -90,7 +91,6 @@ export default class Recipe extends Component {
     }
 
     this.setState(recipe);
-    this.compareWithStash();
   }
 
   compareWithStash() {
