@@ -293,7 +293,11 @@ export default class Recipe extends Component {
           </Col>
         </Row>
         <Row>
-          <Col lg={{ span: 6, offset: 3 }} xs={{ span: 12 }}>
+          <Col
+            lg={{ span: 6, offset: 3 }}
+            xs={{ span: 12 }}
+            className="d-flex flex-wrap"
+          >
             <h3>Tags:</h3>
             {this.state.tags}
           </Col>
