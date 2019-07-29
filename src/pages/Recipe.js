@@ -212,14 +212,14 @@ export default class Recipe extends Component {
               <Card.Header>{this.state.name}</Card.Header>
               <Card.Body>
                 <Row>
-                  <Col>
+                  <Col md={{ span: 5 }} xs={{ span: 12 }}>
                     <img
                       src="/media/card-test-1.jpg"
                       alt="card test"
-                      className="w-50"
+                      className="w-75"
                     />
                   </Col>
-                  <Col>
+                  <Col md={{ span: 7 }} xs={{ span: 12 }}>
                     <Card.Title>Notes</Card.Title>
                     <Card.Text>
                       {this.state.notes ? (
