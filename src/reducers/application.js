@@ -59,9 +59,10 @@ const requestToken = (emailAddress, password) => ({
   password
 });
 
-const requestTokenSuccess = (token, expiration) => ({
+const requestTokenSuccess = ({ token, expiration, userId }) => ({
   type: types.REQUEST_TOKEN_SUCCESS,
   expiration,
+  userId,
   token
 });
 
@@ -220,6 +221,9 @@ export const reducer = (state = initialState, action = {}) => {
           ...state.authorization,
           accessToken: action.token,
           expiration: action.expiration
+        },
+        user: {
+          id: action.userId
         }
       };
     case types.REQUEST_TOKEN_FAILURE:

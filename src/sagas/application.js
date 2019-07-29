@@ -34,9 +34,10 @@ function* requestTokenWorker({ emailAddress, password }) {
     if (result.success) {
       const {
         data: {
-          access_token: accessToken,
+          access_token: token,
           token_type: tokenType,
-          expires_in: expiresIn
+          expires_in: expiresIn,
+          userId
         }
       } = result.response;
 
@@ -46,7 +47,7 @@ function* requestTokenWorker({ emailAddress, password }) {
 
       const expiration = dayjs().add(expiresIn, 'seconds');
 
-      yield put(actions.requestTokenSuccess(accessToken, expiration));
+      yield put(actions.requestTokenSuccess({ token, expiration, userId }));
       yield put(
         actions.popToast({
           title: 'Logged in',

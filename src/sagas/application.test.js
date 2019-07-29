@@ -54,10 +54,10 @@ describe('application sagas', () => {
 
     expect(result.value).toEqual(
       put(
-        actions.requestTokenSuccess(
-          accessToken,
-          dayjs().add(expiresIn, 'second')
-        )
+        actions.requestTokenSuccess({
+          token: accessToken,
+          expiration: dayjs().add(expiresIn, 'second')
+        })
       )
     );
 
@@ -241,7 +241,9 @@ describe('application sagas', () => {
 
     const expiration = dayjs().add(expiresIn, 'seconds');
 
-    result = gen.next(actions.requestTokenSuccess(accessToken, expiration));
+    result = gen.next(
+      actions.requestTokenSuccess({ token: accessToken, expiration })
+    );
 
     expect(window.localStorage.setItem).toHaveBeenCalledTimes(2);
 
@@ -307,10 +309,10 @@ describe('application sagas', () => {
     );
 
     result = gen.next(
-      actions.requestTokenSuccess(
-        accessToken,
-        dayjs().add(expiresIn, 'seconds')
-      )
+      actions.requestTokenSuccess({
+        token: accessToken,
+        expiration: dayjs().add(expiresIn, 'seconds')
+      })
     );
 
     expect(result.value).toEqual(put(actions.requestCurrentUser()));
