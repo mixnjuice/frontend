@@ -36,8 +36,7 @@ function* requestTokenWorker({ emailAddress, password }) {
         data: {
           access_token: token,
           token_type: tokenType,
-          expires_in: expiresIn,
-          userId
+          expires_in: expiresIn
         }
       } = result.response;
 
@@ -47,7 +46,7 @@ function* requestTokenWorker({ emailAddress, password }) {
 
       const expiration = dayjs().add(expiresIn, 'seconds');
 
-      yield put(actions.requestTokenSuccess({ token, expiration, userId }));
+      yield put(actions.requestTokenSuccess({ token, expiration }));
       yield put(
         actions.popToast({
           title: 'Logged in',
@@ -78,18 +77,22 @@ function* requestTokenWorker({ emailAddress, password }) {
 function* requestCurrentUserWorker() {
   try {
     const endpoint = {
-      url: '/api/user/current',
+      url: '/user/current',
       method: 'GET'
     };
     const result = yield call(request.execute, { endpoint });
 
     // update user in state or throw an error
     if (result.success) {
-      yield put(actions.requestCurrentUserSuccess(result.data));
+      const {
+        response: { data }
+      } = result;
+
+      yield put(actions.requestCurrentUserSuccess(data));
     } else if (result.error) {
       throw result.error;
     } else {
-      throw new Error('Request failed for an unspecified reason!');
+      throw new Error('Failed to get current user!');
     }
   } catch (error) {
     const { message } = error;

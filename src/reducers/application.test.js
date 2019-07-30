@@ -56,27 +56,20 @@ describe('application reducer', () => {
   });
 
   it('has REQUEST_TOKEN_SUCCESS action', () => {
-    const userId = user.id;
-
-    expect(actions.requestTokenSuccess({ token, expiration, userId })).toEqual({
+    expect(actions.requestTokenSuccess({ token, expiration })).toEqual({
       type: types.REQUEST_TOKEN_SUCCESS,
       expiration,
-      userId,
       token
     });
   });
 
   it('reduces REQUEST_TOKEN_SUCCESS action', () => {
-    const userId = user.id;
-    const action = actions.requestTokenSuccess({ token, expiration, userId });
+    const action = actions.requestTokenSuccess({ token, expiration });
 
     expect(reducer({}, action)).toEqual({
       authorization: {
         accessToken: token,
         expiration
-      },
-      user: {
-        id: userId
       }
     });
   });

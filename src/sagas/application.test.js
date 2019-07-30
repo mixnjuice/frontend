@@ -17,7 +17,7 @@ describe('application sagas', () => {
   const emailAddress = 'testing@example.org';
   const password = 'test';
   const currentUserEndpoint = {
-    url: '/api/user/current',
+    url: '/user/current',
     method: 'GET'
   };
   const tokenEndpoint = {
@@ -112,7 +112,7 @@ describe('application sagas', () => {
     );
   });
 
-  it('handles expected error in requestTokenWorker', () => {
+  it('handles request failure in requestTokenWorker', () => {
     const error = new Error('Something went wrong.');
     const gen = workers.requestTokenWorker({ emailAddress, password });
 
@@ -163,13 +163,15 @@ describe('application sagas', () => {
 
     result = gen.next({
       success: true,
-      data: user
+      response: {
+        data: user
+      }
     });
 
     expect(result.value).toEqual(put(actions.requestCurrentUserSuccess(user)));
   });
 
-  it('handles expected error in requestCurrentUserWorker', () => {
+  it('handles request failure in requestCurrentUserWorker', () => {
     const error = new Error('An error occurred.');
     const gen = workers.requestCurrentUserWorker();
 
