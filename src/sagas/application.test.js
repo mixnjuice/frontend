@@ -3,7 +3,7 @@ import MockDate from 'mockdate';
 import { all, put, call, take, select, delay } from 'redux-saga/effects';
 
 import request from 'utils/request';
-import { isLoggedIn } from 'selectors/application';
+import { isLoggedIn, getUser } from 'selectors/application';
 import { actions, types } from 'reducers/application';
 import appSaga, { watchers, workers } from './application';
 
@@ -61,17 +61,6 @@ describe('application sagas', () => {
       )
     );
 
-    result = gen.next();
-
-    expect(result.value).toEqual(
-      put(
-        actions.popToast({
-          title: 'Logged in',
-          icon: 'check',
-          message: 'You have been authenticated.'
-        })
-      )
-    );
     MockDate.reset();
   });
 
@@ -257,6 +246,22 @@ describe('application sagas', () => {
       JSON.stringify(expiration.toISOString())
     ]);
 
+    expect(result.value).toEqual(
+      put(
+        actions.popToast({
+          title: 'Logged in',
+          icon: 'check',
+          message: 'You have been authenticated.'
+        })
+      )
+    );
+
+    result = gen.next();
+
+    expect(result.value).toEqual(select(getUser));
+
+    result = gen.next(null);
+
     expect(result.value).toEqual(put(actions.requestCurrentUser()));
 
     result = gen.next();
@@ -270,8 +275,10 @@ describe('application sagas', () => {
 
     result = gen.next(actions.requestCurrentUserSuccess(user));
 
-    expect(result.value).toEqual(put(actions.loginUserSuccess(user)));
+    expect(result.value).toEqual(put(actions.loginUserSuccess()));
   });
+
+  it('exits loginUserWorker early if current user in store', () => {});
 
   it('exits loginUserWorker early if logged in', () => {
     const gen = workers.loginUserWorker({ emailAddress, password });
@@ -281,6 +288,22 @@ describe('application sagas', () => {
     expect(result.value).toEqual(select(isLoggedIn));
 
     result = gen.next(true);
+
+    expect(result.value).toEqual(
+      put(
+        actions.popToast({
+          title: 'Logged in',
+          icon: 'check',
+          message: 'You have been authenticated.'
+        })
+      )
+    );
+
+    result = gen.next();
+
+    expect(result.value).toEqual(select(getUser));
+
+    result = gen.next(user);
 
     expect(result.value).toEqual(put(actions.loginUserSuccess()));
 
@@ -316,6 +339,22 @@ describe('application sagas', () => {
         expiration: dayjs().add(expiresIn, 'seconds')
       })
     );
+
+    expect(result.value).toEqual(
+      put(
+        actions.popToast({
+          title: 'Logged in',
+          icon: 'check',
+          message: 'You have been authenticated.'
+        })
+      )
+    );
+
+    result = gen.next();
+
+    expect(result.value).toEqual(select(getUser));
+
+    result = gen.next(null);
 
     expect(result.value).toEqual(put(actions.requestCurrentUser()));
 
