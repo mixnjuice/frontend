@@ -12,7 +12,7 @@ import {
 } from 'redux-saga/effects';
 
 import request from 'utils/request';
-import { isLoggedIn } from 'selectors/application';
+import { isLoggedIn, getUser } from 'selectors/application';
 import { actions, types } from 'reducers/application';
 
 // snake_cased variables here come from RFC 6749
@@ -47,13 +47,6 @@ function* requestTokenWorker({ emailAddress, password }) {
       const expiration = dayjs().add(expiresIn, 'seconds');
 
       yield put(actions.requestTokenSuccess({ token, expiration }));
-      yield put(
-        actions.popToast({
-          title: 'Logged in',
-          icon: 'check',
-          message: 'You have been authenticated.'
-        })
-      );
     } else if (result.error) {
       throw result.error;
     } else {
@@ -113,48 +106,58 @@ function* loginUserWorker({ emailAddress, password }) {
     // first, check to see if we are already logged in
     const loggedIn = yield select(isLoggedIn);
 
-    if (loggedIn) {
-      return yield put(actions.loginUserSuccess());
+    if (!loggedIn) {
+      // obtain a bearer token
+      // then, obtain current user information
+      // use putResolve because it is blocking
+      yield put(actions.requestToken(emailAddress, password));
+      const tokenResult = yield take([
+        types.REQUEST_TOKEN_SUCCESS,
+        types.REQUEST_TOKEN_FAILURE
+      ]);
+
+      if (tokenResult.type === types.REQUEST_TOKEN_FAILURE) {
+        throw new Error('Failed to log in!');
+      }
+
+      const { token, expiration } = tokenResult;
+
+      localStorage.setItem('accessToken', JSON.stringify(token));
+      localStorage.setItem(
+        'expiration',
+        JSON.stringify(expiration.toISOString())
+      );
     }
 
-    // obtain a bearer token
-    // then, obtain current user information
-    // use putResolve because it is blocking
-    yield put(actions.requestToken(emailAddress, password));
-    const tokenResult = yield take([
-      types.REQUEST_TOKEN_SUCCESS,
-      types.REQUEST_TOKEN_FAILURE
-    ]);
-
-    if (tokenResult.type === types.REQUEST_TOKEN_FAILURE) {
-      throw new Error('Failed to log in!');
-    }
-
-    const { token, expiration } = tokenResult;
-
-    localStorage.setItem('accessToken', JSON.stringify(token));
-    localStorage.setItem(
-      'expiration',
-      JSON.stringify(expiration.toISOString())
+    yield put(
+      actions.popToast({
+        title: 'Logged in',
+        icon: 'check',
+        message: 'You have been authenticated.'
+      })
     );
 
-    yield put(actions.requestCurrentUser());
-    const currentUserResult = yield take([
-      types.REQUEST_CURRENT_USER_SUCCESS,
-      types.REQUEST_CURRENT_USER_FAILURE
-    ]);
-
-    if (currentUserResult.type === types.REQUEST_CURRENT_USER_FAILURE) {
-      throw new Error('Failed to fetch current user!');
-    }
-
-    const { user } = currentUserResult;
+    let user = yield select(getUser);
 
     if (!user) {
-      throw new Error('Got invalid response to current user request!');
+      yield put(actions.requestCurrentUser());
+      const currentUserResult = yield take([
+        types.REQUEST_CURRENT_USER_SUCCESS,
+        types.REQUEST_CURRENT_USER_FAILURE
+      ]);
+
+      if (currentUserResult.type === types.REQUEST_CURRENT_USER_FAILURE) {
+        throw new Error('Failed to fetch current user!');
+      }
+
+      user = currentUserResult.user;
+
+      if (!user) {
+        throw new Error('Got invalid response to current user request!');
+      }
     }
 
-    yield put(actions.loginUserSuccess(user));
+    yield put(actions.loginUserSuccess());
   } catch (error) {
     const { message } = error;
 
