@@ -5,7 +5,9 @@ $lighter-blue: #d3e3fc;
 $light-blue: #b1cefd;
 $blue: #77a6f7;
 $teal: #00887a;
+$baby-blue: #00bad3;
 $lighter-red: #ffccbc;
+$shadow-grey: #777;
 
 // Changes the font site-wide
 * {
@@ -81,7 +83,12 @@ hr {
 
 // Gradient background for the navigation container
 .navigation-container {
-  background: linear-gradient(180deg, $light-blue 0%, $white 100%);
+  background: $lighter-blue;
+  height: 10%;
+  margin: 1em;
+  border: 2px solid $teal;
+  border-radius: 20px;
+  box-shadow: 8px 8px 20px $shadow-grey;
 }
 
 // On screen sizes below ~1200px width, the nav links look a little weird by
@@ -111,13 +118,22 @@ hr {
   & .dropdown-item.active,
   & .dropdown-item:active {
     background-color: inherit;
+    font-weight: 900;
+    color: $teal;
   }
 }
 
 // Styling for nav "brand" (MixNJuice "logo")
 .navbar-brand {
   font-family: "Architects Daughter", cursive;
-  font-size: 4em;
+  font-size: 3em;
+}
+
+// Centering nav contents for phone screens
+@media (max-width: 700px) {
+  .navbar {
+    justify-content: center;
+  }
 }
 
 // Styling for checkboxes
@@ -172,18 +188,18 @@ hr {
 }
 
 // Card titles
-div.h5 {
+.h5 {
   font-size: 1.1em;
   font-weight: 900;
 }
 
 // Card bodies
-p.card-text {
+.card-text {
   font-size: 0.9em;
 }
 
 // Card headers
-div.card-header {
+.card-header {
   font-size: 1.4em;
   font-weight: 900;
 }
@@ -194,13 +210,13 @@ input {
 }
 
 // Style for file inputs
-input[type="file"] {
+.custom-file-input[type="file"] {
   border: 1px solid $black;
   border-radius: 0.25rem;
   padding: 5px;
 }
 
-h1.recipeTitle {
+.recipeTitle {
   font-size: 3em;
 }
 
@@ -215,10 +231,12 @@ h1.recipeTitle {
 
 // Link animations in the header links
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
-.navbar-nav .nav-link.borderLeftRight {
+.navbar-nav .nav-link.nav--link-custom {
   display: inline-block;
+  text-align: center;
   position: relative;
   color: $black;
+  transition: 0.5s;
 
   &:hover,
   &:focus {
@@ -226,22 +244,8 @@ h1.recipeTitle {
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
-    &::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      border-bottom: 1px solid $teal;
-      color: $teal;
-      transform-origin: bottom right;
-      transition: none;
-    }
-  }
+    transition: none;
 
-  @media screen and (prefers-reduced-motion: reduce) {
     &::after {
       content: "";
       position: absolute;
@@ -308,7 +312,7 @@ h1.recipeTitle {
       width: 100%;
       height: 100%;
       transform: translateX(-100%);
-      background: $blue;
+      background: $baby-blue;
       transition: none;
     }
   }
@@ -322,7 +326,7 @@ h1.recipeTitle {
       width: 100%;
       height: 100%;
       transform: translateX(-100%);
-      background: $blue;
+      background: $baby-blue;
       transition: none;
     }
   }
@@ -335,13 +339,13 @@ h1.recipeTitle {
     width: 100%;
     height: 100%;
     transform: translateX(-100%);
-    background: $blue;
+    background: $baby-blue;
     transition: transform 0.2s ease-in-out;
   }
 
   &:hover,
   &:focus {
-    border: 1px solid $teal;
+    border: 1px solid $black;
     background-color: $teal;
   }
 

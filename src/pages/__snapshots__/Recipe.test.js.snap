@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Recipe /> renders correctly 1`] = `
+<div
+  className="text-center container"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col-md-2 offset-md-3"
+    >
+      <img
+        alt="card test"
+        className="w-100 img-thumbnail"
+        src="/media/card-test-1.jpg"
+      />
+    </div>
+    <div
+      className="col-md-4"
+    >
+      <h1
+        className="recipeTitle"
+      >
+        Thanks, Obama
+      </h1>
+      <h2>
+        Created by
+         
+        <a
+          href="/user?id=5420"
+        >
+          JosefBud
+        </a>
+      </h2>
+      <p>
+        on 
+        March 20 2019, 16:39:00
+      </p>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col-md-6 offset-md-3"
+    >
+      <table
+        className="table table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr>
+            <th>
+              Flavor
+            </th>
+            <th>
+              Percent
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a
+                href="/flavor?id=1"
+              >
+                FW
+                 
+                Blue Raspberry
+              </a>
+            </td>
+            <td>
+              3.0
+              %
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="/flavor?id=2"
+              >
+                TFA
+                 
+                Cherry Extract
+              </a>
+            </td>
+            <td>
+              1.5
+              %
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="/flavor?id=3"
+              >
+                CAP
+                 
+                Lemon Lime
+              </a>
+            </td>
+            <td>
+              4.0
+              %
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                href="/flavor?id=4"
+              >
+                CAP
+                 
+                Super Sweet
+              </a>
+            </td>
+            <td>
+              0.5
+              %
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <h3>
+        30
+        % PG / 
+        70
+        % VG
+      </h3>
+      <h3>
+        Shake & Vape
+      </h3>
+      <h3>
+        Flavor total: 
+        9
+        %
+      </h3>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <h2>
+        Notes
+      </h2>
+      <p>
+        IMPORTANT: CAP Lemon Lime's gravity (g per ml) by default is way above what it should be. If you mix by weight, mix CAP Lemon Lime as 1g = 1ml.
+ 
+ CAP Super Sweet is optional. 
+ 
+ VapeWild doesn't add cooling, but 2 drops per 30ml of WS-23 works well if you're into that.
+ 
+ No steep required, shake and vape!
+      </p>
+    </div>
+  </div>
+</div>
+`;
