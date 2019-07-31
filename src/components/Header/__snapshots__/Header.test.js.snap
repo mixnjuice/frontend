@@ -70,7 +70,7 @@ exports[`<Header /> renders correctly 1`] = `
             </a>
             <a
               aria-current={null}
-              className="borderLeftRight px-3 nav-link"
+              className="nav--link-custom px-3 nav-link"
               data-rb-event-key={null}
               disabled={false}
               href="/recipe"
@@ -80,7 +80,7 @@ exports[`<Header /> renders correctly 1`] = `
             </a>
             <a
               aria-current={null}
-              className="borderLeftRight px-3 nav-link"
+              className="nav--link-custom px-3 nav-link"
               data-rb-event-key={null}
               disabled={false}
               href="/flavors"
