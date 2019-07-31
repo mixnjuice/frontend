@@ -124,14 +124,13 @@ describe('application reducer', () => {
   });
 
   it('has LOGIN_USER_SUCCESS action', () => {
-    expect(actions.loginUserSuccess(user)).toEqual({
-      type: types.LOGIN_USER_SUCCESS,
-      user
+    expect(actions.loginUserSuccess()).toEqual({
+      type: types.LOGIN_USER_SUCCESS
     });
   });
 
   it('reduces LOGIN_USER_SUCCESS action', () => {
-    const action = actions.loginUserSuccess({ id: 123, name: 'Dave' });
+    const action = actions.loginUserSuccess();
 
     expect(reducer({}, action)).toEqual({
       loggingIn: false

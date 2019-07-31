@@ -84,9 +84,8 @@ const requestCurrentUserFailure = error => ({
   error
 });
 
-const loginUserSuccess = user => ({
-  type: types.LOGIN_USER_SUCCESS,
-  user
+const loginUserSuccess = () => ({
+  type: types.LOGIN_USER_SUCCESS
 });
 
 const loginUserFailure = error => ({
