@@ -7,6 +7,10 @@ import { Container, Row, Col, Table } from 'react-bootstrap';
 import recipes from '../data/recipes.json';
 
 export default class Recipe extends Component {
+  static propTypes = {
+    location: PropTypes.object
+  };
+
   constructor(...args) {
     super(...args);
 
@@ -106,7 +110,3 @@ export default class Recipe extends Component {
     );
   }
 }
-
-Recipe.propTypes = {
-  location: PropTypes.object
-};
