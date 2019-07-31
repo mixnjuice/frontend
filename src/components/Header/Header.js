@@ -43,10 +43,10 @@ export default class Header extends Component {
               <Navbar.Collapse>
                 <Nav>
                   {this.renderNavItem('/', 'Home')}
+                  {this.renderNavItem('/recipes', 'Recipes')}
                   {this.renderNavItem('/calculator', 'Calculator')}
                   {this.renderNavItem('/recipe', 'Recipes')}
                   {this.renderNavItem('/flavors', 'Flavors')}
-                  {this.renderNavItem('/recipes', 'Recipes')}
                   <NavDropdown title="User">
                     {this.renderNavDropdownItem('/user/profile', 'Profile')}
                     {this.renderNavDropdownItem('/user/recipes', 'Recipes')}
