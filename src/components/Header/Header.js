@@ -40,7 +40,7 @@ export default class Header extends Component {
             <Navbar expand="lg">
               <Navbar.Brand>MixNJuice</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
+              <Navbar.Collapse>
                 <Nav>
                   {this.renderNavItem('/', 'Home')}
                   {this.renderNavItem('/calculator', 'Calculator')}
