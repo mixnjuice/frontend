@@ -5,12 +5,12 @@ export const getApplication = state => state.application;
 
 export const isLoggingIn = createSelector(
   getApplication,
-  application => application.loggingIn
+  application => Boolean(application.loggingIn)
 );
 
 export const isLoggingOut = createSelector(
   getApplication,
-  application => application.loggingOut
+  application => Boolean(application.loggingOut)
 );
 
 export const getUser = createSelector(

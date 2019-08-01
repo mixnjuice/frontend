@@ -59,7 +59,7 @@ const requestToken = (emailAddress, password) => ({
   password
 });
 
-const requestTokenSuccess = (token, expiration) => ({
+const requestTokenSuccess = ({ token, expiration }) => ({
   type: types.REQUEST_TOKEN_SUCCESS,
   expiration,
   token
@@ -84,9 +84,8 @@ const requestCurrentUserFailure = error => ({
   error
 });
 
-const loginUserSuccess = user => ({
-  type: types.LOGIN_USER_SUCCESS,
-  user
+const loginUserSuccess = () => ({
+  type: types.LOGIN_USER_SUCCESS
 });
 
 const loginUserFailure = error => ({

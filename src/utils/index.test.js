@@ -5,6 +5,7 @@ import {
   buildUrl,
   getInitialState
 } from './index';
+import { initialState } from 'reducers';
 
 describe('utilities', () => {
   it('can buildActions', () => {
@@ -95,7 +96,7 @@ describe('utilities', () => {
         }
       });
 
-      expect(getInitialState()).toEqual({
+      expect(getInitialState()).toMatchObject({
         application: {
           authorization: {
             accessToken,
@@ -108,7 +109,7 @@ describe('utilities', () => {
     it('returns an empty object if no data found', () => {
       localStorage.getItem.mockReturnValue(null);
 
-      expect(getInitialState()).toEqual({});
+      expect(getInitialState()).toEqual(initialState);
     });
 
     it('returns an empty object if token is expired', () => {
@@ -122,13 +123,13 @@ describe('utilities', () => {
         }
       });
 
-      expect(getInitialState()).toEqual({});
+      expect(getInitialState()).toEqual(initialState);
     });
 
     it('returns an empty object if an error occurs', () => {
       localStorage.getItem.mockReturnValue('baddate');
 
-      expect(getInitialState()).toEqual({});
+      expect(getInitialState()).toEqual(initialState);
     });
   });
 });

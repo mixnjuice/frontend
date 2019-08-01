@@ -3,7 +3,7 @@ import MockDate from 'mockdate';
 import { all, put, call, take, select, delay } from 'redux-saga/effects';
 
 import request from 'utils/request';
-import { isLoggedIn } from 'selectors/application';
+import { isLoggedIn, getUser } from 'selectors/application';
 import { actions, types } from 'reducers/application';
 import appSaga, { watchers, workers } from './application';
 
@@ -17,7 +17,7 @@ describe('application sagas', () => {
   const emailAddress = 'testing@example.org';
   const password = 'test';
   const currentUserEndpoint = {
-    url: '/api/user/current',
+    url: '/user/current',
     method: 'GET'
   };
   const tokenEndpoint = {
@@ -54,24 +54,13 @@ describe('application sagas', () => {
 
     expect(result.value).toEqual(
       put(
-        actions.requestTokenSuccess(
-          accessToken,
-          dayjs().add(expiresIn, 'second')
-        )
-      )
-    );
-
-    result = gen.next();
-
-    expect(result.value).toEqual(
-      put(
-        actions.popToast({
-          title: 'Logged in',
-          icon: 'check',
-          message: 'You have been authenticated.'
+        actions.requestTokenSuccess({
+          token: accessToken,
+          expiration: dayjs().add(expiresIn, 'second')
         })
       )
     );
+
     MockDate.reset();
   });
 
@@ -112,7 +101,7 @@ describe('application sagas', () => {
     );
   });
 
-  it('handles expected error in requestTokenWorker', () => {
+  it('handles request failure in requestTokenWorker', () => {
     const error = new Error('Something went wrong.');
     const gen = workers.requestTokenWorker({ emailAddress, password });
 
@@ -163,13 +152,15 @@ describe('application sagas', () => {
 
     result = gen.next({
       success: true,
-      data: user
+      response: {
+        data: user
+      }
     });
 
     expect(result.value).toEqual(put(actions.requestCurrentUserSuccess(user)));
   });
 
-  it('handles expected error in requestCurrentUserWorker', () => {
+  it('handles request failure in requestCurrentUserWorker', () => {
     const error = new Error('An error occurred.');
     const gen = workers.requestCurrentUserWorker();
 
@@ -241,7 +232,9 @@ describe('application sagas', () => {
 
     const expiration = dayjs().add(expiresIn, 'seconds');
 
-    result = gen.next(actions.requestTokenSuccess(accessToken, expiration));
+    result = gen.next(
+      actions.requestTokenSuccess({ token: accessToken, expiration })
+    );
 
     expect(window.localStorage.setItem).toHaveBeenCalledTimes(2);
 
@@ -252,6 +245,22 @@ describe('application sagas', () => {
       'expiration',
       JSON.stringify(expiration.toISOString())
     ]);
+
+    expect(result.value).toEqual(
+      put(
+        actions.popToast({
+          title: 'Logged in',
+          icon: 'check',
+          message: 'You have been authenticated.'
+        })
+      )
+    );
+
+    result = gen.next();
+
+    expect(result.value).toEqual(select(getUser));
+
+    result = gen.next(null);
 
     expect(result.value).toEqual(put(actions.requestCurrentUser()));
 
@@ -266,8 +275,10 @@ describe('application sagas', () => {
 
     result = gen.next(actions.requestCurrentUserSuccess(user));
 
-    expect(result.value).toEqual(put(actions.loginUserSuccess(user)));
+    expect(result.value).toEqual(put(actions.loginUserSuccess()));
   });
+
+  it('exits loginUserWorker early if current user in store', () => {});
 
   it('exits loginUserWorker early if logged in', () => {
     const gen = workers.loginUserWorker({ emailAddress, password });
@@ -277,6 +288,22 @@ describe('application sagas', () => {
     expect(result.value).toEqual(select(isLoggedIn));
 
     result = gen.next(true);
+
+    expect(result.value).toEqual(
+      put(
+        actions.popToast({
+          title: 'Logged in',
+          icon: 'check',
+          message: 'You have been authenticated.'
+        })
+      )
+    );
+
+    result = gen.next();
+
+    expect(result.value).toEqual(select(getUser));
+
+    result = gen.next(user);
 
     expect(result.value).toEqual(put(actions.loginUserSuccess()));
 
@@ -307,11 +334,27 @@ describe('application sagas', () => {
     );
 
     result = gen.next(
-      actions.requestTokenSuccess(
-        accessToken,
-        dayjs().add(expiresIn, 'seconds')
+      actions.requestTokenSuccess({
+        token: accessToken,
+        expiration: dayjs().add(expiresIn, 'seconds')
+      })
+    );
+
+    expect(result.value).toEqual(
+      put(
+        actions.popToast({
+          title: 'Logged in',
+          icon: 'check',
+          message: 'You have been authenticated.'
+        })
       )
     );
+
+    result = gen.next();
+
+    expect(result.value).toEqual(select(getUser));
+
+    result = gen.next(null);
 
     expect(result.value).toEqual(put(actions.requestCurrentUser()));
 
