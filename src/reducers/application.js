@@ -20,7 +20,10 @@ export const types = buildActions('application', [
   'LOGOUT_USER_FAILURE',
   'REGISTER_USER',
   'REGISTER_USER_SUCCESS',
-  'REGISTER_USER_FAILURE'
+  'REGISTER_USER_FAILURE',
+  'REQUEST_USERS',
+  'REQUEST_USERS_SUCCESS',
+  'REQUEST_USERS_FAILURE'
 ]);
 
 const initApp = () => ({
@@ -120,6 +123,20 @@ const registerUserFailure = error => ({
   error
 });
 
+const requestUsers = () => ({
+  type: types.REQUEST_USERS
+});
+
+const requestUsersSuccess = users => ({
+  type: types.REQUEST_USERS_SUCCESS,
+  users
+});
+
+const requestUsersFailure = error => ({
+  type: types.REQUEST_USERS_FAILURE,
+  error
+});
+
 export const actions = {
   initApp,
   loginUser,
@@ -140,7 +157,10 @@ export const actions = {
   logoutUserFailure,
   registerUser,
   registerUserSuccess,
-  registerUserFailure
+  registerUserFailure,
+  requestUsers,
+  requestUsersSuccess,
+  requestUsersFailure
 };
 
 export const initialState = {
@@ -158,7 +178,8 @@ export const initialState = {
     complete: false,
     error: null
   },
-  toasts: []
+  toasts: [],
+  users: []
 };
 
 export const reducer = (state = initialState, action = {}) => {
@@ -271,6 +292,16 @@ export const reducer = (state = initialState, action = {}) => {
           complete: true,
           error: action.error
         }
+      };
+    case types.REQUEST_USERS_SUCCESS:
+      return {
+        ...state,
+        users: action.users
+      };
+    case types.REQUEST_USERS_FAILURE:
+      return {
+        ...state,
+        error: action.error
       };
     default:
       return state;

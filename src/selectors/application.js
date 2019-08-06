@@ -57,3 +57,8 @@ export const getToasts = createSelector(
   getApplication,
   application => application.toasts
 );
+
+export const getUsers = createSelector(
+  getApplication,
+  application => application.users
+);

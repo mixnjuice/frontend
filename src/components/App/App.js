@@ -13,7 +13,7 @@ import Home from 'pages/Home';
 import Login from 'pages/Login';
 import NotFound from 'pages/NotFound';
 import Register from 'pages/Register';
-
+import Dashboard from 'pages/Dashboard';
 import Profile from 'pages/user/Profile';
 import UserRecipes from 'pages/user/Recipes';
 import Favorites from 'pages/user/Favorites';
@@ -66,6 +66,7 @@ export class App extends Component {
             component={ShoppingList}
           />
           <PrivateRoute exact path="/user/settings" component={UserSettings} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <Route component={NotFound} />
         </Switch>
       </Fragment>
