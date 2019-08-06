@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
 
 export class Home extends Component {
@@ -9,7 +10,12 @@ export class Home extends Component {
   }
 
   render() {
-    return <Container>Dashboard Home</Container>;
+    return (
+      <Container>
+        <Helmet title="Dashboard" />
+        Dashboard Home
+      </Container>
+    );
   }
 }
 
