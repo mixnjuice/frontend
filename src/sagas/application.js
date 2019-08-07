@@ -262,40 +262,6 @@ function* requestMigrationsWorker() {
   }
 }
 
-function* requestRolesWorker() {
-  try {
-    const endpoint = {
-      url: '/roles',
-      method: 'GET'
-    };
-    const result = yield call(request.execute, { endpoint });
-
-    // update roles in state or throw an error
-    if (result.success) {
-      const {
-        response: { data }
-      } = result;
-
-      yield put(actions.requestRolesSuccess(data));
-    } else if (result.error) {
-      throw result.error;
-    } else {
-      throw new Error('Failed to get roles!');
-    }
-  } catch (error) {
-    const { message } = error;
-
-    yield put(actions.requestRolesFailure(error));
-    yield put(
-      actions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
-  }
-}
-
 function* loginUserWatcher() {
   yield takeLatest(types.LOGIN_USER, loginUserWorker);
 }
@@ -320,18 +286,13 @@ function* requestMigrationsWatcher() {
   yield takeLatest(types.REQUEST_MIGRATIONS, requestMigrationsWorker);
 }
 
-function* requestRolesWatcher() {
-  yield takeLatest(types.REQUEST_ROLES, requestRolesWorker);
-}
-
 export const workers = {
   loginUserWorker,
   popToastWorker,
   registerUserWorker,
   requestTokenWorker,
   requestCurrentUserWorker,
-  requestMigrationsWorker,
-  requestRolesWorker
+  requestMigrationsWorker
 };
 
 export const watchers = {
@@ -340,8 +301,7 @@ export const watchers = {
   registerUserWatcher,
   requestTokenWatcher,
   requestCurrentUserWatcher,
-  requestMigrationsWatcher,
-  requestRolesWatcher
+  requestMigrationsWatcher
 };
 
 export default function* saga() {

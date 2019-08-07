@@ -62,8 +62,3 @@ export const getMigrations = createSelector(
   getApplication,
   application => application.migrations
 );
-
-export const getRoles = createSelector(
-  getApplication,
-  application => application.roles
-);

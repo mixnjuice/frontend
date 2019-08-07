@@ -23,10 +23,7 @@ export const types = buildActions('application', [
   'REGISTER_USER_FAILURE',
   'REQUEST_MIGRATIONS',
   'REQUEST_MIGRATIONS_SUCCESS',
-  'REQUEST_MIGRATIONS_FAILURE',
-  'REQUEST_ROLES',
-  'REQUEST_ROLES_SUCCESS',
-  'REQUEST_ROLES_FAILURE'
+  'REQUEST_MIGRATIONS_FAILURE'
 ]);
 
 const initApp = () => ({
@@ -140,20 +137,6 @@ const requestMigrationsFailure = error => ({
   error
 });
 
-const requestRoles = () => ({
-  type: types.REQUEST_ROLES
-});
-
-const requestRolesSuccess = roles => ({
-  type: types.REQUEST_ROLES_SUCCESS,
-  roles
-});
-
-const requestRolesFailure = error => ({
-  type: types.REQUEST_ROLES_FAILURE,
-  error
-});
-
 export const actions = {
   initApp,
   loginUser,
@@ -177,10 +160,7 @@ export const actions = {
   registerUserFailure,
   requestMigrations,
   requestMigrationsSuccess,
-  requestMigrationsFailure,
-  requestRoles,
-  requestRolesSuccess,
-  requestRolesFailure
+  requestMigrationsFailure
 };
 
 export const initialState = {
@@ -199,8 +179,7 @@ export const initialState = {
     error: null
   },
   toasts: [],
-  migrations: [],
-  roles: []
+  migrations: []
 };
 
 export const reducer = (state = initialState, action = {}) => {
@@ -320,16 +299,6 @@ export const reducer = (state = initialState, action = {}) => {
         migrations: action.migrations
       };
     case types.REQUEST_MIGRATIONS_FAILURE:
-      return {
-        ...state,
-        error: action.error
-      };
-    case types.REQUEST_ROLES_SUCCESS:
-      return {
-        ...state,
-        roles: action.roles
-      };
-    case types.REQUEST_ROLES_FAILURE:
       return {
         ...state,
         error: action.error

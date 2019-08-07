@@ -5,8 +5,8 @@ import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
 
-import { actions as appActions } from 'reducers/application';
-import { getRoles } from 'selectors/application';
+import { actions as rolesActions } from 'reducers/roles';
+import { getAllRoles } from 'selectors/roles';
 
 export class Roles extends Component {
   static propTypes = {
@@ -55,13 +55,13 @@ export class Roles extends Component {
 }
 
 const mapStateToProps = state => ({
-  roles: getRoles(state)
+  roles: getAllRoles(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
-      ...appActions
+      ...rolesActions
     },
     dispatch
   )

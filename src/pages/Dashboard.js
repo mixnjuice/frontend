@@ -6,8 +6,10 @@ import Selector from 'components/Dashboard/Selector';
 import { Accordion, Card, Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faBezierCurve,
   faClock,
   faDatabase,
+  faEyeDropper,
   faUsers,
   faUsersCog,
   faUserShield,
@@ -73,13 +75,13 @@ export class Dashboard extends Component {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="1">
                   <h3>
-                    <FontAwesomeIcon icon={faUsers} /> Ingredients
+                    <FontAwesomeIcon icon={faBezierCurve} /> Ingredients
                   </h3>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="1">
                   <Card.Body>
                     <div>
-                      <FontAwesomeIcon icon={faUsersCog} /> &nbsp;
+                      <FontAwesomeIcon icon={faEyeDropper} /> &nbsp;
                       <a
                         href="#flavors"
                         onClick={e => this.select('Flavors', e)}
