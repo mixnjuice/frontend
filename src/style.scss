@@ -45,7 +45,7 @@ hr {
   opacity: 0.5;
 }
 
-// When toggling certain elements off the screen (e.g. "no nicotine" in calculator)
+// When toggling certain elements off the screen (e.g. "no nicotine" in recipe editor)
 // it changes the width of the container and the width of the other elements around it
 // Switching the container to "fluid" didn't fix it, so this was unfortunately the best way I could
 // find to solve the issue; by fixing the container width for medium screens and up

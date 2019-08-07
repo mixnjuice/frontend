@@ -189,9 +189,9 @@ describe('<App />', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('renders calculator page', () => {
+  it('renders recipe editor page', () => {
     const RoutedApp = withMemoryRouter(ConnectedApp, {
-      initialEntries: ['/calculator']
+      initialEntries: ['/recipe/create']
     });
     const component = renderer.create(
       <Provider store={store}>

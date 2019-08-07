@@ -13,7 +13,7 @@ import {
 import FlavorData from '../data/flavors.json';
 import FlavorStash from '../data/flavorstash.json';
 
-export default class Calculator extends Component {
+export default class RecipeEditor extends Component {
   constructor(...args) {
     super(...args);
 
@@ -103,8 +103,8 @@ export default class Calculator extends Component {
 
     return (
       <Container className="justify-content-center align-items-center text-center">
-        <Helmet title="Calculator" />
-        <h1>Calculator</h1>
+        <Helmet title="Recipe Editor" />
+        <h1>Recipe Editor</h1>
         <Form
           noValidate
           validated={validated}
