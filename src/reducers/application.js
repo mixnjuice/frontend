@@ -21,9 +21,6 @@ export const types = buildActions('application', [
   'REGISTER_USER',
   'REGISTER_USER_SUCCESS',
   'REGISTER_USER_FAILURE',
-  'REQUEST_USERS',
-  'REQUEST_USERS_SUCCESS',
-  'REQUEST_USERS_FAILURE',
   'REQUEST_MIGRATIONS',
   'REQUEST_MIGRATIONS_SUCCESS',
   'REQUEST_MIGRATIONS_FAILURE',
@@ -132,20 +129,6 @@ const registerUserFailure = error => ({
   error
 });
 
-const requestUsers = () => ({
-  type: types.REQUEST_USERS
-});
-
-const requestUsersSuccess = users => ({
-  type: types.REQUEST_USERS_SUCCESS,
-  users
-});
-
-const requestUsersFailure = error => ({
-  type: types.REQUEST_USERS_FAILURE,
-  error
-});
-
 const requestMigrations = () => ({
   type: types.REQUEST_MIGRATIONS
 });
@@ -209,9 +192,6 @@ export const actions = {
   registerUser,
   registerUserSuccess,
   registerUserFailure,
-  requestUsers,
-  requestUsersSuccess,
-  requestUsersFailure,
   requestMigrations,
   requestMigrationsSuccess,
   requestMigrationsFailure,
@@ -239,7 +219,6 @@ export const initialState = {
     error: null
   },
   toasts: [],
-  users: [],
   migrations: [],
   roles: [],
   flavors: []
@@ -355,16 +334,6 @@ export const reducer = (state = initialState, action = {}) => {
           complete: true,
           error: action.error
         }
-      };
-    case types.REQUEST_USERS_SUCCESS:
-      return {
-        ...state,
-        users: action.users
-      };
-    case types.REQUEST_USERS_FAILURE:
-      return {
-        ...state,
-        error: action.error
       };
     case types.REQUEST_MIGRATIONS_SUCCESS:
       return {

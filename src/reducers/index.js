@@ -5,10 +5,14 @@ import {
   initialState as applicationState
 } from './application';
 
+import { reducer as users, initialState as usersState } from './users';
+
 export const initialState = {
-  application: applicationState
+  application: applicationState,
+  users: usersState
 };
 
 export default combineReducers({
-  application
+  application,
+  users
 });

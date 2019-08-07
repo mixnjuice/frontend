@@ -58,11 +58,6 @@ export const getToasts = createSelector(
   application => application.toasts
 );
 
-export const getUsers = createSelector(
-  getApplication,
-  application => application.users
-);
-
 export const getMigrations = createSelector(
   getApplication,
   application => application.migrations

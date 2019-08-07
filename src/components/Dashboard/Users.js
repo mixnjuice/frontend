@@ -6,8 +6,8 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
 
-import { actions as appActions } from 'reducers/application';
-import { getUsers } from 'selectors/application';
+import { actions as usersActions } from 'reducers/users';
+import { getAllUsers } from 'selectors/users';
 
 export class Users extends Component {
   static propTypes = {
@@ -58,13 +58,13 @@ export class Users extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: getUsers(state)
+  users: getAllUsers(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
-      ...appActions
+      ...usersActions
     },
     dispatch
   )

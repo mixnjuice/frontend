@@ -228,40 +228,6 @@ function* registerUserWorker({
   }
 }
 
-function* requestUsersWorker() {
-  try {
-    const endpoint = {
-      url: '/users',
-      method: 'GET'
-    };
-    const result = yield call(request.execute, { endpoint });
-
-    // update user in state or throw an error
-    if (result.success) {
-      const {
-        response: { data }
-      } = result;
-
-      yield put(actions.requestUsersSuccess(data));
-    } else if (result.error) {
-      throw result.error;
-    } else {
-      throw new Error('Failed to get users!');
-    }
-  } catch (error) {
-    const { message } = error;
-
-    yield put(actions.requestUsersFailure(error));
-    yield put(
-      actions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
-  }
-}
-
 function* requestMigrationsWorker() {
   try {
     const endpoint = {
@@ -384,10 +350,6 @@ function* registerUserWatcher() {
   yield takeLatest(types.REGISTER_USER, registerUserWorker);
 }
 
-function* requestUsersWatcher() {
-  yield takeLatest(types.REQUEST_USERS, requestUsersWorker);
-}
-
 function* requestMigrationsWatcher() {
   yield takeLatest(types.REQUEST_MIGRATIONS, requestMigrationsWorker);
 }
@@ -406,7 +368,6 @@ export const workers = {
   registerUserWorker,
   requestTokenWorker,
   requestCurrentUserWorker,
-  requestUsersWorker,
   requestMigrationsWorker,
   requestRolesWorker,
   requestFlavorsWorker
@@ -418,7 +379,6 @@ export const watchers = {
   registerUserWatcher,
   requestTokenWatcher,
   requestCurrentUserWatcher,
-  requestUsersWatcher,
   requestMigrationsWatcher,
   requestRolesWatcher,
   requestFlavorsWatcher
