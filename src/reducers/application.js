@@ -23,7 +23,16 @@ export const types = buildActions('application', [
   'REGISTER_USER_FAILURE',
   'REQUEST_USERS',
   'REQUEST_USERS_SUCCESS',
-  'REQUEST_USERS_FAILURE'
+  'REQUEST_USERS_FAILURE',
+  'REQUEST_MIGRATIONS',
+  'REQUEST_MIGRATIONS_SUCCESS',
+  'REQUEST_MIGRATIONS_FAILURE',
+  'REQUEST_ROLES',
+  'REQUEST_ROLES_SUCCESS',
+  'REQUEST_ROLES_FAILURE',
+  'REQUEST_FLAVORS',
+  'REQUEST_FLAVORS_SUCCESS',
+  'REQUEST_FLAVORS_FAILURE'
 ]);
 
 const initApp = () => ({
@@ -137,6 +146,48 @@ const requestUsersFailure = error => ({
   error
 });
 
+const requestMigrations = () => ({
+  type: types.REQUEST_MIGRATIONS
+});
+
+const requestMigrationsSuccess = migrations => ({
+  type: types.REQUEST_MIGRATIONS_SUCCESS,
+  migrations
+});
+
+const requestMigrationsFailure = error => ({
+  type: types.REQUEST_MIGRATIONS_FAILURE,
+  error
+});
+
+const requestRoles = () => ({
+  type: types.REQUEST_ROLES
+});
+
+const requestRolesSuccess = roles => ({
+  type: types.REQUEST_ROLES_SUCCESS,
+  roles
+});
+
+const requestRolesFailure = error => ({
+  type: types.REQUEST_ROLES_FAILURE,
+  error
+});
+
+const requestFlavors = () => ({
+  type: types.REQUEST_FLAVORS
+});
+
+const requestFlavorsSuccess = flavors => ({
+  type: types.REQUEST_FLAVORS_SUCCESS,
+  flavors
+});
+
+const requestFlavorsFailure = error => ({
+  type: types.REQUEST_FLAVORS_FAILURE,
+  error
+});
+
 export const actions = {
   initApp,
   loginUser,
@@ -160,7 +211,16 @@ export const actions = {
   registerUserFailure,
   requestUsers,
   requestUsersSuccess,
-  requestUsersFailure
+  requestUsersFailure,
+  requestMigrations,
+  requestMigrationsSuccess,
+  requestMigrationsFailure,
+  requestRoles,
+  requestRolesSuccess,
+  requestRolesFailure,
+  requestFlavors,
+  requestFlavorsSuccess,
+  requestFlavorsFailure
 };
 
 export const initialState = {
@@ -179,7 +239,10 @@ export const initialState = {
     error: null
   },
   toasts: [],
-  users: []
+  users: [],
+  migrations: [],
+  roles: [],
+  flavors: []
 };
 
 export const reducer = (state = initialState, action = {}) => {
@@ -299,6 +362,36 @@ export const reducer = (state = initialState, action = {}) => {
         users: action.users
       };
     case types.REQUEST_USERS_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      };
+    case types.REQUEST_MIGRATIONS_SUCCESS:
+      return {
+        ...state,
+        migrations: action.migrations
+      };
+    case types.REQUEST_MIGRATIONS_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      };
+    case types.REQUEST_ROLES_SUCCESS:
+      return {
+        ...state,
+        roles: action.roles
+      };
+    case types.REQUEST_ROLES_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      };
+    case types.REQUEST_FLAVORS_SUCCESS:
+      return {
+        ...state,
+        flavors: action.flavors
+      };
+    case types.REQUEST_FLAVORS_FAILURE:
       return {
         ...state,
         error: action.error

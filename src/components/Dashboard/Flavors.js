@@ -2,17 +2,16 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
 
 import { actions as appActions } from 'reducers/application';
-import { getUsers } from 'selectors/application';
+import { getFlavors } from 'selectors/application';
 
-export class Users extends Component {
+export class Flavors extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    users: PropTypes.array
+    flavors: PropTypes.array
   };
   constructor(props) {
     super(props);
@@ -21,32 +20,34 @@ export class Users extends Component {
   componentDidMount() {
     const { actions } = this.props;
 
-    actions.requestUsers();
+    actions.requestFlavors();
   }
 
   render() {
-    const { users } = this.props;
+    const { flavors } = this.props;
 
     return (
       <Fragment>
-        <Helmet title="Users - Dashboard" />
+        <Helmet title="Flavors - Dashboard" />
         <Table responsive striped bordered hover size="sm">
           <thead>
             <tr>
               <th>ID</th>
-              <th>Username</th>
-              <th>Options</th>
+              <th>Vendor</th>
+              <th>Name</th>
+              <th>Slug</th>
+              <th>Density</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => {
+            {flavors.map((flavor, index) => {
               return (
                 <tr key={index}>
-                  <td>{user.userId}</td>
-                  <td>
-                    <Link to="/user/profile">{user.name}</Link>
-                  </td>
-                  <td>options</td>
+                  <td>{flavor.id}</td>
+                  <td>{flavor.Vendor.name}</td>
+                  <td>{flavor.name}</td>
+                  <td>{flavor.slug}</td>
+                  <td>{flavor.density}</td>
                 </tr>
               );
             })}
@@ -58,7 +59,7 @@ export class Users extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: getUsers(state)
+  flavors: getFlavors(state)
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -73,4 +74,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Users);
+)(Flavors);

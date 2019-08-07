@@ -58,13 +58,13 @@ export class Dashboard extends Component {
                     <div>
                       <FontAwesomeIcon icon={faUsersCog} /> &nbsp;
                       <a href="#users" onClick={e => this.select('Users', e)}>
-                        Manage Users
+                        Users
                       </a>
                     </div>
                     <div>
                       <FontAwesomeIcon icon={faUserShield} /> &nbsp;
                       <a href="#roles" onClick={e => this.select('Roles', e)}>
-                        Manage Roles
+                        Roles
                       </a>
                     </div>
                   </Card.Body>
@@ -73,10 +73,30 @@ export class Dashboard extends Component {
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="1">
                   <h3>
-                    <FontAwesomeIcon icon={faDatabase} /> Database
+                    <FontAwesomeIcon icon={faUsers} /> Ingredients
                   </h3>
                 </Accordion.Toggle>
                 <Accordion.Collapse eventKey="1">
+                  <Card.Body>
+                    <div>
+                      <FontAwesomeIcon icon={faUsersCog} /> &nbsp;
+                      <a
+                        href="#flavors"
+                        onClick={e => this.select('Flavors', e)}
+                      >
+                        Flavors
+                      </a>
+                    </div>
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="2">
+                  <h3>
+                    <FontAwesomeIcon icon={faDatabase} /> Database
+                  </h3>
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="2">
                   <Card.Body>
                     <FontAwesomeIcon icon={faClock} /> &nbsp;
                     <a

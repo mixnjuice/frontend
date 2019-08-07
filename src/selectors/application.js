@@ -62,3 +62,18 @@ export const getUsers = createSelector(
   getApplication,
   application => application.users
 );
+
+export const getMigrations = createSelector(
+  getApplication,
+  application => application.migrations
+);
+
+export const getRoles = createSelector(
+  getApplication,
+  application => application.roles
+);
+
+export const getFlavors = createSelector(
+  getApplication,
+  application => application.flavors
+);

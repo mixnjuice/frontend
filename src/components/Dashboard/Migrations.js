@@ -2,17 +2,16 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
 
 import { actions as appActions } from 'reducers/application';
-import { getUsers } from 'selectors/application';
+import { getMigrations } from 'selectors/application';
 
-export class Users extends Component {
+export class Migrations extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    users: PropTypes.array
+    migrations: PropTypes.array
   };
   constructor(props) {
     super(props);
@@ -21,32 +20,35 @@ export class Users extends Component {
   componentDidMount() {
     const { actions } = this.props;
 
-    actions.requestUsers();
+    actions.requestMigrations();
   }
 
   render() {
-    const { users } = this.props;
+    const { migrations } = this.props;
 
     return (
       <Fragment>
-        <Helmet title="Users - Dashboard" />
+        <Helmet title="Database Migrations - Dashboard" />
         <Table responsive striped bordered hover size="sm">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Username</th>
-              <th>Options</th>
+              <th>#</th>
+              <th>Name</th>
+              <th>Ran</th>
+              <th>MD5</th>
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => {
+            {migrations.map((migration, index) => {
+              if (index === 0) {
+                return;
+              }
               return (
                 <tr key={index}>
-                  <td>{user.userId}</td>
-                  <td>
-                    <Link to="/user/profile">{user.name}</Link>
-                  </td>
-                  <td>options</td>
+                  <td>{migration.version}</td>
+                  <td>{migration.name}</td>
+                  <td>{migration.runAt}</td>
+                  <td>{migration.md5}</td>
                 </tr>
               );
             })}
@@ -58,7 +60,7 @@ export class Users extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: getUsers(state)
+  migrations: getMigrations(state)
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -73,4 +75,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Users);
+)(Migrations);
