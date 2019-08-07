@@ -26,10 +26,7 @@ export const types = buildActions('application', [
   'REQUEST_MIGRATIONS_FAILURE',
   'REQUEST_ROLES',
   'REQUEST_ROLES_SUCCESS',
-  'REQUEST_ROLES_FAILURE',
-  'REQUEST_FLAVORS',
-  'REQUEST_FLAVORS_SUCCESS',
-  'REQUEST_FLAVORS_FAILURE'
+  'REQUEST_ROLES_FAILURE'
 ]);
 
 const initApp = () => ({
@@ -157,20 +154,6 @@ const requestRolesFailure = error => ({
   error
 });
 
-const requestFlavors = () => ({
-  type: types.REQUEST_FLAVORS
-});
-
-const requestFlavorsSuccess = flavors => ({
-  type: types.REQUEST_FLAVORS_SUCCESS,
-  flavors
-});
-
-const requestFlavorsFailure = error => ({
-  type: types.REQUEST_FLAVORS_FAILURE,
-  error
-});
-
 export const actions = {
   initApp,
   loginUser,
@@ -197,10 +180,7 @@ export const actions = {
   requestMigrationsFailure,
   requestRoles,
   requestRolesSuccess,
-  requestRolesFailure,
-  requestFlavors,
-  requestFlavorsSuccess,
-  requestFlavorsFailure
+  requestRolesFailure
 };
 
 export const initialState = {
@@ -220,8 +200,7 @@ export const initialState = {
   },
   toasts: [],
   migrations: [],
-  roles: [],
-  flavors: []
+  roles: []
 };
 
 export const reducer = (state = initialState, action = {}) => {
@@ -351,16 +330,6 @@ export const reducer = (state = initialState, action = {}) => {
         roles: action.roles
       };
     case types.REQUEST_ROLES_FAILURE:
-      return {
-        ...state,
-        error: action.error
-      };
-    case types.REQUEST_FLAVORS_SUCCESS:
-      return {
-        ...state,
-        flavors: action.flavors
-      };
-    case types.REQUEST_FLAVORS_FAILURE:
       return {
         ...state,
         error: action.error

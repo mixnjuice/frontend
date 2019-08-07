@@ -5,8 +5,8 @@ import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
 
-import { actions as appActions } from 'reducers/application';
-import { getFlavors } from 'selectors/application';
+import { actions as flavorsActions } from 'reducers/flavors';
+import { getAllFlavors } from 'selectors/flavors';
 
 export class Flavors extends Component {
   static propTypes = {
@@ -59,13 +59,13 @@ export class Flavors extends Component {
 }
 
 const mapStateToProps = state => ({
-  flavors: getFlavors(state)
+  flavors: getAllFlavors(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
-      ...appActions
+      ...flavorsActions
     },
     dispatch
   )

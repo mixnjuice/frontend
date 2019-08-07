@@ -296,40 +296,6 @@ function* requestRolesWorker() {
   }
 }
 
-function* requestFlavorsWorker() {
-  try {
-    const endpoint = {
-      url: '/flavors',
-      method: 'GET'
-    };
-    const result = yield call(request.execute, { endpoint });
-
-    // update flavors in state or throw an error
-    if (result.success) {
-      const {
-        response: { data }
-      } = result;
-
-      yield put(actions.requestFlavorsSuccess(data));
-    } else if (result.error) {
-      throw result.error;
-    } else {
-      throw new Error('Failed to get flavors!');
-    }
-  } catch (error) {
-    const { message } = error;
-
-    yield put(actions.requestFlavorsFailure(error));
-    yield put(
-      actions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
-  }
-}
-
 function* loginUserWatcher() {
   yield takeLatest(types.LOGIN_USER, loginUserWorker);
 }
@@ -358,10 +324,6 @@ function* requestRolesWatcher() {
   yield takeLatest(types.REQUEST_ROLES, requestRolesWorker);
 }
 
-function* requestFlavorsWatcher() {
-  yield takeLatest(types.REQUEST_FLAVORS, requestFlavorsWorker);
-}
-
 export const workers = {
   loginUserWorker,
   popToastWorker,
@@ -369,8 +331,7 @@ export const workers = {
   requestTokenWorker,
   requestCurrentUserWorker,
   requestMigrationsWorker,
-  requestRolesWorker,
-  requestFlavorsWorker
+  requestRolesWorker
 };
 
 export const watchers = {
@@ -380,8 +341,7 @@ export const watchers = {
   requestTokenWatcher,
   requestCurrentUserWatcher,
   requestMigrationsWatcher,
-  requestRolesWatcher,
-  requestFlavorsWatcher
+  requestRolesWatcher
 };
 
 export default function* saga() {

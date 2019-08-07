@@ -67,8 +67,3 @@ export const getRoles = createSelector(
   getApplication,
   application => application.roles
 );
-
-export const getFlavors = createSelector(
-  getApplication,
-  application => application.flavors
-);
