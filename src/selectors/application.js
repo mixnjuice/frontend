@@ -57,8 +57,3 @@ export const getToasts = createSelector(
   getApplication,
   application => application.toasts
 );
-
-export const getMigrations = createSelector(
-  getApplication,
-  application => application.migrations
-);

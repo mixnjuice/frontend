@@ -228,40 +228,6 @@ function* registerUserWorker({
   }
 }
 
-function* requestMigrationsWorker() {
-  try {
-    const endpoint = {
-      url: '/data/version',
-      method: 'GET'
-    };
-    const result = yield call(request.execute, { endpoint });
-
-    // update migrations in state or throw an error
-    if (result.success) {
-      const {
-        response: { data }
-      } = result;
-
-      yield put(actions.requestMigrationsSuccess(data));
-    } else if (result.error) {
-      throw result.error;
-    } else {
-      throw new Error('Failed to get migrations!');
-    }
-  } catch (error) {
-    const { message } = error;
-
-    yield put(actions.requestMigrationsFailure(error));
-    yield put(
-      actions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
-  }
-}
-
 function* loginUserWatcher() {
   yield takeLatest(types.LOGIN_USER, loginUserWorker);
 }
@@ -282,17 +248,12 @@ function* registerUserWatcher() {
   yield takeLatest(types.REGISTER_USER, registerUserWorker);
 }
 
-function* requestMigrationsWatcher() {
-  yield takeLatest(types.REQUEST_MIGRATIONS, requestMigrationsWorker);
-}
-
 export const workers = {
   loginUserWorker,
   popToastWorker,
   registerUserWorker,
   requestTokenWorker,
-  requestCurrentUserWorker,
-  requestMigrationsWorker
+  requestCurrentUserWorker
 };
 
 export const watchers = {
@@ -300,8 +261,7 @@ export const watchers = {
   popToastWatcher,
   registerUserWatcher,
   requestTokenWatcher,
-  requestCurrentUserWatcher,
-  requestMigrationsWatcher
+  requestCurrentUserWatcher
 };
 
 export default function* saga() {

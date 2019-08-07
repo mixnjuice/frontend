@@ -20,10 +20,7 @@ export const types = buildActions('application', [
   'LOGOUT_USER_FAILURE',
   'REGISTER_USER',
   'REGISTER_USER_SUCCESS',
-  'REGISTER_USER_FAILURE',
-  'REQUEST_MIGRATIONS',
-  'REQUEST_MIGRATIONS_SUCCESS',
-  'REQUEST_MIGRATIONS_FAILURE'
+  'REGISTER_USER_FAILURE'
 ]);
 
 const initApp = () => ({
@@ -123,20 +120,6 @@ const registerUserFailure = error => ({
   error
 });
 
-const requestMigrations = () => ({
-  type: types.REQUEST_MIGRATIONS
-});
-
-const requestMigrationsSuccess = migrations => ({
-  type: types.REQUEST_MIGRATIONS_SUCCESS,
-  migrations
-});
-
-const requestMigrationsFailure = error => ({
-  type: types.REQUEST_MIGRATIONS_FAILURE,
-  error
-});
-
 export const actions = {
   initApp,
   loginUser,
@@ -157,10 +140,7 @@ export const actions = {
   logoutUserFailure,
   registerUser,
   registerUserSuccess,
-  registerUserFailure,
-  requestMigrations,
-  requestMigrationsSuccess,
-  requestMigrationsFailure
+  registerUserFailure
 };
 
 export const initialState = {
@@ -178,8 +158,7 @@ export const initialState = {
     complete: false,
     error: null
   },
-  toasts: [],
-  migrations: []
+  toasts: []
 };
 
 export const reducer = (state = initialState, action = {}) => {
@@ -292,16 +271,6 @@ export const reducer = (state = initialState, action = {}) => {
           complete: true,
           error: action.error
         }
-      };
-    case types.REQUEST_MIGRATIONS_SUCCESS:
-      return {
-        ...state,
-        migrations: action.migrations
-      };
-    case types.REQUEST_MIGRATIONS_FAILURE:
-      return {
-        ...state,
-        error: action.error
       };
     default:
       return state;

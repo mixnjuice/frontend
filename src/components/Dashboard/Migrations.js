@@ -5,8 +5,8 @@ import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
 
-import { actions as appActions } from 'reducers/application';
-import { getMigrations } from 'selectors/application';
+import { actions as dashboardActions } from 'reducers/dashboard';
+import { getMigrations } from 'selectors/dashboard';
 
 export class Migrations extends Component {
   static propTypes = {
@@ -66,7 +66,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
-      ...appActions
+      ...dashboardActions
     },
     dispatch
   )
