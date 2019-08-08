@@ -1,6 +1,8 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 // import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 // import ComponentSelector from 'components/Dashboard/ComponentSelector';
 import Selector from 'components/Dashboard/Selector';
 import { Accordion, Card, Container, Row, Col } from 'react-bootstrap';
@@ -16,20 +18,34 @@ import {
   faTachometerAlt
 } from '@fortawesome/free-solid-svg-icons';
 
+import { actions as dashboardActions } from 'reducers/dashboard';
+import { getDashboardComponent } from 'selectors/dashboard';
+
 export class Dashboard extends Component {
-  static propTypes = {};
+  static propTypes = {
+    actions: PropTypes.object.isRequired,
+    dashboardComponent: PropTypes.object.isRequired
+  };
   constructor(props) {
     super(props);
-    this.state = {
+    /* this.state = {
       dashboard: 'Home'
-    };
+    }; */
     this.select = this.select.bind(this);
   }
-  select(name) {
-    this.setState({ dashboard: name });
+
+  select(name, item) {
+    // this.setState({ dashboard: name });
+    const { actions } = this.props;
+
+    actions.selectDashboard({
+      name,
+      item
+    });
   }
+
   render() {
-    const { dashboard } = this.state;
+    const { dashboardComponent } = this.props;
 
     return (
       <Container>
@@ -44,7 +60,7 @@ export class Dashboard extends Component {
               <Card>
                 <Card.Body>
                   <FontAwesomeIcon icon={faTachometerAlt} /> &nbsp;
-                  <a href="#home" onClick={e => this.select('Home', e)}>
+                  <a href="#home" onClick={e => this.select('Home', null, e)}>
                     Dashboard
                   </a>
                 </Card.Body>
@@ -59,13 +75,19 @@ export class Dashboard extends Component {
                   <Card.Body>
                     <div>
                       <FontAwesomeIcon icon={faUsersCog} /> &nbsp;
-                      <a href="#users" onClick={e => this.select('Users', e)}>
+                      <a
+                        href="#users"
+                        onClick={e => this.select('Users', null, e)}
+                      >
                         Users
                       </a>
                     </div>
                     <div>
                       <FontAwesomeIcon icon={faUserShield} /> &nbsp;
-                      <a href="#roles" onClick={e => this.select('Roles', e)}>
+                      <a
+                        href="#roles"
+                        onClick={e => this.select('Roles', null, e)}
+                      >
                         Roles
                       </a>
                     </div>
@@ -84,7 +106,7 @@ export class Dashboard extends Component {
                       <FontAwesomeIcon icon={faEyeDropper} /> &nbsp;
                       <a
                         href="#flavors"
-                        onClick={e => this.select('Flavors', e)}
+                        onClick={e => this.select('Flavors', null, e)}
                       >
                         Flavors
                       </a>
@@ -103,7 +125,7 @@ export class Dashboard extends Component {
                     <FontAwesomeIcon icon={faClock} /> &nbsp;
                     <a
                       href="#migrations"
-                      onClick={e => this.select('Migrations', e)}
+                      onClick={e => this.select('Migrations', null, e)}
                     >
                       Migration History
                     </a>
@@ -113,7 +135,7 @@ export class Dashboard extends Component {
             </Accordion>
           </Col>
           <Col xs={12} md={9}>
-            <Selector component={dashboard} />
+            <Selector component={dashboardComponent.name} />
           </Col>
         </Row>
       </Container>
@@ -121,4 +143,22 @@ export class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+// export default Dashboard;
+
+const mapStateToProps = state => ({
+  dashboardComponent: getDashboardComponent(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(
+    {
+      ...dashboardActions
+    },
+    dispatch
+  )
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);

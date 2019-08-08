@@ -16,11 +16,11 @@ import { actions, types } from 'reducers/dashboard';
 
 // snake_cased variables here come from RFC 6749
 /* eslint-disable camelcase */
-function* requestDashboardWorker() {
-  yield put(actions.requestDashboard());
+function* requestDashboardWorker(dashboardComponent) {
+  yield put(actions.requestDashboardSuccess(dashboardComponent));
 }
-function* selectDashboardWorker(dashboard) {
-  yield put(actions.selectDashboard(dashboard));
+function* selectDashboardWorker({ name, item }) {
+  yield put(actions.selectDashboardSuccess({ name, item }));
 }
 function* requestMigrationsWorker() {
   try {

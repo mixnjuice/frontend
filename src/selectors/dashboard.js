@@ -4,7 +4,7 @@ export const getDashboard = state => state.dashboard;
 
 export const getDashboardComponent = createSelector(
   getDashboard,
-  dashboard => dashboard.dashboard
+  dashboard => dashboard.dashboardComponent
 );
 
 export const getMigrations = createSelector(
