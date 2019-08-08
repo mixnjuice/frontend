@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 // import ComponentSelector from 'components/Dashboard/ComponentSelector';
-import Selector from 'components/Dashboard/Selector';
+import DashboardMain from 'components/Dashboard/Main';
 import { Accordion, Card, Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -23,19 +23,15 @@ import { getDashboardComponent } from 'selectors/dashboard';
 
 export class Dashboard extends Component {
   static propTypes = {
-    actions: PropTypes.object.isRequired,
-    dashboardComponent: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired
   };
+
   constructor(props) {
     super(props);
-    /* this.state = {
-      dashboard: 'Home'
-    }; */
     this.select = this.select.bind(this);
   }
 
   select(name, item) {
-    // this.setState({ dashboard: name });
     const { actions } = this.props;
 
     actions.selectDashboard({
@@ -45,8 +41,6 @@ export class Dashboard extends Component {
   }
 
   render() {
-    const { dashboardComponent } = this.props;
-
     return (
       <Container>
         <Row className="text-center">
@@ -135,7 +129,7 @@ export class Dashboard extends Component {
             </Accordion>
           </Col>
           <Col xs={12} md={9}>
-            <Selector component={dashboardComponent.name} />
+            <DashboardMain />
           </Col>
         </Row>
       </Container>
