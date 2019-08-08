@@ -16,6 +16,12 @@ import { actions, types } from 'reducers/dashboard';
 
 // snake_cased variables here come from RFC 6749
 /* eslint-disable camelcase */
+function* requestDashboardWorker() {
+  yield put(actions.requestDashboard());
+}
+function* selectDashboardWorker(dashboard) {
+  yield put(actions.selectDashboard(dashboard));
+}
 function* requestMigrationsWorker() {
   try {
     const endpoint = {
@@ -50,15 +56,27 @@ function* requestMigrationsWorker() {
   }
 }
 
+function* requestDashboardWatcher() {
+  yield takeLatest(types.REQUEST_DASHBOARD, requestDashboardWorker);
+}
+
+function* selectDashboardWatcher() {
+  yield takeLatest(types.SELECT_DASHBOARD, selectDashboardWorker);
+}
+
 function* requestMigrationsWatcher() {
   yield takeLatest(types.REQUEST_MIGRATIONS, requestMigrationsWorker);
 }
 
 export const workers = {
+  requestDashboardWorker,
+  selectDashboardWorker,
   requestMigrationsWorker
 };
 
 export const watchers = {
+  requestDashboardWatcher,
+  selectDashboardWatcher,
   requestMigrationsWatcher
 };
 
