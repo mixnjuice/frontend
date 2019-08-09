@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import DashLink from 'components/Dashboard/Link';
 import { Accordion, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  faBezierCurve,
   faClock,
   faDatabase,
+  faEyeDropper,
   faUsers,
   faUsersCog,
   faUserShield,
@@ -11,26 +14,19 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 export class Menu extends Component {
-  static propTypes = {};
   constructor(props) {
     super(props);
-    this.state = {
-      dashboard: 'Home'
-    };
-    this.select = this.select.bind(this);
   }
-  select(name) {
-    this.setState({ dashboard: name });
-  }
+
   render() {
     return (
       <Accordion>
         <Card>
           <Card.Body>
             <FontAwesomeIcon icon={faTachometerAlt} /> &nbsp;
-            <a href="#home" onClick={e => this.select('Home', e)}>
+            <DashLink to="#home" name="Home">
               Dashboard
-            </a>
+            </DashLink>
           </Card.Body>
         </Card>
         <Card>
@@ -43,15 +39,15 @@ export class Menu extends Component {
             <Card.Body>
               <div>
                 <FontAwesomeIcon icon={faUsersCog} /> &nbsp;
-                <a href="#users" onClick={e => this.select('Users', e)}>
-                  Manage Users
-                </a>
+                <DashLink to="#users" name="Users">
+                  Users
+                </DashLink>
               </div>
               <div>
                 <FontAwesomeIcon icon={faUserShield} /> &nbsp;
-                <a href="#roles" onClick={e => this.select('Roles', e)}>
-                  Manage Roles
-                </a>
+                <DashLink to="#roles" name="Roles">
+                  Roles
+                </DashLink>
               </div>
             </Card.Body>
           </Accordion.Collapse>
@@ -59,15 +55,32 @@ export class Menu extends Component {
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="1">
             <h3>
-              <FontAwesomeIcon icon={faDatabase} /> Database
+              <FontAwesomeIcon icon={faBezierCurve} /> Ingredients
             </h3>
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="1">
             <Card.Body>
+              <div>
+                <FontAwesomeIcon icon={faEyeDropper} /> &nbsp;
+                <DashLink to="#flavors" name="Flavors">
+                  Flavors
+                </DashLink>
+              </div>
+            </Card.Body>
+          </Accordion.Collapse>
+        </Card>
+        <Card>
+          <Accordion.Toggle as={Card.Header} eventKey="2">
+            <h3>
+              <FontAwesomeIcon icon={faDatabase} /> Database
+            </h3>
+          </Accordion.Toggle>
+          <Accordion.Collapse eventKey="2">
+            <Card.Body>
               <FontAwesomeIcon icon={faClock} /> &nbsp;
-              <a href="#migrations" onClick={e => this.select('Migrations', e)}>
+              <DashLink to="#migrations" name="Migrations">
                 Migration History
-              </a>
+              </DashLink>
             </Card.Body>
           </Accordion.Collapse>
         </Card>
