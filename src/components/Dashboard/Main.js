@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
-import { Flavors, Home, Migrations, Roles, Users } from '.';
+import { Flavors, Home, Migrations, Roles, RoleUsers, Users } from '.';
 
 import { actions as dashboardActions } from 'reducers/dashboard';
 import { getDashboardComponent } from 'selectors/dashboard';
@@ -25,6 +25,8 @@ class Main extends Component {
         return <Migrations />;
       case 'Roles':
         return <Roles />;
+      case 'RoleUsers':
+        return <RoleUsers item={dashboardComponent.item} />;
       case 'Users':
         return <Users />;
       case 'Home':

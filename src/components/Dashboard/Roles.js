@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
+import DashLink from 'components/Dashboard/Link';
 import { Table } from 'react-bootstrap';
 
 import { actions as rolesActions } from 'reducers/roles';
@@ -43,7 +44,15 @@ export class Roles extends Component {
                 <tr key={index}>
                   <td>{role.id}</td>
                   <td>{role.name}</td>
-                  <td>options</td>
+                  <td>
+                    <DashLink
+                      to={'#roleusers/' + role.id}
+                      name="RoleUsers"
+                      item={role.id}
+                    >
+                      Users
+                    </DashLink>
+                  </td>
                 </tr>
               );
             })}

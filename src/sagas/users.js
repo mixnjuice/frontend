@@ -19,7 +19,7 @@ import { actions, types } from 'reducers/users';
 function* requestUsersWorker() {
   try {
     const endpoint = {
-      url: '/users',
+      url: '/users/accounts',
       method: 'GET'
     };
     const result = yield call(request.execute, { endpoint });

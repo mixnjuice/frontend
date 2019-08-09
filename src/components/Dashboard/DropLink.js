@@ -2,18 +2,19 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
+import { Dropdown } from 'react-bootstrap';
 
 import { actions as dashboardActions } from 'reducers/dashboard';
 import { getDashboardComponent } from 'selectors/dashboard';
 
-export class Link extends Component {
+export class DropLink extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     children: PropTypes.string.isRequired,
-    name: PropTypes.string.isRquired,
     to: PropTypes.string.isRequired,
+    name: PropTypes.string.isRquired,
     item: PropTypes.number,
-    className: PropTypes.string
+    key: PropTypes.number
   };
 
   constructor(props) {
@@ -31,17 +32,17 @@ export class Link extends Component {
   }
 
   render() {
-    const { to, name, item, className } = this.props;
+    const { to, name, item, key } = this.props;
 
     return (
       <Fragment>
-        <a
+        <Dropdown.Item
           href={to}
           onClick={e => this.select(name, item, e)}
-          className={className}
+          key={key}
         >
           {this.props.children}
-        </a>
+        </Dropdown.Item>
       </Fragment>
     );
   }
@@ -65,4 +66,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Link);
+)(DropLink);

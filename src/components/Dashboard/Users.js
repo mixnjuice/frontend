@@ -34,7 +34,8 @@ export class Users extends Component {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Username</th>
+              <th>Email</th>
+              <th>Activated</th>
               <th>Options</th>
             </tr>
           </thead>
@@ -42,11 +43,12 @@ export class Users extends Component {
             {users.map((user, index) => {
               return (
                 <tr key={index}>
-                  <td>{user.userId}</td>
+                  <td>{user.id}</td>
+                  <td>{user.emailAddress}</td>
+                  <td>{user.activationCode === null ? 'Yes' : 'No'}</td>
                   <td>
-                    <Link to="/user/profile">{user.name}</Link>
+                    <Link to="/user/profile">Profile</Link>
                   </td>
-                  <td>options</td>
                 </tr>
               );
             })}
