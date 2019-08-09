@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 // import ComponentSelector from 'components/Dashboard/ComponentSelector';
-import DashboardMain from 'components/Dashboard/Main';
+import DashLink from 'components/Dashboard/Link';
+import DashMain from 'components/Dashboard/Main';
 import { Accordion, Card, Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -28,16 +29,6 @@ export class Dashboard extends Component {
 
   constructor(props) {
     super(props);
-    this.select = this.select.bind(this);
-  }
-
-  select(name, item) {
-    const { actions } = this.props;
-
-    actions.selectDashboard({
-      name,
-      item
-    });
   }
 
   render() {
@@ -54,9 +45,9 @@ export class Dashboard extends Component {
               <Card>
                 <Card.Body>
                   <FontAwesomeIcon icon={faTachometerAlt} /> &nbsp;
-                  <a href="#home" onClick={e => this.select('Home', null, e)}>
+                  <DashLink to="#home" name="Home">
                     Dashboard
-                  </a>
+                  </DashLink>
                 </Card.Body>
               </Card>
               <Card>
@@ -69,21 +60,15 @@ export class Dashboard extends Component {
                   <Card.Body>
                     <div>
                       <FontAwesomeIcon icon={faUsersCog} /> &nbsp;
-                      <a
-                        href="#users"
-                        onClick={e => this.select('Users', null, e)}
-                      >
+                      <DashLink to="#users" name="Users">
                         Users
-                      </a>
+                      </DashLink>
                     </div>
                     <div>
                       <FontAwesomeIcon icon={faUserShield} /> &nbsp;
-                      <a
-                        href="#roles"
-                        onClick={e => this.select('Roles', null, e)}
-                      >
+                      <DashLink to="#roles" name="Roles">
                         Roles
-                      </a>
+                      </DashLink>
                     </div>
                   </Card.Body>
                 </Accordion.Collapse>
@@ -98,12 +83,9 @@ export class Dashboard extends Component {
                   <Card.Body>
                     <div>
                       <FontAwesomeIcon icon={faEyeDropper} /> &nbsp;
-                      <a
-                        href="#flavors"
-                        onClick={e => this.select('Flavors', null, e)}
-                      >
+                      <DashLink to="#flavors" name="Flavors">
                         Flavors
-                      </a>
+                      </DashLink>
                     </div>
                   </Card.Body>
                 </Accordion.Collapse>
@@ -117,19 +99,16 @@ export class Dashboard extends Component {
                 <Accordion.Collapse eventKey="2">
                   <Card.Body>
                     <FontAwesomeIcon icon={faClock} /> &nbsp;
-                    <a
-                      href="#migrations"
-                      onClick={e => this.select('Migrations', null, e)}
-                    >
+                    <DashLink to="#migrations" name="Migrations">
                       Migration History
-                    </a>
+                    </DashLink>
                   </Card.Body>
                 </Accordion.Collapse>
               </Card>
             </Accordion>
           </Col>
           <Col xs={12} md={9}>
-            <DashboardMain />
+            <DashMain />
           </Col>
         </Row>
       </Container>
