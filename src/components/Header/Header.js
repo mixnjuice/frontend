@@ -38,7 +38,9 @@ export default class Header extends Component {
         <Row className="navigation-container">
           <Col>
             <Navbar expand="lg">
-              <Navbar.Brand>MixNJuice</Navbar.Brand>
+              <Navbar.Brand className="pt-0">
+                <img src="/media/logo.svg" alt="logo" width="175" />
+              </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse>
                 <Nav>
