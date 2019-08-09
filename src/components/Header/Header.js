@@ -9,7 +9,7 @@ export default class Header extends Component {
         as={NavLink}
         exact
         to={to}
-        className="borderLeftRight px-3"
+        className="nav--link-custom px-3"
         activeClassName="active"
       >
         {text}
@@ -23,7 +23,7 @@ export default class Header extends Component {
         as={NavLink}
         exact
         to={to}
-        className="borderLeftRight"
+        className="nav--link-custom"
         activeClassName="active"
       >
         {text}
@@ -34,19 +34,16 @@ export default class Header extends Component {
 
   render() {
     return (
-      <Container className="navigation-container" fluid>
-        <Row className="text-center">
+      <Container fluid>
+        <Row className="navigation-container">
           <Col>
-            <Navbar.Brand>MixNJuice</Navbar.Brand>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Navbar expand="lg" className="justify-content-center">
+            <Navbar expand="lg">
+              <Navbar.Brand>MixNJuice</Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse className="justify-content-center">
+              <Navbar.Collapse>
                 <Nav>
                   {this.renderNavItem('/', 'Home')}
+                  {this.renderNavItem('/recipes', 'Recipes')}
                   {this.renderNavItem('/calculator', 'Calculator')}
                   {this.renderNavItem('/recipe', 'Recipes')}
                   {this.renderNavItem('/flavors', 'Flavors')}
@@ -64,12 +61,12 @@ export default class Header extends Component {
                     )}
                     {this.renderNavDropdownItem('/user/settings', 'Settings')}
                   </NavDropdown>
+                  {this.renderNavItem('/flavors', 'Flavors')}
                   {this.renderNavItem('/login', 'Login')}
                   {this.renderNavItem('/register', 'Register')}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
-            <hr />
           </Col>
         </Row>
       </Container>

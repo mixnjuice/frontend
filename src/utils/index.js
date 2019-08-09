@@ -2,6 +2,8 @@ import dayjs from 'dayjs';
 import React, { createElement } from 'react';
 import { MemoryRouter } from 'react-router-dom';
 
+import { getApplication, getAuthorization } from 'selectors/application';
+
 /* eslint-disable react/display-name, react/prop-types */
 
 /**
@@ -67,6 +69,10 @@ export const buildUrl = endpoint => {
 };
 
 export const getInitialState = () => {
+  // this needs to be require()d because an import results in a
+  // circular dependency
+  const { initialState } = require('reducers');
+
   try {
     const [accessToken, expiration] = [
       localStorage.getItem('accessToken'),
@@ -74,7 +80,7 @@ export const getInitialState = () => {
     ];
 
     if (!accessToken) {
-      return {};
+      return initialState;
     }
 
     const expirationDate = dayjs(JSON.parse(expiration));
@@ -82,18 +88,21 @@ export const getInitialState = () => {
     if (!expirationDate.isValid() || expirationDate.isBefore(dayjs())) {
       localStorage.removeItem('accessToken');
       localStorage.removeItem('expiration');
-      return {};
+      return initialState;
     }
 
     return {
+      ...initialState,
       application: {
+        ...getApplication(initialState),
         authorization: {
+          ...getAuthorization(initialState),
           accessToken: JSON.parse(accessToken),
           expiration: expirationDate
         }
       }
     };
   } catch {
-    return {};
+    return initialState;
   }
 };

@@ -56,7 +56,7 @@ describe('application reducer', () => {
   });
 
   it('has REQUEST_TOKEN_SUCCESS action', () => {
-    expect(actions.requestTokenSuccess(token, expiration)).toEqual({
+    expect(actions.requestTokenSuccess({ token, expiration })).toEqual({
       type: types.REQUEST_TOKEN_SUCCESS,
       expiration,
       token
@@ -64,7 +64,7 @@ describe('application reducer', () => {
   });
 
   it('reduces REQUEST_TOKEN_SUCCESS action', () => {
-    const action = actions.requestTokenSuccess(token, expiration);
+    const action = actions.requestTokenSuccess({ token, expiration });
 
     expect(reducer({}, action)).toEqual({
       authorization: {
@@ -124,14 +124,13 @@ describe('application reducer', () => {
   });
 
   it('has LOGIN_USER_SUCCESS action', () => {
-    expect(actions.loginUserSuccess(user)).toEqual({
-      type: types.LOGIN_USER_SUCCESS,
-      user
+    expect(actions.loginUserSuccess()).toEqual({
+      type: types.LOGIN_USER_SUCCESS
     });
   });
 
   it('reduces LOGIN_USER_SUCCESS action', () => {
-    const action = actions.loginUserSuccess({ id: 123, name: 'Dave' });
+    const action = actions.loginUserSuccess();
 
     expect(reducer({}, action)).toEqual({
       loggingIn: false

@@ -12,7 +12,7 @@ import {
 } from 'redux-saga/effects';
 
 import request from 'utils/request';
-import { isLoggedIn } from 'selectors/application';
+import { isLoggedIn, getUser } from 'selectors/application';
 import { actions, types } from 'reducers/application';
 
 // snake_cased variables here come from RFC 6749
@@ -34,7 +34,7 @@ function* requestTokenWorker({ emailAddress, password }) {
     if (result.success) {
       const {
         data: {
-          access_token: accessToken,
+          access_token: token,
           token_type: tokenType,
           expires_in: expiresIn
         }
@@ -46,14 +46,7 @@ function* requestTokenWorker({ emailAddress, password }) {
 
       const expiration = dayjs().add(expiresIn, 'seconds');
 
-      yield put(actions.requestTokenSuccess(accessToken, expiration));
-      yield put(
-        actions.popToast({
-          title: 'Logged in',
-          icon: 'check',
-          message: 'You have been authenticated.'
-        })
-      );
+      yield put(actions.requestTokenSuccess({ token, expiration }));
     } else if (result.error) {
       throw result.error;
     } else {
@@ -77,18 +70,22 @@ function* requestTokenWorker({ emailAddress, password }) {
 function* requestCurrentUserWorker() {
   try {
     const endpoint = {
-      url: '/api/user/current',
+      url: '/user/current',
       method: 'GET'
     };
     const result = yield call(request.execute, { endpoint });
 
     // update user in state or throw an error
     if (result.success) {
-      yield put(actions.requestCurrentUserSuccess(result.data));
+      const {
+        response: { data }
+      } = result;
+
+      yield put(actions.requestCurrentUserSuccess(data));
     } else if (result.error) {
       throw result.error;
     } else {
-      throw new Error('Request failed for an unspecified reason!');
+      throw new Error('Failed to get current user!');
     }
   } catch (error) {
     const { message } = error;
@@ -109,48 +106,58 @@ function* loginUserWorker({ emailAddress, password }) {
     // first, check to see if we are already logged in
     const loggedIn = yield select(isLoggedIn);
 
-    if (loggedIn) {
-      return yield put(actions.loginUserSuccess());
+    if (!loggedIn) {
+      // obtain a bearer token
+      // then, obtain current user information
+      // use putResolve because it is blocking
+      yield put(actions.requestToken(emailAddress, password));
+      const tokenResult = yield take([
+        types.REQUEST_TOKEN_SUCCESS,
+        types.REQUEST_TOKEN_FAILURE
+      ]);
+
+      if (tokenResult.type === types.REQUEST_TOKEN_FAILURE) {
+        throw new Error('Failed to log in!');
+      }
+
+      const { token, expiration } = tokenResult;
+
+      localStorage.setItem('accessToken', JSON.stringify(token));
+      localStorage.setItem(
+        'expiration',
+        JSON.stringify(expiration.toISOString())
+      );
     }
 
-    // obtain a bearer token
-    // then, obtain current user information
-    // use putResolve because it is blocking
-    yield put(actions.requestToken(emailAddress, password));
-    const tokenResult = yield take([
-      types.REQUEST_TOKEN_SUCCESS,
-      types.REQUEST_TOKEN_FAILURE
-    ]);
-
-    if (tokenResult.type === types.REQUEST_TOKEN_FAILURE) {
-      throw new Error('Failed to log in!');
-    }
-
-    const { token, expiration } = tokenResult;
-
-    localStorage.setItem('accessToken', JSON.stringify(token));
-    localStorage.setItem(
-      'expiration',
-      JSON.stringify(expiration.toISOString())
+    yield put(
+      actions.popToast({
+        title: 'Logged in',
+        icon: 'check',
+        message: 'You have been authenticated.'
+      })
     );
 
-    yield put(actions.requestCurrentUser());
-    const currentUserResult = yield take([
-      types.REQUEST_CURRENT_USER_SUCCESS,
-      types.REQUEST_CURRENT_USER_FAILURE
-    ]);
-
-    if (currentUserResult.type === types.REQUEST_CURRENT_USER_FAILURE) {
-      throw new Error('Failed to fetch current user!');
-    }
-
-    const { user } = currentUserResult;
+    let user = yield select(getUser);
 
     if (!user) {
-      throw new Error('Got invalid response to current user request!');
+      yield put(actions.requestCurrentUser());
+      const currentUserResult = yield take([
+        types.REQUEST_CURRENT_USER_SUCCESS,
+        types.REQUEST_CURRENT_USER_FAILURE
+      ]);
+
+      if (currentUserResult.type === types.REQUEST_CURRENT_USER_FAILURE) {
+        throw new Error('Failed to fetch current user!');
+      }
+
+      user = currentUserResult.user;
+
+      if (!user) {
+        throw new Error('Got invalid response to current user request!');
+      }
     }
 
-    yield put(actions.loginUserSuccess(user));
+    yield put(actions.loginUserSuccess());
   } catch (error) {
     const { message } = error;
 
