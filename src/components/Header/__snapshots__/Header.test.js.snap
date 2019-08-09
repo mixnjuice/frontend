@@ -168,16 +168,6 @@ exports[`<Header /> renders correctly 1`] = `
               className="nav--link-custom px-3 nav-link"
               data-rb-event-key={null}
               disabled={false}
-              href="/flavors"
-              onClick={[Function]}
-            >
-              Flavors
-            </a>
-            <a
-              aria-current={null}
-              className="nav--link-custom px-3 nav-link"
-              data-rb-event-key={null}
-              disabled={false}
               href="/login"
               onClick={[Function]}
             >
