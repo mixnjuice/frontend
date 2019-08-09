@@ -47,7 +47,6 @@ export default class Header extends Component {
                   {this.renderNavItem('/', 'Home')}
                   {this.renderNavItem('/recipes', 'Recipes')}
                   {this.renderNavItem('/calculator', 'Calculator')}
-                  {this.renderNavItem('/recipe', 'Recipes')}
                   {this.renderNavItem('/flavors', 'Flavors')}
                   <NavDropdown title="User">
                     {this.renderNavDropdownItem('/user/profile', 'Profile')}
