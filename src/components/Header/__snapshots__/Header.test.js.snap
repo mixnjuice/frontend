@@ -14,9 +14,13 @@ exports[`<Header /> renders correctly 1`] = `
         className="navbar navbar-expand-lg navbar-light"
       >
         <span
-          className="navbar-brand"
+          className="pt-0 navbar-brand"
         >
-          MixNJuice
+          <img
+            alt="logo"
+            className="image--logo"
+            src="/media/logo.svg"
+          />
         </span>
         <button
           aria-controls="basic-navbar-nav"
@@ -67,16 +71,6 @@ exports[`<Header /> renders correctly 1`] = `
               onClick={[Function]}
             >
               Calculator
-            </a>
-            <a
-              aria-current={null}
-              className="nav--link-custom px-3 nav-link"
-              data-rb-event-key={null}
-              disabled={false}
-              href="/recipe"
-              onClick={[Function]}
-            >
-              Recipes
             </a>
             <a
               aria-current={null}
@@ -169,16 +163,6 @@ exports[`<Header /> renders correctly 1`] = `
                 </a>
               </div>
             </div>
-            <a
-              aria-current={null}
-              className="nav--link-custom px-3 nav-link"
-              data-rb-event-key={null}
-              disabled={false}
-              href="/flavors"
-              onClick={[Function]}
-            >
-              Flavors
-            </a>
             <a
               aria-current={null}
               className="nav--link-custom px-3 nav-link"

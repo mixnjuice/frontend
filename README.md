@@ -20,16 +20,4 @@ The following VS Code extensions will improve your development experience:
 - `esbenp.prettier-vscode`
 - `shinnn.stylelint`
 
-The following settings are recommended:
-
-```json
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true,
-  "editor.formatOnSave": true,
-  "eslint.enable": true,
-  "eslint.run": "onSave",
-  "eslint.autoFixOnSave": true,
-  "stylelint.enable": true,
-  "prettier.eslintIntegration": true,
-  "prettier.stylelintIntegration": true
-```
+The recommended settings for the extensions and VS Code are saved in `.vscode/settings.json` and will automatically be used.
