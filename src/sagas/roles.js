@@ -51,6 +51,46 @@ function* requestRolesWorker() {
   }
 }
 
+function* addRoleWorker({ name }) {
+  try {
+    const endpoint = {
+      url: '/role',
+      method: 'POST'
+    };
+    const data = {
+      name
+    };
+    const result = yield call(request.execute, { endpoint, data });
+
+    // update roles in state or throw an error
+    if (result.success) {
+      yield put(actions.requestRoles());
+      yield put(
+        appActions.popToast({
+          title: 'Role Created',
+          icon: 'times-circle',
+          message: `${name} role successfully created!`
+        })
+      );
+    } else if (result.error) {
+      throw result.error;
+    } else {
+      throw new Error('Failed to create role!');
+    }
+  } catch (error) {
+    const { message } = error;
+
+    yield put(actions.addRoleFailure(error));
+    yield put(
+      appActions.popToast({
+        title: 'Error',
+        icon: 'times-circle',
+        message
+      })
+    );
+  }
+}
+
 function* requestRoleUsersWorker({ roleId }) {
   try {
     const endpoint = {
@@ -85,22 +125,76 @@ function* requestRoleUsersWorker({ roleId }) {
   }
 }
 
+function* addRoleUserWorker({ userId, roleId, active }) {
+  try {
+    const endpoint = {
+      url: `/user/${userId}/role`,
+      method: 'POST'
+    };
+    const data = {
+      userId,
+      roleId,
+      active
+    };
+    const result = yield call(request.execute, { endpoint, data });
+
+    // update roles in state or throw an error
+    if (result.success) {
+      yield put(actions.requestRoleUsers());
+      yield put(
+        appActions.popToast({
+          title: 'User Role Added',
+          icon: 'times-circle',
+          message: `Role ${roleId} assigned to User ${userId}!`
+        })
+      );
+    } else if (result.error) {
+      throw result.error;
+    } else {
+      throw new Error('Failed to assign role to user!');
+    }
+  } catch (error) {
+    const { message } = error;
+
+    yield put(actions.addRoleUserFailure(error));
+    yield put(
+      appActions.popToast({
+        title: 'Error',
+        icon: 'times-circle',
+        message
+      })
+    );
+  }
+}
+
 function* requestRolesWatcher() {
   yield takeLatest(types.REQUEST_ROLES, requestRolesWorker);
+}
+
+function* addRoleWatcher() {
+  yield takeLatest(types.ADD_ROLE, addRoleWorker);
 }
 
 function* requestRoleUsersWatcher() {
   yield takeLatest(types.REQUEST_ROLE_USERS, requestRoleUsersWorker);
 }
 
+function* addRoleUserWatcher() {
+  yield takeLatest(types.ADD_ROLE_USER, addRoleUserWorker);
+}
+
 export const workers = {
   requestRolesWorker,
-  requestRoleUsersWorker
+  addRoleWorker,
+  requestRoleUsersWorker,
+  addRoleUserWorker
 };
 
 export const watchers = {
   requestRolesWatcher,
-  requestRoleUsersWatcher
+  addRoleWatcher,
+  requestRoleUsersWatcher,
+  addRoleUserWatcher
 };
 
 export default function* saga() {

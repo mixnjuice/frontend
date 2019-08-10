@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import DashLink from 'components/Dashboard/Link';
+import RolesEditor from 'components/Dashboard/RolesEditor';
 import { Table } from 'react-bootstrap';
 
 import { actions as rolesActions } from 'reducers/roles';
@@ -12,10 +13,24 @@ import { getAllRoles } from 'selectors/roles';
 export class Roles extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    roles: PropTypes.array
+    roles: PropTypes.array,
+    modalShow: PropTypes.bool
   };
   constructor(props) {
     super(props);
+
+    this.state = {
+      modalShow: false,
+      setModelShow: false
+    };
+  }
+
+  setModalShow() {
+    if (!this.state.modalShow) {
+      this.setState({ modalShow: true });
+    } else {
+      this.setState({ modalShow: false });
+    }
   }
 
   componentDidMount() {
@@ -26,10 +41,15 @@ export class Roles extends Component {
 
   render() {
     const { roles } = this.props;
+    const { modalShow } = this.state;
 
     return (
       <Fragment>
         <Helmet title="Roles - Dashboard" />
+        <h2>Roles</h2>
+        <a href="#roles/editor/add" onClick={e => this.setModalShow(true, e)}>
+          Add Role
+        </a>
         <Table responsive striped bordered hover size="sm">
           <thead>
             <tr>
@@ -52,12 +72,21 @@ export class Roles extends Component {
                     >
                       Users
                     </DashLink>
+                    &nbsp;
                   </td>
                 </tr>
               );
             })}
           </tbody>
         </Table>
+        <a href="#roles/editor/add" onClick={e => this.setModalShow(true, e)}>
+          Add Role
+        </a>
+        <RolesEditor
+          show={modalShow}
+          onHide={e => this.setModalShow(false, e)}
+          action="add"
+        />
       </Fragment>
     );
   }
