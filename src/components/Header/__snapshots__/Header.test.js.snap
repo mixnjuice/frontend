@@ -18,8 +18,8 @@ exports[`<Header /> renders correctly 1`] = `
         >
           <img
             alt="logo"
+            className="image--logo"
             src="/media/logo.svg"
-            width="175"
           />
         </span>
         <button
