@@ -6,6 +6,10 @@ export const types = buildActions('roles', [
   'REQUEST_ROLES_FAILURE',
   'ADD_ROLE',
   'ADD_ROLE_FAILURE',
+  'UPDATE_ROLE',
+  'UPDATE_ROLE_FAILURE',
+  'DELETE_ROLE',
+  'DELETE_ROLE_FAILURE',
   'REQUEST_ROLE_USERS',
   'REQUEST_ROLE_USERS_SUCCESS',
   'REQUEST_ROLE_USERS_FAILURE',
@@ -34,6 +38,28 @@ const addRole = ({ name }) => ({
 
 const addRoleFailure = error => ({
   type: types.ADD_ROLE_FAILURE,
+  error
+});
+
+const updateRole = ({ roleId, name }) => ({
+  type: types.UPDATE_ROLE,
+  roleId,
+  name
+});
+
+const updateRoleFailure = error => ({
+  type: types.UPDATE_ROLE_FAILURE,
+  error
+});
+
+const deleteRole = ({ roleId, name }) => ({
+  type: types.DELETE_ROLE,
+  roleId,
+  name
+});
+
+const deleteRoleFailure = error => ({
+  type: types.DELETE_ROLE_FAILURE,
   error
 });
 
@@ -70,6 +96,10 @@ export const actions = {
   requestRolesFailure,
   addRole,
   addRoleFailure,
+  updateRole,
+  updateRoleFailure,
+  deleteRole,
+  deleteRoleFailure,
   requestRoleUsers,
   requestRoleUsersSuccess,
   requestRoleUsersFailure,
@@ -96,6 +126,16 @@ export const reducer = (state = initialState, action = {}) => {
         error: action.error
       };
     case types.ADD_ROLE_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      };
+    case types.UPDATE_ROLE_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      };
+    case types.DELETE_ROLE_FAILURE:
       return {
         ...state,
         error: action.error

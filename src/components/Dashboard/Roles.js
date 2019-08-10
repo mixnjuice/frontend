@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import DashLink from 'components/Dashboard/Link';
-import RolesEditor from 'components/Dashboard/RolesEditor';
 import { Table } from 'react-bootstrap';
 
 import { actions as rolesActions } from 'reducers/roles';
@@ -18,19 +17,6 @@ export class Roles extends Component {
   };
   constructor(props) {
     super(props);
-
-    this.state = {
-      modalShow: false,
-      setModelShow: false
-    };
-  }
-
-  setModalShow() {
-    if (!this.state.modalShow) {
-      this.setState({ modalShow: true });
-    } else {
-      this.setState({ modalShow: false });
-    }
   }
 
   componentDidMount() {
@@ -41,15 +27,14 @@ export class Roles extends Component {
 
   render() {
     const { roles } = this.props;
-    const { modalShow } = this.state;
 
     return (
       <Fragment>
         <Helmet title="Roles - Dashboard" />
         <h2>Roles</h2>
-        <a href="#roles/editor/add" onClick={e => this.setModalShow(true, e)}>
+        <DashLink to="#role/add" name="Role/Add">
           Add Role
-        </a>
+        </DashLink>
         <Table responsive striped bordered hover size="sm">
           <thead>
             <tr>
@@ -66,27 +51,37 @@ export class Roles extends Component {
                   <td>{role.name}</td>
                   <td>
                     <DashLink
-                      to={'#roleusers/' + role.id}
-                      name="RoleUsers"
+                      to={'#role/users/' + role.id}
+                      name="Role/Users"
                       item={role.id}
                     >
                       Users
                     </DashLink>
-                    &nbsp;
+                    &nbsp; | &nbsp;
+                    <DashLink
+                      to={'#role/edit' + role.id}
+                      name="Role/Edit"
+                      item={{ roleId: role.id, name: role.name }}
+                    >
+                      Edit
+                    </DashLink>
+                    &nbsp; | &nbsp;
+                    <DashLink
+                      to={'#role/delete' + role.id}
+                      name="Role/Delete"
+                      item={{ roleId: role.id, name: role.name }}
+                    >
+                      Delete
+                    </DashLink>
                   </td>
                 </tr>
               );
             })}
           </tbody>
         </Table>
-        <a href="#roles/editor/add" onClick={e => this.setModalShow(true, e)}>
+        <DashLink to="#role/add" name="Role/Add">
           Add Role
-        </a>
-        <RolesEditor
-          show={modalShow}
-          onHide={e => this.setModalShow(false, e)}
-          action="add"
-        />
+        </DashLink>
       </Fragment>
     );
   }

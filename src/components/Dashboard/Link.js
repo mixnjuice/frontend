@@ -12,7 +12,7 @@ export class Link extends Component {
     children: PropTypes.string.isRequired,
     name: PropTypes.string.isRquired,
     to: PropTypes.string.isRequired,
-    item: PropTypes.number,
+    item: PropTypes.any,
     className: PropTypes.string
   };
 

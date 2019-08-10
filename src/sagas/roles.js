@@ -91,6 +91,83 @@ function* addRoleWorker({ name }) {
   }
 }
 
+function* updateRoleWorker({ roleId, name }) {
+  try {
+    const endpoint = {
+      url: `/role/${roleId}`,
+      method: 'PUT'
+    };
+    const data = {
+      name
+    };
+    const result = yield call(request.execute, { endpoint, data });
+
+    // update roles in state or throw an error
+    if (result.success) {
+      // yield put(actions.requestRoles());
+      yield put(
+        appActions.popToast({
+          title: 'Edit Role',
+          icon: 'times-circle',
+          message: `${name} role successfully updated!`
+        })
+      );
+    } else if (result.error) {
+      throw result.error;
+    } else {
+      throw new Error('Failed to update role!');
+    }
+  } catch (error) {
+    const { message } = error;
+
+    yield put(actions.updateRoleFailure(error));
+    yield put(
+      appActions.popToast({
+        title: 'Error',
+        icon: 'times-circle',
+        message
+      })
+    );
+  }
+}
+
+function* deleteRoleWorker({ roleId, name }) {
+  try {
+    const endpoint = {
+      url: `/role/${roleId}`,
+      method: 'DELETE'
+    };
+    const result = yield call(request.execute, { endpoint });
+
+    // update roles in state or throw an error
+    if (result.success) {
+      // yield put(actions.requestRoles());
+      yield put(
+        appActions.popToast({
+          title: 'Delete Role',
+          icon: 'times-circle',
+          message: `${name} role successfully deleted!`
+        })
+      );
+    } else if (result.error) {
+      throw result.error;
+    } else {
+      throw new Error('Failed to delete role!');
+    }
+  } catch (error) {
+    const { message } = error;
+
+    yield put(actions.deleteRoleFailure(error));
+    yield put(
+      appActions.popToast({
+        title: 'Error',
+        icon: 'times-circle',
+        message
+      })
+    );
+  }
+}
+
 function* requestRoleUsersWorker({ roleId }) {
   try {
     const endpoint = {
@@ -175,6 +252,14 @@ function* addRoleWatcher() {
   yield takeLatest(types.ADD_ROLE, addRoleWorker);
 }
 
+function* updateRoleWatcher() {
+  yield takeLatest(types.UPDATE_ROLE, updateRoleWorker);
+}
+
+function* deleteRoleWatcher() {
+  yield takeLatest(types.DELETE_ROLE, deleteRoleWorker);
+}
+
 function* requestRoleUsersWatcher() {
   yield takeLatest(types.REQUEST_ROLE_USERS, requestRoleUsersWorker);
 }
@@ -186,6 +271,8 @@ function* addRoleUserWatcher() {
 export const workers = {
   requestRolesWorker,
   addRoleWorker,
+  updateRoleWorker,
+  deleteRoleWorker,
   requestRoleUsersWorker,
   addRoleUserWorker
 };
@@ -193,6 +280,8 @@ export const workers = {
 export const watchers = {
   requestRolesWatcher,
   addRoleWatcher,
+  updateRoleWatcher,
+  deleteRoleWatcher,
   requestRoleUsersWatcher,
   addRoleUserWatcher
 };
