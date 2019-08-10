@@ -39,7 +39,7 @@ export default class Header extends Component {
           <Col>
             <Navbar expand="lg">
               <Navbar.Brand className="pt-0">
-                <img src="/media/logo.svg" alt="logo" width="175" />
+                <img src="/media/logo.svg" alt="logo" className="image--logo" />
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse>
