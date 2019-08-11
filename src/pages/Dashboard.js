@@ -2,8 +2,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import DashMenu from 'components/Dashboard/Menu';
-import DashMain from 'components/Dashboard/Main';
+import { Menu, Main } from 'components/Dashboard/';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import { actions as dashboardActions } from 'reducers/dashboard';
@@ -28,10 +27,10 @@ export class Dashboard extends Component {
         </Row>
         <Row>
           <Col xs={12} md={3}>
-            <DashMenu />
+            <Menu />
           </Col>
           <Col xs={12} md={9}>
-            <DashMain />
+            <Main />
           </Col>
         </Row>
       </Container>

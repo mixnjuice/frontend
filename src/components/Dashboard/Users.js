@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import DashLink from 'components/Dashboard/Link';
+import { DashLink, Layout } from 'components/Dashboard/';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
 
@@ -13,7 +12,8 @@ import { getAllUsers } from 'selectors/users';
 export class Users extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    users: PropTypes.array
+    users: PropTypes.array,
+    opt: PropTypes.object
   };
   constructor(props) {
     super(props);
@@ -26,11 +26,10 @@ export class Users extends Component {
   }
 
   render() {
-    const { users } = this.props;
+    const { opt, users } = this.props;
 
     return (
-      <Fragment>
-        <Helmet title="Users - Dashboard" />
+      <Layout pageTitle="Users - Dashboard" header="Users" options={opt}>
         <Table responsive striped bordered hover size="sm">
           <thead>
             <tr>
@@ -63,7 +62,7 @@ export class Users extends Component {
             })}
           </tbody>
         </Table>
-      </Fragment>
+      </Layout>
     );
   }
 }

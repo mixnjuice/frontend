@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import DashLink from 'components/Dashboard/Link';
+import { DashLink, Layout } from 'components/Dashboard/';
 import { Table } from 'react-bootstrap';
 
 import { actions as rolesActions } from 'reducers/roles';
@@ -12,8 +11,8 @@ import { getAllRoles } from 'selectors/roles';
 export class Roles extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    roles: PropTypes.array,
-    modalShow: PropTypes.bool
+    opt: PropTypes.object,
+    roles: PropTypes.array
   };
   constructor(props) {
     super(props);
@@ -26,12 +25,10 @@ export class Roles extends Component {
   }
 
   render() {
-    const { roles } = this.props;
+    const { opt, roles } = this.props;
 
     return (
-      <Fragment>
-        <Helmet title="Roles - Dashboard" />
-        <h2>Roles</h2>
+      <Layout pageTitle="Roles - Dashboard" header="Roles" options={opt}>
         <DashLink to="#role/add" name="Role/Add">
           Add Role
         </DashLink>
@@ -90,7 +87,7 @@ export class Roles extends Component {
         <DashLink to="#role/add" name="Role/Add">
           Add Role
         </DashLink>
-      </Fragment>
+      </Layout>
     );
   }
 }

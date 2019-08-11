@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
+import { Layout } from '.';
 
 import { actions as flavorsActions } from 'reducers/flavors';
 import { getAllFlavors } from 'selectors/flavors';
@@ -11,6 +11,7 @@ import { getAllFlavors } from 'selectors/flavors';
 export class Flavors extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
+    opt: PropTypes.object.isRequired,
     flavors: PropTypes.array
   };
   constructor(props) {
@@ -24,11 +25,14 @@ export class Flavors extends Component {
   }
 
   render() {
-    const { flavors } = this.props;
+    const { flavors, opt } = this.props;
 
     return (
-      <Fragment>
-        <Helmet title="Flavors - Dashboard" />
+      <Layout
+        pageTitle="Flavors - Dashboard"
+        header="Ingredients &gt; Flavors"
+        options={opt}
+      >
         <Table responsive striped bordered hover size="sm">
           <thead>
             <tr>
@@ -53,7 +57,7 @@ export class Flavors extends Component {
             })}
           </tbody>
         </Table>
-      </Fragment>
+      </Layout>
     );
   }
 }

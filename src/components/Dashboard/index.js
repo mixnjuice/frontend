@@ -1,3 +1,10 @@
+import LinkExport from './Link';
+import MenuExport from './Menu';
+
+import LayoutExport from './Layout';
+import MainExport from './Main';
+import NotFoundExport from './NotFound';
+// Page Imports
 import FlavorsExport from './Flavors';
 import HomeExport from './Home';
 import MigrationsExport from './Migrations';
@@ -10,6 +17,13 @@ import RoleAddUserExport from './Role/AddUser';
 import UsersExport from './Users';
 import UserRolesExport from './User/Roles';
 
+export const DashLink = LinkExport;
+export const Menu = MenuExport;
+
+export const Layout = LayoutExport;
+export const Main = MainExport;
+export const NotFound = NotFoundExport;
+// Page Exports
 export const Flavors = FlavorsExport;
 export const Home = HomeExport;
 export const Migrations = MigrationsExport;

@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Form as FinalForm } from 'react-final-form';
 import { Button, Form } from 'react-bootstrap';
-import DashLink from 'components/Dashboard/Link';
+import { DashLink, Layout } from 'components/Dashboard/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -15,8 +14,9 @@ import { actions as dashActions } from 'reducers/dashboard';
 export class RoleDelete extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    roleId: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired
+    name: PropTypes.string.isRequired,
+    opt: PropTypes.object.isRequired,
+    roleId: PropTypes.number.isRequired
   };
 
   constructor(props) {
@@ -33,12 +33,14 @@ export class RoleDelete extends Component {
   }
 
   render() {
-    const { name } = this.props;
+    const { name, opt } = this.props;
 
     return (
-      <Fragment>
-        <Helmet title="Delete Role - Dashboard" />
-        <h2>Roles &gt; Delete Role &gt; {name}</h2>
+      <Layout
+        pageTitle="Delete Role - Dashboard"
+        header={`Roles > Delete Role > ${name}`}
+        options={opt}
+      >
         <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
         <DashLink to="#roles" name="Roles">
           <span>Back</span>
@@ -62,7 +64,7 @@ export class RoleDelete extends Component {
             </Form>
           )}
         />
-      </Fragment>
+      </Layout>
     );
   }
 }

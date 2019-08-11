@@ -6,6 +6,7 @@ import {
   Flavors,
   Home,
   Migrations,
+  NotFound,
   Roles,
   RoleAdd,
   RoleEdit,
@@ -30,31 +31,48 @@ class Main extends Component {
   display() {
     const { dashboardComponent } = this.props;
     const { name, item } = dashboardComponent;
+    const defaultOpts = {
+      border: false,
+      header: true,
+      title: false,
+      style: {}
+    };
 
     switch (name) {
-      case 'Flavors':
-        return <Flavors />;
-      case 'Migrations':
-        return <Migrations />;
-      case 'Roles':
-        return <Roles />;
-      case 'Role/Add':
-        return <RoleAdd />;
-      case 'Role/Edit':
-        return <RoleEdit roleId={item.roleId} name={item.name} />;
-      case 'Role/Delete':
-        return <RoleDelete roleId={item.roleId} name={item.name} />;
-      case 'Role/Users':
-        return <RoleUsers roleId={item} />;
-      case 'Role/Add/User':
-        return <RoleAddUser roleId={item.roleId} name={item.name} />;
-      case 'Users':
-        return <Users />;
-      case 'User/Roles':
-        return <UserRoles userId={item} />;
       case 'Home':
-      default:
         return <Home />;
+      case 'Flavors':
+        return <Flavors opt={defaultOpts} />;
+      case 'Migrations':
+        return <Migrations opt={defaultOpts} />;
+      case 'Roles':
+        return <Roles opt={defaultOpts} />;
+      case 'Role/Add':
+        return <RoleAdd opt={defaultOpts} />;
+      case 'Role/Edit':
+        return (
+          <RoleEdit opt={defaultOpts} roleId={item.roleId} name={item.name} />
+        );
+      case 'Role/Delete':
+        return (
+          <RoleDelete opt={defaultOpts} roleId={item.roleId} name={item.name} />
+        );
+      case 'Role/Users':
+        return <RoleUsers opt={defaultOpts} roleId={item} />;
+      case 'Role/Add/User':
+        return (
+          <RoleAddUser
+            opt={defaultOpts}
+            roleId={item.roleId}
+            name={item.name}
+          />
+        );
+      case 'Users':
+        return <Users opt={defaultOpts} />;
+      case 'User/Roles':
+        return <UserRoles opt={defaultOpts} userId={item} />;
+      default:
+        return <NotFound opt={defaultOpts} name={name} />;
     }
   }
   render() {

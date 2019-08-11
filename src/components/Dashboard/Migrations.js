@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
+import { Layout } from '.';
 
 import { actions as dashboardActions } from 'reducers/dashboard';
 import { getMigrations } from 'selectors/dashboard';
@@ -11,6 +11,7 @@ import { getMigrations } from 'selectors/dashboard';
 export class Migrations extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
+    opt: PropTypes.object.isRequired,
     migrations: PropTypes.array
   };
   constructor(props) {
@@ -24,11 +25,14 @@ export class Migrations extends Component {
   }
 
   render() {
-    const { migrations } = this.props;
+    const { migrations, opt } = this.props;
 
     return (
-      <Fragment>
-        <Helmet title="Database Migrations - Dashboard" />
+      <Layout
+        pageTitle="Database Migrations - Dashboard"
+        header="Database &gt; Migrations"
+        options={opt}
+      >
         <Table responsive striped bordered hover size="sm">
           <thead>
             <tr>
@@ -54,7 +58,7 @@ export class Migrations extends Component {
             })}
           </tbody>
         </Table>
-      </Fragment>
+      </Layout>
     );
   }
 }

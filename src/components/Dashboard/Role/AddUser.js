@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
-import { Helmet } from 'react-helmet';
 import { bindActionCreators } from 'redux';
-import { Button, Card, Form } from 'react-bootstrap';
-import DashLink from 'components/Dashboard/Link';
+import { Button, Form } from 'react-bootstrap';
+import { DashLink, Layout } from 'components/Dashboard/';
 import { UserRoles } from 'components/Dashboard/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
@@ -17,9 +16,10 @@ import { getAllUsers } from 'selectors/users';
 export class RoleAddUser extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    users: PropTypes.array,
+    name: PropTypes.string,
+    opt: PropTypes.object.isRequired,
     roleId: PropTypes.number,
-    name: PropTypes.string
+    users: PropTypes.array
   };
 
   constructor(props) {
@@ -56,57 +56,57 @@ export class RoleAddUser extends Component {
   }
 
   render() {
-    const { users, name } = this.props;
+    const { users, name, opt } = this.props;
     const { userId, submitting } = this.state;
 
     return (
       <Fragment>
-        <Helmet title="Add Role - Dashboard" />
-        <Card>
-          <Card.Body>
-            <Card.Title>Roles &gt; Assign {name} Role</Card.Title>
-            <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
-            <DashLink to="#roles" name="Roles">
-              Back
-            </DashLink>
-            <Form noValidate onSubmit={this.handleSubmit}>
-              <Form.Group>
-                <Form.Label>Select User to Assign to {name}s Role</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="userId"
-                  onChange={e => this.handleChange(e)}
-                  value={userId}
-                >
-                  <option value="0" key="x">
-                    Choose a User
-                  </option>
-                  {users.map((user, index) => {
-                    return (
-                      <option value={user.id} key={index}>
-                        {user.emailAddress}
-                      </option>
-                    );
-                  })}
-                </Form.Control>
-              </Form.Group>
-              <Button
-                className="button-animation"
-                variant="primary"
-                type="submit"
-                disabled={submitting}
+        <Layout
+          pageTitle="Add Role - Dashboard"
+          header={`Roles > Assign ${name} Role`}
+          options={opt}
+        >
+          <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
+          <DashLink to="#roles" name="Roles">
+            Back
+          </DashLink>
+          <Form noValidate onSubmit={this.handleSubmit}>
+            <Form.Group>
+              <Form.Label>Select User to Assign to {name}s Role</Form.Label>
+              <Form.Control
+                as="select"
+                name="userId"
+                onChange={e => this.handleChange(e)}
+                value={userId}
               >
-                <span>Save</span>
-              </Button>
-            </Form>
-          </Card.Body>
-        </Card>
+                <option value="0" key="x">
+                  Choose a User
+                </option>
+                {users.map((user, index) => {
+                  return (
+                    <option value={user.id} key={index}>
+                      {user.emailAddress}
+                    </option>
+                  );
+                })}
+              </Form.Control>
+            </Form.Group>
+            <Button
+              className="button-animation"
+              variant="primary"
+              type="submit"
+              disabled={submitting}
+            >
+              <span>Save</span>
+            </Button>
+          </Form>
+        </Layout>
+        <br />
         {userId !== '0' && (
-          <Card variant="info">
-            <Card.Body>
-              <UserRoles userId={userId} />
-            </Card.Body>
-          </Card>
+          <UserRoles
+            opt={{ header: false, title: true, border: 'info' }}
+            userId={Number(userId)}
+          />
         )}
       </Fragment>
     );

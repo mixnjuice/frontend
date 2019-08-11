@@ -10,7 +10,7 @@ export class Link extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     children: PropTypes.any.isRequired,
-    name: PropTypes.string.isRquired,
+    name: PropTypes.string,
     to: PropTypes.string.isRequired,
     item: PropTypes.any,
     className: PropTypes.string

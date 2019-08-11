@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react';
-import { Helmet } from 'react-helmet';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Form as FinalForm, Field } from 'react-final-form';
 import { Button, Form } from 'react-bootstrap';
-import DashLink from 'components/Dashboard/Link';
+import { DashLink, Layout } from 'components/Dashboard/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,7 +13,8 @@ import { actions as dashActions } from 'reducers/dashboard';
 
 export class RoleAdd extends Component {
   static propTypes = {
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    opt: PropTypes.object.isRequired
   };
 
   constructor(props) {
@@ -31,10 +31,14 @@ export class RoleAdd extends Component {
   }
 
   render() {
+    const { opt } = this.props;
+
     return (
-      <Fragment>
-        <Helmet title="Add Role - Dashboard" />
-        <h2>Roles &gt; Add Role</h2>
+      <Layout
+        pageTitle="Add Role - Dashboard"
+        header="Roles &gt; Add Role"
+        options={opt}
+      >
         <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
         <DashLink to="#roles" name="Roles">
           <span>Back</span>
@@ -74,7 +78,7 @@ export class RoleAdd extends Component {
             </Form>
           )}
         />
-      </Fragment>
+      </Layout>
     );
   }
 }

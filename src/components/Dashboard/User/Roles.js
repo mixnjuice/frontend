@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import DashLink from 'components/Dashboard/Link';
+import { DashLink, Layout } from 'components/Dashboard/';
 import { Table } from 'react-bootstrap';
 
 import { actions as usersActions } from 'reducers/users';
@@ -12,6 +11,7 @@ import { getUserRoles } from 'selectors/users';
 export class UserRoles extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
+    opt: PropTypes.object.isRequired,
     roles: PropTypes.array,
     userId: PropTypes.number
   };
@@ -26,12 +26,14 @@ export class UserRoles extends Component {
   }
 
   render() {
-    const { roles, userId } = this.props;
+    const { opt, roles, userId } = this.props;
 
     return (
-      <Fragment>
-        <Helmet title="Roles - Dashboard" />
-        <h2>User &gt; User ID: {userId} &gt; Roles</h2>
+      <Layout
+        pageTitle="Roles - Dashboard"
+        header={`User > User ID: ${userId} > Roles`}
+        options={opt}
+      >
         <DashLink to="#users" name="Users">
           Back
         </DashLink>{' '}
@@ -94,7 +96,7 @@ export class UserRoles extends Component {
         <DashLink to="#users" name="Users">
           Back
         </DashLink>
-      </Fragment>
+      </Layout>
     );
   }
 }

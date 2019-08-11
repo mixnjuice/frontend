@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
-import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Alert, Table } from 'react-bootstrap';
-import DashLink from 'components/Dashboard/Link';
+import { DashLink, Layout } from 'components/Dashboard/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,6 +13,7 @@ import { getAllRoles, getRoleUsers } from 'selectors/roles';
 export class RoleUsers extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
+    opt: PropTypes.object.isRequired,
     roles: PropTypes.array,
     roleId: PropTypes.number,
     roleUsers: PropTypes.array
@@ -37,12 +37,14 @@ export class RoleUsers extends Component {
   }
 
   render() {
-    const { roleId, roles, roleUsers } = this.props;
+    const { opt, roleId, roles, roleUsers } = this.props;
 
     return (
-      <Fragment>
-        <Helmet title="Role Users - Dashboard" />
-        <h2>Roles &gt; {roles[roleId - 1].name}s</h2>
+      <Layout
+        pageTitle="Role Users - Dashboard"
+        header={`Roles > ${roles[roleId - 1].name}s`}
+        options={opt}
+      >
         <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
         <DashLink to="#roles" name="Roles">
           Back
@@ -70,7 +72,7 @@ export class RoleUsers extends Component {
             </tbody>
           </Table>
         )}
-      </Fragment>
+      </Layout>
     );
   }
 }
