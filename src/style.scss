@@ -49,19 +49,19 @@ hr {
 // it changes the width of the container and the width of the other elements around it
 // Switching the container to "fluid" didn't fix it, so this was unfortunately the best way I could
 // find to solve the issue; by fixing the container width for medium screens and up
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: $md) and (max-width: $lg) {
   .container {
     width: 800px;
   }
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: $lg) and (max-width: $xl) {
   .container {
     width: 1000px;
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: $xl) {
   .container {
     width: 1200px;
   }
@@ -122,7 +122,7 @@ hr {
 }
 
 // Centering nav contents for phone screens
-@media (max-width: 700px) {
+@media (max-width: $lg) {
   .navbar {
     justify-content: center;
   }
