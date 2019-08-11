@@ -38,14 +38,15 @@ export default class Header extends Component {
         <Row className="navigation-container">
           <Col>
             <Navbar expand="lg">
-              <Navbar.Brand>MixNJuice</Navbar.Brand>
+              <Navbar.Brand className="pt-0">
+                <img src="/media/logo.svg" alt="logo" className="image--logo" />
+              </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse>
                 <Nav>
                   {this.renderNavItem('/', 'Home')}
                   {this.renderNavItem('/recipes', 'Recipes')}
                   {this.renderNavItem('/calculator', 'Calculator')}
-                  {this.renderNavItem('/recipe', 'Recipes')}
                   {this.renderNavItem('/flavors', 'Flavors')}
                   <NavDropdown title="User">
                     {this.renderNavDropdownItem('/user/profile', 'Profile')}
@@ -61,7 +62,6 @@ export default class Header extends Component {
                     )}
                     {this.renderNavDropdownItem('/user/settings', 'Settings')}
                   </NavDropdown>
-                  {this.renderNavItem('/flavors', 'Flavors')}
                   {this.renderNavItem('/login', 'Login')}
                   {this.renderNavItem('/register', 'Register')}
                 </Nav>

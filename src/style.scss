@@ -445,7 +445,6 @@ input {
 }
 
 .button--favorite {
-
   &:hover,
   &:focus {
     background: $teal;
@@ -475,4 +474,8 @@ input {
     color: $blue;
     background-color: $lightest-blue;
   }
+}
+
+.image--logo {
+  width: 12rem;
 }
