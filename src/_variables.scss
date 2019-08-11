@@ -7,7 +7,11 @@ $baby-blue: #00bad3;
 $lighter-red: #ffccbc;
 $shadow-grey: #777;
 
-$sm: 576px;
-$md: 768px;
-$lg: 992px;
-$xl: 1200px;
+$min-sm: 576px;
+$max-sm: 575px;
+$min-md: 768px;
+$max-md: 767px;
+$min-lg: 992px;
+$max-lg: 991px;
+$min-xl: 1200px;
+$max-xl: 1199px;
