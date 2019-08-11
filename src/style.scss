@@ -157,7 +157,7 @@ hr {
   border: 1px solid $black;
 
   // Style for "striped" tables
-  .table-striped tbody tr:nth-of-type(odd) {
+  tr:nth-of-type(odd) .table-striped {
     background-color: $lightest-blue;
   }
 
