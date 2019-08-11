@@ -15,7 +15,7 @@ export class RoleUsers extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     roles: PropTypes.array,
-    item: PropTypes.number,
+    roleId: PropTypes.number,
     roleUsers: PropTypes.array
   };
   constructor(props) {
@@ -28,21 +28,21 @@ export class RoleUsers extends Component {
     actions.requestRoleUsers({ roleId });
   }
   componentDidMount() {
-    const { actions, item } = this.props;
+    const { actions, roleId } = this.props;
 
     actions.requestRoles();
-    if (item !== null) {
-      actions.requestRoleUsers({ roleId: item });
+    if (roleId !== null) {
+      actions.requestRoleUsers({ roleId });
     }
   }
 
   render() {
-    const { item, roles, roleUsers } = this.props;
+    const { roleId, roles, roleUsers } = this.props;
 
     return (
       <Fragment>
         <Helmet title="Role Users - Dashboard" />
-        <h2>Roles &gt; {roles[item - 1].name}s</h2>
+        <h2>Roles &gt; {roles[roleId - 1].name}s</h2>
         <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
         <DashLink to="#roles" name="Roles">
           Back

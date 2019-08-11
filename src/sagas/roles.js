@@ -104,7 +104,7 @@ function* updateRoleWorker({ roleId, name }) {
 
     // update roles in state or throw an error
     if (result.success) {
-      // yield put(actions.requestRoles());
+      yield put(actions.requestRoles());
       yield put(
         appActions.popToast({
           title: 'Edit Role',
@@ -141,7 +141,7 @@ function* deleteRoleWorker({ roleId, name }) {
 
     // update roles in state or throw an error
     if (result.success) {
-      // yield put(actions.requestRoles());
+      yield put(actions.requestRoles());
       yield put(
         appActions.popToast({
           title: 'Delete Role',
@@ -217,7 +217,7 @@ function* addRoleUserWorker({ userId, roleId, active }) {
 
     // update roles in state or throw an error
     if (result.success) {
-      yield put(actions.requestRoleUsers());
+      // yield put(actions.requestRoles());
       yield put(
         appActions.popToast({
           title: 'User Role Added',

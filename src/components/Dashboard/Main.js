@@ -11,7 +11,9 @@ import {
   RoleEdit,
   RoleDelete,
   RoleUsers,
-  Users
+  RoleAddUser,
+  Users,
+  UserRoles
 } from '.';
 
 import { actions as dashboardActions } from 'reducers/dashboard';
@@ -43,9 +45,13 @@ class Main extends Component {
       case 'Role/Delete':
         return <RoleDelete roleId={item.roleId} name={item.name} />;
       case 'Role/Users':
-        return <RoleUsers item={item} />;
+        return <RoleUsers roleId={item} />;
+      case 'Role/Add/User':
+        return <RoleAddUser roleId={item.roleId} name={item.name} />;
       case 'Users':
         return <Users />;
+      case 'User/Roles':
+        return <UserRoles userId={item} />;
       case 'Home':
       default:
         return <Home />;

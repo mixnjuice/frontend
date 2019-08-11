@@ -6,34 +6,38 @@ import { bindActionCreators } from 'redux';
 import DashLink from 'components/Dashboard/Link';
 import { Table } from 'react-bootstrap';
 
-import { actions as rolesActions } from 'reducers/roles';
-import { getAllRoles } from 'selectors/roles';
+import { actions as usersActions } from 'reducers/users';
+import { getUserRoles } from 'selectors/users';
 
-export class Roles extends Component {
+export class UserRoles extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     roles: PropTypes.array,
-    modalShow: PropTypes.bool
+    userId: PropTypes.number
   };
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    const { actions } = this.props;
+    const { actions, userId } = this.props;
 
-    actions.requestRoles();
+    actions.requestUserRoles({ userId });
   }
 
   render() {
-    const { roles } = this.props;
+    const { roles, userId } = this.props;
 
     return (
       <Fragment>
         <Helmet title="Roles - Dashboard" />
-        <h2>Roles</h2>
-        <DashLink to="#role/add" name="Role/Add">
-          Add Role
+        <h2>User &gt; User ID: {userId} &gt; Roles</h2>
+        <DashLink to="#users" name="Users">
+          Back
+        </DashLink>{' '}
+        &nbsp;
+        <DashLink to="#roles" name="Roles">
+          Roles
         </DashLink>
         <Table responsive striped bordered hover size="sm">
           <thead>
@@ -47,37 +51,37 @@ export class Roles extends Component {
             {roles.map((role, index) => {
               return (
                 <tr key={index}>
-                  <td>{role.id}</td>
-                  <td>{role.name}</td>
+                  <td>{role.Role.id}</td>
+                  <td>{role.Role.name}</td>
                   <td>
                     <DashLink
-                      to={'#role/users/' + role.id}
+                      to={'#role/users/' + role.Role.id}
                       name="Role/Users"
-                      item={role.id}
+                      item={role.Role.id}
                     >
                       Users
                     </DashLink>
                     &nbsp; | &nbsp;
                     <DashLink
-                      to={`#role/${role.id}/add/user`}
+                      to={`#role/${role.Role.id}/add/user`}
                       name="Role/Add/User"
-                      item={{ roleId: role.id, name: role.name }}
+                      item={{ roleId: role.Role.id, name: role.Role.name }}
                     >
                       Assign
                     </DashLink>
                     &nbsp; | &nbsp;
                     <DashLink
-                      to={'#role/edit' + role.id}
+                      to={'#role/edit/' + role.Role.id}
                       name="Role/Edit"
-                      item={{ roleId: role.id, name: role.name }}
+                      item={{ roleId: role.Role.id, name: role.Role.name }}
                     >
                       Edit
                     </DashLink>
                     &nbsp; | &nbsp;
                     <DashLink
-                      to={'#role/delete' + role.id}
+                      to={'#role/delete/' + role.Role.id}
                       name="Role/Delete"
-                      item={{ roleId: role.id, name: role.name }}
+                      item={{ roleId: role.Role.id, name: role.Role.name }}
                     >
                       Delete
                     </DashLink>
@@ -87,8 +91,8 @@ export class Roles extends Component {
             })}
           </tbody>
         </Table>
-        <DashLink to="#role/add" name="Role/Add">
-          Add Role
+        <DashLink to="#users" name="Users">
+          Back
         </DashLink>
       </Fragment>
     );
@@ -96,13 +100,13 @@ export class Roles extends Component {
 }
 
 const mapStateToProps = state => ({
-  roles: getAllRoles(state)
+  roles: getUserRoles(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
-      ...rolesActions
+      ...usersActions
     },
     dispatch
   )
@@ -111,4 +115,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Roles);
+)(UserRoles);

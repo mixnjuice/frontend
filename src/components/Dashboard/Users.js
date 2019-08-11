@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import DashLink from 'components/Dashboard/Link';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
 
@@ -48,6 +49,14 @@ export class Users extends Component {
                   <td>{user.activationCode === null ? 'Yes' : 'No'}</td>
                   <td>
                     <Link to="/user/profile">Profile</Link>
+                    &nbsp; | &nbsp;
+                    <DashLink
+                      to={'#user/' + user.id + '/roles'}
+                      name="User/Roles"
+                      item={user.id}
+                    >
+                      Roles
+                    </DashLink>
                   </td>
                 </tr>
               );

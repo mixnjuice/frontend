@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
+import { Helmet } from 'react-helmet';
 import { bindActionCreators } from 'redux';
 import { Form as FinalForm } from 'react-final-form';
 import { Button, Form } from 'react-bootstrap';
@@ -36,6 +37,7 @@ export class RoleDelete extends Component {
 
     return (
       <Fragment>
+        <Helmet title="Delete Role - Dashboard" />
         <h2>Roles &gt; Delete Role &gt; {name}</h2>
         <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
         <DashLink to="#roles" name="Roles">

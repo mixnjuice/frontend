@@ -9,7 +9,7 @@ import { getDashboardComponent } from 'selectors/dashboard';
 export class Link extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    children: PropTypes.string.isRequired,
+    children: PropTypes.any.isRequired,
     name: PropTypes.string.isRquired,
     to: PropTypes.string.isRequired,
     item: PropTypes.any,

@@ -6,7 +6,9 @@ import RoleAddExport from './Role/Add';
 import RoleEditExport from './Role/Edit';
 import RoleDeleteExport from './Role/Delete';
 import RoleUsersExport from './Role/Users';
+import RoleAddUserExport from './Role/AddUser';
 import UsersExport from './Users';
+import UserRolesExport from './User/Roles';
 
 export const Flavors = FlavorsExport;
 export const Home = HomeExport;
@@ -16,4 +18,6 @@ export const RoleAdd = RoleAddExport;
 export const RoleEdit = RoleEditExport;
 export const RoleDelete = RoleDeleteExport;
 export const RoleUsers = RoleUsersExport;
+export const RoleAddUser = RoleAddUserExport;
 export const Users = UsersExport;
+export const UserRoles = UserRolesExport;
