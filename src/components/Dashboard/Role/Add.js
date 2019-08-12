@@ -26,7 +26,7 @@ export class RoleAdd extends Component {
   handleSubmit({ name }) {
     const { actions } = this.props;
 
-    actions.addRole({ name });
+    actions.createRole({ name });
     actions.selectDashboard({ name: 'Roles' });
   }
 

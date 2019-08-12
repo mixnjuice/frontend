@@ -50,7 +50,7 @@ export class Roles extends Component {
                     <DashLink
                       to={'#role/users/' + role.id}
                       name="Role/Users"
-                      item={role.id}
+                      item={{ roleId: role.id, name: role.name }}
                     >
                       Users
                     </DashLink>

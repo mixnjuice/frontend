@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Button, Form } from 'react-bootstrap';
 import { DashLink, Layout } from 'components/Dashboard/';
@@ -50,47 +50,47 @@ export class RoleAddUser extends Component {
     if (userId === '0') {
       this.setState({ submitting: false });
     } else {
-      actions.addRoleUser({ roleId, userId, active: true });
+      actions.createRoleUser({ roleId, userId, active: true });
       actions.selectDashboard({ name: 'Roles' });
     }
   }
 
   render() {
-    const { users, name, opt } = this.props;
+    const { users, name, opt, roleId } = this.props;
     const { userId, submitting } = this.state;
 
     return (
-      <Fragment>
-        <Layout
-          pageTitle="Add Role - Dashboard"
-          header={`Roles > Assign ${name} Role`}
-          options={opt}
-        >
-          <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
-          <DashLink to="#roles" name="Roles">
-            Back
-          </DashLink>
-          <Form noValidate onSubmit={this.handleSubmit}>
-            <Form.Group>
-              <Form.Label>Select User to Assign to {name}s Role</Form.Label>
-              <Form.Control
-                as="select"
-                name="userId"
-                onChange={e => this.handleChange(e)}
-                value={userId}
-              >
-                <option value="0" key="x">
-                  Choose a User
-                </option>
-                {users.map((user, index) => {
-                  return (
-                    <option value={user.id} key={index}>
-                      {user.emailAddress}
-                    </option>
-                  );
-                })}
-              </Form.Control>
-            </Form.Group>
+      <Layout
+        pageTitle="Add Role - Dashboard"
+        header={`Roles > Assign ${name} Role`}
+        options={opt}
+      >
+        <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
+        <DashLink to="#roles" name="Roles">
+          Back
+        </DashLink>
+        <Form noValidate onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Label>Select User to Assign to {name}s Role</Form.Label>
+            <Form.Control
+              as="select"
+              name="userId"
+              onChange={e => this.handleChange(e)}
+              value={userId}
+            >
+              <option value="0" key="x">
+                Choose a User
+              </option>
+              {users.map((user, index) => {
+                return (
+                  <option value={user.id} key={index}>
+                    {user.emailAddress}
+                  </option>
+                );
+              })}
+            </Form.Control>
+          </Form.Group>
+          {userId !== '0' && (
             <Button
               className="button-animation"
               variant="primary"
@@ -99,16 +99,17 @@ export class RoleAddUser extends Component {
             >
               <span>Save</span>
             </Button>
-          </Form>
-        </Layout>
+          )}
+        </Form>
         <br />
         {userId !== '0' && (
           <UserRoles
             opt={{ header: false, title: true, border: 'info' }}
             userId={Number(userId)}
+            roleId={roleId}
           />
         )}
-      </Fragment>
+      </Layout>
     );
   }
 }

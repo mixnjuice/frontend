@@ -13,6 +13,7 @@ import {
   RoleDelete,
   RoleUsers,
   RoleAddUser,
+  RoleDeleteUser,
   Users,
   UserRoles
 } from '.';
@@ -58,11 +59,22 @@ class Main extends Component {
           <RoleDelete opt={defaultOpts} roleId={item.roleId} name={item.name} />
         );
       case 'Role/Users':
-        return <RoleUsers opt={defaultOpts} roleId={item} />;
+        return (
+          <RoleUsers opt={defaultOpts} roleId={item.roleId} name={item.name} />
+        );
       case 'Role/Add/User':
         return (
           <RoleAddUser
             opt={defaultOpts}
+            roleId={item.roleId}
+            name={item.name}
+          />
+        );
+      case 'Role/Delete/User':
+        return (
+          <RoleDeleteUser
+            opt={defaultOpts}
+            userId={item.userId}
             roleId={item.roleId}
             name={item.name}
           />

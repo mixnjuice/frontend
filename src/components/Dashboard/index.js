@@ -14,6 +14,7 @@ import RoleEditExport from './Role/Edit';
 import RoleDeleteExport from './Role/Delete';
 import RoleUsersExport from './Role/Users';
 import RoleAddUserExport from './Role/AddUser';
+import RoleDeleteUserExport from './Role/DeleteUser';
 import UsersExport from './Users';
 import UserRolesExport from './User/Roles';
 
@@ -33,5 +34,6 @@ export const RoleEdit = RoleEditExport;
 export const RoleDelete = RoleDeleteExport;
 export const RoleUsers = RoleUsersExport;
 export const RoleAddUser = RoleAddUserExport;
+export const RoleDeleteUser = RoleDeleteUserExport;
 export const Users = UsersExport;
 export const UserRoles = UserRolesExport;

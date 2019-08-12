@@ -51,7 +51,7 @@ function* requestRolesWorker() {
   }
 }
 
-function* addRoleWorker({ name }) {
+function* createRoleWorker({ name }) {
   try {
     const endpoint = {
       url: '/role',
@@ -80,7 +80,7 @@ function* addRoleWorker({ name }) {
   } catch (error) {
     const { message } = error;
 
-    yield put(actions.addRoleFailure(error));
+    yield put(actions.createRoleFailure(error));
     yield put(
       appActions.popToast({
         title: 'Error',
@@ -202,7 +202,7 @@ function* requestRoleUsersWorker({ roleId }) {
   }
 }
 
-function* addRoleUserWorker({ userId, roleId, active }) {
+function* createRoleUserWorker({ userId, roleId, active }) {
   try {
     const endpoint = {
       url: `/user/${userId}/role`,
@@ -233,7 +233,44 @@ function* addRoleUserWorker({ userId, roleId, active }) {
   } catch (error) {
     const { message } = error;
 
-    yield put(actions.addRoleUserFailure(error));
+    yield put(actions.createRoleUserFailure(error));
+    yield put(
+      appActions.popToast({
+        title: 'Error',
+        icon: 'times-circle',
+        message
+      })
+    );
+  }
+}
+
+function* deleteRoleUserWorker({ userId, roleId, name }) {
+  try {
+    const endpoint = {
+      url: `/user/${userId}/role/${roleId}`,
+      method: 'DELETE'
+    };
+    const result = yield call(request.execute, { endpoint });
+
+    // update roles in state or throw an error
+    if (result.success) {
+      // yield put(actions.requestRoles());
+      yield put(
+        appActions.popToast({
+          title: 'Unassign User Role',
+          icon: 'times-circle',
+          message: `${name} role successfully unassigned!`
+        })
+      );
+    } else if (result.error) {
+      throw result.error;
+    } else {
+      throw new Error('Failed to unassign role!');
+    }
+  } catch (error) {
+    const { message } = error;
+
+    yield put(actions.deleteRoleUserFailure(error));
     yield put(
       appActions.popToast({
         title: 'Error',
@@ -248,8 +285,8 @@ function* requestRolesWatcher() {
   yield takeLatest(types.REQUEST_ROLES, requestRolesWorker);
 }
 
-function* addRoleWatcher() {
-  yield takeLatest(types.ADD_ROLE, addRoleWorker);
+function* createRoleWatcher() {
+  yield takeLatest(types.CREATE_ROLE, createRoleWorker);
 }
 
 function* updateRoleWatcher() {
@@ -264,26 +301,32 @@ function* requestRoleUsersWatcher() {
   yield takeLatest(types.REQUEST_ROLE_USERS, requestRoleUsersWorker);
 }
 
-function* addRoleUserWatcher() {
-  yield takeLatest(types.ADD_ROLE_USER, addRoleUserWorker);
+function* createRoleUserWatcher() {
+  yield takeLatest(types.CREATE_ROLE_USER, createRoleUserWorker);
+}
+
+function* deleteRoleUserWatcher() {
+  yield takeLatest(types.DELETE_ROLE_USER, deleteRoleUserWorker);
 }
 
 export const workers = {
   requestRolesWorker,
-  addRoleWorker,
+  createRoleWorker,
   updateRoleWorker,
   deleteRoleWorker,
   requestRoleUsersWorker,
-  addRoleUserWorker
+  createRoleUserWorker,
+  deleteRoleUserWorker
 };
 
 export const watchers = {
   requestRolesWatcher,
-  addRoleWatcher,
+  createRoleWatcher,
   updateRoleWatcher,
   deleteRoleWatcher,
   requestRoleUsersWatcher,
-  addRoleUserWatcher
+  createRoleUserWatcher,
+  deleteRoleUserWatcher
 };
 
 export default function* saga() {

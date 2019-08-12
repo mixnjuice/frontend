@@ -4,19 +4,20 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Form as FinalForm } from 'react-final-form';
 import { Button, Form } from 'react-bootstrap';
-import { DashLink, Layout, RoleUsers } from 'components/Dashboard/';
+import { DashLink, Layout } from 'components/Dashboard/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { actions as rolesActions } from 'reducers/roles';
 import { actions as dashActions } from 'reducers/dashboard';
 
-export class RoleDelete extends Component {
+export class RoleDeleteUser extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     opt: PropTypes.object.isRequired,
-    roleId: PropTypes.number.isRequired
+    roleId: PropTypes.number.isRequired,
+    userId: PropTypes.number.isRequired
   };
 
   constructor(props) {
@@ -26,23 +27,23 @@ export class RoleDelete extends Component {
   }
 
   handleSubmit() {
-    const { actions, roleId, name } = this.props;
+    const { actions, name, roleId, userId } = this.props;
 
-    actions.deleteRole({ roleId, name });
-    actions.selectDashboard({ name: 'Roles' });
+    actions.deleteRoleUser({ userId, roleId, name });
+    actions.selectDashboard({ name: 'User/Roles', item: userId });
   }
 
   render() {
-    const { name, opt, roleId } = this.props;
+    const { name, opt, userId } = this.props;
 
     return (
       <Layout
-        pageTitle="Delete Role - Dashboard"
-        header={`Roles > Delete Role > ${name}`}
+        pageTitle="Unassign Role - Dashboard"
+        header={`Roles > Unassign Role > ${name} > User ID: ${userId}`}
         options={opt}
       >
         <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
-        <DashLink to="#roles" name="Roles">
+        <DashLink to={`#user/roles/${userId}`} name="User/Roles" item={userId}>
           <span>Back</span>
         </DashLink>
         <FinalForm
@@ -50,8 +51,10 @@ export class RoleDelete extends Component {
           render={({ handleSubmit, submitting }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Form.Group>
-                <Form.Label>Delete</Form.Label>
-                <h3>Delete Role: {name}?</h3>
+                <Form.Label>Unassign Role</Form.Label>
+                <h3>
+                  Unassign Role: {name} from User ID {userId}?
+                </h3>
               </Form.Group>
               <Button
                 className="button-animation"
@@ -59,16 +62,10 @@ export class RoleDelete extends Component {
                 type="submit"
                 disabled={submitting}
               >
-                <span>Delete</span>
+                <span>Remove</span>
               </Button>
             </Form>
           )}
-        />
-        <br />
-        <RoleUsers
-          opt={{ header: false, title: true, border: 'danger' }}
-          roleId={Number(roleId)}
-          name={name}
         />
       </Layout>
     );
@@ -88,4 +85,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   null,
   mapDispatchToProps
-)(RoleDelete);
+)(RoleDeleteUser);

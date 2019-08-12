@@ -13,6 +13,7 @@ export class UserRoles extends Component {
     actions: PropTypes.object.isRequired,
     opt: PropTypes.object.isRequired,
     roles: PropTypes.array,
+    roleId: PropTypes.number,
     userId: PropTypes.number
   };
   constructor(props) {
@@ -26,7 +27,9 @@ export class UserRoles extends Component {
   }
 
   render() {
-    const { opt, roles, userId } = this.props;
+    const { opt, roles, roleId, userId } = this.props;
+
+    let style = {};
 
     return (
       <Layout
@@ -51,41 +54,37 @@ export class UserRoles extends Component {
           </thead>
           <tbody>
             {roles.map((role, index) => {
+              style = {};
+              if (roleId === role.Role.id) {
+                style = { border: '2px solid red' };
+              }
               return (
-                <tr key={index}>
+                <tr key={index} style={style}>
                   <td>{role.Role.id}</td>
                   <td>{role.Role.name}</td>
                   <td>
                     <DashLink
-                      to={'#role/users/' + role.Role.id}
+                      to={`#role/${role.Role.id}/users`}
                       name="Role/Users"
-                      item={role.Role.id}
+                      item={{
+                        userId,
+                        roleId: role.Role.id,
+                        name: role.Role.name
+                      }}
                     >
-                      Users
+                      Other Users
                     </DashLink>
                     &nbsp; | &nbsp;
                     <DashLink
-                      to={`#role/${role.Role.id}/add/user`}
-                      name="Role/Add/User"
-                      item={{ roleId: role.Role.id, name: role.Role.name }}
+                      to={`#role/${role.Role.id}/delete/user`}
+                      name="Role/Delete/User"
+                      item={{
+                        userId,
+                        roleId: role.Role.id,
+                        name: role.Role.name
+                      }}
                     >
-                      Assign
-                    </DashLink>
-                    &nbsp; | &nbsp;
-                    <DashLink
-                      to={'#role/edit/' + role.Role.id}
-                      name="Role/Edit"
-                      item={{ roleId: role.Role.id, name: role.Role.name }}
-                    >
-                      Edit
-                    </DashLink>
-                    &nbsp; | &nbsp;
-                    <DashLink
-                      to={'#role/delete/' + role.Role.id}
-                      name="Role/Delete"
-                      item={{ roleId: role.Role.id, name: role.Role.name }}
-                    >
-                      Delete
+                      Unassign Role
                     </DashLink>
                   </td>
                 </tr>

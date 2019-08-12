@@ -8,14 +8,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { actions as rolesActions } from 'reducers/roles';
-import { getAllRoles, getRoleUsers } from 'selectors/roles';
+import { getRoleUsers } from 'selectors/roles';
 
 export class RoleUsers extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     opt: PropTypes.object.isRequired,
-    roles: PropTypes.array,
     roleId: PropTypes.number,
+    name: PropTypes.string,
     roleUsers: PropTypes.array
   };
   constructor(props) {
@@ -37,12 +37,12 @@ export class RoleUsers extends Component {
   }
 
   render() {
-    const { opt, roleId, roles, roleUsers } = this.props;
+    const { name, opt, roleId, roleUsers } = this.props;
 
     return (
       <Layout
         pageTitle="Role Users - Dashboard"
-        header={`Roles > ${roles[roleId - 1].name}s`}
+        header={`Roles > ${name}`}
         options={opt}
       >
         <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
@@ -65,7 +65,19 @@ export class RoleUsers extends Component {
                   <tr key={index}>
                     <td>{user.userId}</td>
                     <td>{user.User.emailAddress}</td>
-                    <td>options</td>
+                    <td>
+                      <DashLink
+                        to={`#role/${roleId}/delete/user`}
+                        name="Role/Delete/User"
+                        item={{
+                          userId: user.userId,
+                          roleId,
+                          name
+                        }}
+                      >
+                        Unassign Role
+                      </DashLink>
+                    </td>
                   </tr>
                 );
               })}
@@ -78,7 +90,6 @@ export class RoleUsers extends Component {
 }
 
 const mapStateToProps = state => ({
-  roles: getAllRoles(state),
   roleUsers: getRoleUsers(state)
 });
 
