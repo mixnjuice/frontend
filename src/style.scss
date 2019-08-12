@@ -49,19 +49,19 @@ hr {
 // it changes the width of the container and the width of the other elements around it
 // Switching the container to "fluid" didn't fix it, so this was unfortunately the best way I could
 // find to solve the issue; by fixing the container width for medium screens and up
-@media (min-width: $min-md) and (max-width: $max-md) {
+@include breakpoint-md() {
   .container {
     width: 800px;
   }
 }
 
-@media (min-width: $min-lg) and (max-width: $max-lg) {
+@include breakpoint-lg() {
   .container {
     width: 1000px;
   }
 }
 
-@media (min-width: $min-xl) {
+@include breakpoint-xl() {
   .container {
     width: 1200px;
   }
