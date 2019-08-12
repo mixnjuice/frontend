@@ -1,13 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Quicksand&display=swap");
-
-$lightest-blue: #e7f0ff;
-$lighter-blue: #d3e3fc;
-$light-blue: #b1cefd;
-$blue: #77a6f7;
-$teal: #00887a;
-$baby-blue: #00bad3;
-$lighter-red: #ffccbc;
-$shadow-grey: #777;
+@import "./_variables.scss";
 
 // Changes the font site-wide
 * {
@@ -57,19 +49,19 @@ hr {
 // it changes the width of the container and the width of the other elements around it
 // Switching the container to "fluid" didn't fix it, so this was unfortunately the best way I could
 // find to solve the issue; by fixing the container width for medium screens and up
-@media (min-width: 768px) and (max-width: 991px) {
+@include breakpoint-md() {
   .container {
     width: 800px;
   }
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
+@include breakpoint-lg() {
   .container {
     width: 1000px;
   }
 }
 
-@media (min-width: 1200px) {
+@include breakpoint-xl() {
   .container {
     width: 1200px;
   }
@@ -130,7 +122,7 @@ hr {
 }
 
 // Centering nav contents for phone screens
-@media (max-width: 700px) {
+@media (max-width: $max-md) {
   .navbar {
     justify-content: center;
   }
@@ -165,7 +157,7 @@ hr {
   border: 1px solid $black;
 
   // Style for "striped" tables
-  .table-striped tbody tr:nth-of-type(odd) {
+  tr:nth-of-type(odd) .table-striped {
     background-color: $lightest-blue;
   }
 
