@@ -20,7 +20,7 @@ export class Dashboard extends Component {
   render() {
     return (
       <Container>
-        <Row className="text-center">
+        <Row>
           <Col>
             <h1>Dashboard</h1>
           </Col>

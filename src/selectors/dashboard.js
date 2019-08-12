@@ -11,3 +11,8 @@ export const getMigrations = createSelector(
   getDashboard,
   dashboard => dashboard.migrations
 );
+
+export const getStats = createSelector(
+  getDashboard,
+  dashboard => dashboard.stats
+);

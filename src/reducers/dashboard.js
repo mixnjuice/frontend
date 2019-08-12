@@ -7,7 +7,10 @@ export const types = buildActions('dashboard', [
   'SELECT_DASHBOARD_SUCCESS',
   'REQUEST_MIGRATIONS',
   'REQUEST_MIGRATIONS_SUCCESS',
-  'REQUEST_MIGRATIONS_FAILURE'
+  'REQUEST_MIGRATIONS_FAILURE',
+  'REQUEST_STATS',
+  'REQUEST_STATS_SUCCESS',
+  'REQUEST_STATS_FAILURE'
 ]);
 
 const requestDashboard = () => ({
@@ -44,6 +47,20 @@ const requestMigrationsFailure = error => ({
   error
 });
 
+const requestStats = () => ({
+  type: types.REQUEST_STATS
+});
+
+const requestStatsSuccess = stats => ({
+  type: types.REQUEST_STATS_SUCCESS,
+  stats
+});
+
+const requestStatsFailure = error => ({
+  type: types.REQUEST_STATS_FAILURE,
+  error
+});
+
 export const actions = {
   requestDashboard,
   requestDashboardSuccess,
@@ -51,7 +68,10 @@ export const actions = {
   selectDashboardSuccess,
   requestMigrations,
   requestMigrationsSuccess,
-  requestMigrationsFailure
+  requestMigrationsFailure,
+  requestStats,
+  requestStatsSuccess,
+  requestStatsFailure
 };
 
 export const initialState = {
@@ -59,7 +79,8 @@ export const initialState = {
     name: 'Home',
     item: null
   },
-  migrations: []
+  migrations: [],
+  stats: []
 };
 
 export const reducer = (state = initialState, action = {}) => {
@@ -80,6 +101,16 @@ export const reducer = (state = initialState, action = {}) => {
         migrations: action.migrations
       };
     case types.REQUEST_MIGRATIONS_FAILURE:
+      return {
+        ...state,
+        error: action.error
+      };
+    case types.REQUEST_STATS_SUCCESS:
+      return {
+        ...state,
+        stats: action.stats
+      };
+    case types.REQUEST_STATS_FAILURE:
       return {
         ...state,
         error: action.error
