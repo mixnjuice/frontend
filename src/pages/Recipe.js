@@ -224,6 +224,7 @@ export default class Recipe extends Component {
                     />
                   </Col>
                   <Col md={{ span: 7 }} xs={{ span: 12 }}>
+                    <Card.Title>Version {this.state.version}</Card.Title>
                     <Card.Title>Notes</Card.Title>
                     <Card.Text>
                       {this.state.notes ? (

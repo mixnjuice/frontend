@@ -12,6 +12,7 @@
     "pg": 30,
     "vg": 70,
     "tags": ["refreshing", "fruity", "lemon", "lime", "summer"],
+    "version": "2.1",
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -56,6 +57,7 @@
     "pg": 30,
     "vg": 70,
     "tags": ["tobacco", "RY4", "cream", "custard"],
+    "version": "2.1",
     "flavors": [
       {
         "vendor": "FlavourArt",
@@ -100,6 +102,7 @@
     "pg": null,
     "vg": null,
     "tags": ["dessert", "strawberry", "cream", "custard", "heavy"],
+    "version": "2.1",
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
@@ -144,6 +147,7 @@
     "pg": 50,
     "vg": 50,
     "tags": ["dessert", "strawberry", "cream", "custard", "heavy"],
+    "version": "2.1",
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
@@ -195,6 +199,7 @@
     "pg": 20,
     "vg": 80,
     "tags": ["dessert", "cookie", "biscuit", "vanilla", "light"],
+    "version": "2.1",
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
@@ -246,6 +251,7 @@
     "pg": 30,
     "vg": 70,
     "tags": ["digusting", "dontmixthis", "justatest"],
+    "version": "2.1",
     "flavors": [
       {
         "vendor": "Flavor West",
