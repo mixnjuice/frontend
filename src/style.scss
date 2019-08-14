@@ -352,28 +352,6 @@ input {
   }
 }
 
-// Keyframes for fade in animation
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-// Keyframes for fade out animation
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
 // Changing the color of the heart SVG icon
 .fa-heart {
   color: $light-red;
