@@ -28,12 +28,8 @@ export class UserRoles extends Component {
   }
 
   render() {
-    const { actions, opt, roles, roleId, userId } = this.props;
+    const { opt, roles, roleId, userId } = this.props;
 
-    if (this.userId !== userId) {
-      actions.requestUserRoles({ userId });
-      this.userId = userId;
-    }
     let style = {};
 
     return (
@@ -66,9 +62,9 @@ export class UserRoles extends Component {
                   style = { border: '2px solid red' };
                 }
                 return (
-                  <tr key={index} style={style}>
+                  <tr key={index}>
                     <td>{role.Role.id}</td>
-                    <td>{role.Role.name}</td>
+                    <td style={style}>{role.Role.name}</td>
                     <td>
                       <DashLink
                         to={`#role/${role.Role.id}/users`}

@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { Helmet } from 'react-helmet';
 import { CardColumns, Card } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
 
 import { actions as dashboardActions } from 'reducers/dashboard';
 import { getStats } from 'selectors/dashboard';
@@ -16,9 +18,10 @@ export class Home extends Component {
 
   constructor(props) {
     super(props);
+    this.refresh = this.refresh.bind(this);
   }
 
-  componentDidMount() {
+  refresh() {
     const { actions } = this.props;
 
     actions.requestStats();
@@ -39,39 +42,44 @@ export class Home extends Component {
     } = stats;
 
     return (
-      <CardColumns>
-        <Helmet title="Dashboard" />
-        <Card bg="danger" text="white">
-          <Card.Header>Users: {users}</Card.Header>
-          <Card.Body>
-            <h3>Activated Users: {activatedUsers}</h3>
-            <h3>Inactive Users: {users - activatedUsers}</h3>
-            <h3>Active Tokens: {userTokens}</h3>
-          </Card.Body>
-        </Card>
-        <Card bg="primary" text="white">
-          <Card.Body>
-            <h2>Tags: {tags}</h2>
-          </Card.Body>
-        </Card>
-        <Card bg="secondary" text="white">
-          <Card.Body>
-            <h2>Vendors: {vendors}</h2>
-          </Card.Body>
-        </Card>
-        <Card bg="info" text="white">
-          <Card.Header>Flavors: {flavors}</Card.Header>
-          <Card.Body>
-            <h2>Tags: {flavorTags}</h2>
-          </Card.Body>
-        </Card>
-        <Card bg="warning" text="white">
-          <Card.Header>Recipes: {recipes}</Card.Header>
-          <Card.Body>
-            <h2>Tags: {recipeTags}</h2>
-          </Card.Body>
-        </Card>
-      </CardColumns>
+      <Fragment>
+        <CardColumns>
+          <Helmet title="Dashboard" />
+          <Card bg="danger" text="white">
+            <Card.Header>Users: {users}</Card.Header>
+            <Card.Body>
+              <h3>Activated Users: {activatedUsers}</h3>
+              <h3>Inactive Users: {users - activatedUsers}</h3>
+              <h3>Active Tokens: {userTokens}</h3>
+            </Card.Body>
+          </Card>
+          <Card bg="primary" text="white">
+            <Card.Body>
+              <h2>Tags: {tags}</h2>
+            </Card.Body>
+          </Card>
+          <Card bg="secondary" text="white">
+            <Card.Body>
+              <h2>Vendors: {vendors}</h2>
+            </Card.Body>
+          </Card>
+          <Card bg="info" text="white">
+            <Card.Header>Flavors: {flavors}</Card.Header>
+            <Card.Body>
+              <h2>Tags: {flavorTags}</h2>
+            </Card.Body>
+          </Card>
+          <Card bg="warning" text="white">
+            <Card.Header>Recipes: {recipes}</Card.Header>
+            <Card.Body>
+              <h2>Tags: {recipeTags}</h2>
+            </Card.Body>
+          </Card>
+        </CardColumns>
+        <a href="#home" onClick={this.refresh} title="Refresh Stats">
+          <FontAwesomeIcon icon={faSync} />
+        </a>
+      </Fragment>
     );
   }
 }

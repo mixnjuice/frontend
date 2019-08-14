@@ -17,6 +17,12 @@ export class Dashboard extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    const { actions } = this.props;
+
+    actions.requestStats();
+  }
+
   render() {
     return (
       <Container>

@@ -38,7 +38,11 @@ export class RoleAddUser extends Component {
   }
 
   handleChange(e) {
+    const { actions } = this.props;
+
     this.setState({ userId: e.target.value });
+    // Refresh User Roles for <UserRoles /> component
+    actions.requestUserRoles({ userId: e.target.value });
   }
 
   handleSubmit(e) {

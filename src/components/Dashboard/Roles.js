@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { DashLink, Layout } from 'components/Dashboard/';
 import { Table } from 'react-bootstrap';
@@ -26,6 +26,9 @@ export class Roles extends Component {
 
   render() {
     const { opt, roles } = this.props;
+    // Administrator and User roles aren't editable
+
+    let noEdit = false;
 
     return (
       <Layout pageTitle="Roles - Dashboard" header="Roles" options={opt}>
@@ -42,6 +45,11 @@ export class Roles extends Component {
           </thead>
           <tbody>
             {roles.map((role, index) => {
+              if (role.name === 'Administrator' || role.name === 'User') {
+                noEdit = true;
+              } else {
+                noEdit = false;
+              }
               return (
                 <tr key={index}>
                   <td>{role.id}</td>
@@ -62,22 +70,26 @@ export class Roles extends Component {
                     >
                       Assign
                     </DashLink>
-                    &nbsp; | &nbsp;
-                    <DashLink
-                      to={'#role/edit' + role.id}
-                      name="Role/Edit"
-                      item={{ roleId: role.id, name: role.name }}
-                    >
-                      Edit
-                    </DashLink>
-                    &nbsp; | &nbsp;
-                    <DashLink
-                      to={'#role/delete' + role.id}
-                      name="Role/Delete"
-                      item={{ roleId: role.id, name: role.name }}
-                    >
-                      Delete
-                    </DashLink>
+                    {!noEdit && (
+                      <Fragment>
+                        &nbsp; | &nbsp;
+                        <DashLink
+                          to={'#role/edit' + role.id}
+                          name="Role/Edit"
+                          item={{ roleId: role.id, name: role.name }}
+                        >
+                          Edit
+                        </DashLink>
+                        &nbsp; | &nbsp;
+                        <DashLink
+                          to={'#role/delete' + role.id}
+                          name="Role/Delete"
+                          item={{ roleId: role.id, name: role.name }}
+                        >
+                          Delete
+                        </DashLink>
+                      </Fragment>
+                    )}
                   </td>
                 </tr>
               );
