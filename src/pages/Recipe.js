@@ -2,6 +2,9 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import queryString from 'query-string';
 import React, { Component } from 'react';
+import { actions } from 'reducers/application';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import {
   Container,
@@ -10,7 +13,6 @@ import {
   Table,
   Button,
   ButtonGroup,
-  Alert,
   Card
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,13 +20,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import flavorStash from '../data/flavorstash.json';
 import recipes from '../data/recipes.json';
 
-export default class Recipe extends Component {
+class Recipe extends Component {
   static propTypes = {
+    actions: PropTypes.object.isRequired,
     location: PropTypes.object
   };
 
-  constructor(...args) {
-    super(...args);
+  constructor(props) {
+    super(props);
 
     this.state = {
       flavors: [],
@@ -48,20 +51,26 @@ export default class Recipe extends Component {
     if (this.state.favorited) {
       this.setState({
         favorited: false,
-        favoriteIcon: ['far', 'heart'],
-        alertClass: 'recipe-alert alert-fade-in'
+        favoriteIcon: ['far', 'heart']
+      });
+
+      this.props.actions.popToast({
+        title: 'Success!',
+        icon: null,
+        message: 'This recipe has been removed from your favorites'
       });
     } else {
       this.setState({
         favorited: true,
-        favoriteIcon: ['fas', 'heart'],
-        alertClass: 'recipe-alert alert-fade-in'
+        favoriteIcon: ['fas', 'heart']
+      });
+
+      this.props.actions.popToast({
+        title: 'Success!',
+        icon: null,
+        message: 'This recipe has been added your favorites'
       });
     }
-
-    setTimeout(() => {
-      this.setState({ alertClass: 'recipe-alert alert-fade-out alert-hidden' });
-    }, 2500);
   }
 
   handleRatingClick(ratingNumber) {
@@ -185,13 +194,6 @@ export default class Recipe extends Component {
       <Container className="text-center container--recipe">
         <Helmet title="Recipe" />
         <Row className="justify-content-center">
-          <Alert variant="success" className={this.state.alertClass}>
-            {this.state.favorited ? (
-              <span>Recipe added to your favorites</span>
-            ) : (
-              <span>Recipe removed from your favorites</span>
-            )}
-          </Alert>
           <Col xs="auto">
             <Button className="button-animation button--recipe">
               <span>Make this recipe</span>
@@ -309,3 +311,17 @@ export default class Recipe extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(
+    {
+      ...actions
+    },
+    dispatch
+  )
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Recipe);
