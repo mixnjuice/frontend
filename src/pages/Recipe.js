@@ -20,7 +20,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import flavorStash from '../data/flavorstash.json';
 import recipes from '../data/recipes.json';
 
-class Recipe extends Component {
+export class Recipe extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     location: PropTypes.object
@@ -96,9 +96,12 @@ class Recipe extends Component {
     });
 
     if (recipe.notes) {
-      const newNotes = recipe.notes.split('\n').map((line, i) => {
-        return <p key={i}>{line}</p>;
-      });
+      const newNotes = recipe.notes
+        .toString()
+        .split('\n')
+        .map((line, i) => {
+          return <p key={i}>{line}</p>;
+        });
 
       recipe.notes = newNotes;
     }
