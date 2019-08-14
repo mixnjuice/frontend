@@ -33,7 +33,6 @@ export class Recipe extends Component {
       flavors: [],
       favorited: false,
       favoriteIcon: ['far', 'heart'],
-      alertClass: 'recipe-alert alert-hidden',
       rating: 0
     };
 
