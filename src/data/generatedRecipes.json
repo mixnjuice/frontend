@@ -1,0 +1,5324 @@
+[
+  {
+    "id": 0,
+    "name": "Columbia Place Idealis",
+    "user": "AlisaOdonnell",
+    "userId": "35a8b1c7-11d0-46b5-8a76-bc5e62ae5413",
+    "date": "Sat Feb 05 1983 13:06:10 GMT+0000 (UTC)",
+    "notes": "Culpa eu sint dolor magna exercitation duis et sunt ex do laborum laborum aliqua laboris. Labore non id reprehenderit dolor mollit laboris. Irure et ex minim excepteur elit aute aliqua non Lorem cillum id. Occaecat do aliquip qui laboris.",
+    "shakeNVape": false,
+    "steepTime": 21,
+    "maxvg": false,
+    "pg": 23,
+    "vg": 77,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Razzleberry Ripe",
+        "id": 53,
+        "percent": 8
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Mango Double",
+        "id": 41,
+        "percent": 3
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Vanilla Cream",
+        "id": 40,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Tropical Whip",
+        "id": 98,
+        "percent": 2.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Strawberry Double",
+        "id": 39,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Sturgeon Delight",
+        "id": 39,
+        "percent": 3.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Sturgeon Double",
+        "id": 66,
+        "percent": 1.5
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "Lafayette Avenue Bitendrex",
+    "user": "BaileySpears",
+    "userId": "935d1376-990b-4dc6-8f26-468993b2777c",
+    "date": "Sat Aug 21 1993 01:30:15 GMT+0000 (UTC)",
+    "notes": "Aliqua id do ad exercitation proident deserunt nisi incididunt occaecat magna aliqua. Irure sunt incididunt duis exercitation ut amet pariatur nulla Lorem ullamco quis amet. Quis enim do pariatur id eiusmod dolore minim do id est culpa incididunt. Non enim elit ea sunt esse tempor.",
+    "shakeNVape": false,
+    "steepTime": 11,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Strawberry Ripe",
+        "id": 58,
+        "percent": 3
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Vanilla Ripe",
+        "id": 75,
+        "percent": 8
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Citrus Double",
+        "id": 74,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Bavarian Whip",
+        "id": 63,
+        "percent": 2
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Mango Delight",
+        "id": 94,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Papaya Delight",
+        "id": 64,
+        "percent": 5.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Strawberry Cream",
+        "id": 79,
+        "percent": 4
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Canda Avenue Lexicondo",
+    "user": "ChambersMoon",
+    "userId": "0119b92c-da2e-46b3-8fda-f30a43a8034d",
+    "date": "Mon Jan 23 2012 07:37:35 GMT+0000 (UTC)",
+    "notes": "Culpa proident minim minim in ipsum minim occaecat est amet irure exercitation ea enim nulla. Dolor enim ex et mollit et consequat pariatur consequat cupidatat non. Deserunt cillum cillum aliquip amet est laborum irure non. Laborum tempor ea cillum ut occaecat est velit in exercitation do adipisicing commodo.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Papaya Cream",
+        "id": 31,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Whip",
+        "id": 34,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Papaya Cream",
+        "id": 30,
+        "percent": 3.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple Ripe",
+        "id": 27,
+        "percent": 5.5
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Mermaid Avenue Zomboid",
+    "user": "MaryRivera",
+    "userId": "de1d510b-0f34-4843-bef4-35f2b3d43269",
+    "date": "Mon Jan 13 1975 03:20:24 GMT+0000 (UTC)",
+    "notes": "Ipsum duis irure elit officia cillum eiusmod tempor laboris. Reprehenderit ipsum irure nisi nulla culpa Lorem occaecat cupidatat. Laboris officia officia voluptate officia duis consequat proident. Qui pariatur voluptate velit commodo duis dolore consequat culpa officia.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 21,
+    "vg": 79,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Papaya Cream",
+        "id": 69,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Papaya Extra",
+        "id": 25,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Pineapple Delight",
+        "id": 65,
+        "percent": 7
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Vanilla ",
+        "id": 37,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Strawberry Delight",
+        "id": 78,
+        "percent": 1
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Sturgeon Double",
+        "id": 69,
+        "percent": 5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Razzleberry Double",
+        "id": 73,
+        "percent": 7
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Citrus Double",
+        "id": 33,
+        "percent": 1
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Verona Place Capscreen",
+    "user": "MortonKerr",
+    "userId": "f00f2d3c-c195-44d1-b87c-3ba7e45ef3f7",
+    "date": "Thu Oct 29 2009 00:11:27 GMT+0000 (UTC)",
+    "notes": "Duis proident consectetur ex non qui voluptate Lorem ullamco. Aliquip aute Lorem incididunt ipsum nisi Lorem in velit laborum velit exercitation culpa dolore. Labore voluptate consectetur tempor sint in pariatur dolore sit do quis. Commodo ex consectetur pariatur velit aliquip eu.",
+    "shakeNVape": false,
+    "steepTime": 1,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Citrus Double",
+        "id": 89,
+        "percent": 6
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Mango Cream",
+        "id": 33,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Tropical Mix",
+        "id": 80,
+        "percent": 3
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Sturgeon Delight",
+        "id": 98,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Blueberry Double",
+        "id": 79,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Tropical Extra",
+        "id": 41,
+        "percent": 3
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Mango Double",
+        "id": 70,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Papaya Cream",
+        "id": 49,
+        "percent": 7
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Ditmars Street Omatom",
+    "user": "FarmerRodriquez",
+    "userId": "c6033fba-c442-4c2e-aed4-fb6303149390",
+    "date": "Sun Dec 14 1980 14:03:30 GMT+0000 (UTC)",
+    "notes": "Pariatur tempor minim ex amet pariatur esse ad voluptate ullamco. Dolor cillum pariatur incididunt adipisicing. In et deserunt adipisicing adipisicing qui fugiat velit ullamco non aliqua ad. Id aute Lorem veniam veniam quis commodo voluptate voluptate excepteur eu minim ea aliqua.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Pineapple Delight",
+        "id": 48,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Tropical Mix",
+        "id": 30,
+        "percent": 3
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Mango Extra",
+        "id": 68,
+        "percent": 7
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Jackson Place Rocklogic",
+    "user": "GeorgettePhillips",
+    "userId": "7ad38967-f1e9-44e9-a459-7ca9f322c16c",
+    "date": "Tue Nov 12 1991 10:40:02 GMT+0000 (UTC)",
+    "notes": "Laboris eiusmod adipisicing commodo laboris aliquip laboris ullamco. Qui cupidatat sit fugiat reprehenderit amet exercitation esse cillum. Ut adipisicing nostrud esse commodo aliquip ex ex. Tempor commodo ut nostrud reprehenderit dolor ut nisi.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 23,
+    "vg": 77,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Bavarian Whip",
+        "id": 71,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Pineapple Double",
+        "id": 48,
+        "percent": 3
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Sturgeon Whip",
+        "id": 48,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Mango Extra",
+        "id": 57,
+        "percent": 6
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Tropical ",
+        "id": 93,
+        "percent": 1
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Razzleberry Ripe",
+        "id": 100,
+        "percent": 1
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Strawberry Double",
+        "id": 56,
+        "percent": 1
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Ripe",
+        "id": 53,
+        "percent": 5
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "name": "Sharon Street Anocha",
+    "user": "LucindaRaymond",
+    "userId": "9704a626-0bc8-4723-96c3-08d7529c893b",
+    "date": "Mon Apr 20 2009 15:43:06 GMT+0000 (UTC)",
+    "notes": "Sunt amet minim amet adipisicing in enim duis labore id culpa sint quis veniam enim. Proident minim laborum magna deserunt esse. Laborum ea adipisicing enim irure adipisicing nulla enim ea sit magna. In ad deserunt ex elit excepteur reprehenderit consectetur occaecat do occaecat mollit quis dolor.",
+    "shakeNVape": false,
+    "steepTime": 16,
+    "maxvg": false,
+    "pg": 77,
+    "vg": 23,
+    "flavors": [
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Blueberry Mix",
+        "id": 45,
+        "percent": 5.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Blueberry ",
+        "id": 68,
+        "percent": 5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple Ripe",
+        "id": 47,
+        "percent": 7.5
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "name": "Brightwater Court Bovis",
+    "user": "PamelaCline",
+    "userId": "fd2bf4d4-65ef-4e8d-8859-09ed1956d389",
+    "date": "Thu Apr 13 1995 12:32:07 GMT+0000 (UTC)",
+    "notes": "Sit non cupidatat sint deserunt dolore aliquip qui ipsum non ad. Tempor aliquip adipisicing consequat dolore nostrud do pariatur adipisicing sunt eu nulla cillum. Anim occaecat nostrud nulla laboris labore elit. Enim quis reprehenderit veniam ullamco.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Strawberry Cream",
+        "id": 46,
+        "percent": 6
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Strawberry Extra",
+        "id": 83,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Sturgeon Double",
+        "id": 67,
+        "percent": 6
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "name": "Monroe Place Dogspa",
+    "user": "LambertMooney",
+    "userId": "10c12203-8e87-4978-90c2-d6e44099f0d6",
+    "date": "Thu Jul 11 2002 12:15:55 GMT+0000 (UTC)",
+    "notes": "Aliquip ad duis dolor minim esse Lorem eiusmod fugiat. Ut in fugiat enim dolore ullamco amet amet ut ea quis ex consectetur. Quis et pariatur ad dolore veniam sint ad quis amet cupidatat. Tempor officia in aliquip ipsum adipisicing amet elit nostrud ex.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 64,
+    "vg": 36,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Mango Mix",
+        "id": 36,
+        "percent": 1
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Extra",
+        "id": 89,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Mango Delight",
+        "id": 86,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Citrus ",
+        "id": 90,
+        "percent": 2.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Vanilla Extra",
+        "id": 68,
+        "percent": 2
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "name": "Strickland Avenue Austex",
+    "user": "OlaMathis",
+    "userId": "be34f895-feba-4ab9-8190-6bf31b570738",
+    "date": "Mon Feb 10 2003 20:31:52 GMT+0000 (UTC)",
+    "notes": "Consectetur in do incididunt excepteur sint aliqua dolore ipsum velit cupidatat. Laboris amet esse duis enim esse elit aliqua commodo sunt nostrud. In aliqua officia culpa aliqua do tempor laborum magna Lorem nostrud non id. In pariatur commodo ipsum fugiat ea nostrud labore occaecat.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Mango Cream",
+        "id": 71,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Blueberry Delight",
+        "id": 29,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Bavarian Delight",
+        "id": 38,
+        "percent": 6.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Mango Double",
+        "id": 82,
+        "percent": 8
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "name": "Kensington Street Helixo",
+    "user": "MeredithStewart",
+    "userId": "9c999cb6-78fd-412c-a266-453c8ecfa2e8",
+    "date": "Sat Mar 13 1982 23:54:37 GMT+0000 (UTC)",
+    "notes": "Incididunt Lorem sunt reprehenderit in duis reprehenderit mollit quis nulla anim laborum anim dolor. Cupidatat quis duis aliquip nostrud ut amet. Adipisicing non minim voluptate ex fugiat incididunt consectetur quis est. Lorem dolore mollit elit adipisicing dolore labore dolor id dolore ea in qui.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Pineapple Mix",
+        "id": 92,
+        "percent": 8
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Sturgeon Cream",
+        "id": 29,
+        "percent": 4.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Mango Whip",
+        "id": 97,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Citrus Ripe",
+        "id": 86,
+        "percent": 8
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple Ripe",
+        "id": 85,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Sturgeon Whip",
+        "id": 70,
+        "percent": 3
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "name": "Boynton Place Qot",
+    "user": "AtkinsMorgan",
+    "userId": "2d464afa-b7b8-4fd7-8382-e3894473e347",
+    "date": "Sat Jul 03 2010 15:25:42 GMT+0000 (UTC)",
+    "notes": "Amet incididunt elit proident enim pariatur commodo. Duis anim laboris ea ea velit reprehenderit nulla id incididunt id sunt. Qui qui ea anim irure. Excepteur tempor aliqua dolore laborum nisi eu commodo velit.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 40,
+    "vg": 60,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Blueberry ",
+        "id": 47,
+        "percent": 1
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Pineapple Ripe",
+        "id": 28,
+        "percent": 1
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple ",
+        "id": 34,
+        "percent": 6.5
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "name": "Bragg Street Collaire",
+    "user": "MoonNoel",
+    "userId": "bf8ea696-51fb-46d0-a749-8757d0089612",
+    "date": "Sat Sep 29 1990 07:56:47 GMT+0000 (UTC)",
+    "notes": "Nulla consequat esse ut mollit incididunt. Id consectetur elit enim ipsum culpa laborum eu eiusmod reprehenderit. Ullamco magna ullamco ullamco adipisicing amet aute incididunt culpa ad id non non. Minim eiusmod commodo quis et consequat Lorem proident exercitation elit fugiat aute eiusmod aliqua culpa.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 26,
+    "vg": 74,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Bavarian Double",
+        "id": 39,
+        "percent": 1
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Papaya Mix",
+        "id": 38,
+        "percent": 1.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Bavarian Extra",
+        "id": 29,
+        "percent": 4
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Mango Ripe",
+        "id": 72,
+        "percent": 1
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Mango ",
+        "id": 69,
+        "percent": 7
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Double",
+        "id": 63,
+        "percent": 4.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Mango ",
+        "id": 95,
+        "percent": 3
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "name": "Reeve Place Netplax",
+    "user": "RoslynMiranda",
+    "userId": "87514c3b-7aa0-4d85-a786-5e2c0d7883e9",
+    "date": "Tue Feb 20 1979 21:10:52 GMT+0000 (UTC)",
+    "notes": "Esse laborum sint anim anim. Minim incididunt mollit veniam esse labore. Lorem nisi velit irure nulla Lorem reprehenderit fugiat sint fugiat amet dolore fugiat. Ipsum non ea dolor labore sit consequat est id.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Sturgeon Extra",
+        "id": 88,
+        "percent": 5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Papaya Extra",
+        "id": 64,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Papaya Extra",
+        "id": 88,
+        "percent": 2
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "name": "Bragg Court Xanide",
+    "user": "CochranFitzgerald",
+    "userId": "4fcd04fe-d730-4322-8924-54aa1b350292",
+    "date": "Mon May 25 1970 17:22:25 GMT+0000 (UTC)",
+    "notes": "Dolor tempor quis est veniam incididunt fugiat. Officia voluptate reprehenderit in veniam aute. Proident ad reprehenderit reprehenderit dolore. Consequat excepteur reprehenderit consectetur anim aliqua non sunt id irure eu deserunt.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Bavarian Double",
+        "id": 28,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Mango Delight",
+        "id": 96,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Papaya Whip",
+        "id": 67,
+        "percent": 5
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "name": "Veranda Place Plexia",
+    "user": "SofiaGrant",
+    "userId": "9b388953-5ca5-4021-8e17-3e299af04af5",
+    "date": "Sun Nov 01 1981 17:19:45 GMT+0000 (UTC)",
+    "notes": "Occaecat nostrud adipisicing do cillum. Velit ex Lorem consequat occaecat nulla dolore aute esse mollit deserunt nulla. Lorem aute ea consequat esse commodo qui cupidatat laborum nisi in in eu eiusmod commodo. Ea ex qui proident occaecat esse aliqua id id incididunt aute fugiat.",
+    "shakeNVape": false,
+    "steepTime": 2,
+    "maxvg": false,
+    "pg": 76,
+    "vg": 24,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Mango Delight",
+        "id": 96,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Razzleberry Ripe",
+        "id": 80,
+        "percent": 5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Mango Double",
+        "id": 76,
+        "percent": 1
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Bavarian Extra",
+        "id": 73,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Strawberry Ripe",
+        "id": 100,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Strawberry Delight",
+        "id": 90,
+        "percent": 6
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "name": "Ross Street Hopeli",
+    "user": "KramerGutierrez",
+    "userId": "15b8ce53-d361-4eb2-b0d8-999e2ea1b517",
+    "date": "Wed Mar 26 1986 16:09:52 GMT+0000 (UTC)",
+    "notes": "Non proident incididunt dolor in magna minim excepteur minim veniam tempor incididunt officia dolor aliquip. Ex sit mollit aliquip excepteur mollit id dolor do. Nulla esse proident exercitation incididunt ipsum mollit velit ullamco exercitation ipsum sunt. Aliqua sunt commodo consectetur consequat veniam ut Lorem dolor proident non occaecat ullamco aliquip anim.",
+    "shakeNVape": false,
+    "steepTime": 9,
+    "maxvg": false,
+    "pg": 86,
+    "vg": 14,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Papaya Mix",
+        "id": 34,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Strawberry ",
+        "id": 43,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Razzleberry Whip",
+        "id": 55,
+        "percent": 3
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Strawberry Mix",
+        "id": 87,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Citrus Mix",
+        "id": 56,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Papaya Whip",
+        "id": 32,
+        "percent": 2
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Citrus Delight",
+        "id": 64,
+        "percent": 5.5
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "name": "Havens Place Genmex",
+    "user": "ShepardGlass",
+    "userId": "fb628f50-68af-4ab9-a782-ec2976061a54",
+    "date": "Fri Aug 23 2002 13:21:31 GMT+0000 (UTC)",
+    "notes": "Velit irure culpa commodo labore sit. Eu sit exercitation mollit dolor ipsum amet excepteur officia duis est ut. Cupidatat quis ullamco tempor amet proident irure proident minim magna irure labore irure dolor. Consequat nisi cillum ullamco et velit incididunt amet pariatur exercitation.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 86,
+    "vg": 14,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple Extra",
+        "id": 38,
+        "percent": 7
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Citrus ",
+        "id": 98,
+        "percent": 3
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Strawberry ",
+        "id": 70,
+        "percent": 8
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Razzleberry Delight",
+        "id": 99,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Bavarian Cream",
+        "id": 74,
+        "percent": 5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Bavarian Mix",
+        "id": 41,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Pineapple Extra",
+        "id": 63,
+        "percent": 8
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "name": "Irving Avenue Deepends",
+    "user": "RoblesPena",
+    "userId": "a9f7bc40-08cf-4527-9a7d-d231a1728006",
+    "date": "Sun Dec 25 1988 21:42:58 GMT+0000 (UTC)",
+    "notes": "Lorem esse aliqua excepteur mollit elit est anim excepteur proident nulla id elit qui nulla. Ea enim tempor excepteur eu ad duis proident sint aliqua voluptate occaecat. Proident qui enim elit anim laboris cillum esse. Anim aliqua laborum non do reprehenderit nulla do nulla cillum laboris elit sit dolor.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 67,
+    "vg": 33,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Mango Double",
+        "id": 29,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Mix",
+        "id": 53,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Bavarian Whip",
+        "id": 40,
+        "percent": 7
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Citrus Extra",
+        "id": 93,
+        "percent": 4
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Tropical Double",
+        "id": 46,
+        "percent": 2.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Blueberry ",
+        "id": 74,
+        "percent": 3
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Papaya ",
+        "id": 76,
+        "percent": 4.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Razzleberry Ripe",
+        "id": 69,
+        "percent": 5
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "name": "Barwell Terrace Orbalix",
+    "user": "SteinSwanson",
+    "userId": "609cdea4-363a-421a-b9d9-5b27827276be",
+    "date": "Wed Sep 29 2010 11:14:23 GMT+0000 (UTC)",
+    "notes": "In aliqua laborum occaecat eiusmod pariatur quis. Eiusmod dolor est magna velit mollit nostrud qui irure pariatur ea duis sit. Lorem duis eu nisi sunt. Sit consectetur minim laborum sit magna adipisicing dolor laboris sit.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 75,
+    "vg": 25,
+    "flavors": [
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Papaya ",
+        "id": 26,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Strawberry Ripe",
+        "id": 64,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Citrus Cream",
+        "id": 86,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Sturgeon Whip",
+        "id": 76,
+        "percent": 1
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple Mix",
+        "id": 70,
+        "percent": 6
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Pineapple Whip",
+        "id": 26,
+        "percent": 7
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Bavarian Whip",
+        "id": 48,
+        "percent": 6
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Razzleberry Delight",
+        "id": 85,
+        "percent": 3
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "name": "Ruby Street Firewax",
+    "user": "MaraEmerson",
+    "userId": "7ed1dddb-c29b-4460-a6fc-01c780d1edec",
+    "date": "Sat Jun 24 1989 08:16:55 GMT+0000 (UTC)",
+    "notes": "Laboris dolore aliqua velit aute enim nostrud ullamco adipisicing ea cupidatat est officia sit. Cupidatat eiusmod sit elit elit dolore ea. Dolor ullamco minim ut esse aute ut enim culpa sunt adipisicing et aliqua. Lorem do nisi excepteur proident ad id ex eu proident proident in.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Razzleberry ",
+        "id": 93,
+        "percent": 1
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Blueberry Ripe",
+        "id": 73,
+        "percent": 6
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Vanilla Double",
+        "id": 40,
+        "percent": 7.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Mango ",
+        "id": 75,
+        "percent": 1.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Citrus Mix",
+        "id": 65,
+        "percent": 5.5
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "name": "Campus Place Momentia",
+    "user": "JuneHurst",
+    "userId": "08c7f1ce-872f-4430-897a-f458d1ff9411",
+    "date": "Sat Sep 29 2018 08:22:31 GMT+0000 (UTC)",
+    "notes": "Sit ut amet tempor do reprehenderit mollit consequat labore velit laboris duis fugiat sunt minim. Labore ut ullamco incididunt nostrud id excepteur non. Aliquip elit elit irure pariatur. Qui quis reprehenderit deserunt esse eu enim dolor dolore.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 66,
+    "vg": 34,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Blueberry Whip",
+        "id": 47,
+        "percent": 7.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Sturgeon Delight",
+        "id": 85,
+        "percent": 8
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Bavarian Cream",
+        "id": 66,
+        "percent": 6
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Papaya ",
+        "id": 97,
+        "percent": 3
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Vanilla Double",
+        "id": 25,
+        "percent": 5.5
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "name": "Hooper Street Mantro",
+    "user": "MoralesMcmahon",
+    "userId": "f7d7e83e-6837-4518-9ee7-dae9eebc2189",
+    "date": "Fri Mar 26 1993 18:41:07 GMT+0000 (UTC)",
+    "notes": "Tempor commodo do fugiat culpa eiusmod adipisicing occaecat pariatur non pariatur magna fugiat ad quis. Duis aute eu pariatur pariatur ea esse ut anim officia laboris. Tempor cillum quis dolore dolor officia nostrud consectetur ullamco enim laborum. Minim ullamco in deserunt officia cupidatat tempor irure est Lorem occaecat elit cillum.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 42,
+    "vg": 58,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Razzleberry ",
+        "id": 75,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Pineapple Double",
+        "id": 30,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Bavarian Double",
+        "id": 93,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Vanilla Cream",
+        "id": 26,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Razzleberry Delight",
+        "id": 38,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Blueberry Delight",
+        "id": 70,
+        "percent": 6.5
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "name": "Bijou Avenue Parleynet",
+    "user": "JacklynRiggs",
+    "userId": "b3ebd402-1154-44b1-9a7c-fa5d125267cd",
+    "date": "Tue Feb 14 2017 15:49:51 GMT+0000 (UTC)",
+    "notes": "Veniam nulla aliquip velit consectetur sit eiusmod nulla laborum. Aliquip sunt cupidatat veniam aliquip laborum officia. Nostrud consectetur excepteur dolore minim occaecat exercitation Lorem minim laborum voluptate aute reprehenderit labore. Minim in culpa anim irure sunt velit nulla ad mollit quis quis nisi do.",
+    "shakeNVape": false,
+    "steepTime": 12,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Mango Delight",
+        "id": 91,
+        "percent": 4
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Strawberry Extra",
+        "id": 100,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Bavarian Delight",
+        "id": 67,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Vanilla Cream",
+        "id": 76,
+        "percent": 7
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Tropical Mix",
+        "id": 90,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Sturgeon Double",
+        "id": 91,
+        "percent": 3
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "name": "India Street Zillacon",
+    "user": "SuttonJuarez",
+    "userId": "a6e2f7e5-794f-4d9c-a180-19d16f687696",
+    "date": "Wed Apr 01 1992 10:52:47 GMT+0000 (UTC)",
+    "notes": "Amet eu nisi laborum esse. In quis ipsum velit magna cupidatat ullamco est id ad id do non. Aliqua do ullamco veniam veniam ipsum anim eu anim occaecat dolore anim ullamco amet sint. Voluptate et fugiat culpa id cillum ad laborum elit duis deserunt nisi aliqua.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple Mix",
+        "id": 66,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Pineapple Cream",
+        "id": 86,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Razzleberry Delight",
+        "id": 70,
+        "percent": 4.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Razzleberry Whip",
+        "id": 64,
+        "percent": 6.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Papaya Cream",
+        "id": 44,
+        "percent": 8
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "name": "Dekoven Court Lunchpad",
+    "user": "RosieCollins",
+    "userId": "51d0f2a8-3465-48ff-9b0e-bd2c6f60357c",
+    "date": "Fri Apr 10 1981 19:00:43 GMT+0000 (UTC)",
+    "notes": "Culpa non dolor aliquip adipisicing ut anim veniam excepteur ut magna. Officia qui tempor laborum officia in quis pariatur irure duis do. Aliquip nulla consectetur et culpa nisi minim sint duis veniam. Incididunt ullamco commodo velit cupidatat nostrud ea.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Sturgeon Mix",
+        "id": 69,
+        "percent": 3
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Bavarian Double",
+        "id": 32,
+        "percent": 5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Razzleberry Double",
+        "id": 53,
+        "percent": 7
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "name": "Vandam Street Temorak",
+    "user": "HolcombTerry",
+    "userId": "87a0a62d-54d5-4954-a470-ba78bec1acb8",
+    "date": "Tue Jan 23 1979 21:42:30 GMT+0000 (UTC)",
+    "notes": "Ipsum anim nulla dolor eu minim ea esse velit. Ea laboris laborum aliqua aute est in Lorem. Ea occaecat incididunt eu velit irure pariatur exercitation adipisicing sunt laboris ea dolor. Deserunt nulla sit pariatur nulla sint quis est excepteur.",
+    "shakeNVape": false,
+    "steepTime": 20,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Sturgeon Mix",
+        "id": 74,
+        "percent": 1.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Papaya Ripe",
+        "id": 80,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Razzleberry Mix",
+        "id": 69,
+        "percent": 6.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Vanilla Delight",
+        "id": 50,
+        "percent": 5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Papaya Cream",
+        "id": 38,
+        "percent": 5.5
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "name": "Harway Avenue Polaria",
+    "user": "BrennanPittman",
+    "userId": "e7bb84c2-c4b6-4fc2-85f0-242a052a9984",
+    "date": "Fri Aug 05 1983 13:27:24 GMT+0000 (UTC)",
+    "notes": "Eu ullamco eiusmod amet aute laborum nisi. Ipsum elit tempor sint ut dolor mollit officia occaecat aute Lorem deserunt tempor ea pariatur. Commodo in enim eiusmod anim esse ea cupidatat occaecat ea qui nostrud fugiat consectetur. Labore magna proident ipsum quis veniam nulla ipsum velit sunt ut velit cupidatat excepteur.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Bavarian Double",
+        "id": 84,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Pineapple Whip",
+        "id": 72,
+        "percent": 5.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Bavarian ",
+        "id": 63,
+        "percent": 4
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple Whip",
+        "id": 29,
+        "percent": 3
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Pineapple Extra",
+        "id": 75,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Papaya ",
+        "id": 99,
+        "percent": 2.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Mango Whip",
+        "id": 91,
+        "percent": 4
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Pineapple Mix",
+        "id": 71,
+        "percent": 4.5
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "name": "Bevy Court Oronoko",
+    "user": "BridgettRhodes",
+    "userId": "6d669866-c1be-4c62-bddb-85b355042a40",
+    "date": "Wed Feb 24 2010 18:06:42 GMT+0000 (UTC)",
+    "notes": "Exercitation dolore fugiat exercitation culpa sint eiusmod anim incididunt. Magna dolore in Lorem reprehenderit et excepteur duis culpa Lorem reprehenderit ex aliquip. Est laborum do non Lorem deserunt ex quis ad in pariatur pariatur culpa dolor mollit. Incididunt dolor id culpa est eiusmod voluptate est.",
+    "shakeNVape": false,
+    "steepTime": 17,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Bavarian ",
+        "id": 73,
+        "percent": 2.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Strawberry Cream",
+        "id": 71,
+        "percent": 3
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Tropical Delight",
+        "id": 85,
+        "percent": 2
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Citrus ",
+        "id": 81,
+        "percent": 2
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Citrus Mix",
+        "id": 77,
+        "percent": 2
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Sturgeon Delight",
+        "id": 70,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Papaya Ripe",
+        "id": 50,
+        "percent": 6
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "name": "Hendrix Street Manufact",
+    "user": "AlyceSmith",
+    "userId": "65fd58fe-db85-427f-8e9f-cbed092d9ac7",
+    "date": "Thu Nov 19 1998 12:20:13 GMT+0000 (UTC)",
+    "notes": "Quis incididunt et nostrud commodo sunt quis. Eiusmod aliquip ex aliqua non fugiat minim eu in laborum consectetur cupidatat. Aute laboris aliqua excepteur est minim eu incididunt do proident. Commodo nostrud quis veniam labore sit eu nisi nostrud non eu fugiat nisi.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Bavarian Mix",
+        "id": 77,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Strawberry Extra",
+        "id": 49,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Blueberry Delight",
+        "id": 90,
+        "percent": 3.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Vanilla Double",
+        "id": 47,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Vanilla Ripe",
+        "id": 26,
+        "percent": 4.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Citrus Delight",
+        "id": 80,
+        "percent": 4
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "name": "Micieli Place Glasstep",
+    "user": "LetitiaJenkins",
+    "userId": "2b93fad3-24e8-473f-9682-eeb5f1f7b2bc",
+    "date": "Thu Dec 25 1980 07:19:12 GMT+0000 (UTC)",
+    "notes": "Reprehenderit esse sunt cupidatat nisi nisi tempor cillum cupidatat laborum nostrud eu commodo minim. Sunt voluptate laborum exercitation veniam aliquip in aute reprehenderit irure do. Voluptate elit dolore reprehenderit tempor voluptate do pariatur duis. Aute laborum ipsum ullamco nostrud magna.",
+    "shakeNVape": false,
+    "steepTime": 15,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Tropical Delight",
+        "id": 48,
+        "percent": 4
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Pineapple Double",
+        "id": 72,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Strawberry Ripe",
+        "id": 70,
+        "percent": 6.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Pineapple Double",
+        "id": 64,
+        "percent": 5.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Mango Mix",
+        "id": 83,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Blueberry Double",
+        "id": 90,
+        "percent": 6.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Vanilla Whip",
+        "id": 88,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Sturgeon Double",
+        "id": 49,
+        "percent": 5.5
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "name": "Chestnut Avenue Sulfax",
+    "user": "JanisHayden",
+    "userId": "2b3ff3ff-7b5b-4a46-ab5b-736a63adf9c6",
+    "date": "Thu Dec 22 1988 08:19:35 GMT+0000 (UTC)",
+    "notes": "Culpa reprehenderit consectetur elit labore occaecat mollit id sit. Ipsum est adipisicing duis esse id laborum veniam eu irure culpa adipisicing eiusmod Lorem mollit. Esse proident qui ullamco laborum anim. Aliquip tempor non irure excepteur ipsum.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 20,
+    "vg": 80,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Blueberry ",
+        "id": 80,
+        "percent": 4
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Razzleberry Extra",
+        "id": 33,
+        "percent": 3
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Vanilla Double",
+        "id": 72,
+        "percent": 4
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Blueberry Ripe",
+        "id": 95,
+        "percent": 7
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Mango Ripe",
+        "id": 52,
+        "percent": 1
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Pineapple Mix",
+        "id": 97,
+        "percent": 2
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "name": "Matthews Court Zork",
+    "user": "CharlotteBurris",
+    "userId": "595af924-ff16-43f6-93e3-e3ac72e0d1fb",
+    "date": "Sun Apr 02 1978 09:42:13 GMT+0000 (UTC)",
+    "notes": "In veniam minim excepteur esse consectetur minim eu minim. Do enim magna mollit velit laboris. Labore consectetur incididunt qui cillum ipsum proident veniam voluptate est tempor dolor. Veniam aliquip velit tempor veniam ad sint incididunt.",
+    "shakeNVape": false,
+    "steepTime": 16,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Tropical Ripe",
+        "id": 91,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Mango Cream",
+        "id": 87,
+        "percent": 8
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Tropical Cream",
+        "id": 59,
+        "percent": 6.5
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "name": "Georgia Avenue Twiggery",
+    "user": "HesterTerrell",
+    "userId": "837bf3f7-2b91-493f-8ce5-b1647eb11914",
+    "date": "Sun Aug 09 1981 13:34:33 GMT+0000 (UTC)",
+    "notes": "Minim cillum Lorem reprehenderit sit excepteur consectetur tempor cillum. Labore laborum exercitation culpa deserunt eiusmod non nulla consectetur. In qui pariatur cillum officia do deserunt tempor tempor elit ut sunt et id aliqua. Consectetur proident incididunt enim pariatur nulla anim cillum deserunt eu consequat incididunt eiusmod consectetur.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Strawberry Extra",
+        "id": 48,
+        "percent": 1.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Tropical Extra",
+        "id": 39,
+        "percent": 3
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Papaya Mix",
+        "id": 27,
+        "percent": 6
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Papaya Extra",
+        "id": 96,
+        "percent": 8
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "name": "Ocean Court Ziore",
+    "user": "KimberleyMccormick",
+    "userId": "65b88552-a7c6-4745-9d39-553b012134b4",
+    "date": "Wed Apr 07 2004 17:35:28 GMT+0000 (UTC)",
+    "notes": "Non dolor sit duis quis quis aliquip irure qui. Irure nostrud eiusmod ex commodo duis aliqua duis non est. Consequat duis fugiat est occaecat nulla ipsum deserunt adipisicing labore qui irure. Eu commodo id ipsum veniam eiusmod cupidatat nisi nulla.",
+    "shakeNVape": false,
+    "steepTime": 11,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Razzleberry Mix",
+        "id": 46,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Razzleberry ",
+        "id": 25,
+        "percent": 6
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Papaya Extra",
+        "id": 98,
+        "percent": 3
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Bavarian Cream",
+        "id": 42,
+        "percent": 3
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "name": "Sullivan Street Isodrive",
+    "user": "HudsonLowe",
+    "userId": "be1b88ae-5743-4ea0-ab18-317f2907dd6b",
+    "date": "Tue Feb 14 2017 06:56:59 GMT+0000 (UTC)",
+    "notes": "Cillum consectetur cupidatat amet magna eiusmod irure incididunt anim cillum velit. Officia quis sint enim proident voluptate duis nisi nulla in anim commodo enim. Aute nisi sunt occaecat aliqua duis nisi culpa irure eiusmod aliqua qui id. Elit fugiat sint Lorem cupidatat ea magna sit labore.",
+    "shakeNVape": false,
+    "steepTime": 20,
+    "maxvg": false,
+    "pg": 18,
+    "vg": 82,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Sturgeon Double",
+        "id": 33,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Bavarian Extra",
+        "id": 76,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Pineapple Delight",
+        "id": 93,
+        "percent": 1.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Sturgeon Delight",
+        "id": 63,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry ",
+        "id": 80,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Pineapple ",
+        "id": 38,
+        "percent": 4
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "name": "Beard Street Irack",
+    "user": "MurielVelez",
+    "userId": "58e5c25c-2eb4-4b13-89e6-d49059e87877",
+    "date": "Sat Jan 12 2002 20:26:12 GMT+0000 (UTC)",
+    "notes": "Mollit veniam id veniam esse nulla eu anim esse duis occaecat aliqua ut. Exercitation eu id veniam deserunt. Amet pariatur cillum tempor duis occaecat officia qui minim. Ea voluptate consequat commodo irure excepteur pariatur cupidatat.",
+    "shakeNVape": false,
+    "steepTime": 16,
+    "maxvg": false,
+    "pg": 27,
+    "vg": 73,
+    "flavors": [
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Citrus Ripe",
+        "id": 40,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Strawberry Cream",
+        "id": 66,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Blueberry Cream",
+        "id": 44,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry ",
+        "id": 65,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Razzleberry Double",
+        "id": 52,
+        "percent": 5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Tropical Ripe",
+        "id": 92,
+        "percent": 7
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Mango Cream",
+        "id": 98,
+        "percent": 6
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Pineapple Delight",
+        "id": 75,
+        "percent": 4
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "name": "Arion Place Terrago",
+    "user": "JoannEvans",
+    "userId": "9121c00f-2417-497b-8a24-3b6f62353d16",
+    "date": "Tue Apr 09 1985 08:42:27 GMT+0000 (UTC)",
+    "notes": "Eiusmod labore elit consectetur aliquip. Culpa labore laborum cillum pariatur consequat aliquip dolore irure magna aliquip labore. Ad minim ipsum incididunt minim enim dolore adipisicing. Adipisicing ad ex culpa nostrud officia est aliquip proident occaecat.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 49,
+    "vg": 51,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Papaya Cream",
+        "id": 30,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Citrus Whip",
+        "id": 96,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Bavarian Double",
+        "id": 90,
+        "percent": 3
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Papaya Extra",
+        "id": 49,
+        "percent": 5.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Vanilla Double",
+        "id": 43,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Papaya Whip",
+        "id": 86,
+        "percent": 7.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Razzleberry Cream",
+        "id": 67,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Pineapple Double",
+        "id": 83,
+        "percent": 2
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "name": "Crosby Avenue Eschoir",
+    "user": "ColemanSimon",
+    "userId": "b70509f2-3ca6-420d-bf75-07a94322f6b0",
+    "date": "Mon May 27 2013 23:43:43 GMT+0000 (UTC)",
+    "notes": "Ex duis culpa magna do. Excepteur nostrud occaecat deserunt voluptate elit culpa cupidatat laboris eiusmod incididunt deserunt qui. Id anim pariatur cupidatat qui do. In ipsum enim aute sint esse occaecat.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 88,
+    "vg": 12,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Vanilla ",
+        "id": 87,
+        "percent": 3.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Bavarian Cream",
+        "id": 93,
+        "percent": 5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Bavarian Ripe",
+        "id": 31,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Razzleberry Ripe",
+        "id": 72,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Papaya Ripe",
+        "id": 92,
+        "percent": 6.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Strawberry Cream",
+        "id": 25,
+        "percent": 5.5
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "name": "Opal Court Duoflex",
+    "user": "JulietBender",
+    "userId": "619eafbe-90f2-466a-947b-fa9e9ebf0eb0",
+    "date": "Sat Dec 12 1998 16:50:18 GMT+0000 (UTC)",
+    "notes": "Dolor qui ullamco voluptate id amet. Duis esse cillum esse occaecat occaecat non et dolor ex adipisicing anim. Fugiat elit proident consequat qui consequat. Exercitation reprehenderit occaecat aliqua cupidatat mollit reprehenderit culpa exercitation nostrud incididunt quis cupidatat aliquip labore.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Blueberry Delight",
+        "id": 36,
+        "percent": 2
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Vanilla ",
+        "id": 50,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Pineapple Extra",
+        "id": 45,
+        "percent": 4.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Tropical ",
+        "id": 64,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Bavarian Mix",
+        "id": 97,
+        "percent": 8
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "name": "Thomas Street Mediot",
+    "user": "OfeliaNixon",
+    "userId": "55087caf-ce10-4c19-b4c2-c4b437872e96",
+    "date": "Thu Dec 15 1977 20:16:32 GMT+0000 (UTC)",
+    "notes": "Occaecat proident velit ea irure ex duis deserunt consectetur fugiat commodo quis et ut. Nostrud irure magna nisi exercitation ipsum dolor dolore in dolor cupidatat ullamco. Consectetur aute consectetur duis officia enim ipsum ipsum culpa amet. Anim anim tempor sint veniam nisi sint consequat quis amet.",
+    "shakeNVape": false,
+    "steepTime": 19,
+    "maxvg": false,
+    "pg": 17,
+    "vg": 83,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Pineapple Double",
+        "id": 85,
+        "percent": 3
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Mango ",
+        "id": 80,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Sturgeon Mix",
+        "id": 52,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Mango Mix",
+        "id": 97,
+        "percent": 3
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Vanilla Ripe",
+        "id": 83,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Vanilla ",
+        "id": 89,
+        "percent": 7
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "name": "Campus Road Idetica",
+    "user": "AllysonReeves",
+    "userId": "4c55a565-3888-4616-8858-bd3ecdc83986",
+    "date": "Wed Jul 08 2015 13:28:10 GMT+0000 (UTC)",
+    "notes": "Aute dolore cillum ipsum commodo ipsum esse aliquip consectetur fugiat ex do culpa id do. Proident tempor commodo esse reprehenderit ut cupidatat quis excepteur nostrud voluptate culpa irure labore. Magna amet excepteur labore labore deserunt qui mollit nostrud tempor sint reprehenderit irure deserunt aliqua. Nulla enim ut in dolor.",
+    "shakeNVape": false,
+    "steepTime": 16,
+    "maxvg": false,
+    "pg": 36,
+    "vg": 64,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Bavarian Delight",
+        "id": 82,
+        "percent": 2
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Razzleberry Ripe",
+        "id": 56,
+        "percent": 5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Sturgeon Cream",
+        "id": 50,
+        "percent": 8
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "name": "Caton Place Enquility",
+    "user": "HebertPatel",
+    "userId": "a922897b-8f43-4e2c-900a-effdac9a4176",
+    "date": "Tue Feb 17 1976 11:47:29 GMT+0000 (UTC)",
+    "notes": "Eiusmod et Lorem fugiat consectetur velit Lorem mollit adipisicing ut proident proident nulla. Amet ullamco consequat eu ullamco officia incididunt cillum reprehenderit sit quis eiusmod sunt. Duis adipisicing adipisicing fugiat occaecat eu et. Reprehenderit ipsum mollit officia nostrud elit ea sint ex excepteur id velit adipisicing irure.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 47,
+    "vg": 53,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Strawberry Double",
+        "id": 71,
+        "percent": 1
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Bavarian ",
+        "id": 75,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Vanilla Ripe",
+        "id": 67,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Citrus Whip",
+        "id": 37,
+        "percent": 3
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Tropical Double",
+        "id": 42,
+        "percent": 1
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Strawberry Mix",
+        "id": 78,
+        "percent": 1.5
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "name": "Lexington Avenue Circum",
+    "user": "KathrynLarsen",
+    "userId": "efb76284-57f1-4785-89d7-3190ade0fb5a",
+    "date": "Fri Oct 01 2010 01:22:02 GMT+0000 (UTC)",
+    "notes": "Eiusmod pariatur qui laborum magna qui aliqua ea excepteur magna minim voluptate. Ullamco occaecat nulla cupidatat proident cupidatat duis commodo consectetur do Lorem. Voluptate sint est proident pariatur adipisicing elit commodo qui. Lorem ex ullamco nulla eu duis Lorem ad sint ex ex ex eu.",
+    "shakeNVape": false,
+    "steepTime": 16,
+    "maxvg": false,
+    "pg": 74,
+    "vg": 26,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Strawberry Mix",
+        "id": 84,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Papaya Whip",
+        "id": 75,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Vanilla Whip",
+        "id": 34,
+        "percent": 3.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Bavarian Whip",
+        "id": 65,
+        "percent": 6
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "name": "Ridgecrest Terrace Terrasys",
+    "user": "AlysonLeach",
+    "userId": "1188f301-bab9-493b-b325-01ba209cc4c2",
+    "date": "Sun Jan 22 1995 08:26:24 GMT+0000 (UTC)",
+    "notes": "Minim do exercitation cupidatat irure eiusmod. Aliqua sit veniam commodo anim. Anim Lorem ullamco consequat quis sit duis dolore culpa pariatur amet aliquip duis anim. Culpa anim consectetur ad occaecat reprehenderit qui quis sint consectetur mollit eiusmod enim.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 49,
+    "vg": 51,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Sturgeon Cream",
+        "id": 55,
+        "percent": 4
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Razzleberry Extra",
+        "id": 44,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Papaya Delight",
+        "id": 43,
+        "percent": 4.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Papaya Cream",
+        "id": 73,
+        "percent": 3.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Tropical Ripe",
+        "id": 55,
+        "percent": 5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Vanilla Whip",
+        "id": 58,
+        "percent": 4.5
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "name": "Franklin Avenue Corpulse",
+    "user": "RosannaWilcox",
+    "userId": "0d1fc091-0142-4b9c-92a0-295785fd0cb2",
+    "date": "Sat Jan 14 1995 03:15:37 GMT+0000 (UTC)",
+    "notes": "In ad non qui eiusmod est commodo ut do id laboris cupidatat duis ipsum. In cupidatat commodo eiusmod dolore. Irure adipisicing mollit culpa amet tempor consequat proident sunt ad excepteur. Est fugiat adipisicing cupidatat anim reprehenderit esse consequat nulla reprehenderit eu excepteur deserunt cillum.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 18,
+    "vg": 82,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Vanilla Extra",
+        "id": 83,
+        "percent": 1.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Bavarian Ripe",
+        "id": 64,
+        "percent": 1
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Strawberry Whip",
+        "id": 62,
+        "percent": 3
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Blueberry Whip",
+        "id": 40,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Vanilla Cream",
+        "id": 62,
+        "percent": 8
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Razzleberry Delight",
+        "id": 77,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Papaya ",
+        "id": 94,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Blueberry Ripe",
+        "id": 72,
+        "percent": 1
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "name": "Gotham Avenue Comtrek",
+    "user": "DorseyBlackwell",
+    "userId": "ac22be43-21ce-4cb7-8426-1ca06f063382",
+    "date": "Thu Nov 12 1970 00:57:24 GMT+0000 (UTC)",
+    "notes": "Dolore veniam dolore qui dolore fugiat commodo consequat nostrud adipisicing cillum duis qui. Incididunt culpa culpa incididunt ullamco enim laboris occaecat laboris. Pariatur officia quis non aliqua mollit ea officia. Commodo velit nulla culpa elit incididunt pariatur.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 78,
+    "vg": 22,
+    "flavors": [
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Vanilla ",
+        "id": 28,
+        "percent": 7.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Razzleberry ",
+        "id": 29,
+        "percent": 3
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Mix",
+        "id": 33,
+        "percent": 2.5
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "name": "Tudor Terrace Applidec",
+    "user": "WilliamsMeadows",
+    "userId": "de8a97f7-5121-423f-b294-3f04de92b8d9",
+    "date": "Wed Aug 12 1998 14:47:47 GMT+0000 (UTC)",
+    "notes": "Occaecat labore reprehenderit amet non incididunt culpa consectetur do consectetur amet laboris veniam consectetur. Enim reprehenderit officia eu nostrud. Aliquip amet ut excepteur esse veniam quis minim minim ut cupidatat irure incididunt dolor esse. Anim occaecat nostrud laboris consectetur sunt velit.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Strawberry Ripe",
+        "id": 86,
+        "percent": 1.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Tropical ",
+        "id": 89,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Pineapple Delight",
+        "id": 99,
+        "percent": 8
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Tropical Double",
+        "id": 53,
+        "percent": 5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Pineapple Extra",
+        "id": 62,
+        "percent": 6
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Bavarian Delight",
+        "id": 77,
+        "percent": 7
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Razzleberry Extra",
+        "id": 71,
+        "percent": 8
+      }
+    ]
+  },
+  {
+    "id": 49,
+    "name": "Hillel Place Equitax",
+    "user": "MayerSutton",
+    "userId": "4ea7d5eb-157c-4e0e-aaaa-e3790e679573",
+    "date": "Mon Feb 01 1971 16:25:44 GMT+0000 (UTC)",
+    "notes": "Tempor aute proident ea enim magna id aliquip amet sit esse do officia pariatur eiusmod. Incididunt veniam id magna veniam in. Ipsum minim laboris pariatur ad ad. Eiusmod in nulla dolor laborum magna dolor pariatur duis culpa.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Sturgeon Whip",
+        "id": 92,
+        "percent": 4.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Strawberry Whip",
+        "id": 55,
+        "percent": 8
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Vanilla Cream",
+        "id": 35,
+        "percent": 4
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Razzleberry Delight",
+        "id": 93,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Mango Whip",
+        "id": 53,
+        "percent": 8
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Vanilla Double",
+        "id": 67,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Bavarian Delight",
+        "id": 60,
+        "percent": 6.5
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "name": "Bartlett Place Niquent",
+    "user": "MercedesGreene",
+    "userId": "9629104c-53f8-4907-8cfb-d962c3038f53",
+    "date": "Mon Mar 31 1980 04:24:33 GMT+0000 (UTC)",
+    "notes": "Adipisicing enim aute occaecat aute magna eiusmod laborum eiusmod est pariatur ut. Et ex sit laboris consectetur esse. Excepteur ea consectetur sit voluptate amet consequat. Esse consectetur elit consequat occaecat culpa.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Tropical Whip",
+        "id": 92,
+        "percent": 2.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Razzleberry Ripe",
+        "id": 50,
+        "percent": 2.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Mango Delight",
+        "id": 47,
+        "percent": 2
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Strawberry ",
+        "id": 69,
+        "percent": 5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Papaya Mix",
+        "id": 79,
+        "percent": 4.5
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "name": "Hampton Avenue Ziggles",
+    "user": "WildaTrujillo",
+    "userId": "d0b78871-a3cc-4b4d-b850-7016a024e3c1",
+    "date": "Thu Jan 04 2007 00:35:09 GMT+0000 (UTC)",
+    "notes": "Est ut et id eu id amet ipsum proident mollit reprehenderit irure anim dolore eiusmod. Dolore nostrud consequat velit in. Eiusmod commodo ad aliquip cupidatat commodo Lorem sit mollit adipisicing veniam aliqua dolore est. Laboris ea labore ex eu sit nisi labore sit est.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 30,
+    "vg": 70,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Strawberry Cream",
+        "id": 35,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Pineapple Extra",
+        "id": 86,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Delight",
+        "id": 98,
+        "percent": 7
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple Extra",
+        "id": 100,
+        "percent": 5.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Bavarian Whip",
+        "id": 59,
+        "percent": 4
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Vanilla Double",
+        "id": 68,
+        "percent": 1.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Pineapple Delight",
+        "id": 47,
+        "percent": 7.5
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "name": "Louisiana Avenue Darwinium",
+    "user": "LorenaColon",
+    "userId": "513f262b-3573-4c60-a76f-aeae1ed9276e",
+    "date": "Wed Mar 08 1995 23:26:06 GMT+0000 (UTC)",
+    "notes": "Sint eiusmod irure laboris exercitation nisi nostrud nostrud. Ea laborum voluptate velit irure ut nostrud labore nulla deserunt sint reprehenderit do veniam nulla. Tempor nostrud irure enim consequat excepteur id ipsum. Ipsum ut mollit laboris esse nulla in do adipisicing dolore voluptate velit non nostrud esse.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Razzleberry Cream",
+        "id": 91,
+        "percent": 7
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Strawberry Extra",
+        "id": 41,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Razzleberry Delight",
+        "id": 69,
+        "percent": 1.5
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "name": "Whitty Lane Enersol",
+    "user": "FitzpatrickHood",
+    "userId": "2ff2c5ef-b15c-4ec4-bd51-e28f6f2370b6",
+    "date": "Wed Jul 08 2015 18:43:00 GMT+0000 (UTC)",
+    "notes": "Non elit est in do adipisicing consequat occaecat deserunt dolore exercitation enim labore ullamco duis. Officia cillum officia cupidatat eiusmod nisi dolore labore consequat proident pariatur veniam id. Ullamco incididunt sunt laboris aliquip officia cupidatat est dolor in amet dolore. Do tempor do fugiat laboris eiusmod qui ex reprehenderit nostrud id sit Lorem non Lorem.",
+    "shakeNVape": false,
+    "steepTime": 1,
+    "maxvg": false,
+    "pg": 53,
+    "vg": 47,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Bavarian Double",
+        "id": 41,
+        "percent": 4
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Papaya Cream",
+        "id": 83,
+        "percent": 3
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Bavarian Cream",
+        "id": 96,
+        "percent": 2.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple Ripe",
+        "id": 63,
+        "percent": 1
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Strawberry Whip",
+        "id": 58,
+        "percent": 2.5
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "name": "Clarendon Road Zilphur",
+    "user": "LeeWilkinson",
+    "userId": "7e732b40-6450-492b-88e9-d81a264404cc",
+    "date": "Sat Jun 16 2001 05:38:59 GMT+0000 (UTC)",
+    "notes": "Deserunt ex esse in fugiat ipsum eu nostrud pariatur laborum aute dolore qui elit ipsum. Enim adipisicing cillum veniam pariatur in esse duis proident adipisicing qui duis voluptate. Ut velit anim occaecat velit esse dolore ut in. Aliqua ad cillum id culpa qui tempor quis.",
+    "shakeNVape": false,
+    "steepTime": 10,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Citrus Ripe",
+        "id": 59,
+        "percent": 8
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Pineapple Ripe",
+        "id": 93,
+        "percent": 3
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Vanilla ",
+        "id": 46,
+        "percent": 3
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Papaya Cream",
+        "id": 88,
+        "percent": 4
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "name": "Boerum Street Imaginart",
+    "user": "ContrerasSanford",
+    "userId": "6118fb09-1610-4517-b597-d9e9ec24e226",
+    "date": "Tue Nov 15 1983 05:02:37 GMT+0000 (UTC)",
+    "notes": "Consectetur velit deserunt laborum nostrud elit fugiat labore adipisicing. Eu labore reprehenderit adipisicing anim et irure cupidatat velit eu sit voluptate id consequat velit. Anim Lorem aute sunt adipisicing do id ad. Consequat culpa eu id duis veniam ex amet ex tempor.",
+    "shakeNVape": false,
+    "steepTime": 19,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Tropical Cream",
+        "id": 87,
+        "percent": 3
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Blueberry Extra",
+        "id": 26,
+        "percent": 4
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Vanilla Double",
+        "id": 37,
+        "percent": 7.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Sturgeon Cream",
+        "id": 26,
+        "percent": 8
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "name": "Vanderveer Street Aquasseur",
+    "user": "HamptonYates",
+    "userId": "6e1de5bd-0017-4c63-8d31-d1dc868379fc",
+    "date": "Mon Jun 30 2003 07:40:48 GMT+0000 (UTC)",
+    "notes": "Anim duis et quis labore mollit do laborum aliquip. Cillum eiusmod magna proident exercitation excepteur sint quis ea culpa. Commodo nostrud magna quis amet non cupidatat aliquip laborum incididunt laboris sint quis cupidatat. Duis officia proident nostrud dolore commodo ex Lorem Lorem ipsum excepteur pariatur laborum adipisicing.",
+    "shakeNVape": false,
+    "steepTime": 20,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Papaya Double",
+        "id": 58,
+        "percent": 4
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Blueberry Extra",
+        "id": 41,
+        "percent": 3
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Sturgeon Cream",
+        "id": 80,
+        "percent": 6
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Tropical Extra",
+        "id": 61,
+        "percent": 7
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "name": "Adler Place Bullzone",
+    "user": "OdessaMunoz",
+    "userId": "30536706-d348-4ebd-b10f-ac9fb7149ed2",
+    "date": "Wed Dec 08 1976 05:12:44 GMT+0000 (UTC)",
+    "notes": "Laborum sunt do in duis fugiat ipsum deserunt. Sit culpa amet voluptate proident laborum sunt commodo ipsum ullamco ex ad laboris qui magna. Ad incididunt est anim anim excepteur dolor ut aliquip. Mollit eiusmod tempor aute minim ex labore ad excepteur id.",
+    "shakeNVape": false,
+    "steepTime": 2,
+    "maxvg": false,
+    "pg": 66,
+    "vg": 34,
+    "flavors": [
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Bavarian Extra",
+        "id": 78,
+        "percent": 2
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Citrus Extra",
+        "id": 54,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Citrus Whip",
+        "id": 73,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Sturgeon ",
+        "id": 75,
+        "percent": 2
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Citrus ",
+        "id": 69,
+        "percent": 4.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Sturgeon ",
+        "id": 75,
+        "percent": 7
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Bavarian Extra",
+        "id": 89,
+        "percent": 8
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Mango Double",
+        "id": 88,
+        "percent": 7
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "name": "Woodruff Avenue Megall",
+    "user": "NettieRice",
+    "userId": "f72b5684-53ea-4390-b522-41a3c7d725b5",
+    "date": "Fri Nov 11 2016 20:31:06 GMT+0000 (UTC)",
+    "notes": "Elit labore incididunt irure quis reprehenderit. Esse nostrud et fugiat ut non. Aliquip id deserunt aliqua quis ipsum dolore incididunt. Commodo aliqua non dolore proident fugiat sint ullamco et ea.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Blueberry Double",
+        "id": 31,
+        "percent": 6
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Vanilla Extra",
+        "id": 70,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Razzleberry Double",
+        "id": 53,
+        "percent": 2
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "name": "Cypress Avenue Zillanet",
+    "user": "LauraConrad",
+    "userId": "89f781b0-3e2c-4e81-bebc-422fb7b27f4f",
+    "date": "Mon Jan 15 2001 04:02:10 GMT+0000 (UTC)",
+    "notes": "Et cupidatat nisi duis officia sit dolore tempor adipisicing qui ipsum officia reprehenderit. Ipsum duis irure proident esse anim culpa amet incididunt ipsum eiusmod irure. Et magna enim labore velit ex reprehenderit exercitation pariatur laboris aliqua sit et. Ullamco ullamco enim proident ut sint nulla id aliqua nostrud eiusmod.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 83,
+    "vg": 17,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Blueberry Delight",
+        "id": 38,
+        "percent": 1
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Mango Double",
+        "id": 67,
+        "percent": 2
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Tropical Double",
+        "id": 46,
+        "percent": 5.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Mango Mix",
+        "id": 26,
+        "percent": 4
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Pineapple Double",
+        "id": 63,
+        "percent": 4
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "name": "Cadman Plaza Geekology",
+    "user": "CobbKnox",
+    "userId": "0fc18ec9-2fb8-403f-9453-f433d78e8c83",
+    "date": "Fri Jun 06 1980 01:14:02 GMT+0000 (UTC)",
+    "notes": "Cupidatat minim esse elit consectetur velit occaecat ea veniam ad veniam velit proident. Minim amet voluptate ullamco amet officia quis excepteur labore adipisicing mollit nisi tempor fugiat. Aliqua est anim et anim consectetur duis occaecat eu enim officia. Qui pariatur voluptate veniam adipisicing fugiat.",
+    "shakeNVape": false,
+    "steepTime": 1,
+    "maxvg": false,
+    "pg": 67,
+    "vg": 33,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Pineapple Whip",
+        "id": 63,
+        "percent": 6
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Sturgeon Delight",
+        "id": 98,
+        "percent": 1
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Vanilla Whip",
+        "id": 70,
+        "percent": 4
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Bavarian Double",
+        "id": 70,
+        "percent": 6.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Strawberry Double",
+        "id": 60,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Razzleberry Double",
+        "id": 53,
+        "percent": 7.5
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "name": "Cumberland Street Nexgene",
+    "user": "JanineCharles",
+    "userId": "d0adda94-64aa-45b6-bae9-4321a62f5b77",
+    "date": "Sun Aug 12 2001 13:01:56 GMT+0000 (UTC)",
+    "notes": "Laborum tempor eiusmod aliqua exercitation cillum proident. Lorem dolore amet ullamco velit. Tempor elit non aute adipisicing et in officia deserunt incididunt ex ullamco elit. Laborum amet aliqua occaecat sunt occaecat nostrud cupidatat.",
+    "shakeNVape": false,
+    "steepTime": 15,
+    "maxvg": false,
+    "pg": 70,
+    "vg": 30,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Vanilla Mix",
+        "id": 68,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Razzleberry Mix",
+        "id": 40,
+        "percent": 2.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Mango Extra",
+        "id": 99,
+        "percent": 4
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Tropical Extra",
+        "id": 73,
+        "percent": 7
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Razzleberry Ripe",
+        "id": 39,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Papaya Cream",
+        "id": 38,
+        "percent": 2.5
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "name": "Brooklyn Avenue Biflex",
+    "user": "FrancineIrwin",
+    "userId": "2462b507-4a4d-4618-b6d5-e7c07e0e89cc",
+    "date": "Wed Mar 15 2006 17:53:44 GMT+0000 (UTC)",
+    "notes": "Consectetur aliquip aute anim aliqua non Lorem proident ea adipisicing adipisicing excepteur. Dolor cillum Lorem sit nisi consequat ipsum officia cupidatat anim ipsum eiusmod laboris. Reprehenderit anim ut culpa ipsum exercitation aliquip ea ad aute ea labore magna consequat. Excepteur tempor ullamco magna eu eu Lorem officia id aliqua ad mollit.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 17,
+    "vg": 83,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Razzleberry Cream",
+        "id": 40,
+        "percent": 6
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Razzleberry Double",
+        "id": 75,
+        "percent": 4
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Tropical Mix",
+        "id": 59,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Tropical Double",
+        "id": 51,
+        "percent": 2
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Tropical Whip",
+        "id": 34,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Tropical Cream",
+        "id": 92,
+        "percent": 2.5
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "name": "Montauk Court Exospace",
+    "user": "SmithSandoval",
+    "userId": "027815f1-ab20-42e6-95e4-e118bd6d92d8",
+    "date": "Mon Mar 29 1976 12:34:04 GMT+0000 (UTC)",
+    "notes": "Nisi elit reprehenderit velit irure. Aute enim in irure nisi ipsum irure laborum ea ullamco elit voluptate. Occaecat aliquip velit sint ex reprehenderit irure enim do duis fugiat occaecat. Anim irure qui excepteur sunt pariatur dolore adipisicing ullamco eu ipsum.",
+    "shakeNVape": false,
+    "steepTime": 13,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Sturgeon Whip",
+        "id": 67,
+        "percent": 8
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Strawberry Whip",
+        "id": 72,
+        "percent": 5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Strawberry Extra",
+        "id": 51,
+        "percent": 5.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Papaya Cream",
+        "id": 87,
+        "percent": 3
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "name": "Crescent Street Neteria",
+    "user": "StefanieEllis",
+    "userId": "15301761-df98-49bc-84e7-389863046807",
+    "date": "Sat Mar 03 2007 17:10:29 GMT+0000 (UTC)",
+    "notes": "Dolore incididunt dolore labore fugiat non velit deserunt id. Aliquip ea velit proident cupidatat eu ex esse ad consequat eiusmod. Laboris duis voluptate minim cupidatat mollit est pariatur nisi deserunt dolore. Occaecat aute Lorem fugiat eiusmod.",
+    "shakeNVape": false,
+    "steepTime": 4,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Sturgeon Delight",
+        "id": 54,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Razzleberry Mix",
+        "id": 51,
+        "percent": 7.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Tropical Cream",
+        "id": 87,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Strawberry Extra",
+        "id": 45,
+        "percent": 6
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Blueberry Whip",
+        "id": 93,
+        "percent": 7.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Papaya Cream",
+        "id": 64,
+        "percent": 6.5
+      }
+    ]
+  },
+  {
+    "id": 65,
+    "name": "Ditmas Avenue Kneedles",
+    "user": "LangleyNewman",
+    "userId": "8f6ca075-2f62-455b-9ee5-440e7dd69bf6",
+    "date": "Sun Mar 05 2006 00:29:10 GMT+0000 (UTC)",
+    "notes": "Cillum eu fugiat commodo proident sunt consectetur fugiat nulla eu do laborum tempor ipsum ex. Mollit exercitation labore pariatur dolore ea deserunt ex occaecat ea sint laboris adipisicing quis. Id laborum voluptate voluptate ea fugiat consequat exercitation. Pariatur eu quis enim ea et elit consequat cupidatat dolore aliquip id.",
+    "shakeNVape": false,
+    "steepTime": 12,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple Ripe",
+        "id": 37,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Sturgeon Cream",
+        "id": 67,
+        "percent": 5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Pineapple Delight",
+        "id": 54,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Tropical Extra",
+        "id": 81,
+        "percent": 3
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Blueberry Double",
+        "id": 37,
+        "percent": 5
+      }
+    ]
+  },
+  {
+    "id": 66,
+    "name": "Tehama Street Flotonic",
+    "user": "VelazquezGould",
+    "userId": "d4924c7b-e813-4211-b212-02816a41279e",
+    "date": "Tue Jun 20 1989 20:23:34 GMT+0000 (UTC)",
+    "notes": "Duis ipsum aute excepteur aute Lorem irure voluptate. Et aliqua dolore non sunt exercitation occaecat duis qui labore ea et cillum irure. Fugiat sit do amet et duis consequat duis cillum nostrud quis enim fugiat. Ea magna in velit velit.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 43,
+    "vg": 57,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Strawberry Ripe",
+        "id": 89,
+        "percent": 8
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Mango Ripe",
+        "id": 35,
+        "percent": 4
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Blueberry Ripe",
+        "id": 61,
+        "percent": 7
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple Double",
+        "id": 71,
+        "percent": 2
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Citrus Mix",
+        "id": 31,
+        "percent": 2
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Bavarian ",
+        "id": 29,
+        "percent": 1
+      }
+    ]
+  },
+  {
+    "id": 67,
+    "name": "Cameron Court Medmex",
+    "user": "LoganKennedy",
+    "userId": "2cb7393c-e9ba-43c1-924d-b41ff97918c3",
+    "date": "Mon Feb 21 1977 07:48:59 GMT+0000 (UTC)",
+    "notes": "Sunt amet veniam elit consectetur ut sunt. Elit id irure eu proident sunt deserunt. Anim Lorem culpa mollit officia cupidatat laborum cupidatat est aliquip. Consequat officia proident culpa occaecat ad esse amet.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Blueberry Ripe",
+        "id": 92,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Blueberry Cream",
+        "id": 36,
+        "percent": 7
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Citrus ",
+        "id": 59,
+        "percent": 5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Razzleberry Whip",
+        "id": 58,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Strawberry Delight",
+        "id": 68,
+        "percent": 3
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Citrus Extra",
+        "id": 65,
+        "percent": 7
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Sturgeon Mix",
+        "id": 44,
+        "percent": 4
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Bavarian Double",
+        "id": 73,
+        "percent": 6
+      }
+    ]
+  },
+  {
+    "id": 68,
+    "name": "Cyrus Avenue Memora",
+    "user": "AmeliaOwens",
+    "userId": "c1a86eb4-e4cf-4b7c-8b9b-253f396a973c",
+    "date": "Tue Apr 01 1997 15:52:31 GMT+0000 (UTC)",
+    "notes": "Reprehenderit consequat in cillum nostrud eiusmod dolore reprehenderit. Esse cillum eiusmod do excepteur proident velit. Officia velit magna mollit veniam. Lorem sint pariatur anim proident non amet reprehenderit ex id dolor qui.",
+    "shakeNVape": false,
+    "steepTime": 17,
+    "maxvg": false,
+    "pg": 14,
+    "vg": 86,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Mango Delight",
+        "id": 35,
+        "percent": 7
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Vanilla Double",
+        "id": 50,
+        "percent": 1
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Sturgeon Cream",
+        "id": 65,
+        "percent": 5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Vanilla Delight",
+        "id": 25,
+        "percent": 5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Mango Ripe",
+        "id": 30,
+        "percent": 5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Delight",
+        "id": 47,
+        "percent": 5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Pineapple Delight",
+        "id": 84,
+        "percent": 3
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Bavarian Delight",
+        "id": 33,
+        "percent": 4
+      }
+    ]
+  },
+  {
+    "id": 69,
+    "name": "Monitor Street Snacktion",
+    "user": "RowenaMccarthy",
+    "userId": "69f03ae0-ea10-41bb-9b06-67364d64a0a6",
+    "date": "Sat Sep 26 1987 03:27:47 GMT+0000 (UTC)",
+    "notes": "Ut mollit culpa ex pariatur do cillum eiusmod Lorem officia. Adipisicing consequat Lorem minim fugiat officia ipsum voluptate velit tempor labore magna tempor id pariatur. In tempor aliqua excepteur aliqua laborum elit nisi ipsum qui et. Non duis pariatur magna sit commodo ullamco laborum duis aliqua irure amet adipisicing.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Papaya ",
+        "id": 38,
+        "percent": 7
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Citrus ",
+        "id": 43,
+        "percent": 8
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Vanilla Cream",
+        "id": 91,
+        "percent": 8
+      }
+    ]
+  },
+  {
+    "id": 70,
+    "name": "Amersfort Place Zentry",
+    "user": "NitaBenson",
+    "userId": "736f9325-b858-4492-87b3-1bb82125da45",
+    "date": "Fri Apr 29 1977 14:37:02 GMT+0000 (UTC)",
+    "notes": "Ut proident et cillum aliqua mollit officia mollit. Incididunt magna fugiat labore do aliqua ipsum nostrud. Labore cupidatat proident consectetur id anim do dolore excepteur Lorem pariatur. Labore est et irure ad deserunt velit culpa est ad sint.",
+    "shakeNVape": false,
+    "steepTime": 5,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Tropical Extra",
+        "id": 28,
+        "percent": 7
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Pineapple Delight",
+        "id": 34,
+        "percent": 8
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Sturgeon Mix",
+        "id": 82,
+        "percent": 6
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Pineapple Ripe",
+        "id": 34,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Citrus ",
+        "id": 37,
+        "percent": 3
+      }
+    ]
+  },
+  {
+    "id": 71,
+    "name": "Doughty Street Zilidium",
+    "user": "SherrieShort",
+    "userId": "723e4c93-732a-48e4-b190-70a12c876b21",
+    "date": "Wed Dec 07 1988 15:38:41 GMT+0000 (UTC)",
+    "notes": "Magna occaecat ea cillum sint labore consectetur. Fugiat nisi culpa nisi in officia sit culpa dolore nostrud pariatur laborum eu velit. Sunt laboris irure eiusmod pariatur ad id. Dolore anim et occaecat dolor consectetur.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Tropical ",
+        "id": 59,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Papaya Mix",
+        "id": 93,
+        "percent": 3.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Bavarian Delight",
+        "id": 38,
+        "percent": 3
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Vanilla Delight",
+        "id": 37,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Sturgeon Cream",
+        "id": 54,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Tropical Cream",
+        "id": 77,
+        "percent": 3
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Sturgeon ",
+        "id": 77,
+        "percent": 2
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Papaya Double",
+        "id": 56,
+        "percent": 5.5
+      }
+    ]
+  },
+  {
+    "id": 72,
+    "name": "Evergreen Avenue Envire",
+    "user": "YvetteFarrell",
+    "userId": "01b5973f-84f5-4ab0-83bf-53dedec2d4b7",
+    "date": "Thu Apr 26 1973 18:07:09 GMT+0000 (UTC)",
+    "notes": "Non ea laboris veniam cupidatat non aliquip incididunt irure id veniam cillum sint laboris adipisicing. Exercitation duis deserunt eu anim nostrud incididunt voluptate. Voluptate aliqua anim eu consequat dolore enim esse excepteur. Laboris veniam sint minim fugiat veniam commodo quis dolore aliqua.",
+    "shakeNVape": false,
+    "steepTime": 2,
+    "maxvg": false,
+    "pg": 19,
+    "vg": 81,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Sturgeon Cream",
+        "id": 37,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Whip",
+        "id": 85,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Tropical ",
+        "id": 55,
+        "percent": 8
+      }
+    ]
+  },
+  {
+    "id": 73,
+    "name": "Kings Hwy Quizmo",
+    "user": "FlowersMiller",
+    "userId": "ac8a8fb9-edad-468c-bc73-e8a89b59eca3",
+    "date": "Mon Feb 25 1980 09:07:40 GMT+0000 (UTC)",
+    "notes": "Sunt quis nulla magna reprehenderit. Veniam voluptate ad dolor sunt incididunt eu laborum occaecat elit. Duis deserunt fugiat velit quis cupidatat excepteur est velit exercitation officia aliquip consectetur. Quis officia aute magna reprehenderit enim mollit fugiat laboris esse dolor.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 64,
+    "vg": 36,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Blueberry Mix",
+        "id": 28,
+        "percent": 1
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Tropical Mix",
+        "id": 41,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Sturgeon ",
+        "id": 45,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Strawberry Mix",
+        "id": 96,
+        "percent": 2
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Tropical Cream",
+        "id": 55,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Bavarian Double",
+        "id": 88,
+        "percent": 1
+      }
+    ]
+  },
+  {
+    "id": 74,
+    "name": "Middleton Street Jumpstack",
+    "user": "BairdRandall",
+    "userId": "883ffd5a-0479-46b1-a161-c0298f7e45c0",
+    "date": "Sat Apr 05 2008 11:55:03 GMT+0000 (UTC)",
+    "notes": "Laborum ullamco dolor enim dolor ut occaecat. Enim ut et officia dolor tempor voluptate qui Lorem fugiat Lorem. Anim et do anim nostrud excepteur dolor. Pariatur mollit laboris velit occaecat amet aute ad mollit esse.",
+    "shakeNVape": false,
+    "steepTime": 11,
+    "maxvg": false,
+    "pg": 23,
+    "vg": 77,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Blueberry Extra",
+        "id": 27,
+        "percent": 1
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Tropical Cream",
+        "id": 62,
+        "percent": 1
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Razzleberry Whip",
+        "id": 61,
+        "percent": 1
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Papaya ",
+        "id": 100,
+        "percent": 1
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Vanilla ",
+        "id": 83,
+        "percent": 1.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Razzleberry ",
+        "id": 69,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Mango Extra",
+        "id": 70,
+        "percent": 2
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Vanilla Ripe",
+        "id": 52,
+        "percent": 5
+      }
+    ]
+  },
+  {
+    "id": 75,
+    "name": "Middagh Street Spacewax",
+    "user": "LizNorris",
+    "userId": "38b55370-60b0-4d37-945d-25ae222d3feb",
+    "date": "Tue Oct 08 1996 02:31:14 GMT+0000 (UTC)",
+    "notes": "Minim elit excepteur esse ut excepteur est laboris non ex mollit ea exercitation. Officia laborum ut officia in anim enim do sunt reprehenderit consequat sit incididunt. Laborum duis sint ipsum non ullamco. Ea sunt consectetur in consequat veniam ullamco do.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 77,
+    "vg": 23,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Mango Delight",
+        "id": 41,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Double",
+        "id": 36,
+        "percent": 7
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Citrus Whip",
+        "id": 100,
+        "percent": 6
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Citrus Extra",
+        "id": 99,
+        "percent": 3
+      }
+    ]
+  },
+  {
+    "id": 76,
+    "name": "Portland Avenue Zuvy",
+    "user": "DavidShannon",
+    "userId": "41a6c6d0-9620-4ee2-97db-37bef18419e3",
+    "date": "Fri Jan 26 2007 00:53:48 GMT+0000 (UTC)",
+    "notes": "Elit amet duis est aliqua ipsum excepteur magna do. Mollit laborum proident nisi ad pariatur aliqua magna labore occaecat ad sint. Ipsum irure culpa labore aliquip aliquip nisi enim consectetur in ex consequat ea laborum in. Incididunt exercitation dolor labore tempor officia minim nostrud consequat reprehenderit duis cillum sint.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Pineapple Delight",
+        "id": 31,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Bavarian Cream",
+        "id": 28,
+        "percent": 3
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Blueberry Double",
+        "id": 49,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Sturgeon Mix",
+        "id": 29,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Papaya Double",
+        "id": 26,
+        "percent": 6.5
+      }
+    ]
+  },
+  {
+    "id": 77,
+    "name": "Gatling Place Honotron",
+    "user": "BanksMack",
+    "userId": "08673031-17f9-4de9-bd4d-e75b3bbbba57",
+    "date": "Wed Aug 17 2005 01:01:16 GMT+0000 (UTC)",
+    "notes": "Nisi consequat ea reprehenderit sunt aliqua irure culpa in cupidatat non qui duis. Velit Lorem aliqua mollit consectetur elit. Labore voluptate pariatur qui pariatur. Excepteur voluptate labore nisi aliquip est voluptate elit tempor.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Razzleberry Ripe",
+        "id": 33,
+        "percent": 3.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Sturgeon Delight",
+        "id": 72,
+        "percent": 5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Vanilla Cream",
+        "id": 68,
+        "percent": 3
+      }
+    ]
+  },
+  {
+    "id": 78,
+    "name": "Church Avenue Dognost",
+    "user": "GonzalezCarlson",
+    "userId": "c854a2da-ae38-401e-8244-dc3467f1bd39",
+    "date": "Fri Jun 25 1993 04:30:35 GMT+0000 (UTC)",
+    "notes": "Qui quis mollit minim nostrud cupidatat. Aute eiusmod enim laborum est ex est dolor. Adipisicing do irure officia cupidatat. Elit fugiat adipisicing excepteur cillum culpa nisi et mollit est et.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 21,
+    "vg": 79,
+    "flavors": [
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Mango ",
+        "id": 41,
+        "percent": 7
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Citrus Extra",
+        "id": 96,
+        "percent": 7
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Sturgeon Delight",
+        "id": 52,
+        "percent": 1
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Pineapple Extra",
+        "id": 88,
+        "percent": 6.5
+      }
+    ]
+  },
+  {
+    "id": 79,
+    "name": "Knickerbocker Avenue Corecom",
+    "user": "DorothyAtkinson",
+    "userId": "a4699445-817c-4a60-a209-2ace0b66c189",
+    "date": "Tue Dec 02 1975 08:45:20 GMT+0000 (UTC)",
+    "notes": "Irure sit irure aliqua ex. Proident exercitation cillum non excepteur aute excepteur aliquip et incididunt voluptate incididunt anim elit Lorem. Officia ipsum dolore deserunt consectetur sit eiusmod consequat duis nostrud magna laboris. Dolore nulla commodo officia consequat Lorem pariatur esse eu exercitation esse labore.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Tropical Mix",
+        "id": 75,
+        "percent": 4
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Citrus Extra",
+        "id": 50,
+        "percent": 3.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Bavarian Double",
+        "id": 70,
+        "percent": 6.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Vanilla ",
+        "id": 91,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Tropical Cream",
+        "id": 50,
+        "percent": 1
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Citrus Whip",
+        "id": 94,
+        "percent": 5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Citrus Double",
+        "id": 32,
+        "percent": 8
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Pineapple Whip",
+        "id": 78,
+        "percent": 4
+      }
+    ]
+  },
+  {
+    "id": 80,
+    "name": "Dekalb Avenue Extrawear",
+    "user": "DianneWalker",
+    "userId": "cc6611b5-396b-4315-bce8-42d305eca312",
+    "date": "Tue Dec 08 1981 18:37:33 GMT+0000 (UTC)",
+    "notes": "In aliqua ex laboris dolore ut non amet aliqua. Cillum aute duis elit fugiat laboris incididunt amet. Velit nulla irure magna deserunt. Cillum fugiat Lorem ea incididunt velit.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 59,
+    "vg": 41,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Mango Cream",
+        "id": 93,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Tropical Whip",
+        "id": 26,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Citrus Extra",
+        "id": 60,
+        "percent": 7
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Razzleberry Delight",
+        "id": 27,
+        "percent": 8
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Papaya ",
+        "id": 40,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Citrus Mix",
+        "id": 52,
+        "percent": 8
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Citrus Delight",
+        "id": 37,
+        "percent": 7.5
+      }
+    ]
+  },
+  {
+    "id": 81,
+    "name": "Seaview Court Asimiline",
+    "user": "CantuWyatt",
+    "userId": "0b46f5b9-f312-4fa7-b11c-afac2ff8b003",
+    "date": "Thu Dec 04 1997 01:01:23 GMT+0000 (UTC)",
+    "notes": "Occaecat incididunt enim nostrud duis laboris aliqua magna laboris dolore deserunt in. Commodo reprehenderit officia officia eiusmod officia amet tempor pariatur pariatur. Lorem aute in id ullamco laboris mollit quis non laborum aute do aliqua anim magna. Eiusmod cillum laborum aute commodo qui.",
+    "shakeNVape": false,
+    "steepTime": 7,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Razzleberry Whip",
+        "id": 74,
+        "percent": 5.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Bavarian Ripe",
+        "id": 63,
+        "percent": 2
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Bavarian ",
+        "id": 61,
+        "percent": 4
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Tropical Extra",
+        "id": 48,
+        "percent": 6
+      }
+    ]
+  },
+  {
+    "id": 82,
+    "name": "Tampa Court Sybixtex",
+    "user": "MarquezWarner",
+    "userId": "a2c54a58-4855-4e55-9ae5-4fec933bc5cd",
+    "date": "Sun Jul 18 1971 12:43:13 GMT+0000 (UTC)",
+    "notes": "Sit ipsum dolor ex reprehenderit. Aliquip eiusmod elit aliquip nulla ullamco nostrud consectetur. Proident eu eiusmod ex pariatur ea excepteur occaecat elit proident sint irure dolor. Eiusmod ea sint elit reprehenderit incididunt labore aute deserunt dolore consectetur in officia dolore et.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 57,
+    "vg": 43,
+    "flavors": [
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Razzleberry ",
+        "id": 29,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Sturgeon Mix",
+        "id": 63,
+        "percent": 3.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Sturgeon Delight",
+        "id": 40,
+        "percent": 4
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Strawberry Extra",
+        "id": 74,
+        "percent": 6.5
+      }
+    ]
+  },
+  {
+    "id": 83,
+    "name": "Portal Street Polarium",
+    "user": "RoseCarney",
+    "userId": "b8adbea2-b3e4-4584-a986-b5ca9838bf3a",
+    "date": "Sun Nov 24 1974 22:29:12 GMT+0000 (UTC)",
+    "notes": "Mollit excepteur veniam cupidatat occaecat exercitation sit ipsum officia anim. Ad dolor aliquip deserunt est tempor aliqua et quis culpa. Fugiat qui quis anim elit non incididunt velit qui deserunt labore eu. Proident officia sit non sint fugiat adipisicing ut tempor dolore proident excepteur dolor Lorem esse.",
+    "shakeNVape": false,
+    "steepTime": 1,
+    "maxvg": false,
+    "pg": 38,
+    "vg": 62,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Vanilla ",
+        "id": 88,
+        "percent": 4.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Pineapple Extra",
+        "id": 26,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Citrus Cream",
+        "id": 89,
+        "percent": 7.5
+      }
+    ]
+  },
+  {
+    "id": 84,
+    "name": "Williams Court Imkan",
+    "user": "PriscillaFrank",
+    "userId": "3db7adda-37c3-492c-886f-a63e74d722a2",
+    "date": "Mon Jun 18 2001 10:43:36 GMT+0000 (UTC)",
+    "notes": "Adipisicing dolore id deserunt duis veniam cupidatat dolor sit proident. Fugiat duis sint aliquip magna. Aliquip fugiat fugiat Lorem aliqua. Cupidatat excepteur esse occaecat commodo pariatur adipisicing incididunt culpa veniam ea minim nisi.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Blueberry Whip",
+        "id": 64,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Mango Whip",
+        "id": 100,
+        "percent": 3
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Mango Ripe",
+        "id": 82,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Bavarian Extra",
+        "id": 59,
+        "percent": 8
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Razzleberry Delight",
+        "id": 39,
+        "percent": 4
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Citrus Mix",
+        "id": 98,
+        "percent": 7.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Tropical Cream",
+        "id": 47,
+        "percent": 6
+      }
+    ]
+  },
+  {
+    "id": 85,
+    "name": "Heyward Street Nitracyr",
+    "user": "MaynardFields",
+    "userId": "ff886e49-a31d-44c4-b2b8-f08e479d94c9",
+    "date": "Mon Feb 03 1986 17:42:08 GMT+0000 (UTC)",
+    "notes": "Magna velit nulla consequat est anim sunt Lorem occaecat et commodo Lorem deserunt officia. Esse consequat esse pariatur aute ad aliqua culpa cupidatat quis deserunt. Ad quis mollit laborum amet aliquip proident eiusmod magna Lorem irure et cupidatat enim eiusmod. Quis excepteur qui ipsum in in ea.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Citrus Mix",
+        "id": 30,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Razzleberry Whip",
+        "id": 67,
+        "percent": 8
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Razzleberry Extra",
+        "id": 46,
+        "percent": 2
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Razzleberry ",
+        "id": 51,
+        "percent": 6.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Papaya Cream",
+        "id": 90,
+        "percent": 7.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Vanilla Delight",
+        "id": 84,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Mango Cream",
+        "id": 98,
+        "percent": 7
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Citrus Mix",
+        "id": 67,
+        "percent": 8
+      }
+    ]
+  },
+  {
+    "id": 86,
+    "name": "Neptune Avenue Comstar",
+    "user": "BaxterRutledge",
+    "userId": "5434ca10-af8b-4012-b0a2-d391d3acb5ee",
+    "date": "Thu Oct 21 2004 21:21:42 GMT+0000 (UTC)",
+    "notes": "Magna proident ex incididunt cupidatat. Dolor ex laboris sit et. Voluptate mollit eiusmod ad ipsum nulla incididunt magna aliqua dolore deserunt do laborum elit non. Excepteur irure laborum ullamco aliqua Lorem nulla dolore quis tempor ad esse aute ullamco ex.",
+    "shakeNVape": false,
+    "steepTime": 9,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Vanilla Ripe",
+        "id": 38,
+        "percent": 7
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Pineapple Ripe",
+        "id": 82,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Sturgeon Extra",
+        "id": 53,
+        "percent": 7
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Razzleberry Extra",
+        "id": 30,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Ripe",
+        "id": 74,
+        "percent": 5
+      }
+    ]
+  },
+  {
+    "id": 87,
+    "name": "Division Place Kenegy",
+    "user": "IvaAguilar",
+    "userId": "ca48a47b-7658-44d2-9d22-64f844b2238e",
+    "date": "Sun Aug 07 2011 20:25:01 GMT+0000 (UTC)",
+    "notes": "Consectetur nisi adipisicing amet velit amet officia incididunt ad esse. Lorem non ex cupidatat eu labore nulla et consectetur culpa nisi velit. Irure quis ipsum est deserunt magna ullamco nostrud do reprehenderit nisi amet Lorem. Magna eiusmod do commodo aliqua occaecat nostrud consectetur.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Citrus Delight",
+        "id": 96,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Pineapple Whip",
+        "id": 61,
+        "percent": 1
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Sturgeon Delight",
+        "id": 62,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Vanilla Double",
+        "id": 70,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Pineapple ",
+        "id": 59,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Blueberry Ripe",
+        "id": 41,
+        "percent": 6.5
+      }
+    ]
+  },
+  {
+    "id": 88,
+    "name": "Hampton Place Vitricomp",
+    "user": "CarolBriggs",
+    "userId": "d89bd975-7ae0-4a0a-b360-5637509e6c3f",
+    "date": "Mon Aug 29 1983 08:22:57 GMT+0000 (UTC)",
+    "notes": "Esse deserunt ipsum aute ut velit nostrud velit Lorem occaecat sit ad aute sunt voluptate. Voluptate non ea ullamco cupidatat minim sit ullamco excepteur ut do anim aute mollit. Sint esse et non sint deserunt aute magna tempor magna dolor deserunt. Sunt esse non consectetur ullamco pariatur irure proident ut dolor consequat.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Citrus ",
+        "id": 30,
+        "percent": 5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Sturgeon Extra",
+        "id": 65,
+        "percent": 6
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Strawberry Whip",
+        "id": 68,
+        "percent": 7.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Mango Ripe",
+        "id": 39,
+        "percent": 7.5
+      }
+    ]
+  },
+  {
+    "id": 89,
+    "name": "Cumberland Walk Bostonic",
+    "user": "AmaliaCooper",
+    "userId": "eb7f3793-d351-4d5f-8412-918df56c593e",
+    "date": "Tue Feb 14 1989 08:42:55 GMT+0000 (UTC)",
+    "notes": "Amet veniam et sint ipsum cupidatat mollit eu excepteur pariatur ea velit magna adipisicing ipsum. Sit id exercitation deserunt consequat. Voluptate sint exercitation dolor est laborum voluptate velit ut. Eu occaecat duis incididunt ea ullamco esse.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Citrus Delight",
+        "id": 42,
+        "percent": 3.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Strawberry Cream",
+        "id": 46,
+        "percent": 4
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Bavarian Whip",
+        "id": 45,
+        "percent": 5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Mango Cream",
+        "id": 36,
+        "percent": 7.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Blueberry Delight",
+        "id": 64,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Strawberry Ripe",
+        "id": 53,
+        "percent": 5.5
+      }
+    ]
+  },
+  {
+    "id": 90,
+    "name": "Taylor Street Ozean",
+    "user": "MaciasJordan",
+    "userId": "ffbcbef7-c445-4323-93fe-17ab1103c109",
+    "date": "Fri May 12 1972 22:11:23 GMT+0000 (UTC)",
+    "notes": "Lorem dolore excepteur culpa aute anim deserunt cillum aliqua commodo id non elit laboris aliqua. Laboris deserunt officia ipsum dolore commodo fugiat voluptate consectetur nostrud sit in elit adipisicing. Reprehenderit labore do qui incididunt exercitation quis reprehenderit anim. Veniam magna tempor ullamco excepteur cillum officia labore Lorem ipsum non aliquip ex mollit veniam.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Papaya Delight",
+        "id": 79,
+        "percent": 2
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Blueberry Delight",
+        "id": 61,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Papaya Ripe",
+        "id": 71,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Strawberry Delight",
+        "id": 89,
+        "percent": 3
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Pineapple Delight",
+        "id": 79,
+        "percent": 3
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Blueberry Ripe",
+        "id": 72,
+        "percent": 6.5
+      }
+    ]
+  },
+  {
+    "id": 91,
+    "name": "Delevan Street Sureplex",
+    "user": "CaroleHolloway",
+    "userId": "2ca39a32-24a4-46ec-8bff-e4ea82c98d04",
+    "date": "Fri Apr 25 1997 14:11:13 GMT+0000 (UTC)",
+    "notes": "Veniam reprehenderit duis eu voluptate adipisicing ut adipisicing aliquip duis reprehenderit et in. Qui pariatur in labore officia ea aute est ut. Laborum eu eu elit aliquip proident nulla. Aute cupidatat magna fugiat anim excepteur deserunt irure deserunt nisi cillum dolore.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 20,
+    "vg": 80,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Papaya ",
+        "id": 64,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Bavarian Cream",
+        "id": 96,
+        "percent": 6
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Strawberry Whip",
+        "id": 27,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Vanilla Cream",
+        "id": 78,
+        "percent": 5
+      }
+    ]
+  },
+  {
+    "id": 92,
+    "name": "Lewis Place Fuelton",
+    "user": "HoodEwing",
+    "userId": "e24c8a0b-ca7a-446b-9719-9a147842e29b",
+    "date": "Fri Mar 04 1994 18:11:18 GMT+0000 (UTC)",
+    "notes": "In officia non enim minim quis velit pariatur. Lorem ex ea cillum laborum qui cupidatat excepteur officia irure pariatur labore enim laborum. Pariatur occaecat reprehenderit est dolor nostrud amet ex tempor sint aute. Pariatur eu proident commodo eu ullamco enim officia velit velit fugiat adipisicing cillum.",
+    "shakeNVape": false,
+    "steepTime": 6,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Cream",
+        "id": 61,
+        "percent": 4.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Vanilla Cream",
+        "id": 27,
+        "percent": 3
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Razzleberry Delight",
+        "id": 60,
+        "percent": 6.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Whip",
+        "id": 80,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Mango Ripe",
+        "id": 40,
+        "percent": 3
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Blueberry Delight",
+        "id": 70,
+        "percent": 4
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Blueberry Delight",
+        "id": 57,
+        "percent": 7.5
+      }
+    ]
+  },
+  {
+    "id": 93,
+    "name": "Clay Street Orbin",
+    "user": "JanaLarson",
+    "userId": "c0eefed0-1415-4611-962b-91db1a0ceb63",
+    "date": "Fri Dec 31 1971 22:59:01 GMT+0000 (UTC)",
+    "notes": "Veniam Lorem tempor ipsum eiusmod laborum pariatur veniam pariatur. Occaecat magna culpa sit proident eiusmod adipisicing amet. Fugiat elit culpa eiusmod excepteur sint proident commodo culpa adipisicing nostrud. Lorem sit esse aute in duis anim sit qui irure sit laboris non tempor labore.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Sturgeon Ripe",
+        "id": 100,
+        "percent": 6
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Razzleberry Whip",
+        "id": 79,
+        "percent": 5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Strawberry Double",
+        "id": 66,
+        "percent": 3.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Citrus Ripe",
+        "id": 30,
+        "percent": 3
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Vanilla Extra",
+        "id": 68,
+        "percent": 3
+      }
+    ]
+  },
+  {
+    "id": 94,
+    "name": "Gerry Street Bisba",
+    "user": "ConcepcionPennington",
+    "userId": "951584ea-2c25-4f7b-9cf9-fd65bd2055a5",
+    "date": "Sat Sep 17 1988 18:37:53 GMT+0000 (UTC)",
+    "notes": "Duis aliquip irure incididunt veniam deserunt in non exercitation consequat reprehenderit aute duis fugiat. Qui quis ullamco ex fugiat aliquip anim irure labore. Non sunt laborum enim duis dolore velit exercitation sint. Commodo adipisicing ex ullamco minim consequat esse incididunt deserunt.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Citrus Delight",
+        "id": 82,
+        "percent": 4.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Razzleberry Double",
+        "id": 52,
+        "percent": 6
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Pineapple Mix",
+        "id": 71,
+        "percent": 2.5
+      }
+    ]
+  },
+  {
+    "id": 95,
+    "name": "Hawthorne Street Cablam",
+    "user": "EthelElliott",
+    "userId": "098c56e2-5afd-4865-a7a7-6bfad9d8d3f9",
+    "date": "Fri Mar 13 1987 10:35:36 GMT+0000 (UTC)",
+    "notes": "Laboris incididunt amet velit aliquip aliquip. Ipsum exercitation labore velit exercitation ex. Sint tempor aliquip qui est aliquip eu est laboris et adipisicing in. Amet ut et ullamco sunt sunt pariatur non est nisi nulla ut quis ut.",
+    "shakeNVape": false,
+    "steepTime": 20,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Sturgeon Cream",
+        "id": 73,
+        "percent": 1.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Papaya Ripe",
+        "id": 64,
+        "percent": 5.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Pineapple ",
+        "id": 33,
+        "percent": 2
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Blueberry Delight",
+        "id": 67,
+        "percent": 1.5
+      }
+    ]
+  },
+  {
+    "id": 96,
+    "name": "College Place Columella",
+    "user": "VickiBailey",
+    "userId": "b2acb5bb-1dcc-4d3b-a578-71daeadabf2f",
+    "date": "Thu Jul 04 1996 09:51:22 GMT+0000 (UTC)",
+    "notes": "Excepteur consectetur consequat cillum dolore consectetur excepteur magna irure ullamco reprehenderit non laboris et nisi. Incididunt pariatur incididunt occaecat excepteur fugiat reprehenderit qui nulla deserunt velit cillum non cillum commodo. Irure minim sit labore in cupidatat velit. Est culpa enim eu enim.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 58,
+    "vg": 42,
+    "flavors": [
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Ripe",
+        "id": 52,
+        "percent": 8
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Bavarian Double",
+        "id": 41,
+        "percent": 6.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Pineapple Ripe",
+        "id": 64,
+        "percent": 7
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Blueberry Delight",
+        "id": 27,
+        "percent": 8
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry ",
+        "id": 31,
+        "percent": 8
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Strawberry Delight",
+        "id": 59,
+        "percent": 1.5
+      },
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Blueberry Ripe",
+        "id": 82,
+        "percent": 2.5
+      }
+    ]
+  },
+  {
+    "id": 97,
+    "name": "Keap Street Supremia",
+    "user": "FrazierSchmidt",
+    "userId": "4a7a1609-5b0e-470f-827a-904b3774b2dd",
+    "date": "Mon Feb 22 2016 02:47:01 GMT+0000 (UTC)",
+    "notes": "Et ipsum cillum aute qui dolore. Duis occaecat magna esse veniam nulla non mollit deserunt. Ut sit sit exercitation ea. Elit adipisicing irure labore in ut culpa.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Papaya Cream",
+        "id": 59,
+        "percent": 7
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Papaya ",
+        "id": 37,
+        "percent": 4
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Bavarian Mix",
+        "id": 83,
+        "percent": 3.5
+      },
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Mango Mix",
+        "id": 59,
+        "percent": 5
+      }
+    ]
+  },
+  {
+    "id": 98,
+    "name": "Batchelder Street Zorromop",
+    "user": "HesterKnight",
+    "userId": "db0bb3ef-90ab-455a-ad57-3bab2e93d2cd",
+    "date": "Fri Sep 17 2010 03:14:11 GMT+0000 (UTC)",
+    "notes": "Laborum tempor tempor exercitation duis duis consectetur consectetur laborum magna amet nostrud. Culpa sunt magna exercitation anim consequat aliqua enim eu. Occaecat mollit et officia duis eu occaecat fugiat labore ad esse non ipsum commodo laborum. Id sint id mollit dolore aute commodo.",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 75,
+    "vg": 25,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Blueberry Double",
+        "id": 58,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Inawera",
+        "abbreviation": "INW",
+        "name": "Sturgeon Extra",
+        "id": 94,
+        "percent": 2.5
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Vanilla Extra",
+        "id": 75,
+        "percent": 5
+      }
+    ]
+  },
+  {
+    "id": 99,
+    "name": "Rutland Road Zaphire",
+    "user": "DeannaPadilla",
+    "userId": "df09d386-ed3f-45e2-b0f5-c4e7af9a285b",
+    "date": "Mon Jul 20 1981 07:58:53 GMT+0000 (UTC)",
+    "notes": "Duis deserunt qui eiusmod amet cupidatat duis cillum voluptate mollit id do deserunt. Tempor commodo ullamco excepteur proident dolor. Ipsum exercitation irure incididunt dolor officia qui laborum incididunt consectetur nostrud. Ipsum Lorem exercitation officia magna anim mollit cillum nostrud est eu ut deserunt.",
+    "shakeNVape": false,
+    "steepTime": 3,
+    "maxvg": true,
+    "pg": null,
+    "vg": null,
+    "flavors": [
+      {
+        "vendor": "FlavourArt",
+        "abbreviation": "FA",
+        "name": "Mango Cream",
+        "id": 73,
+        "percent": 7
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Razzleberry Cream",
+        "id": 81,
+        "percent": 8
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Citrus Mix",
+        "id": 42,
+        "percent": 1.5
+      },
+      {
+        "vendor": "The Flavor Apprentice",
+        "abbreviation": "TFA",
+        "name": "Papaya Cream",
+        "id": 72,
+        "percent": 7
+      },
+      {
+        "vendor": "Flavorah",
+        "abbreviation": "FLV",
+        "name": "Mango Ripe",
+        "id": 56,
+        "percent": 5.5
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Sturgeon Extra",
+        "id": 65,
+        "percent": 4
+      },
+      {
+        "vendor": "Liquid Barn",
+        "abbreviation": "LB",
+        "name": "Papaya Double",
+        "id": 39,
+        "percent": 6
+      }
+    ]
+  }
+]
