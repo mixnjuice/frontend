@@ -23,7 +23,7 @@ describe('<Recipe />', () => {
   it('renders correctly', () => {
     const component = renderer.create(
       <Provider store={store}>
-        <Recipe {...props('?id=1')} />
+        <Recipe actions={actions} {...props('?id=1')} />
       </Provider>
     );
 
