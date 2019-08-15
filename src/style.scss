@@ -354,6 +354,21 @@ input {
   }
 }
 
+.link--tags {
+  margin: 2px 8px;
+  padding: 3px 8px;
+  border: 1px solid $teal;
+  border-radius: 5px;
+  background-color: $lighter-blue;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $blue;
+    background-color: $lightest-blue;
+  }
+}
+
 .image--logo {
   width: 12rem;
 }
