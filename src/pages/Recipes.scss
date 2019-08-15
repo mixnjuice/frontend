@@ -1,3 +1,9 @@
-.testing-test {
-  color: $teal;
+.search-card-header {
+  background: $lightest-blue;
+}
+
+.row:nth-of-type(odd) {
+  .search-card-header {
+    background: $lighter-blue;
+  }
 }
