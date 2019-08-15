@@ -119,8 +119,6 @@ export class Recipe extends Component {
   }
 
   compareWithStash() {
-    // eslint-disable-next-line
-    console.log(this.state);
     const query = this.props.location.search;
     const queryValues = queryString.parse(query);
     const pageId = parseFloat(queryValues.id);
