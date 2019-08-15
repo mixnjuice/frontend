@@ -156,6 +156,7 @@ hr {
 .form-control {
   outline: 0 none;
   border: 1px solid $black;
+  height: 40px;
 
   // Style for "striped" tables
   tr:nth-of-type(odd) .table-striped {
