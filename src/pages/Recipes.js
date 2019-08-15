@@ -34,7 +34,11 @@ export default class Recipes extends Component {
               <Card.Body>
                 <Row>
                   <Col lg="1">
-                    <img src={image} alt={recipe.name} className="w-100" />
+                    <img
+                      src={image}
+                      alt={recipe.name}
+                      className="w-100 border border-dark rounded-lg"
+                    />
                   </Col>
                   <Col lg="auto">
                     <Card.Text>
