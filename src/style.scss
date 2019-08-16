@@ -286,16 +286,16 @@ input {
   height: 40px;
   padding: 0 14px;
   line-height: auto;
+  background: $teal;
+  border: 1px solid $black;
 }
 
 // Button animations
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
 .button-animation {
   overflow: hidden;
-  background: $teal;
   position: relative;
   color: $white;
-  border: 1px solid $black;
 
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
@@ -352,6 +352,50 @@ input {
     position: relative;
     z-index: 1;
   }
+}
+
+// Changing the color of the heart SVG icon
+.fa-heart {
+  color: $light-red;
+}
+
+.rating-button {
+  padding: 0 8px;
+  border: 0;
+  border-top: 1px solid $black;
+  border-bottom: 1px solid $black;
+
+  &:last-child {
+    border-right: 1px solid $black;
+  }
+
+  &:first-child {
+    border-left: 1px solid $black;
+  }
+
+  &:hover,
+  &:focus {
+    background: $teal;
+    border-color: $black;
+    box-shadow: inset 0 -3px $blue;
+  }
+}
+
+.button--favorite {
+  &:hover,
+  &:focus {
+    background: $teal;
+    border-color: $black;
+    box-shadow: inset 0 -3px $blue;
+  }
+}
+
+.button--recipe {
+  margin: 5px 0;
+}
+
+.container--recipe .row {
+  margin: 5px 0;
 }
 
 .link--tags {
