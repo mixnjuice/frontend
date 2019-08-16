@@ -13,7 +13,8 @@ import {
   Table,
   Button,
   ButtonGroup,
-  Card
+  Card,
+  Badge
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -22,7 +23,7 @@ import recipes from '../data/recipes.json';
 
 export class Recipe extends Component {
   static propTypes = {
-    actions: PropTypes.object.isRequired,
+    appActions: PropTypes.object.isRequired,
     location: PropTypes.object
   };
 
@@ -47,13 +48,15 @@ export class Recipe extends Component {
   }
 
   handleFavoriteClick() {
+    const { appActions } = this.props;
+
     if (this.state.favorited) {
       this.setState({
         favorited: false,
         favoriteIcon: ['far', 'heart']
       });
 
-      this.props.actions.popToast({
+      appActions.popToast({
         title: 'Success!',
         icon: null,
         message: 'This recipe has been removed from your favorites'
@@ -64,7 +67,7 @@ export class Recipe extends Component {
         favoriteIcon: ['fas', 'heart']
       });
 
-      this.props.actions.popToast({
+      appActions.popToast({
         title: 'Success!',
         icon: null,
         message: 'This recipe has been added your favorites'
@@ -99,7 +102,7 @@ export class Recipe extends Component {
         .toString()
         .split('\n')
         .map((line, i) => {
-          return <p key={i}>{line}</p>;
+          return <Card.Text key={`${recipe.id}${i}`}>{line}</Card.Text>;
         });
 
       recipe.notes = newNotes;
@@ -107,8 +110,8 @@ export class Recipe extends Component {
 
     const newTags = recipe.tags.map((tag, i) => {
       return (
-        <a className="link--tags" key={i} href="/">
-          {tag}
+        <a key={i} href="/">
+          <Badge className="link--tags">{tag}</Badge>
         </a>
       );
     });
@@ -152,44 +155,48 @@ export class Recipe extends Component {
   renderRatingButtons(ratingNum) {
     const buttons = [];
 
-    let ratingKey = 1;
-
-    for (let i = 0; i < ratingNum; i++) {
+    for (let i = 0; i < 5; i++) {
       buttons.push(
         <Button
           className="rating-button button--recipe"
-          key={i + 1}
+          key={i}
           onClick={() => this.handleRatingClick(i + 1)}
         >
           <span>
-            <FontAwesomeIcon icon={['fas', 'star']} />
+            {i < ratingNum ? (
+              <FontAwesomeIcon icon={['fas', 'star']} />
+            ) : (
+              <FontAwesomeIcon icon={['far', 'star']} />
+            )}
           </span>
         </Button>
       );
-      ratingKey++;
+      // ratingKey++;
     }
 
-    for (let a = ratingNum; a < 5; a++) {
-      buttons.push(
-        <Button
-          className="rating-button button--recipe"
-          key={a + 1}
-          onClick={() => this.handleRatingClick(a + 1)}
-        >
-          <span>
-            <FontAwesomeIcon icon={['far', 'star']} />
-          </span>
-        </Button>
-      );
-      ratingKey++;
-    }
-
-    if (ratingKey === 6) {
-      return <ButtonGroup>{buttons}</ButtonGroup>;
-    }
+    return <ButtonGroup>{buttons}</ButtonGroup>;
   }
 
   render() {
+    const {
+      favoriteIcon,
+      rating,
+      name,
+      version,
+      notes,
+      userId,
+      user,
+      date,
+      maxvg,
+      pg,
+      vg,
+      shakeNVape,
+      steepTime,
+      flavorTotal,
+      flavors,
+      tags
+    } = this.state;
+
     return (
       <Container className="text-center container--recipe">
         <Helmet title="Recipe" />
@@ -205,17 +212,17 @@ export class Recipe extends Component {
               className="button--favorite button--recipe"
             >
               <span>
-                <FontAwesomeIcon icon={this.state.favoriteIcon} />
+                <FontAwesomeIcon icon={favoriteIcon} />
               </span>
             </Button>
           </Col>
-          <Col xs="auto">{this.renderRatingButtons(this.state.rating)}</Col>
+          <Col xs="auto">{this.renderRatingButtons(rating)}</Col>
         </Row>
         <hr />
         <Row>
           <Col lg={{ span: 8, offset: 2 }} xs={{ span: 12 }}>
             <Card className="text-center">
-              <Card.Header>{this.state.name}</Card.Header>
+              <Card.Header>{name}</Card.Header>
               <Card.Body>
                 <Row>
                   <Col md={{ span: 5 }} xs={{ span: 12 }}>
@@ -226,27 +233,21 @@ export class Recipe extends Component {
                     />
                   </Col>
                   <Col md={{ span: 7 }} xs={{ span: 12 }}>
-                    <Card.Title>Version {this.state.version}</Card.Title>
+                    <Card.Title>Version {version}</Card.Title>
                     <Card.Title>Notes</Card.Title>
-                    <Card.Text>
-                      {this.state.notes ? (
-                        <div>{this.state.notes}</div>
-                      ) : (
-                        <div>
-                          This user did not enter any notes for this recipe.
-                        </div>
-                      )}
-                    </Card.Text>
+                    {notes ? (
+                      <div>{notes}</div>
+                    ) : (
+                      <div>
+                        This user did not enter any notes for this recipe.
+                      </div>
+                    )}
                   </Col>
                 </Row>
               </Card.Body>
               <Card.Footer className="text-muted">
                 <span>
-                  Created by{' '}
-                  <a href={'/user?id=' + this.state.userId}>
-                    {this.state.user}
-                  </a>{' '}
-                  on {this.state.date}
+                  Created by <a href={'/user?id=' + userId}>{user}</a> on {date}
                 </span>
               </Card.Footer>
             </Card>
@@ -256,19 +257,19 @@ export class Recipe extends Component {
           <Col lg={{ span: 8, offset: 2 }} xs={{ span: 12 }}>
             <Table striped bordered>
               <caption className="text-center">
-                {this.state.maxvg ? (
+                {maxvg ? (
                   <span>Max VG |&nbsp;</span>
                 ) : (
                   <span>
-                    {this.state.pg}% PG / {this.state.vg}% VG |&nbsp;
+                    {pg}% PG / {vg}% VG |&nbsp;
                   </span>
                 )}
-                {this.state.shakeNVape ? (
-                  <span>Shake & Vape |&nbsp;</span>
+                {shakeNVape ? (
+                  <span>Shake &amp; Vape |&nbsp;</span>
                 ) : (
-                  <span>Steep for {this.state.steepTime} days |&nbsp;</span>
+                  <span>Steep for {steepTime} days |&nbsp;</span>
                 )}
-                <span>Flavor total: {this.state.flavorTotal}%</span>
+                <span>Flavor total: {flavorTotal}%</span>
               </caption>
               <thead>
                 <tr>
@@ -278,7 +279,7 @@ export class Recipe extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.state.flavors.map((flavor, index) => (
+                {flavors.map((flavor, index) => (
                   <tr key={index}>
                     <td>
                       <a href={'/flavor?id=' + flavor.id}>
@@ -303,7 +304,7 @@ export class Recipe extends Component {
           <Col lg={{ span: 6, offset: 3 }} xs={{ span: 12 }}>
             <h3>Tags:</h3>
             <div className="d-flex justify-content-center flex-wrap">
-              {this.state.tags}
+              {tags}
             </div>
           </Col>
         </Row>
@@ -313,12 +314,7 @@ export class Recipe extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(
-    {
-      ...actions
-    },
-    dispatch
-  )
+  appActions: bindActionCreators({ ...actions }, dispatch)
 });
 
 export default connect(

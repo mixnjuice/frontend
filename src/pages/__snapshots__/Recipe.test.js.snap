@@ -337,34 +337,49 @@ exports[`<Recipe /> renders correctly 1`] = `
         className="d-flex justify-content-center flex-wrap"
       >
         <a
-          className="link--tags"
           href="/"
         >
-          refreshing
+          <span
+            className="link--tags badge"
+          >
+            refreshing
+          </span>
         </a>
         <a
-          className="link--tags"
           href="/"
         >
-          fruity
+          <span
+            className="link--tags badge"
+          >
+            fruity
+          </span>
         </a>
         <a
-          className="link--tags"
           href="/"
         >
-          lemon
+          <span
+            className="link--tags badge"
+          >
+            lemon
+          </span>
         </a>
         <a
-          className="link--tags"
           href="/"
         >
-          lime
+          <span
+            className="link--tags badge"
+          >
+            lime
+          </span>
         </a>
         <a
-          className="link--tags"
           href="/"
         >
-          summer
+          <span
+            className="link--tags badge"
+          >
+            summer
+          </span>
         </a>
       </div>
     </div>

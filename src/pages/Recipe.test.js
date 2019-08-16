@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
-import { initialState } from 'reducers/application';
+import { initialState } from 'reducers';
 import { Recipe } from './Recipe';
 import recipes from '../data/recipes.json';
 
