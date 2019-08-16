@@ -171,7 +171,6 @@ export class Recipe extends Component {
           </span>
         </Button>
       );
-      // ratingKey++;
     }
 
     return <ButtonGroup>{buttons}</ButtonGroup>;
