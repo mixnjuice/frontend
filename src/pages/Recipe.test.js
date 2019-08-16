@@ -12,7 +12,8 @@ const store = mockStore({ application: initialState });
 
 describe('<Recipe />', () => {
   const actions = {
-    registerUser: jest.fn()
+    registerUser: jest.fn(),
+    popToast: jest.fn()
   };
   const props = search => ({
     location: {
@@ -45,5 +46,46 @@ describe('<Recipe />', () => {
       favorited: false,
       rating: 0
     });
+
+    instance.compareWithStash();
+    expect(instance.state.flavors[0].inStash).toEqual(false);
+  });
+
+  it('handles favorite clicks', () => {
+    const component = renderer.create(
+      <Recipe appActions={actions} {...props('?id=1')} />
+    );
+    const { instance } = component.root.findByType(Recipe);
+
+    instance.handleFavoriteClick();
+    expect(instance.state.favoriteIcon).toEqual(['fas', 'heart']);
+    expect(instance.state.favorited).toEqual(true);
+
+    instance.handleFavoriteClick();
+    expect(instance.state.favoriteIcon).toEqual(['far', 'heart']);
+    expect(instance.state.favorited).toEqual(false);
+  });
+
+  it('handles rating clicks', () => {
+    const component = renderer.create(
+      <Recipe appActions={actions} {...props('?id=1')} />
+    );
+    const { instance } = component.root.findByType(Recipe);
+
+    instance.handleRatingClick(2);
+    expect(instance.state.rating).toEqual(2);
+  });
+
+  it('compares flavors against stash', () => {
+    const component = renderer.create(
+      <Recipe appActions={actions} {...props('?id=1')} />
+    );
+    const { instance } = component.root.findByType(Recipe);
+
+    instance.compareWithStash();
+
+    for (let i = 0; i < 4; i++) {
+      expect(instance.state.flavors[i].inStash).toEqual(false);
+    }
   });
 });
