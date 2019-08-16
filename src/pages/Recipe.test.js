@@ -46,9 +46,6 @@ describe('<Recipe />', () => {
       favorited: false,
       rating: 0
     });
-
-    instance.compareWithStash();
-    expect(instance.state.flavors[0].inStash).toEqual(false);
   });
 
   it('handles favorite clicks', () => {
