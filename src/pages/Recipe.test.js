@@ -23,7 +23,7 @@ describe('<Recipe />', () => {
   it('renders correctly', () => {
     const component = renderer.create(
       <Provider store={store}>
-        <Recipe actions={actions} {...props('?id=1')} />
+        <Recipe appActions={actions} {...props('?id=1')} />
       </Provider>
     );
 
@@ -32,7 +32,7 @@ describe('<Recipe />', () => {
 
   it('can findRecipe', () => {
     const component = renderer.create(
-      <Recipe actions={actions} {...props('?id=1')} />
+      <Recipe appActions={actions} {...props('?id=1')} />
     );
     const { instance } = component.root.findByType(Recipe);
 

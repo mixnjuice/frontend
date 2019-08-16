@@ -150,33 +150,43 @@ exports[`<Recipe /> renders correctly 1`] = `
               >
                 Notes
               </div>
-              <p
-                className="card-text"
-              >
-                <div>
-                  <p>
-                    IMPORTANT: CAP Lemon Lime's gravity (g per ml) by default is way above what it should be. If you mix by weight, mix CAP Lemon Lime as 1g = 1ml.
-                  </p>
-                  <p>
-                     
-                  </p>
-                  <p>
-                     CAP Super Sweet is optional. 
-                  </p>
-                  <p>
-                     
-                  </p>
-                  <p>
-                     VapeWild doesn't add cooling, but 2 drops per 30ml of WS-23 works well if you're into that.
-                  </p>
-                  <p>
-                     
-                  </p>
-                  <p>
-                     No steep required, shake and vape!
-                  </p>
-                </div>
-              </p>
+              <div>
+                <p
+                  className="card-text"
+                >
+                  IMPORTANT: CAP Lemon Lime's gravity (g per ml) by default is way above what it should be. If you mix by weight, mix CAP Lemon Lime as 1g = 1ml.
+                </p>
+                <p
+                  className="card-text"
+                >
+                   
+                </p>
+                <p
+                  className="card-text"
+                >
+                   CAP Super Sweet is optional. 
+                </p>
+                <p
+                  className="card-text"
+                >
+                   
+                </p>
+                <p
+                  className="card-text"
+                >
+                   VapeWild doesn't add cooling, but 2 drops per 30ml of WS-23 works well if you're into that.
+                </p>
+                <p
+                  className="card-text"
+                >
+                   
+                </p>
+                <p
+                  className="card-text"
+                >
+                   No steep required, shake and vape!
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -184,15 +194,13 @@ exports[`<Recipe /> renders correctly 1`] = `
           className="text-muted card-footer"
         >
           <span>
-            Created by
-             
+            Created by 
             <a
               href="/user?id=5420"
             >
               JosefBud
             </a>
-             
-            on 
+             on 
             March 20 2019, 16:39:00
           </span>
         </div>
