@@ -12,7 +12,8 @@ FontAwesomeIcon.propTypes = {
     PropTypes.string,
     PropTypes.shape({
       prefix: PropTypes.string,
-      iconName: PropTypes.string
+      iconName: PropTypes.string,
+      icon: PropTypes.arrayOf(PropTypes.any)
     }),
     PropTypes.arrayOf(PropTypes.string)
   ]).isRequired
