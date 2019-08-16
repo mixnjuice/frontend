@@ -110,7 +110,7 @@ export class Recipe extends Component {
 
     const newTags = recipe.tags.map((tag, i) => {
       return (
-        <a key={i} href="/">
+        <a key={`${recipe.id}${i}`} href="/">
           <Badge className="link--tags">{tag}</Badge>
         </a>
       );
