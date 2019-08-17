@@ -1,9 +1,123 @@
-.search-card-header {
+.search-grid--card {
+  height: 18rem;
+  border: 1px solid $teal;
+  margin: 6px;
+}
+
+.search-grid--card-header {
+  display: flex;
+  height: 20%;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+
+  a {
+    margin: auto;
+  }
+}
+
+.search-grid--card-image {
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
+}
+
+.search-list--card-header {
   background: $lightest-blue;
 }
 
 .row:nth-of-type(odd) {
-  .search-card-header {
+  .search-list--card-header {
     background: $lighter-blue;
   }
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+@media screen and (prefers-reduced-motion: reduce) {
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $teal;
+    --webkit-transition: 0.4s;
+    transition: none;
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $teal;
+  --webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .slider::before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: $white;
+    --webkit-transition: 0.4s;
+    transition: none;
+  }
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: $white;
+  --webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: $teal;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px $teal;
+}
+
+input:checked + .slider::before {
+  --webkit-transform: translateX(26px);
+  --ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round::before {
+  border-radius: 50%;
 }

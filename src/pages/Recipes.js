@@ -11,7 +11,8 @@ import {
   InputGroup,
   FormControl,
   Button,
-  Card
+  Card,
+  Badge
 } from 'react-bootstrap';
 
 import recipeList from '../data/generatedRecipes.json';
@@ -28,7 +29,8 @@ export class Recipes extends Component {
       recipes: {}
     };
 
-    this.renderResultCards = this.renderResultCards.bind(this);
+    this.renderResultCardsList = this.renderResultCardsList.bind(this);
+    this.renderResultCardsGrid = this.renderResultCardsGrid.bind(this);
   }
 
   handleFavoriteClick(recipeId, recipeName) {
@@ -76,7 +78,7 @@ export class Recipes extends Component {
     });
   }
 
-  renderResultCards() {
+  renderResultCardsList() {
     return recipeList.map((recipe, index) => {
       const image = '/media/card-test-1.jpg';
 
@@ -84,7 +86,7 @@ export class Recipes extends Component {
         <Row key={`${recipe.id}${index}`} className="py-1">
           <Col>
             <Card>
-              <Card.Header className="search-card-header">
+              <Card.Header className="search-list--card-header">
                 <a href={'/recipe?id=' + recipe.id}>{recipe.name}</a>
               </Card.Header>
               <Card.Body>
@@ -145,6 +147,84 @@ export class Recipes extends Component {
     });
   }
 
+  renderResultCardsGrid() {
+    return recipeList.map((recipe, index) => {
+      const image = '/media/card-test-5.jpeg';
+
+      return (
+        <Col
+          key={`${recipe.id}${index}`}
+          xs="12"
+          md="6"
+          lg="3"
+          className="mx-auto px-0"
+        >
+          <Card className="search-grid--card">
+            <Card.Img
+              className="card-img search-grid--card-image"
+              src={image}
+              alt={recipe.name}
+            />
+            <Card.ImgOverlay className="p-3">
+              <Card.Title className="search-grid--card-header text-center">
+                <a href={'/recipe?id=' + recipe.id}>{recipe.name}</a>
+              </Card.Title>
+              <Card.Body className="p-0">
+                <Card.Text>
+                  <span className="font-weight-bold">Author:</span>
+                  <a href="/">
+                    <Badge className="link--tags">{recipe.user}</Badge>
+                  </a>
+                </Card.Text>
+                <Card.Text style={{ height: '5rem' }}>
+                  <span className="font-weight-bold">Tags:</span>
+                  {recipe.tags.map((tag, i) => {
+                    if (i < 6) {
+                      return (
+                        <a key={`${tag}${i}`} href="/">
+                          <Badge className="link--tags mx-1">{tag}</Badge>
+                        </a>
+                      );
+                    } else if (i === 6) {
+                      return (
+                        <a key={`${tag}${i}`} href="/">
+                          <Badge className="link--tags mx-1">and more...</Badge>
+                        </a>
+                      );
+                    } else {
+                      return;
+                    }
+                  })}
+                </Card.Text>
+                <Card.Text>
+                  <Button className="mx-2 button-animation">
+                    <span>Create</span>
+                  </Button>
+                  <Button
+                    className="mx-2 button--favorite"
+                    onClick={() =>
+                      this.handleFavoriteClick(recipe.id, recipe.name)
+                    }
+                  >
+                    <span>
+                      <FontAwesomeIcon
+                        icon={
+                          this.state.recipes[recipe.id]
+                            ? this.state.recipes[recipe.id].favoriteIcon
+                            : ['far', 'heart']
+                        }
+                      />
+                    </span>
+                  </Button>
+                </Card.Text>
+              </Card.Body>
+            </Card.ImgOverlay>
+          </Card>
+        </Col>
+      );
+    });
+  }
+
   render() {
     return (
       <Container>
@@ -156,6 +236,12 @@ export class Recipes extends Component {
                 <Button className="button-animation">
                   <span>Search</span>
                 </Button>
+                <span className="my-auto ml-3 mr-1 font-weight-bold">Grid</span>
+                <label className="switch my-auto mx-1">
+                  <input type="checkbox" />
+                  <span className="slider round"></span>
+                </label>
+                <span className="my-auto mx-1 font-weight-bold">List</span>
               </InputGroup.Append>
             </InputGroup>
           </Col>
@@ -165,7 +251,7 @@ export class Recipes extends Component {
             <h4>Advanced Search Dropdown</h4>
           </Col>
         </Row>
-        {this.renderResultCards()}
+        <Row>{this.renderResultCardsGrid()}</Row>
       </Container>
     );
   }
