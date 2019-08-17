@@ -11,33 +11,35 @@
     "maxvg": false,
     "pg": 30,
     "vg": 70,
+    "tags": ["refreshing", "fruity", "lemon", "lime", "summer"],
+    "version": "2.1",
     "flavors": [
       {
         "vendor": "Flavor West",
         "abbreviation": "FW",
         "name": "Blue Raspberry",
-        "id": 1,
+        "id": 51,
         "percent": 3
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Cherry Extract",
-        "id": 2,
+        "id": 52,
         "percent": 1.5
       },
       {
         "vendor": "Capella",
         "abbreviation": "CAP",
         "name": "Lemon Lime",
-        "id": 3,
+        "id": 53,
         "percent": 4
       },
       {
         "vendor": "Capella",
         "abbreviation": "CAP",
         "name": "Super Sweet",
-        "id": 4,
+        "id": 54,
         "percent": 0.5
       }
     ]
@@ -54,33 +56,35 @@
     "maxvg": false,
     "pg": 30,
     "vg": 70,
+    "tags": ["tobacco", "RY4", "cream", "custard"],
+    "version": "2.1",
     "flavors": [
       {
         "vendor": "FlavourArt",
         "abbreviation": "FA",
         "name": "Catalan Cream",
-        "id": 5,
+        "id": 55,
         "percent": 1
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "RY4 Double",
-        "id": 6,
+        "id": 56,
         "percent": 8
       },
       {
         "vendor": "Flavor West",
         "abbreviation": "FW",
         "name": "Sweet Cream",
-        "id": 7,
+        "id": 57,
         "percent": 2.5
       },
       {
         "vendor": "Capella",
         "abbreviation": "CAP",
         "name": "Vanilla Custard v2",
-        "id": 8,
+        "id": 58,
         "percent": 2
       }
     ]
@@ -97,33 +101,35 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
+    "tags": ["dessert", "strawberry", "cream", "custard", "heavy"],
+    "version": "2.1",
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Bavarian Cream",
-        "id": 9,
+        "id": 59,
         "percent": 3
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Cheesecake (Graham Crust)",
-        "id": 10,
+        "id": 60,
         "percent": 5
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Strawberry Ripe",
-        "id": 11,
+        "id": 61,
         "percent": 10
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Vanilla Custard",
-        "id": 12,
+        "id": 62,
         "percent": 2
       }
     ]
@@ -140,40 +146,42 @@
     "maxvg": false,
     "pg": 50,
     "vg": 50,
+    "tags": ["dessert", "strawberry", "cream", "custard", "heavy"],
+    "version": "2.1",
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Bavarian Cream",
-        "id": 9,
+        "id": 59,
         "percent": 4
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Cheesecake (Graham Crust)",
-        "id": 10,
+        "id": 60,
         "percent": 5
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Strawberry Ripe",
-        "id": 11,
+        "id": 61,
         "percent": 10
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Sweet Cream",
-        "id": 13,
+        "id": 63,
         "percent": 4
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Vanilla Custard",
-        "id": 12,
+        "id": 62,
         "percent": 3
       }
     ]
@@ -190,41 +198,88 @@
     "maxvg": false,
     "pg": 20,
     "vg": 80,
+    "tags": ["dessert", "cookie", "biscuit", "vanilla", "light"],
+    "version": "2.1",
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Acetyl Pyrazine 5%",
-        "id": 14,
+        "id": 64,
         "percent": 0.5
       },
       {
         "vendor": "Inawera",
         "abbreviation": "INW",
         "name": "Biscuit",
-        "id": 15,
+        "id": 65,
         "percent": 1.5
       },
       {
         "vendor": "Inawera",
         "abbreviation": "INW",
         "name": "Shisha Vanilla",
-        "id": 16,
+        "id": 66,
         "percent": 1
       },
       {
         "vendor": "Capella",
         "abbreviation": "CAP",
         "name": "Sugar Cookie",
-        "id": 17,
+        "id": 67,
         "percent": 4
       },
       {
         "vendor": "Capella",
         "abbreviation": "CAP",
         "name": "Vanilla Custard",
-        "id": 18,
+        "id": 68,
         "percent": 2
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Stash Comparator Test",
+    "user": "JosefBud",
+    "userId": 5420,
+    "date": "July 28 2019, 19:14:00",
+    "notes": "Sometimes you just gotta test things the hard way",
+    "shakeNVape": true,
+    "steepTime": 0,
+    "maxvg": false,
+    "pg": 30,
+    "vg": 70,
+    "tags": ["digusting", "dontmixthis", "justatest"],
+    "version": "2.1",
+    "flavors": [
+      {
+        "vendor": "Flavor West",
+        "abbreviation": "FW",
+        "name": "Blue Raspberry",
+        "id": 69,
+        "percent": 3
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Vanilla Whipped Cream",
+        "id": 1,
+        "percent": 8
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Lemon Lime",
+        "id": 53,
+        "percent": 4
+      },
+      {
+        "vendor": "Capella",
+        "abbreviation": "CAP",
+        "name": "Boston Cream Pie",
+        "id": 20,
+        "percent": 0.5
       }
     ]
   }
