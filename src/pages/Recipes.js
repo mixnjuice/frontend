@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { actions } from 'reducers/application';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   Container,
   Row,
@@ -9,26 +14,76 @@ import {
   Card
 } from 'react-bootstrap';
 
-import recipes from '../data/generatedRecipes.json';
+import recipeList from '../data/generatedRecipes.json';
 
-export default class Recipes extends Component {
+export class Recipes extends Component {
+  static propTypes = {
+    appActions: PropTypes.object.isRequired
+  };
+
   constructor(props) {
     super(props);
+
+    this.state = {
+      recipes: {}
+    };
 
     this.renderResultCards = this.renderResultCards.bind(this);
   }
 
-  renderResultCards() {
-    return recipes.map((recipe, index) => {
-      const imageNum = Math.floor(Math.random() * 3 + 1);
+  handleFavoriteClick(recipeId) {
+    // Most of this is just placeholder to show proof of concept...
+    // Whether or not a recipe is favorited depends on the user
+    // so this will be changed once a user db is in place
+    const { appActions } = this.props;
 
-      const image = '/media/card-test-' + imageNum + '.jpg';
+    if (
+      !this.state.recipes[recipeId] ||
+      !this.state.recipes[recipeId].favorited
+    ) {
+      this.setState({
+        recipes: {
+          ...this.state.recipes,
+          [recipeId]: {
+            favorited: true,
+            favoriteIcon: ['fas', 'heart']
+          }
+        }
+      });
+
+      appActions.popToast({
+        title: 'Success!',
+        icon: null,
+        message: 'This recipe has been added your favorites'
+      });
+    } else {
+      this.setState({
+        recipes: {
+          ...this.state.recipes,
+          [recipeId]: {
+            favorited: false,
+            favoriteIcon: ['far', 'heart']
+          }
+        }
+      });
+
+      appActions.popToast({
+        title: 'Success!',
+        icon: null,
+        message: 'This recipe has been removed from your favorites'
+      });
+    }
+  }
+
+  renderResultCards() {
+    return recipeList.map((recipe, index) => {
+      const image = '/media/card-test-1.jpg';
 
       return (
-        <Row key={index} className="py-1">
+        <Row key={`${recipe.id}${index}`} className="py-1">
           <Col>
             <Card>
-              <Card.Header key={index} className="search-card-header">
+              <Card.Header className="search-card-header">
                 <a href={'/recipe?id=' + recipe.id}>{recipe.name}</a>
               </Card.Header>
               <Card.Body>
@@ -45,7 +100,7 @@ export default class Recipes extends Component {
                       Tags:
                       {recipe.tags.map((tag, i) => {
                         return (
-                          <a className="link--tags" key={i} href="/">
+                          <a className="link--tags" key={`${tag}${i}`} href="/">
                             {tag}
                           </a>
                         );
@@ -55,9 +110,25 @@ export default class Recipes extends Component {
                 </Row>
               </Card.Body>
               <Card.Footer>
-                <span className="px-2">{recipe.user}</span>
-                <Button className="button-animation">
+                <span className="mx-2">
+                  <a href="/">{recipe.user}</a>
+                </span>
+                <Button className="mx-2 button-animation">
                   <span>Create</span>
+                </Button>
+                <Button
+                  className="mx-2 button--favorite"
+                  onClick={() => this.handleFavoriteClick(recipe.id)}
+                >
+                  <span>
+                    <FontAwesomeIcon
+                      icon={
+                        this.state.recipes[recipe.id]
+                          ? this.state.recipes[recipe.id].favoriteIcon
+                          : ['far', 'heart']
+                      }
+                    />
+                  </span>
                 </Button>
               </Card.Footer>
             </Card>
@@ -92,3 +163,12 @@ export default class Recipes extends Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  appActions: bindActionCreators({ ...actions }, dispatch)
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Recipes);
