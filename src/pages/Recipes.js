@@ -53,14 +53,14 @@ export class Recipes extends Component {
 
     recipeSettings.favorited = !recipeSettings.favorited;
     if (recipeSettings.favorited) {
-      recipeSettings.favoriteIcon[0] = ['fas'];
+      recipeSettings.favoriteIcon = ['fas', 'heart'];
       appActions.popToast({
         title: 'Success!',
         icon: null,
         message: `${recipeName} has been added to your favorites`
       });
     } else {
-      recipeSettings.favoriteIcon[0] = ['far'];
+      recipeSettings.favoriteIcon = ['far', 'heart'];
       appActions.popToast({
         title: 'Success!',
         icon: null,

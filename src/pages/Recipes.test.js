@@ -21,14 +21,14 @@ describe('<Recipes />', () => {
     const { instance } = component.root.findByType(Recipes);
 
     expect(instance).toBeDefined();
-    instance.handleFavoriteClick(0);
+    instance.handleFavoriteClick(0, 'Wyona Street Dogspa');
     expect(instance.state.recipes[0]).toBeDefined();
     expect(instance.state.recipes[0]).toEqual({
       favorited: true,
       favoriteIcon: ['fas', 'heart']
     });
 
-    instance.handleFavoriteClick(0);
+    instance.handleFavoriteClick(0, 'Wyona Street Dogspa');
     expect(instance.state.recipes[0]).toEqual({
       favorited: false,
       favoriteIcon: ['far', 'heart']
