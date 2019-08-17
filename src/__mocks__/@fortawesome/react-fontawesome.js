@@ -10,6 +10,11 @@ export function FontAwesomeIcon({ icon }) {
 FontAwesomeIcon.propTypes = {
   icon: PropTypes.oneOfType([
     PropTypes.string,
+    PropTypes.shape({
+      prefix: PropTypes.string,
+      iconName: PropTypes.string,
+      icon: PropTypes.arrayOf(PropTypes.any)
+    }),
     PropTypes.arrayOf(PropTypes.string)
   ]).isRequired
 };
