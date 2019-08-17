@@ -37,42 +37,43 @@ export class Recipes extends Component {
     // so this will be changed once a user db is in place
     const { appActions } = this.props;
 
-    if (
-      !this.state.recipes[recipeId] ||
-      !this.state.recipes[recipeId].favorited
-    ) {
-      this.setState({
-        recipes: {
-          ...this.state.recipes,
-          [recipeId]: {
-            favorited: true,
-            favoriteIcon: ['fas', 'heart']
-          }
-        }
-      });
+    let recipeSettings = {};
 
+    if (!this.state.recipes[recipeId]) {
+      recipeSettings = {
+        favorited: false,
+        favoriteIcon: ['far', 'heart']
+      };
+    } else {
+      recipeSettings = {
+        favorited: this.state.recipes[recipeId].favorited,
+        favoriteIcon: this.state.recipes[recipeId].favoriteIcon
+      };
+    }
+
+    recipeSettings.favorited = !recipeSettings.favorited;
+    if (recipeSettings.favorited) {
+      recipeSettings.favoriteIcon[0] = ['fas'];
       appActions.popToast({
         title: 'Success!',
         icon: null,
         message: `${recipeName} has been added to your favorites`
       });
     } else {
-      this.setState({
-        recipes: {
-          ...this.state.recipes,
-          [recipeId]: {
-            favorited: false,
-            favoriteIcon: ['far', 'heart']
-          }
-        }
-      });
-
+      recipeSettings.favoriteIcon[0] = ['far'];
       appActions.popToast({
         title: 'Success!',
         icon: null,
         message: `${recipeName} has been removed from your favorites`
       });
     }
+
+    this.setState({
+      recipes: {
+        ...this.state.recipes,
+        [recipeId]: recipeSettings
+      }
+    });
   }
 
   renderResultCards() {
