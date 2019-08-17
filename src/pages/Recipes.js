@@ -96,9 +96,9 @@ export class Recipes extends Component {
                       className="w-100 border border-dark rounded-lg"
                     />
                   </Col>
-                  <Col lg="auto">
+                  <Col lg="11">
                     <Card.Text>
-                      Tags:
+                      <span className="font-weight-bold">Tags:</span>
                       {recipe.tags.map((tag, i) => {
                         return (
                           <a className="link--tags" key={`${tag}${i}`} href="/">
@@ -106,6 +106,10 @@ export class Recipes extends Component {
                           </a>
                         );
                       })}
+                    </Card.Text>
+                    <Card.Text>
+                      <span className="font-weight-bold">Notes:&nbsp;</span>
+                      {recipe.notes.substring(0, 300)}...
                     </Card.Text>
                   </Col>
                 </Row>
