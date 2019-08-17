@@ -31,12 +31,14 @@ exports[`<Recipes /> renders correctly 1`] = `
           <span
             className="my-auto ml-3 mr-1 font-weight-bold"
           >
-            Grid
+            List
           </span>
           <label
             className="switch my-auto mx-1"
           >
             <input
+              checked={true}
+              onChange={[Function]}
               type="checkbox"
             />
             <span
@@ -46,7 +48,7 @@ exports[`<Recipes /> renders correctly 1`] = `
           <span
             className="my-auto mx-1 font-weight-bold"
           >
-            List
+            Grid
           </span>
         </div>
       </div>

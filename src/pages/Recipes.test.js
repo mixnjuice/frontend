@@ -34,4 +34,16 @@ describe('<Recipes />', () => {
       favoriteIcon: ['far', 'heart']
     });
   });
+
+  it('handles view toggle', () => {
+    const component = renderer.create(<Recipes appActions={actions} />);
+
+    const { instance } = component.root.findByType(Recipes);
+
+    expect(instance).toBeDefined();
+    expect(instance.state.grid).toEqual(true);
+
+    instance.handleViewToggle();
+    expect(instance.state.grid).toEqual(false);
+  });
 });
