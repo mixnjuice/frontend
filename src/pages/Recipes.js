@@ -54,7 +54,7 @@ export class Recipes extends Component {
       appActions.popToast({
         title: 'Success!',
         icon: null,
-        message: `${recipeName} has been added your favorites`
+        message: `${recipeName} has been added to your favorites`
       });
     } else {
       this.setState({
