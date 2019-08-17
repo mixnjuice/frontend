@@ -26,7 +26,8 @@ export class Recipes extends Component {
     super(props);
 
     this.state = {
-      recipes: {}
+      recipes: {},
+      grid: true
     };
 
     this.renderResultCardsList = this.renderResultCardsList.bind(this);
@@ -76,6 +77,10 @@ export class Recipes extends Component {
         [recipeId]: recipeSettings
       }
     });
+  }
+
+  handleViewToggle() {
+    this.setState({ grid: !this.state.grid });
   }
 
   renderResultCardsList() {
@@ -236,12 +241,18 @@ export class Recipes extends Component {
                 <Button className="button-animation">
                   <span>Search</span>
                 </Button>
-                <span className="my-auto ml-3 mr-1 font-weight-bold">Grid</span>
+                <span className="my-auto ml-3 mr-1 font-weight-bold">List</span>
                 <label className="switch my-auto mx-1">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    checked={this.state.grid}
+                    onChange={() => {
+                      this.handleViewToggle();
+                    }}
+                  />
                   <span className="slider round"></span>
                 </label>
-                <span className="my-auto mx-1 font-weight-bold">List</span>
+                <span className="my-auto mx-1 font-weight-bold">Grid</span>
               </InputGroup.Append>
             </InputGroup>
           </Col>
@@ -251,7 +262,8 @@ export class Recipes extends Component {
             <h4>Advanced Search Dropdown</h4>
           </Col>
         </Row>
-        <Row>{this.renderResultCardsGrid()}</Row>
+        {this.state.grid && <Row>{this.renderResultCardsGrid()}</Row>}
+        {!this.state.grid && this.renderResultCardsList()}
       </Container>
     );
   }
