@@ -31,7 +31,7 @@ export class Recipes extends Component {
     this.renderResultCards = this.renderResultCards.bind(this);
   }
 
-  handleFavoriteClick(recipeId) {
+  handleFavoriteClick(recipeId, recipeName) {
     // Most of this is just placeholder to show proof of concept...
     // Whether or not a recipe is favorited depends on the user
     // so this will be changed once a user db is in place
@@ -54,7 +54,7 @@ export class Recipes extends Component {
       appActions.popToast({
         title: 'Success!',
         icon: null,
-        message: 'This recipe has been added your favorites'
+        message: `${recipeName} has been added your favorites`
       });
     } else {
       this.setState({
@@ -70,7 +70,7 @@ export class Recipes extends Component {
       appActions.popToast({
         title: 'Success!',
         icon: null,
-        message: 'This recipe has been removed from your favorites'
+        message: `${recipeName} has been removed from your favorites`
       });
     }
   }
@@ -118,7 +118,9 @@ export class Recipes extends Component {
                 </Button>
                 <Button
                   className="mx-2 button--favorite"
-                  onClick={() => this.handleFavoriteClick(recipe.id)}
+                  onClick={() =>
+                    this.handleFavoriteClick(recipe.id, recipe.name)
+                  }
                 >
                   <span>
                     <FontAwesomeIcon
