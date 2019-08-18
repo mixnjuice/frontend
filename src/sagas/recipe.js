@@ -1,5 +1,6 @@
-import { put, all, takeLatest } from 'redux-saga/effects';
+import { put, all, takeLatest, call } from 'redux-saga/effects';
 
+import request from 'utils/request';
 import { actions, types } from 'reducers/recipe';
 
 function* editRecipeWorker() {
@@ -18,8 +19,26 @@ function* revertRecipeWatcher() {
   return yield takeLatest(types.REVERT_RECIPE, revertRecipeWorker);
 }
 
-function* requestRecipeWorker() {
-  yield put(actions.REQUEST_RECIPE_SUCCESS);
+function* requestRecipeWorker(id) {
+  try {
+    const endpoint = {
+      url: `/recipe/${id}`,
+      method: 'GET'
+    };
+    const result = yield call(request.execute, { endpoint });
+
+    if (!result.success) {
+      throw result.error;
+    }
+
+    const {
+      data: { recipe }
+    } = result.response;
+
+    yield put(actions.requestRecipeSuccess(recipe));
+  } catch (error) {
+    yield put(actions.requestRecipeFailure(error));
+  }
 }
 
 function* requestRecipeWatcher() {
