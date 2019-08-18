@@ -38,6 +38,12 @@ body {
 // Style for links
 a {
   color: $teal;
+
+  &:hover,
+  &:focus {
+    color: $baby-blue;
+    text-decoration: none;
+  }
 }
 
 // Style for horizontal rules
