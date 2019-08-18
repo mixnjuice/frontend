@@ -7,7 +7,7 @@
 .search-grid--card-header {
   display: flex;
   height: 3rem;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba($white, 0.7);
   border-radius: 10px;
 
   a {
@@ -35,6 +35,13 @@
   .search-list--card-header {
     background: $lighter-blue;
   }
+}
+
+.search-accordion {
+  border: 1px solid $teal;
+  padding: 5px 30px;
+  border-radius: 5px;
+  background: rgba($lighter-blue, 0.5);
 }
 
 /* The switch - the box around the slider */

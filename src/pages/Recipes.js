@@ -12,7 +12,8 @@ import {
   FormControl,
   Button,
   Card,
-  Badge
+  Badge,
+  Accordion
 } from 'react-bootstrap';
 
 import recipeList from '../data/generatedRecipes.json';
@@ -30,6 +31,7 @@ export class Recipes extends Component {
       grid: true
     };
 
+    this.renderAdvancedSearch = this.renderAdvancedSearch.bind(this);
     this.renderResultCardsList = this.renderResultCardsList.bind(this);
     this.renderResultCardsGrid = this.renderResultCardsGrid.bind(this);
   }
@@ -83,6 +85,20 @@ export class Recipes extends Component {
     this.setState({ grid: !this.state.grid });
   }
 
+  renderAdvancedSearch() {
+    const fields = ['Name', 'Author', 'Tags', 'Flavors'];
+
+    return fields.map((field, index) => {
+      return (
+        <InputGroup className="py-1" key={`${field}${index}`}>
+          <InputGroup.Prepend>
+            <InputGroup.Text>{field}</InputGroup.Text>
+          </InputGroup.Prepend>
+          <FormControl />
+        </InputGroup>
+      );
+    });
+  }
   renderResultCardsList() {
     return recipeList.map((recipe, index) => {
       const image = '/media/card-test-1.jpg';
@@ -241,25 +257,32 @@ export class Recipes extends Component {
                 <Button className="button-animation">
                   <span>Search</span>
                 </Button>
-                <span className="my-auto ml-3 mr-1 font-weight-bold">List</span>
-                <label className="switch my-auto mx-1">
-                  <input
-                    type="checkbox"
-                    checked={this.state.grid}
-                    onChange={() => {
-                      this.handleViewToggle();
-                    }}
-                  />
-                  <span className="slider round"></span>
-                </label>
-                <span className="my-auto mx-1 font-weight-bold">Grid</span>
               </InputGroup.Append>
+              <span className="my-auto ml-3 mr-1 font-weight-bold">List</span>
+              <label className="switch my-auto mx-1">
+                <input
+                  type="checkbox"
+                  checked={this.state.grid}
+                  onChange={() => {
+                    this.handleViewToggle();
+                  }}
+                />
+                <span className="slider round"></span>
+              </label>
+              <span className="my-auto mx-1 font-weight-bold">Grid</span>
             </InputGroup>
           </Col>
         </Row>
-        <Row className="text-center">
-          <Col>
-            <h4>Advanced Search Dropdown</h4>
+        <Row className="text-center py-1">
+          <Col lg={{ span: 6, offset: 3 }}>
+            <Accordion>
+              <Accordion.Toggle as="a" eventKey="0" href="#">
+                <h3 className="font-weight-bold">Advanced Search</h3>
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0" className="search-accordion">
+                <div>{this.renderAdvancedSearch()}</div>
+              </Accordion.Collapse>
+            </Accordion>
           </Col>
         </Row>
         {this.state.grid && <Row>{this.renderResultCardsGrid()}</Row>}
