@@ -101,6 +101,10 @@ export class Recipes extends Component {
   }
   renderResultCardsList() {
     return recipeList.map((recipe, index) => {
+      if (index > 49) {
+        return;
+      }
+
       const image = '/media/card-test-1.jpg';
 
       return (
@@ -170,6 +174,10 @@ export class Recipes extends Component {
 
   renderResultCardsGrid() {
     return recipeList.map((recipe, index) => {
+      if (index > 49) {
+        return;
+      }
+
       const image = '/media/card-test-5.jpeg';
 
       return (
