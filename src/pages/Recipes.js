@@ -293,8 +293,11 @@ export class Recipes extends Component {
             </Accordion>
           </Col>
         </Row>
-        {this.state.grid && <Row>{this.renderResultCardsGrid()}</Row>}
-        {!this.state.grid && this.renderResultCardsList()}
+        <Row>
+          {this.state.grid
+            ? this.renderResultCardsGrid()
+            : this.renderResultCardsList()}
+        </Row>
       </Container>
     );
   }
