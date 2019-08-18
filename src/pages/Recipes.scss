@@ -6,12 +6,18 @@
 
 .search-grid--card-header {
   display: flex;
-  height: 20%;
+  height: 3rem;
   background: rgba(255, 255, 255, 0.7);
   border-radius: 10px;
 
   a {
     margin: auto;
+  }
+}
+
+.search-grid--card-text {
+  &.tags {
+    height: 6rem;
   }
 }
 

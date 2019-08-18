@@ -181,7 +181,7 @@ export class Recipes extends Component {
                     <Badge className="link--tags">{recipe.user}</Badge>
                   </a>
                 </Card.Text>
-                <Card.Text style={{ height: '5rem' }}>
+                <Card.Text className="search-grid--card-text tags">
                   <span className="font-weight-bold">Tags:</span>
                   {recipe.tags.map((tag, i) => {
                     if (i < 6) {
