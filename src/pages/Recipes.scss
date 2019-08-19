@@ -56,6 +56,12 @@
   color: $red-times;
 }
 
+.table-flavor-list {
+  td {
+    padding: 1px 5px;
+  }
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;

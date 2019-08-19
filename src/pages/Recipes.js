@@ -199,9 +199,9 @@ export class Recipes extends Component {
               inStash: true
             });
             flavorPopoverList.push(
-              <tr>
+              <tr className="table-flavor-list">
                 <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
-                <td>{recipeFlavor.percent}</td>
+                <td>{recipeFlavor.percent}%</td>
                 <td>
                   <FontAwesomeIcon
                     icon={['fas', 'check-circle']}
@@ -220,12 +220,12 @@ export class Recipes extends Component {
               inStash: false
             });
             flavorPopoverList.push(
-              <tr>
+              <tr className="table-flavor-list">
                 <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
-                <td>{recipeFlavor.percent}</td>
+                <td>{recipeFlavor.percent}%</td>
                 <td>
                   <FontAwesomeIcon
-                    icon={['fas', 'check-times']}
+                    icon={['fas', 'times-circle']}
                     className="search-icon--times"
                   />
                 </td>
@@ -263,26 +263,12 @@ export class Recipes extends Component {
         };
       }
 
-      const popover = () => (
+      const popover = (
         <Popover>
           <Popover.Title as="h3">Flavors</Popover.Title>
-          <Popover.Content>Test</Popover.Content>
+          <Popover.Content>{flavorPopoverList}</Popover.Content>
         </Popover>
       );
-
-      // eslint-disable-next-line
-      const Example = () => {
-        return (
-          <OverlayTrigger trigger="click" overlay={popover}>
-            <Button className="mx-2 button--favorite button--stash-check">
-              <FontAwesomeIcon
-                icon={comparisonIcon.icon}
-                className={comparisonIcon.class}
-              />
-            </Button>
-          </OverlayTrigger>
-        );
-      };
 
       const image = '/media/card-test-5.jpeg';
 
@@ -351,7 +337,14 @@ export class Recipes extends Component {
                       />
                     </span>
                   </Button>
-                  {/* <Example /> */}
+                  <OverlayTrigger trigger="click" overlay={popover}>
+                    <Button className="mx-2 button--favorite button--stash-check">
+                      <FontAwesomeIcon
+                        icon={comparisonIcon.icon}
+                        className={comparisonIcon.class}
+                      />
+                    </Button>
+                  </OverlayTrigger>
                 </Card.Text>
               </Card.Body>
             </Card.ImgOverlay>
