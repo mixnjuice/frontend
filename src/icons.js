@@ -5,7 +5,9 @@ import {
   faHeart as fasHeart,
   faStar as fasStar,
   faCheck,
-  faTimesCircle
+  faTimesCircle,
+  faMinusCircle,
+  faCheckCircle
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faHeart as farHeart,
@@ -19,6 +21,8 @@ library.add(
   faUser,
   faCheck,
   faTimesCircle,
+  faMinusCircle,
+  faCheckCircle,
   fasHeart,
   farHeart,
   fasStar,
