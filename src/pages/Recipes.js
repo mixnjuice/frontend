@@ -17,6 +17,7 @@ import {
 } from 'react-bootstrap';
 
 import recipeList from '../data/generatedRecipes.json';
+import flavorStash from '../data/flavorstash.json';
 
 export class Recipes extends Component {
   static propTypes = {
@@ -177,6 +178,64 @@ export class Recipes extends Component {
         return;
       }
 
+      const comparison = [];
+
+      const choosingIcon = {
+        has: 0,
+        hasNot: 0
+      };
+
+      let comparisonIcon = {};
+
+      recipe.flavors.map(recipeFlavor => {
+        for (let i = 0; i < flavorStash.length; i++) {
+          if (flavorStash[i].id === recipeFlavor.id) {
+            comparison.push({
+              id: recipeFlavor.id,
+              name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
+              inStash: true
+            });
+            break;
+          }
+
+          if (i === flavorStash.length - 1) {
+            comparison.push({
+              id: recipeFlavor.id,
+              name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
+              inStash: false
+            });
+          }
+        }
+      });
+
+      for (let i = 0; i < comparison.length; i++) {
+        if (comparison[i].inStash) {
+          choosingIcon.has++;
+        } else {
+          choosingIcon.hasNot++;
+        }
+        // Tried this ternary but ESLint throws the error:
+        // Expected an assignment or function call and instead saw an expression.eslint(no-unused-expressions)
+        // comparison[i].inStash ? choosingIcon.has++ : choosingIcon.hasNot++;
+      }
+
+      if (choosingIcon.has > 0 && choosingIcon.hasNot > 0) {
+        comparisonIcon = {
+          icon: ['fas', 'minus-circle'],
+          class: 'search-icon--minus'
+        };
+      } else if (choosingIcon.has > 0 && choosingIcon.hasNot === 0) {
+        comparisonIcon = {
+          icon: ['fas', 'check-circle'],
+          class: 'search-icon--check'
+        };
+      } else {
+        comparisonIcon = {
+          icon: ['fas', 'times-circle'],
+          class: 'search-icon--times'
+        };
+      }
+
       const image = '/media/card-test-5.jpeg';
 
       return (
@@ -243,6 +302,12 @@ export class Recipes extends Component {
                         }
                       />
                     </span>
+                  </Button>
+                  <Button className="mx-2 button--favorite button--stash-check">
+                    <FontAwesomeIcon
+                      icon={comparisonIcon.icon}
+                      className={comparisonIcon.class}
+                    />
                   </Button>
                 </Card.Text>
               </Card.Body>

@@ -44,6 +44,18 @@
   background: rgba($lighter-blue, 0.5);
 }
 
+.search-icon--check {
+  color: $green-check;
+}
+
+.search-icon--minus {
+  color: $yellow-minus;
+}
+
+.search-icon--times {
+  color: $red-times;
+}
+
 /* The switch - the box around the slider */
 .switch {
   position: relative;
