@@ -1,15 +1,4 @@
-// import dayjs from 'dayjs';
-// import nanoid from 'nanoid';
-import {
-  all,
-  call,
-  put,
-  takeLatest
-  // delay,
-  // take,
-  // takeEvery,
-  // select
-} from 'redux-saga/effects';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import request from 'utils/request';
 import { actions, types } from 'reducers/dashboard';
