@@ -13,7 +13,9 @@ import {
   Button,
   Card,
   Badge,
-  Accordion
+  Accordion,
+  Popover,
+  OverlayTrigger
 } from 'react-bootstrap';
 
 import recipeList from '../data/generatedRecipes.json';
@@ -179,6 +181,7 @@ export class Recipes extends Component {
       }
 
       const comparison = [];
+      const flavorPopoverList = [];
 
       const choosingIcon = {
         has: 0,
@@ -195,6 +198,18 @@ export class Recipes extends Component {
               name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
               inStash: true
             });
+            flavorPopoverList.push(
+              <tr>
+                <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
+                <td>{recipeFlavor.percent}</td>
+                <td>
+                  <FontAwesomeIcon
+                    icon={['fas', 'check-circle']}
+                    className="search-icon--check"
+                  />
+                </td>
+              </tr>
+            );
             break;
           }
 
@@ -204,6 +219,18 @@ export class Recipes extends Component {
               name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
               inStash: false
             });
+            flavorPopoverList.push(
+              <tr>
+                <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
+                <td>{recipeFlavor.percent}</td>
+                <td>
+                  <FontAwesomeIcon
+                    icon={['fas', 'check-times']}
+                    className="search-icon--times"
+                  />
+                </td>
+              </tr>
+            );
           }
         }
       });
@@ -235,6 +262,27 @@ export class Recipes extends Component {
           class: 'search-icon--times'
         };
       }
+
+      const popover = () => (
+        <Popover>
+          <Popover.Title as="h3">Flavors</Popover.Title>
+          <Popover.Content>Test</Popover.Content>
+        </Popover>
+      );
+
+      // eslint-disable-next-line
+      const Example = () => {
+        return (
+          <OverlayTrigger trigger="click" overlay={popover}>
+            <Button className="mx-2 button--favorite button--stash-check">
+              <FontAwesomeIcon
+                icon={comparisonIcon.icon}
+                className={comparisonIcon.class}
+              />
+            </Button>
+          </OverlayTrigger>
+        );
+      };
 
       const image = '/media/card-test-5.jpeg';
 
@@ -303,12 +351,7 @@ export class Recipes extends Component {
                       />
                     </span>
                   </Button>
-                  <Button className="mx-2 button--favorite button--stash-check">
-                    <FontAwesomeIcon
-                      icon={comparisonIcon.icon}
-                      className={comparisonIcon.class}
-                    />
-                  </Button>
+                  {/* <Example /> */}
                 </Card.Text>
               </Card.Body>
             </Card.ImgOverlay>
