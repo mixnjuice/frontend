@@ -48,7 +48,9 @@ exports[`<Header /> renders correctly 1`] = `
               disabled={false}
               href="/"
               onClick={[Function]}
+              role="tab"
               style={Object {}}
+              tabIndex={-1}
             >
               Home
             </a>
@@ -59,6 +61,8 @@ exports[`<Header /> renders correctly 1`] = `
               disabled={false}
               href="/recipes"
               onClick={[Function]}
+              role="tab"
+              tabIndex={-1}
             >
               Recipes
             </a>
@@ -69,6 +73,8 @@ exports[`<Header /> renders correctly 1`] = `
               disabled={false}
               href="/calculator"
               onClick={[Function]}
+              role="tab"
+              tabIndex={-1}
             >
               Calculator
             </a>
@@ -79,6 +85,8 @@ exports[`<Header /> renders correctly 1`] = `
               disabled={false}
               href="/flavors"
               onClick={[Function]}
+              role="tab"
+              tabIndex={-1}
             >
               Flavors
             </a>
@@ -94,7 +102,8 @@ exports[`<Header /> renders correctly 1`] = `
                 href="#"
                 onClick={[Function]}
                 onKeyDown={[Function]}
-                role="button"
+                role="tab"
+                tabIndex={-1}
               >
                 User
               </a>
@@ -170,6 +179,8 @@ exports[`<Header /> renders correctly 1`] = `
               disabled={false}
               href="/login"
               onClick={[Function]}
+              role="tab"
+              tabIndex={-1}
             >
               Login
             </a>
@@ -180,6 +191,8 @@ exports[`<Header /> renders correctly 1`] = `
               disabled={false}
               href="/register"
               onClick={[Function]}
+              role="tab"
+              tabIndex={-1}
             >
               Register
             </a>
