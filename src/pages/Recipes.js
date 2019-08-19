@@ -31,9 +31,7 @@ export class Recipes extends Component {
       grid: true
     };
 
-    this.renderAdvancedSearch = this.renderAdvancedSearch.bind(this);
-    this.renderResultCardsList = this.renderResultCardsList.bind(this);
-    this.renderResultCardsGrid = this.renderResultCardsGrid.bind(this);
+    this.renderResultCards = this.renderResultCards.bind(this);
   }
 
   handleFavoriteClick(recipeId, recipeName) {
@@ -85,7 +83,7 @@ export class Recipes extends Component {
     this.setState({ grid: !this.state.grid });
   }
 
-  renderAdvancedSearch() {
+  get renderAdvancedSearch() {
     const fields = ['Name', 'Author', 'Tags', 'Flavors'];
 
     return fields.map((field, index) => {
@@ -99,7 +97,8 @@ export class Recipes extends Component {
       );
     });
   }
-  renderResultCardsList() {
+
+  get renderResultCardsList() {
     return recipeList.map((recipe, index) => {
       if (index > 49) {
         return;
@@ -172,7 +171,7 @@ export class Recipes extends Component {
     });
   }
 
-  renderResultCardsGrid() {
+  get renderResultCardsGrid() {
     return recipeList.map((recipe, index) => {
       if (index > 49) {
         return;
@@ -254,6 +253,86 @@ export class Recipes extends Component {
     });
   }
 
+  renderResultCards() {
+    const image = '/media/card-test-5.jpeg';
+
+    return recipeList.map((recipe, index) => {
+      return (
+        <Col key={`${recipe.id}${index}`} lg={this.state.grid ? 3 : 12}>
+          <Card className="search-grid--card">
+            <Card.Img
+              className="card-img search-grid--card-image"
+              src={image}
+              alt={recipe.name}
+            />
+            <Card.Title
+              className={
+                this.state.grid
+                  ? 'search-grid--card-header'
+                  : 'search-list--card-header'
+              }
+            >
+              <a href={'/recipe?id=' + recipe.id}>{recipe.name}</a>
+            </Card.Title>
+            <Card.Body className={this.state.grid ? 'py-0' : null}>
+              <Card.Text>
+                <span className="font-weight-bold">Author:</span>
+                <a href="/">
+                  <Badge className="link--tags">{recipe.user}</Badge>
+                </a>
+              </Card.Text>
+              <Card.Text
+                className={
+                  this.state.grid ? 'search-grid--card-text tags' : null
+                }
+              >
+                <span className="font-weight-bold">Tags:</span>
+                {recipe.tags.map((tag, i) => {
+                  if (i < 6) {
+                    return (
+                      <a key={`${tag}${i}`} href="/">
+                        <Badge className="link--tags mx-1">{tag}</Badge>
+                      </a>
+                    );
+                  } else if (i === 6) {
+                    return (
+                      <a key={`${tag}${i}`} href="/">
+                        <Badge className="link--tags mx-1">and more...</Badge>
+                      </a>
+                    );
+                  } else {
+                    return;
+                  }
+                })}
+              </Card.Text>
+              <Card.Text>
+                <Button className="mx-2 button-animation">
+                  <span>Create</span>
+                </Button>
+                <Button
+                  className="mx-2 button--favorite"
+                  onClick={() =>
+                    this.handleFavoriteClick(recipe.id, recipe.name)
+                  }
+                >
+                  <span>
+                    <FontAwesomeIcon
+                      icon={
+                        this.state.recipes[recipe.id]
+                          ? this.state.recipes[recipe.id].favoriteIcon
+                          : ['far', 'heart']
+                      }
+                    />
+                  </span>
+                </Button>
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        </Col>
+      );
+    });
+  }
+
   render() {
     return (
       <Container>
@@ -288,15 +367,16 @@ export class Recipes extends Component {
                 <h3 className="font-weight-bold">Advanced Search</h3>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0" className="search-accordion">
-                <div>{this.renderAdvancedSearch()}</div>
+                <div>{this.renderAdvancedSearch}</div>
               </Accordion.Collapse>
             </Accordion>
           </Col>
         </Row>
+        {/* <Row>{this.renderResultCards()}</Row> */}
         <Row>
           {this.state.grid
-            ? this.renderResultCardsGrid()
-            : this.renderResultCardsList()}
+            ? this.renderResultCardsGrid
+            : this.renderResultCardsList}
         </Row>
       </Container>
     );
