@@ -75,72 +75,78 @@ exports[`<Recipes /> renders correctly 1`] = `
         </a>
         <div
           aria-expanded={null}
-          className="search-accordion collapse"
+          className="collapse"
         >
-          <div>
+          <div
+            className="m-0 p-0"
+          >
             <div
-              className="py-1 input-group"
+              className="search-accordion"
             >
               <div
-                className="input-group-prepend"
+                className="py-1 input-group"
               >
-                <span
-                  className="input-group-text"
+                <div
+                  className="input-group-prepend"
                 >
-                  Name
-                </span>
+                  <span
+                    className="input-group-text"
+                  >
+                    Name
+                  </span>
+                </div>
+                <input
+                  className="form-control"
+                />
               </div>
-              <input
-                className="form-control"
-              />
-            </div>
-            <div
-              className="py-1 input-group"
-            >
               <div
-                className="input-group-prepend"
+                className="py-1 input-group"
               >
-                <span
-                  className="input-group-text"
+                <div
+                  className="input-group-prepend"
                 >
-                  Author
-                </span>
+                  <span
+                    className="input-group-text"
+                  >
+                    Author
+                  </span>
+                </div>
+                <input
+                  className="form-control"
+                />
               </div>
-              <input
-                className="form-control"
-              />
-            </div>
-            <div
-              className="py-1 input-group"
-            >
               <div
-                className="input-group-prepend"
+                className="py-1 input-group"
               >
-                <span
-                  className="input-group-text"
+                <div
+                  className="input-group-prepend"
                 >
-                  Tags
-                </span>
+                  <span
+                    className="input-group-text"
+                  >
+                    Tags
+                  </span>
+                </div>
+                <input
+                  className="form-control"
+                />
               </div>
-              <input
-                className="form-control"
-              />
-            </div>
-            <div
-              className="py-1 input-group"
-            >
               <div
-                className="input-group-prepend"
+                className="py-1 input-group"
               >
-                <span
-                  className="input-group-text"
+                <div
+                  className="input-group-prepend"
                 >
-                  Flavors
-                </span>
+                  <span
+                    className="input-group-text"
+                  >
+                    Flavors
+                  </span>
+                </div>
+                <input
+                  className="form-control"
+                />
               </div>
-              <input
-                className="form-control"
-              />
             </div>
           </div>
         </div>
@@ -245,6 +251,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-check-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -335,6 +350,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -427,6 +451,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -518,6 +551,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -608,6 +650,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -754,6 +805,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-times-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -844,6 +904,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-times-circle"
+                />
               </button>
             </p>
           </div>
@@ -954,6 +1023,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -1054,6 +1132,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -1153,6 +1240,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -1281,6 +1377,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -1408,6 +1513,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -1516,6 +1630,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -1643,6 +1766,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -1779,6 +1911,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-times-circle"
+                />
               </button>
             </p>
           </div>
@@ -1925,6 +2066,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -2051,6 +2201,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -2197,6 +2356,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -2332,6 +2500,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -2469,6 +2646,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -2568,6 +2754,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -2687,6 +2882,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -2796,6 +3000,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -2904,6 +3117,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -3050,6 +3272,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-times-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -3195,6 +3426,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -3303,6 +3543,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-times-circle"
+                />
               </button>
             </p>
           </div>
@@ -3449,6 +3698,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -3585,6 +3843,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -3675,6 +3942,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -3785,6 +4061,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-check-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -3875,6 +4160,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -4003,6 +4297,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -4093,6 +4396,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -4230,6 +4542,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -4338,6 +4659,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -4466,6 +4796,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -4556,6 +4895,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -4657,6 +5005,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -4756,6 +5113,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -4874,6 +5240,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -5002,6 +5377,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -5129,6 +5513,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -5246,6 +5639,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-check-circle"
+                />
               </button>
             </p>
           </div>
@@ -5392,6 +5794,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-times-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -5491,6 +5902,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -5609,6 +6029,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
               </button>
             </p>
           </div>
@@ -5755,6 +6184,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -5900,6 +6338,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                   />
                 </span>
               </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-minus-circle"
+                />
+              </button>
             </p>
           </div>
         </div>
@@ -6044,6 +6491,15 @@ exports[`<Recipes /> renders correctly 1`] = `
                     className="fa far-heart"
                   />
                 </span>
+              </button>
+              <button
+                className="mx-2 button--favorite button--stash-check btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                <i
+                  className="fa fas-times-circle"
+                />
               </button>
             </p>
           </div>
