@@ -15,7 +15,8 @@ import {
   Badge,
   Accordion,
   Popover,
-  OverlayTrigger
+  OverlayTrigger,
+  Table
 } from 'react-bootstrap';
 
 import recipeList from '../data/generatedRecipes.json';
@@ -199,7 +200,7 @@ export class Recipes extends Component {
               inStash: true
             });
             flavorPopoverList.push(
-              <tr className="table-flavor-list">
+              <tr className="table-flavor-list" key={recipeFlavor.id}>
                 <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
                 <td>{recipeFlavor.percent}%</td>
                 <td>
@@ -220,7 +221,7 @@ export class Recipes extends Component {
               inStash: false
             });
             flavorPopoverList.push(
-              <tr className="table-flavor-list">
+              <tr className="table-flavor-list" key={recipeFlavor.id}>
                 <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
                 <td>{recipeFlavor.percent}%</td>
                 <td>
@@ -264,9 +265,13 @@ export class Recipes extends Component {
       }
 
       const popover = (
-        <Popover>
+        <Popover id={recipe.id}>
           <Popover.Title as="h3">Flavors</Popover.Title>
-          <Popover.Content>{flavorPopoverList}</Popover.Content>
+          <Popover.Content>
+            <Table>
+              <tbody>{flavorPopoverList}</tbody>
+            </Table>
+          </Popover.Content>
         </Popover>
       );
 
