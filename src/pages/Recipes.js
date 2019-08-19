@@ -366,8 +366,12 @@ export class Recipes extends Component {
               <Accordion.Toggle as="a" eventKey="0" href="#">
                 <h3 className="font-weight-bold">Advanced Search</h3>
               </Accordion.Toggle>
-              <Accordion.Collapse eventKey="0" className="search-accordion">
-                <div>{this.renderAdvancedSearch}</div>
+              <Accordion.Collapse eventKey="0">
+                <div className="m-0 p-0">
+                  <div className="search-accordion">
+                    {this.renderAdvancedSearch}
+                  </div>
+                </div>
               </Accordion.Collapse>
             </Accordion>
           </Col>
