@@ -12,16 +12,13 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Sturgeon",
-      "Mango"
-    ],
+    "tags": ["Sturgeon", "Mango"],
     "flavors": [
       {
         "vendor": "Liquid Barn",
         "abbreviation": "LB",
         "name": "Citrus Cream",
-        "id": 70,
+        "id": 12,
         "percent": 5.5
       },
       {
@@ -35,7 +32,7 @@
         "vendor": "Flavorah",
         "abbreviation": "FLV",
         "name": "Citrus Custard",
-        "id": 60,
+        "id": 14,
         "percent": 4
       },
       {
@@ -49,28 +46,28 @@
         "vendor": "Inawera",
         "abbreviation": "INW",
         "name": "Vanilla Whip",
-        "id": 61,
+        "id": 11,
         "percent": 4
       },
       {
         "vendor": "The Flavor Apprentice",
         "abbreviation": "TFA",
         "name": "Strawberry Extra",
-        "id": 66,
+        "id": 16,
         "percent": 4.5
       },
       {
         "vendor": "Flavorah",
         "abbreviation": "FLV",
         "name": "Razzleberry Extra",
-        "id": 58,
+        "id": 23,
         "percent": 5
       },
       {
         "vendor": "Inawera",
         "abbreviation": "INW",
         "name": "Tropical Whip",
-        "id": 65,
+        "id": 35,
         "percent": 8
       }
     ]
@@ -88,9 +85,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Tropical"
-    ],
+    "tags": ["Tropical"],
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
@@ -156,9 +151,7 @@
     "maxvg": false,
     "pg": 74,
     "vg": 26,
-    "tags": [
-      "Mango"
-    ],
+    "tags": ["Mango"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -217,9 +210,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Sturgeon"
-    ],
+    "tags": ["Sturgeon"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -285,9 +276,7 @@
     "maxvg": false,
     "pg": 39,
     "vg": 61,
-    "tags": [
-      "Blueberry"
-    ],
+    "tags": ["Blueberry"],
     "flavors": [
       {
         "vendor": "FlavourArt",
@@ -400,9 +389,7 @@
     "maxvg": false,
     "pg": 50,
     "vg": 50,
-    "tags": [
-      "Savory"
-    ],
+    "tags": ["Savory"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -454,11 +441,7 @@
     "maxvg": false,
     "pg": 57,
     "vg": 43,
-    "tags": [
-      "Tropical",
-      "Tropical",
-      "Dessert"
-    ],
+    "tags": ["Tropical", "Tropical", "Dessert"],
     "flavors": [
       {
         "vendor": "Flavorah",
@@ -496,10 +479,7 @@
     "maxvg": false,
     "pg": 12,
     "vg": 88,
-    "tags": [
-      "Tropical",
-      "Citrus"
-    ],
+    "tags": ["Tropical", "Citrus"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -558,10 +538,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Citrus",
-      "Savory"
-    ],
+    "tags": ["Citrus", "Savory"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -620,13 +597,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Bavarian",
-      "Sturgeon",
-      "Pineapple",
-      "Custard",
-      "Strawberry"
-    ],
+    "tags": ["Bavarian", "Sturgeon", "Pineapple", "Custard", "Strawberry"],
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
@@ -685,13 +656,7 @@
     "maxvg": false,
     "pg": 80,
     "vg": 20,
-    "tags": [
-      "Mango",
-      "Savory",
-      "Heavy",
-      "Dessert",
-      "Papaya"
-    ],
+    "tags": ["Mango", "Savory", "Heavy", "Dessert", "Papaya"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -729,11 +694,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Tropical",
-      "Razzleberry",
-      "Papaya"
-    ],
+    "tags": ["Tropical", "Razzleberry", "Papaya"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -785,13 +746,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Strawberry",
-      "Tropical",
-      "Papaya",
-      "Dessert",
-      "Heavy"
-    ],
+    "tags": ["Strawberry", "Tropical", "Papaya", "Dessert", "Heavy"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -948,13 +903,7 @@
     "maxvg": false,
     "pg": 69,
     "vg": 31,
-    "tags": [
-      "Tropical",
-      "Razzleberry",
-      "Custard",
-      "Refreshing",
-      "Strawberry"
-    ],
+    "tags": ["Tropical", "Razzleberry", "Custard", "Refreshing", "Strawberry"],
     "flavors": [
       {
         "vendor": "Flavorah",
@@ -1140,14 +1089,7 @@
     "maxvg": false,
     "pg": 49,
     "vg": 51,
-    "tags": [
-      "Mango",
-      "Bavarian",
-      "Sturgeon",
-      "Blueberry",
-      "Savory",
-      "Custard"
-    ],
+    "tags": ["Mango", "Bavarian", "Sturgeon", "Blueberry", "Savory", "Custard"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -1220,10 +1162,7 @@
     "maxvg": false,
     "pg": 68,
     "vg": 32,
-    "tags": [
-      "Refreshing",
-      "Papaya"
-    ],
+    "tags": ["Refreshing", "Papaya"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -1275,12 +1214,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Papaya",
-      "Heavy",
-      "Refreshing",
-      "Pineapple"
-    ],
+    "tags": ["Papaya", "Heavy", "Refreshing", "Pineapple"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -1339,11 +1273,7 @@
     "maxvg": false,
     "pg": 73,
     "vg": 27,
-    "tags": [
-      "Razzleberry",
-      "Vanilla",
-      "Blueberry"
-    ],
+    "tags": ["Razzleberry", "Vanilla", "Blueberry"],
     "flavors": [
       {
         "vendor": "Liquid Barn",
@@ -1395,11 +1325,7 @@
     "maxvg": false,
     "pg": 38,
     "vg": 62,
-    "tags": [
-      "Custard",
-      "Citrus",
-      "Razzleberry"
-    ],
+    "tags": ["Custard", "Citrus", "Razzleberry"],
     "flavors": [
       {
         "vendor": "Flavorah",
@@ -1565,11 +1491,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Tropical",
-      "Mango",
-      "Bavarian"
-    ],
+    "tags": ["Tropical", "Mango", "Bavarian"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -1674,14 +1596,7 @@
     "maxvg": false,
     "pg": 64,
     "vg": 36,
-    "tags": [
-      "Papaya",
-      "Citrus",
-      "Savory",
-      "Sturgeon",
-      "Vanilla",
-      "Citrus"
-    ],
+    "tags": ["Papaya", "Citrus", "Savory", "Sturgeon", "Vanilla", "Citrus"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -1747,9 +1662,7 @@
     "maxvg": false,
     "pg": 83,
     "vg": 17,
-    "tags": [
-      "Refreshing"
-    ],
+    "tags": ["Refreshing"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -1822,11 +1735,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Refreshing",
-      "Razzleberry",
-      "Razzleberry"
-    ],
+    "tags": ["Refreshing", "Razzleberry", "Razzleberry"],
     "flavors": [
       {
         "vendor": "Flavorah",
@@ -1864,9 +1773,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Bavarian"
-    ],
+    "tags": ["Bavarian"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -1939,13 +1846,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Blueberry",
-      "Bavarian",
-      "Heavy",
-      "Sturgeon",
-      "Refreshing"
-    ],
+    "tags": ["Blueberry", "Bavarian", "Heavy", "Sturgeon", "Refreshing"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -2011,9 +1912,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Razzleberry"
-    ],
+    "tags": ["Razzleberry"],
     "flavors": [
       {
         "vendor": "Liquid Barn",
@@ -2058,14 +1957,7 @@
     "maxvg": false,
     "pg": 42,
     "vg": 58,
-    "tags": [
-      "Custard",
-      "Papaya",
-      "Heavy",
-      "Cream",
-      "Mango",
-      "Citrus"
-    ],
+    "tags": ["Custard", "Papaya", "Heavy", "Cream", "Mango", "Citrus"],
     "flavors": [
       {
         "vendor": "FlavourArt",
@@ -2124,11 +2016,7 @@
     "maxvg": false,
     "pg": 51,
     "vg": 49,
-    "tags": [
-      "Refreshing",
-      "Blueberry",
-      "Razzleberry"
-    ],
+    "tags": ["Refreshing", "Blueberry", "Razzleberry"],
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
@@ -2187,13 +2075,7 @@
     "maxvg": false,
     "pg": 34,
     "vg": 66,
-    "tags": [
-      "Sturgeon",
-      "Custard",
-      "Vanilla",
-      "Pineapple",
-      "Heavy"
-    ],
+    "tags": ["Sturgeon", "Custard", "Vanilla", "Pineapple", "Heavy"],
     "flavors": [
       {
         "vendor": "Flavorah",
@@ -2259,9 +2141,7 @@
     "maxvg": false,
     "pg": 15,
     "vg": 85,
-    "tags": [
-      "Dessert"
-    ],
+    "tags": ["Dessert"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -2320,10 +2200,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Razzleberry",
-      "Papaya"
-    ],
+    "tags": ["Razzleberry", "Papaya"],
     "flavors": [
       {
         "vendor": "Flavorah",
@@ -2382,10 +2259,7 @@
     "maxvg": false,
     "pg": 32,
     "vg": 68,
-    "tags": [
-      "Refreshing",
-      "Bavarian"
-    ],
+    "tags": ["Refreshing", "Bavarian"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -2444,12 +2318,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Mango",
-      "Papaya",
-      "Strawberry",
-      "Razzleberry"
-    ],
+    "tags": ["Mango", "Papaya", "Strawberry", "Razzleberry"],
     "flavors": [
       {
         "vendor": "Flavorah",
@@ -2508,13 +2377,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Cream",
-      "Vanilla",
-      "Custard",
-      "Blueberry",
-      "Mango"
-    ],
+    "tags": ["Cream", "Vanilla", "Custard", "Blueberry", "Mango"],
     "flavors": [
       {
         "vendor": "FlavourArt",
@@ -2573,13 +2436,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Savory",
-      "Custard",
-      "Vanilla",
-      "Vanilla",
-      "Mango"
-    ],
+    "tags": ["Savory", "Custard", "Vanilla", "Vanilla", "Mango"],
     "flavors": [
       {
         "vendor": "Liquid Barn",
@@ -2638,12 +2495,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Blueberry",
-      "Vanilla",
-      "Bavarian",
-      "Refreshing"
-    ],
+    "tags": ["Blueberry", "Vanilla", "Bavarian", "Refreshing"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -2741,10 +2593,7 @@
     "maxvg": false,
     "pg": 69,
     "vg": 31,
-    "tags": [
-      "Vanilla",
-      "Blueberry"
-    ],
+    "tags": ["Vanilla", "Blueberry"],
     "flavors": [
       {
         "vendor": "FlavourArt",
@@ -2789,12 +2638,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Mango",
-      "Pineapple",
-      "Bavarian",
-      "Mango"
-    ],
+    "tags": ["Mango", "Pineapple", "Bavarian", "Mango"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -3035,13 +2879,7 @@
     "maxvg": false,
     "pg": 47,
     "vg": 53,
-    "tags": [
-      "Tropical",
-      "Citrus",
-      "Papaya",
-      "Mango",
-      "Razzleberry"
-    ],
+    "tags": ["Tropical", "Citrus", "Papaya", "Mango", "Razzleberry"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -3079,14 +2917,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Mango",
-      "Mango",
-      "Custard",
-      "Citrus",
-      "Mango",
-      "Pineapple"
-    ],
+    "tags": ["Mango", "Mango", "Custard", "Citrus", "Mango", "Pineapple"],
     "flavors": [
       {
         "vendor": "Inawera",
@@ -3145,12 +2976,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Mango",
-      "Citrus",
-      "Razzleberry",
-      "Mango"
-    ],
+    "tags": ["Mango", "Citrus", "Razzleberry", "Mango"],
     "flavors": [
       {
         "vendor": "FlavourArt",
@@ -3364,14 +3190,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Sturgeon",
-      "Custard",
-      "Heavy",
-      "Savory",
-      "Custard",
-      "Mango"
-    ],
+    "tags": ["Sturgeon", "Custard", "Heavy", "Savory", "Custard", "Mango"],
     "flavors": [
       {
         "vendor": "Liquid Barn",
@@ -3444,11 +3263,7 @@
     "maxvg": false,
     "pg": 86,
     "vg": 14,
-    "tags": [
-      "Razzleberry",
-      "Heavy",
-      "Strawberry"
-    ],
+    "tags": ["Razzleberry", "Heavy", "Strawberry"],
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
@@ -3650,9 +3465,7 @@
     "maxvg": false,
     "pg": 65,
     "vg": 35,
-    "tags": [
-      "Mango"
-    ],
+    "tags": ["Mango"],
     "flavors": [
       {
         "vendor": "Liquid Barn",
@@ -3697,9 +3510,7 @@
     "maxvg": false,
     "pg": 59,
     "vg": 41,
-    "tags": [
-      "Blueberry"
-    ],
+    "tags": ["Blueberry"],
     "flavors": [
       {
         "vendor": "Flavorah",
@@ -3803,9 +3614,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Pineapple"
-    ],
+    "tags": ["Pineapple"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -3939,11 +3748,7 @@
     "maxvg": false,
     "pg": 26,
     "vg": 74,
-    "tags": [
-      "Tropical",
-      "Refreshing",
-      "Citrus"
-    ],
+    "tags": ["Tropical", "Refreshing", "Citrus"],
     "flavors": [
       {
         "vendor": "Inawera",
@@ -4009,10 +3814,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Vanilla",
-      "Papaya"
-    ],
+    "tags": ["Vanilla", "Papaya"],
     "flavors": [
       {
         "vendor": "Liquid Barn",
@@ -4145,9 +3947,7 @@
     "maxvg": false,
     "pg": 21,
     "vg": 79,
-    "tags": [
-      "Blueberry"
-    ],
+    "tags": ["Blueberry"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -4185,11 +3985,7 @@
     "maxvg": false,
     "pg": 61,
     "vg": 39,
-    "tags": [
-      "Mango",
-      "Custard",
-      "Pineapple"
-    ],
+    "tags": ["Mango", "Custard", "Pineapple"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -4241,13 +4037,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Custard",
-      "Vanilla",
-      "Dessert",
-      "Blueberry",
-      "Bavarian"
-    ],
+    "tags": ["Custard", "Vanilla", "Dessert", "Blueberry", "Bavarian"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -4299,10 +4089,7 @@
     "maxvg": false,
     "pg": 37,
     "vg": 63,
-    "tags": [
-      "Heavy",
-      "Citrus"
-    ],
+    "tags": ["Heavy", "Citrus"],
     "flavors": [
       {
         "vendor": "Liquid Barn",
@@ -4435,10 +4222,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Vanilla",
-      "Cream"
-    ],
+    "tags": ["Vanilla", "Cream"],
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
@@ -4476,13 +4260,7 @@
     "maxvg": false,
     "pg": 85,
     "vg": 15,
-    "tags": [
-      "Tropical",
-      "Dessert",
-      "Dessert",
-      "Strawberry",
-      "Tropical"
-    ],
+    "tags": ["Tropical", "Dessert", "Dessert", "Strawberry", "Tropical"],
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
@@ -4555,11 +4333,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Custard",
-      "Razzleberry",
-      "Mango"
-    ],
+    "tags": ["Custard", "Razzleberry", "Mango"],
     "flavors": [
       {
         "vendor": "FlavourArt",
@@ -4611,11 +4385,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Razzleberry",
-      "Refreshing",
-      "Refreshing"
-    ],
+    "tags": ["Razzleberry", "Refreshing", "Refreshing"],
     "flavors": [
       {
         "vendor": "Liquid Barn",
@@ -4720,9 +4490,7 @@
     "maxvg": false,
     "pg": 83,
     "vg": 17,
-    "tags": [
-      "Strawberry"
-    ],
+    "tags": ["Strawberry"],
     "flavors": [
       {
         "vendor": "Inawera",
@@ -4774,14 +4542,7 @@
     "maxvg": false,
     "pg": 32,
     "vg": 68,
-    "tags": [
-      "Pineapple",
-      "Pineapple",
-      "Heavy",
-      "Custard",
-      "Mango",
-      "Heavy"
-    ],
+    "tags": ["Pineapple", "Pineapple", "Heavy", "Custard", "Mango", "Heavy"],
     "flavors": [
       {
         "vendor": "Liquid Barn",
@@ -4847,11 +4608,7 @@
     "maxvg": false,
     "pg": 62,
     "vg": 38,
-    "tags": [
-      "Heavy",
-      "Refreshing",
-      "Dessert"
-    ],
+    "tags": ["Heavy", "Refreshing", "Dessert"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -4917,9 +4674,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Dessert"
-    ],
+    "tags": ["Dessert"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -4964,12 +4719,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Strawberry",
-      "Dessert",
-      "Sturgeon",
-      "Tropical"
-    ],
+    "tags": ["Strawberry", "Dessert", "Sturgeon", "Tropical"],
     "flavors": [
       {
         "vendor": "Liquid Barn",
@@ -5021,13 +4771,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Custard",
-      "Papaya",
-      "Papaya",
-      "Vanilla",
-      "Refreshing"
-    ],
+    "tags": ["Custard", "Papaya", "Papaya", "Vanilla", "Refreshing"],
     "flavors": [
       {
         "vendor": "Flavorah",
@@ -5079,10 +4823,7 @@
     "maxvg": false,
     "pg": 63,
     "vg": 37,
-    "tags": [
-      "Vanilla",
-      "Blueberry"
-    ],
+    "tags": ["Vanilla", "Blueberry"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -5331,13 +5072,7 @@
     "maxvg": false,
     "pg": 89,
     "vg": 11,
-    "tags": [
-      "Razzleberry",
-      "Pineapple",
-      "Savory",
-      "Pineapple",
-      "Savory"
-    ],
+    "tags": ["Razzleberry", "Pineapple", "Savory", "Pineapple", "Savory"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -5471,11 +5206,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Bavarian",
-      "Dessert",
-      "Heavy"
-    ],
+    "tags": ["Bavarian", "Dessert", "Heavy"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -5682,13 +5413,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Vanilla",
-      "Strawberry",
-      "Dessert",
-      "Dessert",
-      "Papaya"
-    ],
+    "tags": ["Vanilla", "Strawberry", "Dessert", "Dessert", "Papaya"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -5726,9 +5451,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Pineapple"
-    ],
+    "tags": ["Pineapple"],
     "flavors": [
       {
         "vendor": "Capella",
@@ -5801,14 +5524,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Vanilla",
-      "Citrus",
-      "Custard",
-      "Refreshing",
-      "Custard",
-      "Savory"
-    ],
+    "tags": ["Vanilla", "Citrus", "Custard", "Refreshing", "Custard", "Savory"],
     "flavors": [
       {
         "vendor": "Liquid Barn",
@@ -5846,13 +5562,7 @@
     "maxvg": false,
     "pg": 71,
     "vg": 29,
-    "tags": [
-      "Heavy",
-      "Strawberry",
-      "Savory",
-      "Refreshing",
-      "Citrus"
-    ],
+    "tags": ["Heavy", "Strawberry", "Savory", "Refreshing", "Citrus"],
     "flavors": [
       {
         "vendor": "Inawera",
@@ -5956,13 +5666,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Vanilla",
-      "Papaya",
-      "Bavarian",
-      "Razzleberry",
-      "Mango"
-    ],
+    "tags": ["Vanilla", "Papaya", "Bavarian", "Razzleberry", "Mango"],
     "flavors": [
       {
         "vendor": "Flavor West",
@@ -6028,10 +5732,7 @@
     "maxvg": true,
     "pg": null,
     "vg": null,
-    "tags": [
-      "Bavarian",
-      "Tropical"
-    ],
+    "tags": ["Bavarian", "Tropical"],
     "flavors": [
       {
         "vendor": "The Flavor Apprentice",
@@ -6069,11 +5770,7 @@
     "maxvg": false,
     "pg": 15,
     "vg": 85,
-    "tags": [
-      "Cream",
-      "Citrus",
-      "Tropical"
-    ],
+    "tags": ["Cream", "Citrus", "Tropical"],
     "flavors": [
       {
         "vendor": "FlavourArt",
