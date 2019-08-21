@@ -2,52 +2,238 @@
 
 exports[`<Recipe /> renders correctly 1`] = `
 <div
-  className="text-center container"
+  className="text-center container--recipe container"
 >
+  <div
+    className="justify-content-center row"
+  >
+    <div
+      className="col-auto"
+    >
+      <button
+        className="button-animation button--recipe btn btn-primary"
+        disabled={false}
+        type="button"
+      >
+        <span>
+          Make this recipe
+        </span>
+      </button>
+    </div>
+    <div
+      className="col-auto"
+    >
+      <button
+        className="button--favorite button--recipe btn btn-primary"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        <span>
+          <i
+            className="fa far-heart"
+          />
+        </span>
+      </button>
+    </div>
+    <div
+      className="col-auto"
+    >
+      <div
+        className="btn-group"
+        role="group"
+      >
+        <button
+          className="rating-button button--recipe btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            <i
+              className="fa far-star"
+            />
+          </span>
+        </button>
+        <button
+          className="rating-button button--recipe btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            <i
+              className="fa far-star"
+            />
+          </span>
+        </button>
+        <button
+          className="rating-button button--recipe btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            <i
+              className="fa far-star"
+            />
+          </span>
+        </button>
+        <button
+          className="rating-button button--recipe btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            <i
+              className="fa far-star"
+            />
+          </span>
+        </button>
+        <button
+          className="rating-button button--recipe btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <span>
+            <i
+              className="fa far-star"
+            />
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr />
   <div
     className="row"
   >
     <div
-      className="col-md-2 offset-md-3"
+      className="col-lg-8 col-12 offset-lg-2"
     >
-      <img
-        alt="card test"
-        className="w-100 img-thumbnail"
-        src="/media/card-test-1.jpg"
-      />
-    </div>
-    <div
-      className="col-md-4"
-    >
-      <h1
-        className="recipeTitle"
+      <div
+        className="text-center card"
       >
-        Thanks, Obama
-      </h1>
-      <h2>
-        Created by
-         
-        <a
-          href="/user?id=5420"
+        <div
+          className="card-header"
         >
-          JosefBud
-        </a>
-      </h2>
-      <p>
-        on 
-        March 20 2019, 16:39:00
-      </p>
+          Thanks, Obama
+        </div>
+        <div
+          className="card-body"
+        >
+          <div
+            className="row"
+          >
+            <div
+              className="col-md-5 col-12"
+            >
+              <img
+                alt="card test"
+                className="w-75"
+                src="/media/card-test-1.jpg"
+              />
+            </div>
+            <div
+              className="col-md-7 col-12"
+            >
+              <div
+                className="card-title h5"
+              >
+                Version 
+                2.1
+              </div>
+              <div
+                className="card-title h5"
+              >
+                Notes
+              </div>
+              <div>
+                <p
+                  className="card-text"
+                >
+                  IMPORTANT: CAP Lemon Lime's gravity (g per ml) by default is way above what it should be. If you mix by weight, mix CAP Lemon Lime as 1g = 1ml.
+                </p>
+                <p
+                  className="card-text"
+                >
+                   
+                </p>
+                <p
+                  className="card-text"
+                >
+                   CAP Super Sweet is optional. 
+                </p>
+                <p
+                  className="card-text"
+                >
+                   
+                </p>
+                <p
+                  className="card-text"
+                >
+                   VapeWild doesn't add cooling, but 2 drops per 30ml of WS-23 works well if you're into that.
+                </p>
+                <p
+                  className="card-text"
+                >
+                   
+                </p>
+                <p
+                  className="card-text"
+                >
+                   No steep required, shake and vape!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="text-muted card-footer"
+        >
+          <span>
+            Created by 
+            <a
+              href="/user?id=5420"
+            >
+              JosefBud
+            </a>
+             on 
+            March 20 2019, 16:39:00
+          </span>
+        </div>
+      </div>
     </div>
   </div>
   <div
     className="row"
   >
     <div
-      className="col-md-6 offset-md-3"
+      className="col-lg-8 col-12 offset-lg-2"
     >
       <table
-        className="table table-striped table-bordered table-hover"
+        className="table table-striped table-bordered"
       >
+        <caption
+          className="text-center"
+        >
+          <span>
+            30
+            % PG / 
+            70
+            % VG | 
+          </span>
+          <span>
+            Shake & Vape | 
+          </span>
+          <span>
+            Flavor total: 
+            9
+            %
+          </span>
+        </caption>
         <thead>
           <tr>
             <th>
@@ -56,13 +242,16 @@ exports[`<Recipe /> renders correctly 1`] = `
             <th>
               Percent
             </th>
+            <th>
+              Stash
+            </th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>
               <a
-                href="/flavor?id=1"
+                href="/flavor?id=51"
               >
                 FW
                  
@@ -73,11 +262,16 @@ exports[`<Recipe /> renders correctly 1`] = `
               3.0
               %
             </td>
+            <td>
+              <i
+                className="fa far-square"
+              />
+            </td>
           </tr>
           <tr>
             <td>
               <a
-                href="/flavor?id=2"
+                href="/flavor?id=52"
               >
                 TFA
                  
@@ -88,11 +282,16 @@ exports[`<Recipe /> renders correctly 1`] = `
               1.5
               %
             </td>
+            <td>
+              <i
+                className="fa far-square"
+              />
+            </td>
           </tr>
           <tr>
             <td>
               <a
-                href="/flavor?id=3"
+                href="/flavor?id=53"
               >
                 CAP
                  
@@ -103,11 +302,16 @@ exports[`<Recipe /> renders correctly 1`] = `
               4.0
               %
             </td>
+            <td>
+              <i
+                className="fa far-square"
+              />
+            </td>
           </tr>
           <tr>
             <td>
               <a
-                href="/flavor?id=4"
+                href="/flavor?id=54"
               >
                 CAP
                  
@@ -118,6 +322,11 @@ exports[`<Recipe /> renders correctly 1`] = `
               0.5
               %
             </td>
+            <td>
+              <i
+                className="fa far-square"
+              />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -127,42 +336,60 @@ exports[`<Recipe /> renders correctly 1`] = `
     className="row"
   >
     <div
-      className="col"
+      className="col-lg-6 col-12 offset-lg-3"
     >
       <h3>
-        30
-        % PG / 
-        70
-        % VG
+        Tags:
       </h3>
-      <h3>
-        Shake & Vape
-      </h3>
-      <h3>
-        Flavor total: 
-        9
-        %
-      </h3>
-    </div>
-  </div>
-  <div
-    className="row"
-  >
-    <div
-      className="col"
-    >
-      <h2>
-        Notes
-      </h2>
-      <p>
-        IMPORTANT: CAP Lemon Lime's gravity (g per ml) by default is way above what it should be. If you mix by weight, mix CAP Lemon Lime as 1g = 1ml.
- 
- CAP Super Sweet is optional. 
- 
- VapeWild doesn't add cooling, but 2 drops per 30ml of WS-23 works well if you're into that.
- 
- No steep required, shake and vape!
-      </p>
+      <div
+        className="d-flex justify-content-center flex-wrap"
+      >
+        <a
+          href="/"
+        >
+          <span
+            className="link--tags badge"
+          >
+            refreshing
+          </span>
+        </a>
+        <a
+          href="/"
+        >
+          <span
+            className="link--tags badge"
+          >
+            fruity
+          </span>
+        </a>
+        <a
+          href="/"
+        >
+          <span
+            className="link--tags badge"
+          >
+            lemon
+          </span>
+        </a>
+        <a
+          href="/"
+        >
+          <span
+            className="link--tags badge"
+          >
+            lime
+          </span>
+        </a>
+        <a
+          href="/"
+        >
+          <span
+            className="link--tags badge"
+          >
+            summer
+          </span>
+        </a>
+      </div>
     </div>
   </div>
 </div>
