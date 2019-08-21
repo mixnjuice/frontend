@@ -13,6 +13,7 @@ import {
 
 import request from 'utils/request';
 import { actions, types } from 'reducers/flavors';
+import { actions as appActions } from 'reducers/application';
 
 // snake_cased variables here come from RFC 6749
 /* eslint-disable camelcase */
@@ -41,7 +42,7 @@ function* requestFlavorsWorker() {
 
     yield put(actions.requestFlavorsFailure(error));
     yield put(
-      actions.popToast({
+      appActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
