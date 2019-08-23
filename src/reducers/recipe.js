@@ -88,7 +88,16 @@ export const initialState = {
   savePoint: null,
   editing: false,
   active: null,
-  error: null
+  error: null,
+  desired: {
+    nicotineStrength: 0,
+    diluentRatio: 0,
+    volume: 0
+  },
+  settings: {
+    nicotineStrength: 0,
+    nicotineDiluentRatio: 0
+  }
 };
 
 export const reducer = (state = initialState, action = {}) => {
