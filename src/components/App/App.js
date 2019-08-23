@@ -50,7 +50,7 @@ export class App extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/recipes" component={Recipes} />
-          <Route exact path="/recipe/create" component={RecipeEditor} />
+          <PrivateRoute exact path="/recipe/create" component={RecipeEditor} />
           <Route exact path="/flavors" component={Flavors} />
           <Route exact path="/recipe" component={Recipe} />
           <PrivateRoute exact path="/user/profile" component={Profile} />
