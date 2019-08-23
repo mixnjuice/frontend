@@ -3,6 +3,11 @@ import renderer from 'react-test-renderer';
 
 import { Recipes } from './Recipes';
 
+jest.mock('react-bootstrap', () => ({
+  ...jest.requireActual('react-bootstrap'),
+  OverlayTrigger: require('utils').mockComponent('OverlayTrigger')
+}));
+
 describe('<Recipes />', () => {
   const actions = {
     registerUser: jest.fn(),
