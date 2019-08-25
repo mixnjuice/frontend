@@ -16,6 +16,7 @@ import { getApplication, getAuthorization } from 'selectors/application';
 export function buildActions(reducer, actions) {
   const result = {};
 
+  // eslint-disable-next-line no-unused-vars
   for (const action of actions) {
     result[action] = `${reducer}/${action}`;
   }

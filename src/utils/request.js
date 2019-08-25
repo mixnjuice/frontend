@@ -52,6 +52,7 @@ class Request {
   isUrlProtected(url) {
     const unprotectedResources = ['oauth', 'register'];
 
+    // eslint-disable-next-line no-unused-vars
     for (const resource of unprotectedResources) {
       if (url.startsWith(`/${resource}`)) {
         return false;
