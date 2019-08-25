@@ -29,7 +29,7 @@ describe('<Login />', () => {
     const emailAddress = 'some@one.org';
     const password = 'testing';
     const component = renderer.create(
-      <Login actions={actions} loggingIn={false} />
+      <Login actions={actions} loggingIn={false} loggedIn={false} />
     );
     const { instance } = component.root.findByType(Login);
 
