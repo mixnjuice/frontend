@@ -68,7 +68,7 @@ export class Register extends Component {
                           aria-describedby="inputGroupPrepend"
                           isInvalid={meta.error && meta.touched}
                         />
-                        {meta.error && (
+                        {meta.touched && meta.error && (
                           <Form.Control.Feedback type="invalid">
                             {meta.error === 'required'
                               ? 'Please enter a username'
@@ -94,7 +94,7 @@ export class Register extends Component {
                         placeholder="Enter email"
                         isInvalid={meta.error && meta.touched}
                       />
-                      {meta.error && (
+                      {meta.touched && meta.error && (
                         <Form.Control.Feedback type="invalid">
                           {meta.error === 'required'
                             ? 'Please enter your email address'
@@ -124,17 +124,17 @@ export class Register extends Component {
                         placeholder="Confirm Enter email"
                         isInvalid={meta.error && meta.touched}
                       />
-                      {meta.error === 'required' && (
+                      {meta.touched && meta.error === 'required' && (
                         <Form.Control.Feedback type="invalid">
                           Please re-enter your email address
                         </Form.Control.Feedback>
                       )}
-                      {meta.error === 'matches' && (
+                      {meta.touched && meta.error === 'matches' && (
                         <Form.Control.Feedback type="invalid">
                           Please ensure both email addresses match
                         </Form.Control.Feedback>
                       )}
-                      {meta.error === 'email' && (
+                      {meta.touched && meta.error === 'email' && (
                         <Form.Control.Feedback type="invalid">
                           Please enter a valid email address
                         </Form.Control.Feedback>
@@ -157,7 +157,7 @@ export class Register extends Component {
                         placeholder="Enter Password"
                         isInvalid={meta.error && meta.touched}
                       />
-                      {meta.error === 'required' && (
+                      {meta.touched && meta.error === 'required' && (
                         <Form.Control.Feedback type="invalid">
                           Please enter a password
                         </Form.Control.Feedback>
@@ -178,12 +178,12 @@ export class Register extends Component {
                         placeholder="Confirm Password"
                         isInvalid={meta.error && meta.touched}
                       />
-                      {meta.error === 'required' && (
+                      {meta.touched && meta.error === 'required' && (
                         <Form.Control.Feedback type="invalid">
                           Please re-enter your password
                         </Form.Control.Feedback>
                       )}
-                      {meta.error === 'matches' && (
+                      {meta.touched && meta.error === 'matches' && (
                         <Form.Control.Feedback type="invalid">
                           Please ensure both passwords match
                         </Form.Control.Feedback>
@@ -201,7 +201,7 @@ export class Register extends Component {
                         label="I agree to comply with the Terms of Service"
                         isInvalid={meta.error && meta.touched}
                       />
-                      {meta.error && (
+                      {meta.touched && meta.error && (
                         <Form.Control.Feedback type="invalid">
                           Please accept the Terms of Service
                         </Form.Control.Feedback>
