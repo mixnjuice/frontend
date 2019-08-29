@@ -9,6 +9,8 @@ import {
   faGlobe,
   faInfoCircle,
   faTimesCircle,
+  faPlus,
+  faTrash,
   faUndo
 } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -32,6 +34,8 @@ library.add(
   farStar,
   faCheckSquare,
   faSquare,
+  faPlus,
+  faTrash,
   faUndo
 );
 
