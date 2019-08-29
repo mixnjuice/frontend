@@ -18,8 +18,10 @@ export default class SplitSlider extends Component {
   constructor(props) {
     super(props);
 
-    this.handleChange = this.handleChange.bind(this);
     this.state = { value: 50 };
+    this.progressRef = React.createRef();
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   get leftValue() {
@@ -46,25 +48,47 @@ export default class SplitSlider extends Component {
     });
   }
 
+  handleClick(event) {
+    const {
+      progressRef: { current: progressRef },
+      props: { tickInterval }
+    } = this;
+    const {
+      nativeEvent: { screenX }
+    } = event;
+    const rect = progressRef.getBoundingClientRect();
+    const percentage = ((screenX - rect.left) / rect.width) * 100;
+    const quantized = Math.ceil(percentage / tickInterval) * tickInterval;
+
+    this.handleChange({
+      target: {
+        name: 'left',
+        value: quantized
+      }
+    });
+  }
+
   render() {
     const { leftLabel, rightLabel } = this.props;
 
     return (
       <InputGroup className="split-slider">
-        <ProgressBar>
-          <ProgressBar
-            key={1}
-            variant="warning"
-            label={leftLabel}
-            now={this.leftValue}
-          />
-          <ProgressBar
-            key={2}
-            variant="success"
-            label={rightLabel}
-            now={this.rightValue}
-          />
-        </ProgressBar>
+        <div className="progress-container" ref={this.progressRef}>
+          <ProgressBar onClick={this.handleClick}>
+            <ProgressBar
+              key={1}
+              variant="warning"
+              label={leftLabel}
+              now={this.leftValue}
+            />
+            <ProgressBar
+              key={2}
+              variant="success"
+              label={rightLabel}
+              now={this.rightValue}
+            />
+          </ProgressBar>
+        </div>
         <FormControl
           name="left"
           value={this.leftValue}

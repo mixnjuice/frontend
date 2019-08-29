@@ -1,6 +1,12 @@
 .split-slider {
   .progress {
-    height: auto;
-    width: 80%;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+
+    &-container {
+      height: auto;
+      width: 70%;
+    }
   }
 }
