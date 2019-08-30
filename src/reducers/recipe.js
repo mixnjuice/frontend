@@ -23,8 +23,9 @@ const editRecipeSuccess = () => ({
   type: types.EDIT_RECIPE_SUCCESS
 });
 
-const editRecipeFailure = () => ({
-  type: types.EDIT_RECIPE_FAILURE
+const editRecipeFailure = error => ({
+  type: types.EDIT_RECIPE_FAILURE,
+  error
 });
 
 const revertRecipe = () => ({
@@ -35,8 +36,9 @@ const revertRecipeSuccess = () => ({
   type: types.REVERT_RECIPE_SUCCESS
 });
 
-const revertRecipeFailure = () => ({
-  type: types.REVERT_RECIPE_FAILURE
+const revertRecipeFailure = error => ({
+  type: types.REVERT_RECIPE_FAILURE,
+  error
 });
 
 const requestRecipe = id => ({
