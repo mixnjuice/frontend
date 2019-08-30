@@ -194,7 +194,7 @@ describe('<App />', () => {
       initialEntries: ['/recipe/create']
     });
     const component = renderer.create(
-      <Provider store={store}>
+      <Provider store={authedStore}>
         <RoutedApp />
       </Provider>
     );
