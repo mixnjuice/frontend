@@ -11,8 +11,8 @@ export default class SplitSlider extends Component {
 
   static defaultProps = {
     tickInterval: 5,
-    leftLabel: 'PG',
-    rightLabel: 'VG'
+    leftLabel: 'VG',
+    rightLabel: 'PG'
   };
 
   constructor(props) {
@@ -77,13 +77,13 @@ export default class SplitSlider extends Component {
           <ProgressBar onClick={this.handleClick}>
             <ProgressBar
               key={1}
-              variant="warning"
+              variant="success"
               label={leftLabel}
               now={this.leftValue}
             />
             <ProgressBar
               key={2}
-              variant="success"
+              variant="warning"
               label={rightLabel}
               now={this.rightValue}
             />
