@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <Flavors /> renders correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Ingredients &gt; Flavors
+  </div>
+  <div
+    className="card-body"
+  >
+    <div
+      className="table-responsive"
+    >
+      <table
+        className="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr>
+            <th>
+              ID
+            </th>
+            <th>
+              Vendor
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Slug
+            </th>
+            <th>
+              Density
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+  </div>
+</div>
+`;

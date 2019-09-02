@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <RoleAddUser /> renders correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles &gt; Assign Administrator Role
+  </div>
+  <div
+    className="card-body"
+  >
+    <i
+      className="fa [object Object]"
+    />
+      
+    <a
+      href="#roles"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+    <form
+      className=""
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+        >
+          Select User to Assign to 
+          Administrator
+          s Role
+        </label>
+        <select
+          className="form-control"
+          name="userId"
+          onChange={[Function]}
+          value="0"
+        >
+          <option
+            value="0"
+          >
+            Choose a User
+          </option>
+        </select>
+      </div>
+    </form>
+    <br />
+  </div>
+</div>
+`;

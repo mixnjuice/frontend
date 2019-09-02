@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboad <Layout /> renders correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Not Found :(
+  </div>
+  <div
+    className="card-body"
+  >
+    Children go here
+  </div>
+</div>
+`;

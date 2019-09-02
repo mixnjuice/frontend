@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <Home /> renders correctly 1`] = `
+Array [
+  <div
+    className="card-columns"
+  >
+    <div
+      className="card bg-danger text-white"
+    >
+      <div
+        className="card-header"
+      >
+        Users: 
+      </div>
+      <div
+        className="card-body"
+      >
+        <h3>
+          Activated Users: 
+        </h3>
+        <h3>
+          Inactive Users: 
+          NaN
+        </h3>
+        <h3>
+          Active Tokens: 
+        </h3>
+      </div>
+    </div>
+    <div
+      className="card bg-primary text-white"
+    >
+      <div
+        className="card-body"
+      >
+        <h2>
+          Tags: 
+        </h2>
+      </div>
+    </div>
+    <div
+      className="card bg-secondary text-white"
+    >
+      <div
+        className="card-body"
+      >
+        <h2>
+          Vendors: 
+        </h2>
+      </div>
+    </div>
+    <div
+      className="card bg-info text-white"
+    >
+      <div
+        className="card-header"
+      >
+        Flavors: 
+      </div>
+      <div
+        className="card-body"
+      >
+        <h2>
+          Tags: 
+        </h2>
+      </div>
+    </div>
+    <div
+      className="card bg-warning text-white"
+    >
+      <div
+        className="card-header"
+      >
+        Recipes: 
+      </div>
+      <div
+        className="card-body"
+      >
+        <h2>
+          Tags: 
+        </h2>
+      </div>
+    </div>
+  </div>,
+  <a
+    href="#home"
+    onClick={[Function]}
+    title="Refresh Stats"
+  >
+    <i
+      className="fa [object Object]"
+    />
+  </a>,
+]
+`;

@@ -5,7 +5,7 @@ import { Layout } from '.';
 export class NotFound extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    opt: PropTypes.object.isRequied
+    opt: PropTypes.object
   };
 
   render() {
