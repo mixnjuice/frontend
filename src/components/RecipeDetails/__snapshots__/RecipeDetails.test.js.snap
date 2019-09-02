@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RecipeDetails /> renders correctly 1`] = `
+<table
+  className="table table-striped table-bordered"
+>
+  <caption
+    className="text-center"
+  >
+    <span>
+      25
+      % PG / 
+      75
+      % VG | 
+    </span>
+    <span>
+      Steep for 
+      7
+       days | 
+    </span>
+    <span>
+      Flavor total: 
+      1
+      %
+    </span>
+  </caption>
+  <thead>
+    <tr>
+      <th>
+        Flavor
+      </th>
+      <th>
+        Percent
+      </th>
+      <th>
+        Stash
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a
+          href="/flavor?id=1"
+        >
+          TPA
+           
+          Sturgeon Ripe
+        </a>
+      </td>
+      <td>
+        1.0
+        %
+      </td>
+      <td>
+        <i
+          className="fa far-check-square"
+        />
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;

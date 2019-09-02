@@ -9,7 +9,6 @@ import {
   Container,
   Row,
   Col,
-  Table,
   Button,
   ButtonGroup,
   Card,
@@ -17,8 +16,9 @@ import {
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import flavorStash from '../data/flavorstash.json';
 import recipes from '../data/recipes.json';
+import flavorStash from '../data/flavorstash.json';
+import RecipeDetails from 'components/RecipeDetails/RecipeDetails';
 
 export class Recipe extends Component {
   static propTypes = {
@@ -33,6 +33,10 @@ export class Recipe extends Component {
       flavors: [],
       favorited: false,
       favoriteIcon: ['far', 'heart'],
+      maxVG: false,
+      percentVG: 50,
+      shakeAndVape: false,
+      steepDays: 0,
       rating: 0
     };
 
@@ -185,12 +189,10 @@ export class Recipe extends Component {
       userId,
       user,
       date,
-      maxvg,
-      pg,
-      vg,
-      shakeNVape,
-      steepTime,
-      flavorTotal,
+      maxVG,
+      percentVG,
+      shakeAndVape,
+      steepDays,
       flavors,
       tags
     } = this.state;
@@ -253,49 +255,13 @@ export class Recipe extends Component {
         </Row>
         <Row>
           <Col lg={{ span: 8, offset: 2 }} xs={{ span: 12 }}>
-            <Table striped bordered>
-              <caption className="text-center">
-                {maxvg ? (
-                  <span>Max VG |&nbsp;</span>
-                ) : (
-                  <span>
-                    {pg}% PG / {vg}% VG |&nbsp;
-                  </span>
-                )}
-                {shakeNVape ? (
-                  <span>Shake &amp; Vape |&nbsp;</span>
-                ) : (
-                  <span>Steep for {steepTime} days |&nbsp;</span>
-                )}
-                <span>Flavor total: {flavorTotal}%</span>
-              </caption>
-              <thead>
-                <tr>
-                  <th>Flavor</th>
-                  <th>Percent</th>
-                  <th>Stash</th>
-                </tr>
-              </thead>
-              <tbody>
-                {flavors.map((flavor, index) => (
-                  <tr key={index}>
-                    <td>
-                      <a href={'/flavor?id=' + flavor.id}>
-                        {flavor.abbreviation} {flavor.name}
-                      </a>
-                    </td>
-                    <td>{flavor.percent.toFixed(1)}%</td>
-                    <td>
-                      {flavor.inStash ? (
-                        <FontAwesomeIcon icon={['far', 'check-square']} />
-                      ) : (
-                        <FontAwesomeIcon icon={['far', 'square']} />
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
+            <RecipeDetails
+              maxVG={maxVG}
+              percentVG={percentVG}
+              shakeAndVape={shakeAndVape}
+              steepDays={steepDays}
+              flavors={flavors}
+            />
           </Col>
         </Row>
         <Row>
