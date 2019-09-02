@@ -312,7 +312,7 @@ export class Recipe extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  appActions: bindActionCreators({ ...actions }, dispatch)
+  appActions: bindActionCreators(actions, dispatch)
 });
 
 export default connect(null, mapDispatchToProps)(Recipe);
