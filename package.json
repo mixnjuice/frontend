@@ -12,7 +12,7 @@
     "analyze:bundle": "cross-env NODE_ENV=production ANALYZE_BUNDLE=true webpack"
   },
   "dependencies": {
-    "@babel/runtime": "^7.5.5",
+    "@babel/runtime-corejs3": "^7.5.5",
     "@fortawesome/fontawesome-svg-core": "^1.2.22",
     "@fortawesome/free-regular-svg-icons": "^5.10.2",
     "@fortawesome/free-solid-svg-icons": "^5.10.2",
