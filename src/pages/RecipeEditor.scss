@@ -1,0 +1,9 @@
+.recipe-editor {
+  .form-check.form-check-inline {
+    flex-direction: column-reverse;
+
+    > input {
+      margin-top: $base-spacing * 0.75;
+    }
+  }
+}
