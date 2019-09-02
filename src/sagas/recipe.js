@@ -58,9 +58,5 @@ export const workers = {
 };
 
 export default function* saga() {
-  yield all([
-    editRecipeWatcher(),
-    revertRecipeWatcher(),
-    requestRecipeWatcher()
-  ]);
+  yield all(Object.values(watchers).map(watcher => watcher()));
 }
