@@ -64,12 +64,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(
-    {
-      ...flavorsActions
-    },
-    dispatch
-  )
+  actions: bindActionCreators(flavorsActions, dispatch)
 });
 
 export default connect(

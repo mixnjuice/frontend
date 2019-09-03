@@ -109,12 +109,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(
-    {
-      ...rolesActions
-    },
-    dispatch
-  )
+  actions: bindActionCreators(rolesActions, dispatch)
 });
 
 export default connect(
