@@ -1,30 +1,52 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faFire,
-  faUser,
-  faHeart as fasHeart,
-  faStar as fasStar,
+  faBezierCurve,
   faCheck,
-  faTimesCircle
+  faChevronLeft,
+  faClock,
+  faDatabase,
+  faEyeDropper,
+  faFire,
+  faHeart as fasHeart,
+  faPlus,
+  faTachometerAlt,
+  faTimesCircle,
+  faStar as fasStar,
+  faSync,
+  faUser,
+  faUsers,
+  faUsersCog,
+  faUserShield
 } from '@fortawesome/free-solid-svg-icons';
 import {
+  faCheckSquare,
   faHeart as farHeart,
   faStar as farStar,
-  faCheckSquare,
   faSquare
 } from '@fortawesome/free-regular-svg-icons';
 
 library.add(
-  faFire,
-  faUser,
+  faBezierCurve,
   faCheck,
-  faTimesCircle,
+  faCheckSquare,
+  faChevronLeft,
+  faClock,
+  faDatabase,
+  faEyeDropper,
+  faFire,
   fasHeart,
   farHeart,
+  faPlus,
   fasStar,
   farStar,
-  faCheckSquare,
-  faSquare
+  faSquare,
+  faSync,
+  faTachometerAlt,
+  faTimesCircle,
+  faUser,
+  faUsers,
+  faUsersCog,
+  faUserShield
 );
 
 export default library;

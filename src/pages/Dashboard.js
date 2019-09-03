@@ -43,8 +43,6 @@ export class Dashboard extends Component {
   }
 }
 
-// export default Dashboard;
-
 const mapStateToProps = state => ({
   dashboardComponent: getDashboardComponent(state)
 });

@@ -9,7 +9,6 @@ import {
   DashboardLayout as Layout
 } from 'components/Dashboard/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { actions as rolesActions } from 'reducers/roles';
 import { actions as dashActions } from 'reducers/dashboard';
@@ -45,7 +44,7 @@ export class RoleDeleteUser extends Component {
         header={`Roles > Unassign Role > ${name} > User ID: ${userId}`}
         options={opt}
       >
-        <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
+        <FontAwesomeIcon icon="chevron-left" /> &nbsp;
         <DashLink to={`#user/roles/${userId}`} name="User/Roles" item={userId}>
           <span>Back</span>
         </DashLink>

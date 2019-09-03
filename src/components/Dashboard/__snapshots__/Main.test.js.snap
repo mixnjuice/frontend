@@ -372,7 +372,7 @@ Array [
     title="Refresh Stats"
   >
     <i
-      className="fa [object Object]"
+      className="fa sync"
     />
   </a>,
 ]
@@ -617,7 +617,7 @@ exports[`Dashboard <Main /> renders Role/Add correctly 1`] = `
     className="card-body"
   >
     <i
-      className="fa [object Object]"
+      className="fa chevron-left"
     />
       
     <a
@@ -680,7 +680,7 @@ exports[`Dashboard <Main /> renders Role/Add/User correctly 1`] = `
     className="card-body"
   >
     <i
-      className="fa [object Object]"
+      className="fa chevron-left"
     />
       
     <a
@@ -747,7 +747,7 @@ exports[`Dashboard <Main /> renders Role/Delete correctly 1`] = `
     className="card-body"
   >
     <i
-      className="fa [object Object]"
+      className="fa chevron-left"
     />
       
     <a
@@ -800,7 +800,7 @@ exports[`Dashboard <Main /> renders Role/Delete correctly 1`] = `
           Roles &gt; test
         </div>
         <i
-          className="fa [object Object]"
+          className="fa chevron-left"
         />
           
         <a
@@ -835,7 +835,7 @@ exports[`Dashboard <Main /> renders Role/Delete/User correctly 1`] = `
     className="card-body"
   >
     <i
-      className="fa [object Object]"
+      className="fa chevron-left"
     />
       
     <a
@@ -895,7 +895,7 @@ exports[`Dashboard <Main /> renders Role/Edit correctly 1`] = `
     className="card-body"
   >
     <i
-      className="fa [object Object]"
+      className="fa chevron-left"
     />
       
     <a
@@ -958,7 +958,7 @@ exports[`Dashboard <Main /> renders Role/Users correctly 1`] = `
     className="card-body"
   >
     <i
-      className="fa [object Object]"
+      className="fa chevron-left"
     />
       
     <a

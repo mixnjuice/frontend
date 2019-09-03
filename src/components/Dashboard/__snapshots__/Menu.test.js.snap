@@ -11,7 +11,7 @@ exports[`Dashboard <Menu /> renders correctly 1`] = `
       className="card-body"
     >
       <i
-        className="fa [object Object]"
+        className="fa tachometer-alt"
       />
         
       <a
@@ -31,7 +31,7 @@ exports[`Dashboard <Menu /> renders correctly 1`] = `
     >
       <h3>
         <i
-          className="fa [object Object]"
+          className="fa user-shield"
         />
          Roles
       </h3>
@@ -45,7 +45,7 @@ exports[`Dashboard <Menu /> renders correctly 1`] = `
       >
         <div>
           <i
-            className="fa [object Object]"
+            className="fa user-shield"
           />
             
           <a
@@ -57,7 +57,7 @@ exports[`Dashboard <Menu /> renders correctly 1`] = `
         </div>
         <div>
           <i
-            className="fa [object Object]"
+            className="fa plus"
           />
             
           <a
@@ -79,7 +79,7 @@ exports[`Dashboard <Menu /> renders correctly 1`] = `
     >
       <h3>
         <i
-          className="fa [object Object]"
+          className="fa users"
         />
          Users
       </h3>
@@ -93,7 +93,7 @@ exports[`Dashboard <Menu /> renders correctly 1`] = `
       >
         <div>
           <i
-            className="fa [object Object]"
+            className="fa users-cog"
           />
             
           <a
@@ -105,7 +105,7 @@ exports[`Dashboard <Menu /> renders correctly 1`] = `
         </div>
         <div>
           <i
-            className="fa [object Object]"
+            className="fa plus"
           />
             
           <a
@@ -127,7 +127,7 @@ exports[`Dashboard <Menu /> renders correctly 1`] = `
     >
       <h3>
         <i
-          className="fa [object Object]"
+          className="fa bezier-curve"
         />
          Ingredients
       </h3>
@@ -141,7 +141,7 @@ exports[`Dashboard <Menu /> renders correctly 1`] = `
       >
         <div>
           <i
-            className="fa [object Object]"
+            className="fa eye-dropper"
           />
             
           <a
@@ -163,7 +163,7 @@ exports[`Dashboard <Menu /> renders correctly 1`] = `
     >
       <h3>
         <i
-          className="fa [object Object]"
+          className="fa database"
         />
          Database
       </h3>
@@ -176,7 +176,7 @@ exports[`Dashboard <Menu /> renders correctly 1`] = `
         className="card-body"
       >
         <i
-          className="fa [object Object]"
+          className="fa clock"
         />
           
         <a

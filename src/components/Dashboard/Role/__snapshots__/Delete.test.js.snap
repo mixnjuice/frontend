@@ -14,7 +14,7 @@ exports[`Dashboard <RoleDelete /> renders correctly 1`] = `
     className="card-body"
   >
     <i
-      className="fa [object Object]"
+      className="fa chevron-left"
     />
       
     <a
@@ -67,7 +67,7 @@ exports[`Dashboard <RoleDelete /> renders correctly 1`] = `
           Roles &gt; Tester
         </div>
         <i
-          className="fa [object Object]"
+          className="fa chevron-left"
         />
           
         <a

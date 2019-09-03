@@ -9,7 +9,6 @@ import {
   DashboardLayout as Layout
 } from 'components/Dashboard/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { actions as rolesActions } from 'reducers/roles';
 import { actions as dashActions } from 'reducers/dashboard';
@@ -44,7 +43,7 @@ export class RoleEdit extends Component {
         header={`Roles > Edit Role > ${name}`}
         options={opt}
       >
-        <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
+        <FontAwesomeIcon icon="chevron-left" /> &nbsp;
         <DashLink to="#roles" name="Roles">
           <span>Back</span>
         </DashLink>

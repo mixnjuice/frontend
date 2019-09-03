@@ -98,7 +98,7 @@ Array [
     title="Refresh Stats"
   >
     <i
-      className="fa [object Object]"
+      className="fa sync"
     />
   </a>,
 ]

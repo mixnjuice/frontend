@@ -2,18 +2,6 @@ import React, { Component } from 'react';
 import { DashboardLink as DashLink } from 'components/Dashboard/';
 import { Accordion, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBezierCurve,
-  faClock,
-  faDatabase,
-  faEyeDropper,
-  faPlus,
-  faUsers,
-  faUsersCog,
-  faUserShield,
-  faTachometerAlt
-} from '@fortawesome/free-solid-svg-icons';
-// import {  } from '@fortawesome/free-regular-svg-icons';
 
 export class Menu extends Component {
   render() {
@@ -21,7 +9,7 @@ export class Menu extends Component {
       <Accordion>
         <Card>
           <Card.Body>
-            <FontAwesomeIcon icon={faTachometerAlt} /> &nbsp;
+            <FontAwesomeIcon icon="tachometer-alt" /> &nbsp;
             <DashLink to="#home" name="Home">
               Dashboard
             </DashLink>
@@ -30,19 +18,19 @@ export class Menu extends Component {
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="0">
             <h3>
-              <FontAwesomeIcon icon={faUserShield} /> Roles
+              <FontAwesomeIcon icon="user-shield" /> Roles
             </h3>
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="0">
             <Card.Body>
               <div>
-                <FontAwesomeIcon icon={faUserShield} /> &nbsp;
+                <FontAwesomeIcon icon="user-shield" /> &nbsp;
                 <DashLink to="#roles" name="Roles">
                   Roles
                 </DashLink>
               </div>
               <div>
-                <FontAwesomeIcon icon={faPlus} /> &nbsp;
+                <FontAwesomeIcon icon="plus" /> &nbsp;
                 <DashLink to="#roles/add" name="Role/Add">
                   Add Role
                 </DashLink>
@@ -53,19 +41,19 @@ export class Menu extends Component {
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="1">
             <h3>
-              <FontAwesomeIcon icon={faUsers} /> Users
+              <FontAwesomeIcon icon="users" /> Users
             </h3>
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="1">
             <Card.Body>
               <div>
-                <FontAwesomeIcon icon={faUsersCog} /> &nbsp;
+                <FontAwesomeIcon icon="users-cog" /> &nbsp;
                 <DashLink to="#users" name="Users">
                   Users
                 </DashLink>
               </div>
               <div>
-                <FontAwesomeIcon icon={faPlus} /> &nbsp;
+                <FontAwesomeIcon icon="plus" /> &nbsp;
                 <DashLink to="#users/add" name="User/Add">
                   Add User
                 </DashLink>
@@ -76,13 +64,13 @@ export class Menu extends Component {
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="2">
             <h3>
-              <FontAwesomeIcon icon={faBezierCurve} /> Ingredients
+              <FontAwesomeIcon icon="bezier-curve" /> Ingredients
             </h3>
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="2">
             <Card.Body>
               <div>
-                <FontAwesomeIcon icon={faEyeDropper} /> &nbsp;
+                <FontAwesomeIcon icon="eye-dropper" /> &nbsp;
                 <DashLink to="#flavors" name="Flavors">
                   Flavors
                 </DashLink>
@@ -93,12 +81,12 @@ export class Menu extends Component {
         <Card>
           <Accordion.Toggle as={Card.Header} eventKey="3">
             <h3>
-              <FontAwesomeIcon icon={faDatabase} /> Database
+              <FontAwesomeIcon icon="database" /> Database
             </h3>
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="3">
             <Card.Body>
-              <FontAwesomeIcon icon={faClock} /> &nbsp;
+              <FontAwesomeIcon icon="clock" /> &nbsp;
               <DashLink to="#migrations" name="Migrations">
                 Migration History
               </DashLink>

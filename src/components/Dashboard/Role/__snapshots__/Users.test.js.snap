@@ -14,7 +14,7 @@ exports[`Dashboard <RoleUsers /> renders correctly 1`] = `
     className="card-body"
   >
     <i
-      className="fa [object Object]"
+      className="fa chevron-left"
     />
       
     <a

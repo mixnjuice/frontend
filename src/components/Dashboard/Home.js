@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import { Helmet } from 'react-helmet';
 import { CardColumns, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSync } from '@fortawesome/free-solid-svg-icons';
 
 import { actions as dashboardActions } from 'reducers/dashboard';
 import { getStats } from 'selectors/dashboard';
@@ -77,7 +76,7 @@ export class DashboardHome extends Component {
           </Card>
         </CardColumns>
         <a href="#home" onClick={this.refresh} title="Refresh Stats">
-          <FontAwesomeIcon icon={faSync} />
+          <FontAwesomeIcon icon="sync" />
         </a>
       </Fragment>
     );

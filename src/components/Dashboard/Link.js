@@ -37,7 +37,7 @@ export class DashboardLink extends Component {
       <Fragment>
         <a
           href={to}
-          onClick={e => this.select(name, item, e)}
+          onClick={() => this.select(name, item)}
           className={className}
         >
           {this.props.children}
@@ -46,8 +46,6 @@ export class DashboardLink extends Component {
     );
   }
 }
-
-// export default Dashboard;
 
 const mapStateToProps = state => ({
   dashboardComponent: getDashboardComponent(state)

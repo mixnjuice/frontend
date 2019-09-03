@@ -9,7 +9,6 @@ import {
 } from 'components/Dashboard/';
 import { UserRoles } from 'components/Dashboard/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { actions as rolesActions } from 'reducers/roles';
 import { actions as dashActions } from 'reducers/dashboard';
@@ -72,7 +71,7 @@ export class RoleAddUser extends Component {
         header={`Roles > Assign ${name} Role`}
         options={opt}
       >
-        <FontAwesomeIcon icon={faChevronLeft} /> &nbsp;
+        <FontAwesomeIcon icon="chevron-left" /> &nbsp;
         <DashLink to="#roles" name="Roles">
           Back
         </DashLink>
