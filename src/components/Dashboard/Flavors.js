@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
-import { Layout } from '.';
+import { DashboardLayout as Layout } from 'components/Dashboard/';
 
 import { actions as flavorsActions } from 'reducers/flavors';
 import { getAllFlavors } from 'selectors/flavors';

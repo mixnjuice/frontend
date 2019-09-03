@@ -4,7 +4,11 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { Form as FinalForm } from 'react-final-form';
 import { Button, Form } from 'react-bootstrap';
-import { DashLink, Layout, RoleUsers } from 'components/Dashboard/';
+import {
+  DashboardLink as DashLink,
+  DashboardLayout as Layout,
+  RoleUsers
+} from 'components/Dashboard/';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 

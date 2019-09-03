@@ -1,39 +1,19 @@
-import LinkExport from './Link';
-import MenuExport from './Menu';
+export DashboardLink from './Link';
+export DashboardMenu from './Menu';
 
-import LayoutExport from './Layout';
-import MainExport from './Main';
-import NotFoundExport from './NotFound';
-// Page Imports
-import FlavorsExport from './Flavors';
-import HomeExport from './Home';
-import MigrationsExport from './Migrations';
-import RolesExport from './Roles';
-import RoleAddExport from './Role/Add';
-import RoleEditExport from './Role/Edit';
-import RoleDeleteExport from './Role/Delete';
-import RoleUsersExport from './Role/Users';
-import RoleAddUserExport from './Role/AddUser';
-import RoleDeleteUserExport from './Role/DeleteUser';
-import UsersExport from './Users';
-import UserRolesExport from './User/Roles';
+export DashboardLayout from '../../layouts/DashboardLayout';
+export DashboardMain from './Main';
+export DashboardNotFound from './NotFound';
 
-export const DashLink = LinkExport;
-export const Menu = MenuExport;
-
-export const Layout = LayoutExport;
-export const Main = MainExport;
-export const NotFound = NotFoundExport;
-// Page Exports
-export const Flavors = FlavorsExport;
-export const Home = HomeExport;
-export const Migrations = MigrationsExport;
-export const Roles = RolesExport;
-export const RoleAdd = RoleAddExport;
-export const RoleEdit = RoleEditExport;
-export const RoleDelete = RoleDeleteExport;
-export const RoleUsers = RoleUsersExport;
-export const RoleAddUser = RoleAddUserExport;
-export const RoleDeleteUser = RoleDeleteUserExport;
-export const Users = UsersExport;
-export const UserRoles = UserRolesExport;
+export Flavors from './Flavors';
+export DashboardHome from './Home';
+export Migrations from './Migrations';
+export Roles from './Roles';
+export RoleAdd from './Role/Add';
+export RoleEdit from './Role/Edit';
+export RoleDelete from './Role/Delete';
+export RoleUsers from './Role/Users';
+export RoleAddUser from './Role/AddUser';
+export RoleDeleteUser from './Role/DeleteUser';
+export Users from './Users';
+export UserRoles from './User/Roles';

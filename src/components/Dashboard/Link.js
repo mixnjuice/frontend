@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { actions as dashboardActions } from 'reducers/dashboard';
 import { getDashboardComponent } from 'selectors/dashboard';
 
-export class Link extends Component {
+export class DashboardLink extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     children: PropTypes.any.isRequired,
@@ -65,4 +65,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Link);
+)(DashboardLink);

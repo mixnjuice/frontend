@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { Menu, Main } from 'components/Dashboard/';
+import {
+  DashboardMenu as Menu,
+  DashboardMain as Main
+} from 'components/Dashboard/';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import { actions as dashboardActions } from 'reducers/dashboard';

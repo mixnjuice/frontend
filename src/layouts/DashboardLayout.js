@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
-export class Layout extends Component {
+export class DashboardLayout extends Component {
   static propTypes = {
     children: PropTypes.any.isRequired,
     header: PropTypes.string,
@@ -30,4 +30,4 @@ export class Layout extends Component {
   }
 }
 
-export default Layout;
+export default DashboardLayout;

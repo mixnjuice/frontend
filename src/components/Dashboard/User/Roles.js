@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { DashLink, Layout } from 'components/Dashboard/';
+import {
+  DashboardLink as DashLink,
+  DashboardLayout as Layout
+} from 'components/Dashboard/';
 import { Alert, Table } from 'react-bootstrap';
 
 import { actions as usersActions } from 'reducers/users';

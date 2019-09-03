@@ -4,9 +4,9 @@ import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import {
   Flavors,
-  Home,
+  DashboardHome as Home,
   Migrations,
-  NotFound,
+  DashboardNotFound as NotFound,
   Roles,
   RoleAdd,
   RoleEdit,
@@ -16,12 +16,12 @@ import {
   RoleDeleteUser,
   Users,
   UserRoles
-} from '.';
+} from 'components/Dashboard/';
 
 import { actions as dashboardActions } from 'reducers/dashboard';
 import { getDashboardComponent } from 'selectors/dashboard';
 
-class Main extends Component {
+class DashboardMain extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     dashboardComponent: PropTypes.object.isRequired
@@ -105,4 +105,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Main);
+)(DashboardMain);

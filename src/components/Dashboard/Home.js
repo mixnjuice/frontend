@@ -10,7 +10,7 @@ import { faSync } from '@fortawesome/free-solid-svg-icons';
 import { actions as dashboardActions } from 'reducers/dashboard';
 import { getStats } from 'selectors/dashboard';
 
-export class Home extends Component {
+export class DashboardHome extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     stats: PropTypes.any
@@ -100,4 +100,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home);
+)(DashboardHome);
