@@ -603,6 +603,69 @@ exports[`Dashboard <Main /> renders Migations correctly 1`] = `
 </div>
 `;
 
+exports[`Dashboard <Main /> renders Role/Add correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles &gt; Add Role
+  </div>
+  <div
+    className="card-body"
+  >
+    <i
+      className="fa [object Object]"
+    />
+      
+    <a
+      href="#roles"
+      onClick={[Function]}
+    >
+      <span>
+        Back
+      </span>
+    </a>
+    <form
+      className=""
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+        >
+          Role Name
+        </label>
+        <input
+          className="form-control"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="role name"
+          type="text"
+          value=""
+        />
+      </div>
+      <button
+        className="button-animation btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        <span>
+          Save
+        </span>
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
 exports[`Dashboard <Main /> renders Role/Add/User correctly 1`] = `
 <div
   className="card"
@@ -670,6 +733,94 @@ exports[`Dashboard <Main /> renders Role/Add/User correctly 1`] = `
 </div>
 `;
 
+exports[`Dashboard <Main /> renders Role/Delete correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles &gt; Delete Role &gt; test
+  </div>
+  <div
+    className="card-body"
+  >
+    <i
+      className="fa [object Object]"
+    />
+      
+    <a
+      href="#roles"
+      onClick={[Function]}
+    >
+      <span>
+        Back
+      </span>
+    </a>
+    <form
+      className=""
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+        >
+          Delete
+        </label>
+        <h3>
+          Delete Role: 
+          test
+          ?
+        </h3>
+      </div>
+      <button
+        className="button-animation btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        <span>
+          Delete
+        </span>
+      </button>
+    </form>
+    <br />
+    <div
+      className="card border-danger"
+    >
+      <div
+        className="card-body"
+      >
+        <div
+          className="card-title h5"
+        >
+          Roles &gt; test
+        </div>
+        <i
+          className="fa [object Object]"
+        />
+          
+        <a
+          href="#roles"
+          onClick={[Function]}
+        >
+          Back
+        </a>
+        <div
+          className="fade alert show"
+          role="alert"
+        >
+          No Users Assigned to this Role!
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Dashboard <Main /> renders Role/Delete/User correctly 1`] = `
 <div
   className="card"
@@ -723,6 +874,69 @@ exports[`Dashboard <Main /> renders Role/Delete/User correctly 1`] = `
       >
         <span>
           Remove
+        </span>
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Dashboard <Main /> renders Role/Edit correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles &gt; Edit Role &gt; test
+  </div>
+  <div
+    className="card-body"
+  >
+    <i
+      className="fa [object Object]"
+    />
+      
+    <a
+      href="#roles"
+      onClick={[Function]}
+    >
+      <span>
+        Back
+      </span>
+    </a>
+    <form
+      className=""
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+        >
+          Role Name
+        </label>
+        <input
+          className="form-control"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="test"
+          type="text"
+          value=""
+        />
+      </div>
+      <button
+        className="button-animation btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        <span>
+          Save
         </span>
       </button>
     </form>
@@ -1005,105 +1219,6 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
     >
       Add Role
     </a>
-  </div>
-</div>
-`;
-
-exports[`Dashboard <Main /> renders Roles/Add correctly 1`] = `
-<div
-  className="card"
-  style={Object {}}
->
-  <div
-    className="card-header"
-  >
-    Not Found :(
-  </div>
-  <div
-    className="card-body"
-  >
-    <h3>
-      Oops!
-    </h3>
-    I've searched 
-    <i>
-      long
-    </i>
-     and "hard", yet I couldn't find a Dashboard Component identified as 
-    <strong>
-      Roles/Add
-    </strong>
-     in
-     
-    <code>
-      components/Dashboard/Main.js
-    </code>
-  </div>
-</div>
-`;
-
-exports[`Dashboard <Main /> renders Roles/Delete correctly 1`] = `
-<div
-  className="card"
-  style={Object {}}
->
-  <div
-    className="card-header"
-  >
-    Not Found :(
-  </div>
-  <div
-    className="card-body"
-  >
-    <h3>
-      Oops!
-    </h3>
-    I've searched 
-    <i>
-      long
-    </i>
-     and "hard", yet I couldn't find a Dashboard Component identified as 
-    <strong>
-      Roles/Delete
-    </strong>
-     in
-     
-    <code>
-      components/Dashboard/Main.js
-    </code>
-  </div>
-</div>
-`;
-
-exports[`Dashboard <Main /> renders Roles/Edit correctly 1`] = `
-<div
-  className="card"
-  style={Object {}}
->
-  <div
-    className="card-header"
-  >
-    Not Found :(
-  </div>
-  <div
-    className="card-body"
-  >
-    <h3>
-      Oops!
-    </h3>
-    I've searched 
-    <i>
-      long
-    </i>
-     and "hard", yet I couldn't find a Dashboard Component identified as 
-    <strong>
-      Roles/Edit
-    </strong>
-     in
-     
-    <code>
-      components/Dashboard/Main.js
-    </code>
   </div>
 </div>
 `;

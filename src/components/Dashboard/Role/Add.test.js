@@ -28,13 +28,15 @@ describe('Dashboard <RoleAdd />', () => {
   const RoutedRoleAdd = withMemoryRouter(ConnectedRoleAdd);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedRoleAdd opt={defaultOpts} />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedRoleAdd opt={defaultOpts} />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('can handleSubmit', () => {

@@ -29,13 +29,15 @@ describe('Dashboard <RoleEdit />', () => {
   const RoutedRoleEdit = withMemoryRouter(ConnectedRoleEdit);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedRoleEdit opt={defaultOpts} roleId={roleId} name={name} />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedRoleEdit opt={defaultOpts} roleId={roleId} name={name} />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('can handleSubmit', () => {

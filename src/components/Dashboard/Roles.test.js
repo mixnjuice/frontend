@@ -23,12 +23,14 @@ describe('Dashboard <Roles />', () => {
   const RoutedRoles = withMemoryRouter(ConnectedRoles);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedRoles opt={defaultOpts} />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedRoles opt={defaultOpts} />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 });

@@ -20,12 +20,14 @@ describe('Dashboard <NotFound />', () => {
   const RoutedNotFound = withMemoryRouter(ConnectedNotFound);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedNotFound opt={defaultOpts} name={name} />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedNotFound opt={defaultOpts} name={name} />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 });

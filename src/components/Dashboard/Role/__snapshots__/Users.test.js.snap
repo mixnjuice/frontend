@@ -8,7 +8,7 @@ exports[`Dashboard <RoleUsers /> renders correctly 1`] = `
   <div
     className="card-header"
   >
-    Roles &gt; Luser
+    Roles &gt; Tester
   </div>
   <div
     className="card-body"
@@ -24,26 +24,10 @@ exports[`Dashboard <RoleUsers /> renders correctly 1`] = `
       Back
     </a>
     <div
-      className="table-responsive"
+      className="fade alert show"
+      role="alert"
     >
-      <table
-        className="table table-sm table-striped table-bordered table-hover"
-      >
-        <thead>
-          <tr>
-            <th>
-              ID
-            </th>
-            <th>
-              Email
-            </th>
-            <th>
-              Options
-            </th>
-          </tr>
-        </thead>
-        <tbody />
-      </table>
+      No Users Assigned to this Role!
     </div>
   </div>
 </div>

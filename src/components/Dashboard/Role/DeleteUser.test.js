@@ -30,18 +30,20 @@ describe('Dashboard <RoleDeleteUser />', () => {
   const RoutedRoleDeleteUser = withMemoryRouter(ConnectedRoleDeleteUser);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedRoleDeleteUser
-          opt={defaultOpts}
-          userId={userId}
-          roleId={roleId}
-          name={name}
-        />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedRoleDeleteUser
+              opt={defaultOpts}
+              userId={userId}
+              roleId={roleId}
+              name={name}
+            />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('can handleSubmit', () => {

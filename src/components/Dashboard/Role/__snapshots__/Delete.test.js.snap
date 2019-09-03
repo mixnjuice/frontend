@@ -8,7 +8,7 @@ exports[`Dashboard <RoleDelete /> renders correctly 1`] = `
   <div
     className="card-header"
   >
-    Roles &gt; Delete Role &gt; Administrator
+    Roles &gt; Delete Role &gt; Tester
   </div>
   <div
     className="card-body"
@@ -40,7 +40,7 @@ exports[`Dashboard <RoleDelete /> renders correctly 1`] = `
         </label>
         <h3>
           Delete Role: 
-          Administrator
+          Tester
           ?
         </h3>
       </div>
@@ -64,7 +64,7 @@ exports[`Dashboard <RoleDelete /> renders correctly 1`] = `
         <div
           className="card-title h5"
         >
-          Roles &gt; Administrator
+          Roles &gt; Tester
         </div>
         <i
           className="fa [object Object]"

@@ -13,12 +13,14 @@ describe('Dashboard <Menu />', () => {
   const RoutedMenu = withMemoryRouter(ConnectedMenu);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMenu />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMenu />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 });

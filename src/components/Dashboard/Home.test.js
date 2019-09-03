@@ -27,13 +27,15 @@ describe('Dashboard <Home />', () => {
   const RoutedHome = withMemoryRouter(ConnectedHome);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedHome />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedHome />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('can refresh', () => {

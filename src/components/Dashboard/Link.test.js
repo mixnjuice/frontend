@@ -16,15 +16,17 @@ describe('Dashboard <Link />', () => {
   };
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedLink to="#home" name="Home">
-          Dashboard
-        </RoutedLink>
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedLink to="#home" name="Home">
+              Dashboard
+            </RoutedLink>
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('can select', () => {

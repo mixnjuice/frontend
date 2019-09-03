@@ -54,13 +54,16 @@ describe('Dashboard <Main />', () => {
       }
     };
     store = mockStore({ dashboard });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMain />
-      </Provider>
-    );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('renders Flavors correctly', () => {
@@ -255,13 +258,16 @@ describe('Dashboard <Main />', () => {
     };
 
     store = mockStore({ dashboard, flavors });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMain />
-      </Provider>
-    );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('renders Migations correctly', () => {
@@ -357,13 +363,16 @@ describe('Dashboard <Main />', () => {
       ]
     };
     store = mockStore({ dashboard });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMain />
-      </Provider>
-    );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('renders Roles correctly', () => {
@@ -402,63 +411,75 @@ describe('Dashboard <Main />', () => {
     };
 
     store = mockStore({ dashboard, roles });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMain />
-      </Provider>
-    );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
-  it('renders Roles/Add correctly', () => {
+  it('renders Role/Add correctly', () => {
     dashboard = {
       dashboardComponent: {
-        name: 'Roles/Add'
+        name: 'Role/Add'
       }
     };
     store = mockStore({ dashboard });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMain />
-      </Provider>
-    );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
-  it('renders Roles/Edit correctly', () => {
+  it('renders Role/Edit correctly', () => {
     dashboard = {
       dashboardComponent: {
-        name: 'Roles/Edit',
+        name: 'Role/Edit',
         item: role
       }
     };
     store = mockStore({ dashboard });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMain />
-      </Provider>
-    );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
-  it('renders Roles/Delete correctly', () => {
+  it('renders Role/Delete correctly', () => {
     dashboard = {
       dashboardComponent: {
-        name: 'Roles/Delete',
+        name: 'Role/Delete',
         item: role
       }
     };
-    store = mockStore({ dashboard });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMain />
-      </Provider>
-    );
+    store = mockStore({ dashboard, roles: { roleUsers: null } });
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('renders Role/Users correctly', () => {
@@ -469,13 +490,16 @@ describe('Dashboard <Main />', () => {
       }
     };
     store = mockStore({ dashboard, roles: { roleUsers: null } });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMain />
-      </Provider>
-    );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('renders Role/Add/User correctly', () => {
@@ -490,13 +514,16 @@ describe('Dashboard <Main />', () => {
       roles: { roleUsers: null },
       users: { users }
     });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMain />
-      </Provider>
-    );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('renders Role/Delete/User correctly', () => {
@@ -507,13 +534,16 @@ describe('Dashboard <Main />', () => {
       }
     };
     store = mockStore({ dashboard, roles: { roleUsers: null } });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMain />
-      </Provider>
-    );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('renders Users correctly', () => {
@@ -523,13 +553,16 @@ describe('Dashboard <Main />', () => {
       }
     };
     store = mockStore({ dashboard, users: { users } });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMain />
-      </Provider>
-    );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 
   it('renders User/Roles correctly', () => {
@@ -573,12 +606,15 @@ describe('Dashboard <Main />', () => {
     ];
 
     store = mockStore({ dashboard, users: { roles: userRoles } });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMain />
-      </Provider>
-    );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 });

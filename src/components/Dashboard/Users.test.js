@@ -23,12 +23,14 @@ describe('Dashboard <Users />', () => {
   const RoutedUsers = withMemoryRouter(ConnectedUsers);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedUsers opt={defaultOpts} />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedUsers opt={defaultOpts} />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 });

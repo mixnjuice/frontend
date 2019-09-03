@@ -53,12 +53,14 @@ describe('Dashboard <RoleAddUser />', () => {
   const RoutedRoleAddUser = withMemoryRouter(ConnectedRoleAddUser);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedRoleAddUser opt={defaultOpts} roleId={roleId} name={name} />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedRoleAddUser opt={defaultOpts} roleId={roleId} name={name} />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 });

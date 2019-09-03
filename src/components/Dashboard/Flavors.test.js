@@ -19,12 +19,14 @@ describe('Dashboard <Flavors />', () => {
   const RoutedFlavors = withMemoryRouter(ConnectedFlavors);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedFlavors opt={defaultOpts} />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedFlavors opt={defaultOpts} />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 });

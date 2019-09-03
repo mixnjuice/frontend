@@ -19,12 +19,14 @@ describe('Dashboard <Migrations />', () => {
   const RoutedMigrations = withMemoryRouter(ConnectedMigrations);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedMigrations opt={defaultOpts} />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMigrations opt={defaultOpts} />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 });

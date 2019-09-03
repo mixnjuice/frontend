@@ -24,12 +24,14 @@ describe('Dashboard <UserRoles />', () => {
   const RoutedUserRoles = withMemoryRouter(ConnectedUserRoles);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedUserRoles opt={defaultOpts} userId={userId} />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedUserRoles opt={defaultOpts} userId={userId} />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
   });
 });

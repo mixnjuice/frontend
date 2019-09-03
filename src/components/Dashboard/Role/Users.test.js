@@ -3,9 +3,7 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
-import { initialState } from 'reducers/roles';
-import { initialState as dashboardInitialState } from 'reducers/dashboard';
-import ConnectedRoleUsers from './Users';
+import ConnectedRoleUsers, { RoleUsers } from './Users';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <RoleUsers />', () => {
@@ -15,22 +13,52 @@ describe('Dashboard <RoleUsers />', () => {
     title: false,
     style: {}
   };
-  const roleId = 20;
-  const name = 'Luser';
+  const roleId = 3;
+  const name = 'Tester';
   const mockStore = configureStore();
   const store = mockStore({
-    roles: initialState,
-    dashboard: dashboardInitialState
+    roles: { roleUsers: null },
+    dashboard: {
+      name: 'Role/Users',
+      item: {
+        roleId: 3,
+        name: 'Tester'
+      }
+    }
   });
+  const actions = {
+    requestRoles: jest.fn(),
+    requestRoleUsers: jest.fn()
+  };
   const RoutedRoleUsers = withMemoryRouter(ConnectedRoleUsers);
 
   it('renders correctly', () => {
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedRoleUsers opt={defaultOpts} roleId={roleId} name={name} />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
+  });
+
+  it('can updateRoleId', () => {
     const component = renderer.create(
       <Provider store={store}>
-        <RoutedRoleUsers opt={defaultOpts} roleId={roleId} name={name} />
+        <RoleUsers
+          actions={actions}
+          opt={defaultOpts}
+          roleId={1}
+          name={'Administrator'}
+        />
       </Provider>
     );
+    const { instance } = component.root.findByType(RoleUsers);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(instance).toBeDefined();
+    instance.updateRoleId(roleId);
+    expect(actions.requestRoleUsers).toHaveBeenCalledWith({ roleId });
   });
 });
