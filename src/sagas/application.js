@@ -172,6 +172,39 @@ function* loginUserWorker({ emailAddress, password }) {
   }
 }
 
+function* logoutUserWorker() {
+  try {
+    // first, check to see if we are already logged in
+    const loggedIn = yield select(isLoggedIn);
+
+    if (loggedIn) {
+      localStorage.setItem('accessToken', null);
+      localStorage.setItem('expiration', null);
+    }
+
+    yield put(
+      actions.popToast({
+        title: 'Logged out',
+        icon: 'check',
+        message: 'You have been logged out.'
+      })
+    );
+
+    yield put(actions.logoutUserSuccess());
+  } catch (error) {
+    const { message } = error;
+
+    yield put(actions.logoutUserFailure(error));
+    yield put(
+      actions.popToast({
+        title: 'Error',
+        icon: 'times-circle',
+        message
+      })
+    );
+  }
+}
+
 function* popToastWorker({ toast }) {
   // ensure there is a unique key for each toast
   const id = toast.id || nanoid();
@@ -232,6 +265,10 @@ function* loginUserWatcher() {
   yield takeLatest(types.LOGIN_USER, loginUserWorker);
 }
 
+function* logoutUserWatcher() {
+  yield takeLatest(types.LOGOUT_USER, logoutUserWorker);
+}
+
 function* popToastWatcher() {
   yield takeEvery(types.POP_TOAST, popToastWorker);
 }
@@ -250,6 +287,7 @@ function* registerUserWatcher() {
 
 export const workers = {
   loginUserWorker,
+  logoutUserWorker,
   popToastWorker,
   registerUserWorker,
   requestTokenWorker,
@@ -258,6 +296,7 @@ export const workers = {
 
 export const watchers = {
   loginUserWatcher,
+  logoutUserWatcher,
   popToastWatcher,
   registerUserWatcher,
   requestTokenWatcher,
