@@ -4,13 +4,16 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/dashboard';
-import ConnectedLink from './Link';
+import ConnectedLink, { DashboardLink } from './Link';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <Link />', () => {
   const mockStore = configureStore();
   const store = mockStore({ dashboard: initialState });
   const RoutedLink = withMemoryRouter(ConnectedLink);
+  const actions = {
+    selectDashboard: jest.fn()
+  };
 
   it('renders correctly', () => {
     const component = renderer.create(
@@ -22,5 +25,21 @@ describe('Dashboard <Link />', () => {
     );
 
     expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('can select', () => {
+    const component = renderer.create(
+      <DashboardLink actions={actions} to="#home" name="Home">
+        Link
+      </DashboardLink>
+    );
+    const { instance } = component.root.findByType(DashboardLink);
+
+    expect(instance).toBeDefined();
+    instance.select('Home');
+    expect(actions.selectDashboard).toHaveBeenCalledWith({
+      item: null,
+      name: 'Home'
+    });
   });
 });

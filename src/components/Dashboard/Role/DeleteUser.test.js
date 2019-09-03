@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/roles';
 import { initialState as dashboardInitialState } from 'reducers/dashboard';
-import ConnectedRoleDeleteUser from './DeleteUser';
+import ConnectedRoleDeleteUser, { RoleDeleteUser } from './DeleteUser';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <RoleDeleteUser />', () => {
@@ -20,6 +20,10 @@ describe('Dashboard <RoleDeleteUser />', () => {
     roles: initialState,
     dashboard: dashboardInitialState
   });
+  const actions = {
+    selectDashboard: jest.fn(),
+    deleteRoleUser: jest.fn()
+  };
   const userId = 200;
   const roleId = 1;
   const name = 'Administrator';
@@ -38,5 +42,32 @@ describe('Dashboard <RoleDeleteUser />', () => {
     );
 
     expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('can handleSubmit', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <RoleDeleteUser
+          actions={actions}
+          opt={defaultOpts}
+          userId={userId}
+          roleId={roleId}
+          name={name}
+        />
+      </Provider>
+    );
+    const { instance } = component.root.findByType(RoleDeleteUser);
+
+    expect(instance).toBeDefined();
+    instance.handleSubmit();
+    expect(actions.deleteRoleUser).toHaveBeenCalledWith({
+      userId,
+      roleId,
+      name
+    });
+    expect(actions.selectDashboard).toHaveBeenCalledWith({
+      name: 'User/Roles',
+      item: userId
+    });
   });
 });

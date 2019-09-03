@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/roles';
 import { initialState as dashboardInitialState } from 'reducers/dashboard';
-import ConnectedRoleEdit from './Edit';
+import ConnectedRoleEdit, { RoleEdit } from './Edit';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <RoleEdit />', () => {
@@ -22,6 +22,10 @@ describe('Dashboard <RoleEdit />', () => {
     roles: initialState,
     dashboard: dashboardInitialState
   });
+  const actions = {
+    selectDashboard: jest.fn(),
+    updateRole: jest.fn()
+  };
   const RoutedRoleEdit = withMemoryRouter(ConnectedRoleEdit);
 
   it('renders correctly', () => {
@@ -32,5 +36,29 @@ describe('Dashboard <RoleEdit />', () => {
     );
 
     expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('can handleSubmit', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <RoleEdit
+          actions={actions}
+          opt={defaultOpts}
+          roleId={roleId}
+          name={name}
+        />
+      </Provider>
+    );
+    const { instance } = component.root.findByType(RoleEdit);
+
+    expect(instance).toBeDefined();
+    instance.handleSubmit({ name });
+    expect(actions.updateRole).toHaveBeenCalledWith({
+      roleId,
+      name
+    });
+    expect(actions.selectDashboard).toHaveBeenCalledWith({
+      name: 'Roles'
+    });
   });
 });

@@ -12,19 +12,22 @@ Array [
         className="card-header"
       >
         Users: 
+        2000
       </div>
       <div
         className="card-body"
       >
         <h3>
           Activated Users: 
+          1991
         </h3>
         <h3>
           Inactive Users: 
-          NaN
+          9
         </h3>
         <h3>
           Active Tokens: 
+          300
         </h3>
       </div>
     </div>
@@ -36,6 +39,7 @@ Array [
       >
         <h2>
           Tags: 
+          115
         </h2>
       </div>
     </div>
@@ -47,6 +51,7 @@ Array [
       >
         <h2>
           Vendors: 
+          98
         </h2>
       </div>
     </div>
@@ -57,12 +62,14 @@ Array [
         className="card-header"
       >
         Flavors: 
+        8617
       </div>
       <div
         className="card-body"
       >
         <h2>
           Tags: 
+          90
         </h2>
       </div>
     </div>
@@ -73,12 +80,14 @@ Array [
         className="card-header"
       >
         Recipes: 
+        42
       </div>
       <div
         className="card-body"
       >
         <h2>
           Tags: 
+          55
         </h2>
       </div>
     </div>
