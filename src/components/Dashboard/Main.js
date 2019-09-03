@@ -26,9 +26,6 @@ class Main extends Component {
     actions: PropTypes.object.isRequired,
     dashboardComponent: PropTypes.object.isRequired
   };
-  constructor(props) {
-    super(props);
-  }
   display() {
     const { dashboardComponent } = this.props;
     const { name, item } = dashboardComponent;

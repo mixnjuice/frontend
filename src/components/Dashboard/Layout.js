@@ -10,9 +10,6 @@ export class Layout extends Component {
     pageTitle: PropTypes.string,
     subTitle: PropTypes.any
   };
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { children, header, options, pageTitle, subTitle } = this.props;

@@ -15,9 +15,6 @@ export class Users extends Component {
     users: PropTypes.array,
     opt: PropTypes.object
   };
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     const { actions } = this.props;

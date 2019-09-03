@@ -14,9 +14,6 @@ export class Flavors extends Component {
     opt: PropTypes.object.isRequired,
     flavors: PropTypes.array
   };
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     const { actions } = this.props;

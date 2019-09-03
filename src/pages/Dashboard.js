@@ -13,10 +13,6 @@ export class Dashboard extends Component {
     actions: PropTypes.object.isRequired
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { actions } = this.props;
 

@@ -14,9 +14,6 @@ export class Migrations extends Component {
     opt: PropTypes.object.isRequired,
     migrations: PropTypes.array
   };
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     const { actions } = this.props;

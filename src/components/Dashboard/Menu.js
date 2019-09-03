@@ -16,10 +16,6 @@ import {
 // import {  } from '@fortawesome/free-regular-svg-icons';
 
 export class Menu extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Accordion>

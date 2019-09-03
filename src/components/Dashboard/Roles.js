@@ -14,9 +14,6 @@ export class Roles extends Component {
     opt: PropTypes.object,
     roles: PropTypes.array
   };
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     const { actions } = this.props;
