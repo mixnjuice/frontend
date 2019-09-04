@@ -174,7 +174,7 @@ function* loginUserWorker({ emailAddress, password }) {
 
 function* logoutUserWorker() {
   try {
-    // first, check to see if we are already logged in
+    // first, check to see if we are logged in
     const loggedIn = yield select(isLoggedIn);
 
     if (loggedIn) {

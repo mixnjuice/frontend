@@ -384,6 +384,27 @@ describe('application sagas', () => {
     );
   });
 
+  it('runs logoutUserWorker', () => {
+    const gen = workers.logoutUserWorker();
+
+    let result = gen.next(null);
+
+    result = gen.next();
+    expect(result.value).toEqual(
+      put(
+        actions.popToast({
+          title: 'Logged out',
+          icon: 'check',
+          message: 'You have been logged out.'
+        })
+      )
+    );
+
+    result = gen.next();
+
+    expect(result.value).toEqual(put(actions.logoutUserSuccess()));
+  });
+
   it('runs popToastWorker', () => {
     const defaultInterval = 5000;
     const toast = {
