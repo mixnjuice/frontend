@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import Layout from './DashboardLayout';
 
 describe('Dashboad <Layout />', () => {
-  const opt = {
+  const layoutOptions = {
     border: false,
     header: true,
     title: false,
@@ -13,7 +13,11 @@ describe('Dashboad <Layout />', () => {
 
   it('renders correctly', () => {
     const component = renderer.create(
-      <Layout pageTitle="Not Found" header="Not Found :(" options={opt}>
+      <Layout
+        pageTitle="Not Found"
+        header="Not Found :("
+        options={layoutOptions}
+      >
         Children go here
       </Layout>
     );

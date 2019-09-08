@@ -17,7 +17,7 @@ export class RoleEdit extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
-    opt: PropTypes.object.isRequired,
+    layoutOptions: PropTypes.object.isRequired,
     roleId: PropTypes.number.isRequired
   };
 
@@ -35,13 +35,13 @@ export class RoleEdit extends Component {
   }
 
   render() {
-    const { name, opt } = this.props;
+    const { name, layoutOptions } = this.props;
 
     return (
       <Layout
         pageTitle="Edit Role - Dashboard"
         header={`Roles > Edit Role > ${name}`}
-        options={opt}
+        options={layoutOptions}
       >
         <FontAwesomeIcon icon="chevron-left" /> &nbsp;
         <DashLink to="#roles" name="Roles">

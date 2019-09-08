@@ -18,7 +18,7 @@ export class RoleDelete extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
-    opt: PropTypes.object.isRequired,
+    layoutOptions: PropTypes.object.isRequired,
     roleId: PropTypes.number.isRequired
   };
 
@@ -36,13 +36,13 @@ export class RoleDelete extends Component {
   }
 
   render() {
-    const { name, opt, roleId } = this.props;
+    const { name, layoutOptions, roleId } = this.props;
 
     return (
       <Layout
         pageTitle="Delete Role - Dashboard"
         header={`Roles > Delete Role > ${name}`}
-        options={opt}
+        options={layoutOptions}
       >
         <FontAwesomeIcon icon="chevron-left" /> &nbsp;
         <DashLink to="#roles" name="Roles">
@@ -69,7 +69,7 @@ export class RoleDelete extends Component {
         />
         <br />
         <RoleUsers
-          opt={{ header: false, title: true, border: 'danger' }}
+          layoutOptions={{ header: false, title: true, border: 'danger' }}
           roleId={Number(roleId)}
           name={name}
         />

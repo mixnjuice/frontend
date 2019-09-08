@@ -8,7 +8,7 @@ import ConnectedRoleDelete, { RoleDelete } from './Delete';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <RoleDelete />', () => {
-  const defaultOpts = {
+  const defaultLayoutOptions = {
     border: false,
     header: true,
     title: false,
@@ -40,7 +40,11 @@ describe('Dashboard <RoleDelete />', () => {
       renderer
         .create(
           <Provider store={store}>
-            <RoutedRoleDelete opt={defaultOpts} roleId={roleId} name={name} />
+            <RoutedRoleDelete
+              layoutOptions={defaultLayoutOptions}
+              roleId={roleId}
+              name={name}
+            />
           </Provider>
         )
         .toJSON()
@@ -52,7 +56,7 @@ describe('Dashboard <RoleDelete />', () => {
       <Provider store={store}>
         <RoleDelete
           actions={actions}
-          opt={defaultOpts}
+          layoutOptions={defaultLayoutOptions}
           roleId={3}
           name={'Tester'}
         />

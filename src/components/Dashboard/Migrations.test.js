@@ -8,7 +8,7 @@ import ConnectedMigrations from './Migrations';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <Migrations />', () => {
-  const defaultOpts = {
+  const defaultLayoutOptions = {
     border: false,
     header: true,
     title: false,
@@ -23,7 +23,7 @@ describe('Dashboard <Migrations />', () => {
       renderer
         .create(
           <Provider store={store}>
-            <RoutedMigrations opt={defaultOpts} />
+            <RoutedMigrations layoutOptions={defaultLayoutOptions} />
           </Provider>
         )
         .toJSON()

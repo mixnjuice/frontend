@@ -9,7 +9,7 @@ import ConnectedRoles from './Roles';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <Roles />', () => {
-  const defaultOpts = {
+  const defaultLayoutOptions = {
     border: false,
     header: true,
     title: false,
@@ -27,7 +27,7 @@ describe('Dashboard <Roles />', () => {
       renderer
         .create(
           <Provider store={store}>
-            <RoutedRoles opt={defaultOpts} />
+            <RoutedRoles layoutOptions={defaultLayoutOptions} />
           </Provider>
         )
         .toJSON()

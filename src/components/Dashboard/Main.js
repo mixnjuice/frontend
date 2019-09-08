@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import {
   Flavors,
@@ -26,10 +26,10 @@ class DashboardMain extends Component {
     actions: PropTypes.object.isRequired,
     dashboardComponent: PropTypes.object.isRequired
   };
-  display() {
+  render() {
     const { dashboardComponent } = this.props;
     const { name, item } = dashboardComponent;
-    const defaultOpts = {
+    const defaultLayoutOptions = {
       border: false,
       header: true,
       title: false,
@@ -40,29 +40,41 @@ class DashboardMain extends Component {
       case 'Home':
         return <Home />;
       case 'Flavors':
-        return <Flavors opt={defaultOpts} />;
+        return <Flavors layoutOptions={defaultLayoutOptions} />;
       case 'Migrations':
-        return <Migrations opt={defaultOpts} />;
+        return <Migrations layoutOptions={defaultLayoutOptions} />;
       case 'Roles':
-        return <Roles opt={defaultOpts} />;
+        return <Roles layoutOptions={defaultLayoutOptions} />;
       case 'Role/Add':
-        return <RoleAdd opt={defaultOpts} />;
+        return <RoleAdd layoutOptions={defaultLayoutOptions} />;
       case 'Role/Edit':
         return (
-          <RoleEdit opt={defaultOpts} roleId={item.roleId} name={item.name} />
+          <RoleEdit
+            layoutOptions={defaultLayoutOptions}
+            roleId={item.roleId}
+            name={item.name}
+          />
         );
       case 'Role/Delete':
         return (
-          <RoleDelete opt={defaultOpts} roleId={item.roleId} name={item.name} />
+          <RoleDelete
+            layoutOptions={defaultLayoutOptions}
+            roleId={item.roleId}
+            name={item.name}
+          />
         );
       case 'Role/Users':
         return (
-          <RoleUsers opt={defaultOpts} roleId={item.roleId} name={item.name} />
+          <RoleUsers
+            layoutOptions={defaultLayoutOptions}
+            roleId={item.roleId}
+            name={item.name}
+          />
         );
       case 'Role/Add/User':
         return (
           <RoleAddUser
-            opt={defaultOpts}
+            layoutOptions={defaultLayoutOptions}
             roleId={item.roleId}
             name={item.name}
           />
@@ -70,22 +82,19 @@ class DashboardMain extends Component {
       case 'Role/Delete/User':
         return (
           <RoleDeleteUser
-            opt={defaultOpts}
+            layoutOptions={defaultLayoutOptions}
             userId={item.userId}
             roleId={item.roleId}
             name={item.name}
           />
         );
       case 'Users':
-        return <Users opt={defaultOpts} />;
+        return <Users layoutOptions={defaultLayoutOptions} />;
       case 'User/Roles':
-        return <UserRoles opt={defaultOpts} userId={item} />;
+        return <UserRoles layoutOptions={defaultLayoutOptions} userId={item} />;
       default:
-        return <NotFound opt={defaultOpts} name={name} />;
+        return <NotFound layoutOptions={defaultLayoutOptions} name={name} />;
     }
-  }
-  render() {
-    return <Fragment>{this.display()}</Fragment>;
   }
 }
 

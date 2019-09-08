@@ -16,7 +16,7 @@ import { actions as dashActions } from 'reducers/dashboard';
 export class RoleAdd extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    opt: PropTypes.object.isRequired
+    layoutOptions: PropTypes.object.isRequired
   };
 
   constructor(props) {
@@ -33,13 +33,13 @@ export class RoleAdd extends Component {
   }
 
   render() {
-    const { opt } = this.props;
+    const { layoutOptions } = this.props;
 
     return (
       <Layout
         pageTitle="Add Role - Dashboard"
         header="Roles &gt; Add Role"
-        options={opt}
+        options={layoutOptions}
       >
         <FontAwesomeIcon icon="chevron-left" /> &nbsp;
         <DashLink to="#roles" name="Roles">

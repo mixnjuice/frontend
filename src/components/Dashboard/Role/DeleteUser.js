@@ -17,7 +17,7 @@ export class RoleDeleteUser extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
-    opt: PropTypes.object.isRequired,
+    layoutOptions: PropTypes.object.isRequired,
     roleId: PropTypes.number.isRequired,
     userId: PropTypes.number.isRequired
   };
@@ -36,13 +36,13 @@ export class RoleDeleteUser extends Component {
   }
 
   render() {
-    const { name, opt, userId } = this.props;
+    const { name, layoutOptions, userId } = this.props;
 
     return (
       <Layout
         pageTitle="Unassign Role - Dashboard"
         header={`Roles > Unassign Role > ${name} > User ID: ${userId}`}
-        options={opt}
+        options={layoutOptions}
       >
         <FontAwesomeIcon icon="chevron-left" /> &nbsp;
         <DashLink to={`#user/roles/${userId}`} name="User/Roles" item={userId}>

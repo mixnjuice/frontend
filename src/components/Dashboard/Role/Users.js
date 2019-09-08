@@ -15,7 +15,7 @@ import { getRoleUsers } from 'selectors/roles';
 export class RoleUsers extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    opt: PropTypes.object.isRequired,
+    layoutOptions: PropTypes.object.isRequired,
     roleId: PropTypes.number,
     name: PropTypes.string,
     roleUsers: PropTypes.array
@@ -39,13 +39,13 @@ export class RoleUsers extends Component {
   }
 
   render() {
-    const { name, opt, roleId, roleUsers } = this.props;
+    const { name, layoutOptions, roleId, roleUsers } = this.props;
 
     return (
       <Layout
         pageTitle="Role Users - Dashboard"
         header={`Roles > ${name}`}
-        options={opt}
+        options={layoutOptions}
       >
         <FontAwesomeIcon icon="chevron-left" /> &nbsp;
         <DashLink to="#roles" name="Roles">

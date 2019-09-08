@@ -9,7 +9,7 @@ import ConnectedRoleDeleteUser, { RoleDeleteUser } from './DeleteUser';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <RoleDeleteUser />', () => {
-  const defaultOpts = {
+  const defaultLayoutOptions = {
     border: false,
     header: true,
     title: false,
@@ -35,7 +35,7 @@ describe('Dashboard <RoleDeleteUser />', () => {
         .create(
           <Provider store={store}>
             <RoutedRoleDeleteUser
-              opt={defaultOpts}
+              layoutOptions={defaultLayoutOptions}
               userId={userId}
               roleId={roleId}
               name={name}
@@ -51,7 +51,7 @@ describe('Dashboard <RoleDeleteUser />', () => {
       <Provider store={store}>
         <RoleDeleteUser
           actions={actions}
-          opt={defaultOpts}
+          layoutOptions={defaultLayoutOptions}
           userId={userId}
           roleId={roleId}
           name={name}

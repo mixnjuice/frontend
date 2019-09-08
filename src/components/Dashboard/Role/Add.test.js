@@ -9,7 +9,7 @@ import ConnectedRoleAdd, { RoleAdd } from './Add';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <RoleAdd />', () => {
-  const defaultOpts = {
+  const defaultLayoutOptions = {
     border: false,
     header: true,
     title: false,
@@ -32,7 +32,7 @@ describe('Dashboard <RoleAdd />', () => {
       renderer
         .create(
           <Provider store={store}>
-            <RoutedRoleAdd opt={defaultOpts} />
+            <RoutedRoleAdd layoutOptions={defaultLayoutOptions} />
           </Provider>
         )
         .toJSON()
@@ -42,7 +42,7 @@ describe('Dashboard <RoleAdd />', () => {
   it('can handleSubmit', () => {
     const component = renderer.create(
       <Provider store={store}>
-        <RoleAdd actions={actions} opt={defaultOpts} />
+        <RoleAdd actions={actions} layoutOptions={defaultLayoutOptions} />
       </Provider>
     );
     const { instance } = component.root.findByType(RoleAdd);

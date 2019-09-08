@@ -11,7 +11,7 @@ import { getAllFlavors } from 'selectors/flavors';
 export class Flavors extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    opt: PropTypes.object.isRequired,
+    layoutOptions: PropTypes.object.isRequired,
     flavors: PropTypes.array
   };
 
@@ -22,13 +22,13 @@ export class Flavors extends Component {
   }
 
   render() {
-    const { flavors, opt } = this.props;
+    const { flavors, layoutOptions } = this.props;
 
     return (
       <Layout
         pageTitle="Flavors - Dashboard"
         header="Ingredients &gt; Flavors"
-        options={opt}
+        options={layoutOptions}
       >
         <Table responsive striped bordered hover size="sm">
           <thead>

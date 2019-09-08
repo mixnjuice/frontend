@@ -8,7 +8,7 @@ import ConnectedNotFound from './NotFound';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <NotFound />', () => {
-  const defaultOpts = {
+  const defaultLayoutOptions = {
     border: false,
     header: true,
     title: false,
@@ -24,7 +24,7 @@ describe('Dashboard <NotFound />', () => {
       renderer
         .create(
           <Provider store={store}>
-            <RoutedNotFound opt={defaultOpts} name={name} />
+            <RoutedNotFound layoutOptions={defaultLayoutOptions} name={name} />
           </Provider>
         )
         .toJSON()

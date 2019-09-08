@@ -8,7 +8,7 @@ import ConnectedFlavors from './Flavors';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <Flavors />', () => {
-  const defaultOpts = {
+  const defaultLayoutOptions = {
     border: false,
     header: true,
     title: false,
@@ -23,7 +23,7 @@ describe('Dashboard <Flavors />', () => {
       renderer
         .create(
           <Provider store={store}>
-            <RoutedFlavors opt={defaultOpts} />
+            <RoutedFlavors layoutOptions={defaultLayoutOptions} />
           </Provider>
         )
         .toJSON()

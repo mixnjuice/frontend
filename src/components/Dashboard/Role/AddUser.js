@@ -19,7 +19,7 @@ export class RoleAddUser extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     name: PropTypes.string,
-    opt: PropTypes.object.isRequired,
+    layoutOptions: PropTypes.object.isRequired,
     roleId: PropTypes.number,
     users: PropTypes.array
   };
@@ -62,14 +62,14 @@ export class RoleAddUser extends Component {
   }
 
   render() {
-    const { users, name, opt, roleId } = this.props;
+    const { users, name, layoutOptions, roleId } = this.props;
     const { userId, submitting } = this.state;
 
     return (
       <Layout
         pageTitle="Add Role - Dashboard"
         header={`Roles > Assign ${name} Role`}
-        options={opt}
+        options={layoutOptions}
       >
         <FontAwesomeIcon icon="chevron-left" /> &nbsp;
         <DashLink to="#roles" name="Roles">
@@ -110,7 +110,7 @@ export class RoleAddUser extends Component {
         <br />
         {userId !== '0' && (
           <UserRoles
-            opt={{ header: false, title: true, border: 'info' }}
+            layoutOptions={{ header: false, title: true, border: 'info' }}
             userId={Number(userId)}
             roleId={roleId}
           />

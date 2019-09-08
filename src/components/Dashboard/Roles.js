@@ -14,7 +14,7 @@ import { getAllRoles } from 'selectors/roles';
 export class Roles extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    opt: PropTypes.object,
+    layoutOptions: PropTypes.object,
     roles: PropTypes.array
   };
 
@@ -25,13 +25,17 @@ export class Roles extends Component {
   }
 
   render() {
-    const { opt, roles } = this.props;
+    const { layoutOptions, roles } = this.props;
     // Administrator and User roles aren't editable
 
     let noEdit = false;
 
     return (
-      <Layout pageTitle="Roles - Dashboard" header="Roles" options={opt}>
+      <Layout
+        pageTitle="Roles - Dashboard"
+        header="Roles"
+        options={layoutOptions}
+      >
         <DashLink to="#role/add" name="Role/Add">
           Add Role
         </DashLink>

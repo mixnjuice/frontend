@@ -14,7 +14,7 @@ import { getUserRoles } from 'selectors/users';
 export class UserRoles extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    opt: PropTypes.object.isRequired,
+    layoutOptions: PropTypes.object.isRequired,
     roles: PropTypes.array,
     roleId: PropTypes.number,
     userId: PropTypes.number
@@ -31,7 +31,7 @@ export class UserRoles extends Component {
   }
 
   render() {
-    const { opt, roles, roleId, userId } = this.props;
+    const { layoutOptions, roles, roleId, userId } = this.props;
 
     let style = {};
 
@@ -39,7 +39,7 @@ export class UserRoles extends Component {
       <Layout
         pageTitle="Roles - Dashboard"
         header={`User > User ID: ${userId} > Roles`}
-        options={opt}
+        options={layoutOptions}
       >
         <DashLink to="#users" name="Users">
           Back

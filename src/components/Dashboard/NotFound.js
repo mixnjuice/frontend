@@ -5,14 +5,18 @@ import { DashboardLayout as Layout } from 'components/Dashboard/';
 export class NotFound extends Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
-    opt: PropTypes.object
+    layoutOptions: PropTypes.object
   };
 
   render() {
-    const { name, opt } = this.props;
+    const { name, layoutOptions } = this.props;
 
     return (
-      <Layout pageTitle="Not Found" header="Not Found :(" options={opt}>
+      <Layout
+        pageTitle="Not Found"
+        header="Not Found :("
+        options={layoutOptions}
+      >
         <h3>Oops!</h3>
         I&apos;ve searched <i>long</i> and &quot;hard&quot;, yet I couldn&apos;t
         find a Dashboard Component identified as <strong>{name}</strong> in{' '}

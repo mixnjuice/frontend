@@ -16,7 +16,7 @@ export class Users extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     users: PropTypes.array,
-    opt: PropTypes.object
+    layoutOptions: PropTypes.object
   };
 
   componentDidMount() {
@@ -26,10 +26,14 @@ export class Users extends Component {
   }
 
   render() {
-    const { opt, users } = this.props;
+    const { layoutOptions, users } = this.props;
 
     return (
-      <Layout pageTitle="Users - Dashboard" header="Users" options={opt}>
+      <Layout
+        pageTitle="Users - Dashboard"
+        header="Users"
+        options={layoutOptions}
+      >
         <Table responsive striped bordered hover size="sm">
           <thead>
             <tr>

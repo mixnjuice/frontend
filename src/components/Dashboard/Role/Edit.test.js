@@ -9,7 +9,7 @@ import ConnectedRoleEdit, { RoleEdit } from './Edit';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <RoleEdit />', () => {
-  const defaultOpts = {
+  const defaultLayoutOptions = {
     border: false,
     header: true,
     title: false,
@@ -33,7 +33,11 @@ describe('Dashboard <RoleEdit />', () => {
       renderer
         .create(
           <Provider store={store}>
-            <RoutedRoleEdit opt={defaultOpts} roleId={roleId} name={name} />
+            <RoutedRoleEdit
+              layoutOptions={defaultLayoutOptions}
+              roleId={roleId}
+              name={name}
+            />
           </Provider>
         )
         .toJSON()
@@ -45,7 +49,7 @@ describe('Dashboard <RoleEdit />', () => {
       <Provider store={store}>
         <RoleEdit
           actions={actions}
-          opt={defaultOpts}
+          layoutOptions={defaultLayoutOptions}
           roleId={roleId}
           name={name}
         />

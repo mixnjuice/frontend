@@ -11,7 +11,7 @@ import { getMigrations } from 'selectors/dashboard';
 export class Migrations extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    opt: PropTypes.object.isRequired,
+    layoutOptions: PropTypes.object.isRequired,
     migrations: PropTypes.array
   };
 
@@ -22,13 +22,13 @@ export class Migrations extends Component {
   }
 
   render() {
-    const { migrations, opt } = this.props;
+    const { migrations, layoutOptions } = this.props;
 
     return (
       <Layout
         pageTitle="Database Migrations - Dashboard"
         header="Database &gt; Migrations"
-        options={opt}
+        options={layoutOptions}
       >
         <Table responsive striped bordered hover size="sm">
           <thead>

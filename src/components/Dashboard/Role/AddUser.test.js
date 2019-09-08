@@ -10,7 +10,7 @@ import ConnectedRoleAddUser from './AddUser';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <RoleAddUser />', () => {
-  const defaultOpts = {
+  const defaultLayoutOptions = {
     border: false,
     header: true,
     title: false,
@@ -57,7 +57,11 @@ describe('Dashboard <RoleAddUser />', () => {
       renderer
         .create(
           <Provider store={store}>
-            <RoutedRoleAddUser opt={defaultOpts} roleId={roleId} name={name} />
+            <RoutedRoleAddUser
+              layoutOptions={defaultLayoutOptions}
+              roleId={roleId}
+              name={name}
+            />
           </Provider>
         )
         .toJSON()

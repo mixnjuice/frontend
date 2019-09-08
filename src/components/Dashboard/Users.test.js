@@ -9,7 +9,7 @@ import ConnectedUsers from './Users';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <Users />', () => {
-  const defaultOpts = {
+  const defaultLayoutOptions = {
     border: false,
     header: true,
     title: false,
@@ -27,7 +27,7 @@ describe('Dashboard <Users />', () => {
       renderer
         .create(
           <Provider store={store}>
-            <RoutedUsers opt={defaultOpts} />
+            <RoutedUsers layoutOptions={defaultLayoutOptions} />
           </Provider>
         )
         .toJSON()
