@@ -13,6 +13,8 @@ exports[`Dashboad <Layout /> renders correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     Children go here
   </div>
 </div>

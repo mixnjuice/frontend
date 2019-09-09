@@ -52,7 +52,7 @@ export class UserRoles extends Component {
         {roles && (
           <Table responsive striped bordered hover size="sm">
             <thead>
-              <tr>
+              <tr className="text-center">
                 <th>ID</th>
                 <th>Name</th>
                 <th>Options</th>
@@ -66,7 +66,7 @@ export class UserRoles extends Component {
                 }
                 return (
                   <tr key={index}>
-                    <td>{role.Role.id}</td>
+                    <td className="text-center">{role.Role.id}</td>
                     <td style={style}>{role.Role.name}</td>
                     <td>
                       <DashLink

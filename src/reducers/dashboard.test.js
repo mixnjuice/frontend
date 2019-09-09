@@ -10,12 +10,6 @@ describe('dashboard reducer', () => {
   const migrations = [{ db: true }];
   const stats = [{ users: true }];
   const error = { message: 'Failed' };
-  /* const toast = {
-    id: 'test123',
-    title: 'Testing',
-    icon: 'heart',
-    message: 'This is a test.'
-  };*/
 
   it('has REQUEST_DASHBOARD action', () => {
     expect(actions.requestDashboard()).toEqual({

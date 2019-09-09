@@ -32,7 +32,7 @@ export class Flavors extends Component {
       >
         <Table responsive striped bordered hover size="sm">
           <thead>
-            <tr>
+            <tr className="text-center">
               <th>ID</th>
               <th>Vendor</th>
               <th>Name</th>
@@ -44,11 +44,11 @@ export class Flavors extends Component {
             {flavors.map((flavor, index) => {
               return (
                 <tr key={index}>
-                  <td>{flavor.id}</td>
+                  <td className="text-center">{flavor.id}</td>
                   <td>{flavor.Vendor.name}</td>
                   <td>{flavor.name}</td>
-                  <td>{flavor.slug}</td>
-                  <td>{flavor.density}</td>
+                  <td className="text-center">{flavor.slug}</td>
+                  <td className="text-center">{flavor.density}</td>
                 </tr>
               );
             })}

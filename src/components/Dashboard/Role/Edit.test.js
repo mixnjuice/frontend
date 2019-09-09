@@ -29,15 +29,17 @@ describe('Dashboard <RoleEdit />', () => {
   const RoutedRoleEdit = withMemoryRouter(ConnectedRoleEdit);
 
   it('renders correctly', () => {
+    const props = {
+      layoutOptions: defaultLayoutOptions,
+      roleId,
+      name
+    };
+
     expect(
       renderer
         .create(
           <Provider store={store}>
-            <RoutedRoleEdit
-              layoutOptions={defaultLayoutOptions}
-              roleId={roleId}
-              name={name}
-            />
+            <RoutedRoleEdit {...props} />
           </Provider>
         )
         .toJSON()
@@ -45,14 +47,15 @@ describe('Dashboard <RoleEdit />', () => {
   });
 
   it('can handleSubmit', () => {
+    const props = {
+      actions,
+      layoutOptions: defaultLayoutOptions,
+      roleId,
+      name
+    };
     const component = renderer.create(
       <Provider store={store}>
-        <RoleEdit
-          actions={actions}
-          layoutOptions={defaultLayoutOptions}
-          roleId={roleId}
-          name={name}
-        />
+        <RoleEdit {...props} />
       </Provider>
     );
     const { instance } = component.root.findByType(RoleEdit);

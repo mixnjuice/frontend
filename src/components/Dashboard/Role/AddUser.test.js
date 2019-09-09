@@ -22,46 +22,22 @@ describe('Dashboard <RoleAddUser />', () => {
     dashboard: dashboardInitialState,
     users: usersInitialState
   });
-  /* const actions = {
-    selectDashboard: jest.fn(),
-    requestUsers: jest.fn(),
-    requestUserRoles: jest.fn(),
-    createRoleUser: jest.fn()
-  };
-  const event = {
-    preventDefault: jest.fn()
-  }; */
   const roleId = 1;
   const name = 'Administrator';
-  /* const users = [
-    {
-      activationCode: null,
-      created: '20190805T04:16:38.930Z',
-      emailAddress: 'blah@blah.com',
-      id: 1,
-      password: 'secret'
-    },
-    {
-      activationCode: null,
-      created: '20190805T04:16:38.930Z',
-      emailAddress: 'blah2@blah.com',
-      id: 2,
-      password: 'secret'
-    }
-  ];
-  const userId = 2; */
   const RoutedRoleAddUser = withMemoryRouter(ConnectedRoleAddUser);
 
   it('renders correctly', () => {
+    const props = {
+      layoutOptions: defaultLayoutOptions,
+      roleId,
+      name
+    };
+
     expect(
       renderer
         .create(
           <Provider store={store}>
-            <RoutedRoleAddUser
-              layoutOptions={defaultLayoutOptions}
-              roleId={roleId}
-              name={name}
-            />
+            <RoutedRoleAddUser {...props} />
           </Provider>
         )
         .toJSON()

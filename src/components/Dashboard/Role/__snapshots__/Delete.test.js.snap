@@ -13,6 +13,8 @@ exports[`Dashboard <RoleDelete /> renders correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <i
       className="fa chevron-left"
     />
@@ -58,6 +60,7 @@ exports[`Dashboard <RoleDelete /> renders correctly 1`] = `
     <div
       className="card border-danger"
     >
+      
       <div
         className="card-body"
       >
@@ -66,6 +69,7 @@ exports[`Dashboard <RoleDelete /> renders correctly 1`] = `
         >
           Roles &gt; Tester
         </div>
+        
         <i
           className="fa chevron-left"
         />
@@ -83,7 +87,9 @@ exports[`Dashboard <RoleDelete /> renders correctly 1`] = `
             className="table table-sm table-striped table-bordered table-hover"
           >
             <thead>
-              <tr>
+              <tr
+                className="text-center"
+              >
                 <th>
                   ID
                 </th>

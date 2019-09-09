@@ -41,7 +41,7 @@ export class Roles extends Component {
         </DashLink>
         <Table responsive striped bordered hover size="sm">
           <thead>
-            <tr>
+            <tr className="text-center">
               <th>ID</th>
               <th>Name</th>
               <th>Options</th>
@@ -56,11 +56,11 @@ export class Roles extends Component {
               }
               return (
                 <tr key={index}>
-                  <td>{role.id}</td>
+                  <td className="text-center">{role.id}</td>
                   <td>{role.name}</td>
                   <td>
                     <DashLink
-                      to={'#role/users/' + role.id}
+                      to={`#role/users/${role.id}`}
                       name="Role/Users"
                       item={{ roleId: role.id, name: role.name }}
                     >
@@ -78,7 +78,7 @@ export class Roles extends Component {
                       <Fragment>
                         &nbsp; | &nbsp;
                         <DashLink
-                          to={'#role/edit' + role.id}
+                          to={`#role/edit/${role.id}`}
                           name="Role/Edit"
                           item={{ roleId: role.id, name: role.name }}
                         >
@@ -86,7 +86,7 @@ export class Roles extends Component {
                         </DashLink>
                         &nbsp; | &nbsp;
                         <DashLink
-                          to={'#role/delete' + role.id}
+                          to={`#role/delete/${role.id}`}
                           name="Role/Delete"
                           item={{ roleId: role.id, name: role.name }}
                         >

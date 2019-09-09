@@ -13,6 +13,8 @@ exports[`Dashboard <Migrations /> renders correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <div
       className="table-responsive"
     >

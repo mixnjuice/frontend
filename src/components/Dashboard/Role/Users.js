@@ -51,11 +51,12 @@ export class RoleUsers extends Component {
         <DashLink to="#roles" name="Roles">
           Back
         </DashLink>
-        {!roleUsers && <Alert>No Users Assigned to this Role!</Alert>}
-        {roleUsers && (
+        {!roleUsers ? (
+          <Alert>No Users Assigned to this Role!</Alert>
+        ) : (
           <Table responsive striped bordered hover size="sm">
             <thead>
-              <tr>
+              <tr className="text-center">
                 <th>ID</th>
                 <th>Email</th>
                 <th>Options</th>
@@ -65,7 +66,7 @@ export class RoleUsers extends Component {
               {roleUsers.map((user, index) => {
                 return (
                   <tr key={index}>
-                    <td>{user.userId}</td>
+                    <td className="text-center">{user.userId}</td>
                     <td>{user.User.emailAddress}</td>
                     <td>
                       <DashLink

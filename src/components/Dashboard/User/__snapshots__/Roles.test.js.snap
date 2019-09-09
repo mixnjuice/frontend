@@ -13,6 +13,8 @@ exports[`Dashboard <UserRoles /> renders correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <a
       href="#users"
       onClick={[Function]}
@@ -34,7 +36,9 @@ exports[`Dashboard <UserRoles /> renders correctly 1`] = `
         className="table table-sm table-striped table-bordered table-hover"
       >
         <thead>
-          <tr>
+          <tr
+            className="text-center"
+          >
             <th>
               ID
             </th>

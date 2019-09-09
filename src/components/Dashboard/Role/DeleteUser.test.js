@@ -30,16 +30,18 @@ describe('Dashboard <RoleDeleteUser />', () => {
   const RoutedRoleDeleteUser = withMemoryRouter(ConnectedRoleDeleteUser);
 
   it('renders correctly', () => {
+    const props = {
+      layoutOptions: defaultLayoutOptions,
+      userId,
+      roleId,
+      name
+    };
+
     expect(
       renderer
         .create(
           <Provider store={store}>
-            <RoutedRoleDeleteUser
-              layoutOptions={defaultLayoutOptions}
-              userId={userId}
-              roleId={roleId}
-              name={name}
-            />
+            <RoutedRoleDeleteUser {...props} />
           </Provider>
         )
         .toJSON()
@@ -47,15 +49,16 @@ describe('Dashboard <RoleDeleteUser />', () => {
   });
 
   it('can handleSubmit', () => {
+    const props = {
+      actions,
+      layoutOptions: defaultLayoutOptions,
+      userId,
+      roleId,
+      name
+    };
     const component = renderer.create(
       <Provider store={store}>
-        <RoleDeleteUser
-          actions={actions}
-          layoutOptions={defaultLayoutOptions}
-          userId={userId}
-          roleId={roleId}
-          name={name}
-        />
+        <RoleDeleteUser {...props} />
       </Provider>
     );
     const { instance } = component.root.findByType(RoleDeleteUser);

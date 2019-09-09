@@ -33,15 +33,17 @@ describe('Dashboard <RoleUsers />', () => {
   const RoutedRoleUsers = withMemoryRouter(ConnectedRoleUsers);
 
   it('renders correctly', () => {
+    const props = {
+      layoutOptions: defaultLayoutOptions,
+      roleId,
+      name
+    };
+
     expect(
       renderer
         .create(
           <Provider store={store}>
-            <RoutedRoleUsers
-              layoutOptions={defaultLayoutOptions}
-              roleId={roleId}
-              name={name}
-            />
+            <RoutedRoleUsers {...props} />
           </Provider>
         )
         .toJSON()
@@ -49,14 +51,15 @@ describe('Dashboard <RoleUsers />', () => {
   });
 
   it('can updateRoleId', () => {
+    const props = {
+      actions,
+      layoutOptions: defaultLayoutOptions,
+      roleId,
+      name
+    };
     const component = renderer.create(
       <Provider store={store}>
-        <RoleUsers
-          actions={actions}
-          layoutOptions={defaultLayoutOptions}
-          roleId={1}
-          name={'Administrator'}
-        />
+        <RoleUsers {...props} />
       </Provider>
     );
     const { instance } = component.root.findByType(RoleUsers);

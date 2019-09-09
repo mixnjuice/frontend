@@ -13,6 +13,8 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <div
       className="table-responsive"
     >
@@ -20,7 +22,9 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
         className="table table-sm table-striped table-bordered table-hover"
       >
         <thead>
-          <tr>
+          <tr
+            className="text-center"
+          >
             <th>
               ID
             </th>
@@ -40,7 +44,9 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
         </thead>
         <tbody>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               1
             </td>
             <td>
@@ -49,11 +55,17 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
             <td>
               27 Bears
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               2
             </td>
             <td>
@@ -62,11 +74,17 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
             <td>
               27 Fish
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               3
             </td>
             <td>
@@ -75,11 +93,17 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
             <td>
               Acai
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               4
             </td>
             <td>
@@ -88,184 +112,284 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
             <td>
               Amaretto
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               5
             </td>
             <td />
             <td>
               Anise
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               6
             </td>
             <td />
             <td>
               Apple Pie
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               7
             </td>
             <td />
             <td>
               Apple Pie v2
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               8
             </td>
             <td />
             <td>
               Apple Snacks
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               9
             </td>
             <td />
             <td>
               Apricot
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               10
             </td>
             <td />
             <td>
               Banana
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               11
             </td>
             <td />
             <td>
               Banana Split
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               12
             </td>
             <td />
             <td>
               Bavarian Cream
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               13
             </td>
             <td />
             <td>
               Biscuit
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               15
             </td>
             <td />
             <td>
               Blackberry
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               14
             </td>
             <td />
             <td>
               Black Currant
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               17
             </td>
             <td />
             <td>
               Blueberry
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               18
             </td>
             <td />
             <td>
               Blueberry Cinnamon Crumble
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               19
             </td>
             <td />
             <td>
               Blueberry Extra
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               20
             </td>
             <td />
             <td>
               Blueberry Jam
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               21
             </td>
             <td />
             <td>
               Blueberry Pomegranate
             </td>
-            <td />
-            <td />
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
           </tr>
         </tbody>
       </table>
@@ -391,6 +515,8 @@ exports[`Dashboard <Main /> renders Migations correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <div
       className="table-responsive"
     >
@@ -616,6 +742,8 @@ exports[`Dashboard <Main /> renders Role/Add correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <i
       className="fa chevron-left"
     />
@@ -679,6 +807,8 @@ exports[`Dashboard <Main /> renders Role/Add/User correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <i
       className="fa chevron-left"
     />
@@ -746,6 +876,8 @@ exports[`Dashboard <Main /> renders Role/Delete correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <i
       className="fa chevron-left"
     />
@@ -791,6 +923,7 @@ exports[`Dashboard <Main /> renders Role/Delete correctly 1`] = `
     <div
       className="card border-danger"
     >
+      
       <div
         className="card-body"
       >
@@ -799,6 +932,7 @@ exports[`Dashboard <Main /> renders Role/Delete correctly 1`] = `
         >
           Roles &gt; test
         </div>
+        
         <i
           className="fa chevron-left"
         />
@@ -834,6 +968,8 @@ exports[`Dashboard <Main /> renders Role/Delete/User correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <i
       className="fa chevron-left"
     />
@@ -894,6 +1030,8 @@ exports[`Dashboard <Main /> renders Role/Edit correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <i
       className="fa chevron-left"
     />
@@ -957,6 +1095,8 @@ exports[`Dashboard <Main /> renders Role/Users correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <i
       className="fa chevron-left"
     />
@@ -990,6 +1130,8 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <a
       href="#role/add"
       onClick={[Function]}
@@ -1003,7 +1145,9 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
         className="table table-sm table-striped table-bordered table-hover"
       >
         <thead>
-          <tr>
+          <tr
+            className="text-center"
+          >
             <th>
               ID
             </th>
@@ -1017,7 +1161,9 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
         </thead>
         <tbody>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               1
             </td>
             <td>
@@ -1040,7 +1186,9 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
             </td>
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               2
             </td>
             <td>
@@ -1063,7 +1211,9 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
             </td>
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               3
             </td>
             <td>
@@ -1085,14 +1235,14 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
               </a>
                 |  
               <a
-                href="#role/edit3"
+                href="#role/edit/3"
                 onClick={[Function]}
               >
                 Edit
               </a>
                 |  
               <a
-                href="#role/delete3"
+                href="#role/delete/3"
                 onClick={[Function]}
               >
                 Delete
@@ -1100,7 +1250,9 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
             </td>
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               4
             </td>
             <td>
@@ -1122,14 +1274,14 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
               </a>
                 |  
               <a
-                href="#role/edit4"
+                href="#role/edit/4"
                 onClick={[Function]}
               >
                 Edit
               </a>
                 |  
               <a
-                href="#role/delete4"
+                href="#role/delete/4"
                 onClick={[Function]}
               >
                 Delete
@@ -1137,7 +1289,9 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
             </td>
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               8
             </td>
             <td>
@@ -1159,14 +1313,14 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
               </a>
                 |  
               <a
-                href="#role/edit8"
+                href="#role/edit/8"
                 onClick={[Function]}
               >
                 Edit
               </a>
                 |  
               <a
-                href="#role/delete8"
+                href="#role/delete/8"
                 onClick={[Function]}
               >
                 Delete
@@ -1174,7 +1328,9 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
             </td>
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               9
             </td>
             <td>
@@ -1196,14 +1352,14 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
               </a>
                 |  
               <a
-                href="#role/edit9"
+                href="#role/edit/9"
                 onClick={[Function]}
               >
                 Edit
               </a>
                 |  
               <a
-                href="#role/delete9"
+                href="#role/delete/9"
                 onClick={[Function]}
               >
                 Delete
@@ -1236,6 +1392,8 @@ exports[`Dashboard <Main /> renders User/Roles correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <a
       href="#users"
       onClick={[Function]}
@@ -1257,7 +1415,9 @@ exports[`Dashboard <Main /> renders User/Roles correctly 1`] = `
         className="table table-sm table-striped table-bordered table-hover"
       >
         <thead>
-          <tr>
+          <tr
+            className="text-center"
+          >
             <th>
               ID
             </th>
@@ -1271,7 +1431,9 @@ exports[`Dashboard <Main /> renders User/Roles correctly 1`] = `
         </thead>
         <tbody>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               1
             </td>
             <td
@@ -1296,7 +1458,9 @@ exports[`Dashboard <Main /> renders User/Roles correctly 1`] = `
             </td>
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               8
             </td>
             <td
@@ -1321,7 +1485,9 @@ exports[`Dashboard <Main /> renders User/Roles correctly 1`] = `
             </td>
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               9
             </td>
             <td
@@ -1371,6 +1537,8 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
   <div
     className="card-body"
   >
+    
+    
     <div
       className="table-responsive"
     >
@@ -1378,7 +1546,9 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
         className="table table-sm table-striped table-bordered table-hover"
       >
         <thead>
-          <tr>
+          <tr
+            className="text-center"
+          >
             <th>
               ID
             </th>
@@ -1395,16 +1565,24 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
         </thead>
         <tbody>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               1
             </td>
             <td>
               blah@blah.com
             </td>
-            <td>
-              Yes
+            <td
+              className="text-center"
+            >
+              <i
+                className="fa check"
+              />
             </td>
-            <td>
+            <td
+              className="text-center"
+            >
               <a
                 href="/user/profile"
                 onClick={[Function]}
@@ -1421,16 +1599,24 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
             </td>
           </tr>
           <tr>
-            <td>
+            <td
+              className="text-center"
+            >
               2
             </td>
             <td>
               blah2@blah.com
             </td>
-            <td>
-              Yes
+            <td
+              className="text-center"
+            >
+              <i
+                className="fa check"
+              />
             </td>
-            <td>
+            <td
+              className="text-center"
+            >
               <a
                 href="/user/profile"
                 onClick={[Function]}

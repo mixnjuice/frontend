@@ -11,9 +11,7 @@ import {
 } from './dashboard';
 
 import { reducer as flavors, initialState as flavorsState } from './flavors';
-
 import { reducer as roles, initialState as rolesState } from './roles';
-
 import { reducer as users, initialState as usersState } from './users';
 
 export const initialState = {

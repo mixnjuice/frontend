@@ -8,6 +8,7 @@ import {
 } from 'components/Dashboard/';
 import { bindActionCreators } from 'redux';
 import { Table } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { actions as usersActions } from 'reducers/users';
 import { getAllUsers } from 'selectors/users';
@@ -36,7 +37,7 @@ export class Users extends Component {
       >
         <Table responsive striped bordered hover size="sm">
           <thead>
-            <tr>
+            <tr className="text-center">
               <th>ID</th>
               <th>Email</th>
               <th>Activated</th>
@@ -47,14 +48,20 @@ export class Users extends Component {
             {users.map((user, index) => {
               return (
                 <tr key={index}>
-                  <td>{user.id}</td>
+                  <td className="text-center">{user.id}</td>
                   <td>{user.emailAddress}</td>
-                  <td>{user.activationCode === null ? 'Yes' : 'No'}</td>
-                  <td>
+                  <td className="text-center">
+                    {user.activationCode === null ? (
+                      <FontAwesomeIcon icon="check" color="green" title="Yes" />
+                    ) : (
+                      <FontAwesomeIcon icon="times" color="red" title="No" />
+                    )}
+                  </td>
+                  <td className="text-center">
                     <Link to="/user/profile">Profile</Link>
                     &nbsp; | &nbsp;
                     <DashLink
-                      to={'#user/' + user.id + '/roles'}
+                      to={`#user/${user.id}/roles`}
                       name="User/Roles"
                       item={user.id}
                     >
