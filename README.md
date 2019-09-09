@@ -1,6 +1,7 @@
 # Gusta Project Frontend
 
 Build status: [![CircleCI](https://circleci.com/gh/mixnjuice/frontend/tree/master.svg?style=svg)](https://circleci.com/gh/mixnjuice/frontend/tree/master)
+
 Test coverage: [![codecov](https://codecov.io/gh/mixnjuice/frontend/branch/master/graph/badge.svg)](https://codecov.io/gh/mixnjuice/frontend)
 
 ## Usage
