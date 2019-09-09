@@ -4,7 +4,7 @@ import { Toast } from 'react-bootstrap';
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { getToasts } from 'selectors/application';
+import { getQueue } from 'selectors/toast';
 
 export class ToastDrawer extends Component {
   static propTypes = {
@@ -47,7 +47,7 @@ export class ToastDrawer extends Component {
 }
 
 const mapStateToProps = state => ({
-  toasts: getToasts(state)
+  toasts: getQueue(state)
 });
 
 export default connect(

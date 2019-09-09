@@ -11,17 +11,12 @@ import {
   getTokenExpiration,
   getRegistration,
   isRegistering,
-  getToasts,
   isLoggedIn
 } from './application';
 
 describe('application selectors', () => {
   const state = { application: initialState };
-  const {
-    authorization: authState,
-    registration: regState,
-    toasts
-  } = initialState;
+  const { authorization: authState, registration: regState } = initialState;
 
   it('can getApplication', () => {
     expect(getApplication(state)).toBe(state.application);
@@ -57,10 +52,6 @@ describe('application selectors', () => {
 
   it('can get isRegistering', () => {
     expect(isRegistering(state)).toBe(regState.registering);
-  });
-
-  it('can getToasts', () => {
-    expect(getToasts(state)).toBe(toasts);
   });
 
   describe('can get isLoggedIn', () => {
