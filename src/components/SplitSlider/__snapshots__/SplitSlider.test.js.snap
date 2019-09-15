@@ -53,5 +53,19 @@ exports[`<SplitSlider /> renders component correctly 1`] = `
     onChange={[Function]}
     value={50}
   />
+  <div
+    className="input-group-append"
+  >
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <i
+        className="fa undo"
+      />
+    </button>
+  </div>
 </div>
 `;

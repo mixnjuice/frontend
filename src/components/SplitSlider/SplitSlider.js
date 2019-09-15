@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { InputGroup, ProgressBar, FormControl } from 'react-bootstrap';
+import { InputGroup, ProgressBar, FormControl, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class SplitSlider extends Component {
   static propTypes = {
@@ -21,6 +22,7 @@ export default class SplitSlider extends Component {
     this.state = { value: 50 };
     this.progressRef = React.createRef();
     this.handleClick = this.handleClick.bind(this);
+    this.handleReset = this.handleReset.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -68,6 +70,12 @@ export default class SplitSlider extends Component {
     });
   }
 
+  handleReset() {
+    this.setState({
+      value: 50
+    });
+  }
+
   render() {
     const { leftLabel, rightLabel } = this.props;
 
@@ -99,6 +107,11 @@ export default class SplitSlider extends Component {
           value={this.rightValue}
           onChange={this.handleChange}
         />
+        <InputGroup.Append>
+          <Button onClick={this.handleReset}>
+            <FontAwesomeIcon icon="undo" size="sm" />
+          </Button>
+        </InputGroup.Append>
       </InputGroup>
     );
   }
