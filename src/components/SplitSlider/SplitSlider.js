@@ -19,11 +19,16 @@ export default class SplitSlider extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { value: 50 };
     this.progressRef = React.createRef();
+    this.state = { value: 50, dragging: false };
+    this.emptyCanvas = document.createElement('canvas');
+    this.handleDrag = this.handleDrag.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleDragEnd = this.handleDragEnd.bind(this);
+    this.handleDragEnter = this.handleDragEnter.bind(this);
+    this.handleDragStart = this.handleDragStart.bind(this);
   }
 
   get leftValue() {
@@ -76,13 +81,56 @@ export default class SplitSlider extends Component {
     });
   }
 
+  handleDragStart(event) {
+    event.dataTransfer.setDragImage(this.emptyCanvas, 0, 0);
+    event.persist();
+    this.setState(
+      {
+        dragging: true
+      },
+      () => {
+        this.handleClick(event);
+      }
+    );
+  }
+
+  handleDrag(event) {
+    const { dragging } = this.state;
+
+    if (!dragging) {
+      return;
+    }
+
+    event.persist();
+    this.handleClick(event);
+  }
+
+  handleDragEnter(event) {
+    event.dataTransfer.dropEffect = 'move';
+  }
+
+  handleDragEnd(event) {
+    event.persist();
+    this.handleClick(event);
+    this.setState({
+      dragging: false
+    });
+  }
+
   render() {
     const { leftLabel, rightLabel } = this.props;
 
     return (
       <InputGroup className="split-slider">
         <div className="progress-container" ref={this.progressRef}>
-          <ProgressBar onClick={this.handleClick}>
+          <ProgressBar
+            draggable
+            onClick={this.handleClick}
+            onDrag={this.handleDrag}
+            onDragEnd={this.handleDragEnd}
+            onDragStart={this.handleDragStart}
+            onDragEnter={this.handleDragEnter}
+          >
             <ProgressBar
               key={1}
               variant="success"

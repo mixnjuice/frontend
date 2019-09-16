@@ -1,6 +1,6 @@
 .split-slider {
   .progress {
-    cursor: pointer;
+    cursor: col-resize;
     height: 100%;
     width: 100%;
     border: 1px solid $black;
@@ -8,6 +8,7 @@
     border-radius: 0.25rem;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    user-select: none;
 
     &-container {
       height: auto;
