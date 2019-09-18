@@ -130,6 +130,7 @@ export default class SplitSlider extends Component {
             onDragEnd={this.handleDragEnd}
             onDragStart={this.handleDragStart}
             onDragEnter={this.handleDragEnter}
+            onDragOver={event => event.preventDefault()}
           >
             <ProgressBar
               key={1}
