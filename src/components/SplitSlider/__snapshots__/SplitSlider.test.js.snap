@@ -9,7 +9,13 @@ exports[`<SplitSlider /> renders component correctly 1`] = `
   >
     <div
       className="progress"
+      draggable={true}
       onClick={[Function]}
+      onDrag={[Function]}
+      onDragEnd={[Function]}
+      onDragEnter={[Function]}
+      onDragOver={[Function]}
+      onDragStart={[Function]}
     >
       <div
         aria-valuemax={100}
