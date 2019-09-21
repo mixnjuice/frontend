@@ -22,21 +22,28 @@ import IngredientList from 'components/IngredientList/IngredientList';
 import {
   getActiveRecipe,
   getNicotineStrength,
-  getDesiredNicotineStrength
+  getDesiredNicotineStrength,
+  getDesiredVolume
 } from 'selectors/recipe.js';
 import { getStash, isLoaded } from 'selectors/flavor';
 
 export class RecipeEditor extends Component {
   static propTypes = {
     actions: PropTypes.shape({
-      requestStash: PropTypes.func.isRequired
+      requestStash: PropTypes.func.isRequired,
+      setRecipeName: PropTypes.func.isRequired,
+      setDesiredVolume: PropTypes.func.isRequired,
+      setBaseDiluentRatio: PropTypes.func.isRequired,
+      setDesiredDiluentRatio: PropTypes.func.isRequired,
+      setBaseNicotineStrength: PropTypes.func.isRequired,
+      setDesiredNicotineStrength: PropTypes.func.isRequired
     }).isRequired,
     stash: PropTypes.arrayOf(PropTypes.object),
     stashLoaded: PropTypes.bool,
     recipe: PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
-      ingredients: PropTypes.object.isRequired
+      ingredients: PropTypes.arrayOf(PropTypes.object).isRequired
     }),
     nicotineStrength: PropTypes.number.isRequired,
     desiredNicotineStrength: PropTypes.number.isRequired,
@@ -132,11 +139,58 @@ export class RecipeEditor extends Component {
   }
 
   handleUserInput(event) {
+    const { actions } = this.props;
     const {
       target: { name, value }
     } = event;
 
-    this.setState({ [name]: value });
+    switch (name) {
+      case 'name':
+        actions.setRecipeName(value);
+        break;
+      case 'desiredVolume': {
+        const volume = parseInt(value, 10);
+
+        if (volume) {
+          actions.setDesiredVolume(volume);
+        }
+        break;
+      }
+      case 'baseNicotineStrength': {
+        const strength = parseInt(value, 10);
+
+        if (strength) {
+          actions.setBaseNicotineStrength(strength);
+        }
+        break;
+      }
+      case 'desiredNicotineStrength': {
+        const strength = parseInt(value, 10);
+
+        if (strength) {
+          actions.setDesiredNicotineStrength(strength);
+        }
+        break;
+      }
+      case 'baseDiluentRatio': {
+        const ratio = parseFloat(value);
+
+        if (ratio) {
+          actions.setBaseDiluentRatio(ratio);
+        }
+        break;
+      }
+      case 'desiredDiluentRatio': {
+        const ratio = parseFloat(value);
+
+        if (ratio) {
+          actions.setDesiredDiluentRatio(ratio);
+        }
+        break;
+      }
+      default:
+        return;
+    }
   }
 
   handleSubmit(event) {
@@ -177,10 +231,10 @@ export class RecipeEditor extends Component {
                 <Col md="6">
                   <h2>Basic Info</h2>
                   <Form.Row>
-                    <Form.Group as={Col} md="12" controlId="recipeName">
+                    <Form.Group as={Col} md="12" controlId="name">
                       <Form.Label>Recipe Name</Form.Label>
                       <Form.Control
-                        name="recipeName"
+                        name="name"
                         type="text"
                         value={name}
                         onChange={this.handleUserInput}
@@ -194,11 +248,11 @@ export class RecipeEditor extends Component {
                   </Form.Row>
                   <h2>Preparation</h2>
                   <Form.Row>
-                    <Form.Group as={Col} md="4" controlId="amount">
+                    <Form.Group as={Col} md="4" controlId="desiredVolume">
                       <Form.Label>Batch Amount</Form.Label>
                       <InputGroup>
                         <Form.Control
-                          name="amount"
+                          name="desiredVolume"
                           type="number"
                           value={desiredVolume}
                           onChange={this.handleUserInput}
@@ -215,11 +269,15 @@ export class RecipeEditor extends Component {
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
-                    <Form.Group as={Col} md="4" controlId="nicStrength">
+                    <Form.Group
+                      as={Col}
+                      md="4"
+                      controlId="baseNicotineStrength"
+                    >
                       <Form.Label>Base Strength</Form.Label>
                       <InputGroup>
                         <Form.Control
-                          name="nicStrength"
+                          name="baseNicotineStrength"
                           type="number"
                           value={nicotineStrength}
                           onChange={this.handleUserInput}
@@ -235,18 +293,19 @@ export class RecipeEditor extends Component {
                     </Form.Group>
                     <Form.Group as={Col} md="8">
                       <Form.Label>Nicotine PG/VG ratio</Form.Label>
-                      <Field
-                        name="nicotineDiluentRatio"
-                        component={SplitSlider}
-                      />
+                      <Field name="baseDiluentRatio" component={SplitSlider} />
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
-                    <Form.Group as={Col} md="4" controlId="desiredNicStrength">
+                    <Form.Group
+                      as={Col}
+                      md="4"
+                      controlId="desiredNicotineStrength"
+                    >
                       <Form.Label>Desired Strength</Form.Label>
                       <InputGroup>
                         <Form.Control
-                          name="desiredNicStrength"
+                          name="desiredNicotineStrength"
                           type="number"
                           value={desiredNicotineStrength}
                           onChange={this.handleUserInput}
@@ -369,7 +428,8 @@ const mapStateToProps = state => ({
   stashLoaded: isLoaded(state),
   recipe: getActiveRecipe(state),
   nicotineStrength: getNicotineStrength(state),
-  desiredNicotineStrength: getDesiredNicotineStrength(state)
+  desiredNicotineStrength: getDesiredNicotineStrength(state),
+  desiredVolume: getDesiredVolume(state)
 });
 
 const mapDispatchToProps = dispatch => ({
