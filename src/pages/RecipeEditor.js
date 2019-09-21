@@ -227,7 +227,9 @@ export class RecipeEditor extends Component {
                           required
                         />
                         <InputGroup.Append>
-                          <InputGroup.Text id="amount-unit">mg</InputGroup.Text>
+                          <InputGroup.Text id="amount-unit">
+                            mg/ml
+                          </InputGroup.Text>
                         </InputGroup.Append>
                       </InputGroup>
                     </Form.Group>
@@ -252,7 +254,9 @@ export class RecipeEditor extends Component {
                           required
                         />
                         <InputGroup.Append>
-                          <InputGroup.Text id="amount-unit">mg</InputGroup.Text>
+                          <InputGroup.Text id="amount-unit">
+                            mg/ml
+                          </InputGroup.Text>
                         </InputGroup.Append>
                       </InputGroup>
                     </Form.Group>
