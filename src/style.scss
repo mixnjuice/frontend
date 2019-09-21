@@ -142,14 +142,6 @@ hr {
   background-color: $teal;
 }
 
-// Changing disabled buttons to grey
-.btn-primary.disabled,
-.btn-primary:disabled {
-  color: gray("800");
-  background-color: gray("300");
-  border-color: gray("800");
-}
-
 // Changing the border of any form fields
 .form-control {
   outline: 0 none;
@@ -283,8 +275,19 @@ input {
   height: 40px;
   padding: 0 14px;
   line-height: auto;
-  background: $teal;
   border: 1px solid $black;
+
+  &-primary {
+    background: $teal;
+
+    // Changing disabled buttons to grey
+    &.disabled,
+    &:disabled {
+      color: gray("800");
+      background-color: gray("300");
+      border-color: gray("800");
+    }
+  }
 }
 
 // Button animations
