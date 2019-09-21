@@ -39,14 +39,14 @@ export class RecipeEditor extends Component {
       ingredients: PropTypes.object.isRequired
     }),
     nicotineStrength: PropTypes.number.isRequired,
-    desiredNicotineStrength: PropTypes.number.isRequired
+    desiredNicotineStrength: PropTypes.number.isRequired,
+    desiredVolume: PropTypes.number.isRequired
   };
 
   constructor(props) {
     super(props);
 
     this.state = {
-      ingredients: [],
       searchStash: '',
       showStash: false
     };
@@ -75,35 +75,42 @@ export class RecipeEditor extends Component {
     const {
       target: { name }
     } = event;
-    const { ingredients, flavors } = this.state;
+    const {
+      recipe: { ingredients },
+      stashLoaded,
+      stash
+    } = this.props;
+
+    if (!stashLoaded) {
+      return;
+    }
+
     const existing = ingredients.find(ingredient => ingredient.mix_id === name);
 
     if (existing) {
       return;
     }
 
-    const toAdd = flavors.find(flavor => flavor.mix_id === name);
+    const toAdd = stash.find(flavor => flavor.mix_id === name);
 
     ingredients.push(toAdd);
-
-    this.setState({
-      ingredients
-    });
   }
 
   removeIngredient(event) {
-    const { ingredients } = this.state;
+    const { recipe } = this.props;
     const {
       target: { name }
     } = event;
 
-    this.setState({
-      ingredients: ingredients.filter(ingredient => ingredient.mix_id !== name)
-    });
+    recipe.ingredients = recipe.ingredients.filter(
+      ingredient => ingredient.mix_id !== name
+    );
   }
 
   hasIngredient(event) {
-    const { ingredients } = this.state;
+    const {
+      recipe: { ingredients }
+    } = this.props;
     const {
       target: { name }
     } = event;
@@ -144,6 +151,21 @@ export class RecipeEditor extends Component {
   }
 
   render() {
+    const {
+      recipe,
+      stash,
+      desiredVolume,
+      desiredNicotineStrength,
+      nicotineStrength
+    } = this.props;
+    const { name, ingredients } = recipe;
+
+    const filteredStash = stash.filter(flavor => {
+      const stashSlug = `${flavor.vendor.abbreviation} ${flavor.name}`.toLowerCase();
+
+      return stashSlug.includes(this.state.searchStash.toLowerCase());
+    });
+
     return (
       <Container className="recipe-editor">
         <Helmet title="Recipe Editor" />
@@ -160,7 +182,7 @@ export class RecipeEditor extends Component {
                       <Form.Control
                         name="recipeName"
                         type="text"
-                        value={this.state.receipeName}
+                        value={name}
                         onChange={this.handleUserInput}
                         placeholder="Recipe Name"
                         required
@@ -178,7 +200,7 @@ export class RecipeEditor extends Component {
                         <Form.Control
                           name="amount"
                           type="number"
-                          value={this.state.amount}
+                          value={desiredVolume}
                           onChange={this.handleUserInput}
                           placeholder="0"
                           required
@@ -199,7 +221,7 @@ export class RecipeEditor extends Component {
                         <Form.Control
                           name="nicStrength"
                           type="number"
-                          value={this.state.nicStrength}
+                          value={nicotineStrength}
                           onChange={this.handleUserInput}
                           placeholder="0"
                           required
@@ -224,7 +246,7 @@ export class RecipeEditor extends Component {
                         <Form.Control
                           name="desiredNicStrength"
                           type="number"
-                          value={this.state.desiredNicStrength}
+                          value={desiredNicotineStrength}
                           onChange={this.handleUserInput}
                           placeholder="0"
                           required
@@ -244,99 +266,90 @@ export class RecipeEditor extends Component {
                   </Form.Row>
                 </Col>
                 <Col md="6">
-                  <h2>Flavor Stash</h2>
-                  <Button
-                    variant="info"
-                    className="button-animation"
-                    size="sm"
-                    onClick={this.toggleStashVisibility}
-                  >
-                    <span>{this.state.showStash ? 'Hide' : 'Show'}</span>
-                  </Button>
                   <Container>
                     <Row>
-                      <Col md="8">
-                        {this.state.showStash && (
-                          <Fragment>
-                            <Form.Row>
-                              <Form.Group
-                                as={Col}
-                                md="4"
-                                controlId="searchStash"
-                              >
-                                <Form.Label>Search your stash</Form.Label>
-                                <InputGroup>
-                                  <Form.Control
-                                    name="searchStash"
-                                    type="text"
-                                    placeholder="TFA Bacon"
-                                    onChange={this.handleUserInput}
-                                  />
-                                </InputGroup>
-                              </Form.Group>
-                            </Form.Row>
-                            <Table size="sm" borderless striped>
-                              <tbody>
-                                {this.state.stash.map((flavor, index) => {
-                                  if (
-                                    flavor.name
-                                      .toLowerCase()
-                                      .includes(
-                                        this.state.searchStash.toLowerCase()
-                                      ) ||
-                                    (
-                                      flavor.vendor.abbreviation +
-                                      ' ' +
-                                      flavor.name
-                                    )
-                                      .toLowerCase()
-                                      .includes(
-                                        this.state.searchStash.toLowerCase()
-                                      )
-                                  ) {
-                                    return (
-                                      <tr key={index}>
-                                        <td>{flavor.vendor.name}</td>
-                                        <td>{flavor.name}</td>
-                                        <td>
-                                          <Button
-                                            className="button-animation"
-                                            onClick={this.addIngredient}
-                                            name={flavor.mix_id}
-                                          >
-                                            <FontAwesomeIcon icon="plus" />
-                                          </Button>
-                                        </td>
-                                      </tr>
-                                    );
-                                  }
-                                })}
-                              </tbody>
-                            </Table>
-                          </Fragment>
-                        )}
-                      </Col>
-                    </Row>
-                  </Container>
-                  <Container>
-                    <Row>
-                      <Col md="8">
+                      <Col md="12">
                         <h2>Ingredients</h2>
                         <IngredientList
-                          ingredients={this.state.ingredients}
+                          ingredients={ingredients}
                           onRemoveClick={this.removeIngredient}
                         />
                       </Col>
                     </Row>
+                    <Row>
+                      <Col md="12">
+                        <h2>Flavor Stash</h2>
+                        <Button
+                          variant="info"
+                          className="button-animation"
+                          size="sm"
+                          onClick={this.toggleStashVisibility}
+                        >
+                          <span>{this.state.showStash ? 'Hide' : 'Show'}</span>
+                        </Button>
+                        <Container>
+                          <Row>
+                            <Col md="8">
+                              {this.state.showStash && (
+                                <Fragment>
+                                  <Form.Row>
+                                    <Form.Group
+                                      as={Col}
+                                      md="4"
+                                      controlId="searchStash"
+                                    >
+                                      <Form.Label>Search your stash</Form.Label>
+                                      <InputGroup>
+                                        <Form.Control
+                                          name="searchStash"
+                                          type="text"
+                                          placeholder="TFA Bacon"
+                                          onChange={this.handleUserInput}
+                                        />
+                                      </InputGroup>
+                                    </Form.Group>
+                                  </Form.Row>
+                                  <Table size="sm" borderless striped>
+                                    <tbody>
+                                      {filteredStash.map(flavor => (
+                                        <tr key={flavor.mix_id}>
+                                          <td>{flavor.vendor.name}</td>
+                                          <td>{flavor.name}</td>
+                                          <td>
+                                            <Button
+                                              className="button-animation"
+                                              onClick={this.addIngredient}
+                                              name={flavor.mix_id}
+                                            >
+                                              <FontAwesomeIcon icon="plus" />
+                                            </Button>
+                                          </td>
+                                        </tr>
+                                      ))}
+                                    </tbody>
+                                  </Table>
+                                </Fragment>
+                              )}
+                            </Col>
+                          </Row>
+                        </Container>
+                      </Col>
+                    </Row>
                   </Container>
-                  <Form.Row>
-                    <Form.Group as={Col} md="2">
-                      <Button className="button-animation" type="submit">
-                        <span>Save</span>
-                      </Button>
-                      &nbsp;
-                    </Form.Group>
-                  </Form.Row>
+                </Col>
+              </Row>
+              <Row>
+                <Col md="12" className="border-top pt-2 text-right">
+                  <Button
+                    variant="danger"
+                    className="button-animation mr-2"
+                    type="submit"
+                  >
+                    Delete
+                  </Button>
+                  <Button className="button-animation" type="submit">
+                    Save
+                  </Button>
                 </Col>
               </Row>
             </form>
