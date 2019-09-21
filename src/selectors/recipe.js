@@ -17,6 +17,21 @@ export const getActiveRecipe = createSelector(
   recipe => recipe.active
 );
 
+export const getRecipeId = createSelector(
+  getActiveRecipe,
+  active => active.id
+);
+
+export const getRecipeName = createSelector(
+  getActiveRecipe,
+  active => active.name
+);
+
+export const getRecipeIngredients = createSelector(
+  getActiveRecipe,
+  active => active.ingredients
+);
+
 export const getError = createSelector(
   getRecipe,
   recipe => recipe.error
