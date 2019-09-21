@@ -1,6 +1,9 @@
 import { buildActions } from 'utils';
 
 export const types = buildActions('recipe', [
+  'CREATE_RECIPE',
+  'CREATE_RECIPE_SUCCESS',
+  'CREATE_RECIPE_FAILURE',
   'EDIT_RECIPE',
   'EDIT_RECIPE_SUCCESS',
   'EDIT_RECIPE_FAILURE',
@@ -14,6 +17,18 @@ export const types = buildActions('recipe', [
   'UPDATE_RECIPE_SUCCESS',
   'UPDATE_RECIPE_FAILURE'
 ]);
+
+const createRecipe = () => ({
+  type: types.CREATE_RECIPE
+});
+
+const createRecipeSuccess = () => ({
+  type: types.CREATE_RECIPE_SUCCESS
+});
+
+const createRecipeFailure = () => ({
+  type: types.CREATE_RECIPE_FAILURE
+});
 
 const editRecipe = () => ({
   type: types.EDIT_RECIPE
@@ -72,6 +87,9 @@ const updateRecipeFailure = error => ({
 });
 
 export const actions = {
+  createRecipe,
+  createRecipeSuccess,
+  createRecipeFailure,
   editRecipe,
   editRecipeSuccess,
   editRecipeFailure,
@@ -89,7 +107,11 @@ export const actions = {
 export const initialState = {
   savePoint: null,
   editing: false,
-  active: null,
+  active: {
+    id: null,
+    name: '',
+    ingredients: []
+  },
   error: null,
   desired: {
     nicotineStrength: 0,
@@ -104,6 +126,15 @@ export const initialState = {
 
 export const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case types.CREATE_RECIPE_SUCCESS:
+      return {
+        ...state,
+        active: {
+          id: null,
+          name: '',
+          ingredients: []
+        }
+      };
     case types.EDIT_RECIPE_SUCCESS:
       if (state.editing) {
         return state;
