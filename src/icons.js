@@ -11,7 +11,8 @@ import {
   faTimesCircle,
   faPlus,
   faTrash,
-  faUndo
+  faUndo,
+  faSearch
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faHeart as farHeart,
@@ -36,7 +37,8 @@ library.add(
   faSquare,
   faPlus,
   faTrash,
-  faUndo
+  faUndo,
+  faSearch
 );
 
 export default library;

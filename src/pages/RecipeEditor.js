@@ -11,7 +11,8 @@ import {
   Row,
   Table
 } from 'react-bootstrap';
-import React, { Component, Fragment } from 'react';
+import debounce from 'lodash.debounce';
+import React, { Component } from 'react';
 import { Form as FinalForm, Field } from 'react-final-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -57,10 +58,11 @@ export class RecipeEditor extends Component {
       searchStash: '',
       showStash: false
     };
+    this.debounceInterval = 250;
 
     this.addIngredient = this.addIngredient.bind(this);
-    this.removeIngredient = this.removeIngredient.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
+    this.removeIngredient = this.removeIngredient.bind(this);
     this.toggleStashVisibility = this.toggleStashVisibility.bind(this);
   }
 
@@ -145,6 +147,11 @@ export class RecipeEditor extends Component {
     } = event;
 
     switch (name) {
+      case 'searchStash':
+        this.setState({
+          searchStash: value
+        });
+        break;
       case 'name':
         actions.setRecipeName(value);
         break;
@@ -212,13 +219,21 @@ export class RecipeEditor extends Component {
       desiredNicotineStrength,
       nicotineStrength
     } = this.props;
-    const { name, ingredients } = recipe;
+    const { name: recipeName, ingredients } = recipe;
 
-    const filteredStash = stash.filter(flavor => {
-      const stashSlug = `${flavor.vendor.abbreviation} ${flavor.name}`.toLowerCase();
+    const filteredStash = stash
+      .filter(flavor => {
+        const {
+          Flavor: {
+            Vendor: { code: vendorCode, name: vendorName },
+            name: flavorName
+          }
+        } = flavor;
+        const stashSlug = `${vendorName} ${vendorCode} ${flavorName}`.toLowerCase();
 
-      return stashSlug.includes(this.state.searchStash.toLowerCase());
-    });
+        return stashSlug.includes(this.state.searchStash.toLowerCase());
+      })
+      .slice(0, 10);
 
     return (
       <Container className="recipe-editor">
@@ -236,7 +251,7 @@ export class RecipeEditor extends Component {
                       <Form.Control
                         name="name"
                         type="text"
-                        value={name}
+                        value={recipeName}
                         onChange={this.handleUserInput}
                         placeholder="Recipe Name"
                         required
@@ -286,13 +301,13 @@ export class RecipeEditor extends Component {
                         />
                         <InputGroup.Append>
                           <InputGroup.Text id="amount-unit">
-                            mg/ml
+                            mg/mL
                           </InputGroup.Text>
                         </InputGroup.Append>
                       </InputGroup>
                     </Form.Group>
                     <Form.Group as={Col} md="8">
-                      <Form.Label>Nicotine PG/VG ratio</Form.Label>
+                      <Form.Label>Nicotine VG/PG ratio</Form.Label>
                       <Field name="baseDiluentRatio" component={SplitSlider} />
                     </Form.Group>
                   </Form.Row>
@@ -314,13 +329,13 @@ export class RecipeEditor extends Component {
                         />
                         <InputGroup.Append>
                           <InputGroup.Text id="amount-unit">
-                            mg/ml
+                            mg/mL
                           </InputGroup.Text>
                         </InputGroup.Append>
                       </InputGroup>
                     </Form.Group>
                     <Form.Group as={Col} md="8">
-                      <Form.Label>Desired PG/VG ratio</Form.Label>
+                      <Form.Label>Desired VG/PG ratio</Form.Label>
                       <Field
                         name="desiredDiluentRatio"
                         component={SplitSlider}
@@ -340,62 +355,74 @@ export class RecipeEditor extends Component {
                       </Col>
                     </Row>
                     <Row>
-                      <Col md="12">
+                      <Col md="6" sm="3">
                         <h2>Flavor Stash</h2>
-                        <Button
-                          variant="info"
-                          className="button-animation"
-                          size="sm"
-                          onClick={this.toggleStashVisibility}
-                        >
-                          <span>{this.state.showStash ? 'Hide' : 'Show'}</span>
-                        </Button>
-                        <Container>
-                          <Row>
-                            <Col md="8">
-                              {this.state.showStash && (
-                                <Fragment>
-                                  <Form.Row>
-                                    <Form.Group
-                                      as={Col}
-                                      md="4"
-                                      controlId="searchStash"
-                                    >
-                                      <Form.Label>Search your stash</Form.Label>
-                                      <InputGroup>
-                                        <Form.Control
-                                          name="searchStash"
-                                          type="text"
-                                          placeholder="TFA Bacon"
-                                          onChange={this.handleUserInput}
-                                        />
-                                      </InputGroup>
-                                    </Form.Group>
-                                  </Form.Row>
-                                  <Table size="sm" borderless striped>
-                                    <tbody>
-                                      {filteredStash.map(flavor => (
-                                        <tr key={flavor.mix_id}>
-                                          <td>{flavor.vendor.name}</td>
-                                          <td>{flavor.name}</td>
-                                          <td>
-                                            <Button
-                                              className="button-animation"
-                                              onClick={this.addIngredient}
-                                              name={flavor.mix_id}
-                                            >
-                                              <FontAwesomeIcon icon="plus" />
-                                            </Button>
-                                          </td>
-                                        </tr>
-                                      ))}
-                                    </tbody>
-                                  </Table>
-                                </Fragment>
-                              )}
-                            </Col>
-                          </Row>
-                        </Container>
+                      </Col>
+                      <Form.Group
+                        as={Col}
+                        md="6"
+                        sm="9"
+                        controlId="searchStash"
+                      >
+                        <InputGroup>
+                          <InputGroup.Prepend>
+                            <InputGroup.Text>
+                              <FontAwesomeIcon icon="search" />
+                            </InputGroup.Text>
+                          </InputGroup.Prepend>
+                          <Form.Control
+                            name="searchStash"
+                            type="text"
+                            placeholder="Search stash..."
+                            onChange={event => {
+                              event.persist();
+
+                              debounce(
+                                this.handleUserInput,
+                                this.debounceInterval
+                              )(event);
+                            }}
+                          />
+                        </InputGroup>
+                      </Form.Group>
+                      <Col md="12">
+                        <Table size="sm" borderless striped>
+                          <thead>
+                            <tr>
+                              <th>Vendor</th>
+                              <th>Flavor</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {filteredStash.length > 0 ? (
+                              filteredStash.map(flavor => {
+                                const {
+                                  Flavor: { id, Vendor: vendor, name }
+                                } = flavor;
+
+                                return (
+                                  <tr key={id}>
+                                    <td>{vendor.name}</td>
+                                    <td>{name}</td>
+                                    <td>
+                                      <Button
+                                        className="button-animation"
+                                        onClick={this.addIngredient}
+                                        name={id}
+                                      >
+                                        <FontAwesomeIcon icon="plus" />
+                                      </Button>
+                                    </td>
+                                  </tr>
+                                );
+                              })
+                            ) : (
+                              <tr>
+                                <td colSpan="3">No results!</td>
+                              </tr>
+                            )}
+                          </tbody>
+                        </Table>
                       </Col>
                     </Row>
                   </Container>
