@@ -277,6 +277,11 @@ input {
   line-height: auto;
   border: 1px solid $black;
 
+  > * {
+    z-index: 2;
+    position: relative;
+  }
+
   &-primary {
     background: $teal;
 
@@ -335,6 +340,7 @@ input {
     transform: translateX(-100%);
     background: $baby-blue;
     transition: transform 0.2s ease-in-out;
+    z-index: 1;
   }
 
   &:hover,
