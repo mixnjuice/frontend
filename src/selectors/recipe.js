@@ -69,7 +69,7 @@ export const getDesiredNicotineStrength = createSelector(
 
 export const getDesiredDiluentRatio = createSelector(
   getDesired,
-  desired => desired.dluentRatio
+  desired => desired.diluentRatio
 );
 
 export const getDesiredVolume = createSelector(
