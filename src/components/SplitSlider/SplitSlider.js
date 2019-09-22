@@ -7,10 +7,12 @@ export default class SplitSlider extends Component {
   static propTypes = {
     tickInterval: PropTypes.number.isRequired,
     leftLabel: PropTypes.string.isRequired,
-    rightLabel: PropTypes.string.isRequired
+    rightLabel: PropTypes.string.isRequired,
+    initialValue: PropTypes.number.isRequired
   };
 
   static defaultProps = {
+    value: 50,
     tickInterval: 5,
     leftLabel: 'VG',
     rightLabel: 'PG'
@@ -20,7 +22,7 @@ export default class SplitSlider extends Component {
     super(props);
 
     this.progressRef = React.createRef();
-    this.state = { value: 50, dragging: false };
+    this.state = { value: this.props.initialValue, dragging: false };
     this.emptyCanvas = document.createElement('canvas');
     this.handleDrag = this.handleDrag.bind(this);
     this.handleClick = this.handleClick.bind(this);
