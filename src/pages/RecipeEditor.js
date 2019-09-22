@@ -13,18 +13,21 @@ import {
 } from 'react-bootstrap';
 import debounce from 'lodash.debounce';
 import React, { Component } from 'react';
-import { Form as FinalForm, Field } from 'react-final-form';
+import { Form as FinalForm } from 'react-final-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { actions as recipeActions } from 'reducers/recipe';
 import { actions as flavorActions } from 'reducers/flavor';
 import SplitSlider from 'components/SplitSlider/SplitSlider';
+import IngredientBar from 'components/IngredientBar/IngredientBar';
 import IngredientList from 'components/IngredientList/IngredientList';
 import {
   getActiveRecipe,
   getNicotineStrength,
   getDesiredNicotineStrength,
-  getDesiredVolume
+  getDesiredVolume,
+  getNicotineDiluentRatio,
+  getDesiredDiluentRatio
 } from 'selectors/recipe.js';
 import { getStash, isLoaded } from 'selectors/flavor';
 
@@ -44,11 +47,14 @@ export class RecipeEditor extends Component {
     recipe: PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
-      ingredients: PropTypes.arrayOf(PropTypes.object).isRequired
+      ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
+      percentages: PropTypes.arrayOf(PropTypes.object).isRequired
     }),
     nicotineStrength: PropTypes.number.isRequired,
     desiredNicotineStrength: PropTypes.number.isRequired,
-    desiredVolume: PropTypes.number.isRequired
+    desiredVolume: PropTypes.number.isRequired,
+    desiredDiluentRatio: PropTypes.number.isRequired,
+    nicotineDiluentRatio: PropTypes.number.isRequired
   };
 
   constructor(props) {
@@ -211,13 +217,57 @@ export class RecipeEditor extends Component {
     this.setState({ validated: true });
   }
 
+  get percentages() {
+    const {
+      desiredVolume,
+      desiredNicotineStrength,
+      nicotineStrength,
+      desiredDiluentRatio,
+      nicotineDiluentRatio,
+      recipe: { percentages }
+    } = this.props;
+
+    let flavorPercent = 0;
+
+    if (percentages.length > 0) {
+      flavorPercent = percentages.reduce((acc, curr) => {
+        return acc + curr.millipercent / 100;
+      }, 0);
+    }
+
+    // determine how many mg of nicotine we need
+    const nicotineMg = desiredNicotineStrength * desiredVolume;
+    // determine how many ml of nicotine base we need
+    const baseNicotineMl = nicotineMg / nicotineStrength;
+    // calculate the percentage of the final mix that will be nicotine
+    const nicotinePercent = baseNicotineMl / desiredVolume;
+    // determine how much of that is VG
+    const nicotineVgPercent = nicotinePercent * nicotineDiluentRatio;
+    // figure out the remaining amounts of VG and PG
+    const remainingVgPercent = desiredDiluentRatio - nicotineVgPercent;
+    const remainingPgPercent = 1 - desiredDiluentRatio - flavorPercent;
+
+    if (remainingVgPercent < 0 || remainingPgPercent < 0) {
+      return {};
+    }
+
+    return {
+      nicotine: nicotinePercent * 100,
+      flavor: flavorPercent * 100,
+      vg: remainingVgPercent * 100,
+      pg: remainingPgPercent * 100
+    };
+  }
+
   render() {
     const {
       recipe,
       stash,
       desiredVolume,
       desiredNicotineStrength,
-      nicotineStrength
+      nicotineStrength,
+      nicotineDiluentRatio,
+      desiredDiluentRatio
     } = this.props;
     const { name: recipeName, ingredients } = recipe;
 
@@ -308,7 +358,7 @@ export class RecipeEditor extends Component {
                     </Form.Group>
                     <Form.Group as={Col} md="8">
                       <Form.Label>Nicotine VG/PG ratio</Form.Label>
-                      <Field name="baseDiluentRatio" component={SplitSlider} />
+                      <SplitSlider initialValue={nicotineDiluentRatio * 100} />
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -336,10 +386,7 @@ export class RecipeEditor extends Component {
                     </Form.Group>
                     <Form.Group as={Col} md="8">
                       <Form.Label>Desired VG/PG ratio</Form.Label>
-                      <Field
-                        name="desiredDiluentRatio"
-                        component={SplitSlider}
-                      />
+                      <SplitSlider initialValue={desiredDiluentRatio * 100} />
                     </Form.Group>
                   </Form.Row>
                 </Col>
@@ -425,6 +472,11 @@ export class RecipeEditor extends Component {
                         </Table>
                       </Col>
                     </Row>
+                    <Row>
+                      <Col md="12">
+                        <IngredientBar {...this.percentages} />
+                      </Col>
+                    </Row>
                   </Container>
                 </Col>
               </Row>
@@ -456,7 +508,9 @@ const mapStateToProps = state => ({
   recipe: getActiveRecipe(state),
   nicotineStrength: getNicotineStrength(state),
   desiredNicotineStrength: getDesiredNicotineStrength(state),
-  desiredVolume: getDesiredVolume(state)
+  desiredVolume: getDesiredVolume(state),
+  nicotineDiluentRatio: getNicotineDiluentRatio(state),
+  desiredDiluentRatio: getDesiredDiluentRatio(state)
 });
 
 const mapDispatchToProps = dispatch => ({
