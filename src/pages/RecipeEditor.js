@@ -487,10 +487,10 @@ export class RecipeEditor extends Component {
                     className="button-animation mr-2"
                     type="submit"
                   >
-                    Delete
+                    <span>Delete</span>
                   </Button>
                   <Button className="button-animation" type="submit">
-                    Save
+                    <span>Save</span>
                   </Button>
                 </Col>
               </Row>
