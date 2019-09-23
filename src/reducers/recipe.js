@@ -159,7 +159,8 @@ export const initialState = {
   active: {
     id: null,
     name: '',
-    ingredients: []
+    ingredients: [],
+    percentages: []
   },
   error: null,
   desired: {
