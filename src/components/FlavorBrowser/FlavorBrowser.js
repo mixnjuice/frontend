@@ -46,9 +46,6 @@ export class FlavorBrowser extends Component {
   }
 
   addIngredient(name) {
-    // const {
-    //   target: { name }
-    // } = event;
     const {
       recipe: { ingredients },
       stashLoaded,
@@ -65,16 +62,12 @@ export class FlavorBrowser extends Component {
     );
 
     if (existing) {
-      // eslint-disable-next-line
-      console.log('existing flavor');
       return;
     }
 
     const toAdd = stash.find(flavor => flavor.Flavor.id === name);
 
     if (!toAdd) {
-      // eslint-disable-next-line
-      console.dir(name);
       return;
     }
 
@@ -93,6 +86,10 @@ export class FlavorBrowser extends Component {
 
   get filteredStash() {
     const { stash } = this.props;
+
+    if (!Array.isArray(stash) || stash.length === 0) {
+      return [];
+    }
 
     return stash.filter(flavor => {
       const {
