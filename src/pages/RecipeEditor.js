@@ -2,23 +2,13 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {
-  Button,
-  Col,
-  Container,
-  InputGroup,
-  Form,
-  Row,
-  Table
-} from 'react-bootstrap';
-import debounce from 'lodash.debounce';
+import { Button, Col, Container, InputGroup, Form, Row } from 'react-bootstrap';
 import React, { Component } from 'react';
 import { Form as FinalForm } from 'react-final-form';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { actions as recipeActions } from 'reducers/recipe';
-import { actions as flavorActions } from 'reducers/flavor';
 import SplitSlider from 'components/SplitSlider/SplitSlider';
+import FlavorBrowser from 'components/FlavorBrowser/FlavorBrowser';
 import IngredientBar from 'components/IngredientBar/IngredientBar';
 import IngredientList from 'components/IngredientList/IngredientList';
 import {
@@ -28,13 +18,11 @@ import {
   getDesiredVolume,
   getNicotineDiluentRatio,
   getDesiredDiluentRatio
-} from 'selectors/recipe.js';
-import { getStash, isLoaded } from 'selectors/flavor';
+} from 'selectors/recipe';
 
 export class RecipeEditor extends Component {
   static propTypes = {
     actions: PropTypes.shape({
-      requestStash: PropTypes.func.isRequired,
       setRecipeName: PropTypes.func.isRequired,
       setDesiredVolume: PropTypes.func.isRequired,
       setBaseDiluentRatio: PropTypes.func.isRequired,
@@ -42,8 +30,6 @@ export class RecipeEditor extends Component {
       setBaseNicotineStrength: PropTypes.func.isRequired,
       setDesiredNicotineStrength: PropTypes.func.isRequired
     }).isRequired,
-    stash: PropTypes.arrayOf(PropTypes.object),
-    stashLoaded: PropTypes.bool,
     recipe: PropTypes.shape({
       id: PropTypes.string,
       name: PropTypes.string,
@@ -60,66 +46,7 @@ export class RecipeEditor extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      searchStash: '',
-      showStash: false
-    };
-    this.debounceInterval = 250;
-
-    this.addIngredient = this.addIngredient.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
-    this.removeIngredient = this.removeIngredient.bind(this);
-    this.toggleStashVisibility = this.toggleStashVisibility.bind(this);
-  }
-
-  componentDidMount() {
-    const { stashLoaded, actions } = this.props;
-
-    if (!stashLoaded) {
-      actions.requestStash();
-    }
-  }
-
-  toggleStashVisibility() {
-    const { showStash } = this.state;
-
-    this.setState({ showStash: !showStash });
-  }
-
-  addIngredient(event) {
-    const {
-      target: { name }
-    } = event;
-    const {
-      recipe: { ingredients },
-      stashLoaded,
-      stash
-    } = this.props;
-
-    if (!stashLoaded) {
-      return;
-    }
-
-    const existing = ingredients.find(ingredient => ingredient.mix_id === name);
-
-    if (existing) {
-      return;
-    }
-
-    const toAdd = stash.find(flavor => flavor.mix_id === name);
-
-    ingredients.push(toAdd);
-  }
-
-  removeIngredient(event) {
-    const { recipe } = this.props;
-    const {
-      target: { name }
-    } = event;
-
-    recipe.ingredients = recipe.ingredients.filter(
-      ingredient => ingredient.mix_id !== name
-    );
   }
 
   hasIngredient(event) {
@@ -130,8 +57,7 @@ export class RecipeEditor extends Component {
       target: { name }
     } = event;
 
-    return ingredients.find(ingredient => ingredient.mix_id === name) !==
-      undefined
+    return ingredients.find(ingredient => ingredient.id === name) !== undefined
       ? 'disabled'
       : null;
   }
@@ -153,11 +79,6 @@ export class RecipeEditor extends Component {
     } = event;
 
     switch (name) {
-      case 'searchStash':
-        this.setState({
-          searchStash: value
-        });
-        break;
       case 'name':
         actions.setRecipeName(value);
         break;
@@ -262,7 +183,6 @@ export class RecipeEditor extends Component {
   render() {
     const {
       recipe,
-      stash,
       desiredVolume,
       desiredNicotineStrength,
       nicotineStrength,
@@ -270,20 +190,6 @@ export class RecipeEditor extends Component {
       desiredDiluentRatio
     } = this.props;
     const { name: recipeName, ingredients } = recipe;
-
-    const filteredStash = stash
-      .filter(flavor => {
-        const {
-          Flavor: {
-            Vendor: { code: vendorCode, name: vendorName },
-            name: flavorName
-          }
-        } = flavor;
-        const stashSlug = `${vendorName} ${vendorCode} ${flavorName}`.toLowerCase();
-
-        return stashSlug.includes(this.state.searchStash.toLowerCase());
-      })
-      .slice(0, 10);
 
     return (
       <Container className="recipe-editor">
@@ -405,72 +311,7 @@ export class RecipeEditor extends Component {
                       <Col md="6" sm="3">
                         <h2>Flavor Stash</h2>
                       </Col>
-                      <Form.Group
-                        as={Col}
-                        md="6"
-                        sm="9"
-                        controlId="searchStash"
-                      >
-                        <InputGroup>
-                          <InputGroup.Prepend>
-                            <InputGroup.Text>
-                              <FontAwesomeIcon icon="search" />
-                            </InputGroup.Text>
-                          </InputGroup.Prepend>
-                          <Form.Control
-                            name="searchStash"
-                            type="text"
-                            placeholder="Search stash..."
-                            onChange={event => {
-                              event.persist();
-
-                              debounce(
-                                this.handleUserInput,
-                                this.debounceInterval
-                              )(event);
-                            }}
-                          />
-                        </InputGroup>
-                      </Form.Group>
-                      <Col md="12">
-                        <Table size="sm" borderless striped>
-                          <thead>
-                            <tr>
-                              <th>Vendor</th>
-                              <th>Flavor</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {filteredStash.length > 0 ? (
-                              filteredStash.map(flavor => {
-                                const {
-                                  Flavor: { id, Vendor: vendor, name }
-                                } = flavor;
-
-                                return (
-                                  <tr key={id}>
-                                    <td>{vendor.name}</td>
-                                    <td>{name}</td>
-                                    <td>
-                                      <Button
-                                        className="button-animation"
-                                        onClick={this.addIngredient}
-                                        name={id}
-                                      >
-                                        <FontAwesomeIcon icon="plus" />
-                                      </Button>
-                                    </td>
-                                  </tr>
-                                );
-                              })
-                            ) : (
-                              <tr>
-                                <td colSpan="3">No results!</td>
-                              </tr>
-                            )}
-                          </tbody>
-                        </Table>
-                      </Col>
+                      <FlavorBrowser onAddIngredient={this.addIngredient} />
                     </Row>
                     <Row>
                       <Col md="12">
@@ -503,8 +344,6 @@ export class RecipeEditor extends Component {
 }
 
 const mapStateToProps = state => ({
-  stash: getStash(state),
-  stashLoaded: isLoaded(state),
   recipe: getActiveRecipe(state),
   nicotineStrength: getNicotineStrength(state),
   desiredNicotineStrength: getDesiredNicotineStrength(state),
@@ -514,13 +353,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(
-    {
-      ...recipeActions,
-      ...flavorActions
-    },
-    dispatch
-  )
+  actions: bindActionCreators(recipeActions, dispatch)
 });
 
 export default connect(

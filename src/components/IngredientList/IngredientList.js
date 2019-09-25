@@ -1,18 +1,18 @@
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Table, InputGroup, Form } from 'react-bootstrap';
 
-export default class IngredientList extends Component {
+import { actions as recipeActions } from 'reducers/recipe';
+
+export class IngredientList extends Component {
   static propTypes = {
-    ingredients: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        vendor: PropTypes.object.isRequired,
-        percentage: PropTypes.number.isRequired
-      })
-    ).isRequired,
+    actions: PropTypes.shape({
+      setRecipeIngredients: PropTypes.func.isRequired
+    }),
+    ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
     onRemoveClick: PropTypes.func
   };
 
@@ -23,7 +23,19 @@ export default class IngredientList extends Component {
   constructor(props) {
     super(props);
 
+    this.removeIngredient = this.removeIngredient.bind(this);
     this.handlePercentChange = this.handlePercentChange.bind(this);
+  }
+
+  removeIngredient(event) {
+    const { ingredients, actions } = this.props;
+    const {
+      target: { name }
+    } = event;
+
+    actions.setRecipeIngredients(
+      ingredients.filter(ingredient => ingredient.id !== name)
+    );
   }
 
   handlePercentChange(event) {
@@ -43,38 +55,54 @@ export default class IngredientList extends Component {
     const { ingredients, onRemoveClick } = this.props;
 
     return (
-      <Table borderless>
+      <Table striped>
         <tbody>
-          {ingredients.map(ingredient => (
-            <tr key={ingredient.id}>
-              <td>
-                {ingredient.vendor.name} {ingredient.name}
-              </td>
-              <td className="recipe-percent">
-                <InputGroup>
-                  <Form.Control
-                    step="0.1"
-                    name={ingredient.id}
-                    type="number"
-                    value={ingredient.percentage}
-                    onChange={this.handlePercentChange}
-                    placeholder="0"
-                    required
-                  />
-                  <InputGroup.Append>
-                    <InputGroup.Text>%</InputGroup.Text>
-                  </InputGroup.Append>
-                </InputGroup>
-              </td>
-              <td>
-                <Button className="button-animation" onClick={onRemoveClick}>
-                  <FontAwesomeIcon icon="trash" />
-                </Button>
-              </td>
-            </tr>
-          ))}
+          {ingredients.map(ingredient => {
+            const {
+              flavorId: id,
+              Flavor: { name, Vendor: vendor }
+            } = ingredient;
+
+            return (
+              <tr key={id}>
+                <td>
+                  {vendor.name} {name}
+                </td>
+                <td className="recipe-percent">
+                  <InputGroup>
+                    <Form.Control
+                      step="0.1"
+                      name={id}
+                      type="number"
+                      value={ingredient.percentage}
+                      onChange={this.handlePercentChange}
+                      placeholder="0"
+                      required
+                    />
+                    <InputGroup.Append>
+                      <InputGroup.Text>%</InputGroup.Text>
+                    </InputGroup.Append>
+                  </InputGroup>
+                </td>
+                <td>
+                  <Button className="button-animation" onClick={onRemoveClick}>
+                    <FontAwesomeIcon icon="trash" />
+                  </Button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(recipeActions, dispatch)
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(IngredientList);
