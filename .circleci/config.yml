@@ -49,5 +49,3 @@ workflows:
             - build
       - notify_failure:
           context: webhooks
-          requires:
-            - build
