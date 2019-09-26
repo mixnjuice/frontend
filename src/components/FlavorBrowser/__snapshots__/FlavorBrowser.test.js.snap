@@ -81,7 +81,7 @@ Array [
             className="col-md-4 col-sm-2"
           >
             <button
-              className="button-animation btn btn-primary"
+              className="button-animation btn btn-primary btn-sm"
               disabled={false}
               onClick={[Function]}
               type="button"
@@ -118,7 +118,7 @@ Array [
             className="col-md-4 col-sm-2"
           >
             <button
-              className="button-animation btn btn-primary"
+              className="button-animation btn btn-primary btn-sm"
               disabled={false}
               onClick={[Function]}
               type="button"
