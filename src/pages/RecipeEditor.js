@@ -10,6 +10,7 @@ import { actions as recipeActions } from 'reducers/recipe';
 import SplitSlider from 'components/SplitSlider/SplitSlider';
 import FlavorBrowser from 'components/FlavorBrowser/FlavorBrowser';
 import IngredientBar from 'components/IngredientBar/IngredientBar';
+import RecipeDetails from 'components/RecipeDetails/RecipeDetails';
 import IngredientList from 'components/IngredientList/IngredientList';
 import {
   getActiveRecipe,
@@ -107,7 +108,7 @@ export class RecipeEditor extends Component {
         break;
       }
       case 'baseDiluentRatio': {
-        const ratio = parseFloat(value);
+        const ratio = parseFloat(value / 100);
 
         if (ratio) {
           actions.setBaseDiluentRatio(ratio);
@@ -115,7 +116,7 @@ export class RecipeEditor extends Component {
         break;
       }
       case 'desiredDiluentRatio': {
-        const ratio = parseFloat(value);
+        const ratio = parseFloat(value / 100);
 
         if (ratio) {
           actions.setDesiredDiluentRatio(ratio);
@@ -164,13 +165,16 @@ export class RecipeEditor extends Component {
     const nicotinePercent = baseNicotineMl / desiredVolume;
     // determine how much of that is VG
     const nicotineVgPercent = nicotinePercent * nicotineDiluentRatio;
+    const nicotinePgPercent = nicotinePercent * (1 - nicotineDiluentRatio);
     // figure out the remaining amounts of VG and PG
-    const remainingVgPercent = desiredDiluentRatio - nicotineVgPercent;
-    const remainingPgPercent = 1 - desiredDiluentRatio - flavorPercent;
-
-    if (remainingVgPercent < 0 || remainingPgPercent < 0) {
-      return {};
-    }
+    const remainingVgPercent = Math.max(
+      0,
+      desiredDiluentRatio - nicotineVgPercent
+    );
+    const remainingPgPercent = Math.max(
+      0,
+      1 - desiredDiluentRatio - flavorPercent - nicotinePgPercent
+    );
 
     return {
       nicotine: nicotinePercent * 100,
@@ -189,6 +193,7 @@ export class RecipeEditor extends Component {
       nicotineDiluentRatio,
       desiredDiluentRatio
     } = this.props;
+    const { percentages } = this;
     const { name: recipeName, ingredients } = recipe;
 
     return (
@@ -304,11 +309,7 @@ export class RecipeEditor extends Component {
                       </Col>
                       <FlavorBrowser onAddIngredient={this.addIngredient} />
                     </Row>
-                    <Row>
-                      <Col md="12">
-                        <IngredientBar {...this.percentages} />
-                      </Col>
-                    </Row>
+                    <Row></Row>
                     <Row>
                       <Col md="12">
                         <h2>Ingredients</h2>
@@ -319,6 +320,14 @@ export class RecipeEditor extends Component {
                       </Col>
                     </Row>
                   </Container>
+                </Col>
+              </Row>
+              <Row>
+                <Col md="12">
+                  <RecipeDetails percentVG={percentages.vg} />
+                </Col>
+                <Col md="12">
+                  <IngredientBar {...percentages} />
                 </Col>
               </Row>
               <Row>
