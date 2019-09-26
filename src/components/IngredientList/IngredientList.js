@@ -55,7 +55,7 @@ export class IngredientList extends Component {
     const { ingredients, onRemoveClick } = this.props;
 
     return (
-      <Table striped>
+      <Table striped className="ingredient-list">
         <tbody>
           {ingredients.map(ingredient => {
             const {
