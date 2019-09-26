@@ -293,6 +293,14 @@ input {
       border-color: gray("800");
     }
   }
+
+  /* stylelint-disable-next-line a11y/line-height-is-vertical-rhythmed */
+  &-sm {
+    height: 28px;
+    width: 28px;
+    padding: 0;
+    line-height: 0;
+  }
 }
 
 // Button animations

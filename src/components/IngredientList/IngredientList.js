@@ -85,8 +85,12 @@ export class IngredientList extends Component {
                   </InputGroup>
                 </td>
                 <td>
-                  <Button className="button-animation" onClick={onRemoveClick}>
-                    <FontAwesomeIcon icon="trash" />
+                  <Button
+                    size="sm"
+                    className="button-animation"
+                    onClick={onRemoveClick}
+                  >
+                    <FontAwesomeIcon icon="trash" size="xs" />
                   </Button>
                 </td>
               </tr>

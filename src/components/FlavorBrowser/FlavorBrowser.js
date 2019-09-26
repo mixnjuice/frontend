@@ -121,6 +121,7 @@ export class FlavorBrowser extends Component {
         </Col>
         <Col md="4" sm="2">
           <Button
+            size="sm"
             className="button-animation"
             onClick={() => this.addIngredient(id)}
           >
