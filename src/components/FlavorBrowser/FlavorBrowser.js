@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { connect } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { bindActionCreators } from 'redux';
@@ -154,7 +155,10 @@ export class FlavorBrowser extends Component {
             />
           </InputGroup>
         </Form.Group>
-        <Col md="12">
+        <Col
+          md="12"
+          className={classNames(this.baseClass, 'border-bottom', 'border-top')}
+        >
           {this.filteredStash.length > 0 ? (
             <List
               height={200}
