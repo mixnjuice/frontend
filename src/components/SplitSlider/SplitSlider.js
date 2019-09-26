@@ -8,7 +8,9 @@ export default class SplitSlider extends Component {
     tickInterval: PropTypes.number.isRequired,
     leftLabel: PropTypes.string.isRequired,
     rightLabel: PropTypes.string.isRequired,
-    initialValue: PropTypes.number.isRequired
+    initialValue: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired
   };
 
   static defaultProps = {
@@ -38,23 +40,31 @@ export default class SplitSlider extends Component {
   }
 
   get rightValue() {
-    return 100 - this.state.value;
+    return Math.max(0, 100 - this.state.value);
   }
 
   handleChange(event) {
     const {
-      target: { name, value }
+      target: { name: targetName, value: rawValue }
     } = event;
+    const { onChange, name } = this.props;
+    const { value: currentValue } = this.state;
 
-    const intValue = parseInt(value, 10);
+    const intValue = parseInt(rawValue, 10);
 
-    if (!intValue || intValue < 0 || intValue > 100) {
+    if (intValue === false || intValue < 0 || intValue > 100) {
       return;
     }
 
-    this.setState({
-      value: name === 'left' ? intValue : Math.max(0, 100 - intValue)
-    });
+    const value =
+      targetName === 'left' ? intValue : Math.max(0, 100 - intValue);
+
+    if (value !== currentValue) {
+      this.setState({ value });
+      onChange({
+        target: { name, value }
+      });
+    }
   }
 
   handleClick(event) {
@@ -67,12 +77,13 @@ export default class SplitSlider extends Component {
     } = event;
     const rect = progressRef.getBoundingClientRect();
     const percentage = ((screenX - rect.left) / rect.width) * 100;
-    const quantized = Math.ceil(percentage / tickInterval) * tickInterval;
+    const quantized = Math.round(percentage / tickInterval) * tickInterval;
+    const clamped = Math.min(100, Math.max(0, quantized));
 
     this.handleChange({
       target: {
         name: 'left',
-        value: quantized
+        value: clamped
       }
     });
   }
