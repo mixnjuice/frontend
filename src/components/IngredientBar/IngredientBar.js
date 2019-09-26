@@ -21,7 +21,7 @@ export default class IngredientList extends Component {
     const { nicotine, flavor, vg, pg } = this.props;
 
     return (
-      <ProgressBar>
+      <ProgressBar className="ingredient-bar">
         <ProgressBar variant="danger" now={nicotine} label="Nic" />
         <ProgressBar now={flavor} label="Flv" />
         <ProgressBar variant="success" now={vg} label="VG" />
