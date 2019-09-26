@@ -299,15 +299,6 @@ export class RecipeEditor extends Component {
                 <Col md="6">
                   <Container>
                     <Row>
-                      <Col md="12">
-                        <h2>Ingredients</h2>
-                        <IngredientList
-                          ingredients={ingredients}
-                          onRemoveClick={this.removeIngredient}
-                        />
-                      </Col>
-                    </Row>
-                    <Row>
                       <Col md="6" sm="3">
                         <h2>Flavor Stash</h2>
                       </Col>
@@ -316,6 +307,15 @@ export class RecipeEditor extends Component {
                     <Row>
                       <Col md="12">
                         <IngredientBar {...this.percentages} />
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md="12">
+                        <h2>Ingredients</h2>
+                        <IngredientList
+                          ingredients={ingredients}
+                          onRemoveClick={this.removeIngredient}
+                        />
                       </Col>
                     </Row>
                   </Container>

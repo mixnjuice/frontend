@@ -12,8 +12,7 @@ export class IngredientList extends Component {
     actions: PropTypes.shape({
       setRecipeIngredients: PropTypes.func.isRequired
     }),
-    ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
-    onRemoveClick: PropTypes.func
+    ingredients: PropTypes.arrayOf(PropTypes.object).isRequired
   };
 
   static defaultProps = {
@@ -27,14 +26,11 @@ export class IngredientList extends Component {
     this.handlePercentChange = this.handlePercentChange.bind(this);
   }
 
-  removeIngredient(event) {
+  removeIngredient(id) {
     const { ingredients, actions } = this.props;
-    const {
-      target: { name }
-    } = event;
 
     actions.setRecipeIngredients(
-      ingredients.filter(ingredient => ingredient.id !== name)
+      ingredients.filter(ingredient => ingredient.Flavor.id !== id)
     );
   }
 
@@ -52,7 +48,11 @@ export class IngredientList extends Component {
   }
 
   render() {
-    const { ingredients, onRemoveClick } = this.props;
+    const { ingredients } = this.props;
+
+    if (!Array.isArray(ingredients) || ingredients.length === 0) {
+      return <div>No ingredients!</div>;
+    }
 
     return (
       <Table striped className="ingredient-list">
@@ -88,7 +88,7 @@ export class IngredientList extends Component {
                   <Button
                     size="sm"
                     className="button-animation"
-                    onClick={onRemoveClick}
+                    onClick={() => this.removeIngredient(id)}
                   >
                     <FontAwesomeIcon icon="trash" size="xs" />
                   </Button>
