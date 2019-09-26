@@ -26,9 +26,9 @@ export class RecipeEditor extends Component {
     actions: PropTypes.shape({
       setRecipeName: PropTypes.func.isRequired,
       setDesiredVolume: PropTypes.func.isRequired,
-      setBaseDiluentRatio: PropTypes.func.isRequired,
+      setNicotineStrength: PropTypes.func.isRequired,
       setDesiredDiluentRatio: PropTypes.func.isRequired,
-      setBaseNicotineStrength: PropTypes.func.isRequired,
+      setNicotineDiluentRatio: PropTypes.func.isRequired,
       setDesiredNicotineStrength: PropTypes.func.isRequired
     }).isRequired,
     recipe: PropTypes.shape({
@@ -91,11 +91,11 @@ export class RecipeEditor extends Component {
         }
         break;
       }
-      case 'baseNicotineStrength': {
+      case 'nicotineStrength': {
         const strength = parseInt(value, 10);
 
         if (strength) {
-          actions.setBaseNicotineStrength(strength);
+          actions.setNicotineStrength(strength);
         }
         break;
       }
@@ -107,11 +107,11 @@ export class RecipeEditor extends Component {
         }
         break;
       }
-      case 'baseDiluentRatio': {
+      case 'nicotineDiluentRatio': {
         const ratio = parseFloat(value / 100);
 
         if (ratio) {
-          actions.setBaseDiluentRatio(ratio);
+          actions.setNicotineDiluentRatio(ratio);
         }
         break;
       }
@@ -245,15 +245,11 @@ export class RecipeEditor extends Component {
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
-                    <Form.Group
-                      as={Col}
-                      md="4"
-                      controlId="baseNicotineStrength"
-                    >
+                    <Form.Group as={Col} md="4" controlId="nicotineStrength">
                       <Form.Label>Base Strength</Form.Label>
                       <InputGroup>
                         <Form.Control
-                          name="baseNicotineStrength"
+                          name="nicotineStrength"
                           type="number"
                           value={nicotineStrength}
                           onChange={this.handleUserInput}
@@ -269,7 +265,11 @@ export class RecipeEditor extends Component {
                     </Form.Group>
                     <Form.Group as={Col} md="8">
                       <Form.Label>Nicotine VG/PG ratio</Form.Label>
-                      <SplitSlider initialValue={nicotineDiluentRatio * 100} />
+                      <SplitSlider
+                        name="nicotineDiluentRatio"
+                        initialValue={nicotineDiluentRatio * 100}
+                        onChange={this.handleUserInput}
+                      />
                     </Form.Group>
                   </Form.Row>
                   <Form.Row>
@@ -297,7 +297,11 @@ export class RecipeEditor extends Component {
                     </Form.Group>
                     <Form.Group as={Col} md="8">
                       <Form.Label>Desired VG/PG ratio</Form.Label>
-                      <SplitSlider initialValue={desiredDiluentRatio * 100} />
+                      <SplitSlider
+                        name="desiredDiluentRatio"
+                        initialValue={desiredDiluentRatio * 100}
+                        onChange={this.handleUserInput}
+                      />
                     </Form.Group>
                   </Form.Row>
                 </Col>
