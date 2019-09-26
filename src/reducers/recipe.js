@@ -19,8 +19,8 @@ export const types = buildActions('recipe', [
   'SET_DESIRED_NICOTINE_STRENGTH',
   'SET_DESIRED_DILUENT_RATIO',
   'SET_DESIRED_VOLUME',
-  'SET_BASE_NICOTINE_STRENGTH',
-  'SET_BASE_DILUENT_RATIO',
+  'SET_NICOTINE_STRENGTH',
+  'SET_NICOTINE_DILUENT_RATIO',
   'SET_RECIPE_NAME',
   'SET_RECIPE_INGREDIENTS',
   'SET_RECIPE_PERCENTAGES'
@@ -109,13 +109,13 @@ const setDesiredVolume = volume => ({
   volume
 });
 
-const setBaseNicotineStrength = nicotineStrength => ({
-  type: types.SET_BASE_NICOTINE_STRENGTH,
+const setNicotineStrength = nicotineStrength => ({
+  type: types.SET_NICOTINE_STRENGTH,
   nicotineStrength
 });
 
-const setBaseDiluentRatio = diluentRatio => ({
-  type: types.SET_BASE_DILUENT_RATIO,
+const setNicotineDiluentRatio = diluentRatio => ({
+  type: types.SET_NICOTINE_DILUENT_RATIO,
   diluentRatio
 });
 
@@ -153,8 +153,8 @@ export const actions = {
   setDesiredNicotineStrength,
   setDesiredDiluentRatio,
   setDesiredVolume,
-  setBaseNicotineStrength,
-  setBaseDiluentRatio,
+  setNicotineStrength,
+  setNicotineDiluentRatio,
   setRecipeName,
   setRecipeIngredients,
   setRecipePercentages
@@ -171,13 +171,13 @@ export const initialState = {
   },
   error: null,
   desired: {
-    nicotineStrength: 0,
-    diluentRatio: 0,
-    volume: 0
+    nicotineStrength: 6,
+    diluentRatio: 0.8,
+    volume: 8
   },
   settings: {
-    nicotineStrength: 0,
-    nicotineDiluentRatio: 0
+    nicotineStrength: 100,
+    nicotineDiluentRatio: 1
   }
 };
 
@@ -251,7 +251,7 @@ export const reducer = (state = initialState, action = {}) => {
           volume: action.volume
         }
       };
-    case types.SET_BASE_NICOTINE_STRENGTH:
+    case types.SET_NICOTINE_STRENGTH:
       return {
         ...state,
         settings: {
@@ -259,12 +259,12 @@ export const reducer = (state = initialState, action = {}) => {
           nicotineStrength: action.nicotineStrength
         }
       };
-    case types.SET_BASE_DILUENT_RATIO:
+    case types.SET_NICOTINE_DILUENT_RATIO:
       return {
         ...state,
         settings: {
           ...state.settings,
-          diluentRatio: action.diluentRatio
+          nicotineDiluentRatio: action.diluentRatio
         }
       };
     case types.SET_RECIPE_NAME:
