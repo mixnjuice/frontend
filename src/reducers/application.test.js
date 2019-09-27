@@ -8,12 +8,6 @@ describe('application reducer', () => {
   const token = 'testing';
   const expiration = dayjs();
   const error = { message: 'Failed' };
-  const toast = {
-    id: 'test123',
-    title: 'Testing',
-    icon: 'heart',
-    message: 'This is a test.'
-  };
 
   it('has INIT_APP action', () => {
     expect(actions.initApp()).toEqual({
@@ -251,72 +245,6 @@ describe('application reducer', () => {
 
     expect(reducer({}, action)).toEqual({
       registration: { registering: false, complete: true, error }
-    });
-  });
-
-  it('has POP_TOAST action', () => {
-    const action = actions.popToast(toast);
-
-    expect(action).toEqual({
-      type: types.POP_TOAST,
-      toast
-    });
-  });
-
-  it('has ADD_TOAST action', () => {
-    const action = actions.addToast(toast);
-
-    expect(action).toEqual({
-      type: types.ADD_TOAST,
-      toast
-    });
-  });
-
-  it('reduces ADD_TOAST action', () => {
-    const action = actions.addToast(toast);
-
-    expect(reducer({ toasts: [] }, action)).toEqual({
-      toasts: [toast]
-    });
-  });
-
-  it('has REMOVE_TOAST action', () => {
-    const { id } = toast;
-    const action = actions.removeToast(id);
-
-    expect(action).toEqual({
-      type: types.REMOVE_TOAST,
-      id
-    });
-  });
-
-  it('reduces REMOVE_TOAST action', () => {
-    const action = actions.removeToast(toast.id);
-
-    expect(reducer({ toasts: [toast] }, action)).toEqual({
-      toasts: []
-    });
-  });
-
-  it('has HIDE_TOAST action', () => {
-    const { id } = toast;
-    const action = actions.hideToast(id);
-
-    expect(action).toEqual({
-      type: types.HIDE_TOAST,
-      id
-    });
-  });
-
-  it('reduces HIDE_TOAST action', () => {
-    const action = actions.hideToast(toast.id);
-
-    expect(reducer({ toasts: [toast] }, action)).toEqual({
-      toasts: [{ ...toast, show: false }]
-    });
-
-    expect(reducer({ toasts: [] }, action)).toEqual({
-      toasts: []
     });
   });
 

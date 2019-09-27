@@ -9,6 +9,7 @@ import {
 } from './dashboard';
 import { reducer as flavors, initialState as flavorsState } from './flavors';
 import { reducer as roles, initialState as rolesState } from './roles';
+import { reducer as toast, initialState as toastState } from './toast';
 import { reducer as users, initialState as usersState } from './users';
 
 export const initialState = {
@@ -16,6 +17,7 @@ export const initialState = {
   dashboard: dashboardState,
   flavors: flavorsState,
   roles: rolesState,
+  toast: toastState,
   users: usersState
 };
 
@@ -24,5 +26,6 @@ export default combineReducers({
   dashboard,
   flavors,
   roles,
+  toast,
   users
 });
