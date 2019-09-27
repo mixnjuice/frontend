@@ -4,11 +4,14 @@ import {
   reducer as application,
   initialState as applicationState
 } from './application';
+import { reducer as toast, initialState as toastState } from './toast';
 
 export const initialState = {
-  application: applicationState
+  application: applicationState,
+  toast: toastState
 };
 
 export default combineReducers({
-  application
+  application,
+  toast
 });

@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store';
 import ConnectedToastDrawer, { ToastDrawer } from './ToastDrawer';
 
 describe('<ToastDrawer />', () => {
-  const toasts = [
+  const queue = [
     {
       id: 'test',
       title: 'I am a toast',
@@ -15,7 +15,7 @@ describe('<ToastDrawer />', () => {
   ];
 
   it('renders correctly', () => {
-    const props = { toasts };
+    const props = { toasts: queue };
     const component = renderer.create(<ToastDrawer {...props} />);
 
     expect(component.toJSON()).toMatchSnapshot();
@@ -29,7 +29,7 @@ describe('<ToastDrawer />', () => {
   });
 
   it('renders connected component correctly', () => {
-    const initialState = { application: { toasts } };
+    const initialState = { toast: { queue } };
     const mockStore = configureStore();
     const store = mockStore(initialState);
     const component = renderer.create(

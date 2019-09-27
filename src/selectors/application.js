@@ -52,8 +52,3 @@ export const isRegistering = createSelector(
   getRegistration,
   registration => registration.registering && !registration.complete
 );
-
-export const getToasts = createSelector(
-  getApplication,
-  application => application.toasts
-);
