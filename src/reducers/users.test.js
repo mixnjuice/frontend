@@ -1,11 +1,12 @@
 import { reducer, types, actions } from './users';
 
-describe('roles reducer', () => {
+describe('users reducer', () => {
   const roles = { role: true };
   const userId = 63;
   const user = { user: true };
   const users = { user: true };
   const error = { message: 'Failed' };
+  const loaded = { users: false, roles: false };
 
   it('has REQUEST_USERS action', () => {
     expect(actions.requestUsers()).toEqual({
@@ -28,8 +29,31 @@ describe('roles reducer', () => {
 
   it('reduces REQUEST_USERS_SUCCESS action', () => {
     const action = actions.requestUsersSuccess(users);
+    const mockState = {
+      users,
+      loaded
+    };
 
-    expect(reducer({}, action)).toEqual({ users });
+    expect(reducer(mockState, action)).toEqual({
+      users,
+      loaded: { users: true, roles: false }
+    });
+  });
+
+  it('reduces REQUEST_USERS_SUCCESS action previously loaded', () => {
+    const action = actions.requestUsersSuccess(users);
+    const mockState = {
+      users,
+      loaded: {
+        users: true,
+        roles: false
+      }
+    };
+
+    expect(reducer(mockState, action)).toEqual({
+      users,
+      loaded: { users: true, roles: false }
+    });
   });
 
   it('has REQUEST_USERS_FAILURE action', () => {

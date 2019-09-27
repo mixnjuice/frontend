@@ -1,41 +1,34 @@
-// import dayjs from 'dayjs';
-// import nanoid from 'nanoid';
-import {
-  all,
-  call,
-  put,
-  takeLatest
-  // delay,
-  // take,
-  // takeEvery,
-  // select
-} from 'redux-saga/effects';
-
+import { all, call, put, takeLatest, select } from 'redux-saga/effects';
 import request from 'utils/request';
+import { isLoaded } from 'selectors/users';
 import { actions, types } from 'reducers/users';
 import { actions as appActions } from 'reducers/application';
 
-// snake_cased variables here come from RFC 6749
-/* eslint-disable camelcase */
 function* requestUsersWorker() {
   try {
-    const endpoint = {
-      url: '/users/accounts',
-      method: 'GET'
-    };
-    const result = yield call(request.execute, { endpoint });
+    const loaded = yield select(isLoaded);
 
-    // update user in state or throw an error
-    if (result.success) {
-      const {
-        response: { data }
-      } = result;
+    if (!loaded.users) {
+      const endpoint = {
+        url: '/users/accounts',
+        method: 'GET'
+      };
+      const result = yield call(request.execute, { endpoint });
 
-      yield put(actions.requestUsersSuccess(data));
-    } else if (result.error) {
-      throw result.error;
+      // update user in state or throw an error
+      if (result.success) {
+        const {
+          response: { data }
+        } = result;
+
+        yield put(actions.requestUsersSuccess(data));
+      } else if (result.error) {
+        throw result.error;
+      } else {
+        throw new Error('Failed to get users!');
+      }
     } else {
-      throw new Error('Failed to get users!');
+      yield put(actions.requestUsersSuccess(true));
     }
   } catch (error) {
     const { message } = error;

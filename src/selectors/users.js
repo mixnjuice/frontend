@@ -1,4 +1,3 @@
-// import dayjs from 'dayjs';
 import { createSelector } from 'reselect';
 
 export const getUsers = state => state.users;
@@ -16,4 +15,9 @@ export const getUser = createSelector(
 export const getUserRoles = createSelector(
   getUsers,
   users => users.roles
+);
+
+export const isLoaded = createSelector(
+  getUsers,
+  users => users.loaded
 );
