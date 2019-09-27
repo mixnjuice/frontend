@@ -1,5 +1,5 @@
+import { Helmet } from 'react-helmet';
 import React, { Component } from 'react';
-
 import { Container, Row, Col, Form, InputGroup, Button } from 'react-bootstrap';
 
 export default class UserSettings extends Component {
@@ -36,6 +36,7 @@ export default class UserSettings extends Component {
   render() {
     return (
       <Container>
+        <Helmet title="Your Settings" />
         <Row className="text-center">
           <Col>
             <h1>User Settings</h1>
@@ -98,7 +99,7 @@ export default class UserSettings extends Component {
                   </Form.Label>
                 </div>
                 <InputGroup.Prepend>
-                  <Button style={{ margin: '0px 10px' }}>
+                  <Button className="button-animation">
                     <span>Upload</span>
                   </Button>
                 </InputGroup.Prepend>
@@ -111,7 +112,7 @@ export default class UserSettings extends Component {
           </Row>
           <Row className="text-center">
             <Col>
-              <Button>
+              <Button className="button-animation">
                 <span>Save</span>
               </Button>
             </Col>

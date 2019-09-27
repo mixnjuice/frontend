@@ -8,13 +8,12 @@ import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { applyMiddleware, createStore, compose } from 'redux';
+import { LastLocationProvider } from 'react-router-last-location';
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faFire, faUser } from '@fortawesome/free-solid-svg-icons';
-library.add(faFire, faUser);
-
+import './icons';
 import './index.scss';
 import App from './components/App/App';
+import { getInitialState } from 'utils';
 
 import rootSaga from './sagas';
 import rootReducer from './reducers';
@@ -26,7 +25,7 @@ const composer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
 const enhancers = composer(applyMiddleware(sagaMiddleware));
 
-export const store = createStore(rootReducer, {}, enhancers);
+export const store = createStore(rootReducer, getInitialState(), enhancers);
 
 if (module.hot) {
   module.hot.accept('./reducers', () => {
@@ -37,11 +36,13 @@ if (module.hot) {
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
+  <Router>
+    <LastLocationProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </LastLocationProvider>
+  </Router>,
   document.getElementById('root')
 );
 

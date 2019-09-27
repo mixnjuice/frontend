@@ -511,7 +511,7 @@ exports[`<Home /> renders correctly 1`] = `
                 To figure out what could go here, but it's an idea.
               </p>
               <button
-                className="btn btn-primary"
+                className="button-animation btn btn-primary"
                 disabled={false}
                 type="button"
               >

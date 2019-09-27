@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
+import { initialState } from 'reducers/application';
 import ConnectedLogin, { Login } from './Login';
 import { withMemoryRouter } from 'utils';
 
@@ -10,9 +11,8 @@ describe('<Login />', () => {
   const actions = {
     loginUser: jest.fn()
   };
-  const initialState = {};
   const mockStore = configureStore();
-  const store = mockStore(initialState);
+  const store = mockStore({ application: initialState });
   const RoutedLogin = withMemoryRouter(ConnectedLogin);
 
   it('renders correctly', () => {
@@ -28,7 +28,9 @@ describe('<Login />', () => {
   it('can handleSubmit', () => {
     const emailAddress = 'some@one.org';
     const password = 'testing';
-    const component = renderer.create(<Login actions={actions} />);
+    const component = renderer.create(
+      <Login actions={actions} loggingIn={false} loggedIn={false} />
+    );
     const { instance } = component.root.findByType(Login);
 
     expect(instance).toBeDefined();

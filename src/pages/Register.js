@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
@@ -6,6 +7,7 @@ import { Form as FinalForm, Field } from 'react-final-form';
 import { Button, Container, Form, InputGroup, Col } from 'react-bootstrap';
 
 import { actions as appActions } from 'reducers/application';
+import { isRegistering } from 'selectors/application';
 import {
   composeValidators,
   required,
@@ -16,7 +18,10 @@ import {
 
 export class Register extends Component {
   static propTypes = {
-    actions: PropTypes.object
+    registering: PropTypes.bool.isRequired,
+    actions: PropTypes.shape({
+      registerUser: PropTypes.func.isRequired
+    })
   };
 
   constructor(props) {
@@ -32,8 +37,11 @@ export class Register extends Component {
   }
 
   render() {
+    const { registering } = this.props;
+
     return (
       <Container>
+        <Helmet title="Register" />
         <h1>User Registration</h1>
         <FinalForm
           onSubmit={this.handleSubmit}
@@ -60,7 +68,7 @@ export class Register extends Component {
                           aria-describedby="inputGroupPrepend"
                           isInvalid={meta.error && meta.touched}
                         />
-                        {meta.error && (
+                        {meta.touched && meta.error && (
                           <Form.Control.Feedback type="invalid">
                             {meta.error === 'required'
                               ? 'Please enter a username'
@@ -86,13 +94,16 @@ export class Register extends Component {
                         placeholder="Enter email"
                         isInvalid={meta.error && meta.touched}
                       />
-                      {meta.error && (
+                      {meta.touched && meta.error && (
                         <Form.Control.Feedback type="invalid">
                           {meta.error === 'required'
                             ? 'Please enter your email address'
                             : 'Please enter a valid email address'}
                         </Form.Control.Feedback>
                       )}
+                      <Form.Text className="text-muted">
+                        We&apos;ll never share your email with anyone else.
+                      </Form.Text>
                     </Form.Group>
                   )}
                 </Field>
@@ -113,17 +124,17 @@ export class Register extends Component {
                         placeholder="Confirm Enter email"
                         isInvalid={meta.error && meta.touched}
                       />
-                      {meta.error === 'required' && (
+                      {meta.touched && meta.error === 'required' && (
                         <Form.Control.Feedback type="invalid">
                           Please re-enter your email address
                         </Form.Control.Feedback>
                       )}
-                      {meta.error === 'matches' && (
+                      {meta.touched && meta.error === 'matches' && (
                         <Form.Control.Feedback type="invalid">
                           Please ensure both email addresses match
                         </Form.Control.Feedback>
                       )}
-                      {meta.error === 'email' && (
+                      {meta.touched && meta.error === 'email' && (
                         <Form.Control.Feedback type="invalid">
                           Please enter a valid email address
                         </Form.Control.Feedback>
@@ -146,7 +157,7 @@ export class Register extends Component {
                         placeholder="Enter Password"
                         isInvalid={meta.error && meta.touched}
                       />
-                      {meta.error === 'required' && (
+                      {meta.touched && meta.error === 'required' && (
                         <Form.Control.Feedback type="invalid">
                           Please enter a password
                         </Form.Control.Feedback>
@@ -167,12 +178,12 @@ export class Register extends Component {
                         placeholder="Confirm Password"
                         isInvalid={meta.error && meta.touched}
                       />
-                      {meta.error === 'required' && (
+                      {meta.touched && meta.error === 'required' && (
                         <Form.Control.Feedback type="invalid">
                           Please re-enter your password
                         </Form.Control.Feedback>
                       )}
-                      {meta.error === 'matches' && (
+                      {meta.touched && meta.error === 'matches' && (
                         <Form.Control.Feedback type="invalid">
                           Please ensure both passwords match
                         </Form.Control.Feedback>
@@ -182,7 +193,7 @@ export class Register extends Component {
                 </Field>
               </Form.Row>
               <Form.Row>
-                <Field name="termsAgreed" validate={required}>
+                <Field type="checkbox" name="termsAgreed" validate={required}>
                   {({ input, meta }) => (
                     <Form.Group>
                       <Form.Check
@@ -190,7 +201,7 @@ export class Register extends Component {
                         label="I agree to comply with the Terms of Service"
                         isInvalid={meta.error && meta.touched}
                       />
-                      {meta.error && (
+                      {meta.touched && meta.error && (
                         <Form.Control.Feedback type="invalid">
                           Please accept the Terms of Service
                         </Form.Control.Feedback>
@@ -201,8 +212,13 @@ export class Register extends Component {
               </Form.Row>
               <Form.Row>
                 <Form.Group as={Col} md="2">
-                  <Button variant="primary" type="submit" disabled={submitting}>
-                    Register
+                  <Button
+                    className="button-animation"
+                    variant="primary"
+                    type="submit"
+                    disabled={submitting && !registering}
+                  >
+                    <span>Register</span>
                   </Button>
                 </Form.Group>
               </Form.Row>
@@ -214,6 +230,10 @@ export class Register extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  registering: isRegistering(state)
+});
+
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
@@ -224,6 +244,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(Register);

@@ -9,7 +9,7 @@ export default class Header extends Component {
         as={NavLink}
         exact
         to={to}
-        className="borderLeftRight px-3"
+        className="nav--link-custom px-3"
         activeClassName="active"
       >
         {text}
@@ -23,7 +23,7 @@ export default class Header extends Component {
         as={NavLink}
         exact
         to={to}
-        className="borderLeftRight"
+        className="nav--link-custom"
         activeClassName="active"
       >
         {text}
@@ -34,40 +34,39 @@ export default class Header extends Component {
 
   render() {
     return (
-      <Container className="navigation-container" fluid>
-        <Row className="text-center">
+      <Container fluid>
+        <Row className="navigation-container">
           <Col>
-            <Navbar.Brand>MixNJuice</Navbar.Brand>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Navbar expand="lg" className="justify-content-center">
+            <Navbar expand="lg">
+              <Navbar.Brand className="pt-0">
+                <img src="/media/logo.svg" alt="logo" className="image--logo" />
+              </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse
-                id="basic-navbar-nav"
-                className="justify-content-center"
-              >
+              <Navbar.Collapse>
                 <Nav>
                   {this.renderNavItem('/', 'Home')}
-                  {this.renderNavItem('/calculator', 'Create Recipe')}
-                  <NavDropdown title="User" id="basic-nav-dropdown">
-                    {this.renderNavDropdownItem('/profile', 'Profile')}
-                    {this.renderNavDropdownItem('/userRecipes', 'Recipes')}
-                    {this.renderNavDropdownItem('/favorites', 'Favorites')}
-                    {this.renderNavDropdownItem('/flavorStash', 'Flavor Stash')}
+                  {this.renderNavItem('/recipes', 'Recipes')}
+                  {this.renderNavItem('/calculator', 'Calculator')}
+                  {this.renderNavItem('/flavors', 'Flavors')}
+                  <NavDropdown title="User">
+                    {this.renderNavDropdownItem('/user/profile', 'Profile')}
+                    {this.renderNavDropdownItem('/user/recipes', 'Recipes')}
+                    {this.renderNavDropdownItem('/user/favorites', 'Favorites')}
                     {this.renderNavDropdownItem(
-                      '/shoppingList',
+                      '/user/flavor-stash',
+                      'Flavor Stash'
+                    )}
+                    {this.renderNavDropdownItem(
+                      '/user/shopping-list',
                       'Shopping List'
                     )}
-                    {this.renderNavDropdownItem('/userSettings', 'Settings')}
+                    {this.renderNavDropdownItem('/user/settings', 'Settings')}
                   </NavDropdown>
                   {this.renderNavItem('/login', 'Login')}
                   {this.renderNavItem('/register', 'Register')}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
-            <hr />
           </Col>
         </Row>
       </Container>

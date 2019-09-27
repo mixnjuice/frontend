@@ -1,0 +1,75 @@
+$lightest-blue: #e7f0ff;
+$lighter-blue: #d3e3fc;
+$light-blue: #b1cefd;
+$blue: #77a6f7;
+$teal: #00887a;
+$baby-blue: #00bad3;
+$light-red: #fd8383;
+$lighter-red: #ffccbc;
+$shadow-grey: #777;
+
+$min-xs: 0;
+$max-xs: 575px;
+
+$min-sm: 576px;
+$max-sm: 767px;
+
+$min-md: 768px;
+$max-md: 991px;
+
+$min-lg: 992px;
+$max-lg: 1199px;
+
+$min-xl: 1200px;
+
+@mixin breakpoint-xs() {
+  @media (min-width: $min-xs) and (max-width: $max-xs) {
+    @content;
+  }
+}
+
+@mixin breakpoint-sm() {
+  @media (min-width: $min-sm) and (max-width: $max-sm) {
+    @content;
+  }
+}
+
+@mixin breakpoint-md() {
+  @media (min-width: $min-md) and (max-width: $max-md) {
+    @content;
+  }
+}
+
+@mixin breakpoint-lg() {
+  @media (min-width: $min-lg) and (max-width: $max-lg) {
+    @content;
+  }
+}
+
+@mixin breakpoint-xl() {
+  @media (min-width: $min-xl) {
+    @content;
+  }
+}
+
+// Keyframes for fade in animation
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+// Keyframes for fade out animation
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

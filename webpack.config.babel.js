@@ -5,10 +5,44 @@ import HtmlPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import StylelintPlugin from 'stylelint-webpack-plugin';
 import MiniCSSExtractPlugin from 'mini-css-extract-plugin';
+import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 
+const analyzeBundle = Boolean(process.env.ANALYZE_BUNDLE);
 const dev = process.env.NODE_ENV === 'development';
+const apiUrl = process.env.API_URL;
+
+const plugins = [
+  new CleanPlugin(),
+  new StylelintPlugin({
+    configFile: '.stylelintrc',
+    context: 'src',
+    files: '**/*.scss',
+    failOnError: true,
+    quiet: false,
+    syntax: 'scss'
+  }),
+  new MiniCSSExtractPlugin({
+    filename: '[name].css'
+  }),
+  new webpack.DefinePlugin({
+    API_URL: JSON.stringify(dev || !apiUrl ? 'http://localhost:3000' : apiUrl)
+  })
+];
+
+if (dev) {
+  plugins.push(
+    new HtmlPlugin({
+      template: './src/index.html'
+    }),
+    new webpack.HotModuleReplacementPlugin()
+  );
+}
+
+if (analyzeBundle) {
+  plugins.push(new BundleAnalyzerPlugin());
+}
 
 export default {
   mode: dev ? 'development' : 'production',
@@ -72,24 +106,7 @@ export default {
     filename: 'main.js',
     chunkFilename: '[name].js'
   },
-  plugins: [
-    new CleanPlugin(),
-    new StylelintPlugin({
-      configFile: '.stylelintrc',
-      context: 'src',
-      files: '**/*.scss',
-      failOnError: true,
-      quiet: false,
-      syntax: 'scss'
-    }),
-    new MiniCSSExtractPlugin({
-      filename: '[name].css'
-    }),
-    new HtmlPlugin({
-      template: './src/index.html'
-    }),
-    new webpack.HotModuleReplacementPlugin()
-  ],
+  plugins,
   resolve: {
     extensions: ['.js', '.json'],
     modules: ['node_modules', 'src']

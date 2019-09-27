@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Recipes /> renders correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="text-center row"
+  >
+    <div
+      className="col"
+    >
+      <h1>
+        Recipes search page
+      </h1>
+    </div>
+  </div>
+</div>
+`;

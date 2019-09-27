@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Register /> renders correctly 1`] = `
+exports[`<Register /> renders connected component correctly 1`] = `
 <div
   className="container"
 >
@@ -71,6 +71,11 @@ exports[`<Register /> renders correctly 1`] = `
           type="email"
           value=""
         />
+        <small
+          className="text-muted form-text"
+        >
+          We'll never share your email with anyone else.
+        </small>
       </div>
       <div
         className="form-group col-md-6"
@@ -146,6 +151,7 @@ exports[`<Register /> renders correctly 1`] = `
           className="form-check"
         >
           <input
+            checked={false}
             className="form-check-input"
             disabled={false}
             name="termsAgreed"
@@ -172,11 +178,205 @@ exports[`<Register /> renders correctly 1`] = `
         className="form-group col-md-2"
       >
         <button
-          className="btn btn-primary"
+          className="button-animation btn btn-primary"
           disabled={false}
           type="submit"
         >
-          Register
+          <span>
+            Register
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`<Register /> renders correctly 1`] = `
+<div
+  className="container"
+>
+  <h1>
+    User Registration
+  </h1>
+  <form
+    className=""
+    noValidate={true}
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-group col-md-4"
+      >
+        <label
+          className="form-label"
+        >
+          Username
+        </label>
+        <div
+          className="input-group"
+        >
+          <div
+            className="input-group-prepend"
+          >
+            <span
+              className="input-group-text"
+              id="inputGroupPrepend"
+            >
+              @
+            </span>
+          </div>
+          <input
+            aria-describedby="inputGroupPrepend"
+            className="form-control"
+            name="username"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            placeholder="Username"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-group col-md-6"
+      >
+        <label
+          className="form-label"
+        >
+          Email Address
+        </label>
+        <input
+          className="form-control"
+          name="emailAddress"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Enter email"
+          type="email"
+          value=""
+        />
+        <small
+          className="text-muted form-text"
+        >
+          We'll never share your email with anyone else.
+        </small>
+      </div>
+      <div
+        className="form-group col-md-6"
+      >
+        <label
+          className="form-label"
+          htmlFor="emailConf"
+        >
+          Confirm Email Address
+        </label>
+        <input
+          className="form-control"
+          id="emailConf"
+          name="emailAddressConfirm"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Confirm Enter email"
+          type="email"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-group col-md-6"
+      >
+        <label
+          className="form-label"
+        >
+          Password
+        </label>
+        <input
+          className="form-control"
+          name="password"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Enter Password"
+          type="password"
+          value=""
+        />
+      </div>
+      <div
+        className="form-group col-md-6"
+      >
+        <label
+          className="form-label"
+        >
+          Confirm Password
+        </label>
+        <input
+          className="form-control"
+          name="passwordConfirm"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="Confirm Password"
+          type="password"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-group"
+      >
+        <div
+          className="form-check"
+        >
+          <input
+            checked={false}
+            className="form-check-input"
+            disabled={false}
+            name="termsAgreed"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="checkbox"
+            value=""
+          />
+          <label
+            className="form-check-label"
+            title=""
+            type="checkbox"
+          >
+            I agree to comply with the Terms of Service
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      className="form-row"
+    >
+      <div
+        className="form-group col-md-2"
+      >
+        <button
+          className="button-animation btn btn-primary"
+          disabled={false}
+          type="submit"
+        >
+          <span>
+            Register
+          </span>
         </button>
       </div>
     </div>

@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Quicksand&display=swap");
-
-$lightest-blue: #e7f0ff;
-$lighter-blue: #d3e3fc;
-$light-blue: #b1cefd;
-$blue: #77a6f7;
-$teal: #00887a;
-$lighter-red: #ffccbc;
+@import "./_variables.scss";
 
 // Changes the font site-wide
 * {
@@ -55,19 +49,19 @@ hr {
 // it changes the width of the container and the width of the other elements around it
 // Switching the container to "fluid" didn't fix it, so this was unfortunately the best way I could
 // find to solve the issue; by fixing the container width for medium screens and up
-@media (min-width: 768px) and (max-width: 991px) {
+@include breakpoint-md() {
   .container {
     width: 800px;
   }
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
+@include breakpoint-lg() {
   .container {
     width: 1000px;
   }
 }
 
-@media (min-width: 1200px) {
+@include breakpoint-xl() {
   .container {
     width: 1200px;
   }
@@ -81,7 +75,12 @@ hr {
 
 // Gradient background for the navigation container
 .navigation-container {
-  background: linear-gradient(180deg, $light-blue 0%, $white 100%);
+  background: $lighter-blue;
+  height: 10%;
+  margin: 1em;
+  border: 2px solid $teal;
+  border-radius: 20px;
+  box-shadow: 8px 8px 20px $shadow-grey;
 }
 
 // On screen sizes below ~1200px width, the nav links look a little weird by
@@ -111,13 +110,22 @@ hr {
   & .dropdown-item.active,
   & .dropdown-item:active {
     background-color: inherit;
+    font-weight: 900;
+    color: $teal;
   }
 }
 
 // Styling for nav "brand" (MixNJuice "logo")
 .navbar-brand {
   font-family: "Architects Daughter", cursive;
-  font-size: 4em;
+  font-size: 3em;
+}
+
+// Centering nav contents for phone screens
+@media (max-width: $max-md) {
+  .navbar {
+    justify-content: center;
+  }
 }
 
 // Styling for checkboxes
@@ -149,7 +157,7 @@ hr {
   border: 1px solid $black;
 
   // Style for "striped" tables
-  .table-striped tbody tr:nth-of-type(odd) {
+  tr:nth-of-type(odd) .table-striped {
     background-color: $lightest-blue;
   }
 
@@ -172,18 +180,18 @@ hr {
 }
 
 // Card titles
-div.h5 {
+.h5 {
   font-size: 1.1em;
   font-weight: 900;
 }
 
 // Card bodies
-p.card-text {
+.card-text {
   font-size: 0.9em;
 }
 
 // Card headers
-div.card-header {
+.card-header {
   font-size: 1.4em;
   font-weight: 900;
 }
@@ -194,13 +202,13 @@ input {
 }
 
 // Style for file inputs
-input[type="file"] {
+.custom-file-input[type="file"] {
   border: 1px solid $black;
   border-radius: 0.25rem;
   padding: 5px;
 }
 
-h1.recipeTitle {
+.recipeTitle {
   font-size: 3em;
 }
 
@@ -215,10 +223,12 @@ h1.recipeTitle {
 
 // Link animations in the header links
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
-.navbar-nav .nav-link.borderLeftRight {
+.navbar-nav .nav-link.nav--link-custom {
   display: inline-block;
+  text-align: center;
   position: relative;
   color: $black;
+  transition: 0.5s;
 
   &:hover,
   &:focus {
@@ -226,22 +236,8 @@ h1.recipeTitle {
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
-    &::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      transform: scaleX(0);
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      border-bottom: 1px solid $teal;
-      color: $teal;
-      transform-origin: bottom right;
-      transition: none;
-    }
-  }
+    transition: none;
 
-  @media screen and (prefers-reduced-motion: reduce) {
     &::after {
       content: "";
       position: absolute;
@@ -283,18 +279,21 @@ h1.recipeTitle {
   }
 }
 
-// Button animations
-// Credit to: https://emilkowalski.github.io/css-effects-snippets/
+// Universal button styling
 .btn {
   height: 40px;
   padding: 0 14px;
-  overflow: hidden;
-  background: $teal;
-  position: relative;
   line-height: auto;
-  color: $white;
+  background: $teal;
   border: 1px solid $black;
-  margin: 5px;
+}
+
+// Button animations
+// Credit to: https://emilkowalski.github.io/css-effects-snippets/
+.button-animation {
+  overflow: hidden;
+  position: relative;
+  color: $white;
 
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
@@ -305,7 +304,7 @@ h1.recipeTitle {
       width: 100%;
       height: 100%;
       transform: translateX(-100%);
-      background: $blue;
+      background: $baby-blue;
       transition: none;
     }
   }
@@ -319,7 +318,7 @@ h1.recipeTitle {
       width: 100%;
       height: 100%;
       transform: translateX(-100%);
-      background: $blue;
+      background: $baby-blue;
       transition: none;
     }
   }
@@ -332,13 +331,13 @@ h1.recipeTitle {
     width: 100%;
     height: 100%;
     transform: translateX(-100%);
-    background: $blue;
+    background: $baby-blue;
     transition: transform 0.2s ease-in-out;
   }
 
   &:hover,
   &:focus {
-    border: 1px solid $teal;
+    border: 1px solid $black;
     background-color: $teal;
   }
 
@@ -351,4 +350,67 @@ h1.recipeTitle {
     position: relative;
     z-index: 1;
   }
+}
+
+// Changing the color of the heart SVG icon
+.fa-heart {
+  color: $light-red;
+}
+
+.rating-button {
+  padding: 0 8px;
+  border: 0;
+  border-top: 1px solid $black;
+  border-bottom: 1px solid $black;
+
+  &:last-child {
+    border-right: 1px solid $black;
+  }
+
+  &:first-child {
+    border-left: 1px solid $black;
+  }
+
+  &:hover,
+  &:focus {
+    background: $teal;
+    border-color: $black;
+    box-shadow: inset 0 -3px $blue;
+  }
+}
+
+.button--favorite {
+  &:hover,
+  &:focus {
+    background: $teal;
+    border-color: $black;
+    box-shadow: inset 0 -3px $blue;
+  }
+}
+
+.button--recipe {
+  margin: 5px 0;
+}
+
+.container--recipe .row {
+  margin: 5px 0;
+}
+
+.link--tags {
+  margin: 2px 8px;
+  padding: 3px 8px;
+  border: 1px solid $teal;
+  border-radius: 5px;
+  background-color: $lighter-blue;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    color: $blue;
+    background-color: $lightest-blue;
+  }
+}
+
+.image--logo {
+  width: 12rem;
 }

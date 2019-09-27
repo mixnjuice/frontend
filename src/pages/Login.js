@@ -1,16 +1,27 @@
 import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { Form as FinalForm, Field } from 'react-final-form';
+import { Redirect } from 'react-router-dom';
 import { Button, Container, Form } from 'react-bootstrap';
+import { Form as FinalForm, Field } from 'react-final-form';
+import { withLastLocation } from 'react-router-last-location';
 
 import { actions as appActions } from 'reducers/application';
 import { required, email, length, composeValidators } from 'utils/validation';
+import { isLoggingIn, isLoggedIn } from 'selectors/application';
 
 export class Login extends Component {
   static propTypes = {
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    loggingIn: PropTypes.bool.isRequired,
+    loggedIn: PropTypes.bool.isRequired,
+    lastLocation: PropTypes.shape({
+      pathname: PropTypes.string,
+      search: PropTypes.string,
+      hash: PropTypes.string
+    })
   };
 
   constructor(props) {
@@ -26,8 +37,15 @@ export class Login extends Component {
   }
 
   render() {
+    const { loggingIn, loggedIn, lastLocation } = this.props;
+
+    if (loggedIn) {
+      return <Redirect to={lastLocation.pathname} />;
+    }
+
     return (
       <Container>
+        <Helmet title="Login" />
         <h1>Login</h1>
         <FinalForm
           onSubmit={this.handleSubmit}
@@ -53,9 +71,6 @@ export class Login extends Component {
                           : 'Not a valid email address'}
                       </Form.Control.Feedback>
                     )}
-                    <Form.Text className="text-muted">
-                      We&apos;ll never share your email with anyone else.
-                    </Form.Text>
                   </Form.Group>
                 )}
               </Field>
@@ -81,8 +96,13 @@ export class Login extends Component {
                   </Form.Group>
                 )}
               </Field>
-              <Button variant="primary" type="submit" disabled={submitting}>
-                Login
+              <Button
+                className="button-animation"
+                variant="primary"
+                type="submit"
+                disabled={submitting || loggingIn}
+              >
+                <span>Login</span>
               </Button>
             </Form>
           )}
@@ -91,6 +111,11 @@ export class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  loggingIn: isLoggingIn(state),
+  loggedIn: isLoggedIn(state)
+});
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
@@ -102,6 +127,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
-)(Login);
+)(withLastLocation(Login));

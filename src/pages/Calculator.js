@@ -1,5 +1,5 @@
+import { Helmet } from 'react-helmet';
 import React, { Component } from 'react';
-
 import {
   Button,
   Col,
@@ -11,7 +11,6 @@ import {
 } from 'react-bootstrap';
 
 import FlavorData from '../data/flavors.json';
-
 import FlavorStash from '../data/flavorstash.json';
 
 export default class Calculator extends Component {
@@ -34,8 +33,6 @@ export default class Calculator extends Component {
       ShowStash: false
     };
   }
-
-  componentDidMount() {}
 
   showStash() {
     this.setState({ ShowStash: true });
@@ -106,6 +103,7 @@ export default class Calculator extends Component {
 
     return (
       <Container className="justify-content-center align-items-center text-center">
+        <Helmet title="Calculator" />
         <h1>Calculator</h1>
         <Form
           noValidate
@@ -291,13 +289,22 @@ export default class Calculator extends Component {
           <h2>
             Flavor Stash
             <span>&nbsp;&nbsp;&nbsp;</span>
-            {this.state.ShowStash && (
-              <Button variant="info" size="sm" onClick={e => this.hideStash(e)}>
+            {this.state.showStash ? (
+              <Button
+                variant="info"
+                className="button-animation"
+                size="sm"
+                onClick={e => this.hideStash(e)}
+              >
                 <span>Hide</span>
               </Button>
-            )}
-            {!this.state.ShowStash && (
-              <Button variant="info" size="sm" onClick={e => this.showStash(e)}>
+            ) : (
+              <Button
+                variant="info"
+                className="button-animation"
+                size="sm"
+                onClick={e => this.showStash(e)}
+              >
                 <span>Show</span>
               </Button>
             )}
@@ -337,12 +344,28 @@ export default class Calculator extends Component {
                               <td>{flavor.vendor.name}</td>
                               <td>{flavor.name}</td>
                               <td>
-                                <Button
-                                  onClick={this.addIngredient.bind(this, index)}
-                                  disabled={this.state.inuse[index]}
-                                >
-                                  <span>Add to Recipe</span>
-                                </Button>
+                                {this.state.inuse[index] ? (
+                                  <Button
+                                    onClick={this.addIngredient.bind(
+                                      this,
+                                      index
+                                    )}
+                                    disabled={this.state.inuse[index]}
+                                  >
+                                    <span>Add to Recipe</span>
+                                  </Button>
+                                ) : (
+                                  <Button
+                                    className="button-animation"
+                                    onClick={this.addIngredient.bind(
+                                      this,
+                                      index
+                                    )}
+                                    disabled={this.state.inuse[index]}
+                                  >
+                                    <span>Add to Recipe</span>
+                                  </Button>
+                                )}
                               </td>
                             </tr>
                           );
@@ -385,6 +408,7 @@ export default class Calculator extends Component {
                         </td>
                         <td>
                           <Button
+                            className="button-animation"
                             onClick={this.removeIngredient.bind(this, index)}
                           >
                             <span>Remove</span>
@@ -442,7 +466,7 @@ export default class Calculator extends Component {
           </Form.Group>
           <Form.Row className="justify-content-center">
             <Form.Group as={Col} md="2">
-              <Button type="submit">
+              <Button className="button-animation" type="submit">
                 <span>Save</span>
               </Button>
               &nbsp;
