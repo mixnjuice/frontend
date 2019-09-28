@@ -10,13 +10,16 @@ import { actions as recipeActions } from 'reducers/recipe';
 export class IngredientList extends Component {
   static propTypes = {
     actions: PropTypes.shape({
-      setRecipeIngredients: PropTypes.func.isRequired
+      setRecipeIngredients: PropTypes.func.isRequired,
+      setRecipePercentages: PropTypes.func.isRequired
     }),
-    ingredients: PropTypes.arrayOf(PropTypes.object).isRequired
+    ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
+    percentages: PropTypes.arrayOf(PropTypes.number).isRequired
   };
 
   static defaultProps = {
-    ingredients: []
+    ingredients: [],
+    percentages: []
   };
 
   constructor(props) {
@@ -35,15 +38,19 @@ export class IngredientList extends Component {
   }
 
   handlePercentChange(event) {
-    const { ingredients } = this.props;
+    const { actions, ingredients, percentages } = this.props;
     const {
       target: { name, value }
     } = event;
 
-    const toUpdate = ingredients.find(ingredient => ingredient.id === name);
+    const index = ingredients.findIndex(
+      ingredient => ingredient.Flavor.id === name
+    );
 
-    if (toUpdate) {
-      toUpdate.millipercent = value;
+    if (index > -1) {
+      const newPercentages = percentages.splice(index, 1, value);
+
+      actions.setRecipePercentages(newPercentages);
     }
   }
 

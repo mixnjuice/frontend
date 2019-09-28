@@ -17,7 +17,8 @@ export class FlavorBrowser extends Component {
   static propTypes = {
     actions: PropTypes.shape({
       requestStash: PropTypes.func.isRequired,
-      setRecipeIngredients: PropTypes.func.isRequired
+      setRecipeIngredients: PropTypes.func.isRequired,
+      setRecipePercentages: PropTypes.func.isRequired
     }),
     stash: PropTypes.arrayOf(PropTypes.object),
     stashLoaded: PropTypes.bool,
@@ -48,7 +49,7 @@ export class FlavorBrowser extends Component {
 
   addIngredient(name) {
     const {
-      recipe: { ingredients },
+      recipe: { ingredients, percentages },
       stashLoaded,
       actions,
       stash
@@ -73,6 +74,7 @@ export class FlavorBrowser extends Component {
     }
 
     actions.setRecipeIngredients([...ingredients, toAdd]);
+    actions.setRecipePercentages([...percentages, 0]);
   }
 
   handleSearchChange(event) {

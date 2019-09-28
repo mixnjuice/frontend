@@ -10,7 +10,7 @@ import { actions as recipeActions } from 'reducers/recipe';
 import SplitSlider from 'components/SplitSlider/SplitSlider';
 import FlavorBrowser from 'components/FlavorBrowser/FlavorBrowser';
 import IngredientBar from 'components/IngredientBar/IngredientBar';
-import RecipeDetails from 'components/RecipeDetails/RecipeDetails';
+import RecipeComponents from 'components/RecipeComponents/RecipeComponents';
 import IngredientList from 'components/IngredientList/IngredientList';
 import {
   getActiveRecipe,
@@ -86,7 +86,7 @@ export class RecipeEditor extends Component {
       case 'desiredVolume': {
         const volume = parseInt(value, 10);
 
-        if (volume) {
+        if (volume !== false) {
           actions.setDesiredVolume(volume);
         }
         break;
@@ -94,7 +94,7 @@ export class RecipeEditor extends Component {
       case 'nicotineStrength': {
         const strength = parseInt(value, 10);
 
-        if (strength) {
+        if (strength !== false) {
           actions.setNicotineStrength(strength);
         }
         break;
@@ -102,7 +102,7 @@ export class RecipeEditor extends Component {
       case 'desiredNicotineStrength': {
         const strength = parseInt(value, 10);
 
-        if (strength) {
+        if (strength !== false) {
           actions.setDesiredNicotineStrength(strength);
         }
         break;
@@ -110,7 +110,7 @@ export class RecipeEditor extends Component {
       case 'nicotineDiluentRatio': {
         const ratio = parseFloat(value / 100);
 
-        if (ratio) {
+        if (ratio !== false) {
           actions.setNicotineDiluentRatio(ratio);
         }
         break;
@@ -118,7 +118,7 @@ export class RecipeEditor extends Component {
       case 'desiredDiluentRatio': {
         const ratio = parseFloat(value / 100);
 
-        if (ratio) {
+        if (ratio !== false) {
           actions.setDesiredDiluentRatio(ratio);
         }
         break;
@@ -184,6 +184,75 @@ export class RecipeEditor extends Component {
     };
   }
 
+  get components() {
+    const { percentages } = this;
+    const {
+      desiredVolume,
+      nicotineStrength,
+      desiredNicotineStrength,
+      nicotineDiluentRatio,
+      recipe: { ingredients, percentages: ingredientPercentages }
+    } = this.props;
+
+    const densities = {
+      vg: 1.26,
+      pg: 1.038,
+      vgNic: 1.235,
+      pgNic: 1.035
+    };
+    const result = [];
+
+    // linear interpolation between pure VG and pure PG nic densities
+    const nicotineDensity =
+      (1 - nicotineDiluentRatio) * densities.pgNic +
+      nicotineDiluentRatio * densities.vgNic;
+    // determine how many mg of nicotine we need
+    const nicotineMg = desiredNicotineStrength * desiredVolume;
+    // determine how many ml of nicotine base we need
+    const nicotineMl = nicotineMg / nicotineStrength;
+    const nicotineGrams = nicotineMl * nicotineDensity;
+    const vgMl = (percentages.vg / 100) * desiredVolume;
+    const vgGrams = vgMl * densities.vg;
+    const pgMl = (percentages.pg / 100) * desiredVolume;
+    const pgGrams = pgMl * densities.pg;
+
+    result.push({
+      name: `${nicotineStrength} mg/ml nicotine`,
+      percentage: percentages.nicotine,
+      mililiters: nicotineMl,
+      grams: nicotineGrams
+    });
+
+    result.push({
+      name: 'Vegetable glycerin',
+      percentage: percentages.vg,
+      mililiters: vgMl,
+      grams: vgGrams
+    });
+
+    result.push({
+      name: 'Propylene glycol',
+      percentage: percentages.pg,
+      mililiters: pgMl,
+      grams: pgGrams
+    });
+
+    for (let i = 0; i < ingredients.length; i++) {
+      const ingredient = ingredients[i];
+      const percentage = ingredientPercentages[i];
+      const name = `${ingredient.Flavor.Vendor.code} ${ingredient.Flavor.name}`;
+
+      result.push({
+        name,
+        percentage,
+        mililiters: 0,
+        grams: 0
+      });
+    }
+
+    return result;
+  }
+
   render() {
     const {
       recipe,
@@ -191,9 +260,10 @@ export class RecipeEditor extends Component {
       desiredNicotineStrength,
       nicotineStrength,
       nicotineDiluentRatio,
-      desiredDiluentRatio
+      desiredDiluentRatio,
+      recipe: { percentages: ingredientPercentages }
     } = this.props;
-    const { percentages } = this;
+    const { percentages, components } = this;
     const { name: recipeName, ingredients } = recipe;
 
     return (
@@ -311,7 +381,7 @@ export class RecipeEditor extends Component {
                       <Col md="6" sm="3">
                         <h2>Flavor Stash</h2>
                       </Col>
-                      <FlavorBrowser onAddIngredient={this.addIngredient} />
+                      <FlavorBrowser />
                     </Row>
                     <Row></Row>
                     <Row>
@@ -319,7 +389,7 @@ export class RecipeEditor extends Component {
                         <h2>Ingredients</h2>
                         <IngredientList
                           ingredients={ingredients}
-                          onRemoveClick={this.removeIngredient}
+                          percentages={ingredientPercentages}
                         />
                       </Col>
                     </Row>
@@ -328,7 +398,7 @@ export class RecipeEditor extends Component {
               </Row>
               <Row>
                 <Col md="12">
-                  <RecipeDetails percentVG={percentages.vg} />
+                  <RecipeComponents components={components} />
                 </Col>
                 <Col md="12">
                   <IngredientBar {...percentages} />
