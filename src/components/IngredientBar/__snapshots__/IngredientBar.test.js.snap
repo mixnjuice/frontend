@@ -9,6 +9,9 @@ exports[`<IngredientBar /> renders correctly 1`] = `
     aria-valuemin={0}
     aria-valuenow={20}
     className="progress-bar bg-danger"
+    name="nicotine"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     role="progressbar"
     style={
       Object {
@@ -23,6 +26,8 @@ exports[`<IngredientBar /> renders correctly 1`] = `
     aria-valuemin={0}
     aria-valuenow={10}
     className="progress-bar"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     role="progressbar"
     style={
       Object {
@@ -37,6 +42,8 @@ exports[`<IngredientBar /> renders correctly 1`] = `
     aria-valuemin={0}
     aria-valuenow={60}
     className="progress-bar bg-success"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     role="progressbar"
     style={
       Object {
@@ -51,6 +58,8 @@ exports[`<IngredientBar /> renders correctly 1`] = `
     aria-valuemin={0}
     aria-valuenow={10}
     className="progress-bar bg-warning"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
     role="progressbar"
     style={
       Object {

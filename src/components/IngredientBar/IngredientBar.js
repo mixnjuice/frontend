@@ -58,37 +58,42 @@ export default class IngredientList extends Component {
   render() {
     const { nicotine, flavor, vg, pg } = this.props;
 
+    const nicotineLabel =
+      nicotine > 5 ? `Nic (${Math.round(nicotine)}%)` : 'Nic';
+    const flavorLabel = flavor > 5 ? `Flavor (${Math.round(flavor)}%)` : 'Flv';
+    const vgLabel = vg > 5 ? `VG (${Math.round(vg)}%)` : 'VG';
+    const pgLabel = pg > 5 ? `PG (${Math.round(pg)}%)` : 'PG';
+
     return (
       <Fragment>
         <ProgressBar className="ingredient-bar">
           <ProgressBar
-            label="Nic"
             now={nicotine}
-            name="nicotine"
             variant="danger"
+            label={nicotineLabel}
             ref={this.refList.nicotine}
             onMouseEnter={() => this.toggleTooltipVisibility('nicotine')}
             onMouseLeave={() => this.toggleTooltipVisibility('nicotine')}
           />
           <ProgressBar
             now={flavor}
-            label="Flv"
+            label={flavorLabel}
             ref={this.refList.flavor}
             onMouseEnter={() => this.toggleTooltipVisibility('flavor')}
             onMouseLeave={() => this.toggleTooltipVisibility('flavor')}
           />
           <ProgressBar
-            variant="success"
             now={vg}
-            label="VG"
+            variant="success"
+            label={vgLabel}
             ref={this.refList.vg}
             onMouseEnter={() => this.toggleTooltipVisibility('vg')}
             onMouseLeave={() => this.toggleTooltipVisibility('vg')}
           />
           <ProgressBar
-            variant="warning"
             now={pg}
-            label="PG"
+            variant="warning"
+            label={pgLabel}
             ref={this.refList.pg}
             onMouseEnter={() => this.toggleTooltipVisibility('pg')}
             onMouseLeave={() => this.toggleTooltipVisibility('pg')}
