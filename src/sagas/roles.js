@@ -1,22 +1,9 @@
-// import dayjs from 'dayjs';
-// import nanoid from 'nanoid';
-import {
-  all,
-  call,
-  put,
-  takeLatest
-  // delay,
-  // take,
-  // takeEvery,
-  // select
-} from 'redux-saga/effects';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import request from 'utils/request';
 import { actions, types } from 'reducers/roles';
-import { actions as appActions } from 'reducers/application';
+import { actions as toastActions } from 'reducers/toast';
 
-// snake_cased variables here come from RFC 6749
-/* eslint-disable camelcase */
 function* requestRolesWorker() {
   try {
     const endpoint = {
@@ -42,7 +29,7 @@ function* requestRolesWorker() {
 
     yield put(actions.requestRolesFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
@@ -66,7 +53,7 @@ function* createRoleWorker({ name }) {
     if (result.success) {
       yield put(actions.requestRoles());
       yield put(
-        appActions.popToast({
+        toastActions.popToast({
           title: 'Role Created',
           icon: 'times-circle',
           message: `${name} role successfully created!`
@@ -82,7 +69,7 @@ function* createRoleWorker({ name }) {
 
     yield put(actions.createRoleFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
@@ -106,7 +93,7 @@ function* updateRoleWorker({ roleId, name }) {
     if (result.success) {
       yield put(actions.requestRoles());
       yield put(
-        appActions.popToast({
+        toastActions.popToast({
           title: 'Edit Role',
           icon: 'times-circle',
           message: `${name} role successfully updated!`
@@ -122,7 +109,7 @@ function* updateRoleWorker({ roleId, name }) {
 
     yield put(actions.updateRoleFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
@@ -143,7 +130,7 @@ function* deleteRoleWorker({ roleId, name }) {
     if (result.success) {
       yield put(actions.requestRoles());
       yield put(
-        appActions.popToast({
+        toastActions.popToast({
           title: 'Delete Role',
           icon: 'times-circle',
           message: `${name} role successfully deleted!`
@@ -159,7 +146,7 @@ function* deleteRoleWorker({ roleId, name }) {
 
     yield put(actions.deleteRoleFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
@@ -193,7 +180,7 @@ function* requestRoleUsersWorker({ roleId }) {
 
     yield put(actions.requestRoleUsersFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
@@ -219,7 +206,7 @@ function* createRoleUserWorker({ userId, roleId, active }) {
     if (result.success) {
       // yield put(actions.requestRoles());
       yield put(
-        appActions.popToast({
+        toastActions.popToast({
           title: 'User Role Added',
           icon: 'times-circle',
           message: `Role ${roleId} assigned to User ${userId}!`
@@ -235,7 +222,7 @@ function* createRoleUserWorker({ userId, roleId, active }) {
 
     yield put(actions.createRoleUserFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
@@ -256,7 +243,7 @@ function* deleteRoleUserWorker({ userId, roleId, name }) {
     if (result.success) {
       // yield put(actions.requestRoles());
       yield put(
-        appActions.popToast({
+        toastActions.popToast({
           title: 'Unassign User Role',
           icon: 'times-circle',
           message: `${name} role successfully unassigned!`
@@ -272,7 +259,7 @@ function* deleteRoleUserWorker({ userId, roleId, name }) {
 
     yield put(actions.deleteRoleUserFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message

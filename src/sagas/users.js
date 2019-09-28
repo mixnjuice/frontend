@@ -2,7 +2,7 @@ import { all, call, put, takeLatest, select } from 'redux-saga/effects';
 import request from 'utils/request';
 import { isLoaded } from 'selectors/users';
 import { actions, types } from 'reducers/users';
-import { actions as appActions } from 'reducers/application';
+import { actions as toastActions } from 'reducers/toast';
 
 function* requestUsersWorker() {
   try {
@@ -35,7 +35,7 @@ function* requestUsersWorker() {
 
     yield put(actions.requestUsersFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
@@ -69,7 +69,7 @@ function* requestUserWorker({ userId }) {
 
     yield put(actions.requestUserFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
@@ -103,7 +103,7 @@ function* requestUserRolesWorker({ userId }) {
 
     yield put(actions.requestUserRolesFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message

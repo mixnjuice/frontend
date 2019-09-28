@@ -2,7 +2,7 @@ import { all, put, call } from 'redux-saga/effects';
 
 import request from 'utils/request';
 import { actions } from 'reducers/flavors';
-import { actions as appActions } from 'reducers/application';
+import { actions as toastActions } from 'reducers/toast';
 import saga, { watchers, workers } from './flavors';
 
 /* eslint-disable camelcase */
@@ -72,7 +72,7 @@ describe('dashboard sagas', () => {
 
     expect(result.value).toEqual(
       put(
-        appActions.popToast({
+        toastActions.popToast({
           title: 'Error',
           icon: 'times-circle',
           message

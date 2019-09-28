@@ -1,22 +1,9 @@
-// import dayjs from 'dayjs';
-// import nanoid from 'nanoid';
-import {
-  all,
-  call,
-  put,
-  takeLatest
-  // delay,
-  // take,
-  // takeEvery,
-  // select
-} from 'redux-saga/effects';
+import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import request from 'utils/request';
 import { actions, types } from 'reducers/flavors';
-import { actions as appActions } from 'reducers/application';
+import { actions as toastActions } from 'reducers/toast';
 
-// snake_cased variables here come from RFC 6749
-/* eslint-disable camelcase */
 function* requestFlavorsWorker() {
   try {
     const endpoint = {
@@ -42,7 +29,7 @@ function* requestFlavorsWorker() {
 
     yield put(actions.requestFlavorsFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message

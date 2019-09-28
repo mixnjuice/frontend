@@ -2,10 +2,8 @@ import { all, call, put, takeLatest } from 'redux-saga/effects';
 
 import request from 'utils/request';
 import { actions, types } from 'reducers/dashboard';
-import { actions as appActions } from 'reducers/application';
+import { actions as toastActions } from 'reducers/toast';
 
-// snake_cased variables here come from RFC 6749
-/* eslint-disable camelcase */
 function* requestDashboardWorker(dashboardComponent) {
   yield put(actions.requestDashboardSuccess(dashboardComponent));
 }
@@ -37,7 +35,7 @@ function* requestMigrationsWorker() {
 
     yield put(actions.requestMigrationsFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
@@ -71,7 +69,7 @@ function* requestStatsWorker() {
 
     yield put(actions.requestStatsFailure(error));
     yield put(
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message

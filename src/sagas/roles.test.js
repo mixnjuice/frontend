@@ -2,7 +2,7 @@ import { all, put, call } from 'redux-saga/effects';
 
 import request from 'utils/request';
 import { actions } from 'reducers/roles';
-import { actions as appActions } from 'reducers/application';
+import { actions as toastActions } from 'reducers/toast';
 import saga, { watchers, workers } from './roles';
 
 /* eslint-disable camelcase */
@@ -18,6 +18,7 @@ describe('dashboard sagas', () => {
     method: 'POST'
   };
   */
+
   it('handles success in requestRolesWorker', () => {
     const gen = workers.requestRolesWorker();
 
@@ -77,7 +78,7 @@ describe('dashboard sagas', () => {
 
     expect(result.value).toEqual(
       put(
-        appActions.popToast({
+        toastActions.popToast({
           title: 'Error',
           icon: 'times-circle',
           message
