@@ -11,3 +11,8 @@ export const getRoleUsers = createSelector(
   getRoles,
   roles => roles.roleUsers
 );
+
+export const isLoaded = createSelector(
+  getRoles,
+  roles => roles.loaded
+);

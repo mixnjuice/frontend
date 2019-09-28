@@ -1,28 +1,35 @@
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { all, call, put, takeLatest, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
+import { isLoaded } from 'selectors/roles';
 import { actions, types } from 'reducers/roles';
 import { actions as toastActions } from 'reducers/toast';
 
 function* requestRolesWorker() {
   try {
-    const endpoint = {
-      url: '/roles',
-      method: 'GET'
-    };
-    const result = yield call(request.execute, { endpoint });
+    const loaded = yield select(isLoaded);
 
-    // update roles in state or throw an error
-    if (result.success) {
-      const {
-        response: { data }
-      } = result;
+    if (!loaded.roles) {
+      const endpoint = {
+        url: '/roles',
+        method: 'GET'
+      };
+      const result = yield call(request.execute, { endpoint });
 
-      yield put(actions.requestRolesSuccess(data));
-    } else if (result.error) {
-      throw result.error;
+      // update roles in state or throw an error
+      if (result.success) {
+        const {
+          response: { data }
+        } = result;
+
+        yield put(actions.requestRolesSuccess(data));
+      } else if (result.error) {
+        throw result.error;
+      } else {
+        throw new Error('Failed to get roles!');
+      }
     } else {
-      throw new Error('Failed to get roles!');
+      yield put(actions.requestRolesSuccess(true));
     }
   } catch (error) {
     const { message } = error;

@@ -1,6 +1,7 @@
 import { buildActions } from 'utils';
 
 export const types = buildActions('roles', [
+  'RESET_LOADED',
   'REQUEST_ROLES',
   'REQUEST_ROLES_SUCCESS',
   'REQUEST_ROLES_FAILURE',
@@ -18,6 +19,11 @@ export const types = buildActions('roles', [
   'DELETE_ROLE_USER',
   'DELETE_ROLE_USER_FAILURE'
 ]);
+
+const resetLoaded = unload => ({
+  type: types.RESET_LOADED,
+  unload
+});
 
 const requestRoles = () => ({
   type: types.REQUEST_ROLES
@@ -105,6 +111,7 @@ const deleteRoleUserFailure = error => ({
 });
 
 export const actions = {
+  resetLoaded,
   requestRoles,
   requestRolesSuccess,
   requestRolesFailure,
@@ -126,15 +133,49 @@ export const actions = {
 export const initialState = {
   error: null,
   roles: [],
-  roleUsers: []
+  roleUsers: [],
+  loaded: {
+    roles: false,
+    users: false,
+    role: {},
+    user: {}
+  }
 };
 
 export const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case types.REQUEST_ROLES_SUCCESS:
+    case types.RESET_LOADED:
+      if (action.unload === 'roles') {
+        return {
+          ...state,
+          loaded: {
+            ...state.loaded,
+            roles: false
+          }
+        };
+      }
+      // unload == 'users'
       return {
         ...state,
-        roles: action.roles
+        loaded: {
+          ...state.loaded,
+          users: false
+        }
+      };
+    case types.REQUEST_ROLES_SUCCESS:
+      if (state.loaded.roles) {
+        return {
+          ...state,
+          roles: state.roles
+        };
+      }
+      return {
+        ...state,
+        roles: action.roles,
+        loaded: {
+          ...state.loaded,
+          roles: true
+        }
       };
     case types.REQUEST_ROLES_FAILURE:
       return {
