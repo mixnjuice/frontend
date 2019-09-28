@@ -20,6 +20,7 @@ import {
   getNicotineDiluentRatio,
   getDesiredDiluentRatio
 } from 'selectors/recipe';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class RecipeEditor extends Component {
   static propTypes = {
@@ -47,6 +48,11 @@ export class RecipeEditor extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      collapsed: false
+    };
+
+    this.toggleCollapse = this.toggleCollapse.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
   }
 
@@ -137,6 +143,12 @@ export class RecipeEditor extends Component {
     }
 
     this.setState({ validated: true });
+  }
+
+  toggleCollapse() {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
   }
 
   get percentages() {
@@ -263,8 +275,12 @@ export class RecipeEditor extends Component {
       desiredDiluentRatio,
       recipe: { percentages: ingredientPercentages }
     } = this.props;
+    const { collapsed } = this.state;
     const { percentages, components } = this;
     const { name: recipeName, ingredients } = recipe;
+
+    const collapseIcon = collapsed ? 'expand' : 'compress';
+    const collapseWidth = collapsed ? { span: 6, offset: 3 } : '12';
 
     return (
       <Container className="recipe-editor">
@@ -398,6 +414,11 @@ export class RecipeEditor extends Component {
               </Row>
               <Row>
                 <Col md="12">
+                  <Button onClick={this.toggleCollapse}>
+                    <FontAwesomeIcon icon={collapseIcon} />
+                  </Button>
+                </Col>
+                <Col md={collapseWidth}>
                   <RecipeComponents components={components} />
                 </Col>
                 <Col md="12">
