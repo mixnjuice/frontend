@@ -6,7 +6,8 @@ import { FlavorBrowser } from './FlavorBrowser';
 describe('<FlavorBrowser />', () => {
   const actions = {
     requestStash: jest.fn(),
-    setRecipeIngredients: jest.fn()
+    setRecipeIngredients: jest.fn(),
+    setRecipePercentages: jest.fn()
   };
   const stash = [
     {
