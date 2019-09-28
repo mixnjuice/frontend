@@ -9,7 +9,6 @@ exports[`<IngredientBar /> renders correctly 1`] = `
     aria-valuemin={0}
     aria-valuenow={20}
     className="progress-bar bg-danger"
-    name="nicotine"
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
     role="progressbar"
@@ -19,7 +18,7 @@ exports[`<IngredientBar /> renders correctly 1`] = `
       }
     }
   >
-    Nic
+    Nic (20%)
   </div>
   <div
     aria-valuemax={100}
@@ -35,7 +34,7 @@ exports[`<IngredientBar /> renders correctly 1`] = `
       }
     }
   >
-    Flv
+    Flavor (10%)
   </div>
   <div
     aria-valuemax={100}
@@ -51,7 +50,7 @@ exports[`<IngredientBar /> renders correctly 1`] = `
       }
     }
   >
-    VG
+    VG (60%)
   </div>
   <div
     aria-valuemax={100}
@@ -67,7 +66,7 @@ exports[`<IngredientBar /> renders correctly 1`] = `
       }
     }
   >
-    PG
+    PG (10%)
   </div>
 </div>
 `;
