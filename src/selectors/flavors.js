@@ -6,3 +6,8 @@ export const getAllFlavors = createSelector(
   getFlavors,
   flavors => flavors.flavors
 );
+
+export const isLoaded = createSelector(
+  getFlavors,
+  flavors => flavors.loaded
+);

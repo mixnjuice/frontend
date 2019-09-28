@@ -136,9 +136,7 @@ export const initialState = {
   roleUsers: [],
   loaded: {
     roles: false,
-    users: false,
-    role: {},
-    user: {}
+    users: false
   }
 };
 

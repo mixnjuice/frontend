@@ -1,28 +1,35 @@
-import { all, call, put, takeLatest } from 'redux-saga/effects';
+import { all, call, put, takeLatest, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
+import { isLoaded } from 'selectors/flavors';
 import { actions, types } from 'reducers/flavors';
 import { actions as toastActions } from 'reducers/toast';
 
 function* requestFlavorsWorker() {
   try {
-    const endpoint = {
-      url: '/flavors',
-      method: 'GET'
-    };
-    const result = yield call(request.execute, { endpoint });
+    const loaded = yield select(isLoaded);
 
-    // update flavors in state or throw an error
-    if (result.success) {
-      const {
-        response: { data }
-      } = result;
+    if (!loaded.flavors) {
+      const endpoint = {
+        url: '/flavors',
+        method: 'GET'
+      };
+      const result = yield call(request.execute, { endpoint });
 
-      yield put(actions.requestFlavorsSuccess(data));
-    } else if (result.error) {
-      throw result.error;
+      // update flavors in state or throw an error
+      if (result.success) {
+        const {
+          response: { data }
+        } = result;
+
+        yield put(actions.requestFlavorsSuccess(data));
+      } else if (result.error) {
+        throw result.error;
+      } else {
+        throw new Error('Failed to get flavors!');
+      }
     } else {
-      throw new Error('Failed to get flavors!');
+      yield put(actions.requestFlavorsSuccess(true));
     }
   } catch (error) {
     const { message } = error;
