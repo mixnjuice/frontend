@@ -4,7 +4,21 @@ import request from 'utils/request';
 import { actions, types } from 'reducers/recipe';
 
 function* editRecipeWorker() {
-  yield put(actions.EDIT_RECIPE_SUCCESS);
+  try {
+    const endpoint = {
+      url: '/recipe',
+      method: 'POST'
+    };
+    const result = yield call(request.execute, { endpoint });
+
+    if (!result.success) {
+      throw result.error;
+    }
+
+    yield put(actions.editRecipeSuccess());
+  } catch (error) {
+    yield put(actions.editRecipeFailure(error));
+  }
 }
 
 function* editRecipeWatcher() {
@@ -12,7 +26,7 @@ function* editRecipeWatcher() {
 }
 
 function* revertRecipeWorker() {
-  yield put(actions.REVERT_RECIPE_SUCCESS);
+  yield put(actions.revertRecipeSuccess());
 }
 
 function* revertRecipeWatcher() {
