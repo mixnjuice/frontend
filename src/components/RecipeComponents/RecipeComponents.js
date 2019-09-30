@@ -38,7 +38,12 @@ export default class RecipeComponents extends Component {
           {components.map(component => (
             <tr key={component.name}>
               <td>{component.name}</td>
-              <td>{Math.round(component.percentage)}%</td>
+              <td>
+                {component.percentage % 1 !== 0
+                  ? component.percentage.toPrecision(2)
+                  : Math.round(component.percentage)}
+                %
+              </td>
               <td>{component.mililiters.toFixed(2)} ml</td>
               <td>{component.grams.toFixed(2)} g</td>
             </tr>
