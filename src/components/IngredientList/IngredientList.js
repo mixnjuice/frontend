@@ -43,14 +43,18 @@ export class IngredientList extends Component {
       target: { name, value }
     } = event;
 
+    const floatValue = parseFloat(value);
+
+    if (floatValue === false) {
+      return;
+    }
+
     const index = ingredients.findIndex(
       ingredient => ingredient.Flavor.id === name
     );
 
     if (index > -1) {
-      const newPercentages = percentages.splice(index, 1, value);
-
-      actions.setRecipePercentages(newPercentages);
+      actions.setRecipePercentages({ ...percentages, [name]: floatValue });
     }
   }
 
