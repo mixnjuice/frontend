@@ -14,7 +14,7 @@
       justify-content: flex-end;
     }
 
-    &:nth-of-type(odd) {
+    &--striped {
       background-color: $lightest-blue;
     }
   }

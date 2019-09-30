@@ -113,9 +113,10 @@ export class FlavorBrowser extends Component {
     } = this.filteredStash[index];
     const itemClass = `${this.baseClass}-item`;
     const vendorClass = `${itemClass}-vendor`;
+    const stripeClass = index % 2 === 0 ? `${itemClass}--striped` : false;
 
     return (
-      <Row className={itemClass} style={style}>
+      <Row className={classNames(itemClass, stripeClass)} style={style}>
         <Col md="2" sm="3" className={vendorClass}>
           {vendor.code}
         </Col>
