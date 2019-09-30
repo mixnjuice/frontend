@@ -280,8 +280,17 @@ export class RecipeEditor extends Component {
     const { percentages, components } = this;
     const { name: recipeName, ingredients } = recipe;
 
-    const collapseIcon = collapsed ? 'expand' : 'compress';
-    const collapseWidth = collapsed ? { span: 6, offset: 3 } : '12';
+    const collapseProps = collapsed
+      ? {
+          text: 'Expand',
+          icon: 'expand',
+          width: { span: 6, offset: 3 }
+        }
+      : {
+          text: 'Collapse',
+          icon: 'compress',
+          width: '12'
+        };
 
     return (
       <Container className="recipe-editor">
@@ -414,12 +423,14 @@ export class RecipeEditor extends Component {
                 </Col>
               </Row>
               <Row>
-                <Col md="12">
+                <Col md="12" className="text-right">
                   <Button onClick={this.toggleCollapse}>
-                    <FontAwesomeIcon icon={collapseIcon} />
+                    <FontAwesomeIcon icon={collapseProps.icon} />
+                    &nbsp;
+                    <span>{collapseProps.text}</span>
                   </Button>
                 </Col>
-                <Col md={collapseWidth}>
+                <Col md={collapseProps.width}>
                   <RecipeComponents components={components} />
                 </Col>
                 <Col md="12">
