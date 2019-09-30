@@ -14,7 +14,8 @@ import {
   faUndo,
   faSearch,
   faCompress,
-  faExpand
+  faExpand,
+  faSave
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faHeart as farHeart,
@@ -42,7 +43,8 @@ library.add(
   faUndo,
   faSearch,
   faCompress,
-  faExpand
+  faExpand,
+  faSave
 );
 
 export default library;

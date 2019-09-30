@@ -145,6 +145,8 @@ export class RecipeEditor extends Component {
     this.setState({ validated: true });
   }
 
+  handleDelete() {}
+
   toggleCollapse() {
     this.setState({
       collapsed: !this.state.collapsed
@@ -442,12 +444,14 @@ export class RecipeEditor extends Component {
                   <Button
                     variant="danger"
                     className="button-animation mr-2"
-                    type="submit"
+                    onClick={this.handleDelete}
                   >
-                    <span>Delete</span>
+                    <FontAwesomeIcon icon="trash" />
+                    &nbsp;<span>Delete</span>
                   </Button>
                   <Button className="button-animation" type="submit">
-                    <span>Save</span>
+                    <FontAwesomeIcon icon="save" />
+                    &nbsp;<span>Save</span>
                   </Button>
                 </Col>
               </Row>
