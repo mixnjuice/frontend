@@ -249,16 +249,17 @@ export class RecipeEditor extends Component {
       grams: pgGrams
     });
 
-    for (let i = 0; i < ingredients.length; i++) {
-      const ingredient = ingredients[i];
-      const percentage = ingredientPercentages[i];
-      const name = `${ingredient.Flavor.Vendor.code} ${ingredient.Flavor.name}`;
+    for (const [id, percentage] of percentageEntries) {
+      const ingredient = ingredients.find(ing => ing.Flavor.id === id);
+      const name = `${ingredient.Flavor.Vendor.name} ${ingredient.Flavor.name}`;
+      const mililiters = (percentage / 100) * desiredVolume;
+      const grams = mililiters * densities.pg;
 
       result.push({
         name,
         percentage,
-        mililiters: 0,
-        grams: 0
+        mililiters,
+        grams
       });
     }
 

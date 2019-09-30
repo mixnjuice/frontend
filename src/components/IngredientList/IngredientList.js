@@ -77,7 +77,7 @@ export class IngredientList extends Component {
             return (
               <tr key={id}>
                 <td>
-                  {vendor.name} {name}
+                  {vendor.code} {name}
                 </td>
                 <td className="recipe-percent">
                   <InputGroup>
