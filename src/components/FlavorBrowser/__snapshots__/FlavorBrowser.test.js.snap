@@ -56,7 +56,7 @@ Array [
         }
       >
         <div
-          className="flavor-browser-item row"
+          className="flavor-browser-item flavor-browser-item--striped row"
           style={
             Object {
               "height": 30,
