@@ -48,7 +48,7 @@ export default class RecipeComponents extends Component {
               <td>{component.grams.toFixed(2)} g</td>
             </tr>
           ))}
-          <tr>
+          <tr className="font-weight-bold">
             <td className="bt-2">Total</td>
             <td className="bt-2">100%</td>
             <td className="bt-2">{Math.round(totalMl)} ml</td>

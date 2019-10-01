@@ -425,7 +425,7 @@ export class RecipeEditor extends Component {
                 </Col>
               </Row>
               <Row>
-                <Col md="12" className="text-right">
+                <Col md="12" className="text-right mb-2">
                   <Button onClick={this.toggleCollapse}>
                     <FontAwesomeIcon icon={collapseProps.icon} />
                     &nbsp;
