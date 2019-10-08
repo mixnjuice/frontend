@@ -189,7 +189,8 @@ export const reducer = (state = initialState, action = {}) => {
         active: {
           id: null,
           name: '',
-          ingredients: []
+          ingredients: [],
+          percentages: {}
         }
       };
     case types.EDIT_RECIPE_SUCCESS:
