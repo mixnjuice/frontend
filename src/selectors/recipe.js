@@ -32,6 +32,11 @@ export const getRecipeIngredients = createSelector(
   active => active.ingredients
 );
 
+export const getRecipePercentages = createSelector(
+  getActiveRecipe,
+  active => active.percentages
+);
+
 export const getError = createSelector(
   getRecipe,
   recipe => recipe.error
