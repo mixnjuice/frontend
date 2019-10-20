@@ -6,10 +6,11 @@ executors:
       IMAGE_NAME: mixnjuice/frontend
     docker:
       - image: circleci/buildpack-deps:stretch
+    working_directory: ~/mixnjuice-frontend
 
 jobs:
   build:
-    working_directory: ~/gusta-frontend
+    working_directory: ~/mixnjuice-frontend
     docker:
       - image: circleci/node:latest
     steps:
@@ -27,6 +28,13 @@ jobs:
           paths:
             - ./node_modules
       - run:
+          name: Build application
+          command: npm run build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist/*
+      - run:
           name: test
           command: 'npm test && codecov'
   docker_build:
@@ -34,9 +42,8 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run:
-          name: Build application
-          command: npm install && npm run build
+      - attach_workspace:
+          at: ~/mixnjuice-frontend/dist
       - run:
           name: Build Docker image
           command: docker build -t $IMAGE_NAME:latest .
