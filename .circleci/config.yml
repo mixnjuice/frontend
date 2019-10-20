@@ -29,7 +29,7 @@ jobs:
       - run:
           name: test
           command: 'npm test && codecov'
-docker_build:
+  docker_build:
     executor: docker-publisher
     steps:
       - checkout
