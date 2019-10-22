@@ -4,10 +4,15 @@ export const getFlavors = state => state.flavors;
 
 export const getAllFlavors = createSelector(
   getFlavors,
-  flavors => flavors.flavors
+  flavors => flavors.collection
 );
 
-export const isLoaded = createSelector(
+export const getCachedFlavors = createSelector(
   getFlavors,
-  flavors => flavors.loaded
+  flavors => flavors.cache
+);
+
+export const getFlavorsPager = createSelector(
+  getFlavors,
+  flavors => flavors.pager
 );

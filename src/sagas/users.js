@@ -1,16 +1,74 @@
 import { all, call, put, takeLatest, select } from 'redux-saga/effects';
 import request from 'utils/request';
-import { isLoaded } from 'selectors/users';
+import { getCachedUsers, getUsersPager } from 'selectors/users';
 import { actions, types } from 'reducers/users';
 import { actions as toastActions } from 'reducers/toast';
 
-function* requestUsersWorker() {
+function* requestUsersWorker({ pager }) {
   try {
-    const loaded = yield select(isLoaded);
+    const usersPager = yield select(getUsersPager);
 
-    if (!loaded.users) {
-      const endpoint = {
-        url: '/users/accounts',
+    // Initial/previous values stored
+    let { count, limit, page } = usersPager;
+    const { pages } = usersPager;
+
+    let endpoint = {};
+
+    if (!count) {
+      endpoint = {
+        url: '/users/count',
+        method: 'GET'
+      };
+      const usersCount = yield call(request.execute, { endpoint });
+
+      if (usersCount.success) {
+        const {
+          response: { data }
+        } = usersCount;
+        // Set pager to be passed into Success, Update count
+
+        pager.count = data;
+      } else if (usersCount.error) {
+        throw usersCount.error;
+      } else {
+        throw new Error('Failed to count users!');
+      }
+    } else {
+      pager.count = count;
+    }
+
+    if (!pager.limit) {
+      pager.limit = limit;
+    }
+
+    pager.pages =
+      !pages || pages === null || pager.limit !== limit
+        ? Math.ceil(pager.count / pager.limit)
+        : pages;
+
+    if (!pager.page) {
+      pager.page = page;
+    }
+    // Refresh these values to the desired values (from pager)
+    count = pager.count;
+    limit = pager.limit;
+    page = pager.page;
+
+    const cached = yield select(getCachedUsers);
+
+    if (
+      !cached[page] ||
+      (count > Number(limit) && cached[page].length !== Number(limit))
+    ) {
+      let offset = page * limit - limit + 1;
+
+      if (offset > count) {
+        // Prevent an offset higher than total amount of users
+        // - Consider a max limit/offset
+        offset = count - limit;
+      }
+      endpoint = {
+        url: `/users/accounts/?limit=${limit}&offset=${offset}`,
         method: 'GET'
       };
       const result = yield call(request.execute, { endpoint });
@@ -21,14 +79,16 @@ function* requestUsersWorker() {
           response: { data }
         } = result;
 
-        yield put(actions.requestUsersSuccess(data));
+        cached[page] = data;
+
+        yield put(actions.requestUsersSuccess(cached, pager));
       } else if (result.error) {
         throw result.error;
       } else {
         throw new Error('Failed to get users!');
       }
     } else {
-      yield put(actions.requestUsersSuccess(true));
+      yield put(actions.requestUsersSuccess(cached, pager));
     }
   } catch (error) {
     const { message } = error;

@@ -4,7 +4,17 @@ export const getUsers = state => state.users;
 
 export const getAllUsers = createSelector(
   getUsers,
-  users => users.users
+  users => users.collection
+);
+
+export const getCachedUsers = createSelector(
+  getUsers,
+  users => users.cache
+);
+
+export const getUsersPager = createSelector(
+  getUsers,
+  users => users.pager
 );
 
 export const getUser = createSelector(
@@ -15,9 +25,4 @@ export const getUser = createSelector(
 export const getUserRoles = createSelector(
   getUsers,
   users => users.roles
-);
-
-export const isLoaded = createSelector(
-  getUsers,
-  users => users.loaded
 );

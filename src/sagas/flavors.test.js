@@ -1,22 +1,57 @@
-import { all, put, call } from 'redux-saga/effects';
+import { all, put, call, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
 import { actions } from 'reducers/flavors';
 import { actions as toastActions } from 'reducers/toast';
 import saga, { watchers, workers } from './flavors';
+import { getCachedFlavors, getFlavorsPager } from 'selectors/flavors';
 
 /* eslint-disable camelcase */
 describe('dashboard sagas', () => {
   const flavors = { flavors: true };
+  const count = true;
   const flavorsEndpoint = {
-    url: '/flavors',
+    url: '/flavors?limit=20&offset=21',
     method: 'GET'
+  };
+  const countEndpoint = {
+    url: '/flavors/count',
+    method: 'GET'
+  };
+  const pager = {
+    count: null,
+    limit: 20,
+    page: 1,
+    pages: null
   };
 
   it('handles success in requestFlavorsWorker', () => {
-    const gen = workers.requestFlavorsWorker();
+    const gen = workers.requestFlavorsWorker(pager);
 
     let result = gen.next();
+
+    expect(result.value).toEqual(select(getFlavorsPager));
+
+    result = gen.next();
+
+    result = gen.next();
+
+    expect(result.value).toEqual(
+      call(request.execute, { endpoint: countEndpoint })
+    );
+
+    result = gen.next({
+      success: true,
+      response: {
+        data: count
+      }
+    });
+
+    result = gen.next();
+
+    expect(result.value).toEqual(select(getCachedFlavors));
+
+    result = gen.next(false);
 
     expect(result.value).toEqual(
       call(request.execute, { endpoint: flavorsEndpoint })
@@ -34,7 +69,7 @@ describe('dashboard sagas', () => {
 
   it('handles request failure in requestFlavorsWorker', () => {
     const error = new Error('An error occurred.');
-    const gen = workers.requestFlavorsWorker();
+    const gen = workers.requestFlavorsWorker({ page: 1, limit: 20 });
 
     let result = gen.next();
 
@@ -53,7 +88,7 @@ describe('dashboard sagas', () => {
   it('handles unexpected error in requestFlavorsWorker', () => {
     const error = new Error('An error occurred.');
     const { message } = error;
-    const gen = workers.requestFlavorsWorker();
+    const gen = workers.requestFlavorsWorker({ page: 1, limit: 20 });
 
     let result = gen.next();
 

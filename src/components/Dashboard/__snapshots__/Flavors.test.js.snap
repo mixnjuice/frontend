@@ -16,6 +16,37 @@ exports[`Dashboard <Flavors /> renders correctly 1`] = `
     
     
     <div
+      className="container-fluid"
+    >
+      <div
+        className="pb-2 row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          />
+        </div>
+      </div>
+    </div>
+    <div
       className="table-responsive"
     >
       <table
@@ -44,6 +75,51 @@ exports[`Dashboard <Flavors /> renders correctly 1`] = `
         </thead>
         <tbody />
       </table>
+    </div>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          />
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+           Flavors
+        </div>
+        <div
+          className="text-right col"
+        >
+           Pages
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,7 +1,6 @@
 import { buildActions } from 'utils';
 
 export const types = buildActions('users', [
-  'RESET_LOADED',
   'REQUEST_USERS',
   'REQUEST_USERS_SUCCESS',
   'REQUEST_USERS_FAILURE',
@@ -13,18 +12,15 @@ export const types = buildActions('users', [
   'REQUEST_USER_ROLES_FAILURE'
 ]);
 
-const resetLoaded = unload => ({
-  type: types.RESET_LOADED,
-  unload
+const requestUsers = pager => ({
+  type: types.REQUEST_USERS,
+  pager
 });
 
-const requestUsers = () => ({
-  type: types.REQUEST_USERS
-});
-
-const requestUsersSuccess = users => ({
+const requestUsersSuccess = (users, pager) => ({
   type: types.REQUEST_USERS_SUCCESS,
-  users
+  users,
+  pager
 });
 
 const requestUsersFailure = error => ({
@@ -63,7 +59,6 @@ const requestUserRolesFailure = error => ({
 });
 
 export const actions = {
-  resetLoaded,
   requestUsers,
   requestUsersSuccess,
   requestUsersFailure,
@@ -76,47 +71,27 @@ export const actions = {
 };
 
 export const initialState = {
-  users: [],
+  cache: [],
+  collection: [],
   roles: [],
-  loaded: {
-    users: false,
-    roles: false
+  pager: {
+    count: null,
+    limit: 100,
+    page: 1,
+    pages: null
   }
 };
 
 export const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case types.RESET_LOADED:
-      if (action.unload === 'users') {
-        return {
-          ...state,
-          loaded: {
-            ...state.loaded,
-            users: false
-          }
-        };
-      }
-      // unload == 'roles'
-      return {
-        ...state,
-        loaded: {
-          ...state.loaded,
-          roles: false
-        }
-      };
     case types.REQUEST_USERS_SUCCESS:
-      if (state.loaded.users) {
-        return {
-          ...state,
-          users: state.users
-        };
-      }
       return {
         ...state,
-        users: action.users,
-        loaded: {
-          ...state.loaded,
-          users: true
+        cache: action.users,
+        collection: action.users[action.pager.page],
+        pager: {
+          ...state.pager,
+          ...action.pager
         }
       };
     case types.REQUEST_USERS_FAILURE:
