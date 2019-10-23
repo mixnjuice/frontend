@@ -1,7 +1,6 @@
 import { buildActions } from 'utils';
 
 export const types = buildActions('roles', [
-  'RESET_LOADED',
   'REQUEST_ROLES',
   'REQUEST_ROLES_SUCCESS',
   'REQUEST_ROLES_FAILURE',
@@ -20,18 +19,15 @@ export const types = buildActions('roles', [
   'DELETE_ROLE_USER_FAILURE'
 ]);
 
-const resetLoaded = unload => ({
-  type: types.RESET_LOADED,
-  unload
+const requestRoles = pager => ({
+  type: types.REQUEST_ROLES,
+  pager
 });
 
-const requestRoles = () => ({
-  type: types.REQUEST_ROLES
-});
-
-const requestRolesSuccess = roles => ({
+const requestRolesSuccess = (roles, pager) => ({
   type: types.REQUEST_ROLES_SUCCESS,
-  roles
+  roles,
+  pager
 });
 
 const requestRolesFailure = error => ({
@@ -111,7 +107,6 @@ const deleteRoleUserFailure = error => ({
 });
 
 export const actions = {
-  resetLoaded,
   requestRoles,
   requestRolesSuccess,
   requestRolesFailure,
@@ -132,47 +127,31 @@ export const actions = {
 
 export const initialState = {
   error: null,
-  roles: [],
-  roleUsers: [],
-  loaded: {
-    roles: false,
-    users: false
-  }
+  collection: {
+    cache: [],
+    roles: [],
+    pager: {
+      count: null,
+      limit: 100,
+      page: 1,
+      pages: null
+    }
+  },
+  roleUsers: []
 };
 
 export const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case types.RESET_LOADED:
-      if (action.unload === 'roles') {
-        return {
-          ...state,
-          loaded: {
-            ...state.loaded,
-            roles: false
-          }
-        };
-      }
-      // unload == 'users'
-      return {
-        ...state,
-        loaded: {
-          ...state.loaded,
-          users: false
-        }
-      };
     case types.REQUEST_ROLES_SUCCESS:
-      if (state.loaded.roles) {
-        return {
-          ...state,
-          roles: state.roles
-        };
-      }
       return {
         ...state,
-        roles: action.roles,
-        loaded: {
-          ...state.loaded,
-          roles: true
+        collection: {
+          cache: action.roles,
+          roles: action.roles[action.pager.page],
+          pager: {
+            ...state.pager,
+            ...action.pager
+          }
         }
       };
     case types.REQUEST_ROLES_FAILURE:

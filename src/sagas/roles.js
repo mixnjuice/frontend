@@ -1,35 +1,95 @@
 import { all, call, put, takeLatest, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
-import { isLoaded } from 'selectors/roles';
+import { getCachedRoles, getRolesPager } from 'selectors/roles';
 import { actions, types } from 'reducers/roles';
 import { actions as toastActions } from 'reducers/toast';
 
-function* requestRolesWorker() {
+function* requestRolesWorker({ pager }) {
   try {
-    const loaded = yield select(isLoaded);
+    const rolesPager = yield select(getRolesPager);
 
-    if (!loaded.roles) {
-      const endpoint = {
-        url: '/roles',
+    // Initial/previous values stored
+    let { count, limit, page } = rolesPager;
+    const { pages } = rolesPager;
+
+    let endpoint = {};
+
+    if (!count) {
+      endpoint = {
+        url: '/roles/count',
+        method: 'GET'
+      };
+      const rolesCount = yield call(request.execute, { endpoint });
+
+      if (rolesCount.success) {
+        const {
+          response: { data }
+        } = rolesCount;
+        // Set pager to be passed into Success, Update count
+
+        pager.count = data;
+      } else if (rolesCount.error) {
+        throw rolesCount.error;
+      } else {
+        throw new Error('Failed to count roles!');
+      }
+    } else {
+      pager.count = count;
+    }
+
+    if (!pager.limit) {
+      pager.limit = limit;
+    }
+
+    pager.pages =
+      !pages || pages === null || pager.limit !== limit
+        ? Math.ceil(pager.count / pager.limit)
+        : pages;
+
+    if (!pager.page) {
+      pager.page = page;
+    }
+    // Refresh these values to the desired values (from pager)
+    count = pager.count;
+    limit = pager.limit;
+    page = pager.page;
+
+    const cached = yield select(getCachedRoles);
+
+    if (
+      !cached[page] ||
+      (count > Number(limit) && cached[page].length !== Number(limit))
+    ) {
+      let offset = page * limit - limit + 1;
+
+      if (offset > count) {
+        // Prevent an offset higher than total amount of roles
+        // - Consider a max limit/offset
+        offset = count - limit;
+      }
+      endpoint = {
+        url: `/roles/?limit=${limit}&offset=${offset}`,
         method: 'GET'
       };
       const result = yield call(request.execute, { endpoint });
 
-      // update roles in state or throw an error
+      // update role in state or throw an error
       if (result.success) {
         const {
           response: { data }
         } = result;
 
-        yield put(actions.requestRolesSuccess(data));
+        cached[page] = data;
+
+        yield put(actions.requestRolesSuccess(cached, pager));
       } else if (result.error) {
         throw result.error;
       } else {
         throw new Error('Failed to get roles!');
       }
     } else {
-      yield put(actions.requestRolesSuccess(true));
+      yield put(actions.requestRolesSuccess(cached, pager));
     }
   } catch (error) {
     const { message } = error;
