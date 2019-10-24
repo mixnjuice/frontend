@@ -1,5 +1,11 @@
 import { initialState } from 'reducers/roles';
-import { getRoles, getAllRoles, getRoleUsers } from './roles';
+import {
+  getCachedRoles,
+  getRolesPager,
+  getRoles,
+  getAllRoles,
+  getRoleUsers
+} from './roles';
 
 describe('roles selectors', () => {
   const state = { roles: initialState };
@@ -9,10 +15,18 @@ describe('roles selectors', () => {
   });
 
   it('can getAllRoles', () => {
-    expect(getAllRoles(state)).toBe(initialState.roles);
+    expect(getAllRoles(state)).toBe(initialState.collection.roles);
   });
 
   it('can getRoleUsers', () => {
     expect(getRoleUsers(state)).toBe(initialState.roleUsers);
+  });
+
+  it('can getCachedRoles', () => {
+    expect(getCachedRoles(state)).toBe(initialState.collection.cache);
+  });
+
+  it('can getFlavorsPager', () => {
+    expect(getRolesPager(state)).toBe(initialState.collection.pager);
   });
 });

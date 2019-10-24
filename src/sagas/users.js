@@ -40,11 +40,20 @@ function* requestUsersWorker({ pager }) {
     if (!pager.limit) {
       pager.limit = limit;
     }
-
-    pager.pages =
-      !pages || pages === null || pager.limit !== limit
-        ? Math.ceil(pager.count / pager.limit)
-        : pages;
+    // Temporary solution for Roles/Add user list
+    // - Will revise once Roles/Add is refactored
+    if (pager.limit === 'none') {
+      pager = {
+        ...pager,
+        limit: pager.count,
+        pages: 1
+      };
+    } else {
+      pager.pages =
+        !pages || pages === null || pager.limit !== limit
+          ? Math.ceil(pager.count / pager.limit)
+          : pages;
+    }
 
     if (!pager.page) {
       pager.page = page;

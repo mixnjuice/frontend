@@ -2,57 +2,49 @@ import { reducer, types, actions } from './users';
 
 describe('users reducer', () => {
   const roles = { role: true };
+  const user = [true];
   const userId = 63;
-  const user = { user: true };
-  const users = { user: true };
   const error = { message: 'Failed' };
-  const loaded = { users: false, roles: false };
+  const pager = {
+    count: 100,
+    limit: 20,
+    page: 1,
+    pages: 5
+  };
+  const users = [];
+  const cache = [];
 
   it('has REQUEST_USERS action', () => {
-    expect(actions.requestUsers()).toEqual({
-      type: types.REQUEST_USERS
+    expect(actions.requestUsers(pager)).toEqual({
+      type: types.REQUEST_USERS,
+      pager
     });
   });
 
   it('reduces REQUEST_USERS action', () => {
-    const action = actions.requestUsers();
+    const action = actions.requestUsers(pager);
 
     expect(reducer({}, action)).toEqual({});
   });
 
   it('has REQUEST_USERS_SUCCESS action', () => {
-    expect(actions.requestUsersSuccess(users)).toEqual({
+    expect(actions.requestUsersSuccess(users, pager)).toEqual({
       type: types.REQUEST_USERS_SUCCESS,
-      users
+      users,
+      pager
     });
   });
 
   it('reduces REQUEST_USERS_SUCCESS action', () => {
-    const action = actions.requestUsersSuccess(users);
+    const action = actions.requestUsersSuccess(users, pager);
     const mockState = {
-      users,
-      loaded
+      cache: [],
+      pager
     };
 
     expect(reducer(mockState, action)).toEqual({
-      users,
-      loaded: { users: true, roles: false }
-    });
-  });
-
-  it('reduces REQUEST_USERS_SUCCESS action previously loaded', () => {
-    const action = actions.requestUsersSuccess(users);
-    const mockState = {
-      users,
-      loaded: {
-        users: true,
-        roles: false
-      }
-    };
-
-    expect(reducer(mockState, action)).toEqual({
-      users,
-      loaded: { users: true, roles: false }
+      cache,
+      pager
     });
   });
 

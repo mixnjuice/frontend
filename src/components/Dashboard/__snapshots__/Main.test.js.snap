@@ -16,6 +16,68 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
     
     
     <div
+      className="container-fluid"
+    >
+      <div
+        className="pb-2 row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
       className="table-responsive"
     >
       <table
@@ -393,6 +455,84 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
           </tr>
         </tbody>
       </table>
+    </div>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          100
+           Flavors
+        </div>
+        <div
+          className="text-right col"
+        >
+          5
+           Pages
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1132,12 +1272,68 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
   >
     
     
-    <a
-      href="#role/add"
-      onClick={[Function]}
+    <div
+      className="container-fluid"
     >
-      Add Role
-    </a>
+      <div
+        className="pb-2 row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
     <div
       className="table-responsive"
     >
@@ -1369,12 +1565,84 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
         </tbody>
       </table>
     </div>
-    <a
-      href="#role/add"
-      onClick={[Function]}
+    <div
+      className="container-fluid"
     >
-      Add Role
-    </a>
+      <div
+        className="row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          100
+           Roles
+        </div>
+        <div
+          className="text-right col"
+        >
+          5
+           Pages
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -1540,6 +1808,68 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
     
     
     <div
+      className="container-fluid"
+    >
+      <div
+        className="pb-2 row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
       className="table-responsive"
     >
       <table
@@ -1634,6 +1964,84 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
           </tr>
         </tbody>
       </table>
+    </div>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          100
+           Users
+        </div>
+        <div
+          className="text-right col"
+        >
+          5
+           Pages
+        </div>
+      </div>
     </div>
   </div>
 </div>

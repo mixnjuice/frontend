@@ -31,6 +31,13 @@ describe('Dashboard <Main />', () => {
     }
   ];
 
+  const pager = {
+    count: 100,
+    limit: 20,
+    page: 1,
+    pages: 5
+  };
+
   let dashboard = {};
 
   let store = null;
@@ -73,7 +80,7 @@ describe('Dashboard <Main />', () => {
       }
     };
     const flavors = {
-      flavors: [
+      collection: [
         {
           id: '1',
           vendorId: 3,
@@ -254,7 +261,8 @@ describe('Dashboard <Main />', () => {
           density: null,
           Vendor: 'Object'
         }
-      ]
+      ],
+      pager
     };
 
     store = mockStore({ dashboard, flavors });
@@ -381,36 +389,34 @@ describe('Dashboard <Main />', () => {
         name: 'Roles'
       }
     };
-    const roles = {
-      roles: [
-        {
-          id: 1,
-          name: 'Administrator'
-        },
-        {
-          id: 2,
-          name: 'User'
-        },
-        {
-          id: 3,
-          name: 'Tester'
-        },
-        {
-          id: 4,
-          name: 'Moderator'
-        },
-        {
-          id: 8,
-          name: 'Everyone'
-        },
-        {
-          id: 9,
-          name: 'Myself'
-        }
-      ]
-    };
+    const roles = [
+      {
+        id: 1,
+        name: 'Administrator'
+      },
+      {
+        id: 2,
+        name: 'User'
+      },
+      {
+        id: 3,
+        name: 'Tester'
+      },
+      {
+        id: 4,
+        name: 'Moderator'
+      },
+      {
+        id: 8,
+        name: 'Everyone'
+      },
+      {
+        id: 9,
+        name: 'Myself'
+      }
+    ];
 
-    store = mockStore({ dashboard, roles });
+    store = mockStore({ dashboard, roles: { collection: { roles, pager } } });
 
     expect(
       renderer
@@ -512,7 +518,7 @@ describe('Dashboard <Main />', () => {
     store = mockStore({
       dashboard,
       roles: { roleUsers: null },
-      users: { users }
+      users: { collection: users }
     });
 
     expect(
@@ -552,7 +558,18 @@ describe('Dashboard <Main />', () => {
         name: 'Users'
       }
     };
-    store = mockStore({ dashboard, users: { users } });
+    store = mockStore({
+      dashboard,
+      users: {
+        collection: users,
+        pager: {
+          count: 100,
+          limit: 20,
+          page: 1,
+          pages: 5
+        }
+      }
+    });
 
     expect(
       renderer

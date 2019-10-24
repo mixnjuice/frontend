@@ -106,9 +106,6 @@ export class Roles extends Component {
             </Col>
           </Row>
         </Container>
-        <DashLink to="#role/add" name="Role/Add">
-          Add Role
-        </DashLink>
         <Table responsive striped bordered hover size="sm">
           <thead>
             <tr className="text-center">
@@ -170,9 +167,6 @@ export class Roles extends Component {
             })}
           </tbody>
         </Table>
-        <DashLink to="#role/add" name="Role/Add">
-          Add Role
-        </DashLink>
         <Container fluid={true}>
           <Row>
             <Col xs={3}>

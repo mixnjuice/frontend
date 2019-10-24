@@ -32,7 +32,7 @@ export class RoleUsers extends Component {
   componentDidMount() {
     const { actions, roleId } = this.props;
 
-    actions.requestRoles();
+    // actions.requestRoles();
     if (roleId !== null) {
       actions.requestRoleUsers({ roleId });
     }

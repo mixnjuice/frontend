@@ -21,7 +21,7 @@ export class RoleAddUser extends Component {
     name: PropTypes.string,
     layoutOptions: PropTypes.object.isRequired,
     roleId: PropTypes.number,
-    users: PropTypes.array
+    collection: PropTypes.array
   };
 
   constructor(props) {
@@ -36,7 +36,7 @@ export class RoleAddUser extends Component {
   componentDidMount() {
     const { actions } = this.props;
 
-    actions.requestUsers();
+    actions.requestUsers({ page: 1, limit: 'none' });
   }
 
   handleChange(e) {
@@ -62,7 +62,7 @@ export class RoleAddUser extends Component {
   }
 
   render() {
-    const { users, name, layoutOptions, roleId } = this.props;
+    const { collection, name, layoutOptions, roleId } = this.props;
     const { userId, submitting } = this.state;
 
     return (
@@ -87,7 +87,7 @@ export class RoleAddUser extends Component {
               <option value="0" key="x">
                 Choose a User
               </option>
-              {users.map((user, index) => {
+              {collection.map((user, index) => {
                 return (
                   <option value={user.id} key={index}>
                     {user.emailAddress}
@@ -121,7 +121,7 @@ export class RoleAddUser extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: getAllUsers(state)
+  collection: getAllUsers(state)
 });
 
 const mapDispatchToProps = dispatch => ({

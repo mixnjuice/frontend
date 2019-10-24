@@ -133,7 +133,7 @@ export class Users extends Component {
                     <DashLink
                       to={`#user/${user.id}/roles`}
                       name="User/Roles"
-                      item={user.id}
+                      item={Number(user.id)}
                     >
                       Roles
                     </DashLink>

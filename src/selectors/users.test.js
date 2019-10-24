@@ -1,5 +1,12 @@
 import { initialState } from 'reducers/users';
-import { getUsers, getAllUsers, getUser, getUserRoles } from './users';
+import {
+  getCachedUsers,
+  getUsersPager,
+  getUsers,
+  getAllUsers,
+  getUser,
+  getUserRoles
+} from './users';
 
 describe('users selectors', () => {
   const state = { users: initialState };
@@ -9,7 +16,7 @@ describe('users selectors', () => {
   });
 
   it('can getAllUsers', () => {
-    expect(getAllUsers(state)).toBe(initialState.users);
+    expect(getAllUsers(state)).toBe(initialState.collection);
   });
 
   it('can getUser', () => {
@@ -18,5 +25,13 @@ describe('users selectors', () => {
 
   it('can getUserRoles', () => {
     expect(getUserRoles(state)).toBe(initialState.roles);
+  });
+
+  it('can getCachedUsers', () => {
+    expect(getCachedUsers(state)).toBe(initialState.cache);
+  });
+
+  it('can getUsersPager', () => {
+    expect(getUsersPager(state)).toBe(initialState.pager);
   });
 });
