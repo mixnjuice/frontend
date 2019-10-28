@@ -6,7 +6,7 @@ import { actions as toastActions } from 'reducers/toast';
 import saga, { watchers, workers } from './roles';
 
 /* eslint-disable camelcase */
-describe('dashboard sagas', () => {
+describe('roles sagas', () => {
   const roles = { roles: true };
   const rolesEndpoint = {
     url: '/roles',
@@ -20,7 +20,7 @@ describe('dashboard sagas', () => {
   */
 
   it('handles success in requestRolesWorker', () => {
-    const gen = workers.requestRolesWorker();
+    const gen = workers.requestRolesWorker({ page: 1, limit: 20 });
 
     let result = gen.next();
 
@@ -40,7 +40,7 @@ describe('dashboard sagas', () => {
 
   it('handles request failure in requestRolesWorker', () => {
     const error = new Error('An error occurred.');
-    const gen = workers.requestRolesWorker();
+    const gen = workers.requestRolesWorker({ page: 1, limit: 20 });
 
     let result = gen.next();
 
@@ -59,7 +59,7 @@ describe('dashboard sagas', () => {
   it('handles unexpected error in requestRolesWorker', () => {
     const error = new Error('An error occurred.');
     const { message } = error;
-    const gen = workers.requestRolesWorker();
+    const gen = workers.requestRolesWorker({ page: 1, limit: 20 });
 
     let result = gen.next();
 
