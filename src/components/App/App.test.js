@@ -68,14 +68,13 @@ describe('<App />', () => {
 
   it('calls initApp', () => {
     const RoutedApp = withMemoryRouter(App);
-    const component = renderer.create(
+
+    renderer.create(
       <Provider store={store}>
         <RoutedApp actions={actions} />
       </Provider>
     );
-    const instance = component.getInstance();
 
-    instance.componentDidMount();
     expect(actions.initApp).toHaveBeenCalled();
   });
 
