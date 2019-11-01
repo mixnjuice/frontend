@@ -1,6 +1,3 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -8,6 +5,7 @@ import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { applyMiddleware, createStore, compose } from 'redux';
+import { LastLocationProvider } from 'react-router-last-location';
 
 import './icons';
 import './index.scss';
@@ -36,9 +34,11 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Router>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <LastLocationProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </LastLocationProvider>
   </Router>,
   document.getElementById('root')
 );

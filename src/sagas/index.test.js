@@ -1,6 +1,7 @@
-import { fork } from 'redux-saga/effects';
+import { fork, all } from 'redux-saga/effects';
 
 import saga from './index';
+import toast from './toast';
 import application from './application';
 
 describe('index saga', () => {
@@ -8,6 +9,6 @@ describe('index saga', () => {
     const gen = saga();
     const result = gen.next();
 
-    expect(result.value).toEqual(fork(application));
+    expect(result.value).toEqual(all([application, toast].map(fork)));
   });
 });

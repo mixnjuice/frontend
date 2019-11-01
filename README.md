@@ -1,5 +1,9 @@
 # Gusta Project Frontend
 
+Build status: [![CircleCI](https://circleci.com/gh/mixnjuice/frontend/tree/master.svg?style=svg)](https://circleci.com/gh/mixnjuice/frontend/tree/master)
+
+Test coverage: [![codecov](https://codecov.io/gh/mixnjuice/frontend/branch/master/graph/badge.svg)](https://codecov.io/gh/mixnjuice/frontend)
+
 ## Usage
 
 After cloning the repository, run `npm install` to install the dependencies. From there, `npm run build` will create a production build of the application in `./dist`.
