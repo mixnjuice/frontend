@@ -15,6 +15,8 @@ function* requestRolesWorker({ pager }) {
 
     let endpoint = {};
 
+    let refreshed = null;
+
     if (!count) {
       endpoint = {
         url: '/roles/count',
@@ -34,8 +36,10 @@ function* requestRolesWorker({ pager }) {
       } else {
         throw new Error('Failed to count roles!');
       }
+      refreshed = true;
     } else {
       pager.count = count;
+      refreshed = false;
     }
 
     if (!pager.limit) {
@@ -59,7 +63,9 @@ function* requestRolesWorker({ pager }) {
 
     if (
       !cached[page] ||
-      (count > Number(limit) && cached[page].length !== Number(limit))
+      (count > Number(limit) && cached[page].length !== Number(limit)) ||
+      (count < Number(limit) && cached[page].length !== count) ||
+      refreshed === true
     ) {
       let offset = page * limit - limit + 1;
 
@@ -118,7 +124,8 @@ function* createRoleWorker({ name }) {
 
     // update roles in state or throw an error
     if (result.success) {
-      yield put(actions.requestRoles());
+      yield put(actions.clearCollection());
+      yield put(actions.requestRoles({ page: 1, limit: 20 }));
       yield put(
         toastActions.popToast({
           title: 'Role Created',
@@ -158,7 +165,8 @@ function* updateRoleWorker({ roleId, name }) {
 
     // update roles in state or throw an error
     if (result.success) {
-      yield put(actions.requestRoles());
+      yield put(actions.clearCollection());
+      yield put(actions.requestRoles({ page: 1, limit: 20 }));
       yield put(
         toastActions.popToast({
           title: 'Edit Role',
@@ -195,7 +203,8 @@ function* deleteRoleWorker({ roleId, name }) {
 
     // update roles in state or throw an error
     if (result.success) {
-      yield put(actions.requestRoles());
+      yield put(actions.clearCollection());
+      yield put(actions.requestRoles({ page: 1, limit: 20 }));
       yield put(
         toastActions.popToast({
           title: 'Delete Role',
@@ -225,7 +234,7 @@ function* deleteRoleWorker({ roleId, name }) {
 function* requestRoleUsersWorker({ roleId }) {
   try {
     const endpoint = {
-      url: '/users/role/' + roleId,
+      url: `/users/role/${roleId}`,
       method: 'GET'
     };
     const result = yield call(request.execute, { endpoint });

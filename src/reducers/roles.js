@@ -16,7 +16,8 @@ export const types = buildActions('roles', [
   'CREATE_ROLE_USER',
   'CREATE_ROLE_USER_FAILURE',
   'DELETE_ROLE_USER',
-  'DELETE_ROLE_USER_FAILURE'
+  'DELETE_ROLE_USER_FAILURE',
+  'CLEAR_COLLECTION'
 ]);
 
 const requestRoles = pager => ({
@@ -106,6 +107,10 @@ const deleteRoleUserFailure = error => ({
   error
 });
 
+const clearCollection = () => ({
+  type: types.CLEAR_COLLECTION
+});
+
 export const actions = {
   requestRoles,
   requestRolesSuccess,
@@ -122,7 +127,8 @@ export const actions = {
   createRoleUser,
   createRoleUserFailure,
   deleteRoleUser,
-  deleteRoleUserFailure
+  deleteRoleUserFailure,
+  clearCollection
 };
 
 export const initialState = {
@@ -193,6 +199,13 @@ export const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         error: action.error
+      };
+    case types.CLEAR_COLLECTION:
+      return {
+        ...state,
+        collection: {
+          ...initialState.collection
+        }
       };
     default:
       return state;

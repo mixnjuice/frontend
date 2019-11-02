@@ -202,4 +202,21 @@ describe('roles reducer', () => {
       error
     });
   });
+
+  it('reduces CLEAR_COLLECTION action', () => {
+    const action = actions.clearCollection();
+
+    expect(reducer({}, action)).toEqual({
+      collection: {
+        cache: [],
+        roles: [],
+        pager: {
+          count: null,
+          limit: 100,
+          page: 1,
+          pages: null
+        }
+      }
+    });
+  });
 });

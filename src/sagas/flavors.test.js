@@ -6,12 +6,11 @@ import { actions as toastActions } from 'reducers/toast';
 import saga, { watchers, workers } from './flavors';
 import { getCachedFlavors, getFlavorsPager } from 'selectors/flavors';
 
-/* eslint-disable camelcase */
 describe('flavors sagas', () => {
   const flavors = { flavors: true };
 
   const flavorsEndpoint = {
-    url: '/flavors?limit=20',
+    url: '/flavors/?limit=20&offset=1',
     method: 'GET'
   };
   const countEndpoint = {
@@ -19,10 +18,10 @@ describe('flavors sagas', () => {
     method: 'GET'
   };
 
-  const count = undefined;
+  const count = 861;
 
   const pager = {
-    count: 800,
+    count: 861,
     limit: 20,
     page: 1,
     pages: 40
@@ -35,20 +34,26 @@ describe('flavors sagas', () => {
 
     expect(result.value).toEqual(select(getFlavorsPager));
 
+    result = gen.next(count);
+
     expect(result.value).toEqual(
-      call(request.execute, { endpoint: countEndpoint, data: count })
+      call(request.execute, { endpoint: countEndpoint })
     );
 
     result = gen.next({
       success: true,
       response: {
-        data: 800
+        data: 861
       }
     });
 
+    expect(result.value).toEqual(select(getCachedFlavors));
+
     result = gen.next(flavors);
 
-    expect(result.value).toEqual(select(getCachedFlavors));
+    expect(result.value).toEqual(
+      call(request.execute, { endpoint: flavorsEndpoint })
+    );
 
     result = gen.next({
       success: true,
@@ -58,22 +63,34 @@ describe('flavors sagas', () => {
     });
 
     expect(result.value).toEqual(
-      call(request.execute, { endpoint: flavorsEndpoint })
-    );
-
-    expect(result.value).toEqual(
       put(actions.requestFlavorsSuccess(flavors, pager))
     );
   });
 
   it('handles request failure in requestFlavorsWorker', () => {
     const error = new Error('An error occurred.');
-    const gen = workers.requestFlavorsWorker({ page: 1, limit: 20 });
+    const gen = workers.requestFlavorsWorker({ pager });
 
     let result = gen.next(pager);
 
     expect(result.value).toEqual(select(getFlavorsPager));
-    result = gen.next();
+
+    result = gen.next(count);
+
+    expect(result.value).toEqual(
+      call(request.execute, { endpoint: countEndpoint })
+    );
+
+    result = gen.next({
+      success: true,
+      response: {
+        data: 861
+      }
+    });
+
+    expect(result.value).toEqual(select(getCachedFlavors));
+
+    result = gen.next(flavors);
 
     expect(result.value).toEqual(
       call(request.execute, { endpoint: flavorsEndpoint })
@@ -90,9 +107,28 @@ describe('flavors sagas', () => {
   it('handles unexpected error in requestFlavorsWorker', () => {
     const error = new Error('An error occurred.');
     const { message } = error;
-    const gen = workers.requestFlavorsWorker({ page: 1, limit: 20 });
+    const gen = workers.requestFlavorsWorker({ pager });
 
-    let result = gen.next();
+    let result = gen.next(pager);
+
+    expect(result.value).toEqual(select(getFlavorsPager));
+
+    result = gen.next(count);
+
+    expect(result.value).toEqual(
+      call(request.execute, { endpoint: countEndpoint })
+    );
+
+    result = gen.next({
+      success: true,
+      response: {
+        data: 861
+      }
+    });
+
+    expect(result.value).toEqual(select(getCachedFlavors));
+
+    result = gen.next(flavors);
 
     expect(result.value).toEqual(
       call(request.execute, { endpoint: flavorsEndpoint })
@@ -127,4 +163,3 @@ describe('flavors sagas', () => {
     );
   });
 });
-/* eslint-enable */
