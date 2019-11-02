@@ -11,7 +11,7 @@ describe('flavors sagas', () => {
   const flavors = { flavors: true };
 
   const flavorsEndpoint = {
-    url: '/flavors?limit=20&offset=21',
+    url: '/flavors?limit=20',
     method: 'GET'
   };
   const countEndpoint = {
@@ -31,9 +31,13 @@ describe('flavors sagas', () => {
   it('handles success in requestFlavorsWorker', () => {
     const gen = workers.requestFlavorsWorker({ pager });
 
-    let result = gen.next({ pager });
+    let result = gen.next(pager);
 
     expect(result.value).toEqual(select(getFlavorsPager));
+
+    expect(result.value).toEqual(
+      call(request.execute, { endpoint: countEndpoint, data: count })
+    );
 
     result = gen.next({
       success: true,
@@ -41,10 +45,6 @@ describe('flavors sagas', () => {
         data: 800
       }
     });
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: countEndpoint, data: count })
-    );
 
     result = gen.next(flavors);
 
