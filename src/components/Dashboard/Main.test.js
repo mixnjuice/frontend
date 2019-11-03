@@ -634,4 +634,25 @@ describe('Dashboard <Main />', () => {
         .toJSON()
     ).toMatchSnapshot();
   });
+
+  it('renders NotFound correctly', () => {
+    dashboard = {
+      dashboardComponent: {
+        name: 'NotFound',
+        item: null
+      }
+    };
+
+    store = mockStore({ dashboard });
+
+    expect(
+      renderer
+        .create(
+          <Provider store={store}>
+            <RoutedMain />
+          </Provider>
+        )
+        .toJSON()
+    ).toMatchSnapshot();
+  });
 });

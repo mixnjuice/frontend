@@ -18,6 +18,34 @@ describe('dashboard sagas', () => {
     method: 'GET'
   };
 
+  const dashboardComponent = {
+    name: 'Users',
+    item: null
+  };
+
+  const name = 'Roles';
+  const item = null;
+
+  it('handles success in requestDashboardWorker', () => {
+    const gen = workers.requestDashboardWorker(dashboardComponent);
+
+    const result = gen.next();
+
+    expect(result.value).toEqual(
+      put(actions.requestDashboardSuccess(dashboardComponent))
+    );
+  });
+
+  it('handles success in selectDashboardWorker', () => {
+    const gen = workers.selectDashboardWorker({ name, item });
+
+    const result = gen.next();
+
+    expect(result.value).toEqual(
+      put(actions.selectDashboardSuccess({ name, item }))
+    );
+  });
+
   it('handles success in requestMigrationsWorker', () => {
     const gen = workers.requestMigrationsWorker();
 

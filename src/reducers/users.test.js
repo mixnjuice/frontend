@@ -55,6 +55,14 @@ describe('users reducer', () => {
     });
   });
 
+  it('reduces REQUEST_USERS_FAILURE action', () => {
+    const action = actions.requestUsersFailure(error);
+
+    expect(reducer({}, action)).toEqual({
+      error
+    });
+  });
+
   it('has REQUEST_USER action', () => {
     expect(actions.requestUser({ userId })).toEqual({
       type: types.REQUEST_USER,
@@ -88,6 +96,14 @@ describe('users reducer', () => {
     });
   });
 
+  it('reduces REQUEST_USER_FAILURE action', () => {
+    const action = actions.requestUserFailure(error);
+
+    expect(reducer({}, action)).toEqual({
+      error
+    });
+  });
+
   it('has REQUEST_USER_ROLES action', () => {
     expect(actions.requestUserRoles({ userId })).toEqual({
       type: types.REQUEST_USER_ROLES,
@@ -117,6 +133,14 @@ describe('users reducer', () => {
   it('has REQUEST_USER_ROLES_FAILURE action', () => {
     expect(actions.requestUserRolesFailure(error)).toEqual({
       type: types.REQUEST_USER_ROLES_FAILURE,
+      error
+    });
+  });
+
+  it('reduces REQUEST_USER_ROLES_FAILURE action', () => {
+    const action = actions.requestUserRolesFailure(error);
+
+    expect(reducer({}, action)).toEqual({
       error
     });
   });

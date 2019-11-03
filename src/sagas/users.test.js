@@ -237,6 +237,81 @@ describe('users sagas', () => {
     );
   });
 
+  const roles = [true];
+
+  const userRolesEndpoint = {
+    url: `/user/${userId}/roles`,
+    method: 'GET'
+  };
+
+  it('handles success in requestUserRolesWorker', () => {
+    const gen = workers.requestUserRolesWorker({ userId });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(
+      call(request.execute, { endpoint: userRolesEndpoint })
+    );
+
+    result = gen.next({
+      success: true,
+      response: {
+        data: roles
+      }
+    });
+
+    expect(result.value).toEqual(put(actions.requestUserRolesSuccess(roles)));
+  });
+
+  it('handles request failure in requestUserRolesWorker', () => {
+    const error = new Error('An error occurred.');
+    const gen = workers.requestUserRolesWorker({ userId });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(
+      call(request.execute, { endpoint: userRolesEndpoint })
+    );
+
+    result = gen.next({
+      success: false,
+      error
+    });
+
+    expect(result.value).toEqual(put(actions.requestUserRolesFailure(error)));
+  });
+
+  it('handles unexpected error in requestUserRolesWorker', () => {
+    const error = new Error('An error occurred.');
+    const { message } = error;
+    const gen = workers.requestUserRolesWorker({ userId });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(
+      call(request.execute, { endpoint: userRolesEndpoint })
+    );
+
+    result = gen.next({
+      success: false,
+      error
+    });
+
+    expect(result.value).toEqual(put(actions.requestUserRolesFailure(error)));
+
+    result = gen.next();
+
+    expect(result.value).toEqual(
+      put(
+        toastActions.popToast({
+          title: 'Error',
+          icon: 'times-circle',
+          message
+        })
+      )
+    );
+  });
+
   it('forks all watchers', () => {
     const gen = saga();
     const result = gen.next();

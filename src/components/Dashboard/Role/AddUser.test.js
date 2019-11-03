@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store';
 import { initialState } from 'reducers/roles';
 import { initialState as dashboardInitialState } from 'reducers/dashboard';
 import { initialState as usersInitialState } from 'reducers/users';
-import ConnectedRoleAddUser from './AddUser';
+import ConnectedRoleAddUser, { RoleAddUser } from './AddUser';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <RoleAddUser />', () => {
@@ -24,6 +24,18 @@ describe('Dashboard <RoleAddUser />', () => {
   });
   const roleId = 1;
   const name = 'Administrator';
+  const actions = {
+    requestUserRoles: jest.fn(),
+    createRoleUser: jest.fn(),
+    selectDashboard: jest.fn()
+  };
+  const e = {
+    target: {
+      value: 'test'
+    },
+    preventDefault: jest.fn()
+  };
+
   const RoutedRoleAddUser = withMemoryRouter(ConnectedRoleAddUser);
 
   it('renders correctly', () => {
@@ -42,5 +54,35 @@ describe('Dashboard <RoleAddUser />', () => {
         )
         .toJSON()
     ).toMatchSnapshot();
+  });
+
+  it('can handleChange', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <RoutedRoleAddUser
+          actions={actions}
+          layoutOptions={defaultLayoutOptions}
+        />
+      </Provider>
+    );
+    const { instance } = component.root.findByType(RoleAddUser);
+
+    expect(instance).toBeDefined();
+    instance.handleChange(e);
+  });
+
+  it('can handleSubmit', () => {
+    const component = renderer.create(
+      <Provider store={store}>
+        <RoutedRoleAddUser
+          actions={actions}
+          layoutOptions={defaultLayoutOptions}
+        />
+      </Provider>
+    );
+    const { instance } = component.root.findByType(RoleAddUser);
+
+    expect(instance).toBeDefined();
+    instance.handleSubmit(e);
   });
 });

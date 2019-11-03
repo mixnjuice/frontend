@@ -45,4 +45,10 @@ describe('flavors reducer', () => {
       error
     });
   });
+
+  it('reduces REQUEST_FLAVORS_FAILURE action', () => {
+    const action = actions.requestFlavorsFailure(error);
+
+    expect(reducer({}, action)).toEqual({ error });
+  });
 });
