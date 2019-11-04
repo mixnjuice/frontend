@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Container, Row, Col } from 'react-bootstrap';
@@ -104,8 +104,14 @@ export class Header extends Component {
                   ) : (
                     ''
                   )}
-                  {!loggedIn ? this.renderNavItem('/login', 'Login') : ''}
-                  {!loggedIn ? this.renderNavItem('/register', 'Register') : ''}
+                  {!loggedIn ? (
+                    <Fragment>
+                      {this.renderNavItem('/login', 'Login')}
+                      {this.renderNavItem('/register', 'Register')}
+                    </Fragment>
+                  ) : (
+                    ''
+                  )}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
