@@ -1,14 +1,12 @@
 import dayjs from 'dayjs';
 import MockDate from 'mockdate';
-import { all, put, call, take, select, delay } from 'redux-saga/effects';
+import { all, put, call, take, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
-import { isLoggedIn, getUser } from 'selectors/application';
 import { actions, types } from 'reducers/application';
+import { actions as toastActions } from 'reducers/toast';
 import appSaga, { watchers, workers } from './application';
-
-jest.mock('nanoid', () => () => 'testing');
-
+import { isLoggedIn, getUser } from 'selectors/application';
 /* eslint-disable camelcase */
 describe('application sagas', () => {
   const accessToken = 'testing';
@@ -92,7 +90,7 @@ describe('application sagas', () => {
 
     expect(result.value).toEqual(
       put(
-        actions.popToast({
+        toastActions.popToast({
           title: 'Error!',
           icon: 'times-circle',
           message: error.message
@@ -140,7 +138,7 @@ describe('application sagas', () => {
       )
     );
   });
-
+  /* eslint-enable camelcase */
   it('handles success in requestCurrentUserWorker', () => {
     const gen = workers.requestCurrentUserWorker();
 
@@ -200,7 +198,7 @@ describe('application sagas', () => {
 
     expect(result.value).toEqual(
       put(
-        actions.popToast({
+        toastActions.popToast({
           title: 'Error',
           icon: 'times-circle',
           message
@@ -248,7 +246,7 @@ describe('application sagas', () => {
 
     expect(result.value).toEqual(
       put(
-        actions.popToast({
+        toastActions.popToast({
           title: 'Logged in',
           icon: 'check',
           message: 'You have been authenticated.'
@@ -291,7 +289,7 @@ describe('application sagas', () => {
 
     expect(result.value).toEqual(
       put(
-        actions.popToast({
+        toastActions.popToast({
           title: 'Logged in',
           icon: 'check',
           message: 'You have been authenticated.'
@@ -342,7 +340,7 @@ describe('application sagas', () => {
 
     expect(result.value).toEqual(
       put(
-        actions.popToast({
+        toastActions.popToast({
           title: 'Logged in',
           icon: 'check',
           message: 'You have been authenticated.'
@@ -375,7 +373,7 @@ describe('application sagas', () => {
 
     expect(result.value).toEqual(
       put(
-        actions.popToast({
+        toastActions.popToast({
           title: 'Error',
           icon: 'times-circle',
           message
@@ -392,7 +390,7 @@ describe('application sagas', () => {
     result = gen.next();
     expect(result.value).toEqual(
       put(
-        actions.popToast({
+        toastActions.popToast({
           title: 'Logged out',
           icon: 'check',
           message: 'You have been logged out.'
@@ -405,41 +403,6 @@ describe('application sagas', () => {
     expect(result.value).toEqual(put(actions.logoutUserSuccess()));
   });
 
-  it('runs popToastWorker', () => {
-    const defaultInterval = 5000;
-    const toast = {
-      title: 'Test',
-      icon: 'heart',
-      message: 'Testing'
-    };
-    const modifiedToast = {
-      ...toast,
-      id: 'testing',
-      show: true
-    };
-    const gen = workers.popToastWorker({ toast });
-
-    let result = gen.next();
-
-    expect(result.value).toEqual(put(actions.addToast(modifiedToast)));
-
-    result = gen.next();
-
-    expect(result.value).toEqual(delay(defaultInterval));
-
-    result = gen.next();
-
-    expect(result.value).toEqual(put(actions.hideToast(modifiedToast.id)));
-
-    result = gen.next();
-
-    expect(result.value).toEqual(delay(500));
-
-    result = gen.next();
-
-    expect(result.value).toEqual(put(actions.removeToast(modifiedToast.id)));
-  });
-
   it('forks all watchers', () => {
     const gen = appSaga();
     const result = gen.next();
@@ -449,4 +412,3 @@ describe('application sagas', () => {
     );
   });
 });
-/* eslint-enable */

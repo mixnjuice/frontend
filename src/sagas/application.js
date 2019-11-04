@@ -1,19 +1,10 @@
 import dayjs from 'dayjs';
-import nanoid from 'nanoid';
-import {
-  all,
-  call,
-  put,
-  takeLatest,
-  delay,
-  take,
-  takeEvery,
-  select
-} from 'redux-saga/effects';
+import { all, call, put, takeLatest, take, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
-import { isLoggedIn, getUser } from 'selectors/application';
 import { actions, types } from 'reducers/application';
+import { actions as toastActions } from 'reducers/toast';
+import { isLoggedIn, getUser } from 'selectors/application';
 
 // snake_cased variables here come from RFC 6749
 /* eslint-disable camelcase */
@@ -57,7 +48,7 @@ function* requestTokenWorker({ emailAddress, password }) {
 
     yield put(actions.requestTokenFailure(error));
     yield put(
-      actions.popToast({
+      toastActions.popToast({
         title: 'Error!',
         icon: 'times-circle',
         message
@@ -92,7 +83,7 @@ function* requestCurrentUserWorker() {
 
     yield put(actions.requestCurrentUserFailure(error));
     yield put(
-      actions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
@@ -130,7 +121,7 @@ function* loginUserWorker({ emailAddress, password }) {
     }
 
     yield put(
-      actions.popToast({
+      toastActions.popToast({
         title: 'Logged in',
         icon: 'check',
         message: 'You have been authenticated.'
@@ -163,7 +154,7 @@ function* loginUserWorker({ emailAddress, password }) {
 
     yield put(actions.loginUserFailure(error));
     yield put(
-      actions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
@@ -183,7 +174,7 @@ function* logoutUserWorker() {
     }
 
     yield put(
-      actions.popToast({
+      toastActions.popToast({
         title: 'Logged out',
         icon: 'check',
         message: 'You have been logged out.'
@@ -196,28 +187,13 @@ function* logoutUserWorker() {
 
     yield put(actions.logoutUserFailure(error));
     yield put(
-      actions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
       })
     );
   }
-}
-
-function* popToastWorker({ toast }) {
-  // ensure there is a unique key for each toast
-  const id = toast.id || nanoid();
-
-  toast.id = id;
-  toast.show = true;
-
-  yield put(actions.addToast(toast));
-  yield delay(toast.interval || 5000);
-  yield put(actions.hideToast(id));
-  // this is the default Fade transition time
-  yield delay(500);
-  yield put(actions.removeToast(id));
 }
 
 function* registerUserWorker({
@@ -238,7 +214,7 @@ function* registerUserWorker({
     if (result.success) {
       yield put(actions.registerUserSuccess());
       yield put(
-        actions.popToast({
+        toastActions.popToast({
           title: 'Success!',
           icon: 'check',
           message: 'Check your email for an activation link.'
@@ -252,7 +228,7 @@ function* registerUserWorker({
 
     yield put(actions.registerUserFailure(error));
     yield put(
-      actions.popToast({
+      toastActions.popToast({
         title: 'Error',
         icon: 'times-circle',
         message
@@ -267,10 +243,6 @@ function* loginUserWatcher() {
 
 function* logoutUserWatcher() {
   yield takeLatest(types.LOGOUT_USER, logoutUserWorker);
-}
-
-function* popToastWatcher() {
-  yield takeEvery(types.POP_TOAST, popToastWorker);
 }
 
 function* requestTokenWatcher() {
@@ -288,7 +260,6 @@ function* registerUserWatcher() {
 export const workers = {
   loginUserWorker,
   logoutUserWorker,
-  popToastWorker,
   registerUserWorker,
   requestTokenWorker,
   requestCurrentUserWorker
@@ -297,7 +268,6 @@ export const workers = {
 export const watchers = {
   loginUserWatcher,
   logoutUserWatcher,
-  popToastWatcher,
   registerUserWatcher,
   requestTokenWatcher,
   requestCurrentUserWatcher
