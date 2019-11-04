@@ -403,6 +403,49 @@ describe('application sagas', () => {
     expect(result.value).toEqual(put(actions.logoutUserSuccess()));
   });
 
+  const registerEndpoint = {
+    url: '/register',
+    method: 'POST'
+  };
+
+  const username = 'mixnjuice';
+  const details = {
+    emailAddress,
+    password,
+    username
+  };
+
+  it('handles success in registerUserWorker', () => {
+    const gen = workers.registerUserWorker({ details });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(
+      call(request.execute, {
+        endpoint: registerEndpoint,
+        data: { emailAddress, password, username }
+      })
+    );
+
+    result = gen.next({
+      success: true
+    });
+
+    expect(result.value).toEqual(put(actions.registerUserSuccess()));
+
+    result = gen.next();
+
+    expect(result.value).toEqual(
+      put(
+        toastActions.popToast({
+          title: 'Success!',
+          icon: 'check',
+          message: 'Check your email for an activation link.'
+        })
+      )
+    );
+  });
+
   it('forks all watchers', () => {
     const gen = appSaga();
     const result = gen.next();

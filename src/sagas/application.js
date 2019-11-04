@@ -169,8 +169,8 @@ function* logoutUserWorker() {
     const loggedIn = yield select(isLoggedIn);
 
     if (loggedIn) {
-      localStorage.setItem('accessToken', null);
-      localStorage.setItem('expiration', null);
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('expiration');
     }
 
     yield put(

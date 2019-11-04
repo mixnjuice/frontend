@@ -181,18 +181,18 @@ exports[`<Header /> renders logged in correctly 1`] = `
                   <br />
                 </a>
                 <a
-                  aria-current={null}
-                  className="nav--link-custom dropdown-item"
+                  aria-current="page"
+                  className="nav--link-custom dropdown-item active"
                   disabled={false}
                   href="/"
                   onClick={[Function]}
+                  style={Object {}}
                 >
                   Logout
                   <br />
                 </a>
               </div>
             </div>
-            
             
           </div>
         </div>
