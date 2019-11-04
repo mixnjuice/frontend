@@ -24,7 +24,7 @@ export class UserRoles extends Component {
     this.userId = this.props.userId;
   }
 
-  componentWillMount() {
+  componentDidMount() {
     const { actions, userId } = this.props;
 
     actions.requestUserRoles({ userId });
