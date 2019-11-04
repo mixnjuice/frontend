@@ -80,7 +80,7 @@ export const initialState = {
     item: null
   },
   migrations: [],
-  stats: []
+  stats: {}
 };
 
 export const reducer = (state = initialState, action = {}) => {

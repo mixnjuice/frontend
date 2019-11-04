@@ -58,6 +58,7 @@ export class RoleUsers extends Component {
             <thead>
               <tr className="text-center">
                 <th>ID</th>
+                <th>Username</th>
                 <th>Email</th>
                 <th>Options</th>
               </tr>
@@ -67,7 +68,10 @@ export class RoleUsers extends Component {
                 return (
                   <tr key={index}>
                     <td className="text-center">{user.userId}</td>
-                    <td>{user.User.emailAddress}</td>
+                    <td className="text-center">
+                      {user.User.UserProfile.name}
+                    </td>
+                    <td className="text-center">{user.User.emailAddress}</td>
                     <td>
                       <DashLink
                         to={`#role/${roleId}/delete/user`}

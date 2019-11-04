@@ -20,14 +20,20 @@ describe('Dashboard <Main />', () => {
       created: '20190805T04:16:38.930Z',
       emailAddress: 'blah@blah.com',
       id: 1,
-      password: 'secret'
+      password: 'secret',
+      UserProfile: {
+        name: 'Andrew'
+      }
     },
     {
       activationCode: null,
       created: '20190805T04:16:38.930Z',
       emailAddress: 'blah2@blah.com',
       id: 2,
-      password: 'secret'
+      password: 'secret',
+      UserProfile: {
+        name: 'Josef'
+      }
     }
   ];
 

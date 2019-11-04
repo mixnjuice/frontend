@@ -60,6 +60,9 @@ exports[`Dashboard <Users /> renders correctly 1`] = `
               ID
             </th>
             <th>
+              Username
+            </th>
+            <th>
               Email
             </th>
             <th>
