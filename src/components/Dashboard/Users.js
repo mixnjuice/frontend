@@ -67,6 +67,14 @@ export class Users extends Component {
     actions.requestUsers({ ...pager, limit: Number(limit) });
   }
 
+  get yesIcon() {
+    return <FontAwesomeIcon icon="check" color="green" title="Yes" />;
+  }
+
+  get noIcon() {
+    return <FontAwesomeIcon icon="times" color="red" title="No" />;
+  }
+
   render() {
     const { collection, layoutOptions, pager } = this.props;
 
@@ -121,11 +129,7 @@ export class Users extends Component {
                   <td className="text-center">{user.id}</td>
                   <td>{user.emailAddress}</td>
                   <td className="text-center">
-                    {user.activationCode === null ? (
-                      <FontAwesomeIcon icon="check" color="green" title="Yes" />
-                    ) : (
-                      <FontAwesomeIcon icon="times" color="red" title="No" />
-                    )}
+                    {user.activationCode === null ? this.yesIcon : this.noIcon}
                   </td>
                   <td className="text-center">
                     <Link to="/user/profile">Profile</Link>

@@ -321,4 +321,3 @@ describe('users sagas', () => {
     );
   });
 });
-/* eslint-enable */

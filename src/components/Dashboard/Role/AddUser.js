@@ -64,6 +64,7 @@ export class RoleAddUser extends Component {
   render() {
     const { collection, name, layoutOptions, roleId } = this.props;
     const { userId, submitting } = this.state;
+    const isUserIdSelected = userId !== '0';
 
     return (
       <Layout
@@ -96,7 +97,7 @@ export class RoleAddUser extends Component {
               })}
             </Form.Control>
           </Form.Group>
-          {userId !== '0' && (
+          {isUserIdSelected && (
             <Button
               className="button-animation"
               variant="primary"
@@ -108,7 +109,7 @@ export class RoleAddUser extends Component {
           )}
         </Form>
         <br />
-        {userId !== '0' && (
+        {isUserIdSelected && (
           <UserRoles
             layoutOptions={{ header: false, title: true, border: 'info' }}
             userId={Number(userId)}

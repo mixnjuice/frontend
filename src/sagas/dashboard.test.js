@@ -5,7 +5,6 @@ import { actions } from 'reducers/dashboard';
 import { actions as toastActions } from 'reducers/toast';
 import saga, { watchers, workers } from './dashboard';
 
-/* eslint-disable camelcase */
 describe('dashboard sagas', () => {
   const migrations = { migration: 1 };
   const migrationsEndpoint = {
@@ -193,4 +192,3 @@ describe('dashboard sagas', () => {
     );
   });
 });
-/* eslint-enable */
