@@ -114,9 +114,6 @@ export default {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: dev,
         terserOptions: {
           ecma: 9
         }
