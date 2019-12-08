@@ -2,9 +2,17 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Button, Col, Container, InputGroup, Form, Row } from 'react-bootstrap';
 import React, { Component } from 'react';
 import { Form as FinalForm } from 'react-final-form';
+import {
+  Button,
+  Col,
+  Container,
+  InputGroup,
+  Form,
+  Row,
+  Modal
+} from 'react-bootstrap';
 
 import { actions as recipeActions } from 'reducers/recipe';
 import SplitSlider from 'components/SplitSlider/SplitSlider';
@@ -49,11 +57,14 @@ export class RecipeEditor extends Component {
     super(props);
 
     this.state = {
-      collapsed: false
+      collapsed: false,
+      validated: false,
+      showDelete: false
     };
 
-    this.toggleCollapse = this.toggleCollapse.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleUserInput = this.handleUserInput.bind(this);
+    this.toggleCollapse = this.toggleCollapse.bind(this);
   }
 
   hasIngredient(event) {
@@ -145,7 +156,9 @@ export class RecipeEditor extends Component {
     this.setState({ validated: true });
   }
 
-  handleDelete() {}
+  handleDelete() {
+    this.setState({ showDelete: true });
+  }
 
   toggleCollapse() {
     this.setState({
@@ -266,6 +279,29 @@ export class RecipeEditor extends Component {
     }
 
     return result;
+  }
+
+  get deleteModal() {
+    return (
+      this.state.showDelete && (
+        <Modal.Dialog>
+          <Modal.Header closeButton>
+            <Modal.Title>Delete recipe</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>If you delete this recipe, it will be gone forever and ever.</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={this.handleDeleteDismiss}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={this.handleDeleteConfirm}>
+              Save changes
+            </Button>
+          </Modal.Footer>
+        </Modal.Dialog>
+      )
+    );
   }
 
   render() {
