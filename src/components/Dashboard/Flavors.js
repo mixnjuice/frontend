@@ -38,13 +38,20 @@ export class Flavors extends Component {
 
   changePage(page) {
     const { actions, pager } = this.props;
+    const {
+      target: { value }
+    } = page;
 
-    this.setState({ page: page.target.value });
-    actions.requestFlavors({ ...pager, page: Number(page.target.value) });
+    this.setState({ page: value });
+    actions.requestFlavors({ ...pager, page: Number(value) });
   }
 
   changeLimit(limit) {
-    this.setState({ limit: limit.target.value });
+    const {
+      target: { value }
+    } = limit;
+
+    this.setState({ limit: value });
   }
 
   updateLimit() {
