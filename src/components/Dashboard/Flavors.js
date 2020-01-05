@@ -18,7 +18,8 @@ export class Flavors extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { limit: 20, page: 1 };
+    this.defaultState = { limit: 20, page: 1 };
+    this.state = this.defaultState;
     this.handlePageChange = this.changePage.bind(this);
     this.handleLimitChange = this.changeLimit.bind(this);
     this.handleLimitUpdate = this.updateLimit.bind(this);
@@ -27,7 +28,7 @@ export class Flavors extends Component {
   componentDidMount() {
     const { actions } = this.props;
 
-    actions.requestFlavors({ page: 1, limit: 20 });
+    actions.requestFlavors(this.defaultState);
   }
 
   pagerCounter() {
