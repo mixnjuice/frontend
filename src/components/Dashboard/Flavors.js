@@ -33,15 +33,7 @@ export class Flavors extends Component {
   pagerCounter() {
     const { pages } = this.props.pager;
 
-    let i = 1;
-
-    const pager = [];
-
-    while (i <= pages) {
-      pager[i] = i;
-      i++;
-    }
-    return pager;
+    return [...Array(pages).keys()].map(value => value + 1);
   }
 
   changePage(page) {
