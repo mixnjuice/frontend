@@ -193,7 +193,6 @@ exports[`<Header /> renders logged in correctly 1`] = `
                 </a>
               </div>
             </div>
-            
           </div>
         </div>
       </nav>
@@ -292,7 +291,6 @@ exports[`<Header /> renders logged out correctly 1`] = `
             >
               Flavors
             </a>
-            
             <a
               aria-current={null}
               className="nav--link-custom px-3 nav-link"

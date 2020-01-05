@@ -101,17 +101,13 @@ export class Header extends Component {
                         <br />
                       </NavDropdown.Item>
                     </NavDropdown>
-                  ) : (
-                    ''
-                  )}
+                  ) : null}
                   {!loggedIn ? (
                     <Fragment>
                       {this.renderNavItem('/login', 'Login')}
                       {this.renderNavItem('/register', 'Register')}
                     </Fragment>
-                  ) : (
-                    ''
-                  )}
+                  ) : null}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
