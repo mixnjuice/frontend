@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/users';
 import { initialState as dashboardInitialState } from 'reducers/dashboard';
-import ConnectedUsers, { Users } from './Users';
+import ConnectedUsers /* , { Users } */ from './Users';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <Users />', () => {
@@ -20,19 +20,7 @@ describe('Dashboard <Users />', () => {
     users: initialState,
     dashboard: dashboardInitialState
   });
-  const actions = {
-    requestUsers: jest.fn()
-  };
-  const page = {
-    target: {
-      value: 1
-    }
-  };
-  const limit = {
-    target: {
-      value: 40
-    }
-  };
+
   const RoutedUsers = withMemoryRouter(ConnectedUsers);
 
   it('renders correctly', () => {
@@ -45,41 +33,5 @@ describe('Dashboard <Users />', () => {
         )
         .toJSON()
     ).toMatchSnapshot();
-  });
-
-  it('can changePage', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedUsers actions={actions} layoutOptions={defaultLayoutOptions} />
-      </Provider>
-    );
-    const { instance } = component.root.findByType(Users);
-
-    expect(instance).toBeDefined();
-    instance.changePage(page);
-  });
-
-  it('can changeLimit', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedUsers actions={actions} layoutOptions={defaultLayoutOptions} />
-      </Provider>
-    );
-    const { instance } = component.root.findByType(Users);
-
-    expect(instance).toBeDefined();
-    instance.changeLimit(limit);
-  });
-
-  it('can updateLimit', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedUsers actions={actions} layoutOptions={defaultLayoutOptions} />
-      </Provider>
-    );
-    const { instance } = component.root.findByType(Users);
-
-    expect(instance).toBeDefined();
-    instance.updateLimit();
   });
 });

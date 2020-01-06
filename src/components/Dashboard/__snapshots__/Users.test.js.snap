@@ -42,7 +42,14 @@ exports[`Dashboard <Users /> renders correctly 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             value={1}
-          />
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+          </select>
         </div>
       </div>
     </div>
@@ -80,7 +87,7 @@ exports[`Dashboard <Users /> renders correctly 1`] = `
       className="container-fluid"
     >
       <div
-        className="row"
+        className="pb-2 row"
       >
         <div
           className="col-3"
@@ -103,16 +110,28 @@ exports[`Dashboard <Users /> renders correctly 1`] = `
             onBlur={[Function]}
             onChange={[Function]}
             value={1}
-          />
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+          </select>
         </div>
       </div>
+    </div>
+    <div
+      className="container-fluid"
+    >
       <div
         className="row"
       >
         <div
           className="col"
         >
-           Users
+           
+          Users
         </div>
         <div
           className="text-right col"

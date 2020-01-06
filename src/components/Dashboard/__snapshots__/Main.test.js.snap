@@ -460,7 +460,7 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
       className="container-fluid"
     >
       <div
-        className="row"
+        className="pb-2 row"
       >
         <div
           className="col-3"
@@ -517,6 +517,10 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
           </select>
         </div>
       </div>
+    </div>
+    <div
+      className="container-fluid"
+    >
       <div
         className="row"
       >
@@ -524,7 +528,8 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
           className="col"
         >
           100
-           Flavors
+           
+          Flavors
         </div>
         <div
           className="text-right col"
@@ -1023,16 +1028,14 @@ exports[`Dashboard <Main /> renders Role/Add/User correctly 1`] = `
           <option
             value={1}
           >
-            Andrew
-             (
+            user.UserProfile.name (
             blah@blah.com
             )
           </option>
           <option
             value={2}
           >
-            Josef
-             (
+            user.UserProfile.name (
             blah2@blah.com
             )
           </option>
@@ -1610,7 +1613,7 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
       className="container-fluid"
     >
       <div
-        className="row"
+        className="pb-2 row"
       >
         <div
           className="col-3"
@@ -1667,6 +1670,10 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
           </select>
         </div>
       </div>
+    </div>
+    <div
+      className="container-fluid"
+    >
       <div
         className="row"
       >
@@ -1674,7 +1681,8 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
           className="col"
         >
           100
-           Roles
+           
+          Roles
         </div>
         <div
           className="text-right col"
@@ -1947,7 +1955,7 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
             <td
               className="text-center"
             >
-              Andrew
+              user.UserProfile.name
             </td>
             <td
               className="text-center"
@@ -1988,7 +1996,7 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
             <td
               className="text-center"
             >
-              Josef
+              user.UserProfile.name
             </td>
             <td
               className="text-center"
@@ -2027,7 +2035,7 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
       className="container-fluid"
     >
       <div
-        className="row"
+        className="pb-2 row"
       >
         <div
           className="col-3"
@@ -2084,6 +2092,10 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
           </select>
         </div>
       </div>
+    </div>
+    <div
+      className="container-fluid"
+    >
       <div
         className="row"
       >
@@ -2091,7 +2103,8 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
           className="col"
         >
           100
-           Users
+           
+          Users
         </div>
         <div
           className="text-right col"

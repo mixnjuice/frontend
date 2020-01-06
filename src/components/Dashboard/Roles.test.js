@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/roles';
 import { initialState as dashboardInitialState } from 'reducers/dashboard';
-import ConnectedRoles, { Roles } from './Roles';
+import ConnectedRoles /* , { Roles } */ from './Roles';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <Roles />', () => {
@@ -20,19 +20,7 @@ describe('Dashboard <Roles />', () => {
     roles: initialState,
     dashboard: dashboardInitialState
   });
-  const actions = {
-    requestRoles: jest.fn()
-  };
-  const page = {
-    target: {
-      value: 1
-    }
-  };
-  const limit = {
-    target: {
-      value: 40
-    }
-  };
+
   const RoutedRoles = withMemoryRouter(ConnectedRoles);
 
   it('renders correctly', () => {
@@ -45,41 +33,5 @@ describe('Dashboard <Roles />', () => {
         )
         .toJSON()
     ).toMatchSnapshot();
-  });
-
-  it('can changePage', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedRoles actions={actions} layoutOptions={defaultLayoutOptions} />
-      </Provider>
-    );
-    const { instance } = component.root.findByType(Roles);
-
-    expect(instance).toBeDefined();
-    instance.changePage(page);
-  });
-
-  it('can changeLimit', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedRoles actions={actions} layoutOptions={defaultLayoutOptions} />
-      </Provider>
-    );
-    const { instance } = component.root.findByType(Roles);
-
-    expect(instance).toBeDefined();
-    instance.changeLimit(limit);
-  });
-
-  it('can updateLimit', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedRoles actions={actions} layoutOptions={defaultLayoutOptions} />
-      </Provider>
-    );
-    const { instance } = component.root.findByType(Roles);
-
-    expect(instance).toBeDefined();
-    instance.updateLimit();
   });
 });
