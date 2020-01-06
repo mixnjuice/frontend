@@ -128,6 +128,8 @@ export const withPagination = (
   );
 };
 
+export default withPagination;
+
 export class PagerInfo extends Component {
   static propTypes = {
     contentType: PropTypes.string.isRequired,
