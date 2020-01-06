@@ -91,7 +91,7 @@ export class RoleAddUser extends Component {
               {collection.map((user, index) => {
                 return (
                   <option value={user.id} key={index}>
-                    {user.UserProfile.name} ({user.emailAddress})
+                    user.UserProfile.name ({user.emailAddress})
                   </option>
                 );
               })}
