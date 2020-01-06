@@ -1,72 +1,24 @@
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
-import { bindActionCreators } from 'redux';
 import {
   DashboardLink as DashLink,
   DashboardLayout as Layout
 } from 'components/Dashboard/';
-import { Col, Container, Row, Table } from 'react-bootstrap';
-
+import { Table } from 'react-bootstrap';
+import { PagerInfo, withPagination } from 'components/Pagination';
 import { actions as rolesActions } from 'reducers/roles';
 import { getAllRoles, getRolesPager } from 'selectors/roles';
 
 export class Roles extends Component {
   static propTypes = {
-    actions: PropTypes.object.isRequired,
-    layoutOptions: PropTypes.object,
-    roles: PropTypes.array,
-    pager: PropTypes.object
+    layoutOptions: PropTypes.object.isRequired,
+    collection: PropTypes.array.isRequired,
+    pager: PropTypes.object.isRequired,
+    pagerNavigation: PropTypes.node.isRequired
   };
 
-  constructor(props) {
-    super(props);
-    this.state = { limit: 20, page: 1 };
-    this.handlePageChange = this.changePage.bind(this);
-    this.handleLimitChange = this.changeLimit.bind(this);
-    this.handleLimitUpdate = this.updateLimit.bind(this);
-  }
-
-  componentDidMount() {
-    const { actions } = this.props;
-
-    actions.requestRoles({ page: 1, limit: 20 });
-  }
-
-  pagerCounter() {
-    const { pages } = this.props.pager;
-
-    let i = 1;
-
-    const pager = [];
-
-    while (i <= pages) {
-      pager[i] = i;
-      i++;
-    }
-    return pager;
-  }
-
-  changePage(page) {
-    const { actions, pager } = this.props;
-
-    this.setState({ page: page.target.value });
-    actions.requestRoles({ ...pager, page: Number(page.target.value) });
-  }
-
-  changeLimit(limit) {
-    this.setState({ limit: limit.target.value });
-  }
-
-  updateLimit() {
-    const { actions, pager } = this.props;
-    const { limit } = this.state;
-
-    actions.requestRoles({ ...pager, limit: Number(limit) });
-  }
-
   render() {
-    const { layoutOptions, pager, roles } = this.props;
+    const { collection, layoutOptions, pager, pagerNavigation } = this.props;
     // Administrator and User roles aren't editable
 
     let noEdit = false;
@@ -77,35 +29,7 @@ export class Roles extends Component {
         header="Roles"
         options={layoutOptions}
       >
-        <Container fluid={true}>
-          <Row className="pb-2">
-            <Col xs={3}>
-              <input
-                type="number"
-                min="20"
-                max="200"
-                step="20"
-                className="form-control"
-                onChange={this.handleLimitChange}
-                onBlur={this.handleLimitUpdate}
-                value={this.state.limit}
-              />
-            </Col>
-            <Col className="text-right">
-              <select
-                value={this.state.page}
-                onChange={this.handlePageChange}
-                onBlur={this.handlePageChange}
-              >
-                {this.pagerCounter().map((value, i) => (
-                  <option value={value} key={i}>
-                    Page {value}
-                  </option>
-                ))}
-              </select>
-            </Col>
-          </Row>
-        </Container>
+        {pagerNavigation}
         <Table responsive striped bordered hover size="sm">
           <thead>
             <tr className="text-center">
@@ -115,7 +39,7 @@ export class Roles extends Component {
             </tr>
           </thead>
           <tbody>
-            {roles.map((role, index) => {
+            {collection.map((role, index) => {
               if (role.name === 'Administrator' || role.name === 'User') {
                 noEdit = true;
               } else {
@@ -167,54 +91,17 @@ export class Roles extends Component {
             })}
           </tbody>
         </Table>
-        <Container fluid={true}>
-          <Row>
-            <Col xs={3}>
-              <input
-                type="number"
-                min="20"
-                max="200"
-                step="20"
-                className="form-control"
-                onChange={this.handleLimitChange}
-                onBlur={this.handleLimitUpdate}
-                value={this.state.limit}
-              />
-            </Col>
-            <Col className="text-right">
-              <select
-                value={this.state.page}
-                onChange={this.handlePageChange}
-                onBlur={this.handlePageChange}
-              >
-                {this.pagerCounter().map((value, i) => (
-                  <option value={value} key={i}>
-                    Page {value}
-                  </option>
-                ))}
-              </select>
-            </Col>
-          </Row>
-          <Row>
-            <Col>{pager.count} Roles</Col>
-            <Col className="text-right">{pager.pages} Pages</Col>
-          </Row>
-        </Container>
+        {pagerNavigation}
+        <PagerInfo contentType="Roles" pager={pager} />
       </Layout>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  roles: getAllRoles(state),
-  pager: getRolesPager(state)
-});
-
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(rolesActions, dispatch)
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Roles);
+export default withPagination(
+  Roles,
+  rolesActions,
+  'requestRoles',
+  getRolesPager,
+  getAllRoles
+);
