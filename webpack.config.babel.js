@@ -5,9 +5,9 @@ import HtmlPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import StylelintPlugin from 'stylelint-webpack-plugin';
 import MiniCSSExtractPlugin from 'mini-css-extract-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import { BundleStatsWebpackPlugin as BundleStatsPlugin } from 'bundle-stats';
 
 const analyzeBundle = Boolean(process.env.ANALYZE_BUNDLE);
 const dev = process.env.NODE_ENV === 'development';
@@ -41,7 +41,7 @@ if (dev) {
 }
 
 if (analyzeBundle) {
-  plugins.push(new BundleAnalyzerPlugin());
+  plugins.push(new BundleStatsPlugin());
 }
 
 export default {
