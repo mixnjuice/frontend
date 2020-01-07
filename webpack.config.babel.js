@@ -103,7 +103,7 @@ export default {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js',
+    filename: '[name].js',
     chunkFilename: '[name].js'
   },
   plugins,
@@ -125,16 +125,28 @@ export default {
         default: false,
         vendors: false,
         vendor: {
-          priority: -2,
+          chunks: 'initial',
           name: 'vendor',
-          chunks: 'all',
+          priority: -4,
           test: /[\\/]node_modules[\\/]/
         },
         react: {
-          priority: -1,
+          chunks: 'initial',
           name: 'vendor-react',
-          chunks: 'all',
-          test: /[\\/]node_modules[\\/](react|redux)/
+          priority: -1,
+          test: /[\\/]node_modules[\\/](react)/
+        },
+        redux: {
+          chunks: 'initial',
+          name: 'vendor-redux',
+          priority: -3,
+          test: /[\\/]node_modules[\\/](@?redux)/
+        },
+        ui: {
+          chunks: 'initial',
+          name: 'ui-assets',
+          priority: -2,
+          test: /[\\/]node_modules[\\/](popper|@fortawesome)/
         }
       }
     }
