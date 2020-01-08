@@ -9,7 +9,7 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "test": "jest",
     "view:coverage": "opener ./coverage/index.html",
-    "bundle:baseline": "cross-env BUNDLE_STATS_BASELINE=true webpack",
+    "bundle:baseline": "cross-env BUNDLE_STATS_BASELINE=true NODE_ENV=production ANALYZE_BUNDLE=true webpack",
     "bundle:analyze": "cross-env NODE_ENV=production ANALYZE_BUNDLE=true webpack"
   },
   "dependencies": {
