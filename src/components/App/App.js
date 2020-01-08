@@ -9,51 +9,23 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import Header from 'components/Header/Header';
 import ToastDrawer from 'components/ToastDrawer/ToastDrawer';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
-
-const Home = React.lazy(() =>
-  import(/* webpackChunkName: "home" */ 'pages/Home')
-);
-const Login = React.lazy(() =>
-  import(/* webpackChunkName: "home" */ 'pages/Login')
-);
-const NotFound = React.lazy(() =>
-  import(/* webpackChunkName: "home" */ 'pages/NotFound')
-);
-const Register = React.lazy(() =>
-  import(/* webpackChunkName: "home" */ 'pages/Register')
-);
-const Profile = React.lazy(() =>
-  import(/* webpackChunkName: "user" */ 'pages/user/Profile')
-);
-const UserRecipes = React.lazy(() =>
-  import(/* webpackChunkName: "user" */ 'pages/user/Recipes')
-);
-const Favorites = React.lazy(() =>
-  import(/* webpackChunkName: "user" */ 'pages/user/Favorites')
-);
-const FlavorStash = React.lazy(() =>
-  import(/* webpackChunkName: "user" */ 'pages/user/FlavorStash')
-);
-const UserSettings = React.lazy(() =>
-  import(/* webpackChunkName: "user" */ 'pages/user/Settings')
-);
-const ShoppingList = React.lazy(() =>
-  import(/* webpackChunkName: "user" */ 'pages/user/ShoppingList')
-);
-const Recipes = React.lazy(() =>
-  import(/* webpackChunkName: "recipe" */ 'pages/Recipes')
-);
-const Calculator = React.lazy(() =>
-  import(/* webpackChunkName: "recipe" */ 'pages/Calculator')
-);
-const Flavors = React.lazy(() =>
-  import(/* webpackChunkName: "recipe" */ 'pages/Flavors')
-);
-const Recipe = React.lazy(() =>
-  import(/* webpackChunkName: "recipe" */ 'pages/Recipe')
-);
-
 import { actions as appActions } from 'reducers/application';
+import {
+  Calculator,
+  Favorites,
+  Flavors,
+  FlavorStash,
+  Home,
+  Login,
+  NotFound,
+  Profile,
+  Recipe,
+  Recipes,
+  Register,
+  ShoppingList,
+  UserRecipes,
+  UserSettings
+} from 'pages';
 
 export class App extends Component {
   static propTypes = {
