@@ -4,8 +4,10 @@
   "editor.formatOnSave": true,
   "eslint.enable": true,
   "eslint.run": "onSave",
-  "eslint.autoFixOnSave": true,
   "stylelint.enable": true,
   "prettier.eslintIntegration": true,
-  "prettier.stylelintIntegration": true
+  "prettier.stylelintIntegration": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
