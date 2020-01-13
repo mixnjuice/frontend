@@ -10,6 +10,7 @@ import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import { BundleStatsWebpackPlugin as BundleStatsPlugin } from 'bundle-stats';
 
 const analyzeBundle = Boolean(process.env.ANALYZE_BUNDLE);
+const compareBundle = Boolean(process.env.COMPARE_BUNDLE);
 const dev = process.env.NODE_ENV === 'development';
 const apiUrl = process.env.API_URL;
 
@@ -40,8 +41,12 @@ if (dev) {
   );
 }
 
-if (analyzeBundle) {
-  plugins.push(new BundleStatsPlugin());
+if (compareBundle || analyzeBundle) {
+  plugins.push(
+    new BundleStatsPlugin({
+      compare: compareBundle
+    })
+  );
 }
 
 export default {
