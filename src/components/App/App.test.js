@@ -14,33 +14,26 @@ jest.mock('components/Header/Header', () =>
 jest.mock('components/ToastDrawer/ToastDrawer', () =>
   require('utils').mockComponent('ToastDrawer')
 );
-jest.mock('pages/NotFound', () => require('utils').mockComponent('NotFound'));
-jest.mock('pages/Home', () => require('utils').mockComponent('Home'));
-jest.mock('pages/Login', () => require('utils').mockComponent('Login'));
-jest.mock('pages/Register', () => require('utils').mockComponent('Register'));
-jest.mock('pages/user/Profile', () =>
-  require('utils').mockComponent('Profile')
-);
-jest.mock('pages/user/Recipes', () =>
-  require('utils').mockComponent('Recipes')
-);
-jest.mock('pages/user/Favorites', () =>
-  require('utils').mockComponent('Favorites')
-);
-jest.mock('pages/user/FlavorStash', () =>
-  require('utils').mockComponent('FlavorStash')
-);
-jest.mock('pages/user/Settings', () =>
-  require('utils').mockComponent('Settings')
-);
-jest.mock('pages/user/ShoppingList', () =>
-  require('utils').mockComponent('ShoppingList')
-);
-jest.mock('pages/Calculator', () =>
-  require('utils').mockComponent('Calculator')
-);
-jest.mock('pages/Flavors', () => require('utils').mockComponent('Flavors'));
-jest.mock('pages/Recipe', () => require('utils').mockComponent('Recipe'));
+jest.mock('pages', () => {
+  const { mockComponent } = require('utils');
+
+  return {
+    Calculator: mockComponent('Calculator'),
+    Favorites: mockComponent('Favorites'),
+    Flavors: mockComponent('Flavors'),
+    FlavorStash: mockComponent('FlavorStash'),
+    Home: mockComponent('Home'),
+    Login: mockComponent('Login'),
+    NotFound: mockComponent('NotFound'),
+    Profile: mockComponent('Profile'),
+    Recipe: mockComponent('Recipe'),
+    Recipes: mockComponent('Recipes'),
+    Register: mockComponent('Register'),
+    ShoppingList: mockComponent('ShoppingList'),
+    UserRecipes: mockComponent('UserRecipes'),
+    UserSettings: mockComponent('UserSettings')
+  };
+});
 
 describe('<App />', () => {
   const actions = {

@@ -5,11 +5,12 @@ import HtmlPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import StylelintPlugin from 'stylelint-webpack-plugin';
 import MiniCSSExtractPlugin from 'mini-css-extract-plugin';
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin';
 import OptimizeCSSAssetsPlugin from 'optimize-css-assets-webpack-plugin';
+import { BundleStatsWebpackPlugin as BundleStatsPlugin } from 'bundle-stats';
 
 const analyzeBundle = Boolean(process.env.ANALYZE_BUNDLE);
+const compareBundle = Boolean(process.env.COMPARE_BUNDLE);
 const dev = process.env.NODE_ENV === 'development';
 const apiUrl = process.env.API_URL;
 
@@ -40,8 +41,12 @@ if (dev) {
   );
 }
 
-if (analyzeBundle) {
-  plugins.push(new BundleAnalyzerPlugin());
+if (compareBundle || analyzeBundle) {
+  plugins.push(
+    new BundleStatsPlugin({
+      compare: compareBundle
+    })
+  );
 }
 
 export default {
@@ -103,7 +108,7 @@ export default {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'main.js',
+    filename: '[name].js',
     chunkFilename: '[name].js'
   },
   plugins,
@@ -125,16 +130,28 @@ export default {
         default: false,
         vendors: false,
         vendor: {
-          priority: -2,
+          chunks: 'initial',
           name: 'vendor',
-          chunks: 'all',
+          priority: -4,
           test: /[\\/]node_modules[\\/]/
         },
         react: {
-          priority: -1,
+          chunks: 'initial',
           name: 'vendor-react',
-          chunks: 'all',
-          test: /[\\/]node_modules[\\/](react|redux)/
+          priority: -1,
+          test: /[\\/]node_modules[\\/](react)/
+        },
+        redux: {
+          chunks: 'initial',
+          name: 'vendor-redux',
+          priority: -3,
+          test: /[\\/]node_modules[\\/](@?redux)/
+        },
+        ui: {
+          chunks: 'initial',
+          name: 'ui-assets',
+          priority: -2,
+          test: /[\\/]node_modules[\\/](popper|@fortawesome)/
         }
       }
     }
