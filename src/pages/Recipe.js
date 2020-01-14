@@ -86,7 +86,7 @@ export class Recipe extends Component {
   }
 
   findRecipe() {
-    const query = this.props.location.search;
+    const query = this.props.location?.search;
     const queryValues = queryString.parse(query);
     const pageId = parseFloat(queryValues.id);
 
@@ -122,11 +122,11 @@ export class Recipe extends Component {
   }
 
   compareWithStash() {
-    const query = this.props.location.search;
+    const query = this.props.location?.search;
     const queryValues = queryString.parse(query);
     const pageId = parseFloat(queryValues.id);
 
-    const recipe = recipes.filter(e => e.id === pageId)[0];
+    const recipe = recipes?.filter?.(e => e.id === pageId)[0];
 
     let index = 0;
 

@@ -48,10 +48,12 @@ export const reducer = (state = initialState, action = {}) => {
     case types.REMOVE_TOAST:
       return {
         ...state,
-        queue: state.queue.filter(toast => toast.id !== action.id)
+        queue: state.queue?.filter?.(toast => toast.id !== action.id)
       };
     case types.HIDE_TOAST: {
-      const originalToast = state.queue.find(toast => toast.id === action.id);
+      const originalToast = state.queue?.find?.(
+        toast => toast.id === action.id
+      );
 
       if (!originalToast) {
         return state;
@@ -61,7 +63,7 @@ export const reducer = (state = initialState, action = {}) => {
         ...originalToast,
         show: false
       };
-      const filteredToasts = state.queue.filter(
+      const filteredToasts = state.queue?.filter?.(
         toast => toast.id !== action.id
       );
 
