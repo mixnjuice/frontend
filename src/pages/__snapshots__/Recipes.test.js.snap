@@ -165,7 +165,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Wyona Street Dogspa"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -266,7 +266,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Lincoln Place Portaline"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -358,7 +358,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Bevy Court Malathion"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -450,7 +450,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Gelston Avenue Combogen"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -542,7 +542,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Varet Street Quilk"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -634,7 +634,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Surf Avenue Koogle"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -780,7 +780,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Commerce Street Enaut"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -872,7 +872,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Gardner Avenue Kidstock"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -982,7 +982,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Harden Street Musanpoly"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -1083,7 +1083,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Stockholm Street Genesynk"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -1184,7 +1184,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Hooper Street Vidto"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -1312,7 +1312,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Polar Street Bytrex"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -1440,7 +1440,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Agate Court Medicroix"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -1550,7 +1550,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Huron Street Krog"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -1678,7 +1678,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Grant Avenue Digique"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -1815,7 +1815,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Livonia Avenue Zensor"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -1961,7 +1961,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Beard Street Eventage"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -2089,7 +2089,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Juliana Place Neurocell"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -2235,7 +2235,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Haring Street Flexigen"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -2372,7 +2372,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Metrotech Courtr Greeker"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -2509,7 +2509,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Walker Court Strozen"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -2610,7 +2610,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Crescent Street Ebidco"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -2729,7 +2729,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Seton Place Amtap"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -2839,7 +2839,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Wilson Avenue Earwax"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -2949,7 +2949,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Kensington Street Xumonk"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -3095,7 +3095,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Hampton Avenue Nebulean"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -3241,7 +3241,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Ash Street Zentry"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -3351,7 +3351,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Woodside Avenue Tripsch"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -3497,7 +3497,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Havens Place Anocha"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -3634,7 +3634,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Stryker Court Ovation"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -3726,7 +3726,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Visitation Place Apex"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -3836,7 +3836,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Auburn Place Comtext"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -3928,7 +3928,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Broadway  Eschoir"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -4056,7 +4056,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Crooke Avenue Exoplode"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -4148,7 +4148,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Irving Street Prismatic"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -4285,7 +4285,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Railroad Avenue Cyclonica"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -4395,7 +4395,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Victor Road Peticular"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -4523,7 +4523,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Woodrow Court Zilencio"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -4615,7 +4615,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Jefferson Avenue Applidec"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -4716,7 +4716,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Beach Place Zolavo"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -4817,7 +4817,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Hastings Street Kaggle"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -4936,7 +4936,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Knapp Street Unia"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -5064,7 +5064,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Perry Place Shepard"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -5192,7 +5192,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Clark Street Medifax"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -5311,7 +5311,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Brigham Street Olucore"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -5457,7 +5457,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Johnson Street Accuprint"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -5558,7 +5558,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Varanda Place Dancity"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -5677,7 +5677,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Erskine Loop Makingway"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -5823,7 +5823,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Whitney Avenue Exostream"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
@@ -5969,7 +5969,7 @@ exports[`<Recipes /> renders correctly 1`] = `
         <img
           alt="Brevoort Place Zanity"
           className="card-img card-img search-grid--card-image"
-          src="/media/card-test-5.jpeg"
+          src="/media/card-test-1.jpg"
         />
         <div
           className="p-3 card-img-overlay"
