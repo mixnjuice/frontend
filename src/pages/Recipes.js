@@ -111,7 +111,7 @@ export class Recipes extends Component {
       const image = '/media/card-test-1.jpg';
 
       return (
-        <Row key={`${recipe.id}${index}`} className="py-1">
+        <Row key={`${recipe.id}${index}`} className="py-1 w-100">
           <Col>
             <Card>
               <Card.Header className="search-list--card-header">
@@ -119,21 +119,25 @@ export class Recipes extends Component {
               </Card.Header>
               <Card.Body>
                 <Row>
-                  <Col lg="1">
+                  <Col xs="3" lg="1">
                     <img
                       src={image}
                       alt={recipe.name}
                       className="w-100 border border-dark rounded-lg"
                     />
                   </Col>
-                  <Col lg="11">
+                  <Col xs="9" lg="11">
                     <Card.Text>
                       <span className="font-weight-bold">Tags:</span>
                       {recipe.tags.map((tag, i) => {
                         return (
-                          <a className="link--tags" key={`${tag}${i}`} href="/">
+                          <Badge
+                            className="link--tags search-list--tags"
+                            key={`${tag}${i}`}
+                            href="/"
+                          >
                             {tag}
-                          </a>
+                          </Badge>
                         );
                       })}
                     </Card.Text>
@@ -275,7 +279,7 @@ export class Recipes extends Component {
         </Popover>
       );
 
-      const image = '/media/card-test-5.jpeg';
+      const image = '/media/card-test-1.jpg';
 
       return (
         <Col
