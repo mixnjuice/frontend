@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import { Spinner } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import React, { Component, Suspense } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
@@ -26,6 +25,7 @@ import {
   UserRecipes,
   UserSettings
 } from 'pages';
+import LazyLoaderFallback from 'components/LazyLoaderFallback/LazyLoaderFallback';
 
 export class App extends Component {
   static propTypes = {
@@ -40,7 +40,7 @@ export class App extends Component {
 
   render() {
     return (
-      <Suspense fallback={<Spinner variant="primary" />}>
+      <Suspense fallback={<LazyLoaderFallback />}>
         <Helmet defaultTitle="MixNJuice" titleTemplate="MixNJuice - %s" />
         <Header />
         <ToastDrawer />
@@ -52,6 +52,7 @@ export class App extends Component {
           <Route exact path="/calculator" component={Calculator} />
           <Route exact path="/flavors" component={Flavors} />
           <Route exact path="/recipe" component={Recipe} />
+          <Route exact path="/lazy" component={LazyLoaderFallback} />
           <PrivateRoute exact path="/user/profile" component={Profile} />
           <PrivateRoute exact path="/user/recipes" component={UserRecipes} />
           <PrivateRoute exact path="/user/favorites" component={Favorites} />
