@@ -3,3 +3,4 @@ dist/
 coverage/
 .directory
 /vscode.json
+.DS_Store
