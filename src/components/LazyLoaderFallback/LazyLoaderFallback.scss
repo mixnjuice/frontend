@@ -31,13 +31,13 @@ $spinner-size: 15rem;
       transform: translateY(6rem);
     }
   }
-}
 
-.spinner-border {
-  position: fixed;
-  border-color: $teal;
-  border-width: 0.3em;
-  border-right-color: transparent;
-  width: $spinner-size;
-  height: $spinner-size;
+  &__spinner {
+    position: fixed;
+    border-color: $teal;
+    border-width: 0.3em;
+    border-right-color: transparent;
+    width: $spinner-size;
+    height: $spinner-size;
+  }
 }
