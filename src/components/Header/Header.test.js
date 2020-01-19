@@ -21,43 +21,30 @@ describe('<Header />', () => {
 
   it('renders logged out correctly', () => {
     const props = {
+      actions,
       loggedIn: false
     };
 
     expect(
-      renderer
-        .create(
-          <Provider store={store}>
-            <RoutedHeader actions={actions} {...props} />
-          </Provider>
-        )
-        .toJSON()
+      renderer.create(<RoutedHeader {...props} />).toJSON()
     ).toMatchSnapshot();
   });
 
   it('renders logged in correctly', () => {
     const props = {
+      actions,
       loggedIn: true
     };
 
     expect(
-      renderer
-        .create(
-          <Provider store={store}>
-            <RoutedHeader actions={actions} {...props} />
-          </Provider>
-        )
-        .toJSON()
+      renderer.create(<RoutedHeader {...props} />).toJSON()
     ).toMatchSnapshot();
   });
 
   it('can logoutUser', () => {
-    const props = {
-      loggedIn: true
-    };
     const component = renderer.create(
       <Provider store={store}>
-        <RoutedHeader actions={actions} {...props} />
+        <RoutedHeader actions={actions} loggedIn={true} />
       </Provider>
     );
     const { instance } = component.root.findByType(Header);
