@@ -69,7 +69,9 @@ export class Header extends Component {
                 <Nav>
                   {this.renderNavItem('/', 'Home')}
                   {this.renderNavItem('/recipes', 'Recipes')}
-                  {this.renderNavItem('/calculator', 'Calculator')}
+                  {loggedIn
+                    ? this.renderNavItem('/calculator', 'Calculator')
+                    : null}
                   {this.renderNavItem('/flavors', 'Flavors')}
                   {loggedIn ? (
                     <NavDropdown title="User">
