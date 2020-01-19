@@ -16,6 +16,14 @@ Array [
 ]
 `;
 
+exports[`<App /> renders dashboard page 1`] = `
+Array [
+  <Header />,
+  <ToastDrawer />,
+  <Dashboard />,
+]
+`;
+
 exports[`<App /> renders favorites page 1`] = `
 Array [
   <Header />,

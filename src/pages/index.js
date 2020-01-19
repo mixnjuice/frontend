@@ -2,6 +2,7 @@ import { lazy } from 'react';
 
 export const imports = {
   Calculator: () => import(/* webpackChunkName: "recipe" */ 'pages/Calculator'),
+  Dashboard: () => import(/* webpackChunkName: "recipe" */ 'pages/Dashboard'),
   Favorites: () =>
     import(/* webpackChunkName: "user" */ 'pages/user/Favorites'),
   Flavors: () => import(/* webpackChunkName: "recipe" */ 'pages/Flavors'),
@@ -23,6 +24,7 @@ export const imports = {
 };
 
 export const Calculator = lazy(imports.Calculator);
+export const Dashboard = lazy(imports.Dashboard);
 export const Favorites = lazy(imports.Favorites);
 export const Flavors = lazy(imports.Flavors);
 export const FlavorStash = lazy(imports.FlavorStash);

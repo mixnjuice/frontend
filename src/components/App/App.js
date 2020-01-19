@@ -12,6 +12,7 @@ import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import { actions as appActions } from 'reducers/application';
 import {
   Calculator,
+  Dashboard,
   Favorites,
   Flavors,
   FlavorStash,
@@ -66,6 +67,7 @@ export class App extends Component {
             component={ShoppingList}
           />
           <PrivateRoute exact path="/user/settings" component={UserSettings} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <Route component={NotFound} />
         </Switch>
       </Suspense>
