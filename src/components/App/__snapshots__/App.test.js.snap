@@ -92,7 +92,7 @@ exports[`<App /> renders user recipes page 1`] = `
 Array [
   <Header />,
   <ToastDrawer />,
-  <Recipes />,
+  <UserRecipes />,
 ]
 `;
 
@@ -100,6 +100,6 @@ exports[`<App /> renders user settings page 1`] = `
 Array [
   <Header />,
   <ToastDrawer />,
-  <Settings />,
+  <UserSettings />,
 ]
 `;
