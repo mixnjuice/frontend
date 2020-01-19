@@ -22,6 +22,6 @@ The following VS Code extensions will improve your development experience:
 
 - `dbaeumer.vscode-eslint`
 - `esbenp.prettier-vscode`
-- `shinnn.stylelint`
+- `stylelint.vscode-stylelint`
 
 The recommended settings for the extensions and VS Code are saved in `.vscode/settings.json` and will automatically be used.

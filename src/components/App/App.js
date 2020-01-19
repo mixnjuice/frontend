@@ -1,31 +1,31 @@
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
+import { Spinner } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
-import React, { Component, Fragment } from 'react';
+import React, { Component, Suspense } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
 import Header from 'components/Header/Header';
 import ToastDrawer from 'components/ToastDrawer/ToastDrawer';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
-
-import Home from 'pages/Home';
-import Login from 'pages/Login';
-import NotFound from 'pages/NotFound';
-import Register from 'pages/Register';
-import Dashboard from 'pages/Dashboard';
-import Profile from 'pages/user/Profile';
-import UserRecipes from 'pages/user/Recipes';
-import Favorites from 'pages/user/Favorites';
-import FlavorStash from 'pages/user/FlavorStash';
-import UserSettings from 'pages/user/Settings';
-import ShoppingList from 'pages/user/ShoppingList';
-import Recipes from 'pages/Recipes';
-import Calculator from 'pages/Calculator';
-import Flavors from 'pages/Flavors';
-import Recipe from 'pages/Recipe';
-
 import { actions as appActions } from 'reducers/application';
+import {
+  Calculator,
+  Favorites,
+  Flavors,
+  FlavorStash,
+  Home,
+  Login,
+  NotFound,
+  Profile,
+  Recipe,
+  Recipes,
+  Register,
+  ShoppingList,
+  UserRecipes,
+  UserSettings
+} from 'pages';
 
 export class App extends Component {
   static propTypes = {
@@ -40,7 +40,7 @@ export class App extends Component {
 
   render() {
     return (
-      <Fragment>
+      <Suspense fallback={<Spinner variant="primary" />}>
         <Helmet defaultTitle="MixNJuice" titleTemplate="MixNJuice - %s" />
         <Header />
         <ToastDrawer />
@@ -66,10 +66,9 @@ export class App extends Component {
             component={ShoppingList}
           />
           <PrivateRoute exact path="/user/settings" component={UserSettings} />
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <Route component={NotFound} />
         </Switch>
-      </Fragment>
+      </Suspense>
     );
   }
 }

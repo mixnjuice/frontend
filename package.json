@@ -9,7 +9,9 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server",
     "test": "jest",
     "view:coverage": "opener ./coverage/index.html",
-    "analyze:bundle": "cross-env NODE_ENV=production ANALYZE_BUNDLE=true webpack"
+    "bundle:baseline": "cross-env BUNDLE_STATS_BASELINE=true NODE_ENV=production ANALYZE_BUNDLE=true webpack",
+    "bundle:analyze": "cross-env NODE_ENV=production ANALYZE_BUNDLE=true webpack",
+    "bundle:compare": "cross-env NODE_ENV=production COMPARE_BUNDLE=true webpack"
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.6.3",
@@ -47,6 +49,7 @@
     "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-export-default-from": "^7.5.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@babel/plugin-transform-regenerator": "^7.4.5",
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
@@ -59,6 +62,7 @@
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "bundle-stats": "^1.15.4",
     "clean-webpack-plugin": "^3.0.0",
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
@@ -98,7 +102,6 @@
     "stylelint-webpack-plugin": "^1.0.2",
     "terser-webpack-plugin": "^2.2.0",
     "webpack": "^4.41.2",
-    "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2"
   }
