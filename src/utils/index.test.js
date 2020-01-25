@@ -20,6 +20,10 @@ describe('utilities', () => {
     expect(buildActions(module, actions)).toEqual(result);
   });
 
+  it('fails', () => {
+    expect(true).toBe(false);
+  });
+
   describe('mockComponent', () => {
     it('exists', () => {
       expect(mockComponent).toBeInstanceOf(Function);
