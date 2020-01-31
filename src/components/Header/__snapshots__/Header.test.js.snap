@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Header /> renders correctly 1`] = `
+exports[`<Header /> renders logged in correctly 1`] = `
 <div
   className="container-fluid"
 >
@@ -170,8 +170,115 @@ exports[`<Header /> renders correctly 1`] = `
                   Settings
                   <br />
                 </a>
+                <a
+                  aria-current={null}
+                  className="nav--link-custom dropdown-item"
+                  disabled={false}
+                  href="/dashboard"
+                  onClick={[Function]}
+                >
+                  Dashboard
+                  <br />
+                </a>
+                <a
+                  aria-current="page"
+                  className="nav--link-custom dropdown-item active"
+                  disabled={false}
+                  href="/"
+                  onClick={[Function]}
+                  style={Object {}}
+                >
+                  Logout
+                  <br />
+                </a>
               </div>
             </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Header /> renders logged out correctly 1`] = `
+<div
+  className="container-fluid"
+>
+  <div
+    className="navigation-container row"
+  >
+    <div
+      className="col"
+    >
+      <nav
+        className="navbar navbar-expand-lg navbar-light"
+      >
+        <span
+          className="pt-0 navbar-brand"
+        >
+          <img
+            alt="logo"
+            className="image--logo"
+            src="/media/logo.svg"
+          />
+        </span>
+        <button
+          aria-controls="basic-navbar-nav"
+          aria-label="Toggle navigation"
+          className="navbar-toggler"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            className="navbar-toggler-icon"
+          />
+        </button>
+        <div
+          aria-expanded={null}
+          className="navbar-collapse collapse"
+        >
+          <div
+            className="navbar-nav"
+            onKeyDown={[Function]}
+          >
+            <a
+              aria-current="page"
+              className="nav--link-custom px-3 nav-link active"
+              data-rb-event-key={null}
+              disabled={false}
+              href="/"
+              onClick={[Function]}
+              role="tab"
+              style={Object {}}
+              tabIndex={-1}
+            >
+              Home
+            </a>
+            <a
+              aria-current={null}
+              className="nav--link-custom px-3 nav-link"
+              data-rb-event-key={null}
+              disabled={false}
+              href="/recipes"
+              onClick={[Function]}
+              role="tab"
+              tabIndex={-1}
+            >
+              Recipes
+            </a>
+            <a
+              aria-current={null}
+              className="nav--link-custom px-3 nav-link"
+              data-rb-event-key={null}
+              disabled={false}
+              href="/flavors"
+              onClick={[Function]}
+              role="tab"
+              tabIndex={-1}
+            >
+              Flavors
+            </a>
             <a
               aria-current={null}
               className="nav--link-custom px-3 nav-link"

@@ -163,6 +163,39 @@ function* loginUserWorker({ emailAddress, password }) {
   }
 }
 
+function* logoutUserWorker() {
+  try {
+    // first, check to see if we are logged in
+    const loggedIn = yield select(isLoggedIn);
+
+    if (loggedIn) {
+      localStorage.removeItem('accessToken');
+      localStorage.removeItem('expiration');
+    }
+
+    yield put(
+      toastActions.popToast({
+        title: 'Logged out',
+        icon: 'check',
+        message: 'You have been logged out.'
+      })
+    );
+
+    yield put(actions.logoutUserSuccess());
+  } catch (error) {
+    const { message } = error;
+
+    yield put(actions.logoutUserFailure(error));
+    yield put(
+      toastActions.popToast({
+        title: 'Error',
+        icon: 'times-circle',
+        message
+      })
+    );
+  }
+}
+
 function* registerUserWorker({
   details: { emailAddress, password, username }
 }) {
@@ -208,6 +241,10 @@ function* loginUserWatcher() {
   yield takeLatest(types.LOGIN_USER, loginUserWorker);
 }
 
+function* logoutUserWatcher() {
+  yield takeLatest(types.LOGOUT_USER, logoutUserWorker);
+}
+
 function* requestTokenWatcher() {
   yield takeLatest(types.REQUEST_TOKEN, requestTokenWorker);
 }
@@ -222,6 +259,7 @@ function* registerUserWatcher() {
 
 export const workers = {
   loginUserWorker,
+  logoutUserWorker,
   registerUserWorker,
   requestTokenWorker,
   requestCurrentUserWorker
@@ -229,6 +267,7 @@ export const workers = {
 
 export const watchers = {
   loginUserWatcher,
+  logoutUserWatcher,
   registerUserWatcher,
   requestTokenWatcher,
   requestCurrentUserWatcher
