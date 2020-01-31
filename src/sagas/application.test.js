@@ -7,7 +7,6 @@ import { actions, types } from 'reducers/application';
 import { actions as toastActions } from 'reducers/toast';
 import appSaga, { watchers, workers } from './application';
 import { isLoggedIn, getUser } from 'selectors/application';
-
 /* eslint-disable camelcase */
 describe('application sagas', () => {
   const accessToken = 'testing';
@@ -139,7 +138,7 @@ describe('application sagas', () => {
       )
     );
   });
-
+  /* eslint-enable camelcase */
   it('handles success in requestCurrentUserWorker', () => {
     const gen = workers.requestCurrentUserWorker();
 
@@ -383,6 +382,70 @@ describe('application sagas', () => {
     );
   });
 
+  it('runs logoutUserWorker', () => {
+    const gen = workers.logoutUserWorker();
+
+    let result = gen.next(null);
+
+    result = gen.next();
+    expect(result.value).toEqual(
+      put(
+        toastActions.popToast({
+          title: 'Logged out',
+          icon: 'check',
+          message: 'You have been logged out.'
+        })
+      )
+    );
+
+    result = gen.next();
+
+    expect(result.value).toEqual(put(actions.logoutUserSuccess()));
+  });
+
+  const registerEndpoint = {
+    url: '/register',
+    method: 'POST'
+  };
+
+  const username = 'mixnjuice';
+  const details = {
+    emailAddress,
+    password,
+    username
+  };
+
+  it('handles success in registerUserWorker', () => {
+    const gen = workers.registerUserWorker({ details });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(
+      call(request.execute, {
+        endpoint: registerEndpoint,
+        data: { emailAddress, password, username }
+      })
+    );
+
+    result = gen.next({
+      success: true
+    });
+
+    expect(result.value).toEqual(put(actions.registerUserSuccess()));
+
+    result = gen.next();
+
+    expect(result.value).toEqual(
+      put(
+        toastActions.popToast({
+          title: 'Success!',
+          icon: 'check',
+          message: 'Check your email for an activation link.'
+        })
+      )
+    );
+  });
+
   it('forks all watchers', () => {
     const gen = appSaga();
     const result = gen.next();
@@ -392,4 +455,3 @@ describe('application sagas', () => {
     );
   });
 });
-/* eslint-enable */
