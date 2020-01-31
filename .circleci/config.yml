@@ -25,16 +25,8 @@ jobs:
       - run:
           name: test
           command: 'npm test && codecov'
-  notify_success:
-    docker:
-      - image: byrnedo/alpine-curl:latest
-    steps:
       - mattermost-notify/notify_on_success:
           webhook: '$MATTERMOST_WEBHOOK_FRONTEND'
-  notify_failure:
-    docker:
-      - image: byrnedo/alpine-curl:latest
-    steps:
       - mattermost-notify/notify_on_failure:
           webhook: '$MATTERMOST_WEBHOOK_FRONTEND'
 
@@ -42,10 +34,5 @@ workflows:
   version: 2
   main_workflow:
     jobs:
-      - build
-      - notify_success:
-          context: webhooks
-          requires:
-            - build
-      - notify_failure:
-          context: webhooks
+      - build:
+          context: builds
