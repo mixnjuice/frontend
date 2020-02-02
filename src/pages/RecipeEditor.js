@@ -194,14 +194,14 @@ export class RecipeEditor extends Component {
     const nicotineVgPercent = nicotinePercent * nicotineDiluentRatio;
     const nicotinePgPercent = nicotinePercent * (1 - nicotineDiluentRatio);
     // figure out the remaining amounts of VG and PG
-    const remainingVgPercent = Math.max(
-      0,
-      desiredDiluentRatio - nicotineVgPercent
-    );
-    const remainingPgPercent = Math.max(
-      0,
-      1 - desiredDiluentRatio - flavorPercent - nicotinePgPercent
-    );
+    const remainingVgPercent = desiredDiluentRatio - nicotineVgPercent;
+    const remainingPgPercent =
+      1 - desiredDiluentRatio - flavorPercent - nicotinePgPercent;
+
+    // return false if there is too much flavor
+    if (remainingVgPercent < 0 || remainingPgPercent < 0) {
+      return false;
+    }
 
     return {
       nicotine: nicotinePercent * 100,
@@ -221,6 +221,11 @@ export class RecipeEditor extends Component {
       recipe: { ingredients, percentages: ingredientPercentages }
     } = this.props;
 
+    if (!percentages) {
+      return [];
+    }
+
+    const percentageEntries = Object.entries(ingredientPercentages);
     const densities = {
       vg: 1.26,
       pg: 1.038,
@@ -453,7 +458,7 @@ export class RecipeEditor extends Component {
                     </Row>
                     <Row></Row>
                     <Row>
-                      <Col md="12">
+                      <Col md="12" className="recipe-editor-ingredients">
                         <h2>Ingredients</h2>
                         <IngredientList
                           ingredients={ingredients}
@@ -476,7 +481,7 @@ export class RecipeEditor extends Component {
                   <RecipeComponents components={components} />
                 </Col>
                 <Col md="12">
-                  <IngredientBar {...percentages} />
+                  {percentages ? <IngredientBar {...percentages} /> : null}
                 </Col>
               </Row>
               <Row>

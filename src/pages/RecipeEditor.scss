@@ -6,4 +6,9 @@
       margin-top: $base-spacing * 0.75;
     }
   }
+
+  &-ingredients {
+    // width of the scroll bar in the container above is 6px
+    padding-right: 6px;
+  }
 }

@@ -116,7 +116,11 @@ export class FlavorBrowser extends Component {
     const stripeClass = index % 2 === 0 ? `${itemClass}--striped` : false;
 
     return (
-      <Row className={classNames(itemClass, stripeClass)} style={style}>
+      <Row
+        className={classNames(itemClass, stripeClass)}
+        // there is 16px of padding, offset by 15px to prevent overflow
+        style={{ ...style, left: '15px' }}
+      >
         <Col md="2" sm="3" className={vendorClass}>
           {vendor.code}
         </Col>
@@ -160,7 +164,12 @@ export class FlavorBrowser extends Component {
         </Form.Group>
         <Col
           md="12"
-          className={classNames(this.baseClass, 'border-bottom', 'border-top')}
+          className={classNames(
+            this.baseClass,
+            'border-bottom',
+            'border-top',
+            'pr-0'
+          )}
         >
           {this.filteredStash.length > 0 ? (
             <List

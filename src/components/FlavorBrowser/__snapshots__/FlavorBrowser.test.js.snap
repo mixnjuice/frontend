@@ -30,7 +30,7 @@ Array [
     </div>
   </div>,
   <div
-    className="flavor-browser border-bottom border-top col-md-12"
+    className="flavor-browser border-bottom border-top pr-0 col-md-12"
   >
     <div
       onScroll={[Function]}
@@ -60,7 +60,7 @@ Array [
           style={
             Object {
               "height": 30,
-              "left": 0,
+              "left": "15px",
               "position": "absolute",
               "top": 0,
               "width": "100%",
@@ -97,7 +97,7 @@ Array [
           style={
             Object {
               "height": 30,
-              "left": 0,
+              "left": "15px",
               "position": "absolute",
               "top": 30,
               "width": "100%",

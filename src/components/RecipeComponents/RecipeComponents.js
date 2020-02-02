@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { Table, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import React, { Component } from 'react';
+import { Table, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 export default class RecipeComponents extends Component {
   static propTypes = {
@@ -22,7 +22,7 @@ export default class RecipeComponents extends Component {
   render() {
     const { components } = this.props;
 
-    if (!components) {
+    if (!Array.isArray(components) || components.length === 0) {
       return null;
     }
 
