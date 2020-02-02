@@ -11,7 +11,6 @@ import ToastDrawer from 'components/ToastDrawer/ToastDrawer';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import { actions as appActions } from 'reducers/application';
 import {
-  Calculator,
   Favorites,
   Flavors,
   FlavorStash,
@@ -20,6 +19,7 @@ import {
   NotFound,
   Profile,
   Recipe,
+  RecipeEditor,
   Recipes,
   Register,
   ShoppingList,
