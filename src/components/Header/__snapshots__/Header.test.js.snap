@@ -2,7 +2,7 @@
 
 exports[`<Header /> renders logged in correctly 1`] = `
 <div
-  className="mb-4 container-fluid"
+  className="mb-5 container-fluid"
 >
   <div
     className="navigation-container row"
@@ -203,7 +203,7 @@ exports[`<Header /> renders logged in correctly 1`] = `
 
 exports[`<Header /> renders logged out correctly 1`] = `
 <div
-  className="mb-4 container-fluid"
+  className="mb-5 container-fluid"
 >
   <div
     className="navigation-container row"
