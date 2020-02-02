@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import React, { Component, Suspense } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
+import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import ToastDrawer from 'components/ToastDrawer/ToastDrawer';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
@@ -69,6 +70,7 @@ export class App extends Component {
           <PrivateRoute path="/user/:userName" component={Profile} />
           <Route component={NotFound} />
         </Switch>
+        <Footer />
       </Suspense>
     );
   }
