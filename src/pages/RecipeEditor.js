@@ -512,7 +512,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(recipeActions, dispatch)
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RecipeEditor);
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeEditor);
