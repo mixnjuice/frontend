@@ -129,7 +129,7 @@ export class FlavorBrowser extends Component {
             className="button-animation"
             onClick={() => this.addIngredient(id)}
           >
-            <FontAwesomeIcon icon="plus" size="xs" />
+            <FontAwesomeIcon icon="plus" size="xs" title="add" />
           </Button>
         </Col>
       </Row>
@@ -143,7 +143,7 @@ export class FlavorBrowser extends Component {
           <InputGroup>
             <InputGroup.Prepend>
               <InputGroup.Text>
-                <FontAwesomeIcon icon="search" />
+                <FontAwesomeIcon icon="search" title="search" />
               </InputGroup.Text>
             </InputGroup.Prepend>
             <Form.Control

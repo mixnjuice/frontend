@@ -95,13 +95,13 @@ export class IngredientList extends Component {
                     </InputGroup.Append>
                   </InputGroup>
                 </td>
-                <td>
+                <td className="text-right">
                   <Button
                     size="sm"
                     className="button-animation"
                     onClick={() => this.removeIngredient(id)}
                   >
-                    <FontAwesomeIcon icon="trash" size="xs" />
+                    <FontAwesomeIcon icon="trash" size="xs" title="remove" />
                   </Button>
                 </td>
               </tr>
