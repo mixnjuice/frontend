@@ -7,20 +7,14 @@ export const getSavePoint = createSelector(
   recipe => recipe.savePoint
 );
 
-export const isEditing = createSelector(
-  getRecipe,
-  recipe => recipe.editing
-);
+export const isEditing = createSelector(getRecipe, recipe => recipe.editing);
 
 export const getActiveRecipe = createSelector(
   getRecipe,
   recipe => recipe.active
 );
 
-export const getRecipeId = createSelector(
-  getActiveRecipe,
-  active => active.id
-);
+export const getRecipeId = createSelector(getActiveRecipe, active => active.id);
 
 export const getRecipeName = createSelector(
   getActiveRecipe,
@@ -37,25 +31,13 @@ export const getRecipePercentages = createSelector(
   active => active.percentages
 );
 
-export const getError = createSelector(
-  getRecipe,
-  recipe => recipe.error
-);
+export const getError = createSelector(getRecipe, recipe => recipe.error);
 
-export const getOptions = createSelector(
-  getRecipe,
-  recipe => recipe.options
-);
+export const getOptions = createSelector(getRecipe, recipe => recipe.options);
 
-export const getDesired = createSelector(
-  getRecipe,
-  recipe => recipe.desired
-);
+export const getDesired = createSelector(getRecipe, recipe => recipe.desired);
 
-export const getSettings = createSelector(
-  getRecipe,
-  recipe => recipe.settings
-);
+export const getSettings = createSelector(getRecipe, recipe => recipe.settings);
 
 export const getNicotineStrength = createSelector(
   getSettings,
