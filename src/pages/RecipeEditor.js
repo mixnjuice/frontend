@@ -245,6 +245,7 @@ export class RecipeEditor extends Component {
 
     result.push({
       name: `${nicotineStrength} mg/ml nicotine`,
+      density: nicotineDensity,
       percentage: percentages.nicotine,
       mililiters: nicotineMl,
       grams: nicotineGrams
@@ -252,6 +253,7 @@ export class RecipeEditor extends Component {
 
     result.push({
       name: 'Vegetable glycerin',
+      density: densities.vg,
       percentage: percentages.vg,
       mililiters: vgMl,
       grams: vgGrams
@@ -259,6 +261,7 @@ export class RecipeEditor extends Component {
 
     result.push({
       name: 'Propylene glycol',
+      density: densities.pg,
       percentage: percentages.pg,
       mililiters: pgMl,
       grams: pgGrams
@@ -272,6 +275,7 @@ export class RecipeEditor extends Component {
 
       result.push({
         name,
+        density: densities.pg,
         percentage,
         mililiters,
         grams

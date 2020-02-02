@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Table } from 'react-bootstrap';
+import { Table, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import React, { Component } from 'react';
 
 export default class RecipeComponents extends Component {
@@ -7,12 +7,17 @@ export default class RecipeComponents extends Component {
     components: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string,
+        density: PropTypes.number,
         percentage: PropTypes.number,
         mililiters: PropTypes.number,
         grams: PropTypes.number
       })
     ).isRequired
   };
+
+  renderTooltip(density) {
+    return <Tooltip>{density.toFixed(2)} g/ml</Tooltip>;
+  }
 
   render() {
     const { components } = this.props;
@@ -45,7 +50,14 @@ export default class RecipeComponents extends Component {
                 %
               </td>
               <td>{component.mililiters.toFixed(2)} ml</td>
-              <td>{component.grams.toFixed(2)} g</td>
+              <td>
+                <OverlayTrigger
+                  placement="left"
+                  overlay={this.renderTooltip(component.density)}
+                >
+                  <span>{component.grams.toFixed(2)} g</span>
+                </OverlayTrigger>
+              </td>
             </tr>
           ))}
           <tr className="font-weight-bold">
