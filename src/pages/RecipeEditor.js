@@ -456,7 +456,6 @@ export class RecipeEditor extends Component {
                       </Col>
                       <FlavorBrowser />
                     </Row>
-                    <Row></Row>
                     <Row>
                       <Col md="12" className="recipe-editor-ingredients">
                         <h2>Ingredients</h2>
