@@ -57,7 +57,7 @@ export class Header extends Component {
     const { loggedIn } = this.props;
 
     return (
-      <Container fluid>
+      <Container fluid className="mb-4">
         <Row className="navigation-container">
           <Col>
             <Navbar expand="lg">
