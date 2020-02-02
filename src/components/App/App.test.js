@@ -21,7 +21,6 @@ jest.mock('pages', () => {
   const { mockComponent } = require('utils');
 
   return {
-    Calculator: mockComponent('Calculator'),
     Favorites: mockComponent('Favorites'),
     Flavors: mockComponent('Flavors'),
     FlavorStash: mockComponent('FlavorStash'),
@@ -30,6 +29,7 @@ jest.mock('pages', () => {
     NotFound: mockComponent('NotFound'),
     Profile: mockComponent('Profile'),
     Recipe: mockComponent('Recipe'),
+    RecipeEditor: mockComponent('RecipeEditor'),
     Recipes: mockComponent('Recipes'),
     Register: mockComponent('Register'),
     ShoppingList: mockComponent('ShoppingList'),
@@ -191,7 +191,7 @@ describe('<App />', () => {
 
   it('renders recipe editor page', () => {
     const RoutedApp = withMemoryRouter(ConnectedApp, {
-      initialEntries: ['/recipe/create']
+      initialEntries: ['/recipe/editor']
     });
     const component = renderer.create(
       <Provider store={authedStore}>

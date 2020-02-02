@@ -70,7 +70,7 @@ export class Header extends Component {
                   {this.renderNavItem('/', 'Home')}
                   {this.renderNavItem('/recipes', 'Recipes')}
                   {loggedIn
-                    ? this.renderNavItem('/calculator', 'Calculator')
+                    ? this.renderNavItem('/recipe/editor', 'Recipe Editor')
                     : null}
                   {this.renderNavItem('/flavors', 'Flavors')}
                   {loggedIn ? (
