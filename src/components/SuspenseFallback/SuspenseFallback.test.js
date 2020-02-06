@@ -3,6 +3,9 @@ import renderer from 'react-test-renderer';
 
 import SuspenseFallback from './SuspenseFallback';
 import { withMemoryRouter } from 'utils';
+jest.mock('components/Header/Header', () =>
+  require('utils').mockComponent('Header')
+);
 
 describe('<SuspenseFallback />', () => {
   it('renders correctly', () => {
