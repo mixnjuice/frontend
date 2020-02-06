@@ -52,7 +52,6 @@ export class App extends Component {
           <Route exact path="/calculator" component={Calculator} />
           <Route exact path="/flavors" component={Flavors} />
           <Route exact path="/recipe" component={Recipe} />
-          <Route exact path="/lazy" component={LazyLoaderFallback} />
           <PrivateRoute exact path="/user/profile" component={Profile} />
           <PrivateRoute exact path="/user/recipes" component={UserRecipes} />
           <PrivateRoute exact path="/user/favorites" component={Favorites} />
