@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Spinner } from 'react-bootstrap';
 import Header from '../Header/Header';
 
-export default class LazyLoaderFallback extends Component {
+export default class SuspenseFallback extends Component {
   render() {
     return (
       <div>

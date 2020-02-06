@@ -25,7 +25,7 @@ import {
   UserRecipes,
   UserSettings
 } from 'pages';
-import LazyLoaderFallback from 'components/LazyLoaderFallback/LazyLoaderFallback';
+import SuspenseFallback from 'components/SuspenseFallback/SuspenseFallback';
 
 export class App extends Component {
   static propTypes = {
@@ -40,7 +40,7 @@ export class App extends Component {
 
   render() {
     return (
-      <Suspense fallback={<LazyLoaderFallback />}>
+      <Suspense fallback={<SuspenseFallback />}>
         <Helmet defaultTitle="MixNJuice" titleTemplate="MixNJuice - %s" />
         <Header />
         <ToastDrawer />

@@ -1,12 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import LazyLoaderFallback from './LazyLoaderFallback';
+import SuspenseFallback from './SuspenseFallback';
 import { withMemoryRouter } from 'utils';
 
-describe('<LazyLoaderFallback />', () => {
+describe('<SuspenseFallback />', () => {
   it('renders correctly', () => {
-    const RoutedFallback = withMemoryRouter(LazyLoaderFallback);
+    const RoutedFallback = withMemoryRouter(SuspenseFallback);
     const component = renderer.create(<RoutedFallback />);
 
     expect(component.toJSON()).toMatchSnapshot();
