@@ -1,0 +1,43 @@
+@import "../../variables";
+$spinner-size: 15rem;
+
+.loading {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($lighter-blue, 0.75);
+    z-index: 999;
+  }
+
+  &__content {
+    position: relative;
+    width: $spinner-size;
+    height: $spinner-size;
+    transform: translateY(40vh);
+  }
+
+  &__text {
+    position: fixed;
+    font-size: 2rem;
+    width: $spinner-size;
+    height: $spinner-size;
+    text-align: center;
+
+    span {
+      display: inline-block;
+      transform: translateY(6rem);
+    }
+  }
+
+  &__spinner {
+    position: fixed;
+    border-color: $teal;
+    border-width: 0.3em;
+    border-right-color: transparent;
+    width: $spinner-size;
+    height: $spinner-size;
+  }
+}
