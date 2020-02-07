@@ -1,4 +1,5 @@
 @import "~normalize-scss/sass/normalize/import-now";
 @import "~bootstrap/scss/bootstrap";
 @import "./components/ToastDrawer/ToastDrawer";
+@import "./components/SuspenseFallback/SuspenseFallback";
 @import "./style.scss";

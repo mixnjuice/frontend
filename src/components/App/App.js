@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import { Spinner } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import React, { Component, Suspense } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
@@ -27,6 +26,7 @@ import {
   UserRecipes,
   UserSettings
 } from 'pages';
+import SuspenseFallback from 'components/SuspenseFallback/SuspenseFallback';
 
 export class App extends Component {
   static propTypes = {
@@ -41,7 +41,7 @@ export class App extends Component {
 
   render() {
     return (
-      <Suspense fallback={<Spinner variant="primary" />}>
+      <Suspense fallback={<SuspenseFallback />}>
         <Helmet defaultTitle="MixNJuice" titleTemplate="MixNJuice - %s" />
         <Header />
         <ToastDrawer />
