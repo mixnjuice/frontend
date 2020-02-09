@@ -1,4 +1,3 @@
-/* Placeholder
 import React from 'react';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
@@ -40,7 +39,7 @@ describe('Pagination', () => {
         .toJSON()
     ).toMatchSnapshot();
   });
-  
+
   it('can changePage', () => {
     const component = renderer.create(
       <Provider store={store}>
@@ -76,6 +75,4 @@ describe('Pagination', () => {
     expect(instance).toBeDefined();
     instance.updateLimit();
   });
-
 });
-*/
