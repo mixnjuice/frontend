@@ -48,7 +48,7 @@ export class FlavorStash extends Component {
                 <tr key={index}>
                   <td>{flavor?.Flavor?.Vendor?.code}</td>
                   <td>{flavor?.Flavor.name}</td>
-                  <td>{dayjs().format('YYYY-MM-DD')}</td>
+                  <td>{dayjs(flavor?.created).format('YYYY-MM-DD')}</td>
                 </tr>
               ))
             ) : (

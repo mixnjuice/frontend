@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FlavorStash /> can render 1`] = `
+<div
+  className="container"
+>
+  <table
+    className="table table-striped table-hover"
+  >
+    <thead>
+      <tr>
+        <th>
+          Vendor
+        </th>
+        <th>
+          Flavor
+        </th>
+        <th>
+          Added
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          CAP
+        </td>
+        <td>
+          Sweet Cream
+        </td>
+        <td>
+          2020-02-13
+        </td>
+      </tr>
+      <tr>
+        <td>
+          FLV
+        </td>
+        <td>
+          Tatanka
+        </td>
+        <td>
+          2020-02-13
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`<FlavorStash /> can render with an empty stash 1`] = `
+<div
+  className="container"
+>
+  <table
+    className="table table-striped table-hover"
+  >
+    <thead>
+      <tr>
+        <th>
+          Vendor
+        </th>
+        <th>
+          Flavor
+        </th>
+        <th>
+          Added
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td
+          colSpan={4}
+        >
+          No flavors in stash.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
