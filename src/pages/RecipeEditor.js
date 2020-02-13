@@ -347,7 +347,17 @@ export class RecipeEditor extends Component {
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit}>
               <Row>
-                <Col md="6">
+                <Col md="12" className="recipe-editor-print-details">
+                  <dl>
+                    <dt>Recipe Name</dt>
+                    <dd>{recipeName}</dd>
+                    <dt>Nicotine Strength</dt>
+                    <dd>{desiredNicotineStrength} mg/mL</dd>
+                  </dl>
+                </Col>
+              </Row>
+              <Row>
+                <Col md="6" className="recipe-editor-info">
                   <h2>Basic Info</h2>
                   <Form.Row>
                     <Form.Group as={Col} md="12" controlId="name">
@@ -450,7 +460,7 @@ export class RecipeEditor extends Component {
                 </Col>
                 <Col md="6">
                   <Container>
-                    <Row>
+                    <Row className="recipe-editor-stash">
                       <Col md="6" sm="3">
                         <h2>Flavor Stash</h2>
                       </Col>
