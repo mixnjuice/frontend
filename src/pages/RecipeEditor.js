@@ -485,14 +485,14 @@ export class RecipeEditor extends Component {
               </Row>
               <Row>
                 <Col md="12" className="border-top pt-2 text-right">
-                  <Button
+                  {/* <Button
                     variant="danger"
                     className="button-animation mr-2"
                     onClick={this.handleDelete}
                   >
                     <FontAwesomeIcon icon="trash" />
                     &nbsp;<span>Delete</span>
-                  </Button>
+                  </Button> */}
                   <Button className="button-animation" type="submit">
                     <FontAwesomeIcon icon="save" />
                     &nbsp;<span>Save</span>
