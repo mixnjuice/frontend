@@ -1,7 +1,9 @@
-import { put, all, takeLatest, call } from 'redux-saga/effects';
+import { put, all, takeLatest, call, select } from 'redux-saga/effects';
 
 import request from 'utils/request';
+import { getUser } from 'selectors/application';
 import { actions, types } from 'reducers/recipe';
+import { getActiveRecipe } from 'selectors/recipe';
 
 function* editRecipeWorker() {
   try {
@@ -9,7 +11,28 @@ function* editRecipeWorker() {
       url: '/recipe',
       method: 'POST'
     };
-    const result = yield call(request.execute, { endpoint });
+    const user = yield select(getUser);
+
+    if (!user) {
+      throw new Error('Not logged in!');
+    }
+
+    const recipe = yield select(getActiveRecipe);
+
+    if (!recipe) {
+      throw new Error('Not editing a recipe!');
+    }
+
+    const diluents = [];
+    const flavors = [];
+
+    const data = {
+      userId: user.id,
+      name: recipe.name,
+      RecipesDiluents: diluents,
+      RecipesFlavors: flavors
+    };
+    const result = yield call(request.execute, { endpoint, data });
 
     if (!result.success) {
       throw result.error;
