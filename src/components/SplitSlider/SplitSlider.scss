@@ -1,0 +1,31 @@
+.split-slider {
+  .progress {
+    cursor: col-resize;
+    height: 100%;
+    width: 100%;
+    border: 1px solid $black;
+    border-right: none;
+    border-radius: 0.25rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    user-select: none;
+
+    &-container {
+      height: auto;
+      width: 70%;
+    }
+
+    .progress-bar:not(:last-child) {
+      border-right: 1px solid $black;
+    }
+  }
+
+  .btn {
+    height: 100%;
+    padding: 0 5px;
+  }
+
+  .form-control {
+    padding: 6px;
+  }
+}

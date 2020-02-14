@@ -122,7 +122,4 @@ export class NewRecipes extends Component {
   }
 }
 
-export default connect(
-  null,
-  null
-)(NewRecipes);
+export default connect(null, null)(NewRecipes);

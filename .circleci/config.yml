@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  mattermost-notify: bulletlogic/mattermost-notify@0.0.4
-
 jobs:
   build:
     working_directory: ~/gusta-frontend
@@ -25,10 +22,6 @@ jobs:
       - run:
           name: test
           command: 'npm test && codecov'
-      - mattermost-notify/notify_on_success:
-          webhook: '$MATTERMOST_WEBHOOK_FRONTEND'
-      - mattermost-notify/notify_on_failure:
-          webhook: '$MATTERMOST_WEBHOOK_FRONTEND'
 
 workflows:
   version: 2
