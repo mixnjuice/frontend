@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component, Fragment, createRef } from 'react';
 import { ProgressBar, Tooltip, Overlay } from 'react-bootstrap';
 
-export default class IngredientList extends Component {
+export default class IngredientBar extends Component {
   static propTypes = {
     nicotine: PropTypes.number.isRequired,
     flavor: PropTypes.number.isRequired,
