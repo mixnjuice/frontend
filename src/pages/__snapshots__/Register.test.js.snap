@@ -159,7 +159,6 @@ exports[`<Register /> renders connected component correctly 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             type="checkbox"
-            value=""
           />
           <label
             className="form-check-label"
@@ -351,7 +350,6 @@ exports[`<Register /> renders correctly 1`] = `
             onChange={[Function]}
             onFocus={[Function]}
             type="checkbox"
-            value=""
           />
           <label
             className="form-check-label"

@@ -50,7 +50,4 @@ const mapStateToProps = state => ({
   toasts: getQueue(state)
 });
 
-export default connect(
-  mapStateToProps,
-  null
-)(ToastDrawer);
+export default connect(mapStateToProps, null)(ToastDrawer);
