@@ -22,8 +22,14 @@ describe('<FlavorStash />', () => {
   const props = {
     actions,
     stash: [
-      { Flavor: { name: 'Sweet Cream', Vendor: { code: 'CAP' } } },
-      { Flavor: { name: 'Tatanka', Vendor: { code: 'FLV' } } }
+      {
+        created: '2020-01-01',
+        Flavor: { name: 'Sweet Cream', Vendor: { code: 'CAP' } }
+      },
+      {
+        created: '2020-01-01',
+        Flavor: { name: 'Tatanka', Vendor: { code: 'FLV' } }
+      }
     ],
     stashLoaded: true
   };
