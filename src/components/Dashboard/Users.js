@@ -52,7 +52,7 @@ export class Users extends Component {
               return (
                 <tr key={index}>
                   <td className="text-center">{user.id}</td>
-                  <td className="text-center">user.UserProfile.name</td>
+                  <td className="text-center">{user.UserProfile.name}</td>
                   <td className="text-center">{user.emailAddress}</td>
                   <td className="text-center">
                     {user.activationCode === null ? this.yesIcon : this.noIcon}

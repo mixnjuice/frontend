@@ -68,7 +68,9 @@ export class RoleUsers extends Component {
                 return (
                   <tr key={index}>
                     <td className="text-center">{user.userId}</td>
-                    <td className="text-center">user.User.UserProfile.name</td>
+                    <td className="text-center">
+                      {user.User.UserProfile.name}
+                    </td>
                     <td className="text-center">{user.User.emailAddress}</td>
                     <td>
                       <DashLink
