@@ -1028,14 +1028,16 @@ exports[`Dashboard <Main /> renders Role/Add/User correctly 1`] = `
           <option
             value={1}
           >
-            user.UserProfile.name (
+            Andrew
+             (
             blah@blah.com
             )
           </option>
           <option
             value={2}
           >
-            user.UserProfile.name (
+            Josef
+             (
             blah2@blah.com
             )
           </option>
@@ -1955,7 +1957,7 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
             <td
               className="text-center"
             >
-              user.UserProfile.name
+              Andrew
             </td>
             <td
               className="text-center"
@@ -1996,7 +1998,7 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
             <td
               className="text-center"
             >
-              user.UserProfile.name
+              Josef
             </td>
             <td
               className="text-center"
