@@ -57,20 +57,6 @@ describe('roles reducer', () => {
       }
     });
   });
-  it('has REQUEST_ROLES_FAILURE action', () => {
-    expect(actions.requestRolesFailure(error)).toEqual({
-      type: types.REQUEST_ROLES_FAILURE,
-      error
-    });
-  });
-
-  it('reduces REQUEST_ROLES_FAILURE action', () => {
-    const action = actions.requestRolesFailure(error);
-
-    expect(reducer({}, action)).toEqual({
-      error
-    });
-  });
 
   it('has CREATE_ROLE action', () => {
     expect(actions.createRole({ name })).toEqual({
@@ -83,21 +69,6 @@ describe('roles reducer', () => {
     const action = actions.createRole({ name });
 
     expect(reducer({}, action)).toEqual({});
-  });
-
-  it('has CREATE_ROLE_FAILURE action', () => {
-    expect(actions.createRoleFailure(error)).toEqual({
-      type: types.CREATE_ROLE_FAILURE,
-      error
-    });
-  });
-
-  it('reduces CREATE_ROLE_FAILURE action', () => {
-    const action = actions.createRoleFailure(error);
-
-    expect(reducer({}, action)).toEqual({
-      error
-    });
   });
 
   it('has UPDATE_ROLE action', () => {
@@ -114,21 +85,6 @@ describe('roles reducer', () => {
     expect(reducer({}, action)).toEqual({});
   });
 
-  it('has UPDATE_ROLE_FAILURE action', () => {
-    expect(actions.updateRoleFailure(error)).toEqual({
-      type: types.UPDATE_ROLE_FAILURE,
-      error
-    });
-  });
-
-  it('reduces UPDATE_ROLE_FAILURE action', () => {
-    const action = actions.updateRoleFailure(error);
-
-    expect(reducer({}, action)).toEqual({
-      error
-    });
-  });
-
   it('has DELETE_ROLE action', () => {
     expect(actions.deleteRole({ roleId, name })).toEqual({
       type: types.DELETE_ROLE,
@@ -141,21 +97,6 @@ describe('roles reducer', () => {
     const action = actions.deleteRole({});
 
     expect(reducer({}, action)).toEqual({});
-  });
-
-  it('has DELETE_ROLE_FAILURE action', () => {
-    expect(actions.deleteRoleFailure(error)).toEqual({
-      type: types.DELETE_ROLE_FAILURE,
-      error
-    });
-  });
-
-  it('reduces DELETE_ROLE_FAILURE action', () => {
-    const action = actions.deleteRoleFailure(error);
-
-    expect(reducer({}, action)).toEqual({
-      error
-    });
   });
 
   it('has REQUEST_ROLE_USERS action', () => {
@@ -184,21 +125,6 @@ describe('roles reducer', () => {
     expect(reducer({}, action)).toEqual({ roleUsers });
   });
 
-  it('has REQUEST_ROLE_USERS_FAILURE action', () => {
-    expect(actions.requestRoleUsersFailure(error)).toEqual({
-      type: types.REQUEST_ROLE_USERS_FAILURE,
-      error
-    });
-  });
-
-  it('reduces REQUEST_ROLE_USERS_FAILURE action', () => {
-    const action = actions.requestRoleUsersFailure(error);
-
-    expect(reducer({}, action)).toEqual({
-      error
-    });
-  });
-
   it('has CREATE_ROLE_USER action', () => {
     expect(actions.createRoleUser({ userId, roleId, active })).toEqual({
       type: types.CREATE_ROLE_USER,
@@ -212,21 +138,6 @@ describe('roles reducer', () => {
     const action = actions.createRoleUser({ userId, roleId, active });
 
     expect(reducer({}, action)).toEqual({});
-  });
-
-  it('has CREATE_ROLE_USER_FAILURE action', () => {
-    expect(actions.createRoleUserFailure(error)).toEqual({
-      type: types.CREATE_ROLE_USER_FAILURE,
-      error
-    });
-  });
-
-  it('reduces CREATE_ROLE_USER_FAILURE action', () => {
-    const action = actions.createRoleUserFailure(error);
-
-    expect(reducer({}, action)).toEqual({
-      error
-    });
   });
 
   it('has DELETE_ROLE_USER action', () => {
@@ -244,15 +155,15 @@ describe('roles reducer', () => {
     expect(reducer({}, action)).toEqual({});
   });
 
-  it('has DELETE_ROLE_USER_FAILURE action', () => {
-    expect(actions.deleteRoleUserFailure(error)).toEqual({
-      type: types.DELETE_ROLE_USER_FAILURE,
+  it('has REQUEST_FAILURE action', () => {
+    expect(actions.requestFailure(error)).toEqual({
+      type: types.REQUEST_FAILURE,
       error
     });
   });
 
-  it('reduces DELETE_ROLE_USER_FAILURE action', () => {
-    const action = actions.deleteRoleUserFailure(error);
+  it('reduces REQUEST_FAILURE action', () => {
+    const action = actions.requestFailure(error);
 
     expect(reducer({}, action)).toEqual({
       error

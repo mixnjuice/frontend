@@ -107,7 +107,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.requestRolesFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
   });
 
   it('handles unexpected error in requestRolesWorker', () => {
@@ -145,7 +145,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.requestRolesFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
 
     result = gen.next();
 
@@ -211,7 +211,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.createRoleFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
   });
 
   it('handles unexpected error in createRoleWorker', () => {
@@ -230,7 +230,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.createRoleFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
 
     result = gen.next();
 
@@ -293,7 +293,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.updateRoleFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
   });
 
   it('handles unexpected error in updateRoleWorker', () => {
@@ -312,7 +312,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.updateRoleFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
 
     result = gen.next();
 
@@ -373,7 +373,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.deleteRoleFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
   });
 
   it('handles unexpected error in deleteRoleWorker', () => {
@@ -392,7 +392,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.deleteRoleFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
 
     result = gen.next();
 
@@ -450,7 +450,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.requestRoleUsersFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
   });
 
   it('handles unexpected error in requestRoleUsersWorker', () => {
@@ -469,7 +469,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.requestRoleUsersFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
 
     result = gen.next();
 
@@ -541,7 +541,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.createRoleUserFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
   });
 
   it('handles unexpected error in createRoleUserWorker', () => {
@@ -563,7 +563,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.createRoleUserFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
 
     result = gen.next();
 
@@ -622,7 +622,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.deleteRoleUserFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
   });
 
   it('handles unexpected error in deleteRoleUserWorker', () => {
@@ -641,7 +641,7 @@ describe('roles sagas', () => {
       error
     });
 
-    expect(result.value).toEqual(put(actions.deleteRoleUserFailure(error)));
+    expect(result.value).toEqual(put(actions.requestFailure(error)));
 
     result = gen.next();
 

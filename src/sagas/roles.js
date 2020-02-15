@@ -100,7 +100,7 @@ function* requestRolesWorker({ pager }) {
   } catch (error) {
     const { message } = error;
 
-    yield put(actions.requestRolesFailure(error));
+    yield put(actions.requestFailure(error));
     yield put(
       toastActions.popToast({
         title: 'Error',
@@ -141,7 +141,7 @@ function* createRoleWorker({ name }) {
   } catch (error) {
     const { message } = error;
 
-    yield put(actions.createRoleFailure(error));
+    yield put(actions.requestFailure(error));
     yield put(
       toastActions.popToast({
         title: 'Error',
@@ -182,7 +182,7 @@ function* updateRoleWorker({ roleId, name }) {
   } catch (error) {
     const { message } = error;
 
-    yield put(actions.updateRoleFailure(error));
+    yield put(actions.requestFailure(error));
     yield put(
       toastActions.popToast({
         title: 'Error',
@@ -220,7 +220,7 @@ function* deleteRoleWorker({ roleId, name }) {
   } catch (error) {
     const { message } = error;
 
-    yield put(actions.deleteRoleFailure(error));
+    yield put(actions.requestFailure(error));
     yield put(
       toastActions.popToast({
         title: 'Error',
@@ -254,7 +254,7 @@ function* requestRoleUsersWorker({ roleId }) {
   } catch (error) {
     const { message } = error;
 
-    yield put(actions.requestRoleUsersFailure(error));
+    yield put(actions.requestFailure(error));
     yield put(
       toastActions.popToast({
         title: 'Error',
@@ -296,7 +296,7 @@ function* createRoleUserWorker({ userId, roleId, active }) {
   } catch (error) {
     const { message } = error;
 
-    yield put(actions.createRoleUserFailure(error));
+    yield put(actions.requestFailure(error));
     yield put(
       toastActions.popToast({
         title: 'Error',
@@ -333,7 +333,7 @@ function* deleteRoleUserWorker({ userId, roleId, name }) {
   } catch (error) {
     const { message } = error;
 
-    yield put(actions.deleteRoleUserFailure(error));
+    yield put(actions.requestFailure(error));
     yield put(
       toastActions.popToast({
         title: 'Error',
