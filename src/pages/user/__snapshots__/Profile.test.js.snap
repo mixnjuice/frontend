@@ -1,0 +1,517 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Profile /> renders correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="text-center row"
+  >
+    <div
+      className="col"
+    >
+      <p>
+        This is what other users see when they look at your profile.
+        <br />
+        <a
+          href="/user-settings"
+          onClick={[Function]}
+        >
+          Click here to edit your profile
+        </a>
+      </p>
+    </div>
+  </div>
+  <div
+    className="text-center mb-3 row"
+  >
+    <div
+      className="col-md-4"
+    >
+      <div
+        className="card"
+      >
+        <img
+          className="card-img-top"
+          src="https://www.gravatar.com/avatar/undefined?s=250"
+        />
+        <h1
+          className="card-header"
+        />
+      </div>
+      <div
+        className="mt-3 btn-group"
+        role="group"
+      >
+        <button
+          className="button-animation btn btn-primary"
+          disabled={false}
+          type="button"
+        >
+          <span>
+            Message
+          </span>
+        </button>
+        <button
+          className="button-animation btn btn-primary"
+          disabled={false}
+          type="button"
+        >
+          <span>
+            Follow
+          </span>
+        </button>
+        <button
+          className="button-animation btn btn-primary"
+          disabled={false}
+          type="button"
+        >
+          <span>
+            Report
+          </span>
+        </button>
+      </div>
+    </div>
+    <div
+      className="col"
+    >
+      <div
+        className="text-center row"
+      >
+        <div
+          className="col"
+        >
+          <h2>
+            Newest recipes
+          </h2>
+          <div
+            className="card-group"
+          >
+            <div
+              className="card"
+            >
+              <img
+                className="card-img-top img-fluid w-75 mx-auto"
+                src="/media/card-test-1.jpg"
+              />
+              <div
+                className="card-body"
+              >
+                <div
+                  className="card-title h5"
+                >
+                  <a
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    Strawberry Milkshake
+                  </a>
+                </div>
+                <p
+                  className="card-text"
+                >
+                  created 10/13/2018
+                </p>
+              </div>
+              <div
+                className="card-footer"
+              >
+                <small>
+                  <span
+                    aria-label="Checkmark emoji"
+                    role="img"
+                  >
+                    ✔
+                  </span>
+                  ️ You have everything!
+                </small>
+              </div>
+            </div>
+            <div
+              className="card"
+            >
+              <img
+                className="card-img-top img-fluid w-75 mx-auto"
+                src="/media/card-test-2.jpg"
+              />
+              <div
+                className="card-body"
+              >
+                <div
+                  className="card-title h5"
+                >
+                  <a
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    Bomb Pop
+                  </a>
+                </div>
+                <p
+                  className="card-text"
+                >
+                  created 12/1/2018
+                </p>
+              </div>
+              <div
+                className="card-footer"
+              >
+                <small>
+                  <span
+                    aria-label="Checkmark emoji"
+                    role="img"
+                  >
+                    ✔
+                  </span>
+                  ️ You have everything!
+                </small>
+              </div>
+            </div>
+            <div
+              className="card"
+            >
+              <img
+                className="card-img-top img-fluid w-75 mx-auto"
+                src="/media/card-test-3.jpg"
+              />
+              <div
+                className="card-body"
+              >
+                <div
+                  className="card-title h5"
+                >
+                  <a
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    Tiramisu
+                  </a>
+                </div>
+                <p
+                  className="card-text"
+                >
+                  created 6/28/2019
+                </p>
+              </div>
+              <div
+                className="card-footer"
+              >
+                <small>
+                  <span
+                    aria-label="X emoji"
+                    role="img"
+                  >
+                    ❌
+                  </span>
+                   
+                  You are missing 1 flavor
+                </small>
+              </div>
+            </div>
+            <div
+              className="card"
+            >
+              <img
+                className="card-img-top img-fluid w-75 mx-auto"
+                src="/media/card-test-4.jpeg"
+              />
+              <div
+                className="card-body"
+              >
+                <div
+                  className="card-title h5"
+                >
+                  <a
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    RY4 Tobaccy
+                  </a>
+                </div>
+                <p
+                  className="card-text"
+                >
+                  created 4/4/2019
+                </p>
+              </div>
+              <div
+                className="card-footer"
+              >
+                <small>
+                  <span
+                    aria-label="Checkmark emoji"
+                    role="img"
+                  >
+                    ✔
+                  </span>
+                  ️ You have everything!
+                </small>
+              </div>
+            </div>
+            <div
+              className="card"
+            >
+              <img
+                className="card-img-top img-fluid w-75 mx-auto"
+                src="/media/card-test-5.jpeg"
+              />
+              <div
+                className="card-body"
+              >
+                <div
+                  className="card-title h5"
+                >
+                  <a
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    Fruit Punch
+                  </a>
+                </div>
+                <p
+                  className="card-text"
+                >
+                  created 1/1/2018
+                </p>
+              </div>
+              <div
+                className="card-footer"
+              >
+                <small>
+                  <span
+                    aria-label="X emoji"
+                    role="img"
+                  >
+                    ❌
+                  </span>
+                   
+                  You are missing 3 flavors
+                </small>
+              </div>
+            </div>
+          </div>
+          <hr />
+        </div>
+      </div>
+      <div
+        className="text-center row"
+      >
+        <div
+          className="col"
+        >
+          <h2>
+            Most popular recipes
+          </h2>
+          <div
+            className="card-group"
+          >
+            <div
+              className="card"
+            >
+              <img
+                className="card-img-top img-fluid w-75 mx-auto"
+                src="/media/card-test-1.jpg"
+              />
+              <div
+                className="card-body"
+              >
+                <div
+                  className="card-title h5"
+                >
+                  <a
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    Strawberry Milkshake
+                  </a>
+                </div>
+                <p
+                  className="card-text"
+                >
+                  created 10/13/2018
+                </p>
+              </div>
+              <div
+                className="card-footer"
+              >
+                <small>
+                  <span
+                    aria-label="Checkmark emoji"
+                    role="img"
+                  >
+                    ✔
+                  </span>
+                  ️ You have everything!
+                </small>
+              </div>
+            </div>
+            <div
+              className="card"
+            >
+              <img
+                className="card-img-top img-fluid w-75 mx-auto"
+                src="/media/card-test-2.jpg"
+              />
+              <div
+                className="card-body"
+              >
+                <div
+                  className="card-title h5"
+                >
+                  <a
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    Bomb Pop
+                  </a>
+                </div>
+                <p
+                  className="card-text"
+                >
+                  created 12/1/2018
+                </p>
+              </div>
+              <div
+                className="card-footer"
+              >
+                <small>
+                  <span
+                    aria-label="Checkmark emoji"
+                    role="img"
+                  >
+                    ✔
+                  </span>
+                  ️ You have everything!
+                </small>
+              </div>
+            </div>
+            <div
+              className="card"
+            >
+              <img
+                className="card-img-top img-fluid w-75 mx-auto"
+                src="/media/card-test-3.jpg"
+              />
+              <div
+                className="card-body"
+              >
+                <div
+                  className="card-title h5"
+                >
+                  <a
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    Tiramisu
+                  </a>
+                </div>
+                <p
+                  className="card-text"
+                >
+                  created 6/28/2019
+                </p>
+              </div>
+              <div
+                className="card-footer"
+              >
+                <small>
+                  <span
+                    aria-label="X emoji"
+                    role="img"
+                  >
+                    ❌
+                  </span>
+                   
+                  You are missing 1 flavor
+                </small>
+              </div>
+            </div>
+            <div
+              className="card"
+            >
+              <img
+                className="card-img-top img-fluid w-75 mx-auto"
+                src="/media/card-test-4.jpeg"
+              />
+              <div
+                className="card-body"
+              >
+                <div
+                  className="card-title h5"
+                >
+                  <a
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    RY4 Tobaccy
+                  </a>
+                </div>
+                <p
+                  className="card-text"
+                >
+                  created 4/4/2019
+                </p>
+              </div>
+              <div
+                className="card-footer"
+              >
+                <small>
+                  <span
+                    aria-label="Checkmark emoji"
+                    role="img"
+                  >
+                    ✔
+                  </span>
+                  ️ You have everything!
+                </small>
+              </div>
+            </div>
+            <div
+              className="card"
+            >
+              <img
+                className="card-img-top img-fluid w-75 mx-auto"
+                src="/media/card-test-5.jpeg"
+              />
+              <div
+                className="card-body"
+              >
+                <div
+                  className="card-title h5"
+                >
+                  <a
+                    href="/"
+                    onClick={[Function]}
+                  >
+                    Fruit Punch
+                  </a>
+                </div>
+                <p
+                  className="card-text"
+                >
+                  created 1/1/2018
+                </p>
+              </div>
+              <div
+                className="card-footer"
+              >
+                <small>
+                  <span
+                    aria-label="X emoji"
+                    role="img"
+                  >
+                    ❌
+                  </span>
+                   
+                  You are missing 3 flavors
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
+`;
