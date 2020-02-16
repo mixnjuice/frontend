@@ -38,7 +38,27 @@ describe('<Profile />', () => {
   };
   const RoutedProfile = withMemoryRouter(Profile);
 
-  it('renders correctly', () => {
+  it('renders current user profile correctly', () => {
+    const component = renderer.create(<RoutedProfile {...props} />);
+
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('renders visited user profile correctly', () => {
+    const uprops = {
+      ...props,
+      match: {
+        params: { id: 1, userName: 'david' },
+        path: '/user/david'
+      },
+      currentUser: false
+    };
+    const component = renderer.create(<RoutedProfile {...uprops} />);
+
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('renders correctly current user profile', () => {
     const component = renderer.create(<RoutedProfile {...props} />);
 
     expect(component.toJSON()).toMatchSnapshot();

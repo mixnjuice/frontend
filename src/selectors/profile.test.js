@@ -1,12 +1,22 @@
-import { getProfile, getUserProfile, getUserProfiles } from './profile';
+import {
+  getProfile,
+  getCurrentUser,
+  getUserProfile,
+  getUserProfiles,
+  getUserMap
+} from './profile';
 import { initialState } from 'reducers/profile';
 
 describe('profile selectors', () => {
   const state = { profile: initialState };
-  const { cache, collection } = initialState;
+  const { cache, collection, currentUser, userNames } = initialState;
 
   it('can getProfile', () => {
     expect(getProfile(state)).toBe(state.profile);
+  });
+
+  it('can getCurrentUser', () => {
+    expect(getCurrentUser(state)).toBe(currentUser);
   });
 
   it('can getUserProfiles', () => {
@@ -15,5 +25,9 @@ describe('profile selectors', () => {
 
   it('can getUserProfile', () => {
     expect(getUserProfile(state)).toBe(collection);
+  });
+
+  it('can getUserMap', () => {
+    expect(getUserMap(state)).toBe(userNames);
   });
 });
