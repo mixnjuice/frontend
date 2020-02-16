@@ -15,7 +15,14 @@ export const types = buildActions('recipe', [
   'REQUEST_RECIPE_FAILURE',
   'UPDATE_RECIPE',
   'UPDATE_RECIPE_SUCCESS',
-  'UPDATE_RECIPE_FAILURE'
+  'UPDATE_RECIPE_FAILURE',
+  'SET_DESIRED_NICOTINE_STRENGTH',
+  'SET_DESIRED_DILUENT_RATIO',
+  'SET_DESIRED_VOLUME',
+  'SET_BASE_NICOTINE_STRENGTH',
+  'SET_BASE_DILUENT_RATIO',
+  'SET_RECIPE_NAME',
+  'SET_RECIPE_INGREDIENTS'
 ]);
 
 const createRecipe = () => ({
@@ -86,6 +93,41 @@ const updateRecipeFailure = error => ({
   error
 });
 
+const setDesiredNicotineStrength = nicotineStrength => ({
+  type: types.SET_DESIRED_NICOTINE_STRENGTH,
+  nicotineStrength
+});
+
+const setDesiredDiluentRatio = diluentRatio => ({
+  type: types.SET_DESIRED_DILUENT_RATIO,
+  diluentRatio
+});
+
+const setDesiredVolume = volume => ({
+  type: types.SET_DESIRED_VOLUME,
+  volume
+});
+
+const setBaseNicotineStrength = nicotineStrength => ({
+  type: types.SET_BASE_NICOTINE_STRENGTH,
+  nicotineStrength
+});
+
+const setBaseDiluentRatio = diluentRatio => ({
+  type: types.SET_BASE_DILUENT_RATIO,
+  diluentRatio
+});
+
+const setRecipeName = name => ({
+  type: types.SET_RECIPE_NAME,
+  name
+});
+
+const setRecipeIngredients = ingredients => ({
+  type: types.SET_RECIPE_INGREDIENTS,
+  ingredients
+});
+
 export const actions = {
   createRecipe,
   createRecipeSuccess,
@@ -101,7 +143,14 @@ export const actions = {
   requestRecipeFailure,
   updateRecipe,
   updateRecipeSuccess,
-  updateRecipeFailure
+  updateRecipeFailure,
+  setDesiredNicotineStrength,
+  setDesiredDiluentRatio,
+  setDesiredVolume,
+  setBaseNicotineStrength,
+  setBaseDiluentRatio,
+  setRecipeName,
+  setRecipeIngredients
 };
 
 export const initialState = {
@@ -169,6 +218,62 @@ export const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         error: action.error
+      };
+    case types.SET_DESIRED_NICOTINE_STRENGTH:
+      return {
+        ...state,
+        desired: {
+          ...state.desired,
+          nicotineStrength: action.nicotineStrength
+        }
+      };
+    case types.SET_DESIRED_DILUENT_RATIO:
+      return {
+        ...state,
+        desired: {
+          ...state.desired,
+          diluentRatio: action.diluentRatio
+        }
+      };
+    case types.SET_DESIRED_VOLUME:
+      return {
+        ...state,
+        desired: {
+          ...state.desired,
+          volume: action.volume
+        }
+      };
+    case types.SET_BASE_NICOTINE_STRENGTH:
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          nicotineStrength: action.nicotineStrength
+        }
+      };
+    case types.SET_BASE_DILUENT_RATIO:
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          diluentRatio: action.diluentRatio
+        }
+      };
+    case types.SET_RECIPE_NAME:
+      return {
+        ...state,
+        active: {
+          ...state.active,
+          name: action.name
+        }
+      };
+    case types.SET_RECIPE_INGREDIENTS:
+      return {
+        ...state,
+        active: {
+          ...state.active,
+          ingredients: action.ingredients
+        }
       };
     default:
       return state;
