@@ -22,7 +22,8 @@ export const types = buildActions('recipe', [
   'SET_BASE_NICOTINE_STRENGTH',
   'SET_BASE_DILUENT_RATIO',
   'SET_RECIPE_NAME',
-  'SET_RECIPE_INGREDIENTS'
+  'SET_RECIPE_INGREDIENTS',
+  'SET_RECIPE_PERCENTAGES'
 ]);
 
 const createRecipe = () => ({
@@ -128,6 +129,11 @@ const setRecipeIngredients = ingredients => ({
   ingredients
 });
 
+const setRecipePercentages = percentages => ({
+  type: types.SET_RECIPE_PERCENTAGES,
+  percentages
+});
+
 export const actions = {
   createRecipe,
   createRecipeSuccess,
@@ -150,7 +156,8 @@ export const actions = {
   setBaseNicotineStrength,
   setBaseDiluentRatio,
   setRecipeName,
-  setRecipeIngredients
+  setRecipeIngredients,
+  setRecipePercentages
 };
 
 export const initialState = {
@@ -274,6 +281,14 @@ export const reducer = (state = initialState, action = {}) => {
         active: {
           ...state.active,
           ingredients: action.ingredients
+        }
+      };
+    case types.SET_RECIPE_PERCENTAGES:
+      return {
+        ...state,
+        active: {
+          ...state.active,
+          percentages: action.percentages
         }
       };
     default:
