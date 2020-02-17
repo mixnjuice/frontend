@@ -17,7 +17,4 @@ export const getRolesPager = createSelector(
   roles => roles.collection.pager
 );
 
-export const getRoleUsers = createSelector(
-  getRoles,
-  roles => roles.roleUsers
-);
+export const getRoleUsers = createSelector(getRoles, roles => roles.roleUsers);
