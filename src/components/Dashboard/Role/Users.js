@@ -104,7 +104,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(rolesActions, dispatch)
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RoleUsers);
+export default connect(mapStateToProps, mapDispatchToProps)(RoleUsers);

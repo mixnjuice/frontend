@@ -55,7 +55,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(dashboardActions, dispatch)
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DashboardLink);
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardLink);

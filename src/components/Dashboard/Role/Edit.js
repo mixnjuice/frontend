@@ -97,7 +97,4 @@ const mapDispatchToProps = dispatch => ({
   )
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(RoleEdit);
+export default connect(null, mapDispatchToProps)(RoleEdit);

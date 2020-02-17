@@ -88,7 +88,4 @@ const mapDispatchToProps = dispatch => ({
   )
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(RoleDelete);
+export default connect(null, mapDispatchToProps)(RoleDelete);
