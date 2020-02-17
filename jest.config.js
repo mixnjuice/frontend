@@ -7,5 +7,6 @@ module.exports = {
   modulePaths: ['<rootDir>/src/'],
   globals: {
     API_URL: 'http://localhost:3000'
-  }
+  },
+  maxConcurrency: 5
 };
