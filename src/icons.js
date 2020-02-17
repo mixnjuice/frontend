@@ -17,7 +17,8 @@ import {
   faUser,
   faUsers,
   faUsersCog,
-  faUserShield
+  faUserShield,
+  faUndo
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faCheckSquare,
@@ -48,7 +49,10 @@ library.add(
   faUser,
   faUsers,
   faUsersCog,
-  faUserShield
+  faUserShield,
+  faCheckSquare,
+  faSquare,
+  faUndo
 );
 
 export default library;

@@ -1,11 +1,13 @@
 import { fork, all } from 'redux-saga/effects';
 
 import saga from './index';
+import toast from './toast';
+import flavor from './flavor';
+import recipe from './recipe';
 import application from './application';
 import dashboard from './dashboard';
 import flavors from './flavors';
 import roles from './roles';
-import toast from './toast';
 import users from './users';
 
 describe('index saga', () => {
@@ -15,7 +17,18 @@ describe('index saga', () => {
     const result = gen.next();
 
     expect(result.value).toEqual(
-      all([application, dashboard, flavors, roles, toast, users].map(fork))
+      all(
+        [
+          application,
+          dashboard,
+          flavors,
+          roles,
+          toast,
+          flavor,
+          recipe,
+          users
+        ].map(fork)
+      )
     );
   });
 });

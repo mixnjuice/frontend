@@ -1,5 +1,13 @@
 @import "~normalize-scss/sass/normalize/import-now";
 @import "~bootstrap/scss/bootstrap";
+
+// our variables
+@import "./variables";
+
+// component styles
+@import "./components/IngredientBar/IngredientBar";
 @import "./components/ToastDrawer/ToastDrawer";
+
+@import "./components/SplitSlider/SplitSlider";
 @import "./components/SuspenseFallback/SuspenseFallback";
 @import "./style.scss";

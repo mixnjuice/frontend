@@ -2,7 +2,7 @@
   "singleQuote": true,
   "overrides": [
     {
-      "files": "*.scss",
+      "files": "src/**/*.scss",
       "options": {
         "singleQuote": false
       }
