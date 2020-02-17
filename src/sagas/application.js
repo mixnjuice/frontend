@@ -100,7 +100,7 @@ function* loginUserWorker({ emailAddress, password }) {
     if (!loggedIn) {
       // obtain a bearer token
       // then, obtain current user information
-      // use putResolve because it is blocking
+      // use take because it is blocking
       yield put(actions.requestToken(emailAddress, password));
       const tokenResult = yield take([
         types.REQUEST_TOKEN_SUCCESS,
