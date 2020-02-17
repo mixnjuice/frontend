@@ -27,7 +27,7 @@ function* requestUsersWorker({ pager }) {
         } = usersCount;
         // Set pager to be passed into Success, Update count
 
-        pager.count = data;
+        pager.count = data.result;
       } else if (usersCount.error) {
         throw usersCount.error;
       } else {

@@ -30,7 +30,10 @@ function* requestRolesWorker({ pager }) {
         } = rolesCount;
         // Set pager to be passed into Success, Update count
 
-        pager.count = data;
+        // eslint-disable-next-line no-console
+        console.log(data);
+
+        pager.count = data.result;
       } else if (rolesCount.error) {
         throw rolesCount.error;
       } else {
