@@ -8,5 +8,5 @@ module.exports = {
   globals: {
     API_URL: 'http://localhost:3000'
   },
-  maxConcurrency: 5
+  maxConcurrency: 3
 };
