@@ -2,7 +2,7 @@ import { reducer, types, actions } from './profile';
 
 describe('Profile reducer', () => {
   const error = { message: 'Failed' };
-  const profile = { request: [], cache: [], currentUser: false };
+  const profile = { collection: [], cache: [], currentUser: false };
   const updateProfile = [{}];
   const collection = [];
   const cache = [];

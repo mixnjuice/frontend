@@ -8,7 +8,7 @@ export const types = buildActions('profile', [
   'UPDATE_PROFILE',
   'UPDATE_PROFILE_SUCCESS',
   'UPDATE_PROFILE_FAILURE',
-  'USER_MAP'
+  'MAP_USER_NAMES_TO_USER_IDS'
 ]);
 
 const requestProfile = user => ({
@@ -45,13 +45,13 @@ const updateProfileFailure = error => ({
   error
 });
 
-const mapUser = users => ({
-  type: types.USER_MAP,
-  users
+const mapUserNamesToUserIds = userNames => ({
+  type: types.MAP_USER_NAMES_TO_USER_IDS,
+  userNames
 });
 
 export const actions = {
-  mapUser,
+  mapUserNamesToUserIds,
   requestProfile,
   requestProfileSuccess,
   requestProfileFailure,
@@ -65,7 +65,6 @@ export const initialState = {
   cache: [],
   collection: [],
   currentUser: null,
-  userId: null,
   userNames: []
 };
 
@@ -74,9 +73,7 @@ export const reducer = (state = initialState, action = {}) => {
     case types.REQUEST_PROFILE_SUCCESS:
       return {
         ...state,
-        cache: action.profile.cache,
-        collection: action.profile.request,
-        currentUser: action.profile.currentUser
+        ...action.profile
       };
     case types.REQUEST_PROFILE_FAILURE:
       return {
@@ -100,10 +97,10 @@ export const reducer = (state = initialState, action = {}) => {
         ...state,
         error: action.error
       };
-    case types.USER_MAP:
+    case types.MAP_USER_NAMES_TO_USER_IDS:
       return {
         ...state,
-        userNames: action.users
+        userNames: action.userNames
       };
     default:
       return state;

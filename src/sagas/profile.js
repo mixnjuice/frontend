@@ -4,7 +4,7 @@ import request from 'utils/request';
 import { actions, types } from 'reducers/profile';
 import { actions as toastActions } from 'reducers/toast';
 import { actions as appActions, types as appTypes } from 'reducers/application';
-import { getUserMap, getUserProfiles } from 'selectors/profile';
+import { getUserNames, getUserProfiles } from 'selectors/profile';
 import { getUser } from 'selectors/application';
 
 export function* getCurrentUser() {
@@ -36,7 +36,7 @@ function* requestProfileWorker({ user }) {
 
     if (user.name && !user.id) {
       const profile = yield select(getUserProfiles);
-      const userNames = yield select(getUserMap);
+      const userNames = yield select(getUserNames);
 
       if (!userNames[user.name]) {
         const endpoint = {
@@ -75,7 +75,7 @@ function* requestProfileWorker({ user }) {
           };
           yield put(
             actions.requestProfileSuccess({
-              request: profile[data.userId],
+              collection: profile[data.userId],
               cache: profile,
               currentUser:
                 user.currentUser || currentUser.id === data.userId
@@ -83,7 +83,7 @@ function* requestProfileWorker({ user }) {
                   : false
             })
           );
-          yield put(actions.mapUser(userNames));
+          yield put(actions.mapUserNamesToUserIds(userNames));
         } else if (result.error) {
           throw result.error;
         } else {
@@ -117,7 +117,7 @@ function* requestProfileWorker({ user }) {
 
         yield put(
           actions.requestProfileSuccess({
-            request: data,
+            collection: data,
             cache: profile,
             currentUser:
               user.currentUser || currentUser.id === user.id ? true : false
@@ -131,7 +131,7 @@ function* requestProfileWorker({ user }) {
     } else {
       yield put(
         actions.requestProfileSuccess({
-          request: profile[user.id],
+          collection: profile[user.id],
           cache: profile,
           currentUser:
             user.currentUser || currentUser.id === user.id ? true : false

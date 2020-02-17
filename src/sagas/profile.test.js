@@ -5,7 +5,7 @@ import { actions as appActions, types as appTypes } from 'reducers/application';
 import { actions } from 'reducers/profile';
 import { actions as toastActions } from 'reducers/toast';
 import saga, { getCurrentUser, watchers, workers } from './profile';
-import { getUserMap, getUserProfiles } from 'selectors/profile';
+import { getUserNames, getUserProfiles } from 'selectors/profile';
 import { getUser } from 'selectors/application';
 
 describe('Profile sagas', () => {
@@ -63,27 +63,14 @@ describe('Profile sagas', () => {
     gravatar: new MD5().update('d@d.com').digest('hex')
   };
 
-  /* const profiles = [
-    {
-      userId: 1
-    },
-    {
-      userId: 2
-    },
-    {
-      userId: 3
-    }
-  ];*/
-
   const usernameEndpoint = {
     url: `/user/mixn`,
     method: 'GET'
   };
 
-  /* const profileEndpoint = {
-    url: `/user/3/profile`,
-    method: 'GET'
-  };*/
+  const profiles = [];
+
+  profiles[3] = data;
 
   const map = [
     { user1: { userId: 1 } },
@@ -104,7 +91,7 @@ describe('Profile sagas', () => {
 
     result = gen.next(map);
 
-    expect(result.value).toEqual(select(getUserMap));
+    expect(result.value).toEqual(select(getUserNames));
 
     result = gen.next(map);
 
@@ -122,38 +109,27 @@ describe('Profile sagas', () => {
     expect(result.value).toEqual(
       put(
         actions.requestProfileSuccess({
-          request: profile,
+          collection: profile,
           cache: map,
           currentUser: true
         })
       )
     );
 
-    result = gen.next();
+    result = gen.next(map);
 
-    expect(result.value).toEqual(put(actions.mapUser(map)));
+    expect(result.value).toEqual(put(actions.mapUserNamesToUserIds(map)));
 
-    result = gen.next();
+    result = gen.next(profiles);
 
     expect(result.value).toEqual(select(getUserProfiles));
 
     result = gen.next(map);
 
-    /* expect(result.value).toEqual(
-      call(request.execute, { endpoint: profileEndpoint })
-    );
-
-    result = gen.next({
-      success: true,
-      response: {
-        profile
-      }
-    });*/
-
     expect(result.value).toEqual(
       put(
         actions.requestProfileSuccess({
-          request: profile,
+          collection: profile,
           cache: map,
           currentUser: true
         })
@@ -176,7 +152,7 @@ describe('Profile sagas', () => {
 
     result = gen.next(map);
 
-    expect(result.value).toEqual(select(getUserMap));
+    expect(result.value).toEqual(select(getUserNames));
 
     result = gen.next();
 

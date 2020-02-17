@@ -3,7 +3,7 @@ import {
   getCurrentUser,
   getUserProfile,
   getUserProfiles,
-  getUserMap
+  getUserNames
 } from './profile';
 import { initialState } from 'reducers/profile';
 
@@ -27,7 +27,7 @@ describe('profile selectors', () => {
     expect(getUserProfile(state)).toBe(collection);
   });
 
-  it('can getUserMap', () => {
-    expect(getUserMap(state)).toBe(userNames);
+  it('can getUserNames', () => {
+    expect(getUserNames(state)).toBe(userNames);
   });
 });

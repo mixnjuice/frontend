@@ -10,7 +10,6 @@ import {
   Row,
   Col,
   Card,
-  CardGroup,
   ButtonGroup,
   Button,
   Form,
@@ -29,7 +28,7 @@ export class Profile extends Component {
     collection: PropTypes.any,
     currentUser: PropTypes.bool,
     loggedIn: PropTypes.bool.isRequired,
-    editting: PropTypes.bool.isRequired
+    editing: PropTypes.bool.isRequired
   };
   constructor(props) {
     super(props);
@@ -38,12 +37,11 @@ export class Profile extends Component {
       match: { params, path }
     } = this.props;
 
-    this.state = { editting: false };
+    this.state = { editing: false };
 
     if (path === '/user/profile' || path === '/user') {
       actions.requestCurrentUserProfile();
-    }
-    if (path === '/user/:userName') {
+    } else if (path === '/user/:userName') {
       actions.requestProfile({ name: params.userName });
     }
 
@@ -51,15 +49,15 @@ export class Profile extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  get Gravatar() {
+  get gravatar() {
     const { collection } = this.props;
 
-    return 'https://www.gravatar.com/avatar/' + collection.gravatar + '?s=250';
+    return `https://www.gravatar.com/avatar/${collection.gravatar}?s=250`;
   }
 
-  get Website() {
+  get website() {
     const { collection } = this.props;
-    const url = '//' + collection.url;
+    const url = `//${collection.url}`;
 
     return <a href={url}>{collection.url}</a>;
   }
@@ -78,9 +76,9 @@ export class Profile extends Component {
 
   handleEditor(toggle) {
     if (toggle) {
-      this.setState({ editting: true });
+      this.setState({ editing: true });
     } else {
-      this.setState({ editting: false });
+      this.setState({ editing: false });
     }
   }
 
@@ -88,7 +86,7 @@ export class Profile extends Component {
     const { actions } = this.props;
 
     actions.updateProfile(values);
-    this.setState({ editting: false });
+    this.setState({ editing: false });
   }
 
   profileEditor() {
@@ -198,7 +196,7 @@ export class Profile extends Component {
 
   render() {
     const { collection, currentUser } = this.props;
-    const { editting } = this.state;
+    const { editing } = this.state;
 
     return (
       <Container>
@@ -215,9 +213,9 @@ export class Profile extends Component {
         <Row className="text-center mb-3">
           <Col md={4}>
             <Card>
-              <Card.Img variant="top" src={this.Gravatar} />
+              <Card.Img variant="top" src={this.gravatar} />
               <Card.Header as="h1">{collection.name}</Card.Header>
-              {!editting && (collection.location || collection.url) ? (
+              {!editing && (collection.location || collection.url) ? (
                 <Card.Body>
                   {collection.location ? (
                     <div>
@@ -227,13 +225,13 @@ export class Profile extends Component {
 
                   {collection.url ? (
                     <div>
-                      {this.webIcon} {this.Website}
+                      {this.webIcon} {this.website}
                     </div>
                   ) : null}
                 </Card.Body>
               ) : null}
             </Card>
-            {!editting && collection.bio ? (
+            {!editing && collection.bio ? (
               <Card body className="text-left">
                 {collection.bio}
               </Card>
@@ -251,7 +249,7 @@ export class Profile extends Component {
                 </Button>
               </ButtonGroup>
             ) : (
-              !editting && (
+              !editing && (
                 <Button
                   onClick={e => this.handleEditor(true, e)}
                   className="button-animation mt-3"
@@ -261,232 +259,15 @@ export class Profile extends Component {
                 </Button>
               )
             )}
-            {editting && this.profileEditor()}
+            {editing && this.profileEditor()}
           </Col>
           <Col>
             <Row className="text-center">
               <Col>
-                <h2>Newest recipes</h2>
-                <CardGroup>
-                  <Card>
-                    <Card.Img
-                      variant="top"
-                      src="/media/card-test-1.jpg"
-                      className="img-fluid w-75 mx-auto"
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        <Link to="#">Strawberry Milkshake</Link>
-                      </Card.Title>
-                      <Card.Text>created 10/13/2018</Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <small>
-                        <span role="img" aria-label="Checkmark emoji">
-                          ✔
-                        </span>
-                        ️ You have everything!
-                      </small>
-                    </Card.Footer>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="top"
-                      src="/media/card-test-2.jpg"
-                      className="img-fluid w-75 mx-auto"
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        <Link to="#">Bomb Pop</Link>
-                      </Card.Title>
-                      <Card.Text>created 12/1/2018</Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <small>
-                        <span role="img" aria-label="Checkmark emoji">
-                          ✔
-                        </span>
-                        ️ You have everything!
-                      </small>
-                    </Card.Footer>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="top"
-                      src="/media/card-test-3.jpg"
-                      className="img-fluid w-75 mx-auto"
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        <Link to="#">Tiramisu</Link>
-                      </Card.Title>
-                      <Card.Text>created 6/28/2019</Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <small>
-                        <span role="img" aria-label="X emoji">
-                          ❌
-                        </span>{' '}
-                        You are missing 1 flavor
-                      </small>
-                    </Card.Footer>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="top"
-                      src="/media/card-test-4.jpeg"
-                      className="img-fluid w-75 mx-auto"
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        <Link to="#">RY4 Tobaccy</Link>
-                      </Card.Title>
-                      <Card.Text>created 4/4/2019</Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <small>
-                        <span role="img" aria-label="Checkmark emoji">
-                          ✔
-                        </span>
-                        ️ You have everything!
-                      </small>
-                    </Card.Footer>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="top"
-                      src="/media/card-test-5.jpeg"
-                      className="img-fluid w-75 mx-auto"
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        <Link to="#">Fruit Punch</Link>
-                      </Card.Title>
-                      <Card.Text>created 1/1/2018</Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <small>
-                        <span role="img" aria-label="X emoji">
-                          ❌
-                        </span>{' '}
-                        You are missing 3 flavors
-                      </small>
-                    </Card.Footer>
-                  </Card>
-                </CardGroup>
+                <h2>
+                  Coming soon! <sup>&trade;</sup>
+                </h2>
                 <hr />
-              </Col>
-            </Row>
-            <Row className="text-center">
-              <Col>
-                <h2>Most popular recipes</h2>
-                <CardGroup>
-                  <Card>
-                    <Card.Img
-                      variant="top"
-                      src="/media/card-test-1.jpg"
-                      className="img-fluid w-75 mx-auto"
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        <Link to="#">Strawberry Milkshake</Link>
-                      </Card.Title>
-                      <Card.Text>created 10/13/2018</Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <small>
-                        <span role="img" aria-label="Checkmark emoji">
-                          ✔
-                        </span>
-                        ️ You have everything!
-                      </small>
-                    </Card.Footer>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="top"
-                      src="/media/card-test-2.jpg"
-                      className="img-fluid w-75 mx-auto"
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        <Link to="#">Bomb Pop</Link>
-                      </Card.Title>
-                      <Card.Text>created 12/1/2018</Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <small>
-                        <span role="img" aria-label="Checkmark emoji">
-                          ✔
-                        </span>
-                        ️ You have everything!
-                      </small>
-                    </Card.Footer>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="top"
-                      src="/media/card-test-3.jpg"
-                      className="img-fluid w-75 mx-auto"
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        <Link to="#">Tiramisu</Link>
-                      </Card.Title>
-                      <Card.Text>created 6/28/2019</Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <small>
-                        <span role="img" aria-label="X emoji">
-                          ❌
-                        </span>{' '}
-                        You are missing 1 flavor
-                      </small>
-                    </Card.Footer>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="top"
-                      src="/media/card-test-4.jpeg"
-                      className="img-fluid w-75 mx-auto"
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        <Link to="#">RY4 Tobaccy</Link>
-                      </Card.Title>
-                      <Card.Text>created 4/4/2019</Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <small>
-                        <span role="img" aria-label="Checkmark emoji">
-                          ✔
-                        </span>
-                        ️ You have everything!
-                      </small>
-                    </Card.Footer>
-                  </Card>
-                  <Card>
-                    <Card.Img
-                      variant="top"
-                      src="/media/card-test-5.jpeg"
-                      className="img-fluid w-75 mx-auto"
-                    />
-                    <Card.Body>
-                      <Card.Title>
-                        <Link to="#">Fruit Punch</Link>
-                      </Card.Title>
-                      <Card.Text>created 1/1/2018</Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                      <small>
-                        <span role="img" aria-label="X emoji">
-                          ❌
-                        </span>{' '}
-                        You are missing 3 flavors
-                      </small>
-                    </Card.Footer>
-                  </Card>
-                </CardGroup>
               </Col>
             </Row>
           </Col>
@@ -501,7 +282,7 @@ const mapStateToProps = state => ({
   currentUser: getCurrentUser(state),
   loggedIn: isLoggedIn(state),
   collection: getUserProfile(state),
-  editting: false
+  editing: false
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -17,7 +17,7 @@ export const getUserProfile = createSelector(
   profile => profile.collection
 );
 
-export const getUserMap = createSelector(
+export const getUserNames = createSelector(
   getProfile,
   profile => profile.userNames
 );
