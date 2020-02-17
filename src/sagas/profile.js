@@ -40,7 +40,7 @@ function* requestProfileWorker({ user }) {
 
       if (!userNames[user.name]) {
         const endpoint = {
-          url: `/user/${user.name}`,
+          url: `/user/name/${user.name}`,
           method: 'GET'
         };
         const result = yield call(request.execute, { endpoint });

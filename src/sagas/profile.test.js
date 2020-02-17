@@ -64,7 +64,7 @@ describe('Profile sagas', () => {
   };
 
   const usernameEndpoint = {
-    url: `/user/mixn`,
+    url: `/user/name/mixn`,
     method: 'GET'
   };
 
