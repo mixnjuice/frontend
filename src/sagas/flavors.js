@@ -27,7 +27,7 @@ function* requestFlavorsWorker({ pager }) {
         } = flavorsCount;
         // Set pager to be passed into Success, Update count
 
-        pager.count = data;
+        pager.count = data.result;
       } else if (flavorsCount.error) {
         throw flavorsCount.error;
       } else {

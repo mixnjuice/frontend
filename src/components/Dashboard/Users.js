@@ -7,7 +7,7 @@ import {
 } from 'components/Dashboard/';
 import { Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { PagerInfo, withPagination } from 'components/Pagination';
+import { PagerInfo, withPagination } from 'components/Pagination/Pagination';
 import { actions as usersActions } from 'reducers/users';
 import { getAllUsers, getUsersPager } from 'selectors/users';
 

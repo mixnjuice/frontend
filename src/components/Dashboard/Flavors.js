@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import { DashboardLayout as Layout } from 'components/Dashboard/';
-import { PagerInfo, withPagination } from 'components/Pagination';
+import { PagerInfo, withPagination } from 'components/Pagination/Pagination';
 import { actions as flavorsActions } from 'reducers/flavors';
 import { getAllFlavors, getFlavorsPager } from 'selectors/flavors';
 

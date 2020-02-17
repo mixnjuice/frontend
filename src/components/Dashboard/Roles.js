@@ -5,7 +5,7 @@ import {
   DashboardLayout as Layout
 } from 'components/Dashboard/';
 import { Table } from 'react-bootstrap';
-import { PagerInfo, withPagination } from 'components/Pagination';
+import { PagerInfo, withPagination } from 'components/Pagination/Pagination';
 import { actions as rolesActions } from 'reducers/roles';
 import { getAllRoles, getRolesPager } from 'selectors/roles';
 
