@@ -4,8 +4,9 @@ import request from 'utils/request';
 
 /**
  * Counter Helper
- * @param {*} url
- * @param {*} type
+ * @param {url} url Route to the counter
+ * @param {type} type What is being counted
+ * @eample { url: '/roles/count', type: 'Roles' }
  */
 export function* counter({ url, type }) {
   const endpoint = {
@@ -16,10 +17,12 @@ export function* counter({ url, type }) {
 
   if (count.success) {
     const {
-      response: { data }
+      response: {
+        data: { result }
+      }
     } = count;
 
-    return data;
+    return result;
   } else if (count.error) {
     throw count.error;
   } else {
@@ -29,7 +32,17 @@ export function* counter({ url, type }) {
 
 /**
  * Pager Helper
- * @param {*} req
+ * @param {req} req
+ * @example { cached: rolesCached,
+  pager: {
+    ...pager,
+    store: rolesPager
+  },
+  path: {
+    counter: '/roles/count',
+    query: '/roles/'
+  },
+  type: 'Roles' }
  */
 export function* pager({ req }) {
   const Pager = {};
@@ -56,6 +69,16 @@ export function* pager({ req }) {
 /**
  * Paged Helper
  * @param {*} req
+ * @example { cached: rolesCached,
+  pager: {
+    ...pager,
+    store: rolesPager
+  },
+  path: {
+    counter: '/roles/count',
+    query: '/roles/'
+  },
+  type: 'Roles' }
  */
 export function* paged(req) {
   const Pager = yield call(pager, { req });

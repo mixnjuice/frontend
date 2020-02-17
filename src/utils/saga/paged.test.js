@@ -44,7 +44,7 @@ describe('pager saga helpers', () => {
     method: 'GET'
   };
 
-  const count = { roles: 20 };
+  const count = { result: 20 };
 
   const Pager = {
     count,
@@ -92,7 +92,7 @@ describe('pager saga helpers', () => {
     const result = gen.next();
 
     expect(result.value).toEqual({
-      count: { roles: 20 },
+      count: { result: 20 },
       limit: 20,
       page: 1,
       pages: 1
