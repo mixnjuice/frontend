@@ -24,7 +24,7 @@ describe('users sagas', () => {
   };
   */
 
-  const count = 25;
+  const count = { result: 25 };
 
   const pager = {
     count: 25,
@@ -74,7 +74,7 @@ describe('users sagas', () => {
   });
 
   it('handles request failure in requestUsersWorker', () => {
-    const error = new Error('An error occurred.');
+    const error = new Error('Failed to count users!');
     const gen = workers.requestUsersWorker({ pager });
 
     let result = gen.next(pager);
@@ -88,30 +88,17 @@ describe('users sagas', () => {
     );
 
     result = gen.next({
-      success: true,
+      success: false,
       response: {
         data: 25
       }
-    });
-
-    expect(result.value).toEqual(select(getCachedUsers));
-
-    result = gen.next(users);
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: usersEndpoint })
-    );
-
-    result = gen.next({
-      success: false,
-      error
     });
 
     expect(result.value).toEqual(put(actions.requestUsersFailure(error)));
   });
 
   it('handles unexpected error in requestUsersWorker', () => {
-    const error = new Error('An error occurred.');
+    const error = new Error('Failed to count users!');
     const { message } = error;
     const gen = workers.requestUsersWorker({ pager });
 
@@ -126,23 +113,10 @@ describe('users sagas', () => {
     );
 
     result = gen.next({
-      success: true,
+      success: false,
       response: {
         data: 25
       }
-    });
-
-    expect(result.value).toEqual(select(getCachedUsers));
-
-    result = gen.next(users);
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: usersEndpoint })
-    );
-
-    result = gen.next({
-      success: false,
-      error
     });
 
     expect(result.value).toEqual(put(actions.requestUsersFailure(error)));
