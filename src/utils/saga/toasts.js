@@ -1,6 +1,19 @@
 import { put } from 'redux-saga/effects';
 
 import { actions as toastActions } from 'reducers/toast';
+
+const toastIcon = 'times-circle';
+
+const success = {
+  title: 'Success',
+  icon: toastIcon
+};
+
+const error = {
+  title: 'Error',
+  icon: toastIcon
+};
+
 /**
  * Custom Toast Helper
  * @param object msg
@@ -11,10 +24,10 @@ import { actions as toastActions } from 'reducers/toast';
  */
 export function* toast(msg) {
   const { icon, title, message } = msg;
-  const response = {};
-
-  response.title = title ? title : 'Server Message';
-  response.icon = icon ? icon : 'times-circle';
+  const response = {
+    title: title ? title : 'Server Message',
+    icon: icon ? icon : toastIcon
+  };
 
   yield put(
     toastActions.popToast({
@@ -31,8 +44,7 @@ export function* toast(msg) {
 export function* errorToast(message) {
   yield put(
     toastActions.popToast({
-      title: 'Error',
-      icon: 'times-circle',
+      ...error,
       message
     })
   );
@@ -45,8 +57,7 @@ export function* errorToast(message) {
 export function* successToast(message) {
   yield put(
     toastActions.popToast({
-      title: 'Success',
-      icon: 'times-circle',
+      ...success,
       message
     })
   );

@@ -27,7 +27,7 @@ export function* pager(req) {
   } = req;
 
   Pager.count = !store.count
-    ? yield call(counter, { url: req.path.counter, type })
+    ? yield call(counter, { url: path.counter, type })
     : store.count;
   Pager.limit = !req.pager.limit ? store.limit : req.pager.limit;
   Pager.pages =

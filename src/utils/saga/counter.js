@@ -8,7 +8,7 @@ import request from 'utils/request';
  * @param {type} type What is being counted
  * @eample { url: '/roles/count', type: 'Roles' }
  */
-export function* counter(url, type) {
+export function* counter({ url, type }) {
   const endpoint = {
     url,
     method: 'GET'
