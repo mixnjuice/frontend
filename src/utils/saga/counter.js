@@ -7,6 +7,7 @@ import request from 'utils/request';
  * @param {url} url Route to the counter
  * @param {type} type What is being counted
  * @eample { url: '/roles/count', type: 'Roles' }
+ * @returns integer
  */
 export function* counter({ url, type }) {
   const endpoint = {

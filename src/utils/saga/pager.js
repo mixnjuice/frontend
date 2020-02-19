@@ -4,15 +4,15 @@ import request from 'utils/request';
 
 /**
  * Paged Helper
- * @param {*} req
+ * @param object req
  * @example { cached: rolesCached,
   pager: {
     ...pager,
     store: rolesPager
   },
-  path: {
-    counter: '/roles/count',
-    query: '/roles/'
+  route: {
+    count: '/roles/count',
+    data: '/roles/'
   },
   type: 'Roles' }
 */
@@ -22,12 +22,12 @@ export function* pager(req) {
   const {
     cached,
     pager: { store },
-    path,
+    route,
     type
   } = req;
 
   Pager.count = !store.count
-    ? yield call(counter, { url: path.counter, type })
+    ? yield call(counter, { url: route.count, type })
     : store.count;
   Pager.limit = !req.pager.limit ? store.limit : req.pager.limit;
   Pager.pages =
@@ -49,7 +49,7 @@ export function* pager(req) {
       offset = count - limit;
     }
     const endpoint = {
-      url: `${path.query}?limit=${limit}&offset=${offset}`,
+      url: `${route.data}?limit=${limit}&offset=${offset}`,
       method: 'GET'
     };
     const result = yield call(request.execute, { endpoint });

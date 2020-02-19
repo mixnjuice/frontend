@@ -1,23 +1,24 @@
 import { call } from 'redux-saga/effects';
 import request from 'utils/request';
-import { counter, pager, paged } from './paged';
+import { pager } from './pager';
+import { counter } from './counter';
 
 /** Example Usage
-const response = yield call(helpers.paged, {
+const response = yield call(helpers.pager, {
   cached: rolesCached,
   pager: {
     ...pager,
     store: rolesPager
   },
-  path: {
-    counter: '/roles/count',
-    query: '/roles/'
+  route: {
+    count: '/roles/count',
+    data: '/roles/'
   },
   type: 'Roles'
 });
  */
 
-describe('pager saga helpers', () => {
+describe('pager saga helper', () => {
   const roles = [
     { id: 1, name: 'Administrator' },
     { id: 2, name: 'User' },
@@ -39,11 +40,6 @@ describe('pager saga helpers', () => {
     method: 'GET'
   };
 
-  const countEndpoint = {
-    url: '/roles/count',
-    method: 'GET'
-  };
-
   const count = { result: 20 };
 
   const Pager = {
@@ -52,7 +48,6 @@ describe('pager saga helpers', () => {
     page: 1,
     pages: 1,
     store: {
-      count,
       limit: 20,
       page: 1,
       pages: 1
@@ -62,49 +57,21 @@ describe('pager saga helpers', () => {
   const req = {
     cached,
     pager: Pager,
-    path: {
-      counter: '/roles/count',
-      query: '/roles/'
+    route: {
+      count: '/roles/count',
+      data: '/roles/'
     },
     type: 'Roles'
   };
 
-  it('handles success in counter', () => {
-    const gen = counter({ url: req.path.counter, type: req.type });
+  it('handles success in pager', () => {
+    const gen = pager(req);
 
     let result = gen.next(count);
 
     expect(result.value).toEqual(
-      call(request.execute, { endpoint: countEndpoint })
+      call(counter, { url: req.route.count, type: req.type })
     );
-
-    result = gen.next({
-      success: true,
-      response: {
-        data: count
-      }
-    });
-  });
-
-  it('handles success in pager', () => {
-    const gen = pager({ req });
-
-    const result = gen.next();
-
-    expect(result.value).toEqual({
-      count: { result: 20 },
-      limit: 20,
-      page: 1,
-      pages: 1
-    });
-  });
-
-  it('handles success in paged', () => {
-    const gen = paged(req);
-
-    let result = gen.next(req);
-
-    expect(result.value).toEqual(call(pager, { req }));
 
     result = gen.next(Pager);
 
