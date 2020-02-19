@@ -46,7 +46,7 @@ describe('Pagination', () => {
         <RoutedPagination actions={actions} />
       </Provider>
     );
-    const { instance } = component.root.findByType(withPagination);
+    const { instance } = component.root.findByType(RoutedPagination);
 
     expect(instance).toBeDefined();
     instance.changePage(page);

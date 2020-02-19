@@ -14,9 +14,8 @@ export const pagination = WrappedComponent =>
     static displayName = 'Pagination';
     static propTypes = {
       actions: PropTypes.object.isRequired,
-      collection: PropTypes.array,
-      pager: PropTypes.object,
-      request: PropTypes.string.isRequired
+      collection: PropTypes.array.isRequired,
+      pager: PropTypes.object.isRequired
     };
 
     constructor(props) {
@@ -29,9 +28,9 @@ export const pagination = WrappedComponent =>
     }
 
     componentDidMount() {
-      const { actions, request } = this.props;
+      const { actions } = this.props;
 
-      actions[request](defaultState);
+      actions.action(defaultState);
     }
 
     pagerCounter() {
@@ -41,13 +40,13 @@ export const pagination = WrappedComponent =>
     }
 
     changePage(page) {
-      const { actions, pager, request } = this.props;
+      const { actions, pager } = this.props;
       const {
         target: { value }
       } = page;
 
       this.setState({ page: value });
-      actions[request]({ ...pager, page: Number(value) });
+      actions.action({ ...pager, page: Number(value) });
     }
 
     changeLimit(limit) {
@@ -59,10 +58,10 @@ export const pagination = WrappedComponent =>
     }
 
     updateLimit() {
-      const { actions, pager, request } = this.props;
+      const { actions, pager } = this.props;
       const { limit } = this.state;
 
-      actions[request]({ ...pager, limit: Number(limit) });
+      actions.action({ ...pager, limit: Number(limit) });
     }
 
     navigation() {
@@ -119,7 +118,7 @@ export const mapStateToProps = (dataSelector, pagerSelector) => state => ({
 });
 
 export const mapDispatchToProps = action => dispatch => ({
-  actions: bindActionCreators(action, dispatch)
+  actions: bindActionCreators({ action }, dispatch)
 });
 
 export const withPagination = (
@@ -132,7 +131,7 @@ export const withPagination = (
     mapDispatchToProps(action)
   )(pagination(WrappedComponent));
 
-// export default withPagination;
+export default withPagination;
 
 export class PagerInfo extends Component {
   static propTypes = {

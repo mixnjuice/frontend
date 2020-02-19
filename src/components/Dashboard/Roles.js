@@ -99,9 +99,7 @@ export class Roles extends Component {
 }
 
 export default withPagination(
-  Roles,
-  rolesActions,
-  'requestRoles',
-  getRolesPager,
-  getAllRoles
-);
+  rolesActions.requestRoles,
+  getAllRoles,
+  getRolesPager
+)(Roles);

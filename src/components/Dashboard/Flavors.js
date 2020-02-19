@@ -54,17 +54,9 @@ export class Flavors extends Component {
     );
   }
 }
-/*
-export default withPagination(
-  Flavors,
-  flavorsActions,
-  'requestFlavors',
-  getFlavorsPager,
-  getAllFlavors
-);*/
 
 export default withPagination(
   flavorsActions.requestFlavors,
-  getFlavorsPager,
-  getAllFlavors
+  getAllFlavors,
+  getFlavorsPager
 )(Flavors);

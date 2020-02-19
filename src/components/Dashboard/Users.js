@@ -81,9 +81,7 @@ export class Users extends Component {
 }
 
 export default withPagination(
-  Users,
-  usersActions,
-  'requestUsers',
-  getUsersPager,
-  getAllUsers
-);
+  usersActions.requestUsers,
+  getAllUsers,
+  getUsersPager
+)(Users);
