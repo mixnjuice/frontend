@@ -273,7 +273,7 @@ exports[`<Home /> renders correctly 1`] = `
               className="card-title h5"
             >
               <a
-                href="/"
+                href="/user/david"
                 onClick={[Function]}
               >
                 Strawberry Milkshake

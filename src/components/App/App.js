@@ -66,6 +66,7 @@ export class App extends Component {
             component={ShoppingList}
           />
           <PrivateRoute exact path="/user/settings" component={UserSettings} />
+          <PrivateRoute path="/user/:userName" component={Profile} />
           <Route component={NotFound} />
         </Switch>
       </Suspense>

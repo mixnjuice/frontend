@@ -7,7 +7,7 @@
     "storybook": "start-storybook",
     "build": "cross-env NODE_ENV=production webpack",
     "start": "cross-env NODE_ENV=development webpack-dev-server",
-    "test": "jest",
+    "test": "jest --maxWorkers=4",
     "view:coverage": "opener ./coverage/index.html",
     "bundle:baseline": "cross-env BUNDLE_STATS_BASELINE=true NODE_ENV=production ANALYZE_BUNDLE=true webpack",
     "bundle:analyze": "cross-env NODE_ENV=production ANALYZE_BUNDLE=true webpack",

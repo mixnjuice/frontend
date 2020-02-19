@@ -18,7 +18,7 @@ export class NewRecipes extends Component {
               />
               <Card.Body>
                 <Card.Title>
-                  <Link to="#">Strawberry Milkshake</Link>
+                  <Link to="/user/david">Strawberry Milkshake</Link>
                 </Card.Title>
                 <Card.Text>by David Dyess</Card.Text>
               </Card.Body>
