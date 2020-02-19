@@ -17,8 +17,6 @@ import request from 'utils/request';
   type: 'Roles' }
 */
 export function* pager(req) {
-  const Pager = {};
-
   const {
     cached,
     pager: { store },
@@ -26,15 +24,18 @@ export function* pager(req) {
     type
   } = req;
 
-  Pager.count = !store.count
-    ? yield call(counter, { url: route.count, type })
-    : store.count;
-  Pager.limit = !req.pager.limit ? store.limit : req.pager.limit;
+  const Pager = {
+    count: !store.count
+      ? yield call(counter, { url: route.count, type })
+      : store.count,
+    limit: !req.pager.limit ? store.limit : req.pager.limit,
+    page: !req.pager.page ? store.page : req.pager.page
+  };
+
   Pager.pages =
     !store.pages || store.pages === null || req.pager.limit !== store.limit
       ? Math.ceil(Pager.count / Pager.limit)
       : store.pages;
-  Pager.page = !req.pager.page ? store.page : req.pager.page;
 
   const { count, limit, page } = Pager;
 
