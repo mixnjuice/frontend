@@ -74,6 +74,108 @@ export class Profile extends Component {
     return <FontAwesomeIcon icon="info-circle" />;
   }
 
+  get profileEditor() {
+    const {
+      collection: { bio, location, url }
+    } = this.props;
+
+    return (
+      <Card body>
+        <FinalForm
+          onSubmit={this.handleSubmit}
+          initialValues={{ bio, location, url }}
+          render={({ handleSubmit, submitting }) => (
+            <Form noValidate onSubmit={handleSubmit}>
+              <Form.Row>
+                <Field name="location">
+                  {({ input }) => (
+                    <Form.Group as={Col}>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text id="inputGroupPrepend">
+                            {this.locationIcon}
+                          </InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control
+                          {...input}
+                          type="text"
+                          placeholder="Location"
+                          aria-describedby="inputGroupPrepend"
+                        />
+                      </InputGroup>
+                    </Form.Group>
+                  )}
+                </Field>
+              </Form.Row>
+              <Form.Row>
+                <Field name="url">
+                  {({ input }) => (
+                    <Form.Group as={Col}>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text id="inputGroupPrepend">
+                            {this.webIcon}
+                          </InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control
+                          {...input}
+                          type="text"
+                          placeholder="example.com"
+                        />
+                      </InputGroup>
+                    </Form.Group>
+                  )}
+                </Field>
+              </Form.Row>
+              <Form.Row>
+                <Field name="bio">
+                  {({ input }) => (
+                    <Form.Group as={Col}>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text id="inputGroupPrepend">
+                            {this.bioIcon}
+                          </InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <Form.Control
+                          {...input}
+                          as="textarea"
+                          placeholder="Info"
+                          style={{ minHeight: '400px' }}
+                        />
+                      </InputGroup>
+                    </Form.Group>
+                  )}
+                </Field>
+              </Form.Row>
+              <Form.Row>
+                <Form.Group as={Col}>
+                  <Button
+                    className="button-animation"
+                    variant="primary"
+                    type="submit"
+                    disabled={submitting}
+                  >
+                    <span>Save</span>
+                  </Button>
+                </Form.Group>
+                <Form.Group as={Col}>
+                  <Button
+                    onClick={e => this.handleEditor(false, e)}
+                    className="button-animation"
+                    variant="primary"
+                  >
+                    <span>Cancel</span>
+                  </Button>
+                </Form.Group>
+              </Form.Row>
+            </Form>
+          )}
+        />
+      </Card>
+    );
+  }
+
   handleEditor(toggle) {
     if (toggle) {
       this.setState({ editing: true });
@@ -87,111 +189,6 @@ export class Profile extends Component {
 
     actions.updateProfile(values);
     this.setState({ editing: false });
-  }
-
-  profileEditor() {
-    const {
-      collection: { bio, location, url },
-      currentUser
-    } = this.props;
-
-    if (currentUser) {
-      return (
-        <Card body>
-          <FinalForm
-            onSubmit={this.handleSubmit}
-            initialValues={{ bio, location, url }}
-            render={({ handleSubmit, submitting }) => (
-              <Form noValidate onSubmit={handleSubmit}>
-                <Form.Row>
-                  <Field name="location">
-                    {({ input }) => (
-                      <Form.Group as={Col}>
-                        <InputGroup>
-                          <InputGroup.Prepend>
-                            <InputGroup.Text id="inputGroupPrepend">
-                              {this.locationIcon}
-                            </InputGroup.Text>
-                          </InputGroup.Prepend>
-                          <Form.Control
-                            {...input}
-                            type="text"
-                            placeholder="Location"
-                            aria-describedby="inputGroupPrepend"
-                          />
-                        </InputGroup>
-                      </Form.Group>
-                    )}
-                  </Field>
-                </Form.Row>
-                <Form.Row>
-                  <Field name="url">
-                    {({ input }) => (
-                      <Form.Group as={Col}>
-                        <InputGroup>
-                          <InputGroup.Prepend>
-                            <InputGroup.Text id="inputGroupPrepend">
-                              {this.webIcon}
-                            </InputGroup.Text>
-                          </InputGroup.Prepend>
-                          <Form.Control
-                            {...input}
-                            type="text"
-                            placeholder="example.com"
-                          />
-                        </InputGroup>
-                      </Form.Group>
-                    )}
-                  </Field>
-                </Form.Row>
-                <Form.Row>
-                  <Field name="bio">
-                    {({ input }) => (
-                      <Form.Group as={Col}>
-                        <InputGroup>
-                          <InputGroup.Prepend>
-                            <InputGroup.Text id="inputGroupPrepend">
-                              {this.bioIcon}
-                            </InputGroup.Text>
-                          </InputGroup.Prepend>
-                          <Form.Control
-                            {...input}
-                            as="textarea"
-                            placeholder="Info"
-                            style={{ minHeight: '400px' }}
-                          />
-                        </InputGroup>
-                      </Form.Group>
-                    )}
-                  </Field>
-                </Form.Row>
-                <Form.Row>
-                  <Form.Group as={Col}>
-                    <Button
-                      className="button-animation"
-                      variant="primary"
-                      type="submit"
-                      disabled={submitting}
-                    >
-                      <span>Save</span>
-                    </Button>
-                  </Form.Group>
-                  <Form.Group as={Col}>
-                    <Button
-                      onClick={e => this.handleEditor(false, e)}
-                      className="button-animation"
-                      variant="primary"
-                    >
-                      <span>Cancel</span>
-                    </Button>
-                  </Form.Group>
-                </Form.Row>
-              </Form>
-            )}
-          />
-        </Card>
-      );
-    }
   }
 
   render() {
@@ -259,7 +256,7 @@ export class Profile extends Component {
                 </Button>
               )
             )}
-            {editing && this.profileEditor()}
+            {editing && this.profileEditor}
           </Col>
           <Col>
             <Row className="text-center">
