@@ -8,6 +8,9 @@ import ConnectedApp, { App } from './App';
 import { withMemoryRouter } from 'utils';
 import { initialState } from 'reducers/application';
 
+jest.mock('components/Footer/Footer', () =>
+  require('utils').mockComponent('Footer')
+);
 jest.mock('components/Header/Header', () =>
   require('utils').mockComponent('Header')
 );
