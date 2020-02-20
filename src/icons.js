@@ -11,6 +11,9 @@ import {
   faPlus,
   faTachometerAlt,
   faTimes,
+  faCity,
+  faGlobe,
+  faInfoCircle,
   faTimesCircle,
   faStar as fasStar,
   faSync,
@@ -36,6 +39,10 @@ library.add(
   faDatabase,
   faEyeDropper,
   faFire,
+  faCity,
+  faGlobe,
+  faInfoCircle,
+  faTimesCircle,
   fasHeart,
   farHeart,
   faPlus,
@@ -50,7 +57,6 @@ library.add(
   faUsers,
   faUsersCog,
   faUserShield,
-  faCheckSquare,
   faSquare,
   faUndo
 );
