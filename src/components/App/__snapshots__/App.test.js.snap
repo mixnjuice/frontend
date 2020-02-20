@@ -14,7 +14,7 @@ Array [
   <Header />,
   <ToastDrawer />,
   <Calculator />,
-  <Footer />
+  <Footer />,
 ]
 `;
 
