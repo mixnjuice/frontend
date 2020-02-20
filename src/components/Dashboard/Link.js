@@ -24,10 +24,7 @@ export class DashboardLink extends Component {
   select(name, item = null) {
     const { actions } = this.props;
 
-    actions.selectDashboard({
-      name,
-      item
-    });
+    actions.selectDashboard({ name, item });
   }
 
   render() {

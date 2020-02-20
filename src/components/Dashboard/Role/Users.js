@@ -20,22 +20,24 @@ export class RoleUsers extends Component {
     name: PropTypes.string,
     roleUsers: PropTypes.array
   };
+
   constructor(props) {
     super(props);
     this.updateRoleId = this.updateRoleId.bind(this);
   }
+
+  componentDidMount() {
+    const { actions, roleId } = this.props;
+
+    if (roleId !== null) {
+      actions.requestRoleUsers({ roleId });
+    }
+  }
+
   updateRoleId(roleId) {
     const { actions } = this.props;
 
     actions.requestRoleUsers({ roleId });
-  }
-  componentDidMount() {
-    const { actions, roleId } = this.props;
-
-    // actions.requestRoles();
-    if (roleId !== null) {
-      actions.requestRoleUsers({ roleId });
-    }
   }
 
   render() {
@@ -96,9 +98,7 @@ export class RoleUsers extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  roleUsers: getRoleUsers(state)
-});
+const mapStateToProps = state => ({ roleUsers: getRoleUsers(state) });
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(rolesActions, dispatch)

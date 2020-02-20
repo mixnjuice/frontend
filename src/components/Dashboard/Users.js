@@ -58,7 +58,7 @@ export class Users extends Component {
                     {user.activationCode === null ? this.yesIcon : this.noIcon}
                   </td>
                   <td className="text-center">
-                    <Link to="/user/profile">Profile</Link>
+                    <Link to={`/user/${user.UserProfile.name}`}>Profile</Link>
                     &nbsp; | &nbsp;
                     <DashLink
                       to={`#user/${user.id}/roles`}

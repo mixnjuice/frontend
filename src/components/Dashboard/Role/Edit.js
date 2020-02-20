@@ -36,6 +36,7 @@ export class RoleEdit extends Component {
 
   render() {
     const { name, layoutOptions } = this.props;
+    const { roleId } = this.props;
 
     return (
       <Layout
@@ -49,6 +50,7 @@ export class RoleEdit extends Component {
         </DashLink>
         <FinalForm
           onSubmit={this.handleSubmit}
+          initialValues={{ id: roleId, name }}
           render={({ handleSubmit, submitting }) => (
             <Form noValidate onSubmit={handleSubmit}>
               <Field name="name" required="true">
@@ -58,7 +60,6 @@ export class RoleEdit extends Component {
                     <Form.Control
                       {...input}
                       type="text"
-                      placeholder={name}
                       isInvalid={meta.error}
                     />
                     {meta.error && (

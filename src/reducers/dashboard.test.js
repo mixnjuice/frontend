@@ -95,6 +95,12 @@ describe('dashboard reducer', () => {
     });
   });
 
+  it('reduces REQUEST_MIGRATIONS_FAILURE action', () => {
+    const action = actions.requestMigrationsFailure(error);
+
+    expect(reducer({}, action)).toEqual({ error });
+  });
+
   it('has REQUEST_STATS action', () => {
     expect(actions.requestStats()).toEqual({
       type: types.REQUEST_STATS
@@ -125,5 +131,11 @@ describe('dashboard reducer', () => {
       type: types.REQUEST_STATS_FAILURE,
       error
     });
+  });
+
+  it('reduces REQUEST_STATS_FAILURE action', () => {
+    const action = actions.requestStatsFailure(error);
+
+    expect(reducer({}, action)).toEqual({ error });
   });
 });

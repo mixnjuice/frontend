@@ -46,9 +46,8 @@ exports[`Dashboard <RoleEdit /> renders correctly 1`] = `
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
-          placeholder="Luser"
           type="text"
-          value=""
+          value="Luser"
         />
       </div>
       <button
