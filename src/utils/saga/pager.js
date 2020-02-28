@@ -28,7 +28,7 @@ export function* pager(req) {
     count: !store.count
       ? yield call(counter, { url: route.count, type })
       : store.count,
-    limit: !req.pager.limit ? store.limit : req.pager.limit,
+    limit: req.pager.limit || store.limit,
     page: !req.pager.page ? store.page : req.pager.page
   };
 

@@ -6,7 +6,7 @@ import { counter } from './counter';
 const response = yield call(helpers.counter, { url: '/roles/count', type: 'Roles' });
  */
 
-describe('pager saga helpers', () => {
+describe('counter saga helpers', () => {
   const countEndpoint = {
     url: '/roles/count',
     method: 'GET'
