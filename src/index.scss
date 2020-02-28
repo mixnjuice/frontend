@@ -5,9 +5,16 @@
 @import "./variables";
 
 // component styles
+@import "./components/FlavorBrowser/FlavorBrowser";
 @import "./components/Footer/Footer";
 @import "./components/IngredientBar/IngredientBar";
+@import "./components/IngredientList/IngredientList";
 @import "./components/ToastDrawer/ToastDrawer";
 @import "./components/SplitSlider/SplitSlider";
 @import "./components/SuspenseFallback/SuspenseFallback";
-@import "./style.scss";
+
+// page styles
+@import "./pages/RecipeEditor";
+
+// core style
+@import "./style";

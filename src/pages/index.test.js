@@ -2,7 +2,6 @@ import { lazy } from 'react';
 
 import {
   imports,
-  Calculator,
   Dashboard,
   Favorites,
   Flavors,
@@ -12,6 +11,7 @@ import {
   NotFound,
   Profile,
   Recipe,
+  RecipeEditor,
   Recipes,
   Register,
   ShoppingList,
@@ -20,9 +20,9 @@ import {
 } from 'pages';
 
 describe('pages module', () => {
-  it('has Calculator page', async () => {
-    expect(imports.Calculator()).toEqual(import('pages/Calculator'));
-    expect(Calculator).toEqual(lazy(imports.Calculator));
+  it('has RecipeEditor page', async () => {
+    expect(imports.RecipeEditor()).toEqual(import('pages/RecipeEditor'));
+    expect(RecipeEditor).toEqual(lazy(imports.RecipeEditor));
   });
 
   it('has Dashboard page', async () => {

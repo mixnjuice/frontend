@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FlavorBrowser /> renders correctly 1`] = `
+Array [
+  <div
+    className="form-group col-md-6 col-sm-9"
+  >
+    <div
+      className="input-group"
+    >
+      <div
+        className="input-group-prepend"
+      >
+        <span
+          className="input-group-text"
+        >
+          <i
+            className="fa search"
+          />
+        </span>
+      </div>
+      <input
+        className="form-control"
+        id="searchStash"
+        name="searchStash"
+        onChange={[Function]}
+        placeholder="Search stash..."
+        type="text"
+      />
+    </div>
+  </div>,
+  <div
+    className="flavor-browser border-bottom border-top pr-0 col-md-12"
+  >
+    <div
+      onScroll={[Function]}
+      style={
+        Object {
+          "WebkitOverflowScrolling": "touch",
+          "direction": "ltr",
+          "height": 200,
+          "overflow": "auto",
+          "position": "relative",
+          "width": undefined,
+          "willChange": "transform",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "height": 60,
+            "pointerEvents": undefined,
+            "width": "100%",
+          }
+        }
+      >
+        <div
+          className="flavor-browser-item flavor-browser-item--striped row"
+          style={
+            Object {
+              "height": 30,
+              "left": "15px",
+              "position": "absolute",
+              "top": 0,
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className="flavor-browser-item-vendor col-md-2 col-sm-3"
+          >
+            CAP
+          </div>
+          <div
+            className="col-md-6 col-sm-7"
+          >
+            Test
+          </div>
+          <div
+            className="col-md-4 col-sm-2"
+          >
+            <button
+              className="button-animation btn btn-primary btn-sm"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <i
+                className="fa plus"
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          className="flavor-browser-item row"
+          style={
+            Object {
+              "height": 30,
+              "left": "15px",
+              "position": "absolute",
+              "top": 30,
+              "width": "100%",
+            }
+          }
+        >
+          <div
+            className="flavor-browser-item-vendor col-md-2 col-sm-3"
+          >
+            FLV
+          </div>
+          <div
+            className="col-md-6 col-sm-7"
+          >
+            Another
+          </div>
+          <div
+            className="col-md-4 col-sm-2"
+          >
+            <button
+              className="button-animation btn btn-primary btn-sm"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <i
+                className="fa plus"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+]
+`;

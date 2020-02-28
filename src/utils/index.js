@@ -24,13 +24,20 @@ export function buildActions(reducer, actions) {
 }
 
 /**
- * Creates a mock component which will expose its props for snapshot testing purposes.
+ * Creates a mock component which takes a set of props specified at runtime.
  *
- * @param {string} name The component/element name (e.g. "MyComponent")
+ * @param {string} name The component/element name (in PascalCase)
  * @param {object} props An object containing props to setup
  * @return {object} Mock component with specified name and props
  */
 export const mockComponent = (name, props = {}) => () =>
+  createElement(name, props, props.children);
+
+/**
+ * Creates a mock component which will expose its props for snapshot testing purposes
+ * @param {*} name The component/element name (in PascalCase)
+ */
+export const mockComponentWithProps = name => props =>
   createElement(name, props, props.children);
 
 /**

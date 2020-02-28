@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Quicksand&display=swap");
-@import "./_variables.scss";
 
 // Changes the font site-wide
 * {
@@ -45,25 +44,25 @@ hr {
   opacity: 0.5;
 }
 
-// When toggling certain elements off the screen (e.g. "no nicotine" in calculator)
+// When toggling certain elements off the screen (e.g. "no nicotine" in recipe editor)
 // it changes the width of the container and the width of the other elements around it
 // Switching the container to "fluid" didn't fix it, so this was unfortunately the best way I could
 // find to solve the issue; by fixing the container width for medium screens and up
 @include breakpoint-md() {
   .container {
-    width: 800px;
+    max-width: 800px;
   }
 }
 
 @include breakpoint-lg() {
   .container {
-    width: 1000px;
+    max-width: 1000px;
   }
 }
 
 @include breakpoint-xl() {
   .container {
-    width: 1200px;
+    max-width: 1200px;
   }
 }
 
@@ -141,14 +140,6 @@ hr {
 
 .form-check-input:checked {
   background-color: $teal;
-}
-
-// Changing disabled buttons to grey
-.btn-primary.disabled,
-.btn-primary:disabled {
-  color: gray("800");
-  background-color: gray("300");
-  border-color: gray("800");
 }
 
 // Changing the border of any form fields
@@ -284,8 +275,32 @@ input {
   height: 40px;
   padding: 0 14px;
   line-height: auto;
-  background: $teal;
   border: 1px solid $black;
+
+  > * {
+    z-index: 2;
+    position: relative;
+  }
+
+  &-primary {
+    background: $teal;
+
+    // Changing disabled buttons to grey
+    &.disabled,
+    &:disabled {
+      color: gray("800");
+      background-color: gray("300");
+      border-color: gray("800");
+    }
+  }
+
+  /* stylelint-disable-next-line a11y/line-height-is-vertical-rhythmed */
+  &-sm {
+    height: 28px;
+    width: 28px;
+    padding: 0;
+    line-height: 0;
+  }
 }
 
 // Button animations
@@ -333,6 +348,7 @@ input {
     transform: translateX(-100%);
     background: $baby-blue;
     transition: transform 0.2s ease-in-out;
+    z-index: 1;
   }
 
   &:hover,

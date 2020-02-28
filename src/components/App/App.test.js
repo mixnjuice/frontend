@@ -21,7 +21,6 @@ jest.mock('pages', () => {
   const { mockComponent } = require('utils');
 
   return {
-    Calculator: mockComponent('Calculator'),
     Dashboard: mockComponent('Dashboard'),
     Favorites: mockComponent('Favorites'),
     Flavors: mockComponent('Flavors'),
@@ -31,6 +30,7 @@ jest.mock('pages', () => {
     NotFound: mockComponent('NotFound'),
     Profile: mockComponent('Profile'),
     Recipe: mockComponent('Recipe'),
+    RecipeEditor: mockComponent('RecipeEditor'),
     Recipes: mockComponent('Recipes'),
     Register: mockComponent('Register'),
     ShoppingList: mockComponent('ShoppingList'),
@@ -190,12 +190,12 @@ describe('<App />', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('renders calculator page', () => {
+  it('renders recipe editor page', () => {
     const RoutedApp = withMemoryRouter(ConnectedApp, {
-      initialEntries: ['/calculator']
+      initialEntries: ['/recipe/editor']
     });
     const component = renderer.create(
-      <Provider store={store}>
+      <Provider store={authedStore}>
         <RoutedApp />
       </Provider>
     );

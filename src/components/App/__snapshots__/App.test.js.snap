@@ -9,15 +9,6 @@ Array [
 ]
 `;
 
-exports[`<App /> renders calculator page 1`] = `
-Array [
-  <Header />,
-  <ToastDrawer />,
-  <Calculator />,
-  <Footer />,
-]
-`;
-
 exports[`<App /> renders dashboard page 1`] = `
 Array [
   <Header />,
@@ -77,6 +68,15 @@ Array [
   <Header />,
   <ToastDrawer />,
   <Profile />,
+  <Footer />,
+]
+`;
+
+exports[`<App /> renders recipe editor page 1`] = `
+Array [
+  <Header />,
+  <ToastDrawer />,
+  <RecipeEditor />,
   <Footer />,
 ]
 `;
