@@ -11,7 +11,6 @@ import ToastDrawer from 'components/ToastDrawer/ToastDrawer';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import { actions as appActions } from 'reducers/application';
 import {
-  Calculator,
   Favorites,
   Flavors,
   FlavorStash,
@@ -20,6 +19,7 @@ import {
   NotFound,
   Profile,
   Recipe,
+  RecipeEditor,
   Recipes,
   Register,
   ShoppingList,
@@ -50,7 +50,7 @@ export class App extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/recipes" component={Recipes} />
-          <Route exact path="/calculator" component={Calculator} />
+          <PrivateRoute exact path="/recipe/editor" component={RecipeEditor} />
           <Route exact path="/flavors" component={Flavors} />
           <Route exact path="/recipe" component={Recipe} />
           <PrivateRoute exact path="/user/profile" component={Profile} />
@@ -77,12 +77,7 @@ export class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(
-    {
-      ...appActions
-    },
-    dispatch
-  )
+  actions: bindActionCreators(appActions, dispatch)
 });
 
 export default withRouter(connect(null, mapDispatchToProps)(App));

@@ -1,0 +1,21 @@
+.flavor-browser {
+  margin-bottom: $base-spacing;
+
+  &-item {
+    width: 100%;
+    height: 30px;
+
+    > div {
+      height: 30px;
+      display: flex;
+    }
+
+    div:last-child {
+      justify-content: flex-end;
+    }
+
+    &--striped {
+      background-color: $lightest-blue;
+    }
+  }
+}

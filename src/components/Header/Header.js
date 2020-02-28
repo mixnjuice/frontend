@@ -57,7 +57,7 @@ export class Header extends Component {
     const { loggedIn } = this.props;
 
     return (
-      <Container fluid>
+      <Container fluid className="mb-5">
         <Row className="navigation-container">
           <Col>
             <Navbar expand="lg">
@@ -70,7 +70,7 @@ export class Header extends Component {
                   {this.renderNavItem('/', 'Home')}
                   {this.renderNavItem('/recipes', 'Recipes')}
                   {loggedIn
-                    ? this.renderNavItem('/calculator', 'Calculator')
+                    ? this.renderNavItem('/recipe/editor', 'Recipe Editor')
                     : null}
                   {this.renderNavItem('/flavors', 'Flavors')}
                   {loggedIn ? (
