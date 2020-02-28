@@ -29,7 +29,7 @@ export function* pager(req) {
       ? yield call(counter, { url: route.count, type })
       : store.count,
     limit: req.pager.limit || store.limit,
-    page: !req.pager.page ? store.page : req.pager.page
+    page: req.pager.page || store.page
   };
 
   Pager.pages =
