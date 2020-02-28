@@ -304,8 +304,8 @@ export class RecipeEditor extends Component {
             <Button variant="secondary" onClick={this.handleDeleteDismiss}>
               Close
             </Button>
-            <Button variant="primary" onClick={this.handleDeleteConfirm}>
-              Save changes
+            <Button variant="danger" onClick={this.handleDeleteConfirm}>
+              Delete this recipe
             </Button>
           </Modal.Footer>
         </Modal.Dialog>
