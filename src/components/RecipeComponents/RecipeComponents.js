@@ -16,7 +16,7 @@ export default class RecipeComponents extends Component {
   };
 
   renderTooltip(density) {
-    return <Tooltip>{density.toFixed(2)} g/ml</Tooltip>;
+    return <Tooltip>{density.toFixed(2)} g/mL</Tooltip>;
   }
 
   render() {
@@ -35,7 +35,7 @@ export default class RecipeComponents extends Component {
           <tr>
             <th>Component</th>
             <th>%</th>
-            <th>ml</th>
+            <th>mL</th>
             <th>g</th>
           </tr>
         </thead>
@@ -63,7 +63,7 @@ export default class RecipeComponents extends Component {
           <tr className="font-weight-bold">
             <td className="bt-2">Total</td>
             <td className="bt-2">100%</td>
-            <td className="bt-2">{Math.round(totalMl)} ml</td>
+            <td className="bt-2">{Math.round(totalMl)} mL</td>
             <td className="bt-2">{totalGrams.toFixed(2)} g</td>
           </tr>
         </tbody>

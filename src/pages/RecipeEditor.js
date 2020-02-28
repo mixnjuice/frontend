@@ -186,7 +186,7 @@ export class RecipeEditor extends Component {
 
     // determine how many mg of nicotine we need
     const nicotineMg = desiredNicotineStrength * desiredVolume;
-    // determine how many ml of nicotine base we need
+    // determine how many mL of nicotine base we need
     const baseNicotineMl = nicotineMg / nicotineStrength;
     // calculate the percentage of the final mix that will be nicotine
     const nicotinePercent = baseNicotineMl / desiredVolume;
@@ -240,7 +240,7 @@ export class RecipeEditor extends Component {
       nicotineDiluentRatio * densities.vgNic;
     // determine how many mg of nicotine we need
     const nicotineMg = desiredNicotineStrength * desiredVolume;
-    // determine how many ml of nicotine base we need
+    // determine how many mL of nicotine base we need
     const nicotineMl = nicotineMg / nicotineStrength;
     const nicotineGrams = nicotineMl * nicotineDensity;
     const vgMl = (percentages.vg / 100) * desiredVolume;
@@ -249,7 +249,7 @@ export class RecipeEditor extends Component {
     const pgGrams = pgMl * densities.pg;
 
     result.push({
-      name: `${nicotineStrength} mg/ml nicotine`,
+      name: `${nicotineStrength} mg/mL nicotine`,
       density: nicotineDensity,
       percentage: percentages.nicotine,
       milliliters: nicotineMl,
