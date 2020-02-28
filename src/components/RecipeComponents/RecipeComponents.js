@@ -9,7 +9,7 @@ export default class RecipeComponents extends Component {
         name: PropTypes.string,
         density: PropTypes.number,
         percentage: PropTypes.number,
-        mililiters: PropTypes.number,
+        milliliters: PropTypes.number,
         grams: PropTypes.number
       })
     ).isRequired
@@ -26,7 +26,7 @@ export default class RecipeComponents extends Component {
       return null;
     }
 
-    const totalMl = components.reduce((acc, curr) => acc + curr.mililiters, 0);
+    const totalMl = components.reduce((acc, curr) => acc + curr.milliliters, 0);
     const totalGrams = components.reduce((acc, curr) => acc + curr.grams, 0);
 
     return (
@@ -49,7 +49,7 @@ export default class RecipeComponents extends Component {
                   : Math.round(component.percentage)}
                 %
               </td>
-              <td>{component.mililiters.toFixed(2)} ml</td>
+              <td>{component.milliliters.toFixed(2)} mL</td>
               <td>
                 <OverlayTrigger
                   placement="left"

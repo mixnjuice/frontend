@@ -252,7 +252,7 @@ export class RecipeEditor extends Component {
       name: `${nicotineStrength} mg/ml nicotine`,
       density: nicotineDensity,
       percentage: percentages.nicotine,
-      mililiters: nicotineMl,
+      milliliters: nicotineMl,
       grams: nicotineGrams
     });
 
@@ -260,7 +260,7 @@ export class RecipeEditor extends Component {
       name: 'Vegetable glycerin',
       density: densities.vg,
       percentage: percentages.vg,
-      mililiters: vgMl,
+      milliliters: vgMl,
       grams: vgGrams
     });
 
@@ -268,21 +268,21 @@ export class RecipeEditor extends Component {
       name: 'Propylene glycol',
       density: densities.pg,
       percentage: percentages.pg,
-      mililiters: pgMl,
+      milliliters: pgMl,
       grams: pgGrams
     });
 
     for (const [id, percentage] of percentageEntries) {
       const ingredient = ingredients.find(ing => ing.Flavor.id === id);
       const name = `${ingredient.Flavor.Vendor.name} ${ingredient.Flavor.name}`;
-      const mililiters = (percentage / 100) * desiredVolume;
-      const grams = mililiters * densities.pg;
+      const milliliters = (percentage / 100) * desiredVolume;
+      const grams = milliliters * densities.pg;
 
       result.push({
         name,
         density: densities.pg,
         percentage,
-        mililiters,
+        milliliters,
         grams
       });
     }
