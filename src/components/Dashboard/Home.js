@@ -12,7 +12,7 @@ import { getStats } from 'selectors/dashboard';
 export class DashboardHome extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    stats: PropTypes.any
+    stats: PropTypes.object.isRequired
   };
 
   constructor(props) {

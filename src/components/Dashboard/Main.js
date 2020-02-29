@@ -16,7 +16,7 @@ import {
   RoleDeleteUser,
   Users,
   UserRoles
-} from 'components/Dashboard/';
+} from 'components/Dashboard';
 
 import { actions as dashboardActions } from 'reducers/dashboard';
 import { getDashboardComponent } from 'selectors/dashboard';
