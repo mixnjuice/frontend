@@ -1,116 +1,33 @@
 import { all, call, put, takeLatest, select } from 'redux-saga/effects';
-
 import request from 'utils/request';
+import helper from 'utils/saga';
 import { getCachedRoles, getRolesPager } from 'selectors/roles';
 import { actions, types } from 'reducers/roles';
-import { actions as toastActions } from 'reducers/toast';
 
 function* requestRolesWorker({ pager }) {
   try {
-    const rolesPager = yield select(getRolesPager);
-
-    // Initial/previous values stored
-    let { count, limit, page } = rolesPager;
-    const { pages } = rolesPager;
-
-    let endpoint = {};
-
-    let refreshed = null;
-
-    if (!count) {
-      endpoint = {
-        url: '/roles/count',
-        method: 'GET'
-      };
-      const rolesCount = yield call(request.execute, { endpoint });
-
-      if (rolesCount.success) {
-        const {
-          response: { data }
-        } = rolesCount;
-        // Set pager to be passed into Success, Update count
-
-        // eslint-disable-next-line no-console
-        console.log(data);
-
-        pager.count = data.result;
-      } else if (rolesCount.error) {
-        throw rolesCount.error;
-      } else {
-        throw new Error('Failed to count roles!');
-      }
-      refreshed = true;
-    } else {
-      pager.count = count;
-      refreshed = false;
-    }
-
-    if (!pager.limit) {
-      pager.limit = limit;
-    }
-
-    pager.pages =
-      !pages || pages === null || pager.limit !== limit
-        ? Math.ceil(pager.count / pager.limit)
-        : pages;
-
-    if (!pager.page) {
-      pager.page = page;
-    }
-    // Refresh these values to the desired values (from pager)
-    count = pager.count;
-    limit = pager.limit;
-    page = pager.page;
-
     const cached = yield select(getCachedRoles);
+    const store = yield select(getRolesPager);
 
-    if (
-      !cached[page] ||
-      (count > Number(limit) && cached[page].length !== Number(limit)) ||
-      (count < Number(limit) && cached[page].length !== count) ||
-      refreshed === true
-    ) {
-      let offset = page * limit - limit + 1;
+    const response = yield call(helper.pager, {
+      cached,
+      pager: {
+        ...pager,
+        store
+      },
+      route: {
+        count: '/roles/count',
+        data: '/roles/'
+      },
+      type: 'Roles'
+    });
 
-      if (offset > count) {
-        // Prevent an offset higher than total amount of roles
-        // - Consider a max limit/offset
-        offset = count - limit;
-      }
-      endpoint = {
-        url: `/roles/?limit=${limit}&offset=${offset}`,
-        method: 'GET'
-      };
-      const result = yield call(request.execute, { endpoint });
-
-      // update role in state or throw an error
-      if (result.success) {
-        const {
-          response: { data }
-        } = result;
-
-        cached[page] = data;
-
-        yield put(actions.requestRolesSuccess(cached, pager));
-      } else if (result.error) {
-        throw result.error;
-      } else {
-        throw new Error('Failed to get roles!');
-      }
-    } else {
-      yield put(actions.requestRolesSuccess(cached, pager));
-    }
+    yield put(actions.requestRolesSuccess(response.cached, response.pager));
   } catch (error) {
     const { message } = error;
 
     yield put(actions.requestFailure(error));
-    yield put(
-      toastActions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
+    yield call(helper.errorToast, message);
   }
 }
 
@@ -129,13 +46,10 @@ function* createRoleWorker({ name }) {
     if (result.success) {
       yield put(actions.clearCollection());
       yield put(actions.requestRoles({ page: 1, limit: 20 }));
-      yield put(
-        toastActions.popToast({
-          title: 'Role Created',
-          icon: 'times-circle',
-          message: `${name} role successfully created!`
-        })
-      );
+      yield call(helper.toast, {
+        title: 'Role Created',
+        message: `${name} role successfully created!`
+      });
     } else if (result.error) {
       throw result.error;
     } else {
@@ -145,13 +59,7 @@ function* createRoleWorker({ name }) {
     const { message } = error;
 
     yield put(actions.requestFailure(error));
-    yield put(
-      toastActions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
+    yield call(helper.errorToast, message);
   }
 }
 
@@ -170,13 +78,10 @@ function* updateRoleWorker({ roleId, name }) {
     if (result.success) {
       yield put(actions.clearCollection());
       yield put(actions.requestRoles({ page: 1, limit: 20 }));
-      yield put(
-        toastActions.popToast({
-          title: 'Edit Role',
-          icon: 'times-circle',
-          message: `${name} role successfully updated!`
-        })
-      );
+      yield call(helper.toast, {
+        title: 'Edit Role',
+        message: `${name} role successfully updated!`
+      });
     } else if (result.error) {
       throw result.error;
     } else {
@@ -186,13 +91,7 @@ function* updateRoleWorker({ roleId, name }) {
     const { message } = error;
 
     yield put(actions.requestFailure(error));
-    yield put(
-      toastActions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
+    yield call(helper.errorToast, message);
   }
 }
 
@@ -208,13 +107,10 @@ function* deleteRoleWorker({ roleId, name }) {
     if (result.success) {
       yield put(actions.clearCollection());
       yield put(actions.requestRoles({ page: 1, limit: 20 }));
-      yield put(
-        toastActions.popToast({
-          title: 'Delete Role',
-          icon: 'times-circle',
-          message: `${name} role successfully deleted!`
-        })
-      );
+      yield call(helper.toast, {
+        title: 'Delete Role',
+        message: `${name} role successfully deleted!`
+      });
     } else if (result.error) {
       throw result.error;
     } else {
@@ -224,13 +120,7 @@ function* deleteRoleWorker({ roleId, name }) {
     const { message } = error;
 
     yield put(actions.requestFailure(error));
-    yield put(
-      toastActions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
+    yield call(helper.errorToast, message);
   }
 }
 
@@ -258,13 +148,7 @@ function* requestRoleUsersWorker({ roleId }) {
     const { message } = error;
 
     yield put(actions.requestFailure(error));
-    yield put(
-      toastActions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
+    yield call(helper.errorToast, message);
   }
 }
 
@@ -283,14 +167,10 @@ function* createRoleUserWorker({ userId, roleId, active }) {
 
     // update roles in state or throw an error
     if (result.success) {
-      // yield put(actions.requestRoles());
-      yield put(
-        toastActions.popToast({
-          title: 'User Role Added',
-          icon: 'times-circle',
-          message: `Role ${roleId} assigned to User ${userId}!`
-        })
-      );
+      yield call(helper.toast, {
+        title: 'User Role Added',
+        message: `Role ${roleId} assigned to User ${userId}!`
+      });
     } else if (result.error) {
       throw result.error;
     } else {
@@ -300,13 +180,7 @@ function* createRoleUserWorker({ userId, roleId, active }) {
     const { message } = error;
 
     yield put(actions.requestFailure(error));
-    yield put(
-      toastActions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
+    yield call(helper.errorToast, message);
   }
 }
 
@@ -320,14 +194,10 @@ function* deleteRoleUserWorker({ userId, roleId, name }) {
 
     // update roles in state or throw an error
     if (result.success) {
-      // yield put(actions.requestRoles());
-      yield put(
-        toastActions.popToast({
-          title: 'Unassign User Role',
-          icon: 'times-circle',
-          message: `${name} role successfully unassigned!`
-        })
-      );
+      yield call(helper.toast, {
+        title: 'Unassign User Role',
+        message: `${name} role successfully unassigned!`
+      });
     } else if (result.error) {
       throw result.error;
     } else {
@@ -337,13 +207,7 @@ function* deleteRoleUserWorker({ userId, roleId, name }) {
     const { message } = error;
 
     yield put(actions.requestFailure(error));
-    yield put(
-      toastActions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
+    yield call(helper.errorToast, message);
   }
 }
 

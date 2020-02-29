@@ -1,30 +1,12 @@
 import { all, put, call, select } from 'redux-saga/effects';
-
+import helper from 'utils/saga';
 import request from 'utils/request';
 import { actions } from 'reducers/users';
-import { actions as toastActions } from 'reducers/toast';
 import saga, { watchers, workers } from './users';
 import { getCachedUsers, getUsersPager } from 'selectors/users';
 
 describe('users sagas', () => {
   const users = { users: true };
-
-  const usersEndpoint = {
-    url: '/users/accounts/?limit=20&offset=1',
-    method: 'GET'
-  };
-  const countEndpoint = {
-    url: '/users/count',
-    method: 'GET'
-  };
-  /*
-  const createUserEndpoint = {
-    url: '/user',
-    method: 'POST'
-  };
-  */
-
-  const count = { result: 25 };
 
   const pager = {
     count: 25,
@@ -34,103 +16,38 @@ describe('users sagas', () => {
   };
 
   it('handles success in requestUsersWorker', () => {
+    const response = { cached: users, pager };
     const gen = workers.requestUsersWorker({ pager });
 
-    let result = gen.next(pager);
-
-    expect(result.value).toEqual(select(getUsersPager));
-
-    result = gen.next(count);
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: countEndpoint })
-    );
-
-    result = gen.next({
-      success: true,
-      response: {
-        data: 25
-      }
-    });
+    let result = gen.next();
 
     expect(result.value).toEqual(select(getCachedUsers));
 
     result = gen.next(users);
 
+    expect(result.value).toEqual(select(getUsersPager));
+
+    result = gen.next(pager);
+
     expect(result.value).toEqual(
-      call(request.execute, { endpoint: usersEndpoint })
+      call(helper.pager, {
+        cached: users,
+        pager: {
+          ...pager,
+          store: pager
+        },
+        route: {
+          count: '/users/count',
+          data: '/users/accounts/'
+        },
+        type: 'Users'
+      })
     );
 
-    result = gen.next({
-      success: true,
-      response: {
-        data: users
-      }
-    });
+    result = gen.next(response);
 
     expect(result.value).toEqual(
       put(actions.requestUsersSuccess(users, pager))
-    );
-  });
-
-  it('handles request failure in requestUsersWorker', () => {
-    const error = new Error('Failed to count users!');
-    const gen = workers.requestUsersWorker({ pager });
-
-    let result = gen.next(pager);
-
-    expect(result.value).toEqual(select(getUsersPager));
-
-    result = gen.next(count);
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: countEndpoint })
-    );
-
-    result = gen.next({
-      success: false,
-      response: {
-        data: 25
-      }
-    });
-
-    expect(result.value).toEqual(put(actions.requestUsersFailure(error)));
-  });
-
-  it('handles unexpected error in requestUsersWorker', () => {
-    const error = new Error('Failed to count users!');
-    const { message } = error;
-    const gen = workers.requestUsersWorker({ pager });
-
-    let result = gen.next(pager);
-
-    expect(result.value).toEqual(select(getUsersPager));
-
-    result = gen.next(count);
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: countEndpoint })
-    );
-
-    result = gen.next({
-      success: false,
-      response: {
-        data: 25
-      }
-    });
-
-    expect(result.value).toEqual(put(actions.requestUsersFailure(error)));
-
-    result = gen.next();
-
-    expect(result.value).toEqual(
-      put(
-        toastActions.popToast({
-          title: 'Error',
-          icon: 'times-circle',
-          message
-        })
-      )
     );
   });
 
@@ -200,15 +117,7 @@ describe('users sagas', () => {
 
     result = gen.next();
 
-    expect(result.value).toEqual(
-      put(
-        toastActions.popToast({
-          title: 'Error',
-          icon: 'times-circle',
-          message
-        })
-      )
-    );
+    expect(result.value).toEqual(call(helper.errorToast, message));
   });
 
   const roles = [true];
@@ -275,15 +184,7 @@ describe('users sagas', () => {
 
     result = gen.next();
 
-    expect(result.value).toEqual(
-      put(
-        toastActions.popToast({
-          title: 'Error',
-          icon: 'times-circle',
-          message
-        })
-      )
-    );
+    expect(result.value).toEqual(call(helper.errorToast, message));
   });
 
   it('forks all watchers', () => {

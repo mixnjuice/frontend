@@ -1,30 +1,12 @@
 import { all, put, call, select } from 'redux-saga/effects';
-
+import helper from 'utils/saga';
 import request from 'utils/request';
 import { actions } from 'reducers/roles';
-import { actions as toastActions } from 'reducers/toast';
 import saga, { watchers, workers } from './roles';
 import { getCachedRoles, getRolesPager } from 'selectors/roles';
 
 describe('roles sagas', () => {
   const roles = { roles: true };
-
-  const rolesEndpoint = {
-    url: '/roles/?limit=20&offset=1',
-    method: 'GET'
-  };
-  const countEndpoint = {
-    url: '/roles/count',
-    method: 'GET'
-  };
-  /*
-  const createRoleEndpoint = {
-    url: '/role',
-    method: 'POST'
-  };
-  */
-
-  const count = 25;
 
   const pager = {
     count: 25,
@@ -34,129 +16,38 @@ describe('roles sagas', () => {
   };
 
   it('handles success in requestRolesWorker', () => {
+    const response = { cached: roles, pager };
     const gen = workers.requestRolesWorker({ pager });
 
-    let result = gen.next(pager);
-
-    expect(result.value).toEqual(select(getRolesPager));
-
-    result = gen.next(count);
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: countEndpoint })
-    );
-
-    result = gen.next({
-      success: true,
-      response: {
-        data: 25
-      }
-    });
+    let result = gen.next();
 
     expect(result.value).toEqual(select(getCachedRoles));
 
     result = gen.next(roles);
 
+    expect(result.value).toEqual(select(getRolesPager));
+
+    result = gen.next(pager);
+
     expect(result.value).toEqual(
-      call(request.execute, { endpoint: rolesEndpoint })
+      call(helper.pager, {
+        cached: roles,
+        pager: {
+          ...pager,
+          store: pager
+        },
+        route: {
+          count: '/roles/count',
+          data: '/roles/'
+        },
+        type: 'Roles'
+      })
     );
 
-    result = gen.next({
-      success: true,
-      response: {
-        data: roles
-      }
-    });
+    result = gen.next(response);
 
     expect(result.value).toEqual(
       put(actions.requestRolesSuccess(roles, pager))
-    );
-  });
-
-  it('handles request failure in requestRolesWorker', () => {
-    const error = new Error('An error occurred.');
-    const gen = workers.requestRolesWorker({ pager });
-
-    let result = gen.next(pager);
-
-    expect(result.value).toEqual(select(getRolesPager));
-
-    result = gen.next(count);
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: countEndpoint })
-    );
-
-    result = gen.next({
-      success: true,
-      response: {
-        data: 25
-      }
-    });
-
-    expect(result.value).toEqual(select(getCachedRoles));
-
-    result = gen.next(roles);
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: rolesEndpoint })
-    );
-
-    result = gen.next({
-      success: false,
-      error
-    });
-
-    expect(result.value).toEqual(put(actions.requestFailure(error)));
-  });
-
-  it('handles unexpected error in requestRolesWorker', () => {
-    const error = new Error('An error occurred.');
-    const { message } = error;
-    const gen = workers.requestRolesWorker({ pager });
-
-    let result = gen.next(pager);
-
-    expect(result.value).toEqual(select(getRolesPager));
-
-    result = gen.next(count);
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: countEndpoint })
-    );
-
-    result = gen.next({
-      success: true,
-      response: {
-        data: 25
-      }
-    });
-
-    expect(result.value).toEqual(select(getCachedRoles));
-
-    result = gen.next(roles);
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: rolesEndpoint })
-    );
-
-    result = gen.next({
-      success: false,
-      error
-    });
-
-    expect(result.value).toEqual(put(actions.requestFailure(error)));
-
-    result = gen.next();
-
-    expect(result.value).toEqual(
-      put(
-        toastActions.popToast({
-          title: 'Error',
-          icon: 'times-circle',
-          message
-        })
-      )
     );
   });
 
@@ -186,13 +77,10 @@ describe('roles sagas', () => {
     expect(result.value).toEqual(
       put(actions.clearCollection()),
       put(actions.requestRoles({ page: 1, limit: 20 })),
-      put(
-        toastActions.popToast({
-          title: 'Role Created',
-          icon: 'times-circle',
-          message: `${name} role successfully created!`
-        })
-      )
+      call(helper.toast, {
+        title: 'Role Created',
+        message: `${name} role successfully created!`
+      })
     );
   });
 
@@ -234,15 +122,7 @@ describe('roles sagas', () => {
 
     result = gen.next();
 
-    expect(result.value).toEqual(
-      put(
-        toastActions.popToast({
-          title: 'Error',
-          icon: 'times-circle',
-          message
-        })
-      )
-    );
+    expect(result.value).toEqual(call(helper.errorToast, message));
   });
 
   const roleId = 3;
@@ -268,13 +148,10 @@ describe('roles sagas', () => {
     expect(result.value).toEqual(
       put(actions.clearCollection()),
       put(actions.requestRoles({ page: 1, limit: 20 })),
-      put(
-        toastActions.popToast({
-          title: 'Delete Role',
-          icon: 'times-circle',
-          message: `${name} role successfully updated!`
-        })
-      )
+      call(helper.toast, {
+        title: 'Delete Role',
+        message: `${name} role successfully updated!`
+      })
     );
   });
 
@@ -316,15 +193,7 @@ describe('roles sagas', () => {
 
     result = gen.next();
 
-    expect(result.value).toEqual(
-      put(
-        toastActions.popToast({
-          title: 'Error',
-          icon: 'times-circle',
-          message
-        })
-      )
-    );
+    expect(result.value).toEqual(call(helper.errorToast, message));
   });
 
   const deleteEndpoint = {
@@ -348,13 +217,10 @@ describe('roles sagas', () => {
     expect(result.value).toEqual(
       put(actions.clearCollection()),
       put(actions.requestRoles({ page: 1, limit: 20 })),
-      put(
-        toastActions.popToast({
-          title: 'Delete Role',
-          icon: 'times-circle',
-          message: `${name} role successfully deleted!`
-        })
-      )
+      call(helper.toast, {
+        title: 'Delete Role',
+        message: `${name} role successfully deleted!`
+      })
     );
   });
 
@@ -396,15 +262,7 @@ describe('roles sagas', () => {
 
     result = gen.next();
 
-    expect(result.value).toEqual(
-      put(
-        toastActions.popToast({
-          title: 'Error',
-          icon: 'times-circle',
-          message
-        })
-      )
-    );
+    expect(result.value).toEqual(call(helper.errorToast, message));
   });
 
   const roleUsersEndpoint = {
@@ -473,15 +331,7 @@ describe('roles sagas', () => {
 
     result = gen.next();
 
-    expect(result.value).toEqual(
-      put(
-        toastActions.popToast({
-          title: 'Error',
-          icon: 'times-circle',
-          message
-        })
-      )
-    );
+    expect(result.value).toEqual(call(helper.errorToast, message));
   });
 
   const userId = 20;
@@ -513,13 +363,10 @@ describe('roles sagas', () => {
     });
 
     expect(result.value).toEqual(
-      put(
-        toastActions.popToast({
-          title: 'User Role Added',
-          icon: 'times-circle',
-          message: `Role ${roleId} assigned to User ${userId}!`
-        })
-      )
+      call(helper.toast, {
+        title: 'User Role Added',
+        message: `Role ${roleId} assigned to User ${userId}!`
+      })
     );
   });
 
@@ -567,15 +414,7 @@ describe('roles sagas', () => {
 
     result = gen.next();
 
-    expect(result.value).toEqual(
-      put(
-        toastActions.popToast({
-          title: 'Error',
-          icon: 'times-circle',
-          message
-        })
-      )
-    );
+    expect(result.value).toEqual(call(helper.errorToast, message));
   });
 
   const deleteRoleUserEndpoint = {
@@ -597,13 +436,10 @@ describe('roles sagas', () => {
     });
 
     expect(result.value).toEqual(
-      put(
-        toastActions.popToast({
-          title: 'Unassign User Role',
-          icon: 'times-circle',
-          message: `${name} role successfully unassigned!`
-        })
-      )
+      call(helper.toast, {
+        title: 'Unassign User Role',
+        message: `${name} role successfully unassigned!`
+      })
     );
   });
 
@@ -645,15 +481,7 @@ describe('roles sagas', () => {
 
     result = gen.next();
 
-    expect(result.value).toEqual(
-      put(
-        toastActions.popToast({
-          title: 'Error',
-          icon: 'times-circle',
-          message
-        })
-      )
-    );
+    expect(result.value).toEqual(call(helper.errorToast, message));
   });
 
   it('forks all watchers', () => {
