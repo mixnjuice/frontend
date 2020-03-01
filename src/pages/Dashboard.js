@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import {
   DashboardMenu as Menu,
   DashboardMain as Main
-} from 'components/Dashboard/';
+} from 'components/Dashboard';
 import { Container, Row, Col } from 'react-bootstrap';
 
 import { actions as dashboardActions } from 'reducers/dashboard';

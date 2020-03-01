@@ -1,7 +1,8 @@
 import { lazy } from 'react';
 
 export const imports = {
-  Dashboard: () => import(/* webpackChunkName: "recipe" */ 'pages/Dashboard'),
+  Dashboard: () =>
+    import(/* webpackChunkName: "dashboard" */ 'pages/Dashboard'),
   Favorites: () =>
     import(/* webpackChunkName: "user" */ 'pages/user/Favorites'),
   Flavors: () => import(/* webpackChunkName: "recipe" */ 'pages/Flavors'),

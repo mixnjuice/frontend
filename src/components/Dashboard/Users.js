@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {
   DashboardLink as DashLink,
   DashboardLayout as Layout
-} from 'components/Dashboard/';
+} from 'components/Dashboard';
 import { Table } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { PagerInfo, withPagination } from 'components/Pagination/Pagination';

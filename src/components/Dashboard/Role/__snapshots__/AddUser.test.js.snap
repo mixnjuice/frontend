@@ -51,6 +51,22 @@ exports[`Dashboard <RoleAddUser /> renders correctly 1`] = `
           >
             Choose a User
           </option>
+          <option
+            value="1"
+          >
+            david
+             (
+            david@fake-gmail.com
+            )
+          </option>
+          <option
+            value="2"
+          >
+            alvapone
+             (
+            al@fake-mixnjuice.com
+            )
+          </option>
         </select>
       </div>
     </form>

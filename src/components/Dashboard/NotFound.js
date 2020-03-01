@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { DashboardLayout as Layout } from 'components/Dashboard/';
+import { DashboardLayout as Layout } from 'components/Dashboard';
 
 export class NotFound extends Component {
   static propTypes = {

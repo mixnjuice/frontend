@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { DashboardLink as DashLink } from 'components/Dashboard/';
+import { DashboardLink as DashLink } from 'components/Dashboard';
 import { Accordion, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

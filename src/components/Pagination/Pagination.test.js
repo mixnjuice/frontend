@@ -1,6 +1,5 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-// import withPagination, { pagination, mapStateToProps, mapDispatchToProps } from './Pagination';
 import { pagination } from './Pagination';
 // Prevent findDOMNode error in test from Dropdown component in react-bootstrap
 jest.mock('react-dom', () => ({
@@ -68,7 +67,6 @@ describe('<Pagination />', () => {
   const pager = { count: 861, limit: 5, page: 1, pages: 173 };
   const TestComponent = () => <p />;
   const Component = pagination(TestComponent);
-  // const ConnectedComponent = withPagination(TestComponent);
   const props = {
     actions,
     pager,

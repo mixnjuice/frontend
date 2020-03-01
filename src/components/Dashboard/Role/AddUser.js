@@ -5,9 +5,9 @@ import { bindActionCreators } from 'redux';
 import { Button, Form } from 'react-bootstrap';
 import {
   DashboardLink as DashLink,
-  DashboardLayout as Layout
-} from 'components/Dashboard/';
-import { UserRoles } from 'components/Dashboard/';
+  DashboardLayout as Layout,
+  UserRoles
+} from 'components/Dashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { actions as rolesActions } from 'reducers/roles';
@@ -36,15 +36,16 @@ export class RoleAddUser extends Component {
   componentDidMount() {
     const { actions } = this.props;
 
-    actions.requestUsers({ page: 1, limit: 'none' });
+    actions.requestUsers({ page: 1, limit: 100 });
   }
 
   handleChange(e) {
     const { actions } = this.props;
+    const userId = Number(e.target.value);
 
-    this.setState({ userId: e.target.value });
+    this.setState({ userId });
     // Refresh User Roles for <UserRoles /> component
-    actions.requestUserRoles({ userId: e.target.value });
+    actions.requestUserRoles({ userId });
   }
 
   handleSubmit(e) {
@@ -112,7 +113,7 @@ export class RoleAddUser extends Component {
         {isUserIdSelected && (
           <UserRoles
             layoutOptions={{ header: false, title: true, border: 'info' }}
-            userId={Number(userId)}
+            userId={userId}
             roleId={roleId}
           />
         )}

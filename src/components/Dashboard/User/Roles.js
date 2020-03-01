@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import {
   DashboardLink as DashLink,
   DashboardLayout as Layout
-} from 'components/Dashboard/';
+} from 'components/Dashboard';
 import { Alert, Table } from 'react-bootstrap';
 
 import { actions as usersActions } from 'reducers/users';
@@ -33,8 +33,6 @@ export class UserRoles extends Component {
   render() {
     const { layoutOptions, roles, roleId, userId } = this.props;
 
-    let style = {};
-
     return (
       <Layout
         pageTitle="Roles - Dashboard"
@@ -61,14 +59,13 @@ export class UserRoles extends Component {
             </thead>
             <tbody>
               {roles.map((role, index) => {
-                style = {};
-                if (roleId === role.Role.id) {
-                  style = { border: '2px solid red' };
-                }
+                const roleAssigned =
+                  roleId === role.Role.id ? 'dashboard-highlight' : null;
+
                 return (
                   <tr key={index}>
                     <td className="text-center">{role.Role.id}</td>
-                    <td style={style}>{role.Role.name}</td>
+                    <td className={roleAssigned}>{role.Role.name}</td>
                     <td>
                       <DashLink
                         to={`#role/${role.Role.id}/users`}

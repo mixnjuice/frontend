@@ -1755,7 +1755,7 @@ exports[`Dashboard <Main /> renders User/Roles correctly 1`] = `
               1
             </td>
             <td
-              style={Object {}}
+              className={null}
             >
               Administrator
             </td>
@@ -1782,7 +1782,7 @@ exports[`Dashboard <Main /> renders User/Roles correctly 1`] = `
               8
             </td>
             <td
-              style={Object {}}
+              className={null}
             >
               Everyone
             </td>
@@ -1809,7 +1809,7 @@ exports[`Dashboard <Main /> renders User/Roles correctly 1`] = `
               9
             </td>
             <td
-              style={Object {}}
+              className={null}
             >
               Myself
             </td>

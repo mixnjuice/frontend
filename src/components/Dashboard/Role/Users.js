@@ -6,7 +6,7 @@ import { Alert, Table } from 'react-bootstrap';
 import {
   DashboardLink as DashLink,
   DashboardLayout as Layout
-} from 'components/Dashboard/';
+} from 'components/Dashboard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { actions as rolesActions } from 'reducers/roles';

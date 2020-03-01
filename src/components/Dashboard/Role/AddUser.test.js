@@ -5,7 +5,6 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/roles';
 import { initialState as dashboardInitialState } from 'reducers/dashboard';
-import { initialState as usersInitialState } from 'reducers/users';
 import ConnectedRoleAddUser, { RoleAddUser } from './AddUser';
 import { withMemoryRouter } from 'utils';
 
@@ -16,73 +15,106 @@ describe('Dashboard <RoleAddUser />', () => {
     title: false,
     style: {}
   };
-  const mockStore = configureStore();
-  const store = mockStore({
-    roles: initialState,
-    dashboard: dashboardInitialState,
-    users: usersInitialState
-  });
   const roleId = 1;
   const name = 'Administrator';
   const actions = {
+    requestUsers: jest.fn(),
     requestUserRoles: jest.fn(),
     createRoleUser: jest.fn(),
     selectDashboard: jest.fn()
   };
+  const users = {
+    collection: [
+      {
+        id: '1',
+        emailAddress: 'david@fake-gmail.com',
+        created: '2019-12-24T06:48:45.073Z',
+        activationCode: null,
+        UserProfile: {
+          userId: '1',
+          name: 'david',
+          location: 'ABQ, NM',
+          bio: 'AKA Al Vapone. USAF',
+          url: 'daviddyess.com'
+        }
+      },
+      {
+        id: '2',
+        emailAddress: 'al@fake-mixnjuice.com',
+        created: '2020-02-20T00:34:39.885Z',
+        activationCode: null,
+        UserProfile: {
+          userId: '2',
+          name: 'alvapone',
+          location: 'lol',
+          bio: 'me :)',
+          url: 'tangant'
+        }
+      }
+    ]
+  };
+  const mockStore = configureStore();
+  const store = mockStore({
+    roles: initialState,
+    dashboard: dashboardInitialState,
+    users
+  });
   const e = {
     target: {
-      value: 'test'
+      value: 3
     },
     preventDefault: jest.fn()
   };
 
-  const RoutedRoleAddUser = withMemoryRouter(ConnectedRoleAddUser);
+  const RoutedConnectedRoleAddUser = withMemoryRouter(ConnectedRoleAddUser);
+  const RoutedRoleAddUser = withMemoryRouter(RoleAddUser);
+  const props = {
+    layoutOptions: defaultLayoutOptions,
+    roleId,
+    name,
+    actions,
+    collection: users.collection
+  };
 
   it('renders correctly', () => {
-    const props = {
-      layoutOptions: defaultLayoutOptions,
-      roleId,
-      name
-    };
-
     expect(
       renderer
         .create(
           <Provider store={store}>
-            <RoutedRoleAddUser {...props} />
+            <RoutedConnectedRoleAddUser {...props} />
           </Provider>
         )
         .toJSON()
     ).toMatchSnapshot();
   });
 
-  it('can handleChange', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedRoleAddUser
-          actions={actions}
-          layoutOptions={defaultLayoutOptions}
-        />
-      </Provider>
-    );
-    const { instance } = component.root.findByType(RoleAddUser);
+  const component = renderer.create(
+    <Provider store={store}>
+      <RoutedRoleAddUser {...props} />
+    </Provider>
+  );
+  const { instance } = component.root.findByType(RoleAddUser);
 
+  it('can handleChange', () => {
     expect(instance).toBeDefined();
-    instance.handleChange(e);
+    instance.handleChange({
+      target: {
+        value: 3
+      }
+    });
+    expect(actions.requestUserRoles).toHaveBeenCalledWith({
+      userId: 3
+    });
   });
 
   it('can handleSubmit', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedRoleAddUser
-          actions={actions}
-          layoutOptions={defaultLayoutOptions}
-        />
-      </Provider>
-    );
-    const { instance } = component.root.findByType(RoleAddUser);
-
     expect(instance).toBeDefined();
     instance.handleSubmit(e);
+    expect(actions.createRoleUser).toHaveBeenCalledWith({
+      roleId,
+      userId: 3,
+      active: true
+    });
+    expect(actions.selectDashboard).toHaveBeenCalledWith({ name: 'Roles' });
   });
 });

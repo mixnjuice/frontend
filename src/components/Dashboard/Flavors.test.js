@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/flavors';
-import ConnectedFlavors /* , { Flavors } */ from './Flavors';
+import ConnectedFlavors from './Flavors';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <Flavors />', () => {

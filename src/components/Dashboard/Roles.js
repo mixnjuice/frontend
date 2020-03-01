@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react';
 import {
   DashboardLink as DashLink,
   DashboardLayout as Layout
-} from 'components/Dashboard/';
+} from 'components/Dashboard';
 import { Table } from 'react-bootstrap';
 import { PagerInfo, withPagination } from 'components/Pagination/Pagination';
 import { actions as rolesActions } from 'reducers/roles';
@@ -17,11 +17,13 @@ export class Roles extends Component {
     pagerNavigation: PropTypes.node.isRequired
   };
 
+  noEdit(role) {
+    // Don't allow editing of Adminstrator or User roles
+    return role === 'Administrator' || role === 'User' ? true : false;
+  }
+
   render() {
     const { collection, layoutOptions, pager, pagerNavigation } = this.props;
-    // Administrator and User roles aren't editable
-
-    let noEdit = false;
 
     return (
       <Layout
@@ -40,11 +42,6 @@ export class Roles extends Component {
           </thead>
           <tbody>
             {collection.map((role, index) => {
-              if (role.name === 'Administrator' || role.name === 'User') {
-                noEdit = true;
-              } else {
-                noEdit = false;
-              }
               return (
                 <tr key={index}>
                   <td className="text-center">{role.id}</td>
@@ -65,7 +62,7 @@ export class Roles extends Component {
                     >
                       Assign
                     </DashLink>
-                    {!noEdit && (
+                    {!this.noEdit(role.name) && (
                       <Fragment>
                         &nbsp; | &nbsp;
                         <DashLink

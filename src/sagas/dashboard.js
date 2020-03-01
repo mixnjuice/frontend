@@ -7,9 +7,11 @@ import { actions as toastActions } from 'reducers/toast';
 function* requestDashboardWorker(dashboardComponent) {
   yield put(actions.requestDashboardSuccess(dashboardComponent));
 }
+
 function* selectDashboardWorker({ name, item }) {
   yield put(actions.selectDashboardSuccess({ name, item }));
 }
+
 function* requestMigrationsWorker() {
   try {
     const endpoint = {

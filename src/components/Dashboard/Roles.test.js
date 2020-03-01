@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/roles';
 import { initialState as dashboardInitialState } from 'reducers/dashboard';
-import ConnectedRoles /* , { Roles } */ from './Roles';
+import ConnectedRoles from './Roles';
 import { withMemoryRouter } from 'utils';
 
 describe('Dashboard <Roles />', () => {
