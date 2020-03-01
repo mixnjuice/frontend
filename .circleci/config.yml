@@ -1,49 +1,16 @@
 version: 2.1
-
 executors:
   docker-publisher:
     environment:
       IMAGE_NAME: mixnjuice/frontend
     docker:
       - image: circleci/buildpack-deps:stretch
-    working_directory: ~/mixnjuice-frontend
-
 jobs:
-  build:
-    working_directory: ~/mixnjuice-frontend
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - checkout
-      - run:
-          name: update-npm
-          command: 'sudo npm install -g npm@latest codecov'
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: install-npm
-          command: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - ./node_modules
-      - run:
-          name: Build application
-          command: npm run build
-      - persist_to_workspace:
-          root: .
-          paths:
-            - dist/*
-      - run:
-          name: test
-          command: 'npm test && codecov'
   docker_build:
     executor: docker-publisher
     steps:
       - checkout
       - setup_remote_docker
-      - attach_workspace:
-          at: ~/mixnjuice-frontend/dist
       - run:
           name: Build Docker image
           command: docker build -t $IMAGE_NAME:latest .
@@ -79,7 +46,6 @@ jobs:
           name: Deploy using SSH
           command: |
             ssh deployer@mixnjuice.com "./update-frontend.sh"
-
 workflows:
   version: 2
   main_workflow:

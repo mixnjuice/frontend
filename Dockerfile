@@ -1,10 +1,14 @@
-FROM nginx:stable
+FROM node:lts-alpine as build
 
-COPY ./dist/ /var/www
+WORKDIR /usr/src/mixnjuice-frontend
 
-COPY ./docker/nginx.conf /etc/nginx/conf.d/default.conf
+# copy source code to image
+COPY . .
 
-EXPOSE ${FRONTEND_PORT:-3001}
+RUN npm install
 
-CMD ["nginx -g 'daemon off;'"]
+RUN npm run build
 
+FROM nginx
+
+COPY --from=build /usr/src/mixnjuice-frontend/dist /usr/share/nginx/html
