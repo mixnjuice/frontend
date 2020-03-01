@@ -7,7 +7,17 @@ import {
   faCheck,
   faTimesCircle,
   faMinusCircle,
-  faCheckCircle
+  faCheckCircle,
+  faCity,
+  faGlobe,
+  faInfoCircle,
+  faPlus,
+  faTrash,
+  faUndo,
+  faSearch,
+  faCompress,
+  faExpand,
+  faSave
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faHeart as farHeart,
@@ -20,6 +30,9 @@ library.add(
   faFire,
   faUser,
   faCheck,
+  faCity,
+  faGlobe,
+  faInfoCircle,
   faTimesCircle,
   faMinusCircle,
   faCheckCircle,
@@ -28,7 +41,14 @@ library.add(
   fasStar,
   farStar,
   faCheckSquare,
-  faSquare
+  faSquare,
+  faPlus,
+  faTrash,
+  faUndo,
+  faSearch,
+  faCompress,
+  faExpand,
+  faSave
 );
 
 export default library;

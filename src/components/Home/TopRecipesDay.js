@@ -122,7 +122,4 @@ export class TopRecipesDay extends Component {
   }
 }
 
-export default connect(
-  null,
-  null
-)(TopRecipesDay);
+export default connect(null, null)(TopRecipesDay);

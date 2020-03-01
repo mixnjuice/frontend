@@ -1,4 +1,20 @@
 @import "~normalize-scss/sass/normalize/import-now";
 @import "~bootstrap/scss/bootstrap";
+
+// our variables
+@import "./variables";
+
+// component styles
+@import "./components/FlavorBrowser/FlavorBrowser";
+@import "./components/Footer/Footer";
+@import "./components/IngredientBar/IngredientBar";
+@import "./components/IngredientList/IngredientList";
 @import "./components/ToastDrawer/ToastDrawer";
-@import "./style.scss";
+@import "./components/SplitSlider/SplitSlider";
+@import "./components/SuspenseFallback/SuspenseFallback";
+
+// page styles
+@import "./pages/RecipeEditor";
+
+// core style
+@import "./style";

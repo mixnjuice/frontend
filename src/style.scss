@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Architects+Daughter|Quicksand&display=swap');
-@import './_variables.scss';
-@import './pages/Recipes.scss';
+@import url("https://fonts.googleapis.com/css?family=Architects+Daughter|Quicksand&display=swap");
+@import "./_variables.scss";
+@import "./pages/Recipes.scss";
 
 // Changes the font site-wide
 * {
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
 // Forces scrollbar to always be present, to combat the center being
@@ -52,25 +52,25 @@ hr {
   opacity: 0.5;
 }
 
-// When toggling certain elements off the screen (e.g. "no nicotine" in calculator)
+// When toggling certain elements off the screen (e.g. "no nicotine" in recipe editor)
 // it changes the width of the container and the width of the other elements around it
 // Switching the container to "fluid" didn't fix it, so this was unfortunately the best way I could
 // find to solve the issue; by fixing the container width for medium screens and up
 @include breakpoint-md() {
   .container {
-    width: 800px;
+    max-width: 800px;
   }
 }
 
 @include breakpoint-lg() {
   .container {
-    width: 1000px;
+    max-width: 1000px;
   }
 }
 
 @include breakpoint-xl() {
   .container {
-    width: 1200px;
+    max-width: 1200px;
   }
 }
 
@@ -124,7 +124,7 @@ hr {
 
 // Styling for nav "brand" (MixNJuice "logo")
 .navbar-brand {
-  font-family: 'Architects Daughter', cursive;
+  font-family: "Architects Daughter", cursive;
   font-size: 3em;
 }
 
@@ -153,9 +153,9 @@ hr {
 // Changing disabled buttons to grey
 .btn-primary.disabled,
 .btn-primary:disabled {
-  color: gray('800');
-  background-color: gray('300');
-  border-color: gray('800');
+  color: gray("800");
+  background-color: gray("300");
+  border-color: gray("800");
 }
 
 // Changing the border of any form fields
@@ -179,7 +179,7 @@ hr {
 
 // Changing the background for the text next to an input field
 .input-group-text {
-  background-color: gray('200');
+  background-color: gray("200");
 }
 
 // Changing the column width of the ingredient percent input
@@ -210,7 +210,7 @@ input {
 }
 
 // Style for file inputs
-.custom-file-input[type='file'] {
+.custom-file-input[type="file"] {
   border: 1px solid $black;
   border-radius: 0.25rem;
   padding: 5px;
@@ -247,7 +247,7 @@ input {
     transition: none;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       width: 100%;
       transform: scaleX(0);
@@ -262,7 +262,7 @@ input {
   }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     transform: scaleX(0);
@@ -292,8 +292,32 @@ input {
   height: 40px;
   padding: 0 14px;
   line-height: auto;
-  background: $teal;
   border: 1px solid $black;
+
+  > * {
+    z-index: 2;
+    position: relative;
+  }
+
+  &-primary {
+    background: $teal;
+
+    // Changing disabled buttons to grey
+    &.disabled,
+    &:disabled {
+      color: gray("800");
+      background-color: gray("300");
+      border-color: gray("800");
+    }
+  }
+
+  /* stylelint-disable-next-line a11y/line-height-is-vertical-rhythmed */
+  &-sm {
+    height: 28px;
+    width: 28px;
+    padding: 0;
+    line-height: 0;
+  }
 }
 
 // Button animations
@@ -305,7 +329,7 @@ input {
 
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       bottom: 0;
@@ -319,7 +343,7 @@ input {
 
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       left: 0;
       bottom: 0;
@@ -332,7 +356,7 @@ input {
   }
 
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0;
     bottom: 0;
@@ -341,6 +365,7 @@ input {
     transform: translateX(-100%);
     background: $baby-blue;
     transition: transform 0.2s ease-in-out;
+    z-index: 1;
   }
 
   &:hover,

@@ -3,14 +3,12 @@ import { createSelector } from 'reselect';
 
 export const getApplication = state => state.application;
 
-export const isLoggingIn = createSelector(
-  getApplication,
-  application => Boolean(application.loggingIn)
+export const isLoggingIn = createSelector(getApplication, application =>
+  Boolean(application.loggingIn)
 );
 
-export const isLoggingOut = createSelector(
-  getApplication,
-  application => Boolean(application.loggingOut)
+export const isLoggingOut = createSelector(getApplication, application =>
+  Boolean(application.loggingOut)
 );
 
 export const getUser = createSelector(

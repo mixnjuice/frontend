@@ -36,7 +36,4 @@ export class FeaturedMixer extends Component {
   }
 }
 
-export default connect(
-  null,
-  null
-)(FeaturedMixer);
+export default connect(null, null)(FeaturedMixer);

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SuspenseFallback /> renders correctly 1`] = `
+<div>
+  <Header />
+  <div
+    className="loading__overlay"
+  >
+    <div
+      className="loading__content m-auto"
+    >
+      <div
+        className="loading__spinner spinner-border"
+        role="status"
+      />
+      <div
+        className="loading__text"
+      >
+        <span>
+          Loading...
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

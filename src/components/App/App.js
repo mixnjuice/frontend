@@ -1,17 +1,16 @@
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
-import { Spinner } from 'react-bootstrap';
 import { bindActionCreators } from 'redux';
 import React, { Component, Suspense } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
+import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import ToastDrawer from 'components/ToastDrawer/ToastDrawer';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
 import { actions as appActions } from 'reducers/application';
 import {
-  Calculator,
   Favorites,
   Flavors,
   FlavorStash,
@@ -20,12 +19,14 @@ import {
   NotFound,
   Profile,
   Recipe,
+  RecipeEditor,
   Recipes,
   Register,
   ShoppingList,
   UserRecipes,
   UserSettings
 } from 'pages';
+import SuspenseFallback from 'components/SuspenseFallback/SuspenseFallback';
 
 export class App extends Component {
   static propTypes = {
@@ -40,7 +41,7 @@ export class App extends Component {
 
   render() {
     return (
-      <Suspense fallback={<Spinner variant="primary" />}>
+      <Suspense fallback={<SuspenseFallback />}>
         <Helmet defaultTitle="MixNJuice" titleTemplate="MixNJuice - %s" />
         <Header />
         <ToastDrawer />
@@ -49,7 +50,7 @@ export class App extends Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/recipes" component={Recipes} />
-          <Route exact path="/calculator" component={Calculator} />
+          <PrivateRoute exact path="/recipe/editor" component={RecipeEditor} />
           <Route exact path="/flavors" component={Flavors} />
           <Route exact path="/recipe" component={Recipe} />
           <PrivateRoute exact path="/user/profile" component={Profile} />
@@ -66,25 +67,17 @@ export class App extends Component {
             component={ShoppingList}
           />
           <PrivateRoute exact path="/user/settings" component={UserSettings} />
+          <PrivateRoute path="/user/:userName" component={Profile} />
           <Route component={NotFound} />
         </Switch>
+        <Footer />
       </Suspense>
     );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(
-    {
-      ...appActions
-    },
-    dispatch
-  )
+  actions: bindActionCreators(appActions, dispatch)
 });
 
-export default withRouter(
-  connect(
-    null,
-    mapDispatchToProps
-  )(App)
-);
+export default withRouter(connect(null, mapDispatchToProps)(App));

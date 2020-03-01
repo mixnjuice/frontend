@@ -25,6 +25,8 @@ $max-lg: 1199px;
 
 $min-xl: 1200px;
 
+$base-spacing: 20px;
+
 @mixin breakpoint-xs() {
   @media (min-width: $min-xs) and (max-width: $max-xs) {
     @content;

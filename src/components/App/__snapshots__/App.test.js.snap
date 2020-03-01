@@ -5,14 +5,7 @@ Array [
   <Header />,
   <ToastDrawer />,
   <Login />,
-]
-`;
-
-exports[`<App /> renders calculator page 1`] = `
-Array [
-  <Header />,
-  <ToastDrawer />,
-  <Calculator />,
+  <Footer />,
 ]
 `;
 
@@ -21,6 +14,7 @@ Array [
   <Header />,
   <ToastDrawer />,
   <Favorites />,
+  <Footer />,
 ]
 `;
 
@@ -29,6 +23,7 @@ Array [
   <Header />,
   <ToastDrawer />,
   <FlavorStash />,
+  <Footer />,
 ]
 `;
 
@@ -37,6 +32,7 @@ Array [
   <Header />,
   <ToastDrawer />,
   <Flavors />,
+  <Footer />,
 ]
 `;
 
@@ -45,6 +41,7 @@ Array [
   <Header />,
   <ToastDrawer />,
   <Home />,
+  <Footer />,
 ]
 `;
 
@@ -53,6 +50,7 @@ Array [
   <Header />,
   <ToastDrawer />,
   <Login />,
+  <Footer />,
 ]
 `;
 
@@ -61,6 +59,16 @@ Array [
   <Header />,
   <ToastDrawer />,
   <Profile />,
+  <Footer />,
+]
+`;
+
+exports[`<App /> renders recipe editor page 1`] = `
+Array [
+  <Header />,
+  <ToastDrawer />,
+  <RecipeEditor />,
+  <Footer />,
 ]
 `;
 
@@ -69,6 +77,7 @@ Array [
   <Header />,
   <ToastDrawer />,
   <Recipe />,
+  <Footer />,
 ]
 `;
 
@@ -77,6 +86,7 @@ Array [
   <Header />,
   <ToastDrawer />,
   <Register />,
+  <Footer />,
 ]
 `;
 
@@ -85,6 +95,7 @@ Array [
   <Header />,
   <ToastDrawer />,
   <ShoppingList />,
+  <Footer />,
 ]
 `;
 
@@ -93,6 +104,7 @@ Array [
   <Header />,
   <ToastDrawer />,
   <UserRecipes />,
+  <Footer />,
 ]
 `;
 
@@ -101,5 +113,6 @@ Array [
   <Header />,
   <ToastDrawer />,
   <UserSettings />,
+  <Footer />,
 ]
 `;

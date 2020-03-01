@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SplitSlider /> renders component correctly 1`] = `
+<div
+  className="split-slider input-group"
+>
+  <div
+    className="progress-container"
+  >
+    <div
+      className="progress"
+      draggable={true}
+      onClick={[Function]}
+      onDrag={[Function]}
+      onDragEnd={[Function]}
+      onDragEnter={[Function]}
+      onDragOver={[Function]}
+      onDragStart={[Function]}
+    >
+      <div
+        aria-valuemax={100}
+        aria-valuemin={0}
+        aria-valuenow={50}
+        className="progress-bar bg-success"
+        role="progressbar"
+        style={
+          Object {
+            "width": "50%",
+          }
+        }
+      >
+        VG
+      </div>
+      <div
+        aria-valuemax={100}
+        aria-valuemin={0}
+        aria-valuenow={50}
+        className="progress-bar bg-warning"
+        role="progressbar"
+        style={
+          Object {
+            "width": "50%",
+          }
+        }
+      >
+        PG
+      </div>
+    </div>
+  </div>
+  <input
+    className="form-control"
+    name="left"
+    onChange={[Function]}
+    value={50}
+  />
+  <input
+    className="form-control"
+    name="right"
+    onChange={[Function]}
+    value={50}
+  />
+  <div
+    className="input-group-append"
+  >
+    <button
+      className="btn btn-primary"
+      disabled={false}
+      onClick={[Function]}
+      type="button"
+    >
+      <i
+        className="fa undo"
+      />
+    </button>
+  </div>
+</div>
+`;

@@ -1,8 +1,23 @@
-import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import React, { Component, Fragment } from 'react';
+import { bindActionCreators } from 'redux';
 import { NavLink } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Container, Row, Col } from 'react-bootstrap';
 
-export default class Header extends Component {
+import { actions as appActions } from 'reducers/application';
+import { isLoggedIn } from 'selectors/application';
+
+export class Header extends Component {
+  static propTypes = {
+    actions: PropTypes.object.isRequired,
+    loggedIn: PropTypes.bool.isRequired
+  };
+  constructor(props) {
+    super(props);
+
+    this.logoutUser = this.logoutUser.bind(this);
+  }
   renderNavItem(to, text) {
     return (
       <Nav.Link
@@ -32,9 +47,17 @@ export default class Header extends Component {
     );
   }
 
+  logoutUser() {
+    const { actions } = this.props;
+
+    actions.logoutUser();
+  }
+
   render() {
+    const { loggedIn } = this.props;
+
     return (
-      <Container fluid>
+      <Container fluid className="mb-5">
         <Row className="navigation-container">
           <Col>
             <Navbar expand="lg">
@@ -46,24 +69,47 @@ export default class Header extends Component {
                 <Nav>
                   {this.renderNavItem('/', 'Home')}
                   {this.renderNavItem('/recipes', 'Recipes')}
-                  {this.renderNavItem('/calculator', 'Calculator')}
+                  {loggedIn
+                    ? this.renderNavItem('/recipe/editor', 'Recipe Editor')
+                    : null}
                   {this.renderNavItem('/flavors', 'Flavors')}
-                  <NavDropdown title="User">
-                    {this.renderNavDropdownItem('/user/profile', 'Profile')}
-                    {this.renderNavDropdownItem('/user/recipes', 'Recipes')}
-                    {this.renderNavDropdownItem('/user/favorites', 'Favorites')}
-                    {this.renderNavDropdownItem(
-                      '/user/flavor-stash',
-                      'Flavor Stash'
-                    )}
-                    {this.renderNavDropdownItem(
-                      '/user/shopping-list',
-                      'Shopping List'
-                    )}
-                    {this.renderNavDropdownItem('/user/settings', 'Settings')}
-                  </NavDropdown>
-                  {this.renderNavItem('/login', 'Login')}
-                  {this.renderNavItem('/register', 'Register')}
+                  {loggedIn ? (
+                    <NavDropdown title="User">
+                      {this.renderNavDropdownItem('/user/profile', 'Profile')}
+                      {this.renderNavDropdownItem('/user/recipes', 'Recipes')}
+                      {this.renderNavDropdownItem(
+                        '/user/favorites',
+                        'Favorites'
+                      )}
+                      {this.renderNavDropdownItem(
+                        '/user/flavor-stash',
+                        'Flavor Stash'
+                      )}
+                      {this.renderNavDropdownItem(
+                        '/user/shopping-list',
+                        'Shopping List'
+                      )}
+                      {this.renderNavDropdownItem('/user/settings', 'Settings')}
+
+                      {this.renderNavDropdownItem('/dashboard', 'Dashboard')}
+                      <NavDropdown.Item
+                        as={NavLink}
+                        to="#"
+                        className="nav--link-custom"
+                        activeClassName="active"
+                        onClick={this.logoutUser}
+                      >
+                        Logout
+                        <br />
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  ) : null}
+                  {!loggedIn ? (
+                    <Fragment>
+                      {this.renderNavItem('/login', 'Login')}
+                      {this.renderNavItem('/register', 'Register')}
+                    </Fragment>
+                  ) : null}
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
@@ -73,3 +119,13 @@ export default class Header extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  loggedIn: isLoggedIn(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(appActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

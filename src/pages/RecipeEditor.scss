@@ -1,0 +1,45 @@
+.recipe-editor {
+  .form-check.form-check-inline {
+    flex-direction: column-reverse;
+
+    > input {
+      margin-top: $base-spacing * 0.75;
+    }
+  }
+
+  &-ingredients {
+    // width of the scroll bar in the container above is 6px
+    padding-right: 6px;
+  }
+
+  // stylelint-disable-next-line a11y/no-display-none
+  &-print-details {
+    display: none;
+  }
+}
+
+@media print {
+  /* stylelint-disable a11y/no-display-none */
+  .ingredient-bar,
+  .navigation-container .navbar-nav,
+  .btn {
+    display: none;
+  }
+
+  .navbar {
+    display: block;
+  }
+
+  .recipe-editor {
+    &-stash,
+    &-info,
+    &-ingredients {
+      display: none;
+    }
+
+    &-print-details {
+      display: block;
+    }
+  }
+  /* stylelint-enable a11y/no-display-none */
+}
