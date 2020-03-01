@@ -1,4 +1,4 @@
-# Gusta Project Frontend
+# Mixnjuice Frontend
 
 Build status: [![CircleCI](https://circleci.com/gh/mixnjuice/frontend/tree/master.svg?style=svg)](https://circleci.com/gh/mixnjuice/frontend/tree/master)
 
