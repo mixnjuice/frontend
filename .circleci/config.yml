@@ -25,9 +25,6 @@ jobs:
           paths:
             - ./node_modules
       - run:
-          name: Build application
-          command: npm run build
-      - run:
           name: test
           command: 'npm test && codecov'
   docker_build:
