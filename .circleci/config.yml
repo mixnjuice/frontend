@@ -6,6 +6,30 @@ executors:
     docker:
       - image: circleci/buildpack-deps:stretch
 jobs:
+  build:
+    working_directory: ~/mixnjuice-frontend
+    docker:
+      - image: circleci/node:latest
+    steps:
+      - checkout
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest codecov'
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-npm
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: Build application
+          command: npm run build
+      - run:
+          name: test
+          command: 'npm test && codecov'
   docker_build:
     executor: docker-publisher
     steps:
