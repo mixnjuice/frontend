@@ -9,3 +9,8 @@ services:
       VIRTUAL_HOST: ${FRONTEND_HOST}
       VIRTUAL_PORT: ${FRONTEND_PORT}
       LETSENCRYPT_HOST: ${FRONTEND_HOST}
+    networks:
+      - proxy_proxy
+networks:
+  proxy_proxy:
+    external: true
