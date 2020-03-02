@@ -44,6 +44,10 @@ hr {
   opacity: 0.5;
 }
 
+.main .container {
+  flex-shrink: 0 !important;
+}
+
 // When toggling certain elements off the screen (e.g. "no nicotine" in recipe editor)
 // it changes the width of the container and the width of the other elements around it
 // Switching the container to "fluid" didn't fix it, so this was unfortunately the best way I could
@@ -75,7 +79,7 @@ hr {
 // Gradient background for the navigation container
 .navigation-container {
   background: $lighter-blue;
-  height: 10%;
+  // height: 10%;
   margin: 1em;
   border: 2px solid $teal;
   border-radius: 20px;
