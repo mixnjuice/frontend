@@ -23,6 +23,7 @@ import {
   faCheckSquare,
   faSquare
 } from '@fortawesome/free-regular-svg-icons';
+import { faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
   faFire,
@@ -44,7 +45,9 @@ library.add(
   faSearch,
   faCompress,
   faExpand,
-  faSave
+  faSave,
+  faInstagram,
+  faTwitter
 );
 
 export default library;
