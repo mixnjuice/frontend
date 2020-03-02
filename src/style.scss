@@ -36,6 +36,17 @@ body {
 // Style for links
 a {
   color: $teal;
+  transition: 0.25s;
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  &:hover,
+  &:focus {
+    color: $baby-blue;
+    text-decoration: none;
+  }
 }
 
 // Style for horizontal rules
@@ -45,7 +56,7 @@ hr {
 }
 
 .main .container {
-  flex-shrink: 0 !important;
+  flex-shrink: 0;
 }
 
 // When toggling certain elements off the screen (e.g. "no nicotine" in recipe editor)
