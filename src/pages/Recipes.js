@@ -501,7 +501,4 @@ const mapDispatchToProps = dispatch => ({
   appActions: bindActionCreators({ ...actions }, dispatch)
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Recipes);
+export default connect(null, mapDispatchToProps)(Recipes);
