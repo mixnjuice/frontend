@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <Migrations /> renders correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Database &gt; Migrations
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <div
+      className="table-responsive"
+    >
+      <table
+        className="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr>
+            <th>
+              #
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Ran
+            </th>
+            <th>
+              MD5
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <NotFound /> renders correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Not Found :(
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <h3>
+      Oops!
+    </h3>
+    I've searched 
+    <i>
+      long
+    </i>
+     and "hard", yet I couldn't find a Dashboard Component identified as 
+    <strong>
+      Roles/Abusers
+    </strong>
+     in
+     
+    <code>
+      components/Dashboard/Main.js
+    </code>
+  </div>
+</div>
+`;
