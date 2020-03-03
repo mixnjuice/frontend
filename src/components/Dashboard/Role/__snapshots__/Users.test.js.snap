@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <RoleUsers /> renders correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles &gt; Tester
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <i
+      className="fa chevron-left"
+    />
+      
+    <a
+      href="#roles"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+    <div
+      className="fade alert show"
+      role="alert"
+    >
+      No Users Assigned to this Role!
+    </div>
+  </div>
+</div>
+`;

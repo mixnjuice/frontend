@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <UserRoles /> renders correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    User &gt; User ID: 22 &gt; Roles
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <a
+      href="#users"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+     
+     
+    <a
+      href="#roles"
+      onClick={[Function]}
+    >
+      Roles
+    </a>
+    <div
+      className="table-responsive"
+    >
+      <table
+        className="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr
+            className="text-center"
+          >
+            <th>
+              ID
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Options
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+    <a
+      href="#users"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+  </div>
+</div>
+`;
