@@ -1,14 +1,14 @@
 import { fork, all } from 'redux-saga/effects';
 
 import saga from './index';
-import profile from './profile';
-import toast from './toast';
-import flavor from './flavor';
-import recipe from './recipe';
 import application from './application';
 import dashboard from './dashboard';
+import flavor from './flavor';
 import flavors from './flavors';
+import profile from './profile';
+import recipe from './recipe';
 import roles from './roles';
+import toast from './toast';
 import users from './users';
 
 describe('index saga', () => {
@@ -22,12 +22,12 @@ describe('index saga', () => {
         [
           application,
           dashboard,
+          flavor,
           flavors,
           profile,
+          recipe,
           roles,
           toast,
-          flavor,
-          recipe,
           users
         ].map(fork)
       )

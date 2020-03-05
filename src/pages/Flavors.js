@@ -10,17 +10,18 @@ import { actions as appActions } from 'reducers/application';
 import { actions as flavorActions } from 'reducers/flavor';
 import { actions as flavorsActions } from 'reducers/flavors';
 import { isLoggedIn } from 'selectors/application';
-import { getStash } from 'selectors/flavor';
+import { getStash, isLoaded } from 'selectors/flavor';
 import { getAllFlavors, getFlavorsPager } from 'selectors/flavors';
 
-export class UserFlavors extends Component {
+export class Flavors extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
     collection: PropTypes.array.isRequired,
     loggedIn: PropTypes.bool.isRequired,
     pager: PropTypes.object,
     pagerNavigation: PropTypes.node.isRequired,
-    stash: PropTypes.array
+    stash: PropTypes.array,
+    stashLoaded: PropTypes.bool.isRequired
   };
 
   constructor(props) {
@@ -28,10 +29,12 @@ export class UserFlavors extends Component {
 
     this.state = { stashControl: false };
 
-    const { actions, loggedIn } = this.props;
+    const { actions, loggedIn, stashLoaded } = this.props;
 
     if (loggedIn) {
-      actions.requestStash();
+      if (!stashLoaded) {
+        actions.requestStash();
+      }
       this.handleStashControl = this.stashController.bind(this);
       this.handleAddToStash = this.addToStash.bind(this);
       this.handleRemoveFromStash = this.removeFromStash.bind(this);
@@ -50,9 +53,9 @@ export class UserFlavors extends Component {
       });
       this.setState({ holdings });
     }
-    const target = event.target;
-    const checked = target.checked;
-    const name = target.name;
+    const {
+      target: { checked, name }
+    } = event;
 
     this.setState({
       [name]: checked
@@ -183,23 +186,16 @@ export class UserFlavors extends Component {
 
 const mapStateToProps = state => ({
   loggedIn: isLoggedIn(state),
-  stash: getStash(state)
+  stash: getStash(state),
+  stashLoaded: isLoaded(state)
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({ ...appActions, ...flavorActions }, dispatch)
 });
 
-/* export default connect(mapStateToProps, mapDispatchToProps)(Flavors);*/
-
 export default withPagination(
   flavorsActions.requestFlavors,
   getAllFlavors,
   getFlavorsPager
-)(connect(mapStateToProps, mapDispatchToProps)(UserFlavors));
-
-/* export default withPagination(
-  flavorsActions.requestFlavors,
-  getAllFlavors,
-  getFlavorsPager
-)(Flavors);*/
+)(connect(mapStateToProps, mapDispatchToProps)(Flavors));
