@@ -5,6 +5,7 @@
 @import "./variables";
 
 // component styles
+@import "./components/Dashboard/Dashboard";
 @import "./components/FlavorBrowser/FlavorBrowser";
 @import "./components/Footer/Footer";
 @import "./components/IngredientBar/IngredientBar";
@@ -12,7 +13,7 @@
 @import "./components/ToastDrawer/ToastDrawer";
 @import "./components/SplitSlider/SplitSlider";
 @import "./components/SuspenseFallback/SuspenseFallback";
-@import "./components/Dashboard/Dashboard";
+@import "./components/ToggleButton/ToggleButton";
 
 // page styles
 @import "./pages/RecipeEditor";
