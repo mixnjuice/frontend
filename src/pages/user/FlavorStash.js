@@ -77,27 +77,14 @@ export class FlavorStash extends Component {
   }
 
   inStashIcon(id) {
-    const { editingStash } = this.state;
-
     return (
-      <Fragment>
-        <FontAwesomeIcon
-          onClick={e => this.handleRemoveFromStash(id, e)}
-          className="text-danger"
-          icon="minus-square"
-          size="2x"
-          title="Remove from Stash"
-        />{' '}
-        {!editingStash && (
-          <FontAwesomeIcon
-            onClick={e => this.handleStashEditor(id, e)}
-            className="text-info"
-            icon="pen-square"
-            size="2x"
-            title="Edit Details"
-          />
-        )}
-      </Fragment>
+      <FontAwesomeIcon
+        onClick={e => this.handleRemoveFromStash(id, e)}
+        className="text-danger"
+        icon="minus-square"
+        size="2x"
+        title="Remove from Stash"
+      />
     );
   }
 
@@ -137,6 +124,24 @@ export class FlavorStash extends Component {
     );
   }
 
+  editIcon(id) {
+    const { editingStash } = this.state;
+
+    return (
+      <Fragment>
+        {!editingStash && (
+          <FontAwesomeIcon
+            onClick={e => this.handleStashEditor(id, e)}
+            className="text-info"
+            icon="pen-square"
+            size="2x"
+            title="Edit Details"
+          />
+        )}
+      </Fragment>
+    );
+  }
+
   handleStashEditor(id) {
     if (id) {
       this.setState({ editingStash: id });
@@ -173,7 +178,7 @@ export class FlavorStash extends Component {
     } else {
       expanded[flavorId] = true;
     }
-    this.setState({ ...expanded });
+    this.setState({ expanded });
   }
 
   stashEditor(flavor) {
@@ -187,12 +192,8 @@ export class FlavorStash extends Component {
           maxMillipercent: maxMillipercent / 1000,
           minMillipercent: minMillipercent / 1000
         }}
-        render={({ handleStashSubmit, submitting }) => (
-          <Form
-            noValidate
-            onSubmit={handleStashSubmit}
-            initialValues={{ flavorId, maxMillipercent, minMillipercent }}
-          >
+        render={({ handleSubmit, submitting }) => (
+          <Form noValidate onSubmit={handleSubmit}>
             <h3>Usage Range:</h3>
             <Form.Row>
               <Field name="minMillipercent">
@@ -307,14 +308,21 @@ export class FlavorStash extends Component {
                       <Card.Body>
                         <Card.Title>{flavor.Flavor.Vendor.name}</Card.Title>
                         <Card.Text>
-                          Density: {flavor.Flavor.density}
-                          <br />
-                          Use:&nbsp;
-                          {usage[flavor.flavorId]
-                            ? `${usage[flavor.flavorId].minMillipercent} - 
+                          <Row>
+                            <Col>
+                              <strong>Density:</strong>{' '}
+                              {flavor.Flavor.density || 'Not Available'}
+                            </Col>
+                            <Col>
+                              {this.editIcon(flavor.flavorId)}{' '}
+                              <strong>Use:</strong>&nbsp;
+                              {usage[flavor.flavorId]
+                                ? `${usage[flavor.flavorId].minMillipercent} - 
                           ${usage[flavor.flavorId].maxMillipercent}`
-                            : `${minMillipercent} - ${maxMillipercent}`}
-                          %
+                                : `${minMillipercent} - ${maxMillipercent}`}
+                              %
+                            </Col>
+                          </Row>
                         </Card.Text>
                         {editingStash === flavor.flavorId
                           ? this.stashEditor(flavor)

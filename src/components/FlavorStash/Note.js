@@ -26,6 +26,10 @@ export class Note extends Component {
   constructor(props) {
     super(props);
 
+    const { actions, flavorId } = this.props;
+
+    actions.requestNote({ flavorId });
+
     this.state = {
       editingNote: false,
       notes: [],
@@ -64,7 +68,7 @@ export class Note extends Component {
 
   handleNoteEditor(id) {
     if (id) {
-      this.setState({ editingNote: id });
+      this.setState({ editingNote: true });
     } else {
       this.setState({ editingNote: false });
     }
@@ -116,11 +120,7 @@ export class Note extends Component {
           userId
         }}
         render={({ handleSubmit, submitting }) => (
-          <Form
-            noValidate
-            onSubmit={handleSubmit}
-            initialValues={{ flavorId, note, update, userId }}
-          >
+          <Form noValidate onSubmit={handleSubmit}>
             <h3>Flavor Note:</h3>
             <Form.Row>
               <Field name="note">
@@ -131,7 +131,7 @@ export class Note extends Component {
                         {...input}
                         as="textarea"
                         placeholder="Flavor Note"
-                        style={{ 'min-height': '500px' }}
+                        style={{ minHeight: '500px' }}
                       />
                     </InputGroup>
                   </Form.Group>
