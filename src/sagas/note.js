@@ -2,44 +2,59 @@ import { all, call, put, takeLatest, select, take } from 'redux-saga/effects';
 
 import request from 'utils/request';
 import { getUser } from 'selectors/application';
-import { isLoaded } from 'selectors/flavor';
-import { actions, types } from 'reducers/flavor';
+import { getFlavorNote } from 'selectors/note';
+import { actions, types } from 'reducers/note';
 import { actions as appActions, types as appTypes } from 'reducers/application';
 import { actions as toastActions } from 'reducers/toast';
 
-function* requestStashWorker() {
+function* requestNoteWorker({ note }) {
   try {
-    const loaded = yield select(isLoaded);
+    const { flavorId } = note;
 
-    if (loaded) {
-      return true;
+    const collection = yield select(getFlavorNote);
+
+    if (collection[flavorId]) {
+      return yield put(actions.requestNoteSuccess(collection));
     }
 
-    let user = yield select(getUser);
+    let userId = null;
 
-    if (user === null) {
-      yield put(appActions.requestCurrentUser());
-      yield take([
-        appTypes.REQUEST_CURRENT_USER_SUCCESS,
-        appTypes.REQUEST_CURRENT_USER_FAILURE
-      ]);
-      user = yield select(getUser);
+    if (!note.userId) {
+      let user = yield select(getUser);
+
+      if (user === null) {
+        yield put(appActions.requestCurrentUser());
+        yield take([
+          appTypes.REQUEST_CURRENT_USER_SUCCESS,
+          appTypes.REQUEST_CURRENT_USER_FAILURE
+        ]);
+        user = yield select(getUser);
+      }
+
+      userId = user.id;
+    } else {
+      userId = note.userId;
     }
 
     const endpoint = {
-      url: `/user/${user.id}/flavors`,
+      url: `/user/${userId}/note/${flavorId}`,
       method: 'GET'
     };
     const result = yield call(request.execute, { endpoint });
 
     if (result.success) {
-      const { data } = result.response;
+      const {
+        response: { data }
+      } = result;
 
       if (!data) {
-        return yield put(actions.requestStashSuccess([]));
+        collection[flavorId] = false;
+        return yield put(actions.requestNoteSuccess(collection));
       }
 
-      yield put(actions.requestStashSuccess(data));
+      collection[flavorId] = data[0];
+
+      return yield put(actions.requestNoteSuccess(collection));
     } else if (result.error) {
       throw result.error;
     } else {
@@ -48,11 +63,11 @@ function* requestStashWorker() {
   } catch (error) {
     // eslint-disable-next-line
     console.dir(error);
-    yield put(actions.requestStashFailure(error));
+    yield put(actions.requestNoteFailure(error));
   }
 }
 
-function* addStashWorker({ flavor }) {
+function* createNoteWorker({ flavorNote }) {
   try {
     let user = yield select(getUser);
 
@@ -65,31 +80,37 @@ function* addStashWorker({ flavor }) {
       user = yield select(getUser);
     }
 
+    // eslint-disable-next-line no-console
+    console.log(JSON.stringify(flavorNote));
+
     const endpoint = {
-      url: `/user/${user.id}/flavor`,
+      url: `/user/${user.id}/note`,
       method: 'POST'
     };
 
+    const { flavorId, note } = flavorNote;
+
     const data = {
       userId: user.id,
-      flavorId: flavor.id
+      flavorId,
+      note
     };
 
     const result = yield call(request.execute, { endpoint, data });
 
     if (result.success) {
-      yield put(actions.addStashSuccess());
+      yield put(actions.createNoteSuccess());
       yield put(
         toastActions.popToast({
-          title: 'Stash Update',
+          title: 'Note',
           icon: 'times-circle',
-          message: `Flavor ID ${flavor.id} successfully added!`
+          message: `Flavor ID ${flavorId} Note successfully created!`
         })
       );
     } else if (result.error) {
       throw result.error;
     } else {
-      throw new Error(`Failed to add Flavor ID ${flavor.id} to the Stash!`);
+      throw new Error(`Failed to create Flavor ID ${flavorId} Note!`);
     }
   } catch (error) {
     const { message } = error;
@@ -97,7 +118,7 @@ function* addStashWorker({ flavor }) {
     // eslint-disable-next-line
     console.dir(error);
 
-    yield put(actions.addStashFailure(error));
+    yield put(actions.createNoteFailure(error));
     yield put(
       toastActions.popToast({
         title: 'Error',
@@ -108,7 +129,7 @@ function* addStashWorker({ flavor }) {
   }
 }
 
-function* removeStashWorker({ flavor }) {
+function* deleteNoteWorker({ flavorNote }) {
   try {
     let user = yield select(getUser);
 
@@ -122,26 +143,26 @@ function* removeStashWorker({ flavor }) {
     }
 
     const endpoint = {
-      url: `/user/${user.id}/flavor/${flavor.id}`,
+      url: `/user/${user.id}/flavor/${flavorNote.id}`,
       method: 'DELETE'
     };
 
     const result = yield call(request.execute, { endpoint });
 
     if (result.success) {
-      yield put(actions.removeStashSuccess());
+      yield put(actions.deleteNoteSuccess());
       yield put(
         toastActions.popToast({
-          title: 'Stash Update',
+          title: 'Note Update',
           icon: 'times-circle',
-          message: `Flavor ID ${flavor.id} successfully removed!`
+          message: `Flavor ID ${flavorNote.id} successfully deleted!`
         })
       );
     } else if (result.error) {
       throw result.error;
     } else {
       throw new Error(
-        `Failed to remove Flavor ID ${flavor.id} from the Stash!`
+        `Failed to delete Flavor ID ${flavorNote.id} from the Note!`
       );
     }
   } catch (error) {
@@ -150,7 +171,7 @@ function* removeStashWorker({ flavor }) {
     // eslint-disable-next-line
     console.dir(error);
 
-    yield put(actions.removeStashFailure(error));
+    yield put(actions.deleteNoteFailure(error));
     yield put(
       toastActions.popToast({
         title: 'Error',
@@ -161,7 +182,7 @@ function* removeStashWorker({ flavor }) {
   }
 }
 
-function* updateStashWorker({ flavor }) {
+function* updateNoteWorker({ flavorNote }) {
   try {
     let user = yield select(getUser);
 
@@ -174,31 +195,34 @@ function* updateStashWorker({ flavor }) {
       user = yield select(getUser);
     }
 
-    const endpoint = {
-      url: `/user/${user.id}/flavor/${flavor.flavorId}`,
-      method: 'PUT'
-    };
+    const { flavorId, note } = flavorNote;
 
     const data = {
-      minMillipercent: flavor.minMillipercent * 1000,
-      maxMillipercent: flavor.maxMillipercent * 1000
+      userId: user.id,
+      flavorId,
+      note
+    };
+
+    const endpoint = {
+      url: `/user/${user.id}/note/${flavorId}`,
+      method: 'PUT'
     };
 
     const result = yield call(request.execute, { endpoint, data });
 
     if (result.success) {
-      yield put(actions.updateStashSuccess());
+      yield put(actions.updateNoteSuccess());
       yield put(
         toastActions.popToast({
-          title: 'Stash Update',
+          title: 'Note Update',
           icon: 'times-circle',
-          message: `Flavor ID ${flavor.flavorId} successfully updated!`
+          message: `Flavor ID ${flavorId} Note successfully updated!`
         })
       );
     } else if (result.error) {
       throw result.error;
     } else {
-      throw new Error(`Failed to update Stash Flavor ID ${flavor.flavorId}!`);
+      throw new Error(`Failed to update Note Flavor ID ${flavorId}!`);
     }
   } catch (error) {
     const { message } = error;
@@ -206,7 +230,7 @@ function* updateStashWorker({ flavor }) {
     // eslint-disable-next-line
     console.dir(error);
 
-    yield put(actions.updateStashFailure(error));
+    yield put(actions.updateNoteFailure(error));
     yield put(
       toastActions.popToast({
         title: 'Error',
@@ -218,33 +242,33 @@ function* updateStashWorker({ flavor }) {
 }
 
 export const workers = {
-  requestStashWorker,
-  addStashWorker,
-  removeStashWorker,
-  updateStashWorker
+  requestNoteWorker,
+  createNoteWorker,
+  deleteNoteWorker,
+  updateNoteWorker
 };
 
-function* requestStashWatcher() {
-  yield takeLatest(types.REQUEST_STASH, requestStashWorker);
+function* requestNoteWatcher() {
+  yield takeLatest(types.REQUEST_NOTE, requestNoteWorker);
 }
 
-function* addStashWatcher() {
-  yield takeLatest(types.ADD_TO_STASH, addStashWorker);
+function* createNoteWatcher() {
+  yield takeLatest(types.CREATE_NOTE, createNoteWorker);
 }
 
-function* removeStashWatcher() {
-  yield takeLatest(types.REMOVE_FROM_STASH, removeStashWorker);
+function* deleteNoteWatcher() {
+  yield takeLatest(types.DELETE_NOTE, deleteNoteWorker);
 }
 
-function* updateStashWatcher() {
-  yield takeLatest(types.UPDATE_STASH, updateStashWorker);
+function* updateNoteWatcher() {
+  yield takeLatest(types.UPDATE_NOTE, updateNoteWorker);
 }
 
 export const watchers = {
-  requestStashWatcher,
-  addStashWatcher,
-  removeStashWatcher,
-  updateStashWatcher
+  requestNoteWatcher,
+  createNoteWatcher,
+  deleteNoteWatcher,
+  updateNoteWatcher
 };
 
 export default function* saga() {
