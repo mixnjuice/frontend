@@ -89,10 +89,10 @@ export class Flavors extends Component {
   inStashIcon(id) {
     return (
       <FontAwesomeIcon
+        className="button--icon"
         onClick={e => this.handleRemoveFromStash(id, e)}
-        className="text-danger"
-        icon="minus-square"
-        size="2x"
+        icon={['far', 'check-square']}
+        size="lg"
         title="Remove from Stash"
       />
     );
@@ -101,10 +101,10 @@ export class Flavors extends Component {
   noStashIcon(id) {
     return (
       <FontAwesomeIcon
+        className="button--icon"
         onClick={e => this.handleAddToStash(id, e)}
-        className="text-success"
-        icon="plus-square"
-        size="2x"
+        icon={['far', 'square']}
+        size="lg"
         title="Add to Stash"
       />
     );
