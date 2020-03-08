@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet';
 import React, { Component } from 'react';
 import { PagerInfo, withPagination } from 'components/Pagination/Pagination';
 import { Col, Container, Form, Row, Table } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ToggleButton from 'components/ToggleButton/ToggleButton';
 import { actions as appActions } from 'reducers/application';
 import { actions as flavorActions } from 'reducers/flavor';
 import { actions as flavorsActions } from 'reducers/flavors';
@@ -18,7 +18,7 @@ export class Flavors extends Component {
     actions: PropTypes.object.isRequired,
     collection: PropTypes.array.isRequired,
     loggedIn: PropTypes.bool.isRequired,
-    pager: PropTypes.object,
+    pager: PropTypes.object.isRequired,
     pagerNavigation: PropTypes.node.isRequired,
     stash: PropTypes.array,
     stashLoaded: PropTypes.bool.isRequired
@@ -88,24 +88,21 @@ export class Flavors extends Component {
 
   inStashIcon(id) {
     return (
-      <FontAwesomeIcon
-        className="button--icon"
+      <ToggleButton
+        initialValue={true}
         onClick={e => this.handleRemoveFromStash(id, e)}
-        icon={['far', 'check-square']}
-        size="lg"
         title="Remove from Stash"
+        variant="check"
       />
     );
   }
 
   noStashIcon(id) {
     return (
-      <FontAwesomeIcon
-        className="button--icon"
+      <ToggleButton
         onClick={e => this.handleAddToStash(id, e)}
-        icon={['far', 'square']}
-        size="lg"
         title="Add to Stash"
+        variant="check"
       />
     );
   }
