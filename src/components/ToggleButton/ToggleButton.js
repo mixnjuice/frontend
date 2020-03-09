@@ -13,27 +13,26 @@ export default class ToggleButton extends Component {
     className: PropTypes.string,
     buttonProps: PropTypes.object,
     iconProps: PropTypes.object,
-    initialValue: PropTypes.bool,
+    value: PropTypes.bool,
     variant: PropTypes.oneOf(toggleButtonProps.variants),
     onClick: PropTypes.func
   };
 
   static defaultProps = {
-    initialValue: false,
+    buttonProps: {},
+    iconProps: {},
+    value: false,
     variant: 'check'
   };
 
   constructor(props) {
     super(props);
 
-    this.state = { value: this.props.initialValue };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event) {
     const { onClick } = this.props;
-
-    this.setState({ value: !this.state.value });
 
     if (onClick) {
       onClick(event);
@@ -41,8 +40,11 @@ export default class ToggleButton extends Component {
   }
 
   render() {
-    const { value } = this.state;
-    const { buttonProps, className, iconProps, variant } = this.props;
+    const { buttonProps, className, iconProps, value, variant } = this.props;
+
+    if (!buttonProps.title) {
+      buttonProps.title = 'Click to toggle';
+    }
 
     let icon = '';
 
@@ -55,12 +57,7 @@ export default class ToggleButton extends Component {
     const classes = classNames(className, 'btn-toggle');
 
     return (
-      <Button
-        {...buttonProps}
-        onClick={this.handleClick}
-        className={classes}
-        title="Click to toggle"
-      >
+      <Button {...buttonProps} onClick={this.handleClick} className={classes}>
         <FontAwesomeIcon size="lg" {...iconProps} icon={icon} />
       </Button>
     );

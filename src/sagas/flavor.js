@@ -154,11 +154,11 @@ function* requestStashWatcher() {
 }
 
 function* addStashWatcher() {
-  yield takeLatest(types.ADD_TO_STASH, addStashWorker);
+  yield takeLatest(types.ADD_STASH, addStashWorker);
 }
 
 function* removeStashWatcher() {
-  yield takeLatest(types.REMOVE_FROM_STASH, removeStashWorker);
+  yield takeLatest(types.REMOVE_STASH, removeStashWorker);
 }
 
 function* updateStashWatcher() {

@@ -8,7 +8,7 @@ import { initialState as flavorsInitialState } from 'reducers/flavors';
 import ConnectedFlavors, { Flavors } from './Flavors';
 import { withMemoryRouter } from 'utils';
 
-describe('Dashboard <Flavors />', () => {
+describe('Page <Flavors />', () => {
   const mockStore = configureStore();
   const actions = {
     requestStash: jest.fn(),
@@ -133,12 +133,14 @@ describe('Dashboard <Flavors />', () => {
     flavors: flavorsInitialState
   });
 
+  const pagerNavigation = <p></p>;
+
   const notLoggedInProps = {
     actions,
     collection,
     loggedIn: false,
     pager,
-    pagerNavigation: <p></p>,
+    pagerNavigation,
     stash,
     stashLoaded: false
   };
@@ -148,7 +150,7 @@ describe('Dashboard <Flavors />', () => {
     collection,
     loggedIn: true,
     pager,
-    pagerNavigation: <p></p>,
+    pagerNavigation,
     stash,
     stashLoaded: false
   };
@@ -158,7 +160,7 @@ describe('Dashboard <Flavors />', () => {
     collection,
     loggedIn: true,
     pager,
-    pagerNavigation: <p></p>,
+    pagerNavigation,
     stash,
     stashLoaded: true
   };
@@ -200,21 +202,20 @@ describe('Dashboard <Flavors />', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('can handle stashController', () => {
+  it('can handle stashToggle', () => {
     const event = {
-      target: { name: 'stashControl', checked: true }
+      target: { name: 'stashToggle', checked: true }
     };
 
-    expect(instance.stashController).toBeDefined();
-    instance.stashController(event);
-    expect(instance.state.holdings).toEqual([
-      undefined,
-      true,
-      true,
-      true,
-      true
-    ]);
-    expect(instance.state.stashControl).toEqual(true);
+    expect(instance.handleStashToggle).toBeDefined();
+    instance.handleStashToggle(event);
+    expect(instance.state.holdings).toEqual({
+      1: true,
+      2: true,
+      3: true,
+      4: true
+    });
+    expect(instance.state.stashToggle).toEqual(true);
   });
 
   it('can handle addToStash', () => {
@@ -223,14 +224,13 @@ describe('Dashboard <Flavors />', () => {
     expect(instance.addToStash).toBeDefined();
     instance.addToStash(id);
     expect(actions.addStash).toBeCalledWith({ id });
-    expect(instance.state.holdings).toEqual([
-      undefined,
-      true,
-      true,
-      true,
-      true,
-      true
-    ]);
+    expect(instance.state.holdings).toEqual({
+      1: true,
+      2: true,
+      3: true,
+      4: true,
+      5: true
+    });
   });
 
   it('can handle removeFromStash', () => {
@@ -239,13 +239,12 @@ describe('Dashboard <Flavors />', () => {
     expect(instance.removeFromStash).toBeDefined();
     instance.removeFromStash(id);
     expect(actions.removeStash).toBeCalledWith({ id });
-    expect(instance.state.holdings).toEqual([
-      undefined,
-      true,
-      true,
-      true,
-      true,
-      false
-    ]);
+    expect(instance.state.holdings).toEqual({
+      1: true,
+      2: true,
+      3: true,
+      4: true,
+      5: false
+    });
   });
 });

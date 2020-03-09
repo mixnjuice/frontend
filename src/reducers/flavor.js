@@ -3,8 +3,8 @@ import { buildActions } from 'utils';
 export const types = buildActions('flavor', [
   'REQUEST_STASH',
   'REQUEST_STASH_SUCCESS',
-  'ADD_TO_STASH',
-  'REMOVE_FROM_STASH',
+  'ADD_STASH',
+  'REMOVE_STASH',
   'UPDATE_STASH',
   'UPDATE_STASH_SUCCESS',
   'REQUEST_FAILURE'
@@ -20,12 +20,12 @@ const requestStashSuccess = stash => ({
 });
 
 const addStash = flavor => ({
-  type: types.ADD_TO_STASH,
+  type: types.ADD_STASH,
   flavor
 });
 
 const removeStash = flavor => ({
-  type: types.REMOVE_FROM_STASH,
+  type: types.REMOVE_STASH,
   flavor
 });
 

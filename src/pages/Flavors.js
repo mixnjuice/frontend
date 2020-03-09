@@ -27,39 +27,45 @@ export class Flavors extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { stashControl: false };
+    this.state = { stashToggle: false };
 
+    const { loggedIn } = this.props;
+
+    if (loggedIn) {
+      this.handleStashToggle = this.handleStashToggle.bind(this);
+      this.handleAddToStash = this.addToStash.bind(this);
+      this.handleRemoveFromStash = this.removeFromStash.bind(this);
+    }
+  }
+
+  componentDidMount() {
     const { actions, loggedIn, stashLoaded } = this.props;
 
     if (loggedIn) {
       if (!stashLoaded) {
         actions.requestStash();
       }
-      this.handleStashControl = this.stashController.bind(this);
-      this.handleAddToStash = this.addToStash.bind(this);
-      this.handleRemoveFromStash = this.removeFromStash.bind(this);
     }
   }
 
-  stashController(event) {
+  handleStashToggle(event) {
     const { stash } = this.props;
     const { holdings: stashMap } = this.state;
+    const holdings = {};
 
-    if (!stashMap) {
-      const holdings = [];
-
-      stash.map(flavor => {
-        holdings[flavor.flavorId] = true;
-      });
-      this.setState({ holdings });
-    }
     const {
       target: { checked, name }
     } = event;
 
-    this.setState({
-      [name]: checked
-    });
+    if (!stashMap) {
+      stash.map(flavor => {
+        holdings[flavor.flavorId] = true;
+      });
+
+      this.setState({ [name]: checked, holdings });
+    } else {
+      this.setState({ [name]: checked });
+    }
   }
 
   addToStash(id) {
@@ -86,22 +92,16 @@ export class Flavors extends Component {
     this.setState({ holdings });
   }
 
-  inStashIcon(id) {
+  stashIcon(id, has) {
     return (
       <ToggleButton
-        initialValue={true}
-        onClick={e => this.handleRemoveFromStash(id, e)}
-        title="Remove from Stash"
-        variant="check"
-      />
-    );
-  }
-
-  noStashIcon(id) {
-    return (
-      <ToggleButton
-        onClick={e => this.handleAddToStash(id, e)}
-        title="Add to Stash"
+        value={has}
+        onClick={
+          has
+            ? e => this.handleRemoveFromStash(id, e)
+            : e => this.handleAddToStash(id, e)
+        }
+        buttonProps={{ title: has ? 'Remove from Stash' : 'Add to Stash' }}
         variant="check"
       />
     );
@@ -109,7 +109,7 @@ export class Flavors extends Component {
 
   render() {
     const { collection, loggedIn, pager, pagerNavigation } = this.props;
-    const { holdings, stashControl } = this.state;
+    const { holdings, stashToggle } = this.state;
 
     return (
       <Container>
@@ -125,11 +125,11 @@ export class Flavors extends Component {
               {loggedIn ? (
                 <Form>
                   <Form.Check
-                    name="stashControl"
+                    name="stashToggle"
                     type="checkbox"
                     id="flavorStash"
                     label="&nbsp;Enable Flavor Stash"
-                    onChange={this.handleStashControl}
+                    onChange={this.handleStashToggle}
                   />
                 </Form>
               ) : (
@@ -142,7 +142,7 @@ export class Flavors extends Component {
         <Table responsive striped bordered hover size="sm">
           <thead>
             <tr className="text-center">
-              {loggedIn ? stashControl && <th>Stash</th> : null}
+              {loggedIn ? stashToggle && <th>Stash</th> : null}
               <th>ID</th>
               <th>Vendor</th>
               <th>Name</th>
@@ -154,16 +154,11 @@ export class Flavors extends Component {
             {collection.map((flavor, index) => {
               return (
                 <tr key={index}>
-                  {loggedIn
-                    ? stashControl && (
-                        <td className="text-center">
-                          {holdings &&
-                            (holdings[flavor.id] === true
-                              ? this.inStashIcon(flavor.id)
-                              : this.noStashIcon(flavor.id))}
-                        </td>
-                      )
-                    : null}
+                  {stashToggle ? (
+                    <td className="text-center">
+                      {this.stashIcon(flavor.id, Boolean(holdings[flavor.id]))}
+                    </td>
+                  ) : null}
                   <td className="text-center">{flavor.id}</td>
                   <td>{flavor.Vendor.name}</td>
                   <td>{flavor.name}</td>

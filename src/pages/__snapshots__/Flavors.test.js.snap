@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dashboard <Flavors /> renders correctly 1`] = `
+exports[`Page <Flavors /> renders correctly 1`] = `
 <div
   className="container"
 >
@@ -158,7 +158,7 @@ exports[`Dashboard <Flavors /> renders correctly 1`] = `
 </div>
 `;
 
-exports[`Dashboard <Flavors /> renders correctly when stash is not loaded 1`] = `
+exports[`Page <Flavors /> renders correctly when stash is not loaded 1`] = `
 <div
   className="container"
 >
@@ -192,7 +192,7 @@ exports[`Dashboard <Flavors /> renders correctly when stash is not loaded 1`] = 
               className="form-check-input"
               disabled={false}
               id="flavorStash"
-              name="stashControl"
+              name="stashToggle"
               onChange={[Function]}
               type="checkbox"
             />
@@ -361,7 +361,7 @@ exports[`Dashboard <Flavors /> renders correctly when stash is not loaded 1`] = 
 </div>
 `;
 
-exports[`Dashboard <Flavors /> renders correctly when user is not logged in 1`] = `
+exports[`Page <Flavors /> renders correctly when user is not logged in 1`] = `
 <div
   className="container"
 >
@@ -543,4 +543,4 @@ exports[`Dashboard <Flavors /> renders correctly when user is not logged in 1`] 
 </div>
 `;
 
-exports[`Dashboard <Flavors /> renders current user flavors correctly 1`] = `[Function]`;
+exports[`Page <Flavors /> renders current user flavors correctly 1`] = `[Function]`;

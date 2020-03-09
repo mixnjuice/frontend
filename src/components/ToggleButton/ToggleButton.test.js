@@ -31,29 +31,4 @@ describe('<ToggleButton />', () => {
     instance.handleClick(event);
     expect(props.onClick).toHaveBeenCalledWith(event);
   });
-
-  it('updates state on click', () => {
-    const component = renderer.create(<ToggleButton />);
-    const instance = component.getInstance();
-
-    expect(instance.state.value).toBe(false);
-    instance.handleClick(event);
-    expect(instance.state.value).toBe(true);
-  });
-
-  it('defaults to false value', () => {
-    const component = renderer.create(<ToggleButton {...props} />);
-    const instance = component.getInstance();
-
-    expect(instance.state.value).toBe(false);
-  });
-
-  it('accepts initialValue prop', () => {
-    const component = renderer.create(
-      <ToggleButton {...props} initialValue={true} />
-    );
-    const instance = component.getInstance();
-
-    expect(instance.state.value).toBe(true);
-  });
 });
