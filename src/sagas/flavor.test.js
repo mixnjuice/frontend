@@ -52,7 +52,7 @@ describe('flavor sagas', () => {
 
     result = gen.next(loaded);
 
-    expect(result.value).toEqual(true);
+    expect(result.value).toEqual(undefined);
   });
 
   const loaded = false;
