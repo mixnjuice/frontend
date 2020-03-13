@@ -11,6 +11,8 @@ function* requestNoteWorker({ note }) {
   try {
     const { flavorId } = note;
 
+    yield put(actions.requestLoading(flavorId));
+
     const collection = yield select(getFlavorNote);
 
     if (collection[flavorId]) {
@@ -69,6 +71,10 @@ function* requestNoteWorker({ note }) {
 
 function* createNoteWorker({ flavorNote }) {
   try {
+    const { flavorId, note } = flavorNote;
+
+    yield put(actions.requestLoading(flavorId));
+
     let user = yield select(getUser);
 
     if (user === null) {
@@ -87,8 +93,6 @@ function* createNoteWorker({ flavorNote }) {
       url: `/user/${user.id}/note`,
       method: 'POST'
     };
-
-    const { flavorId, note } = flavorNote;
 
     const data = {
       userId: user.id,

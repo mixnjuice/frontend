@@ -1,6 +1,7 @@
 import { buildActions } from 'utils';
 
 export const types = buildActions('note', [
+  'REQUEST_LOADING',
   'REQUEST_NOTE',
   'REQUEST_NOTE_SUCCESS',
   'REQUEST_NOTE_FAILURE',
@@ -14,6 +15,11 @@ export const types = buildActions('note', [
   'UPDATE_NOTE_SUCCESS',
   'UPDATE_NOTE_FAILURE'
 ]);
+
+const requestLoading = flavorId => ({
+  type: types.REQUEST_LOADING,
+  flavorId
+});
 
 const requestNote = note => ({
   type: types.REQUEST_NOTE,
@@ -63,8 +69,9 @@ const updateNote = flavorNote => ({
   flavorNote
 });
 
-const updateNoteSuccess = () => ({
-  type: types.UPDATE_NOTE_SUCCESS
+const updateNoteSuccess = flavorId => ({
+  type: types.UPDATE_NOTE_SUCCESS,
+  flavorId
 });
 
 const updateNoteFailure = error => ({
@@ -73,6 +80,7 @@ const updateNoteFailure = error => ({
 });
 
 export const actions = {
+  requestLoading,
   requestNote,
   requestNoteSuccess,
   requestNoteFailure,
@@ -88,17 +96,23 @@ export const actions = {
 };
 
 export const initialState = {
-  loaded: false,
+  loading: false,
   error: null,
   collection: {}
 };
 
 export const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case types.REQUEST_LOADING:
+      return {
+        ...state,
+        loading: action.flavorId
+      };
     case types.REQUEST_NOTE_SUCCESS:
       return {
         ...state,
-        collection: action.note
+        collection: action.note,
+        loading: false
       };
     case types.REQUEST_NOTE_FAILURE:
       return {
@@ -107,7 +121,8 @@ export const reducer = (state = initialState, action = {}) => {
       };
     case types.CREATE_NOTE_SUCCESS:
       return {
-        ...state
+        ...state,
+        loading: false
       };
     case types.CREATE_NOTE_FAILURE:
       return {
@@ -126,8 +141,7 @@ export const reducer = (state = initialState, action = {}) => {
       };
     case types.UPDATE_NOTE_SUCCESS:
       return {
-        ...state,
-        loaded: false
+        ...state
       };
     case types.UPDATE_NOTE_FAILURE:
       return {

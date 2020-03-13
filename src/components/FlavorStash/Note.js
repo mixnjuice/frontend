@@ -1,45 +1,38 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { Form as FinalForm, Field } from 'react-final-form';
-import {
-  Button,
-  ButtonGroup,
-  Col,
-  Container,
-  Form,
-  InputGroup
-} from 'react-bootstrap';
+import { Button, ButtonGroup, Col, Form, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { actions as noteActions } from 'reducers/note';
-import { getFlavorNote } from 'selectors/note';
+import { getFlavorNote, isLoading } from 'selectors/note';
 
 export class Note extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    note: PropTypes.object.isRequired,
     flavorId: PropTypes.string.isRequired,
+    loading: PropTypes.any.isRequired,
+    note: PropTypes.object.isRequired,
     userId: PropTypes.string.isRequired
   };
 
   constructor(props) {
     super(props);
 
-    const { actions, flavorId } = this.props;
-
-    actions.requestNote({ flavorId });
-
     this.state = {
-      editingNote: false,
-      notes: [],
-      removed: [],
-      usage: [],
-      viewingNote: []
+      edittingNote: false,
+      updatedNote: null
     };
 
     this.handleNoteEditor = this.handleNoteEditor.bind(this);
     this.handleNoteSubmit = this.handleNoteSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    const { actions, flavorId } = this.props;
+
+    actions.requestNote({ flavorId });
   }
 
   addNoteIcon(id) {
@@ -66,56 +59,35 @@ export class Note extends Component {
     );
   }
 
-  handleNoteEditor(id) {
-    if (id) {
-      this.setState({ editingNote: true });
-    } else {
-      this.setState({ editingNote: false });
-    }
+  handleNoteEditor() {
+    this.setState({ edittingNote: !this.state.edittingNote });
   }
 
   handleNoteSubmit(values) {
     const { actions } = this.props;
-    const { flavorId, note, update } = values;
+    const { note, update } = values;
 
     if (update === true) {
       actions.updateNote(values);
     } else {
       actions.createNote(values);
     }
-    actions.requestNote({ flavorId });
-    const notes = this.state.notes;
+    this.setState({ updatedNote: note || '' });
 
-    notes[flavorId] = {
-      note
-    };
-    this.setState({
-      editingNote: false,
-      ...notes
-    });
+    this.handleNoteEditor();
   }
 
   noteEditor() {
-    const { flavorId, userId } = this.props;
-    const collection = this.props.note;
-
-    // eslint-disable-next-line no-console
-    console.log(JSON.stringify(collection));
-    let note = '';
-
-    let update = false;
-
-    if (collection[flavorId]) {
-      note = collection[flavorId].note;
-      update = true;
-    }
+    const { flavorId, note, userId } = this.props;
+    const { updatedNote } = this.state;
+    const update = Boolean(note[flavorId].note);
 
     return (
       <FinalForm
         onSubmit={this.handleNoteSubmit}
         initialValues={{
           flavorId,
-          note,
+          note: updatedNote || note[flavorId].note,
           update,
           userId
         }}
@@ -175,23 +147,34 @@ export class Note extends Component {
   }
 
   render() {
-    const { note, flavorId } = this.props;
-    const { editingNote } = this.state;
+    const { note, flavorId, loading } = this.props;
+    const { edittingNote } = this.state;
+    const updatedNote = this.state.updatedNote;
 
-    return (
-      <Container>
-        <h3>Flavor Notes</h3>
-        {note[flavorId]
-          ? this.editNoteIcon(flavorId)
-          : this.addNoteIcon(flavorId)}
-        {note[flavorId] ? note[flavorId].note : 'Add a note!'}
-        {editingNote ? this.noteEditor(note[flavorId]) : ''}
-      </Container>
-    );
+    if (loading !== flavorId) {
+      return (
+        <Fragment>
+          <h3>
+            {note[flavorId] || updatedNote
+              ? this.editNoteIcon(flavorId)
+              : this.addNoteIcon(flavorId)}{' '}
+            Flavor Notes
+          </h3>
+          {!edittingNote &&
+            (note[flavorId] || updatedNote
+              ? updatedNote || note[flavorId].note
+              : 'Add a note!')}
+          {edittingNote ? this.noteEditor() : null}
+        </Fragment>
+      );
+    } else {
+      return <Fragment>Loading...</Fragment>;
+    }
   }
 }
 
 const mapStateToProps = state => ({
+  loading: isLoading(state),
   note: getFlavorNote(state)
 });
 

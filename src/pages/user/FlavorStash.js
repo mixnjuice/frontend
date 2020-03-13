@@ -16,7 +16,6 @@ import {
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { actions as flavorActions } from 'reducers/flavor';
-import { actions as noteActions } from 'reducers/note';
 import { getFlavorNote } from 'selectors/note';
 import { getStash } from 'selectors/flavor';
 import Note from 'components/FlavorStash/Note';
@@ -24,24 +23,20 @@ import Note from 'components/FlavorStash/Note';
 export class FlavorStash extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    stash: PropTypes.array.isRequired,
-    note: PropTypes.object.isRequired
+    stash: PropTypes.array.isRequired
   };
 
   constructor(props) {
     super(props);
-    const { actions } = this.props;
-
-    actions.requestStash();
 
     this.state = {
-      expanded: [],
+      expanded: {},
       editingStash: false,
       editingNote: false,
-      notes: [],
-      removed: [],
-      usage: [],
-      viewingNote: []
+      notes: {},
+      removed: {},
+      usage: {},
+      viewingNote: {}
     };
 
     this.handleRemoveFromStash = this.removeFromStash.bind(this);
@@ -50,6 +45,12 @@ export class FlavorStash extends Component {
     this.handleExpandFlavor = this.expandFlavor.bind(this);
     this.handleNoteViewer = this.handleNoteViewer.bind(this);
     this.handleStashSubmit = this.handleStashSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    const { actions } = this.props;
+
+    actions.requestStash();
   }
 
   date(d) {
@@ -168,11 +169,9 @@ export class FlavorStash extends Component {
   }
 
   expandFlavor(flavor) {
-    const { actions } = this.props;
     const { expanded } = this.state;
     const { flavorId } = flavor;
 
-    actions.requestNote({ flavorId });
     if (expanded[flavorId]) {
       expanded[flavorId] = false;
     } else {
@@ -259,10 +258,8 @@ export class FlavorStash extends Component {
 
   handleNoteViewer(id) {
     const viewingNote = this.state.viewingNote;
-    const { actions } = this.props;
 
     if (id) {
-      actions.requestNote({ flavorId: id });
       viewingNote[id] = true;
     } else {
       viewingNote[id] = false;
@@ -272,7 +269,7 @@ export class FlavorStash extends Component {
 
   render() {
     const { stash } = this.props;
-    const { editingStash, removed, usage, viewingNote, expanded } = this.state;
+    const { editingStash, removed, usage, expanded } = this.state;
 
     return (
       <Container>
@@ -307,34 +304,31 @@ export class FlavorStash extends Component {
                     <Fragment>
                       <Card.Body>
                         <Card.Title>{flavor.Flavor.Vendor.name}</Card.Title>
-                        <Card.Text>
-                          <Row>
-                            <Col>
-                              <strong>Density:</strong>{' '}
-                              {flavor.Flavor.density || 'Not Available'}
-                            </Col>
-                            <Col>
-                              {this.editIcon(flavor.flavorId)}{' '}
-                              <strong>Use:</strong>&nbsp;
-                              {usage[flavor.flavorId]
-                                ? `${usage[flavor.flavorId].minMillipercent} - 
+
+                        <Row>
+                          <Col>
+                            <strong>Density:</strong>{' '}
+                            {flavor.Flavor.density || 'Not Available'}
+                          </Col>
+                          <Col>
+                            {this.editIcon(flavor.flavorId)}{' '}
+                            <strong>Use:</strong>&nbsp;
+                            {usage[flavor.flavorId]
+                              ? `${usage[flavor.flavorId].minMillipercent} - 
                           ${usage[flavor.flavorId].maxMillipercent}`
-                                : `${minMillipercent} - ${maxMillipercent}`}
-                              %
-                            </Col>
-                          </Row>
-                        </Card.Text>
+                              : `${minMillipercent} - ${maxMillipercent}`}
+                            %
+                          </Col>
+                        </Row>
+
                         {editingStash === flavor.flavorId
                           ? this.stashEditor(flavor)
                           : ''}
-                        {viewingNote[flavor.flavorId] ? (
-                          <Note
-                            flavorId={flavor.flavorId}
-                            userId={flavor.userId}
-                          />
-                        ) : (
-                          ''
-                        )}
+
+                        <Note
+                          flavorId={flavor.flavorId}
+                          userId={flavor.userId}
+                        />
                       </Card.Body>
                       <Card.Footer>
                         <span className="float-left">
@@ -362,17 +356,11 @@ export class FlavorStash extends Component {
 
 const mapStateToProps = state => ({
   stash: getStash(state),
-  note: getFlavorNote(state)
+  notes: getFlavorNote(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(
-    {
-      ...flavorActions,
-      ...noteActions
-    },
-    dispatch
-  )
+  actions: bindActionCreators({ ...flavorActions }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FlavorStash);
