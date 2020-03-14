@@ -7,7 +7,8 @@ describe('<ToggleButton />', () => {
   const event = { test: true };
   const props = {
     onClick: jest.fn(),
-    variant: 'check'
+    variant: 'check',
+    title: 'Toggle me real good!'
   };
 
   it('can render "check" variant', () => {
@@ -17,7 +18,7 @@ describe('<ToggleButton />', () => {
   });
 
   it('uses "check" variant as default', () => {
-    const component = renderer.create(<ToggleButton />);
+    const component = renderer.create(<ToggleButton {...props} />);
     const instance = component.getInstance();
 
     expect(instance.props.variant).toEqual('check');
@@ -30,30 +31,5 @@ describe('<ToggleButton />', () => {
     expect(props.onClick).not.toHaveBeenCalled();
     instance.handleClick(event);
     expect(props.onClick).toHaveBeenCalledWith(event);
-  });
-
-  it('updates state on click', () => {
-    const component = renderer.create(<ToggleButton />);
-    const instance = component.getInstance();
-
-    expect(instance.state.value).toBe(false);
-    instance.handleClick(event);
-    expect(instance.state.value).toBe(true);
-  });
-
-  it('defaults to false value', () => {
-    const component = renderer.create(<ToggleButton {...props} />);
-    const instance = component.getInstance();
-
-    expect(instance.state.value).toBe(false);
-  });
-
-  it('accepts initialValue prop', () => {
-    const component = renderer.create(
-      <ToggleButton {...props} initialValue={true} />
-    );
-    const instance = component.getInstance();
-
-    expect(instance.state.value).toBe(true);
   });
 });

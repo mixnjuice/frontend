@@ -10,10 +10,14 @@ function* requestStashWorker() {
     const loaded = yield select(isLoaded);
 
     if (loaded) {
-      return true;
+      return;
     }
 
     const user = yield call(getCurrentUser);
+
+    if (!user?.id) {
+      throw new Error('Must be logged in to utilize Flavor Stash');
+    }
 
     const endpoint = {
       url: `/user/${user.id}/flavors`,
@@ -43,6 +47,10 @@ function* requestStashWorker() {
 function* addStashWorker({ flavor }) {
   try {
     const user = yield call(getCurrentUser);
+
+    if (!user?.id) {
+      throw new Error('Must be logged in to utilize Flavor Stash');
+    }
 
     const endpoint = {
       url: `/user/${user.id}/flavor`,
@@ -79,6 +87,10 @@ function* removeStashWorker({ flavor }) {
   try {
     const user = yield call(getCurrentUser);
 
+    if (!user?.id) {
+      throw new Error('Must be logged in to utilize Flavor Stash');
+    }
+
     const endpoint = {
       url: `/user/${user.id}/flavor/${flavor.id}`,
       method: 'DELETE'
@@ -110,6 +122,10 @@ function* removeStashWorker({ flavor }) {
 function* updateStashWorker({ flavor }) {
   try {
     const user = yield call(getCurrentUser);
+
+    if (!user?.id) {
+      throw new Error('Must be logged in to utilize Flavor Stash');
+    }
 
     const endpoint = {
       url: `/user/${user.id}/flavor/${flavor.flavorId}`,
@@ -154,11 +170,11 @@ function* requestStashWatcher() {
 }
 
 function* addStashWatcher() {
-  yield takeLatest(types.ADD_TO_STASH, addStashWorker);
+  yield takeLatest(types.ADD_STASH, addStashWorker);
 }
 
 function* removeStashWatcher() {
-  yield takeLatest(types.REMOVE_FROM_STASH, removeStashWorker);
+  yield takeLatest(types.REMOVE_STASH, removeStashWorker);
 }
 
 function* updateStashWatcher() {

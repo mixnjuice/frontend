@@ -5,7 +5,7 @@ exports[`<ToggleButton /> can render "check" variant 1`] = `
   className="btn-toggle btn btn-primary"
   disabled={false}
   onClick={[Function]}
-  title="Click to toggle"
+  title="Toggle me real good!"
   type="button"
 >
   <i

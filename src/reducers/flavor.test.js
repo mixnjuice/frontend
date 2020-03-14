@@ -79,27 +79,27 @@ describe('flavor reducer', () => {
     expect(reducer({}, action)).toEqual({ stash, loaded });
   });
 
-  it('has ADD_TO_STASH action', () => {
+  it('has ADD_STASH action', () => {
     expect(actions.addStash(flavor)).toEqual({
-      type: types.ADD_TO_STASH,
+      type: types.ADD_STASH,
       flavor
     });
   });
 
-  it('reduces ADD_TO_STASH action', () => {
+  it('reduces ADD_STASH action', () => {
     const action = actions.addStash(flavor);
 
     expect(reducer({}, action)).toEqual({});
   });
 
-  it('has REMOVE_FROM_STASH action', () => {
+  it('has REMOVE_STASH action', () => {
     expect(actions.removeStash(flavor)).toEqual({
-      type: types.REMOVE_FROM_STASH,
+      type: types.REMOVE_STASH,
       flavor
     });
   });
 
-  it('reduces REMOVE_FROM_STASH action', () => {
+  it('reduces REMOVE_STASH action', () => {
     const action = actions.removeStash(flavor);
 
     expect(reducer({}, action)).toEqual({});
