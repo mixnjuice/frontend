@@ -13,6 +13,7 @@ export default class ToggleButton extends Component {
     className: PropTypes.string,
     buttonProps: PropTypes.object,
     iconProps: PropTypes.object,
+    title: PropTypes.string.isRequired,
     value: PropTypes.bool,
     iconOnly: PropTypes.bool,
     variant: PropTypes.oneOf(toggleButtonProps.variants),
@@ -46,13 +47,10 @@ export default class ToggleButton extends Component {
       className,
       iconOnly,
       iconProps,
+      title,
       value,
       variant
     } = this.props;
-
-    if (!buttonProps.title) {
-      buttonProps.title = 'Click to toggle';
-    }
 
     let icon = '';
 
@@ -73,7 +71,7 @@ export default class ToggleButton extends Component {
           size="lg"
           {...iconProps}
           icon={icon}
-          {...buttonProps}
+          title={title}
           onClick={this.handleClick}
           className={classes}
         />
@@ -82,7 +80,12 @@ export default class ToggleButton extends Component {
       const classes = classNames(className, 'btn-toggle');
 
       return (
-        <Button {...buttonProps} onClick={this.handleClick} className={classes}>
+        <Button
+          {...buttonProps}
+          title={title}
+          onClick={this.handleClick}
+          className={classes}
+        >
           <FontAwesomeIcon size="lg" {...iconProps} icon={icon} />
         </Button>
       );

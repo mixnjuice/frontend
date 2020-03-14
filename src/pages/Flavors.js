@@ -48,26 +48,6 @@ export class Flavors extends Component {
     }
   }
 
-  /* handleStashToggle(event) {
-    const { stash } = this.props;
-    const { holdings: stashMap } = this.state;
-    const holdings = {};
-
-    const {
-      target: { checked, name }
-    } = event;
-
-    if (!stashMap) {
-      stash.map(flavor => {
-        holdings[flavor.flavorId] = true;
-      });
-
-      this.setState({ [name]: checked, holdings });
-    } else {
-      this.setState({ [name]: checked });
-    }
-  }*/
-
   handleStashToggle() {
     const { stash } = this.props;
     const { holdings: stashMap } = this.state;
@@ -86,16 +66,14 @@ export class Flavors extends Component {
     }
   }
 
-  stashToggle() {
+  get stashToggle() {
     const { stashToggle } = this.state;
 
     return (
       <ToggleButton
         value={stashToggle}
         onClick={e => this.handleStashToggle(e)}
-        buttonProps={{
-          title: stashToggle ? 'Enable Flavor Stash' : 'Disable Flavor Stash'
-        }}
+        title={!stashToggle ? 'Enable Flavor Stash' : 'Disable Flavor Stash'}
         variant="switch"
         iconOnly={true}
       />
@@ -135,7 +113,7 @@ export class Flavors extends Component {
             ? e => this.handleRemoveFromStash(id, e)
             : e => this.handleAddToStash(id, e)
         }
-        buttonProps={{ title: has ? 'Remove from Stash' : 'Add to Stash' }}
+        title={has ? 'Remove from Stash' : 'Add to Stash'}
         variant="check"
       />
     );
@@ -158,7 +136,7 @@ export class Flavors extends Component {
             <Col className="text-left ml-2 mb-4">
               {loggedIn ? (
                 <Fragment>
-                  {this.stashToggle()} <span>Enable Flavor Stash</span>
+                  {this.stashToggle} <span>Enable Flavor Stash</span>
                 </Fragment>
               ) : (
                 <small>Log in to Enable Flavor Stash</small>

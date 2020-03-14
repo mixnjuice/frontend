@@ -7,7 +7,8 @@ describe('<ToggleButton />', () => {
   const event = { test: true };
   const props = {
     onClick: jest.fn(),
-    variant: 'check'
+    variant: 'check',
+    title: 'Toggle me real good!'
   };
 
   it('can render "check" variant', () => {
@@ -17,7 +18,7 @@ describe('<ToggleButton />', () => {
   });
 
   it('uses "check" variant as default', () => {
-    const component = renderer.create(<ToggleButton />);
+    const component = renderer.create(<ToggleButton {...props} />);
     const instance = component.getInstance();
 
     expect(instance.props.variant).toEqual('check');
