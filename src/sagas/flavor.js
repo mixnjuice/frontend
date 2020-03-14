@@ -15,7 +15,7 @@ function* requestStashWorker() {
 
     const user = yield call(getCurrentUser);
 
-    if (!user.id) {
+    if (!user?.id) {
       throw new Error('Must be logged in to utilize Flavor Stash');
     }
 
@@ -48,7 +48,7 @@ function* addStashWorker({ flavor }) {
   try {
     const user = yield call(getCurrentUser);
 
-    if (!user.id) {
+    if (!user?.id) {
       throw new Error('Must be logged in to utilize Flavor Stash');
     }
 
@@ -87,7 +87,7 @@ function* removeStashWorker({ flavor }) {
   try {
     const user = yield call(getCurrentUser);
 
-    if (!user.id) {
+    if (!user?.id) {
       throw new Error('Must be logged in to utilize Flavor Stash');
     }
 
@@ -123,7 +123,7 @@ function* updateStashWorker({ flavor }) {
   try {
     const user = yield call(getCurrentUser);
 
-    if (!user.id) {
+    if (!user?.id) {
       throw new Error('Must be logged in to utilize Flavor Stash');
     }
 

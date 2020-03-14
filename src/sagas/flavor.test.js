@@ -142,7 +142,7 @@ describe('flavor sagas', () => {
   });
 
   it('handles failure in requestStashWorker', () => {
-    const error = new TypeError("Cannot read property 'id' of undefined");
+    const error = new TypeError('Must be logged in to utilize Flavor Stash');
     const gen = workers.requestStashWorker();
 
     let result = gen.next(loaded);
