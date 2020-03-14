@@ -22,7 +22,7 @@ exports[`Page <Flavors /> renders correctly 1`] = `
       className="row"
     >
       <div
-        className="text-center col"
+        className="text-left ml-2 mb-4 col"
       >
         <small>
           Log in to Enable Flavor Stash
@@ -180,32 +180,15 @@ exports[`Page <Flavors /> renders correctly when stash is not loaded 1`] = `
       className="row"
     >
       <div
-        className="text-center col"
+        className="text-left ml-2 mb-4 col"
       >
-        <form
-          className=""
-        >
-          <div
-            className="form-check"
-          >
-            <input
-              className="form-check-input"
-              disabled={false}
-              id="flavorStash"
-              name="stashToggle"
-              onChange={[Function]}
-              type="checkbox"
-            />
-            <label
-              className="form-check-label"
-              htmlFor="flavorStash"
-              title=""
-              type="checkbox"
-            >
-               Enable Flavor Stash
-            </label>
-          </div>
-        </form>
+        <i
+          className="fa fas-toggle-off"
+        />
+         
+        <span>
+          Enable Flavor Stash
+        </span>
       </div>
     </div>
     <p />
@@ -383,7 +366,7 @@ exports[`Page <Flavors /> renders correctly when user is not logged in 1`] = `
       className="row"
     >
       <div
-        className="text-center col"
+        className="text-left ml-2 mb-4 col"
       >
         <small>
           Log in to Enable Flavor Stash
