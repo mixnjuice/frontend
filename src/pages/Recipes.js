@@ -34,8 +34,6 @@ export class Recipes extends Component {
       recipes: {},
       grid: true
     };
-
-    this.renderResultCards = this.renderResultCards.bind(this);
   }
 
   handleFavoriteClick(recipeId, recipeName) {
@@ -108,6 +106,100 @@ export class Recipes extends Component {
         return;
       }
 
+      const comparison = [];
+      const flavorPopoverList = [];
+
+      const choosingIcon = {
+        has: 0,
+        hasNot: 0
+      };
+
+      let comparisonIcon = {};
+
+      recipe.flavors.map(recipeFlavor => {
+        for (let i = 0; i < flavorStash.length; i++) {
+          if (flavorStash[i].id === recipeFlavor.id) {
+            comparison.push({
+              id: recipeFlavor.id,
+              name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
+              inStash: true
+            });
+            flavorPopoverList.push(
+              <tr className="table-flavor-list" key={recipeFlavor.id}>
+                <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
+                <td>{recipeFlavor.percent}%</td>
+                <td>
+                  <FontAwesomeIcon
+                    icon={['fas', 'check-circle']}
+                    className="search-icon--check"
+                  />
+                </td>
+              </tr>
+            );
+            break;
+          }
+
+          if (i === flavorStash.length - 1) {
+            comparison.push({
+              id: recipeFlavor.id,
+              name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
+              inStash: false
+            });
+            flavorPopoverList.push(
+              <tr className="table-flavor-list" key={recipeFlavor.id}>
+                <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
+                <td>{recipeFlavor.percent}%</td>
+                <td>
+                  <FontAwesomeIcon
+                    icon={['fas', 'times-circle']}
+                    className="search-icon--times"
+                  />
+                </td>
+              </tr>
+            );
+          }
+        }
+      });
+
+      for (let i = 0; i < comparison.length; i++) {
+        if (comparison[i].inStash) {
+          choosingIcon.has++;
+        } else {
+          choosingIcon.hasNot++;
+        }
+        // Tried this ternary but ESLint throws the error:
+        // Expected an assignment or function call and instead saw an expression.eslint(no-unused-expressions)
+        // comparison[i].inStash ? choosingIcon.has++ : choosingIcon.hasNot++;
+      }
+
+      if (choosingIcon.has > 0 && choosingIcon.hasNot > 0) {
+        comparisonIcon = {
+          icon: ['fas', 'minus-circle'],
+          class: 'search-icon--minus'
+        };
+      } else if (choosingIcon.has > 0 && choosingIcon.hasNot === 0) {
+        comparisonIcon = {
+          icon: ['fas', 'check-circle'],
+          class: 'search-icon--check'
+        };
+      } else {
+        comparisonIcon = {
+          icon: ['fas', 'times-circle'],
+          class: 'search-icon--times'
+        };
+      }
+
+      const popover = (
+        <Popover id={recipe.id}>
+          <Popover.Title as="h3">Flavors</Popover.Title>
+          <Popover.Content>
+            <Table>
+              <tbody>{flavorPopoverList}</tbody>
+            </Table>
+          </Popover.Content>
+        </Popover>
+      );
+
       const image = '/media/card-test-1.jpg';
 
       return (
@@ -171,6 +263,14 @@ export class Recipes extends Component {
                     />
                   </span>
                 </Button>
+                <OverlayTrigger trigger="click" overlay={popover}>
+                  <Button className="mx-2 button--favorite button--stash-check">
+                    <FontAwesomeIcon
+                      icon={comparisonIcon.icon}
+                      className={comparisonIcon.class}
+                    />
+                  </Button>
+                </OverlayTrigger>
               </Card.Footer>
             </Card>
           </Col>
