@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <Flavors /> renders correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Ingredients &gt; Flavors
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="pb-2 row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table-responsive"
+    >
+      <table
+        className="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr
+            className="text-center"
+          >
+            <th>
+              ID
+            </th>
+            <th>
+              Vendor
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Slug
+            </th>
+            <th>
+              Density
+            </th>
+          </tr>
+        </thead>
+        <tbody />
+      </table>
+    </div>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="pb-2 row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+           
+          Flavors
+        </div>
+        <div
+          className="text-right col"
+        >
+           Pages
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

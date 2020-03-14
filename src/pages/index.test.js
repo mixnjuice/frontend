@@ -2,7 +2,7 @@ import { lazy } from 'react';
 
 import {
   imports,
-  RecipeEditor,
+  Dashboard,
   Favorites,
   Flavors,
   FlavorStash,
@@ -11,6 +11,7 @@ import {
   NotFound,
   Profile,
   Recipe,
+  RecipeEditor,
   Recipes,
   Register,
   ShoppingList,
@@ -22,6 +23,11 @@ describe('pages module', () => {
   it('has RecipeEditor page', async () => {
     expect(imports.RecipeEditor()).toEqual(import('pages/RecipeEditor'));
     expect(RecipeEditor).toEqual(lazy(imports.RecipeEditor));
+  });
+
+  it('has Dashboard page', async () => {
+    expect(imports.Dashboard()).toEqual(import('pages/Dashboard'));
+    expect(Dashboard).toEqual(lazy(imports.Dashboard));
   });
 
   it('has Favorites page', async () => {

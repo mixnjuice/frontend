@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ToggleButton /> can render "check" variant 1`] = `
+<button
+  className="btn-toggle btn btn-primary"
+  disabled={false}
+  onClick={[Function]}
+  title="Click to toggle"
+  type="button"
+>
+  <i
+    className="fa far-square"
+  />
+</button>
+`;

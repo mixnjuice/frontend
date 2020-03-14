@@ -1,0 +1,309 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Dashboard /> renders correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <h1>
+        Dashboard
+      </h1>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col-md-3 col-12"
+    >
+      <div
+        className="accordion"
+      >
+        <div
+          className="card"
+        >
+          <div
+            className="card-body"
+          >
+            <i
+              className="fa tachometer-alt"
+            />
+              
+            <a
+              href="#home"
+              onClick={[Function]}
+            >
+              Dashboard
+            </a>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card-header"
+            onClick={[Function]}
+          >
+            <h3>
+              <i
+                className="fa user-shield"
+              />
+               Roles
+            </h3>
+          </div>
+          <div
+            aria-expanded={null}
+            className="collapse"
+          >
+            <div
+              className="card-body"
+            >
+              <div>
+                <i
+                  className="fa user-shield"
+                />
+                  
+                <a
+                  href="#roles"
+                  onClick={[Function]}
+                >
+                  Roles
+                </a>
+              </div>
+              <div>
+                <i
+                  className="fa plus"
+                />
+                  
+                <a
+                  href="#roles/add"
+                  onClick={[Function]}
+                >
+                  Add Role
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card-header"
+            onClick={[Function]}
+          >
+            <h3>
+              <i
+                className="fa users"
+              />
+               Users
+            </h3>
+          </div>
+          <div
+            aria-expanded={null}
+            className="collapse"
+          >
+            <div
+              className="card-body"
+            >
+              <div>
+                <i
+                  className="fa users-cog"
+                />
+                  
+                <a
+                  href="#users"
+                  onClick={[Function]}
+                >
+                  Users
+                </a>
+              </div>
+              <div>
+                <i
+                  className="fa plus"
+                />
+                  
+                <a
+                  href="#users/add"
+                  onClick={[Function]}
+                >
+                  Add User
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card-header"
+            onClick={[Function]}
+          >
+            <h3>
+              <i
+                className="fa bezier-curve"
+              />
+               Ingredients
+            </h3>
+          </div>
+          <div
+            aria-expanded={null}
+            className="collapse"
+          >
+            <div
+              className="card-body"
+            >
+              <div>
+                <i
+                  className="fa eye-dropper"
+                />
+                  
+                <a
+                  href="#flavors"
+                  onClick={[Function]}
+                >
+                  Flavors
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="card"
+        >
+          <div
+            className="card-header"
+            onClick={[Function]}
+          >
+            <h3>
+              <i
+                className="fa database"
+              />
+               Database
+            </h3>
+          </div>
+          <div
+            aria-expanded={null}
+            className="collapse"
+          >
+            <div
+              className="card-body"
+            >
+              <i
+                className="fa clock"
+              />
+                
+              <a
+                href="#migrations"
+                onClick={[Function]}
+              >
+                Migration History
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="col-md-9 col-12"
+    >
+      <div
+        className="card-columns"
+      >
+        <div
+          className="card bg-danger text-white"
+        >
+          <div
+            className="card-header"
+          >
+            Users: 
+          </div>
+          <div
+            className="card-body"
+          >
+            <h3>
+              Activated Users: 
+            </h3>
+            <h3>
+              Inactive Users: 
+              NaN
+            </h3>
+            <h3>
+              Active Tokens: 
+            </h3>
+          </div>
+        </div>
+        <div
+          className="card bg-primary text-white"
+        >
+          <div
+            className="card-body"
+          >
+            <h2>
+              Tags: 
+            </h2>
+          </div>
+        </div>
+        <div
+          className="card bg-secondary text-white"
+        >
+          <div
+            className="card-body"
+          >
+            <h2>
+              Vendors: 
+            </h2>
+          </div>
+        </div>
+        <div
+          className="card bg-info text-white"
+        >
+          <div
+            className="card-header"
+          >
+            Flavors: 
+          </div>
+          <div
+            className="card-body"
+          >
+            <h2>
+              Tags: 
+            </h2>
+          </div>
+        </div>
+        <div
+          className="card bg-warning text-white"
+        >
+          <div
+            className="card-header"
+          >
+            Recipes: 
+          </div>
+          <div
+            className="card-body"
+          >
+            <h2>
+              Tags: 
+            </h2>
+          </div>
+        </div>
+      </div>
+      <a
+        href="#home"
+        onClick={[Function]}
+        title="Refresh Stats"
+      >
+        <i
+          className="fa sync"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+`;

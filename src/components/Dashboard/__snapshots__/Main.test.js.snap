@@ -1,0 +1,2120 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Ingredients &gt; Flavors
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="pb-2 row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table-responsive"
+    >
+      <table
+        className="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr
+            className="text-center"
+          >
+            <th>
+              ID
+            </th>
+            <th>
+              Vendor
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Slug
+            </th>
+            <th>
+              Density
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              className="text-center"
+            >
+              1
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Bears
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              2
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Fish
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              3
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Acai
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              4
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Amaretto
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              5
+            </td>
+            <td />
+            <td>
+              Anise
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              6
+            </td>
+            <td />
+            <td>
+              Apple Pie
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              7
+            </td>
+            <td />
+            <td>
+              Apple Pie v2
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              8
+            </td>
+            <td />
+            <td>
+              Apple Snacks
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              9
+            </td>
+            <td />
+            <td>
+              Apricot
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              10
+            </td>
+            <td />
+            <td>
+              Banana
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              11
+            </td>
+            <td />
+            <td>
+              Banana Split
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              12
+            </td>
+            <td />
+            <td>
+              Bavarian Cream
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              13
+            </td>
+            <td />
+            <td>
+              Biscuit
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              15
+            </td>
+            <td />
+            <td>
+              Blackberry
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              14
+            </td>
+            <td />
+            <td>
+              Black Currant
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              17
+            </td>
+            <td />
+            <td>
+              Blueberry
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              18
+            </td>
+            <td />
+            <td>
+              Blueberry Cinnamon Crumble
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              19
+            </td>
+            <td />
+            <td>
+              Blueberry Extra
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              20
+            </td>
+            <td />
+            <td>
+              Blueberry Jam
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              21
+            </td>
+            <td />
+            <td>
+              Blueberry Pomegranate
+            </td>
+            <td
+              className="text-center"
+            />
+            <td
+              className="text-center"
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="pb-2 row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          100
+           
+          Flavors
+        </div>
+        <div
+          className="text-right col"
+        >
+          5
+           Pages
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dashboard <Main /> renders Home correctly 1`] = `
+Array [
+  <div
+    className="card-columns"
+  >
+    <div
+      className="card bg-danger text-white"
+    >
+      <div
+        className="card-header"
+      >
+        Users: 
+        2000
+      </div>
+      <div
+        className="card-body"
+      >
+        <h3>
+          Activated Users: 
+          1991
+        </h3>
+        <h3>
+          Inactive Users: 
+          9
+        </h3>
+        <h3>
+          Active Tokens: 
+          300
+        </h3>
+      </div>
+    </div>
+    <div
+      className="card bg-primary text-white"
+    >
+      <div
+        className="card-body"
+      >
+        <h2>
+          Tags: 
+          115
+        </h2>
+      </div>
+    </div>
+    <div
+      className="card bg-secondary text-white"
+    >
+      <div
+        className="card-body"
+      >
+        <h2>
+          Vendors: 
+          98
+        </h2>
+      </div>
+    </div>
+    <div
+      className="card bg-info text-white"
+    >
+      <div
+        className="card-header"
+      >
+        Flavors: 
+        8617
+      </div>
+      <div
+        className="card-body"
+      >
+        <h2>
+          Tags: 
+          90
+        </h2>
+      </div>
+    </div>
+    <div
+      className="card bg-warning text-white"
+    >
+      <div
+        className="card-header"
+      >
+        Recipes: 
+        42
+      </div>
+      <div
+        className="card-body"
+      >
+        <h2>
+          Tags: 
+          55
+        </h2>
+      </div>
+    </div>
+  </div>,
+  <a
+    href="#home"
+    onClick={[Function]}
+    title="Refresh Stats"
+  >
+    <i
+      className="fa sync"
+    />
+  </a>,
+]
+`;
+
+exports[`Dashboard <Main /> renders Migations correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Database &gt; Migrations
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <div
+      className="table-responsive"
+    >
+      <table
+        className="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr>
+            <th>
+              #
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Ran
+            </th>
+            <th>
+              MD5
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              1
+            </td>
+            <td>
+              initial-tables
+            </td>
+            <td>
+              2019-08-05T04:08:51.887Z
+            </td>
+            <td>
+              21a37c3b009b10c825eeb503316d8455
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2
+            </td>
+            <td>
+              initial-data
+            </td>
+            <td>
+              2019-08-05T04:08:52.133Z
+            </td>
+            <td>
+              b7e138254b5aa7e7f5a2c4b01a47a4bf
+            </td>
+          </tr>
+          <tr>
+            <td>
+              3
+            </td>
+            <td>
+              remove-extra
+            </td>
+            <td>
+              2019-08-05T04:08:52.152Z
+            </td>
+            <td>
+              1c21f069a9eba5b6a90c3d7e1000b631
+            </td>
+          </tr>
+          <tr>
+            <td>
+              4
+            </td>
+            <td>
+              oauth
+            </td>
+            <td>
+              2019-08-05T04:08:52.430Z
+            </td>
+            <td>
+              93bbe1fba0fe3a0199bb64da5f588619
+            </td>
+          </tr>
+          <tr>
+            <td>
+              5
+            </td>
+            <td>
+              vendor-identifier
+            </td>
+            <td>
+              2019-08-05T04:08:52.661Z
+            </td>
+            <td>
+              1e307264fb5e163c731fd3a853188106
+            </td>
+          </tr>
+          <tr>
+            <td>
+              6
+            </td>
+            <td>
+              cleanup
+            </td>
+            <td>
+              2019-08-05T04:08:52.683Z
+            </td>
+            <td>
+              3ace3654625342de9408b1a02eab779c
+            </td>
+          </tr>
+          <tr>
+            <td>
+              7
+            </td>
+            <td>
+              preparations-diluents
+            </td>
+            <td>
+              2019-08-05T04:08:52.873Z
+            </td>
+            <td>
+              9df28acfb709b31aa010551d3ee106c8
+            </td>
+          </tr>
+          <tr>
+            <td>
+              8
+            </td>
+            <td>
+              user-registration
+            </td>
+            <td>
+              2019-08-05T04:08:53.125Z
+            </td>
+            <td>
+              26e034920dcce1f448b9a4161403268d
+            </td>
+          </tr>
+          <tr>
+            <td>
+              9
+            </td>
+            <td>
+              recipe-vendor
+            </td>
+            <td>
+              2019-08-05T04:08:53.258Z
+            </td>
+            <td>
+              eeee5bb71f86970c746a31a30449bba2
+            </td>
+          </tr>
+          <tr>
+            <td>
+              10
+            </td>
+            <td>
+              millipercent
+            </td>
+            <td>
+              2019-08-05T04:08:53.501Z
+            </td>
+            <td>
+              5ca462e6fbe8bae86c75552b276fa988
+            </td>
+          </tr>
+          <tr>
+            <td>
+              11
+            </td>
+            <td>
+              prep-diluents-pk
+            </td>
+            <td>
+              2019-08-05T04:08:53.600Z
+            </td>
+            <td>
+              b329bbec7eeb9af639b0964a21deb7a9
+            </td>
+          </tr>
+          <tr>
+            <td>
+              12
+            </td>
+            <td>
+              tag-and-version
+            </td>
+            <td>
+              2019-08-11T00:57:10.873Z
+            </td>
+            <td>
+              87647de8630b05c444d158a2cf87d3a3
+            </td>
+          </tr>
+          <tr>
+            <td>
+              13
+            </td>
+            <td>
+              unique-role-name
+            </td>
+            <td>
+              2019-08-11T00:57:10.999Z
+            </td>
+            <td>
+              c6c7d7aabd456322c7fa38068da1014c
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dashboard <Main /> renders NotFound correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Not Found :(
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <h3>
+      Oops!
+    </h3>
+    I've searched 
+    <i>
+      long
+    </i>
+     and "hard", yet I couldn't find a Dashboard Component identified as 
+    <strong>
+      NotFound
+    </strong>
+     in
+     
+    <code>
+      components/Dashboard/Main.js
+    </code>
+  </div>
+</div>
+`;
+
+exports[`Dashboard <Main /> renders Role/Add correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles &gt; Add Role
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <i
+      className="fa chevron-left"
+    />
+      
+    <a
+      href="#roles"
+      onClick={[Function]}
+    >
+      <span>
+        Back
+      </span>
+    </a>
+    <form
+      className=""
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+        >
+          Role Name
+        </label>
+        <input
+          className="form-control"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="role name"
+          type="text"
+          value=""
+        />
+      </div>
+      <button
+        className="button-animation btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        <span>
+          Save
+        </span>
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Dashboard <Main /> renders Role/Add/User correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles &gt; Assign test Role
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <i
+      className="fa chevron-left"
+    />
+      
+    <a
+      href="#roles"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+    <form
+      className=""
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+        >
+          Select User to Assign to 
+          test
+          s Role
+        </label>
+        <select
+          className="form-control"
+          name="userId"
+          onChange={[Function]}
+          value="0"
+        >
+          <option
+            value="0"
+          >
+            Choose a User
+          </option>
+          <option
+            value={1}
+          >
+            Andrew
+             (
+            blah@blah.com
+            )
+          </option>
+          <option
+            value={2}
+          >
+            Josef
+             (
+            blah2@blah.com
+            )
+          </option>
+        </select>
+      </div>
+    </form>
+    <br />
+  </div>
+</div>
+`;
+
+exports[`Dashboard <Main /> renders Role/Delete correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles &gt; Delete Role &gt; test
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <i
+      className="fa chevron-left"
+    />
+      
+    <a
+      href="#roles"
+      onClick={[Function]}
+    >
+      <span>
+        Back
+      </span>
+    </a>
+    <form
+      className=""
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+        >
+          Delete
+        </label>
+        <h3>
+          Delete Role: 
+          test
+          ?
+        </h3>
+      </div>
+      <button
+        className="button-animation btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        <span>
+          Delete
+        </span>
+      </button>
+    </form>
+    <br />
+    <div
+      className="card border-danger"
+    >
+      
+      <div
+        className="card-body"
+      >
+        <div
+          className="card-title h5"
+        >
+          Roles &gt; test
+        </div>
+        
+        <i
+          className="fa chevron-left"
+        />
+          
+        <a
+          href="#roles"
+          onClick={[Function]}
+        >
+          Back
+        </a>
+        <div
+          className="fade alert show"
+          role="alert"
+        >
+          No Users Assigned to this Role!
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dashboard <Main /> renders Role/Delete/User correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles &gt; Unassign Role &gt; test &gt; User ID: 20
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <i
+      className="fa chevron-left"
+    />
+      
+    <a
+      href="#user/roles/20"
+      onClick={[Function]}
+    >
+      <span>
+        Back
+      </span>
+    </a>
+    <form
+      className=""
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+        >
+          Unassign Role
+        </label>
+        <h3>
+          Unassign Role: 
+          test
+           from User ID 
+          20
+          ?
+        </h3>
+      </div>
+      <button
+        className="button-animation btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        <span>
+          Remove
+        </span>
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Dashboard <Main /> renders Role/Edit correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles &gt; Edit Role &gt; test
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <i
+      className="fa chevron-left"
+    />
+      
+    <a
+      href="#roles"
+      onClick={[Function]}
+    >
+      <span>
+        Back
+      </span>
+    </a>
+    <form
+      className=""
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+        >
+          Role Name
+        </label>
+        <input
+          className="form-control"
+          name="name"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value="test"
+        />
+      </div>
+      <button
+        className="button-animation btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        <span>
+          Save
+        </span>
+      </button>
+    </form>
+  </div>
+</div>
+`;
+
+exports[`Dashboard <Main /> renders Role/Users correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles &gt; test
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <i
+      className="fa chevron-left"
+    />
+      
+    <a
+      href="#roles"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+    <div
+      className="fade alert show"
+      role="alert"
+    >
+      No Users Assigned to this Role!
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dashboard <Main /> renders Roles correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="pb-2 row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table-responsive"
+    >
+      <table
+        className="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr
+            className="text-center"
+          >
+            <th>
+              ID
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Options
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              className="text-center"
+            >
+              1
+            </td>
+            <td>
+              Administrator
+            </td>
+            <td>
+              <a
+                href="#role/users/1"
+                onClick={[Function]}
+              >
+                Users
+              </a>
+                |  
+              <a
+                href="#role/1/add/user"
+                onClick={[Function]}
+              >
+                Assign
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              2
+            </td>
+            <td>
+              User
+            </td>
+            <td>
+              <a
+                href="#role/users/2"
+                onClick={[Function]}
+              >
+                Users
+              </a>
+                |  
+              <a
+                href="#role/2/add/user"
+                onClick={[Function]}
+              >
+                Assign
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              3
+            </td>
+            <td>
+              Tester
+            </td>
+            <td>
+              <a
+                href="#role/users/3"
+                onClick={[Function]}
+              >
+                Users
+              </a>
+                |  
+              <a
+                href="#role/3/add/user"
+                onClick={[Function]}
+              >
+                Assign
+              </a>
+                |  
+              <a
+                href="#role/edit/3"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+                |  
+              <a
+                href="#role/delete/3"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              4
+            </td>
+            <td>
+              Moderator
+            </td>
+            <td>
+              <a
+                href="#role/users/4"
+                onClick={[Function]}
+              >
+                Users
+              </a>
+                |  
+              <a
+                href="#role/4/add/user"
+                onClick={[Function]}
+              >
+                Assign
+              </a>
+                |  
+              <a
+                href="#role/edit/4"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+                |  
+              <a
+                href="#role/delete/4"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              8
+            </td>
+            <td>
+              Everyone
+            </td>
+            <td>
+              <a
+                href="#role/users/8"
+                onClick={[Function]}
+              >
+                Users
+              </a>
+                |  
+              <a
+                href="#role/8/add/user"
+                onClick={[Function]}
+              >
+                Assign
+              </a>
+                |  
+              <a
+                href="#role/edit/8"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+                |  
+              <a
+                href="#role/delete/8"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              9
+            </td>
+            <td>
+              Myself
+            </td>
+            <td>
+              <a
+                href="#role/users/9"
+                onClick={[Function]}
+              >
+                Users
+              </a>
+                |  
+              <a
+                href="#role/9/add/user"
+                onClick={[Function]}
+              >
+                Assign
+              </a>
+                |  
+              <a
+                href="#role/edit/9"
+                onClick={[Function]}
+              >
+                Edit
+              </a>
+                |  
+              <a
+                href="#role/delete/9"
+                onClick={[Function]}
+              >
+                Delete
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="pb-2 row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          100
+           
+          Roles
+        </div>
+        <div
+          className="text-right col"
+        >
+          5
+           Pages
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dashboard <Main /> renders User/Roles correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    User &gt; User ID: 3 &gt; Roles
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <a
+      href="#users"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+     
+     
+    <a
+      href="#roles"
+      onClick={[Function]}
+    >
+      Roles
+    </a>
+    <div
+      className="table-responsive"
+    >
+      <table
+        className="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr
+            className="text-center"
+          >
+            <th>
+              ID
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Options
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              className="text-center"
+            >
+              1
+            </td>
+            <td
+              className={null}
+            >
+              Administrator
+            </td>
+            <td>
+              <a
+                href="#role/1/users"
+                onClick={[Function]}
+              >
+                Other Users
+              </a>
+                |  
+              <a
+                href="#role/1/delete/user"
+                onClick={[Function]}
+              >
+                Unassign Role
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              8
+            </td>
+            <td
+              className={null}
+            >
+              Everyone
+            </td>
+            <td>
+              <a
+                href="#role/8/users"
+                onClick={[Function]}
+              >
+                Other Users
+              </a>
+                |  
+              <a
+                href="#role/8/delete/user"
+                onClick={[Function]}
+              >
+                Unassign Role
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              9
+            </td>
+            <td
+              className={null}
+            >
+              Myself
+            </td>
+            <td>
+              <a
+                href="#role/9/users"
+                onClick={[Function]}
+              >
+                Other Users
+              </a>
+                |  
+              <a
+                href="#role/9/delete/user"
+                onClick={[Function]}
+              >
+                Unassign Role
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <a
+      href="#users"
+      onClick={[Function]}
+    >
+      Back
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Dashboard <Main /> renders Users correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Users
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="pb-2 row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
+      className="table-responsive"
+    >
+      <table
+        className="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr
+            className="text-center"
+          >
+            <th>
+              ID
+            </th>
+            <th>
+              Username
+            </th>
+            <th>
+              Email
+            </th>
+            <th>
+              Activated
+            </th>
+            <th>
+              Options
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              className="text-center"
+            >
+              1
+            </td>
+            <td
+              className="text-center"
+            >
+              Andrew
+            </td>
+            <td
+              className="text-center"
+            >
+              blah@blah.com
+            </td>
+            <td
+              className="text-center"
+            >
+              <i
+                className="fa check"
+              />
+            </td>
+            <td
+              className="text-center"
+            >
+              <a
+                href="/user/Andrew"
+                onClick={[Function]}
+              >
+                Profile
+              </a>
+                |  
+              <a
+                href="#user/1/roles"
+                onClick={[Function]}
+              >
+                Roles
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td
+              className="text-center"
+            >
+              2
+            </td>
+            <td
+              className="text-center"
+            >
+              Josef
+            </td>
+            <td
+              className="text-center"
+            >
+              blah2@blah.com
+            </td>
+            <td
+              className="text-center"
+            >
+              <i
+                className="fa check"
+              />
+            </td>
+            <td
+              className="text-center"
+            >
+              <a
+                href="/user/Josef"
+                onClick={[Function]}
+              >
+                Profile
+              </a>
+                |  
+              <a
+                href="#user/2/roles"
+                onClick={[Function]}
+              >
+                Roles
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="pb-2 row"
+      >
+        <div
+          className="col-3"
+        >
+          <input
+            className="form-control"
+            max="200"
+            min="20"
+            onBlur={[Function]}
+            onChange={[Function]}
+            step="20"
+            type="number"
+            value={20}
+          />
+        </div>
+        <div
+          className="text-right col"
+        >
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
+          >
+            <option
+              value={1}
+            >
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
+      className="container-fluid"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          100
+           
+          Users
+        </div>
+        <div
+          className="text-right col"
+        >
+          5
+           Pages
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

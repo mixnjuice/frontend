@@ -6,14 +6,31 @@ import toast from './toast';
 import flavor from './flavor';
 import recipe from './recipe';
 import application from './application';
+import dashboard from './dashboard';
+import flavors from './flavors';
+import roles from './roles';
+import users from './users';
 
 describe('index saga', () => {
   it('forks all sagas', () => {
     const gen = saga();
+
     const result = gen.next();
 
     expect(result.value).toEqual(
-      all([application, profile, toast, flavor, recipe].map(fork))
+      all(
+        [
+          application,
+          dashboard,
+          flavors,
+          profile,
+          roles,
+          toast,
+          flavor,
+          recipe,
+          users
+        ].map(fork)
+      )
     );
   });
 });

@@ -1,0 +1,192 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <Menu /> renders correctly 1`] = `
+<div
+  className="accordion"
+>
+  <div
+    className="card"
+  >
+    <div
+      className="card-body"
+    >
+      <i
+        className="fa tachometer-alt"
+      />
+        
+      <a
+        href="#home"
+        onClick={[Function]}
+      >
+        Dashboard
+      </a>
+    </div>
+  </div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-header"
+      onClick={[Function]}
+    >
+      <h3>
+        <i
+          className="fa user-shield"
+        />
+         Roles
+      </h3>
+    </div>
+    <div
+      aria-expanded={null}
+      className="collapse"
+    >
+      <div
+        className="card-body"
+      >
+        <div>
+          <i
+            className="fa user-shield"
+          />
+            
+          <a
+            href="#roles"
+            onClick={[Function]}
+          >
+            Roles
+          </a>
+        </div>
+        <div>
+          <i
+            className="fa plus"
+          />
+            
+          <a
+            href="#roles/add"
+            onClick={[Function]}
+          >
+            Add Role
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-header"
+      onClick={[Function]}
+    >
+      <h3>
+        <i
+          className="fa users"
+        />
+         Users
+      </h3>
+    </div>
+    <div
+      aria-expanded={null}
+      className="collapse"
+    >
+      <div
+        className="card-body"
+      >
+        <div>
+          <i
+            className="fa users-cog"
+          />
+            
+          <a
+            href="#users"
+            onClick={[Function]}
+          >
+            Users
+          </a>
+        </div>
+        <div>
+          <i
+            className="fa plus"
+          />
+            
+          <a
+            href="#users/add"
+            onClick={[Function]}
+          >
+            Add User
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-header"
+      onClick={[Function]}
+    >
+      <h3>
+        <i
+          className="fa bezier-curve"
+        />
+         Ingredients
+      </h3>
+    </div>
+    <div
+      aria-expanded={null}
+      className="collapse"
+    >
+      <div
+        className="card-body"
+      >
+        <div>
+          <i
+            className="fa eye-dropper"
+          />
+            
+          <a
+            href="#flavors"
+            onClick={[Function]}
+          >
+            Flavors
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="card"
+  >
+    <div
+      className="card-header"
+      onClick={[Function]}
+    >
+      <h3>
+        <i
+          className="fa database"
+        />
+         Database
+      </h3>
+    </div>
+    <div
+      aria-expanded={null}
+      className="collapse"
+    >
+      <div
+        className="card-body"
+      >
+        <i
+          className="fa clock"
+        />
+          
+        <a
+          href="#migrations"
+          onClick={[Function]}
+        >
+          Migration History
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

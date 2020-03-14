@@ -24,6 +24,9 @@ const plugins = [
     quiet: false,
     syntax: 'scss'
   }),
+  new HtmlPlugin({
+    template: './src/index.html'
+  }),
   new MiniCSSExtractPlugin({
     filename: '[name].css'
   }),
@@ -33,12 +36,7 @@ const plugins = [
 ];
 
 if (dev) {
-  plugins.push(
-    new HtmlPlugin({
-      template: './src/index.html'
-    }),
-    new webpack.HotModuleReplacementPlugin()
-  );
+  plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
 if (compareBundle || analyzeBundle) {

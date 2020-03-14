@@ -21,6 +21,7 @@ jest.mock('pages', () => {
   const { mockComponent } = require('utils');
 
   return {
+    Dashboard: mockComponent('Dashboard'),
     Favorites: mockComponent('Favorites'),
     Flavors: mockComponent('Flavors'),
     FlavorStash: mockComponent('FlavorStash'),
@@ -192,6 +193,19 @@ describe('<App />', () => {
   it('renders recipe editor page', () => {
     const RoutedApp = withMemoryRouter(ConnectedApp, {
       initialEntries: ['/recipe/editor']
+    });
+    const component = renderer.create(
+      <Provider store={authedStore}>
+        <RoutedApp />
+      </Provider>
+    );
+
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('renders dashboard page', () => {
+    const RoutedApp = withMemoryRouter(ConnectedApp, {
+      initialEntries: ['/dashboard']
     });
     const component = renderer.create(
       <Provider store={authedStore}>

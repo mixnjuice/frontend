@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <RoleDeleteUser /> renders correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Roles &gt; Unassign Role &gt; Administrator &gt; User ID: 200
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <i
+      className="fa chevron-left"
+    />
+      
+    <a
+      href="#user/roles/200"
+      onClick={[Function]}
+    >
+      <span>
+        Back
+      </span>
+    </a>
+    <form
+      className=""
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+        >
+          Unassign Role
+        </label>
+        <h3>
+          Unassign Role: 
+          Administrator
+           from User ID 
+          200
+          ?
+        </h3>
+      </div>
+      <button
+        className="button-animation btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        <span>
+          Remove
+        </span>
+      </button>
+    </form>
+  </div>
+</div>
+`;
