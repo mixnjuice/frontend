@@ -2,9 +2,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Helmet } from 'react-helmet';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { PagerInfo, withPagination } from 'components/Pagination/Pagination';
-import { Col, Container, Form, Row, Table } from 'react-bootstrap';
+import { Col, Container, Row, Table } from 'react-bootstrap';
 import ToggleButton from 'components/ToggleButton/ToggleButton';
 import { actions as appActions } from 'reducers/application';
 import { actions as flavorActions } from 'reducers/flavor';
@@ -48,7 +48,7 @@ export class Flavors extends Component {
     }
   }
 
-  handleStashToggle(event) {
+  /* handleStashToggle(event) {
     const { stash } = this.props;
     const { holdings: stashMap } = this.state;
     const holdings = {};
@@ -66,6 +66,40 @@ export class Flavors extends Component {
     } else {
       this.setState({ [name]: checked });
     }
+  }*/
+
+  handleStashToggle() {
+    const { stash } = this.props;
+    const { holdings: stashMap } = this.state;
+    const holdings = {};
+
+    const { stashToggle } = this.state;
+
+    if (!stashMap) {
+      stash.map(flavor => {
+        holdings[flavor.flavorId] = true;
+      });
+
+      this.setState({ stashToggle: !stashToggle, holdings });
+    } else {
+      this.setState({ stashToggle: !stashToggle });
+    }
+  }
+
+  stashToggle() {
+    const { stashToggle } = this.state;
+
+    return (
+      <ToggleButton
+        value={stashToggle}
+        onClick={e => this.handleStashToggle(e)}
+        buttonProps={{
+          title: stashToggle ? 'Enable Flavor Stash' : 'Disable Flavor Stash'
+        }}
+        variant="switch"
+        iconOnly={true}
+      />
+    );
   }
 
   addToStash(id) {
@@ -121,17 +155,11 @@ export class Flavors extends Component {
             </Col>
           </Row>
           <Row>
-            <Col className="text-center">
+            <Col className="text-left ml-2 mb-4">
               {loggedIn ? (
-                <Form>
-                  <Form.Check
-                    name="stashToggle"
-                    type="checkbox"
-                    id="flavorStash"
-                    label="&nbsp;Enable Flavor Stash"
-                    onChange={this.handleStashToggle}
-                  />
-                </Form>
+                <Fragment>
+                  {this.stashToggle()} <span>Enable Flavor Stash</span>
+                </Fragment>
               ) : (
                 <small>Log in to Enable Flavor Stash</small>
               )}
