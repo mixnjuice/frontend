@@ -363,86 +363,6 @@ export class Recipes extends Component {
     });
   }
 
-  renderResultCards() {
-    const image = '/media/card-test-5.jpeg';
-
-    return recipeList.map((recipe, index) => {
-      return (
-        <Col key={`${recipe.id}${index}`} lg={this.state.grid ? 3 : 12}>
-          <Card className="search-grid--card">
-            <Card.Img
-              className="card-img search-grid--card-image"
-              src={image}
-              alt={recipe.name}
-            />
-            <Card.Title
-              className={
-                this.state.grid
-                  ? 'search-grid--card-header'
-                  : 'search-list--card-header'
-              }
-            >
-              <a href={'/recipe?id=' + recipe.id}>{recipe.name}</a>
-            </Card.Title>
-            <Card.Body className={this.state.grid ? 'py-0' : null}>
-              <Card.Text>
-                <span className="font-weight-bold">Author:</span>
-                <a href="/">
-                  <Badge className="link--tags">{recipe.user}</Badge>
-                </a>
-              </Card.Text>
-              <Card.Text
-                className={
-                  this.state.grid ? 'search-grid--card-text tags' : null
-                }
-              >
-                <span className="font-weight-bold">Tags:</span>
-                {recipe.tags.map((tag, i) => {
-                  if (i < 6) {
-                    return (
-                      <a key={`${tag}${i}`} href="/">
-                        <Badge className="link--tags mx-1">{tag}</Badge>
-                      </a>
-                    );
-                  } else if (i === 6) {
-                    return (
-                      <a key={`${tag}${i}`} href="/">
-                        <Badge className="link--tags mx-1">and more...</Badge>
-                      </a>
-                    );
-                  } else {
-                    return;
-                  }
-                })}
-              </Card.Text>
-              <Card.Text>
-                <Button className="mx-2 button-animation">
-                  <span>Create</span>
-                </Button>
-                <Button
-                  className="mx-2 button--favorite"
-                  onClick={() =>
-                    this.handleFavoriteClick(recipe.id, recipe.name)
-                  }
-                >
-                  <span>
-                    <FontAwesomeIcon
-                      icon={
-                        this.state.recipes[recipe.id]
-                          ? this.state.recipes[recipe.id].favoriteIcon
-                          : ['far', 'heart']
-                      }
-                    />
-                  </span>
-                </Button>
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      );
-    });
-  }
-
   render() {
     return (
       <Container>
@@ -486,7 +406,6 @@ export class Recipes extends Component {
             </Accordion>
           </Col>
         </Row>
-        {/* <Row>{this.renderResultCards()}</Row> */}
         <Row>
           {this.state.grid
             ? this.renderResultCardsGrid
