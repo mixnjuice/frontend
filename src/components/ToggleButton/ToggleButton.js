@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const toggleButtonProps = {
-  variants: ['check']
+  variants: ['check', 'circle', 'switch']
 };
 
 export default class ToggleButton extends Component {
@@ -13,27 +13,28 @@ export default class ToggleButton extends Component {
     className: PropTypes.string,
     buttonProps: PropTypes.object,
     iconProps: PropTypes.object,
-    initialValue: PropTypes.bool,
+    title: PropTypes.string.isRequired,
+    value: PropTypes.bool,
+    iconOnly: PropTypes.bool,
     variant: PropTypes.oneOf(toggleButtonProps.variants),
     onClick: PropTypes.func
   };
 
   static defaultProps = {
-    initialValue: false,
+    buttonProps: {},
+    iconProps: {},
+    value: false,
     variant: 'check'
   };
 
   constructor(props) {
     super(props);
 
-    this.state = { value: this.props.initialValue };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(event) {
     const { onClick } = this.props;
-
-    this.setState({ value: !this.state.value });
 
     if (onClick) {
       onClick(event);
@@ -41,28 +42,53 @@ export default class ToggleButton extends Component {
   }
 
   render() {
-    const { value } = this.state;
-    const { buttonProps, className, iconProps, variant } = this.props;
+    const {
+      buttonProps,
+      className,
+      iconOnly,
+      iconProps,
+      title,
+      value,
+      variant
+    } = this.props;
 
     let icon = '';
 
     switch (variant) {
+      case 'switch':
+        icon = value ? ['fas', 'toggle-on'] : ['fas', 'toggle-off'];
+        break;
       case 'check':
       default:
         icon = value ? ['fas', 'check-square'] : ['far', 'square'];
         break;
     }
-    const classes = classNames(className, 'btn-toggle');
+    if (iconOnly) {
+      const classes = classNames(className, 'icon-toggle');
 
-    return (
-      <Button
-        {...buttonProps}
-        onClick={this.handleClick}
-        className={classes}
-        title="Click to toggle"
-      >
-        <FontAwesomeIcon size="lg" {...iconProps} icon={icon} />
-      </Button>
-    );
+      return (
+        <FontAwesomeIcon
+          size="lg"
+          {...iconProps}
+          icon={icon}
+          title={title}
+          onClick={this.handleClick}
+          className={classes}
+        />
+      );
+    } else {
+      const classes = classNames(className, 'btn-toggle');
+
+      return (
+        <Button
+          {...buttonProps}
+          title={title}
+          onClick={this.handleClick}
+          className={classes}
+        >
+          <FontAwesomeIcon size="lg" {...iconProps} icon={icon} />
+        </Button>
+      );
+    }
   }
 }
