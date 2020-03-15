@@ -14,6 +14,7 @@ import {
   InputGroup,
   Row
 } from 'react-bootstrap';
+import ToggleButton from 'components/ToggleButton/ToggleButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { actions as flavorActions } from 'reducers/flavor';
 import { getFlavorNote } from 'selectors/note';
@@ -77,26 +78,17 @@ export class FlavorStash extends Component {
     this.setState({ removed });
   }
 
-  inStashIcon(id) {
+  stashIcon(id, has) {
     return (
-      <FontAwesomeIcon
-        onClick={e => this.handleRemoveFromStash(id, e)}
-        className="text-danger"
-        icon="minus-square"
-        size="2x"
-        title="Remove from Stash"
-      />
-    );
-  }
-
-  noStashIcon(id) {
-    return (
-      <FontAwesomeIcon
-        onClick={e => this.handleAddToStash(id, e)}
-        className="text-success"
-        icon="plus-square"
-        size="2x"
-        title="Add to Stash"
+      <ToggleButton
+        value={has}
+        onClick={
+          has
+            ? e => this.handleRemoveFromStash(id, e)
+            : e => this.handleAddToStash(id, e)
+        }
+        title={has ? 'Remove from Stash' : 'Add to Stash'}
+        variant="check"
       />
     );
   }
@@ -284,21 +276,47 @@ export class FlavorStash extends Component {
             {stash.map((flavor, index) => {
               const minMillipercent = flavor.minMillipercent / 1000;
               const maxMillipercent = flavor.maxMillipercent / 1000;
+              const milliPercents = usage[flavor.flavorId]
+                ? `${usage[flavor.flavorId].minMillipercent} - ${
+                    usage[flavor.flavorId].maxMillipercent
+                  }`
+                : `${minMillipercent} - ${maxMillipercent}`;
 
               return (
                 <Card key={index} className="mb-2">
                   <Card.Header>
-                    <h3 className="float-left">
-                      <a
-                        href="#expand"
-                        onClick={e => this.handleExpandFlavor(flavor, e)}
-                      >
-                        {flavor.Flavor.name} ({flavor.Flavor.Vendor.code})
-                      </a>
-                    </h3>
-                    <h5 className="float-right">
-                      Added: {this.date(flavor.created)}
-                    </h5>
+                    <Row>
+                      <Col>
+                        <h3>
+                          <a
+                            href="#expand"
+                            onClick={e => this.handleExpandFlavor(flavor, e)}
+                          >
+                            {flavor.Flavor.name} ({flavor.Flavor.Vendor.code})
+                          </a>
+                        </h3>
+                      </Col>
+                      {!expanded[flavor.flavorId] && (
+                        <Col className="text-center">
+                          <h4>
+                            <strong>Use:</strong> {milliPercents}%
+                          </h4>
+                        </Col>
+                      )}
+                      <Col className="text-right">
+                        <h5>Added: {this.date(flavor.created)}</h5>
+                      </Col>
+                    </Row>
+                    {!expanded[flavor.flavorId] && (
+                      <Row>
+                        <Col>
+                          {this.stashIcon(
+                            flavor.flavorId,
+                            Boolean(!removed[flavor.flavorId])
+                          )}
+                        </Col>
+                      </Row>
+                    )}
                   </Card.Header>
                   {expanded[flavor.flavorId] && (
                     <Fragment>
@@ -312,12 +330,7 @@ export class FlavorStash extends Component {
                           </Col>
                           <Col>
                             {this.editIcon(flavor.flavorId)}{' '}
-                            <strong>Use:</strong>&nbsp;
-                            {usage[flavor.flavorId]
-                              ? `${usage[flavor.flavorId].minMillipercent} - 
-                          ${usage[flavor.flavorId].maxMillipercent}`
-                              : `${minMillipercent} - ${maxMillipercent}`}
-                            %
+                            <strong>Use:</strong> {milliPercents}%
                           </Col>
                         </Row>
 
@@ -332,9 +345,10 @@ export class FlavorStash extends Component {
                       </Card.Body>
                       <Card.Footer>
                         <span className="float-left">
-                          {!removed[flavor.flavorId]
-                            ? this.inStashIcon(flavor.flavorId)
-                            : this.noStashIcon(flavor.flavorId)}{' '}
+                          {this.stashIcon(
+                            flavor.flavorId,
+                            Boolean(!removed[flavor.flavorId])
+                          )}{' '}
                           {this.noteIcon(flavor.flavorId)}{' '}
                           {this.notesIcon(flavor.flavorId)}
                         </span>
@@ -347,6 +361,7 @@ export class FlavorStash extends Component {
                 </Card>
               );
             })}
+            {!stash[0] && <div>Shit!</div>}
           </Col>
         </Row>
       </Container>
