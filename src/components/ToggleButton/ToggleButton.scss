@@ -105,3 +105,12 @@ input:checked + .slider::before {
 .slider.round::before {
   border-radius: 50%;
 }
+
+.grid-list {
+  display: inline;
+
+  &--icon {
+    font-size: 26px;
+    vertical-align: middle;
+  }
+}

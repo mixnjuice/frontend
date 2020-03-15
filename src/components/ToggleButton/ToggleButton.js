@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const toggleButtonProps = {
-  variants: ['check', 'circle', 'switch']
+  variants: ['check', 'circle', 'switch', 'grid-list']
 };
 
 export default class ToggleButton extends Component {
@@ -41,6 +41,22 @@ export default class ToggleButton extends Component {
     }
   }
 
+  renderSwitch(classes, value, title) {
+    const joinedClasses = classNames(classes, 'slider round');
+
+    return (
+      <label className="switch my-auto mx-1">
+        <input
+          type="checkbox"
+          checked={value}
+          onChange={this.handleClick}
+          name={title}
+        />
+        <span className={joinedClasses}></span>
+      </label>
+    );
+  }
+
   render() {
     const {
       buttonProps,
@@ -64,16 +80,18 @@ export default class ToggleButton extends Component {
     if (variant === 'switch') {
       const classes = classNames(className, 'slider round');
 
+      return this.renderSwitch(classes, value, title);
+    }
+
+    if (variant === 'grid-list') {
+      const classes = classNames(className, 'slider slider-teal round');
+
       return (
-        <label className="switch my-auto mx-1">
-          <input
-            type="checkbox"
-            checked={value}
-            onChange={this.handleClick}
-            name={title}
-          />
-          <span className={classes}></span>
-        </label>
+        <div className="grid-list">
+          <FontAwesomeIcon icon={['fas', 'list']} className="grid-list--icon" />
+          {this.renderSwitch(classes, value, title)}
+          <FontAwesomeIcon icon={['fas', 'th']} className="grid-list--icon" />
+        </div>
       );
     }
 
