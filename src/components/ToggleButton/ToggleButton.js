@@ -62,17 +62,17 @@ export default class ToggleButton extends Component {
     }
 
     if (variant === 'switch') {
-      const classes = classNames(className, 'switch my-auto mx-1');
+      const classes = classNames(className, 'slider round');
 
       return (
-        <label className={classes}>
+        <label className="switch my-auto mx-1">
           <input
             type="checkbox"
             checked={value}
             onChange={this.handleClick}
             name={title}
           />
-          <span className="slider round"></span>
+          <span className={classes}></span>
         </label>
       );
     }

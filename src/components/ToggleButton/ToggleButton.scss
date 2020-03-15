@@ -34,6 +34,10 @@
     background-color: $shadow-grey;
     --webkit-transition: 0.4s;
     transition: none;
+
+    &.slider-teal {
+      background-color: $teal;
+    }
   }
 }
 
@@ -47,6 +51,10 @@
   background-color: $shadow-grey;
   --webkit-transition: 0.4s;
   transition: 0.4s;
+
+  &.slider-teal {
+    background-color: $teal;
+  }
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
