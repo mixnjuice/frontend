@@ -23,24 +23,6 @@
 }
 
 /* The slider */
-@media screen and (prefers-reduced-motion: reduce) {
-  .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: $shadow-grey;
-    --webkit-transition: 0.4s;
-    transition: none;
-
-    &.slider-teal {
-      background-color: $teal;
-    }
-  }
-}
-
 .slider {
   position: absolute;
   cursor: pointer;
@@ -49,8 +31,13 @@
   right: 0;
   bottom: 0;
   background-color: $shadow-grey;
-  --webkit-transition: 0.4s;
   transition: 0.4s;
+  --webkit-transition: 0.4s;
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    transition: none;
+    --webkit-transition: none;
+  }
 
   &.slider-teal {
     background-color: $teal;
@@ -66,20 +53,6 @@
   }
 }
 
-@media screen and (prefers-reduced-motion: reduce) {
-  .slider::before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: $white;
-    --webkit-transition: 0.4s;
-    transition: none;
-  }
-}
-
 .slider::before {
   position: absolute;
   content: "";
@@ -88,8 +61,13 @@
   left: 4px;
   bottom: 4px;
   background-color: $white;
-  --webkit-transition: 0.4s;
   transition: 0.4s;
+  --webkit-transition: 0.4s;
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    transition: none;
+    --webkit-transition: none;
+  }
 }
 
 input:checked + .slider {
