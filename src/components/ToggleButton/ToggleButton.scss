@@ -39,8 +39,12 @@
     --webkit-transition: none;
   }
 
-  &.slider-teal {
+  &--teal {
     background-color: $teal;
+  }
+
+  &--grid-list {
+    display: inline;
   }
 
   // Rounded slider
@@ -84,10 +88,8 @@ input:checked + .slider::before {
   transform: translateX(26px);
 }
 
-.slider--grid-list {
-  display: inline;
-
-  &--icon {
+.slider-icon {
+  &--grid-list {
     font-size: 26px;
     vertical-align: middle;
   }

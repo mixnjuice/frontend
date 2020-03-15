@@ -58,18 +58,18 @@ export default class ToggleButton extends Component {
   }
 
   renderGridList(classes, value, title) {
-    const joinedClasses = classNames(classes, 'slider-teal');
+    const joinedClasses = classNames(classes, 'slider--teal');
 
     return (
       <div className="slider--grid-list">
         <FontAwesomeIcon
           icon={['fas', 'list']}
-          className="slider--grid-list--icon"
+          className="slider-icon--grid-list"
         />
         {this.renderSwitch(joinedClasses, value, title)}
         <FontAwesomeIcon
           icon={['fas', 'th']}
-          className="slider--grid-list--icon"
+          className="slider-icon--grid-list"
         />
       </div>
     );
