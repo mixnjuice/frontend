@@ -55,14 +55,23 @@ export default class ToggleButton extends Component {
     let icon = '';
 
     switch (variant) {
-      case 'switch':
-        icon = value ? ['fas', 'toggle-on'] : ['fas', 'toggle-off'];
-        break;
       case 'check':
       default:
         icon = value ? ['fas', 'check-square'] : ['far', 'square'];
         break;
     }
+
+    if (variant === 'switch') {
+      return (
+        <div>
+          <label className="switch my-auto mx-1">
+            <input type="checkbox" onChange={this.handleClick} name={title} />
+            <span className="slider round"></span>
+          </label>
+        </div>
+      );
+    }
+
     if (iconOnly) {
       const classes = classNames(className, 'icon-toggle');
 
