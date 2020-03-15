@@ -44,6 +44,11 @@ a {
     color: $baby-blue;
     text-decoration: none;
   }
+
+  &:focus,
+  &:active {
+    outline-color: $teal;
+  }
 }
 
 // Style for horizontal rules
