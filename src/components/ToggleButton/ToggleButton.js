@@ -78,13 +78,11 @@ export default class ToggleButton extends Component {
     }
 
     if (variant === 'switch') {
-      const classes = classNames(className, 'slider round');
-
-      return this.renderSwitch(classes, value, title);
+      return this.renderSwitch(className, value, title);
     }
 
     if (variant === 'grid-list') {
-      const classes = classNames(className, 'slider slider-teal round');
+      const classes = classNames(className, 'slider-teal');
 
       return (
         <div className="grid-list">
