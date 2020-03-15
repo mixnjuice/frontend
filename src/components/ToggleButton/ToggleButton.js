@@ -42,7 +42,7 @@ export default class ToggleButton extends Component {
   }
 
   renderSwitch(classes, value, title) {
-    const joinedClasses = classNames(classes, 'slider--round');
+    const joinedClasses = classNames(classes, 'slider slider--round');
 
     return (
       <label className="switch my-auto mx-1">

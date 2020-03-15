@@ -31,7 +31,7 @@ exports[`<ToggleButton /> can render "grid-list" variant 1`] = `
       type="checkbox"
     />
     <span
-      className="slider-teal slider--round"
+      className="slider-teal slider slider--round"
     />
   </label>
   <i
@@ -51,7 +51,7 @@ exports[`<ToggleButton /> can render "switch" variant 1`] = `
     type="checkbox"
   />
   <span
-    className="slider--round"
+    className="slider slider--round"
   />
 </label>
 `;

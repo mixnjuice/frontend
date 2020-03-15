@@ -55,6 +55,15 @@
   &.slider-teal {
     background-color: $teal;
   }
+
+  // Rounded slider
+  &--round {
+    border-radius: 34px;
+
+    &::before {
+      border-radius: 50%;
+    }
+  }
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -95,15 +104,6 @@ input:checked + .slider::before {
   --webkit-transform: translateX(26px);
   --ms-transform: translateX(26px);
   transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider--round {
-  border-radius: 34px;
-}
-
-.slider--round::before {
-  border-radius: 50%;
 }
 
 .slider--grid-list {
