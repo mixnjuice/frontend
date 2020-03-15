@@ -192,7 +192,7 @@ exports[`Page <Flavors /> renders correctly when stash is not loaded 1`] = `
             type="checkbox"
           />
           <span
-            className="slider round"
+            className="slider round slider round"
           />
         </label>
          
