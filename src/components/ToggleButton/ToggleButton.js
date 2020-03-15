@@ -42,7 +42,7 @@ export default class ToggleButton extends Component {
   }
 
   renderSwitch(classes, value, title) {
-    const joinedClasses = classNames(classes, 'slider round');
+    const joinedClasses = classNames(classes, 'slider--round');
 
     return (
       <label className="switch my-auto mx-1">
@@ -61,10 +61,16 @@ export default class ToggleButton extends Component {
     const joinedClasses = classNames(classes, 'slider-teal');
 
     return (
-      <div className="grid-list">
-        <FontAwesomeIcon icon={['fas', 'list']} className="grid-list--icon" />
+      <div className="slider--grid-list">
+        <FontAwesomeIcon
+          icon={['fas', 'list']}
+          className="slider--grid-list--icon"
+        />
         {this.renderSwitch(joinedClasses, value, title)}
-        <FontAwesomeIcon icon={['fas', 'th']} className="grid-list--icon" />
+        <FontAwesomeIcon
+          icon={['fas', 'th']}
+          className="slider--grid-list--icon"
+        />
       </div>
     );
   }
