@@ -57,6 +57,18 @@ export default class ToggleButton extends Component {
     );
   }
 
+  renderGridList(classes, value, title) {
+    const joinedClasses = classNames(classes, 'slider-teal');
+
+    return (
+      <div className="grid-list">
+        <FontAwesomeIcon icon={['fas', 'list']} className="grid-list--icon" />
+        {this.renderSwitch(joinedClasses, value, title)}
+        <FontAwesomeIcon icon={['fas', 'th']} className="grid-list--icon" />
+      </div>
+    );
+  }
+
   render() {
     const {
       buttonProps,
@@ -82,15 +94,7 @@ export default class ToggleButton extends Component {
     }
 
     if (variant === 'grid-list') {
-      const classes = classNames(className, 'slider-teal');
-
-      return (
-        <div className="grid-list">
-          <FontAwesomeIcon icon={['fas', 'list']} className="grid-list--icon" />
-          {this.renderSwitch(classes, value, title)}
-          <FontAwesomeIcon icon={['fas', 'th']} className="grid-list--icon" />
-        </div>
-      );
+      return this.renderGridList(className, value, title);
     }
 
     if (iconOnly) {
