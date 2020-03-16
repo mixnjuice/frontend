@@ -182,19 +182,7 @@ exports[`Page <Flavors /> renders correctly when stash is not loaded 1`] = `
       <div
         className="text-left ml-2 mb-4 col"
       >
-        <label
-          className="switch my-auto mx-1"
-        >
-          <input
-            checked={false}
-            name="Enable Flavor Stash"
-            onChange={[Function]}
-            type="checkbox"
-          />
-          <span
-            className="slider slider--round"
-          />
-        </label>
+        <ToggleButton />
          
         <span>
           Enable Flavor Stash
