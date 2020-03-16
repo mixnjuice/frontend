@@ -66,7 +66,7 @@ export const pagination = WrappedComponent =>
 
     navigation() {
       return (
-        <Container fluid={true}>
+        <Container fluid>
           <Row className="pb-2">
             <Col xs={3}>
               <input
@@ -146,7 +146,7 @@ export class PagerInfo extends Component {
     } = this.props;
 
     return (
-      <Container fluid={true}>
+      <Container fluid>
         <Row>
           <Col>
             {count} {contentType}
