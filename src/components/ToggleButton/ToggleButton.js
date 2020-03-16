@@ -108,47 +108,45 @@ export default class ToggleButton extends Component {
     );
   }
 
-  render() {
-    const {
-      className,
-      iconOnly,
-      iconProps,
-      title,
-      value,
-      variant
-    } = this.props;
+  renderIcon() {
+    const { className, iconProps, title, value, variant } = this.props;
 
     let icon = '';
+    const classes = classNames(className, 'icon-toggle');
+
+    switch (variant) {
+      case 'check':
+      default:
+        icon = value ? ['fas', 'check-square'] : ['far', 'square'];
+        break;
+    }
+
+    return (
+      <FontAwesomeIcon
+        size="lg"
+        {...iconProps}
+        icon={icon}
+        title={title}
+        onClick={this.handleClick}
+        className={classes}
+      />
+    );
+  }
+
+  render() {
+    const { iconOnly, variant, className, value, title } = this.props;
 
     if (iconOnly) {
-      const classes = classNames(className, 'icon-toggle');
+      return this.renderIcon();
+    }
 
-      switch (variant) {
-        case 'check':
-        default:
-          icon = value ? ['fas', 'check-square'] : ['far', 'square'];
-          break;
-      }
-
-      return (
-        <FontAwesomeIcon
-          size="lg"
-          {...iconProps}
-          icon={icon}
-          title={title}
-          onClick={this.handleClick}
-          className={classes}
-        />
-      );
-    } else {
-      switch (variant) {
-        case 'switch':
-          return this.renderSwitch(className, value, title);
-        case 'grid-list':
-          return this.renderGridList(className, value, title);
-        default:
-          return this.renderButton();
-      }
+    switch (variant) {
+      case 'switch':
+        return this.renderSwitch(className, value, title);
+      case 'grid-list':
+        return this.renderGridList(className, value, title);
+      default:
+        return this.renderButton();
     }
   }
 }
