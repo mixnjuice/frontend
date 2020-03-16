@@ -45,9 +45,13 @@ export default class ToggleButton extends Component {
     }
   }
 
-  get switch() {
+  switch(classes) {
     const { className, value, title } = this.props;
-    const joinedClasses = classNames(className, 'slider slider--round');
+    const joinedClasses = classNames(
+      className,
+      classes,
+      'slider slider--round'
+    );
 
     return (
       <label className="switch my-auto mx-1">
@@ -63,16 +67,13 @@ export default class ToggleButton extends Component {
   }
 
   get gridList() {
-    const { className, value, title } = this.props;
-    const joinedClasses = classNames(className, 'slider--teal');
-
     return (
       <div className="slider--grid-list">
         <FontAwesomeIcon
           icon={['fas', 'list']}
           className="slider-icon--grid-list"
         />
-        {this.renderSwitch(joinedClasses, value, title)}
+        {this.switch('slider--teal')}
         <FontAwesomeIcon
           icon={['fas', 'th']}
           className="slider-icon--grid-list"
@@ -122,7 +123,7 @@ export default class ToggleButton extends Component {
 
     switch (variant) {
       case 'switch':
-        return this.switch;
+        return this.switch();
       case 'grid-list':
         return this.gridList;
       default:
