@@ -76,24 +76,8 @@ export default class ToggleButton extends Component {
   }
 
   renderButton() {
-    const {
-      buttonProps,
-      className,
-      iconProps,
-      title,
-      value,
-      variant
-    } = this.props;
-
-    let icon = '';
-
-    switch (variant) {
-      case 'check':
-      default:
-        icon = value ? ['fas', 'check-square'] : ['far', 'square'];
-        break;
-    }
-
+    const { buttonProps, className, iconProps, title, value } = this.props;
+    const icon = value ? ['fas', 'check-square'] : ['far', 'square'];
     const classes = classNames(className, 'btn-toggle');
 
     return (
