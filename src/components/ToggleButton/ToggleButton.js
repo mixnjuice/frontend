@@ -33,6 +33,10 @@ export default class ToggleButton extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  get icon() {
+    return this.props.value ? ['fas', 'check-square'] : ['far', 'square'];
+  }
+
   handleClick(event) {
     const { onClick } = this.props;
 
@@ -41,8 +45,9 @@ export default class ToggleButton extends Component {
     }
   }
 
-  renderSwitch(classes, value, title) {
-    const joinedClasses = classNames(classes, 'slider slider--round');
+  get switch() {
+    const { className, value, title } = this.props;
+    const joinedClasses = classNames(className, 'slider slider--round');
 
     return (
       <label className="switch my-auto mx-1">
@@ -57,8 +62,9 @@ export default class ToggleButton extends Component {
     );
   }
 
-  renderGridList(classes, value, title) {
-    const joinedClasses = classNames(classes, 'slider--teal');
+  get gridList() {
+    const { className, value, title } = this.props;
+    const joinedClasses = classNames(className, 'slider--teal');
 
     return (
       <div className="slider--grid-list">
@@ -75,9 +81,8 @@ export default class ToggleButton extends Component {
     );
   }
 
-  renderButton() {
-    const { buttonProps, className, iconProps, title, value } = this.props;
-    const icon = value ? ['fas', 'check-square'] : ['far', 'square'];
+  get button() {
+    const { buttonProps, className, iconProps, title } = this.props;
     const classes = classNames(className, 'btn-toggle');
 
     return (
@@ -87,29 +92,20 @@ export default class ToggleButton extends Component {
         onClick={this.handleClick}
         className={classes}
       >
-        <FontAwesomeIcon size="lg" {...iconProps} icon={icon} />
+        <FontAwesomeIcon size="lg" {...iconProps} icon={this.icon} />
       </Button>
     );
   }
 
-  renderIcon() {
-    const { className, iconProps, title, value, variant } = this.props;
-
-    let icon = '';
+  get iconOnly() {
+    const { className, iconProps, title } = this.props;
     const classes = classNames(className, 'icon-toggle');
-
-    switch (variant) {
-      case 'check':
-      default:
-        icon = value ? ['fas', 'check-square'] : ['far', 'square'];
-        break;
-    }
 
     return (
       <FontAwesomeIcon
         size="lg"
         {...iconProps}
-        icon={icon}
+        icon={this.icon}
         title={title}
         onClick={this.handleClick}
         className={classes}
@@ -118,19 +114,19 @@ export default class ToggleButton extends Component {
   }
 
   render() {
-    const { iconOnly, variant, className, value, title } = this.props;
+    const { iconOnly, variant } = this.props;
 
     if (iconOnly) {
-      return this.renderIcon();
+      return this.iconOnly;
     }
 
     switch (variant) {
       case 'switch':
-        return this.renderSwitch(className, value, title);
+        return this.switch;
       case 'grid-list':
-        return this.renderGridList(className, value, title);
+        return this.gridList;
       default:
-        return this.renderButton();
+        return this.button;
     }
   }
 }
