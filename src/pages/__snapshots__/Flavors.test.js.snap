@@ -182,9 +182,7 @@ exports[`Page <Flavors /> renders correctly when stash is not loaded 1`] = `
       <div
         className="text-left ml-2 mb-4 col"
       >
-        <i
-          className="fa fas-toggle-off"
-        />
+        <ToggleButton />
          
         <span>
           Enable Flavor Stash

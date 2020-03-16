@@ -8,6 +8,10 @@ import { initialState as flavorsInitialState } from 'reducers/flavors';
 import ConnectedFlavors, { Flavors } from './Flavors';
 import { withMemoryRouter } from 'utils';
 
+jest.mock('components/ToggleButton/ToggleButton', () =>
+  require('utils').mockComponent('ToggleButton')
+);
+
 describe('Page <Flavors />', () => {
   const mockStore = configureStore();
   const actions = {
