@@ -75,7 +75,6 @@ export class Flavors extends Component {
         onClick={e => this.handleStashToggle(e)}
         title={!stashToggle ? 'Enable Flavor Stash' : 'Disable Flavor Stash'}
         variant="switch"
-        iconOnly={true}
       />
     );
   }
