@@ -32,4 +32,30 @@ describe('<ToggleButton />', () => {
     instance.handleClick(event);
     expect(props.onClick).toHaveBeenCalledWith(event);
   });
+
+  it('can render with icon-only prop', () => {
+    const newProps = {};
+
+    Object.assign(newProps, {
+      ...props,
+      iconOnly: true
+    });
+    const tree = renderer.create(<ToggleButton {...newProps} />).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('can render "switch" variant', () => {
+    props.variant = 'switch';
+    const tree = renderer.create(<ToggleButton {...props} />).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('can render "grid-list" variant', () => {
+    props.variant = 'grid-list';
+    const tree = renderer.create(<ToggleButton {...props} />).toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
 });

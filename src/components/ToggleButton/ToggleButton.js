@@ -5,7 +5,7 @@ import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const toggleButtonProps = {
-  variants: ['check', 'circle', 'switch']
+  variants: ['check', 'circle', 'switch', 'grid-list']
 };
 
 export default class ToggleButton extends Component {
@@ -33,6 +33,10 @@ export default class ToggleButton extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  get icon() {
+    return this.props.value ? ['fas', 'check-square'] : ['far', 'square'];
+  }
+
   handleClick(event) {
     const { onClick } = this.props;
 
@@ -41,54 +45,89 @@ export default class ToggleButton extends Component {
     }
   }
 
-  render() {
-    const {
-      buttonProps,
+  switch(classes) {
+    const { className, value, title } = this.props;
+    const joinedClasses = classNames(
       className,
-      iconOnly,
-      iconProps,
-      title,
-      value,
-      variant
-    } = this.props;
+      classes,
+      'slider slider--round'
+    );
 
-    let icon = '';
+    return (
+      <label className="switch my-auto mx-1">
+        <input
+          type="checkbox"
+          checked={value}
+          onChange={this.handleClick}
+          name={title}
+        />
+        <span className={joinedClasses}></span>
+      </label>
+    );
+  }
+
+  get gridList() {
+    return (
+      <div className="slider--grid-list">
+        <FontAwesomeIcon
+          icon={['fas', 'list']}
+          className="slider-icon--grid-list"
+        />
+        {this.switch('slider--teal')}
+        <FontAwesomeIcon
+          icon={['fas', 'th']}
+          className="slider-icon--grid-list"
+        />
+      </div>
+    );
+  }
+
+  get button() {
+    const { buttonProps, className, iconProps, title } = this.props;
+    const classes = classNames(className, 'btn-toggle');
+
+    return (
+      <Button
+        {...buttonProps}
+        title={title}
+        onClick={this.handleClick}
+        className={classes}
+      >
+        <FontAwesomeIcon size="lg" {...iconProps} icon={this.icon} />
+      </Button>
+    );
+  }
+
+  get iconOnly() {
+    const { className, iconProps, title } = this.props;
+    const classes = classNames(className, 'icon-toggle');
+
+    return (
+      <FontAwesomeIcon
+        size="lg"
+        {...iconProps}
+        icon={this.icon}
+        title={title}
+        onClick={this.handleClick}
+        className={classes}
+      />
+    );
+  }
+
+  render() {
+    const { iconOnly, variant } = this.props;
+
+    if (iconOnly) {
+      return this.iconOnly;
+    }
 
     switch (variant) {
       case 'switch':
-        icon = value ? ['fas', 'toggle-on'] : ['fas', 'toggle-off'];
-        break;
-      case 'check':
+        return this.switch();
+      case 'grid-list':
+        return this.gridList;
       default:
-        icon = value ? ['fas', 'check-square'] : ['far', 'square'];
-        break;
-    }
-    if (iconOnly) {
-      const classes = classNames(className, 'icon-toggle');
-
-      return (
-        <FontAwesomeIcon
-          size="lg"
-          {...iconProps}
-          icon={icon}
-          title={title}
-          onClick={this.handleClick}
-          className={classes}
-        />
-      );
-    } else {
-      const classes = classNames(className, 'btn-toggle');
-
-      return (
-        <Button
-          {...buttonProps}
-          title={title}
-          onClick={this.handleClick}
-          className={classes}
-        >
-          <FontAwesomeIcon size="lg" {...iconProps} icon={icon} />
-        </Button>
-      );
+        return this.button;
     }
   }
 }
