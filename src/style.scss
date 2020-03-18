@@ -3,6 +3,10 @@
 // Changes the font site-wide
 * {
   font-family: "Quicksand", sans-serif;
+
+  @include themed() {
+    background-color: t($bg);
+  }
 }
 
 // Forces scrollbar to always be present, to combat the center being
@@ -29,8 +33,10 @@ html {
 
 // Full page background color
 body {
-  background-color: $white;
-  //background: linear-gradient(180deg, $light-blue 0%, $white 18%, $white 100%);
+  @include themed() {
+    background-color: t($bg);
+    //background: linear-gradient(180deg, $light-blue 0%, $white 18%, $white 100%);
+  }
 }
 
 // Style for links

@@ -1,8 +1,19 @@
 import { Helmet } from 'react-helmet';
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, InputGroup, Button } from 'react-bootstrap';
+import { actions as themeActions } from 'reducers/theme';
+import { getCurrentTheme } from 'selectors/theme';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import ToggleButton from 'components/ToggleButton/ToggleButton';
+import PropTypes from 'prop-types';
 
-export default class UserSettings extends Component {
+export class UserSettings extends Component {
+  static propTypes = {
+    theme: PropTypes.string,
+    actions: PropTypes.object.isRequired
+  };
+
   constructor(...args) {
     super(...args);
 
@@ -31,6 +42,14 @@ export default class UserSettings extends Component {
 
   handleFileInput(event) {
     this.setState({ filename: event.target.files[0].name });
+  }
+
+  toggleDarkMode() {
+    if (this.props.theme === 'default') {
+      this.props.actions.setTheme('dark');
+    } else {
+      this.props.actions.setTheme('default');
+    }
   }
 
   render() {
@@ -106,6 +125,21 @@ export default class UserSettings extends Component {
               </InputGroup>
             </Col>
           </Row>
+          <Row className="text-center">
+            <Col md="9" className="align-self-center">
+              Toggle Dark Mode
+              <ToggleButton
+                value={this.props.theme === 'default' ? false : true}
+                onClick={() => this.toggleDarkMode()}
+                title={
+                  this.props.theme === 'default'
+                    ? 'Enable Dark Mode'
+                    : 'Disable Dark Mode'
+                }
+                variant="switch"
+              />
+            </Col>
+          </Row>
           <hr />
           <Row className="text-center">
             <Col />
@@ -122,3 +156,13 @@ export default class UserSettings extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  theme: getCurrentTheme(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(themeActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserSettings);
