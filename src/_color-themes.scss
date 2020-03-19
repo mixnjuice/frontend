@@ -46,6 +46,7 @@ $themes: (
     black-custom: #fff,
   )
 );
+
 // credit: https://medium.com/@dmitriy.borodiy/easy-color-theming-with-scss-bc38fd5734d1
 @mixin themed {
   @each $theme, $map in $themes {
@@ -62,7 +63,7 @@ $themes: (
   }
 }
 
-// body rule will be ignored without a separating comma
+// body rule needs special treatment, although this could probably be heavily simplified
 @mixin themed_body {
   @each $theme, $map in $themes {
     .theme--#{$theme} {
