@@ -17,13 +17,19 @@ export class ThemeContainer extends Component {
   }
 
   componentDidMount() {
-    // document.body.classList.add('theme');
     document.body.classList.add('theme--default');
   }
+
   componentDidUpdate() {
-    document.body.classList.toggle('theme--default');
-    document.body.classList.toggle('theme--dark');
+    if (this.props.theme === 'default') {
+      document.body.classList.add('theme--default');
+      document.body.classList.remove('theme--dark');
+    } else {
+      document.body.classList.add('theme--dark');
+      document.body.classList.remove('theme--default');
+    }
   }
+
   render() {
     return (
       <div
