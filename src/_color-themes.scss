@@ -16,11 +16,14 @@ $black-custom: "black-custom";
 $lighter-gray: "lighter-gray";
 $light-gray: "light-gray";
 $dark-gray: "dark-gray";
+$buttonborder-custom: "buttonborder-custom";
+$form-control-border: "form-control-border";
+$input-group-text-border: "input-group-text-border";
 
 $themes: (
   default: (
     bg: #fff,
-    fg: #000,
+    fg: gray("800"),
     lightest-blue: #e7f0ff,
     lighter-blue: #d3e3fc,
     light-blue: #b1cefd,
@@ -34,25 +37,31 @@ $themes: (
     black-custom: #000,
     lighter-gray: gray("200"),
     light-gray: gray("300"),
-    dark-gray: gray("800")
+    dark-gray: gray("800"),
+    buttonborder-custom: #000,
+    form-control-border: #000,
+    input-group-text-border: #ced4da,
   ),
   dark: (
-    bg: #000,
-    fg: #fff,
-    lightest-blue: #e7f0ff,
-    lighter-blue: #d3e3fc,
-    light-blue: #b1cefd,
-    blue-custom: #77a6f7,
-    teal-custom: #00887a,
+    bg: #111,
+    fg: gray("300"),
+    lightest-blue: #77a6f7,
+    lighter-blue: #131d2e,
+    light-blue: #448cff,
+    blue-custom: #2373ff,
+    teal-custom: #004d44,
     baby-blue: #00bad3,
     light-red: #fd8383,
     lighter-red: #ffccbc,
-    shadow-grey: #777,
-    white-custom: #000,
-    black-custom: #fff,
+    shadow-grey: rgb(0, 0, 0),
+    white-custom: #fff,
+    black-custom: gray("200"),
     lighter-gray: gray("800"),
     light-gray: gray("300"),
-    dark-gray: gray("200")
+    dark-gray: gray("200"),
+    buttonborder-custom: #111,
+    form-control-border: #888,
+    input-group-text-border: #555,
   )
 );
 

@@ -35,7 +35,7 @@ html {
 // Effectively, this is a body rule
 @include themed_body {
   background-color: t($bg);
-  color: t($dark-gray);
+  color: t($fg);
   //background: linear-gradient(180deg, $light-blue 0%, $white-custom 18%, $white-custom 100%);
 }
 
@@ -171,7 +171,9 @@ hr {
 // Changing the border of any form fields
 .form-control {
   @include themed {
-    border: 1px solid t($black-custom);
+    border: 1px solid t($form-control-border);
+    background-color: t($bg);
+    color: t($dark-gray);
   }
   outline: 0 none;
 
@@ -193,9 +195,20 @@ hr {
 }
 
 // Changing the background for the text next to an input field
-.input-group-text {
+.form-label {
+  @include themed {
+    border: 1px solid t($form-control-border);
+    background-color: t($bg);
+    color: t($dark-gray);
+  }
+}
+
+// eg browse
+.form-label::after {
   @include themed {
     background-color: t($lighter-gray);
+    color: t($dark-gray);
+    border-color: t($input-group-text-border);
   }
 }
 
@@ -226,10 +239,19 @@ input {
   text-align: center;
 }
 
+.form-label::after {
+  @include themed {
+    border: 1px solid t($input-group-text-border);
+    background-color: t($lighter-gray);
+    color: t($dark-gray);
+  }
+}
 // Style for file inputs
 .custom-file-input[type="file"] {
   @include themed {
-    border: 1px solid t($black-custom);
+    // border: 1px solid t($input-group-text-border);
+    // background-color: t($lighter-gray);
+    // color: t($dark-gray);
   }
   border-radius: 0.25rem;
   padding: 5px;
@@ -322,6 +344,9 @@ input {
 
 // Universal button styling
 .btn {
+  @include themed {
+    border: 1px solid t($buttonborder-custom);
+  }
   height: 40px;
   padding: 0 14px;
   line-height: auto;
@@ -330,14 +355,9 @@ input {
     z-index: 2;
     position: relative;
   }
-  border: 1px solid;
 
   @include themed {
-    border-color: t($black-custom);
-  }
-
-  &-primary {
-    @include themed {
+    &-primary {
       background: t($teal-custom);
     }
   }
@@ -420,7 +440,7 @@ input {
   &:hover,
   &:focus {
     @include themed {
-      border: 1px solid t($black-custom);
+      border: 1px solid t($buttonborder-custom);
       background-color: t($teal-custom);
     }
   }
@@ -437,7 +457,6 @@ input {
 }
 
 // Changing the color of the heart SVG icon
-//TODO
 .fa-heart {
   @include themed {
     color: t($light-red);
