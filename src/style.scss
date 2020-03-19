@@ -18,12 +18,16 @@ html {
 
 // Styling the scrollbar "track"
 ::-webkit-scrollbar-track {
-  background-color: $white;
+  @include themed {
+    background-color: t($white-custom);
+  }
 }
 
 // Styling the scrollbar "thumb"
 ::-webkit-scrollbar-thumb {
-  background-color: $teal;
+  @include themed {
+    background-color: t($teal-custom);
+  }
   border-radius: 4px;
 }
 
@@ -31,19 +35,23 @@ html {
 // Effectively, this is a body rule
 @include themed_body {
   background-color: t($bg);
-  //background: linear-gradient(180deg, $light-blue 0%, $white 18%, $white 100%);
+  //background: linear-gradient(180deg, $light-blue 0%, $white-custom 18%, $white-custom 100%);
 }
 
 // Style for links
 a {
+  margin: 3px;
+
   @include themed {
-    color: t($bg);
+    color: t($teal-custom);
   }
 }
 
 // Style for horizontal rules
 hr {
-  border-bottom: 1px solid $teal;
+  @include themed {
+    border-bottom: 1px solid t($teal-custom);
+  }
   opacity: 0.5;
 }
 
@@ -77,12 +85,14 @@ hr {
 
 // Gradient background for the navigation container
 .navigation-container {
-  background: $lighter-blue;
+  @include themed {
+    background: t($lighter-blue);
+    border: 2px solid t($teal-custom);
+    box-shadow: 8px 8px 20px t($shadow-grey);
+  }
   height: 10%;
   margin: 1em;
-  border: 2px solid $teal;
   border-radius: 20px;
-  box-shadow: 8px 8px 20px $shadow-grey;
 }
 
 // On screen sizes below ~1200px width, the nav links look a little weird by
@@ -96,24 +106,32 @@ hr {
 
 // Styling for dropdown links in the nav
 .navbar .navbar-nav .nav-link.dropdown-toggle {
-  color: $black;
+  @include themed {
+    color: t($black);
+  }
 
   &:hover,
   &:focus {
-    color: $black;
+    @include themed {
+      color: t($black);
+    }
   }
 }
 
 // Styling for the dropdown menu
 .dropdown-menu {
+  @include themed {
+    background-color: t($lightest-blue);
+  }
   text-align: center;
-  background-color: $lightest-blue;
 
   & .dropdown-item.active,
   & .dropdown-item:active {
+    @include themed {
+      color: t($teal-custom);
+    }
     background-color: inherit;
     font-weight: 900;
-    color: $teal;
   }
 }
 
@@ -132,9 +150,11 @@ hr {
 
 // Styling for checkboxes
 .form-check-input {
+  @include themed {
+    background-color: t($white-custom);
+    border: 1px solid t($black);
+  }
   appearance: none;
-  background-color: $white;
-  border: 1px solid $black;
   width: 20px;
   height: 20px;
   border-radius: 0.3rem;
@@ -142,22 +162,30 @@ hr {
 }
 
 .form-check-input:checked {
-  background-color: $teal;
+  @include themed {
+    background-color: t($teal-custom);
+  }
 }
 
 // Changing the border of any form fields
 .form-control {
+  @include themed {
+    border: 1px solid t($black);
+  }
   outline: 0 none;
-  border: 1px solid $black;
 
   // Style for "striped" tables
   tr:nth-of-type(odd) .table-striped {
-    background-color: $lightest-blue;
+    @include themed {
+      background-color: t($lightest-blue);
+    }
   }
 
   // Changing the focused state of form fields
   &:focus {
-    border: 3px solid $blue;
+    @include themed {
+      border: 3px solid t($blue-custom);
+    }
     box-shadow: none;
     outline: 0 none;
   }
@@ -165,7 +193,10 @@ hr {
 
 // Changing the background for the text next to an input field
 .input-group-text {
-  background-color: gray("200");
+  @include themed {
+    //TODO add this gray
+    background-color: gray("200");
+  }
 }
 
 // Changing the column width of the ingredient percent input
@@ -197,7 +228,9 @@ input {
 
 // Style for file inputs
 .custom-file-input[type="file"] {
-  border: 1px solid $black;
+  @include themed {
+    border: 1px solid t($black);
+  }
   border-radius: 0.25rem;
   padding: 5px;
 }
@@ -207,32 +240,44 @@ input {
 }
 
 .img-thumbnail {
-  border: 1px solid $teal;
+  @include themed {
+    border: 1px solid t($teal-custom);
+  }
 }
 
 // Style for "striped" tables
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: $lightest-blue;
+  @include themed {
+    background-color: t($lightest-blue);
+  }
 }
 
 // Link animations in the header links
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
 .navbar-nav .nav-link.nav--link-custom {
+  @include themed {
+    color: t($black);
+  }
   display: inline-block;
   text-align: center;
   position: relative;
-  color: $black;
   transition: 0.5s;
 
   &:hover,
   &:focus {
-    color: $teal;
+    @include themed {
+      color: t($teal-custom);
+    }
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
     transition: none;
 
     &::after {
+      @include themed {
+        border-bottom: 1px solid t($teal-custom);
+        color: t($teal-custom);
+      }
       content: "";
       position: absolute;
       width: 100%;
@@ -240,14 +285,16 @@ input {
       height: 2px;
       bottom: 0;
       left: 0;
-      border-bottom: 1px solid $teal;
-      color: $teal;
       transform-origin: bottom right;
       transition: none;
     }
   }
 
   &::after {
+    @include themed {
+      border-bottom: 1px solid t($teal-custom);
+      color: t($teal-custom);
+    }
     content: "";
     position: absolute;
     width: 100%;
@@ -255,8 +302,6 @@ input {
     height: 2px;
     bottom: 0;
     left: 0;
-    border-bottom: 1px solid $teal;
-    color: $teal;
     transform-origin: bottom right;
     transition: transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
   }
@@ -268,8 +313,10 @@ input {
   }
 
   &.active {
+    @include themed {
+      color: t($teal-custom);
+    }
     font-weight: 900;
-    color: $teal;
   }
 }
 
@@ -278,25 +325,31 @@ input {
   height: 40px;
   padding: 0 14px;
   line-height: auto;
-  border: 1px solid $black;
 
   > * {
     z-index: 2;
     position: relative;
   }
+  border: 1px solid;
+
+  @include themed {
+    border-color: t($black);
+  }
 
   &-primary {
+    // background: #ff00ff;
     @include themed {
-      background: t($bg);
+      background: t($teal-custom);
     }
+  }
 
-    // Changing disabled buttons to grey
-    &.disabled,
-    &:disabled {
-      color: gray("800");
-      background-color: gray("300");
-      border-color: gray("800");
-    }
+  // Changing disabled buttons to grey
+  &.disabled,
+  &:disabled {
+    //TODO
+    color: gray("800");
+    background-color: gray("300");
+    border-color: gray("800");
   }
 
   /* stylelint-disable-next-line a11y/line-height-is-vertical-rhythmed */
@@ -311,12 +364,17 @@ input {
 // Button animations
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
 .button-animation {
+  @include themed {
+    color: t($white-custom);
+  }
   overflow: hidden;
   position: relative;
-  color: $white;
 
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
+      @include themed {
+        background: t($baby-blue);
+      }
       content: "";
       position: absolute;
       left: 0;
@@ -324,13 +382,15 @@ input {
       width: 100%;
       height: 100%;
       transform: translateX(-100%);
-      background: $baby-blue;
       transition: none;
     }
   }
 
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
+      @include themed {
+        background: t($baby-blue);
+      }
       content: "";
       position: absolute;
       left: 0;
@@ -338,12 +398,14 @@ input {
       width: 100%;
       height: 100%;
       transform: translateX(-100%);
-      background: $baby-blue;
       transition: none;
     }
   }
 
   &::before {
+    @include themed {
+      background: t($baby-blue);
+    }
     content: "";
     position: absolute;
     left: 0;
@@ -351,15 +413,16 @@ input {
     width: 100%;
     height: 100%;
     transform: translateX(-100%);
-    background: $baby-blue;
     transition: transform 0.2s ease-in-out;
     z-index: 1;
   }
 
   &:hover,
   &:focus {
-    border: 1px solid $black;
-    background-color: $teal;
+    @include themed {
+      border: 1px solid t($black);
+      background-color: t($teal-custom);
+    }
   }
 
   &:hover::before,
@@ -374,38 +437,49 @@ input {
 }
 
 // Changing the color of the heart SVG icon
+//TODO
 .fa-heart {
   color: $light-red;
 }
 
 .rating-button {
+  @include themed {
+    border-top: 1px solid t($black);
+    border-bottom: 1px solid t($black);
+  }
   padding: 0 8px;
   border: 0;
-  border-top: 1px solid $black;
-  border-bottom: 1px solid $black;
 
   &:last-child {
-    border-right: 1px solid $black;
+    @include themed {
+      border-right: 1px solid t($black);
+    }
   }
 
   &:first-child {
-    border-left: 1px solid $black;
+    @include themed {
+      border-left: 1px solid t($black);
+    }
   }
 
   &:hover,
   &:focus {
-    background: $teal;
-    border-color: $black;
-    box-shadow: inset 0 -3px $blue;
+    @include themed {
+      background: t($teal-custom);
+      box-shadow: inset 0 -3px t($blue-custom);
+      border-color: t($black);
+    }
   }
 }
 
 .button--favorite {
   &:hover,
   &:focus {
-    background: $teal;
-    border-color: $black;
-    box-shadow: inset 0 -3px $blue;
+    @include themed {
+      background: t($teal-custom);
+      border-color: t($black);
+      box-shadow: inset 0 -3px t($blue-custom);
+    }
   }
 }
 
@@ -418,17 +492,21 @@ input {
 }
 
 .link--tags {
+  @include themed {
+    background-color: t($lighter-blue);
+    border: 1px solid t($teal-custom);
+  }
   margin: 2px 8px;
   padding: 3px 8px;
-  border: 1px solid $teal;
   border-radius: 5px;
-  background-color: $lighter-blue;
 
   &:hover,
   &:focus {
+    @include themed {
+      color: t($blue-custom);
+      background-color: t($lightest-blue);
+    }
     text-decoration: none;
-    color: $blue;
-    background-color: $lightest-blue;
   }
 }
 
