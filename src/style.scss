@@ -28,16 +28,15 @@ html {
 }
 
 // Full page background color
-body {
-  @include themed() {
-    background-color: t($bg);
-  }
+// Effectively, this is a body rule
+@include themed_body {
+  background-color: t($bg);
   //background: linear-gradient(180deg, $light-blue 0%, $white 18%, $white 100%);
 }
 
 // Style for links
 a {
-  @include themed() {
+  @include themed {
     color: t($bg);
   }
 }
@@ -287,7 +286,7 @@ input {
   }
 
   &-primary {
-    @include themed() {
+    @include themed {
       background: t($bg);
     }
 

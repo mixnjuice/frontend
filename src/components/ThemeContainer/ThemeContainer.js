@@ -16,6 +16,14 @@ export class ThemeContainer extends Component {
     super(props);
   }
 
+  componentDidMount() {
+    // document.body.classList.add('theme');
+    document.body.classList.add('theme--default');
+  }
+  componentDidUpdate() {
+    document.body.classList.toggle('theme--default');
+    document.body.classList.toggle('theme--dark');
+  }
   render() {
     return (
       <div
