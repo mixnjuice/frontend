@@ -194,8 +194,7 @@ hr {
 // Changing the background for the text next to an input field
 .input-group-text {
   @include themed {
-    //TODO add this gray
-    background-color: gray("200");
+    background-color: t($lighter-gray);
   }
 }
 
@@ -337,7 +336,6 @@ input {
   }
 
   &-primary {
-    // background: #ff00ff;
     @include themed {
       background: t($teal-custom);
     }
@@ -346,10 +344,11 @@ input {
   // Changing disabled buttons to grey
   &.disabled,
   &:disabled {
-    //TODO
-    color: gray("800");
-    background-color: gray("300");
-    border-color: gray("800");
+    @include themed {
+      color: t($dark-gray);
+      background-color: t($light-gray);
+      border-color: t($dark-gray);
+    }
   }
 
   /* stylelint-disable-next-line a11y/line-height-is-vertical-rhythmed */
@@ -439,7 +438,9 @@ input {
 // Changing the color of the heart SVG icon
 //TODO
 .fa-heart {
-  color: $light-red;
+  @include themed {
+    color: t($light-red);
+  }
 }
 
 .rating-button {

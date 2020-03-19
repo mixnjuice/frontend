@@ -13,6 +13,9 @@ $lighter-red: "lighter-red";
 $shadow-grey: "shadow-grey";
 $white-custom: "white-custom";
 $black-custom: "black-custom";
+$lighter-gray: "lighter-gray";
+$light-gray: "light-gray";
+$dark-gray: "dark-gray";
 
 $themes: (
   default: (
@@ -29,6 +32,9 @@ $themes: (
     shadow-grey: #777,
     white-custom: #fff,
     black-custom: #000,
+    lighter-gray: gray("200"),
+    light-gray: gray("300"),
+    dark-gray: gray("800")
   ),
   dark: (
     bg: #000,
@@ -44,6 +50,9 @@ $themes: (
     shadow-grey: #777,
     white-custom: #000,
     black-custom: #fff,
+    lighter-gray: gray("800"),
+    light-gray: gray("300"),
+    dark-gray: gray("200")
   )
 );
 
