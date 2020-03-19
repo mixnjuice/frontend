@@ -35,6 +35,7 @@ html {
 // Effectively, this is a body rule
 @include themed_body {
   background-color: t($bg);
+  color: t($dark-gray);
   //background: linear-gradient(180deg, $light-blue 0%, $white-custom 18%, $white-custom 100%);
 }
 
