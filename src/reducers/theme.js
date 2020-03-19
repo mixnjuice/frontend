@@ -12,7 +12,7 @@ export const actions = {
 };
 
 export const initialState = {
-  theme: 'default'
+  name: 'default'
 };
 
 export const reducer = (state = initialState, action = {}) => {
@@ -20,7 +20,7 @@ export const reducer = (state = initialState, action = {}) => {
     case types.SET_THEME:
       return {
         ...state,
-        theme: action.theme
+        name: action.theme
       };
     default:
       return state;
