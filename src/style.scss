@@ -107,13 +107,13 @@ hr {
 // Styling for dropdown links in the nav
 .navbar .navbar-nav .nav-link.dropdown-toggle {
   @include themed {
-    color: t($black);
+    color: t($black-custom);
   }
 
   &:hover,
   &:focus {
     @include themed {
-      color: t($black);
+      color: t($black-custom);
     }
   }
 }
@@ -152,7 +152,7 @@ hr {
 .form-check-input {
   @include themed {
     background-color: t($white-custom);
-    border: 1px solid t($black);
+    border: 1px solid t($black-custom);
   }
   appearance: none;
   width: 20px;
@@ -170,7 +170,7 @@ hr {
 // Changing the border of any form fields
 .form-control {
   @include themed {
-    border: 1px solid t($black);
+    border: 1px solid t($black-custom);
   }
   outline: 0 none;
 
@@ -229,7 +229,7 @@ input {
 // Style for file inputs
 .custom-file-input[type="file"] {
   @include themed {
-    border: 1px solid t($black);
+    border: 1px solid t($black-custom);
   }
   border-radius: 0.25rem;
   padding: 5px;
@@ -256,7 +256,7 @@ input {
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
 .navbar-nav .nav-link.nav--link-custom {
   @include themed {
-    color: t($black);
+    color: t($black-custom);
   }
   display: inline-block;
   text-align: center;
@@ -333,7 +333,7 @@ input {
   border: 1px solid;
 
   @include themed {
-    border-color: t($black);
+    border-color: t($black-custom);
   }
 
   &-primary {
@@ -420,7 +420,7 @@ input {
   &:hover,
   &:focus {
     @include themed {
-      border: 1px solid t($black);
+      border: 1px solid t($black-custom);
       background-color: t($teal-custom);
     }
   }
@@ -444,21 +444,21 @@ input {
 
 .rating-button {
   @include themed {
-    border-top: 1px solid t($black);
-    border-bottom: 1px solid t($black);
+    border-top: 1px solid t($black-custom);
+    border-bottom: 1px solid t($black-custom);
   }
   padding: 0 8px;
   border: 0;
 
   &:last-child {
     @include themed {
-      border-right: 1px solid t($black);
+      border-right: 1px solid t($black-custom);
     }
   }
 
   &:first-child {
     @include themed {
-      border-left: 1px solid t($black);
+      border-left: 1px solid t($black-custom);
     }
   }
 
@@ -467,7 +467,7 @@ input {
     @include themed {
       background: t($teal-custom);
       box-shadow: inset 0 -3px t($blue-custom);
-      border-color: t($black);
+      border-color: t($black-custom);
     }
   }
 }
@@ -477,7 +477,7 @@ input {
   &:focus {
     @include themed {
       background: t($teal-custom);
-      border-color: t($black);
+      border-color: t($black-custom);
       box-shadow: inset 0 -3px t($blue-custom);
     }
   }

@@ -12,7 +12,7 @@ $light-red: "light-red";
 $lighter-red: "lighter-red";
 $shadow-grey: "shadow-grey";
 $white-custom: "white-custom";
-$black: "black";
+$black-custom: "black-custom";
 
 $themes: (
   default: (
@@ -28,7 +28,7 @@ $themes: (
     lighter-red: #ffccbc,
     shadow-grey: #777,
     white-custom: #fff,
-    black: #000,
+    black-custom: #000,
   ),
   dark: (
     bg: #000,
@@ -42,8 +42,8 @@ $themes: (
     light-red: #fd8383,
     lighter-red: #ffccbc,
     shadow-grey: #777,
-    white-custom: #fff,
-    black: #000,
+    white-custom: #000,
+    black-custom: #fff,
   )
 );
 // credit: https://medium.com/@dmitriy.borodiy/easy-color-theming-with-scss-bc38fd5734d1
