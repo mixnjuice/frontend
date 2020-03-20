@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { actions as themeActions } from 'reducers/theme';
-import { getCurrentTheme } from 'selectors/theme';
-
+import { getThemeName } from 'selectors/theme';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 export class ThemeContainer extends Component {
   static propTypes = {
-    children: PropTypes.any,
     theme: PropTypes.string
   };
 
@@ -31,25 +27,12 @@ export class ThemeContainer extends Component {
   }
 
   render() {
-    return (
-      <div
-        className={
-          'theme ' +
-          (this.props.theme === 'default' ? 'theme--default' : 'theme--dark')
-        }
-      >
-        {this.props.children}
-      </div>
-    );
+    return null;
   }
 }
 
-const mapStateToProps = state => ({
-  theme: getCurrentTheme(state)
+export const mapStateToProps = state => ({
+  theme: getThemeName(state)
 });
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(themeActions, dispatch)
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ThemeContainer);
+export default connect(mapStateToProps)(ThemeContainer);

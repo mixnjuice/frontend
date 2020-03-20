@@ -44,46 +44,37 @@ export class App extends Component {
   render() {
     return (
       <Suspense fallback={<SuspenseFallback />}>
-        <ThemeContainer>
-          <Helmet defaultTitle="MixNJuice" titleTemplate="MixNJuice - %s" />
-          <Header />
-          <ToastDrawer />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/recipes" component={Recipes} />
-            <PrivateRoute
-              exact
-              path="/recipe/editor"
-              component={RecipeEditor}
-            />
-            <Route exact path="/flavors" component={Flavors} />
-            <Route exact path="/recipe" component={Recipe} />
-            <PrivateRoute exact path="/user/profile" component={Profile} />
-            <PrivateRoute exact path="/user/recipes" component={UserRecipes} />
-            <PrivateRoute exact path="/user/favorites" component={Favorites} />
-            <PrivateRoute
-              exact
-              path="/user/flavor-stash"
-              component={FlavorStash}
-            />
-            <PrivateRoute
-              exact
-              path="/user/shopping-list"
-              component={ShoppingList}
-            />
-            <PrivateRoute
-              exact
-              path="/user/settings"
-              component={UserSettings}
-            />
-            <PrivateRoute exact path="/dashboard" component={Dashboard} />
-            <PrivateRoute path="/user/:userName" component={Profile} />
-            <Route component={NotFound} />
-          </Switch>
-          <Footer />
-        </ThemeContainer>
+        <ThemeContainer />
+        <Helmet defaultTitle="MixNJuice" titleTemplate="MixNJuice - %s" />
+        <Header />
+        <ToastDrawer />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/recipes" component={Recipes} />
+          <PrivateRoute exact path="/recipe/editor" component={RecipeEditor} />
+          <Route exact path="/flavors" component={Flavors} />
+          <Route exact path="/recipe" component={Recipe} />
+          <PrivateRoute exact path="/user/profile" component={Profile} />
+          <PrivateRoute exact path="/user/recipes" component={UserRecipes} />
+          <PrivateRoute exact path="/user/favorites" component={Favorites} />
+          <PrivateRoute
+            exact
+            path="/user/flavor-stash"
+            component={FlavorStash}
+          />
+          <PrivateRoute
+            exact
+            path="/user/shopping-list"
+            component={ShoppingList}
+          />
+          <PrivateRoute exact path="/user/settings" component={UserSettings} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute path="/user/:userName" component={Profile} />
+          <Route component={NotFound} />
+        </Switch>
+        <Footer />
       </Suspense>
     );
   }
