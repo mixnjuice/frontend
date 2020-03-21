@@ -3,16 +3,16 @@ $blue-lighter: #d3e3fc;
 $blue-light: #b1cefd;
 $blue-themed: #77a6f7;
 $teal: #00887a;
-$teal-dark:  #004d44;
+$teal-dark: #004d44;
 $blue-baby: #00bad3;
 $red-light: #fd8383;
 $red-lighter: #ffccbc;
 $gray-shadow: #777;
 $white-themed: #fff;
 $black-themed: #000;
-$gray-lighter: gray("200");
-$gray-light: gray("300");
-$gray-dark: gray("800");
+$gray-200: #e9ecef; // gray("200")
+$gray-300: #dee2e6; // gray("300")
+$gray-800: #343a40; // gray("800")
 
 $min-xs: 0;
 $max-xs: 575px;
