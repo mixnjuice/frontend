@@ -195,19 +195,18 @@ hr {
   }
 }
 
-// Changing the background for the text next to an input field
-.form-label {
+// Changing the style of the file upload input box
+.custom-file-label {
   @include themed {
-    border: 1px solid t("form-control-border");
+    border: 1px solid t("input-group-text-border");
     background-color: t("bg");
     color: t("gray-dark");
   }
 }
 
-// eg browse
+// the sub-box, e.g. the browse button
 .form-label::after {
   @include themed {
-    border: 1px solid t("input-group-text-border");
     background-color: t("gray-lighter");
     color: t("gray-dark");
   }
@@ -252,7 +251,7 @@ input {
 // Style for file inputs
 .custom-file-input[type="file"] {
   @include themed {
-    border: 1px solid t("input-group-text-border");
+    // border: 1px solid t("input-group-text-border");
     background-color: t("gray-lighter");
     color: t("gray-dark");
   }
