@@ -4,7 +4,7 @@ $spinner-size: 15rem;
 .loading {
   &__overlay {
     @include themed {
-      background: rgba(t("blue-lighter"), 0.75);
+      background: rgba(t("alt-accent-lighter"), 0.75);
     }
     position: fixed;
     top: 0;

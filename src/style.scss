@@ -87,7 +87,7 @@ hr {
 // Gradient background for the navigation container
 .navigation-container {
   @include themed {
-    background: t("blue-lighter");
+    background: t("alt-accent-lighter");
     border: 2px solid t("main-accent");
     box-shadow: 8px 8px 20px t("gray-shadow");
   }
@@ -122,7 +122,7 @@ hr {
 // Styling for the dropdown menu
 .dropdown-menu {
   @include themed {
-    background-color: t("blue-lightest");
+    background-color: t("alt-accent-lightest");
   }
   text-align: center;
 
@@ -181,14 +181,14 @@ hr {
   // Style for "striped" tables
   tr:nth-of-type(odd) .table-striped {
     @include themed {
-      background-color: t("blue-lightest");
+      background-color: t("alt-accent-lightest");
     }
   }
 
   // Changing the focused state of form fields
   &:focus {
     @include themed {
-      border: 3px solid t("blue-themed");
+      border: 3px solid t("alt-accent");
     }
     box-shadow: none;
     outline: 0 none;
@@ -272,7 +272,7 @@ input {
 // Style for "striped" tables
 .table-striped tbody tr:nth-of-type(odd) {
   @include themed {
-    background-color: t("blue-lightest");
+    background-color: t("alt-accent-lightest");
   }
 }
 
@@ -395,7 +395,7 @@ input {
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
       @include themed {
-        background: t("blue-baby");
+        background: t("alt-accent-baby");
       }
       content: "";
       position: absolute;
@@ -411,7 +411,7 @@ input {
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
       @include themed {
-        background: t("blue-baby");
+        background: t("alt-accent-baby");
       }
       content: "";
       position: absolute;
@@ -426,7 +426,7 @@ input {
 
   &::before {
     @include themed {
-      background: t("blue-baby");
+      background: t("alt-accent-baby");
     }
     content: "";
     position: absolute;
@@ -489,7 +489,7 @@ input {
   &:focus {
     @include themed {
       background: t("main-accent");
-      box-shadow: inset 0 -3px t("blue-themed");
+      box-shadow: inset 0 -3px t("alt-accent");
       border-color: t("black-themed");
     }
   }
@@ -501,7 +501,7 @@ input {
     @include themed {
       background: t("main-accent");
       border-color: t("black-themed");
-      box-shadow: inset 0 -3px t("blue-themed");
+      box-shadow: inset 0 -3px t("alt-accent");
     }
   }
 }
@@ -516,7 +516,7 @@ input {
 
 .link--tags {
   @include themed {
-    background-color: t("blue-lighter");
+    background-color: t("alt-accent-lighter");
     border: 1px solid t("main-accent");
   }
   margin: 2px 8px;
@@ -526,8 +526,8 @@ input {
   &:hover,
   &:focus {
     @include themed {
-      color: t("blue-themed");
-      background-color: t("blue-lightest");
+      color: t("alt-accent");
+      background-color: t("alt-accent-lightest");
     }
     text-decoration: none;
   }
