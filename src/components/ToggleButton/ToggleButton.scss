@@ -4,7 +4,7 @@
 
 .icon-toggle {
   @include themed {
-    color: t($teal-custom);
+    color: t("main-accent");
   }
   margin: 0 5px;
 }
@@ -27,7 +27,7 @@
 /* The slider */
 .slider {
   @include themed {
-    background-color: t($shadow-grey);
+    background-color: t("gray-shadow");
   }
   position: absolute;
   cursor: pointer;
@@ -43,9 +43,9 @@
     --webkit-transition: none;
   }
 
-  &--teal {
+  &--main-accent {
     @include themed {
-      background-color: t($teal-custom);
+      background-color: t("main-accent");
     }
   }
 
@@ -65,7 +65,7 @@
 
 .slider::before {
   @include themed {
-    background-color: t($white-custom);
+    background-color: t("white-themed");
   }
   position: absolute;
   content: "";
@@ -84,13 +84,13 @@
 
 input:checked + .slider {
   @include themed {
-    background-color: t($teal-custom);
+    background-color: t("main-accent");
   }
 }
 
 input:focus + .slider {
   @include themed {
-    box-shadow: 0 0 1px t($teal-custom);
+    box-shadow: 0 0 1px t("main-accent");
   }
 }
 

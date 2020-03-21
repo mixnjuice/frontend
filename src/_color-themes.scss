@@ -1,68 +1,47 @@
 // Themes
 
-$bg: "bg";
-$fg: "fg";
-$lightest-blue: "lightest-blue";
-$lighter-blue: "lighter-blue";
-$light-blue: "light-blue";
-$blue-custom: "blue-custom";
-$teal-custom: "teal-custom";
-$baby-blue: "baby-blue";
-$light-red: "light-red";
-$lighter-red: "lighter-red";
-$shadow-grey: "shadow-grey";
-$white-custom: "white-custom";
-$black-custom: "black-custom";
-$lighter-gray: "lighter-gray";
-$light-gray: "light-gray";
-$dark-gray: "dark-gray";
-$buttonborder-custom: "buttonborder-custom";
-$form-control-border: "form-control-border";
-$input-group-text-border: "input-group-text-border";
-
 $themes: (
   default: (
     bg: #fff,
     fg: gray("800"),
-    lightest-blue: #e7f0ff,
-    lighter-blue: #d3e3fc,
-    light-blue: #b1cefd,
-    blue-custom: #77a6f7,
-    teal-custom: #00887a,
-    baby-blue: #00bad3,
-    light-red: #fd8383,
-    lighter-red: #ffccbc,
-    shadow-grey: #777,
-    white-custom: #fff,
-    black-custom: #000,
-    lighter-gray: gray("200"),
-    light-gray: gray("300"),
-    dark-gray: gray("800"),
-    buttonborder-custom: #000,
+    blue-lightest: $blue-lightest,
+    blue-lighter: $blue-lighter,
+    blue-light: $blue-light,
+    blue-themed: $blue-themed,
+    main-accent: $teal,
+    blue-baby: $blue-baby,
+    red-light: $red-light,
+    red-lighter: $red-lighter,
+    gray-shadow: $gray-shadow,
+    white-themed: #fff,
+    black-themed: #000,
+    gray-lighter: gray("200"),
+    gray-light: gray("300"),
+    gray-dark: gray("800"),
+    button-border-color: #000,
     form-control-border: #000,
-    input-group-text-border: #ced4da,
+    input-group-text-border: #ced4da
   ),
   dark: (
     bg: #111,
     fg: gray("300"),
-    lightest-blue: #263753,
-    lighter-blue: #131d2e,
-    light-blue: #448cff,
-    blue-custom: #2373ff,
-    teal-custom: #004d44,
-    // teal-custom: #006d62,
-    baby-blue: #00887a,
-    light-red: #fd8383,
-    lighter-red: #ffccbc,
-    shadow-grey: rgb(0, 0, 0),
-    white-custom: #fff,
-    black-custom: gray("200"),
-    lighter-gray: gray("800"),
-    light-gray: gray("300"),
-    dark-gray: gray("200"),
-    buttonborder-custom: #111,
+    blue-lightest: #263753,
+    blue-lighter: #131d2e,
+    blue-light: #448cff,
+    blue-themed: #2373ff,
+    main-accent: $teal-dark,
+    blue-baby: #00887a,
+    red-light: #fd8383,
+    red-lighter: #ffccbc,
+    gray-shadow: rgb(0, 0, 0),
+    white-themed: #ddd,
+    black-themed: gray("200"),
+    gray-lighter: gray("800"),
+    gray-light: gray("300"),
+    gray-dark: gray("200"),
+    button-border-color: #111,
     form-control-border: #888,
-    input-group-text-border: #555,
+    input-group-text-border: #555
   )
 );
 
@@ -74,8 +53,15 @@ $themes: (
 
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), "#{$key}");
-        $theme-map: map-merge($theme-map, ( $key: $value)) !global;
+        /* stylelint-disable */
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value
+          )
+        ) !global;
       }
+      /* stylelint-enable */
       @content;
       $theme-map: null !global;
     }
@@ -90,8 +76,15 @@ $themes: (
 
       @each $key, $submap in $map {
         $value: map-get(map-get($themes, $theme), "#{$key}");
-        $theme-map: map-merge($theme-map, ( $key: $value)) !global;
+        /* stylelint-disable */
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value
+          )
+        ) !global;
       }
+      /* stylelint-enable */
       @content;
       $theme-map: null !global;
     }

@@ -16,7 +16,7 @@
 
     &--striped {
       @include themed {
-        background-color: t($lightest-blue);
+        background-color: t("blue-lightest");
       }
     }
   }

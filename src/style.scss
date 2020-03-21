@@ -19,14 +19,14 @@ html {
 // Styling the scrollbar "track"
 ::-webkit-scrollbar-track {
   @include themed {
-    background-color: t($white-custom);
+    background-color: t("white-themed");
   }
 }
 
 // Styling the scrollbar "thumb"
 ::-webkit-scrollbar-thumb {
   @include themed {
-    background-color: t($teal-custom);
+    background-color: t("main-accent");
   }
   border-radius: 4px;
 }
@@ -34,9 +34,9 @@ html {
 // Full page background color
 // Effectively, this is a body rule
 @include themed_body {
-  background-color: t($bg);
-  color: t($fg);
-  //background: linear-gradient(180deg, $light-blue 0%, $white-custom 18%, $white-custom 100%);
+  background-color: t("bg");
+  color: t("fg");
+  //background: linear-gradient(180deg, $blue-light 0%, $white-themed 18%, $white-themed 100%);
 }
 
 // Style for links
@@ -44,14 +44,14 @@ a {
   margin: 3px;
 
   @include themed {
-    color: t($teal-custom);
+    color: t("main-accent");
   }
 }
 
 // Style for horizontal rules
 hr {
   @include themed {
-    border-bottom: 1px solid t($teal-custom);
+    border-bottom: 1px solid t("main-accent");
   }
   opacity: 0.5;
 }
@@ -87,9 +87,9 @@ hr {
 // Gradient background for the navigation container
 .navigation-container {
   @include themed {
-    background: t($lighter-blue);
-    border: 2px solid t($teal-custom);
-    box-shadow: 8px 8px 20px t($shadow-grey);
+    background: t("blue-lighter");
+    border: 2px solid t("main-accent");
+    box-shadow: 8px 8px 20px t("gray-shadow");
   }
   height: 10%;
   margin: 1em;
@@ -108,13 +108,13 @@ hr {
 // Styling for dropdown links in the nav
 .navbar .navbar-nav .nav-link.dropdown-toggle {
   @include themed {
-    color: t($black-custom);
+    color: t("black-themed");
   }
 
   &:hover,
   &:focus {
     @include themed {
-      color: t($black-custom);
+      color: t("black-themed");
     }
   }
 }
@@ -122,14 +122,14 @@ hr {
 // Styling for the dropdown menu
 .dropdown-menu {
   @include themed {
-    background-color: t($lightest-blue);
+    background-color: t("blue-lightest");
   }
   text-align: center;
 
   & .dropdown-item.active,
   & .dropdown-item:active {
     @include themed {
-      color: t($teal-custom);
+      color: t("main-accent");
     }
     background-color: inherit;
     font-weight: 900;
@@ -152,8 +152,8 @@ hr {
 // Styling for checkboxes
 .form-check-input {
   @include themed {
-    background-color: t($white-custom);
-    border: 1px solid t($black-custom);
+    background-color: t("white-themed");
+    border: 1px solid t("black-themed");
   }
   appearance: none;
   width: 20px;
@@ -164,31 +164,31 @@ hr {
 
 .form-check-input:checked {
   @include themed {
-    background-color: t($teal-custom);
-    color: t($fg);
+    background-color: t("main-accent");
+    color: t("fg");
   }
 }
 
 // Changing the border of any form fields
 .form-control {
   @include themed {
-    border: 1px solid t($form-control-border);
-    background-color: t($bg);
-    color: t($dark-gray);
+    border: 1px solid t("form-control-border");
+    background-color: t("bg");
+    color: t("gray-dark");
   }
   outline: 0 none;
 
   // Style for "striped" tables
   tr:nth-of-type(odd) .table-striped {
     @include themed {
-      background-color: t($lightest-blue);
+      background-color: t("blue-lightest");
     }
   }
 
   // Changing the focused state of form fields
   &:focus {
     @include themed {
-      border: 3px solid t($blue-custom);
+      border: 3px solid t("blue-themed");
     }
     box-shadow: none;
     outline: 0 none;
@@ -198,18 +198,18 @@ hr {
 // Changing the background for the text next to an input field
 .form-label {
   @include themed {
-    border: 1px solid t($form-control-border);
-    background-color: t($bg);
-    color: t($dark-gray);
+    border: 1px solid t("form-control-border");
+    background-color: t("bg");
+    color: t("gray-dark");
   }
 }
 
 // eg browse
 .form-label::after {
   @include themed {
-    border: 1px solid t($input-group-text-border);
-    background-color: t($lighter-gray);
-    color: t($dark-gray);
+    border: 1px solid t("input-group-text-border");
+    background-color: t("gray-lighter");
+    color: t("gray-dark");
   }
 }
 
@@ -243,18 +243,18 @@ input {
 // Style of the description box of an input
 .input-group-text {
   @include themed {
-    border: 1px solid t($input-group-text-border);
-    background-color: t($lighter-gray);
-    color: t($dark-gray);
+    border: 1px solid t("input-group-text-border");
+    background-color: t("gray-lighter");
+    color: t("gray-dark");
   }
 }
 
 // Style for file inputs
 .custom-file-input[type="file"] {
   @include themed {
-    border: 1px solid t($input-group-text-border);
-    background-color: t($lighter-gray);
-    color: t($dark-gray);
+    border: 1px solid t("input-group-text-border");
+    background-color: t("gray-lighter");
+    color: t("gray-dark");
   }
   border-radius: 0.25rem;
   padding: 5px;
@@ -266,14 +266,14 @@ input {
 
 .img-thumbnail {
   @include themed {
-    border: 1px solid t($teal-custom);
+    border: 1px solid t("main-accent");
   }
 }
 
 // Style for "striped" tables
 .table-striped tbody tr:nth-of-type(odd) {
   @include themed {
-    background-color: t($lightest-blue);
+    background-color: t("blue-lightest");
   }
 }
 
@@ -281,7 +281,7 @@ input {
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
 .navbar-nav .nav-link.nav--link-custom {
   @include themed {
-    color: t($black-custom);
+    color: t("black-themed");
   }
   display: inline-block;
   text-align: center;
@@ -291,7 +291,7 @@ input {
   &:hover,
   &:focus {
     @include themed {
-      color: t($teal-custom);
+      color: t("main-accent");
     }
   }
 
@@ -300,8 +300,8 @@ input {
 
     &::after {
       @include themed {
-        border-bottom: 1px solid t($teal-custom);
-        color: t($teal-custom);
+        border-bottom: 1px solid t("main-accent");
+        color: t("main-accent");
       }
       content: "";
       position: absolute;
@@ -317,8 +317,8 @@ input {
 
   &::after {
     @include themed {
-      border-bottom: 1px solid t($teal-custom);
-      color: t($teal-custom);
+      border-bottom: 1px solid t("main-accent");
+      color: t("main-accent");
     }
     content: "";
     position: absolute;
@@ -339,7 +339,7 @@ input {
 
   &.active {
     @include themed {
-      color: t($teal-custom);
+      color: t("main-accent");
     }
     font-weight: 900;
   }
@@ -348,7 +348,7 @@ input {
 // Universal button styling
 .btn {
   @include themed {
-    border: 1px solid t($buttonborder-custom);
+    border: 1px solid t("button-border-color");
   }
   height: 40px;
   padding: 0 14px;
@@ -361,23 +361,23 @@ input {
 
   @include themed {
     &-primary {
-      background: t($teal-custom);
+      background: t("main-accent");
+      // background: $main-accent;
     }
   }
 
-  // Changing disabled buttons to grey
+  // Changing disabled buttons to gray
   &.disabled,
   &:disabled {
     @include themed {
-      color: t($dark-gray);
-      background-color: t($light-gray);
-      border-color: t($dark-gray);
+      color: t("gray-dark");
+      background-color: t("gray-light");
+      border-color: t("gray-dark");
     }
   }
 
-  /* stylelint-disable-next-line a11y/line-height-is-vertical-rhythmed */
   &-sm {
-    height: 28px;
+    height: 28px; /* stylelint-disable-line */
     width: 28px;
     padding: 0;
     line-height: 0;
@@ -388,7 +388,7 @@ input {
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
 .button-animation {
   @include themed {
-    color: t($white-custom);
+    color: t("white-themed");
   }
   overflow: hidden;
   position: relative;
@@ -396,7 +396,7 @@ input {
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
       @include themed {
-        background: t($baby-blue);
+        background: t("blue-baby");
       }
       content: "";
       position: absolute;
@@ -412,7 +412,7 @@ input {
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
       @include themed {
-        background: t($baby-blue);
+        background: t("blue-baby");
       }
       content: "";
       position: absolute;
@@ -427,7 +427,7 @@ input {
 
   &::before {
     @include themed {
-      background: t($baby-blue);
+      background: t("blue-baby");
     }
     content: "";
     position: absolute;
@@ -443,8 +443,8 @@ input {
   &:hover,
   &:focus {
     @include themed {
-      border: 1px solid t($buttonborder-custom);
-      background-color: t($teal-custom);
+      border: 1px solid t("button-border-color");
+      background-color: t("main-accent");
     }
   }
 
@@ -462,36 +462,36 @@ input {
 // Changing the color of the heart SVG icon
 .fa-heart {
   @include themed {
-    color: t($light-red);
+    color: t("red-light");
   }
 }
 
 .rating-button {
   @include themed {
-    border-top: 1px solid t($black-custom);
-    border-bottom: 1px solid t($black-custom);
+    border-top: 1px solid t("black-themed");
+    border-bottom: 1px solid t("black-themed");
   }
   padding: 0 8px;
   border: 0;
 
   &:last-child {
     @include themed {
-      border-right: 1px solid t($black-custom);
+      border-right: 1px solid t("black-themed");
     }
   }
 
   &:first-child {
     @include themed {
-      border-left: 1px solid t($black-custom);
+      border-left: 1px solid t("black-themed");
     }
   }
 
   &:hover,
   &:focus {
     @include themed {
-      background: t($teal-custom);
-      box-shadow: inset 0 -3px t($blue-custom);
-      border-color: t($black-custom);
+      background: t("main-accent");
+      box-shadow: inset 0 -3px t("blue-themed");
+      border-color: t("black-themed");
     }
   }
 }
@@ -500,9 +500,9 @@ input {
   &:hover,
   &:focus {
     @include themed {
-      background: t($teal-custom);
-      border-color: t($black-custom);
-      box-shadow: inset 0 -3px t($blue-custom);
+      background: t("main-accent");
+      border-color: t("black-themed");
+      box-shadow: inset 0 -3px t("blue-themed");
     }
   }
 }
@@ -517,8 +517,8 @@ input {
 
 .link--tags {
   @include themed {
-    background-color: t($lighter-blue);
-    border: 1px solid t($teal-custom);
+    background-color: t("blue-lighter");
+    border: 1px solid t("main-accent");
   }
   margin: 2px 8px;
   padding: 3px 8px;
@@ -527,8 +527,8 @@ input {
   &:hover,
   &:focus {
     @include themed {
-      color: t($blue-custom);
-      background-color: t($lightest-blue);
+      color: t("blue-themed");
+      background-color: t("blue-lightest");
     }
     text-decoration: none;
   }
