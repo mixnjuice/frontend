@@ -126,12 +126,21 @@ hr {
   }
   text-align: center;
 
+  & .dropdown-item:hover,
+  & .dropdown-item:focus {
+    @include themed {
+      background-color: t("gray-lightest");
+      color: t("fg");
+    }
+  }
+
   & .dropdown-item.active,
   & .dropdown-item:active {
     @include themed {
       color: t("main-accent");
+      background-color: t("alt-accent-lightest");
     }
-    background-color: inherit;
+    // background-color: inherit;
     font-weight: 900;
   }
 }
