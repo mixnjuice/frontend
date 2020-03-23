@@ -105,6 +105,31 @@ hr {
   font-size: 1.4rem;
 }
 
+// Styling for select element
+.select select {
+  @include themed {
+    border: 1px solid t("gray-light");
+    background: t("gray-lighter");
+    color: t("fg");
+  }
+  padding: 0.5em 1.4em 0.5em 0.8em;
+  appearance: none;
+  background-position: right 0.7em top 50%, 0 0;
+  border-radius: 0.3em;
+}
+
+.select .arr {
+  @include themed {
+    border-top: 8px solid t("main-accent");
+  }
+  position: absolute;
+  right: 1.4em;
+  top: 42%;
+  pointer-events: none;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
 // Styling for dropdown links in the nav
 .navbar .navbar-nav .nav-link.dropdown-toggle {
   @include themed {
