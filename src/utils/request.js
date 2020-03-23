@@ -100,7 +100,7 @@ class Request {
     });
 
     if (!response) {
-      return failureMessage('Request timed out!');
+      return { message: 'Request timed out!' };
     }
 
     return response;
