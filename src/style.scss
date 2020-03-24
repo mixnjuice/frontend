@@ -108,8 +108,15 @@ hr {
 // Styling for select element
 .select select {
   @include themed {
-    border: 1px solid t("gray-light");
-    background: t("gray-lighter");
+    border: 1px solid t("select-border");
+    /* stylelint-disable */
+    background: linear-gradient(
+      180deg,
+      t("select-box-top-bevel") 1%,
+      t("select-box-top") 3%,
+      t("select-box-bottom") 100%
+    );
+    /* stylelint-enable */
     color: t("fg");
   }
   padding: 0.5em 1.4em 0.5em 0.8em;
@@ -251,6 +258,20 @@ hr {
   width: 27.5%;
 }
 
+// Cards
+.card {
+  @include themed {
+    background-color: t("card-bg");
+    border-color: t("card-border");
+  }
+}
+
+.card-footer {
+  @include themed {
+    background-color: t("card-footer-bg");
+  }
+}
+
 // Card titles
 .h5 {
   font-size: 1.1em;
@@ -300,6 +321,15 @@ input {
 .img-thumbnail {
   @include themed {
     border: 1px solid t("main-accent");
+  }
+}
+
+// Style for tables
+.table td,
+.table th {
+  @include themed {
+    border-color: t("table-border");
+    color: t("fg");
   }
 }
 
@@ -569,4 +599,20 @@ input {
 
 .image--logo {
   width: 12rem;
+}
+
+.border-top {
+  @include themed {
+    // couldn't figure out a way to do it without !important yet
+    /* stylelint-disable-next-line */
+    border-top: 1px solid t("table-border") !important;
+  }
+}
+
+.border-bottom {
+  @include themed {
+    // couldn't figure out a way to do it without !important yet
+    /* stylelint-disable-next-line */
+    border-bottom: 1px solid t("table-border") !important;
+  }
 }

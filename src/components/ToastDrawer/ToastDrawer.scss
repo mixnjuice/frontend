@@ -4,3 +4,24 @@
   z-index: 100;
   padding-right: 40px;
 }
+
+.toast-header {
+  @include themed {
+    background-color: rgba(t("toast-bg"), 0.85);
+    color: t("toast-fg");
+  }
+}
+
+.toast {
+  @include themed {
+    background-color: rgba(t("toast-bg"), 0.85);
+    color: t("toast-fg");
+  }
+}
+
+.close {
+  @include themed {
+    color: t("toast-close");
+    text-shadow: t("white-themed") 0 1px 0;
+  }
+}
