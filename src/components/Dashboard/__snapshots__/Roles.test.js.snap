@@ -38,18 +38,25 @@ exports[`Dashboard <Roles /> renders correctly 1`] = `
         <div
           className="text-right col"
         >
-          <select
-            onBlur={[Function]}
-            onChange={[Function]}
-            value={1}
+          <div
+            className="select"
           >
-            <option
+            <span
+              className="arr"
+            />
+            <select
+              onBlur={[Function]}
+              onChange={[Function]}
               value={1}
             >
-              Page 
-              1
-            </option>
-          </select>
+              <option
+                value={1}
+              >
+                Page 
+                1
+              </option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
@@ -100,18 +107,25 @@ exports[`Dashboard <Roles /> renders correctly 1`] = `
         <div
           className="text-right col"
         >
-          <select
-            onBlur={[Function]}
-            onChange={[Function]}
-            value={1}
+          <div
+            className="select"
           >
-            <option
+            <span
+              className="arr"
+            />
+            <select
+              onBlur={[Function]}
+              onChange={[Function]}
               value={1}
             >
-              Page 
-              1
-            </option>
-          </select>
+              <option
+                value={1}
+              >
+                Page 
+                1
+              </option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
