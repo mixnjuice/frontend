@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ThemeContainer /> renders connected component correctly 1`] = `null`;
+
+exports[`<ThemeContainer /> renders correctly 1`] = `null`;

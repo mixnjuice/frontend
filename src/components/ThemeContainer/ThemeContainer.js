@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 export class ThemeContainer extends Component {
   static propTypes = {
-    theme: PropTypes.string
+    theme: PropTypes.string.isRequired
   };
 
   constructor(props) {
