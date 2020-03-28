@@ -6,12 +6,7 @@ import { bindActionCreators } from 'redux';
 import { Button, Col, Container, Row, FormControl } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const defaultState = {
-  limit: 20,
-  page: 1
-};
-
-const seekLocations = {
+export const seekLocations = {
   FIRST: 'First',
   LAST: 'Last',
   NEXT: 'Next',
@@ -32,7 +27,12 @@ export const pagination = WrappedComponent =>
     constructor(props) {
       super(props);
 
-      this.state = defaultState;
+      const { pager } = this.props;
+
+      this.state = {
+        limit: pager.limit,
+        page: pager.page
+      };
       this.changePage = this.changePage.bind(this);
       this.changeLimit = this.changeLimit.bind(this);
       this.requestPage = debounce(this.requestPage.bind(this), 250);
