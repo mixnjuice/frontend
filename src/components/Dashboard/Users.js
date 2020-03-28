@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Table } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import {
   DashboardLink as DashLink,
   DashboardLayout as Layout
 } from 'components/Dashboard';
-import { Table } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { PagerInfo, withPagination } from 'components/Pagination/Pagination';
 import { actions as usersActions } from 'reducers/users';
 import { getAllUsers, getUsersPager } from 'selectors/users';

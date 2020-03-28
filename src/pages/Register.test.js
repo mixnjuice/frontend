@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 
 import ConnectedRegister, { Register } from './Register';
 import { initialState } from 'reducers/application';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
 
 describe('<Register />', () => {
   const actions = {

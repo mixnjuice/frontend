@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/dashboard';
 import ConnectedNotFound from './NotFound';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
 
 describe('Dashboard <NotFound />', () => {
   const defaultLayoutOptions = {

@@ -2,8 +2,18 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
+
 import ConnectedMain from './Main';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
+
+jest.mock('components/Pagination/Pagination', () => {
+  const pagination = require('utils/testing').mockComponent('Pagination');
+
+  return {
+    withPagination: () => () => pagination,
+    pagination
+  };
+});
 
 describe('Dashboard <Main />', () => {
   const mockStore = configureStore();

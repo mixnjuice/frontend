@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store';
 import { initialState } from 'reducers/users';
 import { initialState as dashboardInitialState } from 'reducers/dashboard';
 import ConnectedUserRoles from './Roles';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
 
 describe('Dashboard <UserRoles />', () => {
   const defaultLayoutOptions = {

@@ -5,7 +5,16 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/dashboard';
 import ConnectedMenu from './Menu';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
+
+jest.mock('components/Pagination/Pagination', () => {
+  const pagination = require('utils/testing').mockComponent('Pagination');
+
+  return {
+    withPagination: () => () => pagination,
+    pagination
+  };
+});
 
 describe('Dashboard <Menu />', () => {
   const mockStore = configureStore();
