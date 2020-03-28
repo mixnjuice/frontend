@@ -37,7 +37,7 @@ describe('<Header />', () => {
 
   it('can logoutUser', () => {
     const component = renderer.create(
-      <RoutedHeader actions={actions} loggedIn={true} />
+      <RoutedHeader actions={actions} loggedIn />
     );
     const { instance } = component.root.findByType(Header);
 
