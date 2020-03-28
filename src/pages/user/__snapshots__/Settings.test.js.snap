@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserSettings /> renders correctly 1`] = `
+<div
+  className="container"
+>
+  <div
+    className="text-center row"
+  >
+    <div
+      className="col"
+    >
+      <h1>
+        User Settings
+      </h1>
+    </div>
+  </div>
+  <form
+    className=""
+  >
+    <div
+      className="text-center row"
+    >
+      <div
+        className="col"
+      >
+        <div
+          className="input-group"
+        >
+          <div
+            className="input-group-prepend"
+          >
+            <span
+              className="input-group-text"
+            >
+              Username
+            </span>
+          </div>
+          <input
+            aria-describedby="Username"
+            className="form-control"
+            defaultValue="xXTeddyBearSlayer69Xx"
+            name="username"
+            placeholder="xXTeddyBearSlayer69Xx"
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        className="col"
+      >
+        <div
+          className="input-group"
+        >
+          <div
+            className="input-group-prepend"
+          >
+            <span
+              className="input-group-text"
+            >
+              E-mail
+            </span>
+          </div>
+          <input
+            aria-describedby="E-mail address"
+            className="form-control"
+            defaultValue="SlayTeddiesAllDay@aol.com"
+            name="e-mail"
+            placeholder="SlayTeddiesAllDay@aol.com"
+            type="email"
+          />
+        </div>
+        <br />
+      </div>
+    </div>
+    <div
+      className="text-center row"
+    >
+      <div
+        className="align-self-center col-md-3"
+      >
+        <img
+          alt="Current profile pic"
+          className="w-50"
+          src="/media/harold.jpeg"
+        />
+      </div>
+      <div
+        className="align-self-center col-md-6"
+      >
+        <h3>
+          Profile Picture
+        </h3>
+        <div
+          className="input-group"
+        >
+          <div
+            className="custom-file"
+          >
+            <input
+              className="custom-file-input form-control-file"
+              name="profilePic"
+              onChange={[Function]}
+              type="file"
+            />
+            <label
+              className="custom-file-label text-left form-label"
+            >
+              Choose a picture
+            </label>
+          </div>
+          <div
+            className="input-group-prepend"
+          >
+            <button
+              className="button-animation btn btn-primary"
+              disabled={false}
+              type="button"
+            >
+              <span>
+                Upload
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+    />
+    <div
+      className="text-center row"
+    >
+      <div
+        className="align-self-center col-md-12"
+      >
+        Toggle Dark Mode
+        <label
+          className="switch my-auto mx-1"
+        >
+          <input
+            checked={false}
+            name="Enable Dark Mode"
+            onChange={[Function]}
+            type="checkbox"
+          />
+          <span
+            className="slider slider--round"
+          />
+        </label>
+      </div>
+    </div>
+    <hr />
+    <div
+      className="text-center row"
+    >
+      <div
+        className="col"
+      />
+    </div>
+    <div
+      className="text-center row"
+    >
+      <div
+        className="col"
+      >
+        <button
+          className="button-animation btn btn-primary"
+          disabled={false}
+          type="button"
+        >
+          <span>
+            Save
+          </span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;
