@@ -4,7 +4,7 @@
 
 .icon-toggle {
   @include themed {
-    color: t("main-accent");
+    color: theme("main-accent");
   }
   margin: 0 5px;
 }
@@ -27,7 +27,7 @@
 /* The slider */
 .slider {
   @include themed {
-    background-color: t("gray-shadow");
+    background-color: theme("gray-shadow");
   }
   position: absolute;
   cursor: pointer;
@@ -45,7 +45,7 @@
 
   &--main-accent {
     @include themed {
-      background-color: t("main-accent");
+      background-color: theme("main-accent");
     }
   }
 
@@ -65,7 +65,7 @@
 
 .slider::before {
   @include themed {
-    background-color: t("white-themed");
+    background-color: theme("white-themed");
   }
   position: absolute;
   content: "";
@@ -84,13 +84,13 @@
 
 input:checked + .slider {
   @include themed {
-    background-color: t("main-accent");
+    background-color: theme("main-accent");
   }
 }
 
 input:focus + .slider {
   @include themed {
-    box-shadow: 0 0 1px t("main-accent");
+    box-shadow: 0 0 1px theme("main-accent");
   }
 }
 

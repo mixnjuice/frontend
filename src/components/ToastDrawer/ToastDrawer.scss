@@ -7,21 +7,21 @@
 
 .toast-header {
   @include themed {
-    background-color: rgba(t("toast-bg"), 0.85);
-    color: t("toast-fg");
+    background-color: rgba(theme("toast-bg"), 0.85);
+    color: theme("toast-fg");
   }
 }
 
 .toast {
   @include themed {
-    background-color: rgba(t("toast-bg"), 0.85);
-    color: t("toast-fg");
+    background-color: rgba(theme("toast-bg"), 0.85);
+    color: theme("toast-fg");
   }
 }
 
 .close {
   @include themed {
-    color: t("toast-close");
-    text-shadow: t("white-themed") 0 1px 0;
+    color: theme("toast-close");
+    text-shadow: theme("white-themed") 0 1px 0;
   }
 }

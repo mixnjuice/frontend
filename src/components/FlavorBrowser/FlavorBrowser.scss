@@ -16,7 +16,7 @@
 
     &--striped {
       @include themed {
-        background-color: t("alt-accent-lightest");
+        background-color: theme("alt-accent-lightest");
       }
     }
   }

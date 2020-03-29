@@ -19,14 +19,14 @@ html {
 // Styling the scrollbar "track"
 ::-webkit-scrollbar-track {
   @include themed {
-    background-color: t("white-themed");
+    background-color: theme("white-themed");
   }
 }
 
 // Styling the scrollbar "thumb"
 ::-webkit-scrollbar-thumb {
   @include themed {
-    background-color: t("main-accent");
+    background-color: theme("main-accent");
   }
   border-radius: 4px;
 }
@@ -34,8 +34,8 @@ html {
 // Full page background color
 // Effectively, this is a body rule
 @include themed_body {
-  background-color: t("bg");
-  color: t("fg");
+  background-color: theme("bg");
+  color: theme("fg");
   //background: linear-gradient(180deg, $blue-light 0%, $white-themed 18%, $white-themed 100%);
 }
 
@@ -44,14 +44,14 @@ a {
   margin: 3px;
 
   @include themed {
-    color: t("main-accent");
+    color: theme("main-accent");
   }
 }
 
 // Style for horizontal rules
 hr {
   @include themed {
-    border-bottom: 1px solid t("main-accent");
+    border-bottom: 1px solid theme("main-accent");
   }
   opacity: 0.5;
 }
@@ -87,9 +87,9 @@ hr {
 // Gradient background for the navigation container
 .navigation-container {
   @include themed {
-    background: t("alt-accent-lighter");
-    border: 2px solid t("main-accent");
-    box-shadow: 8px 8px 20px t("gray-shadow");
+    background: theme("alt-accent-lighter");
+    border: 2px solid theme("main-accent");
+    box-shadow: 8px 8px 20px theme("gray-shadow");
   }
   height: 10%;
   margin: 1em;
@@ -108,16 +108,16 @@ hr {
 // Styling for select element
 .select select {
   @include themed {
-    border: 1px solid t("select-border");
+    border: 1px solid theme("select-border");
     /* stylelint-disable */
     background: linear-gradient(
       180deg,
-      t("select-box-top-bevel") 1%,
-      t("select-box-top") 3%,
-      t("select-box-bottom") 100%
+      theme("select-box-top-bevel") 1%,
+      theme("select-box-top") 3%,
+      theme("select-box-bottom") 100%
     );
     /* stylelint-enable */
-    color: t("fg");
+    color: theme("fg");
   }
   padding: 0.5em 1.4em 0.5em 0.8em;
   appearance: none;
@@ -127,7 +127,7 @@ hr {
 
 .select .arr {
   @include themed {
-    border-top: 8px solid t("main-accent");
+    border-top: 8px solid theme("main-accent");
   }
   position: absolute;
   right: 1.4em;
@@ -140,13 +140,13 @@ hr {
 // Styling for dropdown links in the nav
 .navbar .navbar-nav .nav-link.dropdown-toggle {
   @include themed {
-    color: t("black-themed");
+    color: theme("black-themed");
   }
 
   &:hover,
   &:focus {
     @include themed {
-      color: t("black-themed");
+      color: theme("black-themed");
     }
   }
 }
@@ -154,23 +154,23 @@ hr {
 // Styling for the dropdown menu
 .dropdown-menu {
   @include themed {
-    background-color: t("alt-accent-lightest");
+    background-color: theme("alt-accent-lightest");
   }
   text-align: center;
 
   & .dropdown-item:hover,
   & .dropdown-item:focus {
     @include themed {
-      background-color: t("gray-lightest");
-      color: t("fg");
+      background-color: theme("gray-lightest");
+      color: theme("fg");
     }
   }
 
   & .dropdown-item.active,
   & .dropdown-item:active {
     @include themed {
-      color: t("main-accent");
-      background-color: t("alt-accent-lightest");
+      color: theme("main-accent");
+      background-color: theme("alt-accent-lightest");
     }
     // background-color: inherit;
     font-weight: 900;
@@ -193,8 +193,8 @@ hr {
 // Styling for checkboxes
 .form-check-input {
   @include themed {
-    background-color: t("white-themed");
-    border: 1px solid t("black-themed");
+    background-color: theme("white-themed");
+    border: 1px solid theme("black-themed");
   }
   appearance: none;
   width: 20px;
@@ -205,31 +205,31 @@ hr {
 
 .form-check-input:checked {
   @include themed {
-    background-color: t("main-accent");
-    color: t("fg");
+    background-color: theme("main-accent");
+    color: theme("fg");
   }
 }
 
 // Changing the border of any form fields
 .form-control {
   @include themed {
-    border: 1px solid t("form-control-border");
-    background-color: t("bg");
-    color: t("gray-dark");
+    border: 1px solid theme("form-control-border");
+    background-color: theme("bg");
+    color: theme("gray-dark");
   }
   outline: 0 none;
 
   // Style for "striped" tables
   tr:nth-of-type(odd) .table-striped {
     @include themed {
-      background-color: t("alt-accent-lightest");
+      background-color: theme("alt-accent-lightest");
     }
   }
 
   // Changing the focused state of form fields
   &:focus {
     @include themed {
-      border: 3px solid t("alt-accent");
+      border: 3px solid theme("alt-accent");
     }
     box-shadow: none;
     outline: 0 none;
@@ -239,17 +239,17 @@ hr {
 // Changing the style of the file upload input box
 .custom-file-label {
   @include themed {
-    border: 1px solid t("input-group-text-border");
-    background-color: t("bg");
-    color: t("gray-dark");
+    border: 1px solid theme("input-group-text-border");
+    background-color: theme("bg");
+    color: theme("gray-dark");
   }
 }
 
 // the sub-box, e.g. the browse button
 .form-label::after {
   @include themed {
-    background-color: t("gray-lighter");
-    color: t("gray-dark");
+    background-color: theme("gray-lighter");
+    color: theme("gray-dark");
   }
 }
 
@@ -261,14 +261,14 @@ hr {
 // Cards
 .card {
   @include themed {
-    background-color: t("card-bg");
-    border-color: t("card-border");
+    background-color: theme("card-bg");
+    border-color: theme("card-border");
   }
 }
 
 .card-footer {
   @include themed {
-    background-color: t("card-footer-bg");
+    background-color: theme("card-footer-bg");
   }
 }
 
@@ -297,18 +297,18 @@ input {
 // Style of the description box of an input
 .input-group-text {
   @include themed {
-    border: 1px solid t("input-group-text-border");
-    background-color: t("gray-lighter");
-    color: t("gray-dark");
+    border: 1px solid theme("input-group-text-border");
+    background-color: theme("gray-lighter");
+    color: theme("gray-dark");
   }
 }
 
 // Style for file inputs
 .custom-file-input[type="file"] {
   @include themed {
-    // border: 1px solid t("input-group-text-border");
-    background-color: t("gray-lighter");
-    color: t("gray-dark");
+    // border: 1px solid theme("input-group-text-border");
+    background-color: theme("gray-lighter");
+    color: theme("gray-dark");
   }
   border-radius: 0.25rem;
   padding: 5px;
@@ -320,7 +320,7 @@ input {
 
 .img-thumbnail {
   @include themed {
-    border: 1px solid t("main-accent");
+    border: 1px solid theme("main-accent");
   }
 }
 
@@ -328,15 +328,15 @@ input {
 .table td,
 .table th {
   @include themed {
-    border-color: t("table-border");
-    color: t("fg");
+    border-color: theme("table-border");
+    color: theme("fg");
   }
 }
 
 // Style for "striped" tables
 .table-striped tbody tr:nth-of-type(odd) {
   @include themed {
-    background-color: t("alt-accent-lightest");
+    background-color: theme("alt-accent-lightest");
   }
 }
 
@@ -344,7 +344,7 @@ input {
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
 .navbar-nav .nav-link.nav--link-custom {
   @include themed {
-    color: t("black-themed");
+    color: theme("black-themed");
   }
   display: inline-block;
   text-align: center;
@@ -354,7 +354,7 @@ input {
   &:hover,
   &:focus {
     @include themed {
-      color: t("main-accent");
+      color: theme("main-accent");
     }
   }
 
@@ -363,8 +363,8 @@ input {
 
     &::after {
       @include themed {
-        border-bottom: 1px solid t("main-accent");
-        color: t("main-accent");
+        border-bottom: 1px solid theme("main-accent");
+        color: theme("main-accent");
       }
       content: "";
       position: absolute;
@@ -380,8 +380,8 @@ input {
 
   &::after {
     @include themed {
-      border-bottom: 1px solid t("main-accent");
-      color: t("main-accent");
+      border-bottom: 1px solid theme("main-accent");
+      color: theme("main-accent");
     }
     content: "";
     position: absolute;
@@ -402,7 +402,7 @@ input {
 
   &.active {
     @include themed {
-      color: t("main-accent");
+      color: theme("main-accent");
     }
     font-weight: 900;
   }
@@ -411,7 +411,7 @@ input {
 // Universal button styling
 .btn {
   @include themed {
-    border: 1px solid t("button-border-color");
+    border: 1px solid theme("button-border-color");
   }
   height: 40px;
   padding: 0 14px;
@@ -424,7 +424,7 @@ input {
 
   @include themed {
     &-primary {
-      background: t("main-accent");
+      background: theme("main-accent");
       // background: $main-accent;
     }
   }
@@ -433,9 +433,9 @@ input {
   &.disabled,
   &:disabled {
     @include themed {
-      color: t("gray-dark");
-      background-color: t("gray-light");
-      border-color: t("gray-dark");
+      color: theme("gray-dark");
+      background-color: theme("gray-light");
+      border-color: theme("gray-dark");
     }
   }
 
@@ -451,7 +451,7 @@ input {
 // Credit to: https://emilkowalski.github.io/css-effects-snippets/
 .button-animation {
   @include themed {
-    color: t("white-themed");
+    color: theme("white-themed");
   }
   overflow: hidden;
   position: relative;
@@ -459,7 +459,7 @@ input {
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
       @include themed {
-        background: t("alt-accent-baby");
+        background: theme("alt-accent-baby");
       }
       content: "";
       position: absolute;
@@ -475,7 +475,7 @@ input {
   @media screen and (prefers-reduced-motion: reduce) {
     &::before {
       @include themed {
-        background: t("alt-accent-baby");
+        background: theme("alt-accent-baby");
       }
       content: "";
       position: absolute;
@@ -490,7 +490,7 @@ input {
 
   &::before {
     @include themed {
-      background: t("alt-accent-baby");
+      background: theme("alt-accent-baby");
     }
     content: "";
     position: absolute;
@@ -506,8 +506,8 @@ input {
   &:hover,
   &:focus {
     @include themed {
-      border: 1px solid t("button-border-color");
-      background-color: t("main-accent");
+      border: 1px solid theme("button-border-color");
+      background-color: theme("main-accent");
     }
   }
 
@@ -525,36 +525,36 @@ input {
 // Changing the color of the heart SVG icon
 .fa-heart {
   @include themed {
-    color: t("red-light");
+    color: theme("red-light");
   }
 }
 
 .rating-button {
   @include themed {
-    border-top: 1px solid t("black-themed");
-    border-bottom: 1px solid t("black-themed");
+    border-top: 1px solid theme("black-themed");
+    border-bottom: 1px solid theme("black-themed");
   }
   padding: 0 8px;
   border: 0;
 
   &:last-child {
     @include themed {
-      border-right: 1px solid t("black-themed");
+      border-right: 1px solid theme("black-themed");
     }
   }
 
   &:first-child {
     @include themed {
-      border-left: 1px solid t("black-themed");
+      border-left: 1px solid theme("black-themed");
     }
   }
 
   &:hover,
   &:focus {
     @include themed {
-      background: t("main-accent");
-      box-shadow: inset 0 -3px t("alt-accent");
-      border-color: t("black-themed");
+      background: theme("main-accent");
+      box-shadow: inset 0 -3px theme("alt-accent");
+      border-color: theme("black-themed");
     }
   }
 }
@@ -563,9 +563,9 @@ input {
   &:hover,
   &:focus {
     @include themed {
-      background: t("main-accent");
-      border-color: t("black-themed");
-      box-shadow: inset 0 -3px t("alt-accent");
+      background: theme("main-accent");
+      border-color: theme("black-themed");
+      box-shadow: inset 0 -3px theme("alt-accent");
     }
   }
 }
@@ -580,8 +580,8 @@ input {
 
 .link--tags {
   @include themed {
-    background-color: t("alt-accent-lighter");
-    border: 1px solid t("main-accent");
+    background-color: theme("alt-accent-lighter");
+    border: 1px solid theme("main-accent");
   }
   margin: 2px 8px;
   padding: 3px 8px;
@@ -590,8 +590,8 @@ input {
   &:hover,
   &:focus {
     @include themed {
-      color: t("alt-accent");
-      background-color: t("alt-accent-lightest");
+      color: theme("alt-accent");
+      background-color: theme("alt-accent-lightest");
     }
     text-decoration: none;
   }
@@ -605,7 +605,7 @@ input {
   @include themed {
     // couldn't figure out a way to do it without !important yet
     /* stylelint-disable-next-line */
-    border-top: 1px solid t("table-border") !important;
+    border-top: 1px solid theme("table-border") !important;
   }
 }
 
@@ -613,6 +613,6 @@ input {
   @include themed {
     // couldn't figure out a way to do it without !important yet
     /* stylelint-disable-next-line */
-    border-bottom: 1px solid t("table-border") !important;
+    border-bottom: 1px solid theme("table-border") !important;
   }
 }

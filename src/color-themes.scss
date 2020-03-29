@@ -115,6 +115,6 @@ $themes: (
   }
 }
 
-@function t($key) {
+@function theme($key) {
   @return map-get($theme-map, $key);
 }
