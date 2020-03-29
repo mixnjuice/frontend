@@ -9,7 +9,7 @@ import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import ToastDrawer from 'components/ToastDrawer/ToastDrawer';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
-import ThemeContainer from 'components/ThemeContainer/ThemeContainer';
+import withTheme from 'components/ThemeHOC/withTheme';
 import { actions as appActions } from 'reducers/application';
 import {
   Dashboard,
@@ -44,7 +44,6 @@ export class App extends Component {
   render() {
     return (
       <Suspense fallback={<SuspenseFallback />}>
-        <ThemeContainer />
         <Helmet defaultTitle="MixNJuice" titleTemplate="MixNJuice - %s" />
         <Header />
         <ToastDrawer />
@@ -84,4 +83,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(appActions, dispatch)
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withTheme(withRouter(connect(null, mapDispatchToProps)(App)));
