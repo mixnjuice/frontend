@@ -81,20 +81,17 @@ export const pagination = WrappedComponent =>
               />
             </Col>
             <Col className="text-right">
-              <div className="select">
-                <span className="arr"></span>
-                <select
-                  value={this.state.page}
-                  onChange={this.handlePageChange}
-                  onBlur={this.handlePageChange}
-                >
-                  {this.pagerCounter().map((value, i) => (
-                    <option value={value} key={i}>
-                      Page {value}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <select
+                value={this.state.page}
+                onChange={this.handlePageChange}
+                onBlur={this.handlePageChange}
+              >
+                {this.pagerCounter().map((value, i) => (
+                  <option value={value} key={i}>
+                    Page {value}
+                  </option>
+                ))}
+              </select>
             </Col>
           </Row>
         </Container>
