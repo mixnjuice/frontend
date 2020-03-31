@@ -44,14 +44,6 @@ export class UserSettings extends Component {
     this.setState({ filename: event.target.files[0].name });
   }
 
-  toggleDarkMode() {
-    if (this.props.theme === 'default') {
-      this.props.actions.setTheme('dark');
-    } else {
-      this.props.actions.setTheme('default');
-    }
-  }
-
   render() {
     return (
       <Container>
@@ -130,7 +122,7 @@ export class UserSettings extends Component {
               Toggle Dark Mode
               <ToggleButton
                 value={this.props.theme === 'default' ? false : true}
-                onClick={() => this.toggleDarkMode()}
+                onClick={() => this.props.actions.toggleDarkMode()}
                 title={
                   this.props.theme === 'default'
                     ? 'Enable Dark Mode'
