@@ -14,7 +14,7 @@ describe('theme reducer', () => {
     const action = actions.setTheme(name);
 
     expect(reducer({}, action)).toEqual({
-      name: 'dracula'
+      name
     });
   });
 });
