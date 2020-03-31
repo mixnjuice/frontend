@@ -2,7 +2,6 @@
 
 exports[`<App /> redirects to login for private route 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <Login />,
@@ -12,7 +11,6 @@ Array [
 
 exports[`<App /> renders dashboard page 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <Dashboard />,
@@ -22,7 +20,6 @@ Array [
 
 exports[`<App /> renders favorites page 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <Favorites />,
@@ -32,7 +29,6 @@ Array [
 
 exports[`<App /> renders flavor stash page 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <FlavorStash />,
@@ -42,7 +38,6 @@ Array [
 
 exports[`<App /> renders flavors page 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <Flavors />,
@@ -52,7 +47,6 @@ Array [
 
 exports[`<App /> renders home by default 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <Home />,
@@ -62,7 +56,6 @@ Array [
 
 exports[`<App /> renders login page 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <Login />,
@@ -72,7 +65,6 @@ Array [
 
 exports[`<App /> renders profile page 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <Profile />,
@@ -82,7 +74,6 @@ Array [
 
 exports[`<App /> renders recipe editor page 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <RecipeEditor />,
@@ -92,7 +83,6 @@ Array [
 
 exports[`<App /> renders recipe page 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <Recipe />,
@@ -102,7 +92,6 @@ Array [
 
 exports[`<App /> renders register page 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <Register />,
@@ -112,7 +101,6 @@ Array [
 
 exports[`<App /> renders shopping list page 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <ShoppingList />,
@@ -122,7 +110,6 @@ Array [
 
 exports[`<App /> renders user recipes page 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <UserRecipes />,
@@ -132,7 +119,6 @@ Array [
 
 exports[`<App /> renders user settings page 1`] = `
 Array [
-  <ThemeContainer />,
   <Header />,
   <ToastDrawer />,
   <UserSettings />,
