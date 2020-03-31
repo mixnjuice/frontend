@@ -125,7 +125,6 @@ export class UserSettings extends Component {
               </InputGroup>
             </Col>
           </Row>
-          <Row></Row>
           <Row className="text-center">
             <Col md="12" className="align-self-center">
               Toggle Dark Mode
