@@ -5,7 +5,7 @@ import { withMemoryRouter } from 'utils';
 
 describe('<UserSettings />', () => {
   const actions = {
-    setTheme: jest.fn()
+    toggleDarkMode: jest.fn()
   };
   const props = {
     theme: 'default',
@@ -18,19 +18,5 @@ describe('<UserSettings />', () => {
     expect(
       renderer.create(<RoutedUserSettings {...props} />).toJSON()
     ).toMatchSnapshot();
-  });
-
-  it('can setTheme', () => {
-    const component = renderer.create(<RoutedUserSettings {...props} />);
-    const { instance } = component.root.findByType(UserSettings);
-
-    expect(instance).toBeDefined();
-
-    instance.toggleDarkMode();
-    expect(actions.setTheme).toHaveBeenCalledWith('dark');
-
-    component.update(<RoutedUserSettings {...props} theme="dark" />);
-    instance.toggleDarkMode();
-    expect(actions.setTheme).toHaveBeenCalledWith('default');
   });
 });
