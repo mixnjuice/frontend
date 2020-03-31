@@ -10,8 +10,8 @@ import PropTypes from 'prop-types';
 
 export class UserSettings extends Component {
   static propTypes = {
-    theme: PropTypes.string,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    theme: PropTypes.string
   };
 
   constructor(...args) {
