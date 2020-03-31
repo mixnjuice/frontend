@@ -38,49 +38,42 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
         <div
           className="text-right col"
         >
-          <div
-            className="select"
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
           >
-            <span
-              className="arr"
-            />
-            <select
-              onBlur={[Function]}
-              onChange={[Function]}
+            <option
               value={1}
             >
-              <option
-                value={1}
-              >
-                Page 
-                1
-              </option>
-              <option
-                value={2}
-              >
-                Page 
-                2
-              </option>
-              <option
-                value={3}
-              >
-                Page 
-                3
-              </option>
-              <option
-                value={4}
-              >
-                Page 
-                4
-              </option>
-              <option
-                value={5}
-              >
-                Page 
-                5
-              </option>
-            </select>
-          </div>
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
         </div>
       </div>
     </div>
@@ -486,49 +479,42 @@ exports[`Dashboard <Main /> renders Flavors correctly 1`] = `
         <div
           className="text-right col"
         >
-          <div
-            className="select"
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
           >
-            <span
-              className="arr"
-            />
-            <select
-              onBlur={[Function]}
-              onChange={[Function]}
+            <option
               value={1}
             >
-              <option
-                value={1}
-              >
-                Page 
-                1
-              </option>
-              <option
-                value={2}
-              >
-                Page 
-                2
-              </option>
-              <option
-                value={3}
-              >
-                Page 
-                3
-              </option>
-              <option
-                value={4}
-              >
-                Page 
-                4
-              </option>
-              <option
-                value={5}
-              >
-                Page 
-                5
-              </option>
-            </select>
-          </div>
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
         </div>
       </div>
     </div>
@@ -1354,49 +1340,42 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
         <div
           className="text-right col"
         >
-          <div
-            className="select"
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
           >
-            <span
-              className="arr"
-            />
-            <select
-              onBlur={[Function]}
-              onChange={[Function]}
+            <option
               value={1}
             >
-              <option
-                value={1}
-              >
-                Page 
-                1
-              </option>
-              <option
-                value={2}
-              >
-                Page 
-                2
-              </option>
-              <option
-                value={3}
-              >
-                Page 
-                3
-              </option>
-              <option
-                value={4}
-              >
-                Page 
-                4
-              </option>
-              <option
-                value={5}
-              >
-                Page 
-                5
-              </option>
-            </select>
-          </div>
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
         </div>
       </div>
     </div>
@@ -1654,49 +1633,42 @@ exports[`Dashboard <Main /> renders Roles correctly 1`] = `
         <div
           className="text-right col"
         >
-          <div
-            className="select"
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
           >
-            <span
-              className="arr"
-            />
-            <select
-              onBlur={[Function]}
-              onChange={[Function]}
+            <option
               value={1}
             >
-              <option
-                value={1}
-              >
-                Page 
-                1
-              </option>
-              <option
-                value={2}
-              >
-                Page 
-                2
-              </option>
-              <option
-                value={3}
-              >
-                Page 
-                3
-              </option>
-              <option
-                value={4}
-              >
-                Page 
-                4
-              </option>
-              <option
-                value={5}
-              >
-                Page 
-                5
-              </option>
-            </select>
-          </div>
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
         </div>
       </div>
     </div>
@@ -1908,49 +1880,42 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
         <div
           className="text-right col"
         >
-          <div
-            className="select"
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
           >
-            <span
-              className="arr"
-            />
-            <select
-              onBlur={[Function]}
-              onChange={[Function]}
+            <option
               value={1}
             >
-              <option
-                value={1}
-              >
-                Page 
-                1
-              </option>
-              <option
-                value={2}
-              >
-                Page 
-                2
-              </option>
-              <option
-                value={3}
-              >
-                Page 
-                3
-              </option>
-              <option
-                value={4}
-              >
-                Page 
-                4
-              </option>
-              <option
-                value={5}
-              >
-                Page 
-                5
-              </option>
-            </select>
-          </div>
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
         </div>
       </div>
     </div>
@@ -2090,49 +2055,42 @@ exports[`Dashboard <Main /> renders Users correctly 1`] = `
         <div
           className="text-right col"
         >
-          <div
-            className="select"
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
           >
-            <span
-              className="arr"
-            />
-            <select
-              onBlur={[Function]}
-              onChange={[Function]}
+            <option
               value={1}
             >
-              <option
-                value={1}
-              >
-                Page 
-                1
-              </option>
-              <option
-                value={2}
-              >
-                Page 
-                2
-              </option>
-              <option
-                value={3}
-              >
-                Page 
-                3
-              </option>
-              <option
-                value={4}
-              >
-                Page 
-                4
-              </option>
-              <option
-                value={5}
-              >
-                Page 
-                5
-              </option>
-            </select>
-          </div>
+              Page 
+              1
+            </option>
+            <option
+              value={2}
+            >
+              Page 
+              2
+            </option>
+            <option
+              value={3}
+            >
+              Page 
+              3
+            </option>
+            <option
+              value={4}
+            >
+              Page 
+              4
+            </option>
+            <option
+              value={5}
+            >
+              Page 
+              5
+            </option>
+          </select>
         </div>
       </div>
     </div>

@@ -52,25 +52,18 @@ exports[`Page <Flavors /> renders correctly 1`] = `
         <div
           className="text-right col"
         >
-          <div
-            className="select"
+          <select
+            onBlur={[Function]}
+            onChange={[Function]}
+            value={1}
           >
-            <span
-              className="arr"
-            />
-            <select
-              onBlur={[Function]}
-              onChange={[Function]}
+            <option
               value={1}
             >
-              <option
-                value={1}
-              >
-                Page 
-                1
-              </option>
-            </select>
-          </div>
+              Page 
+              1
+            </option>
+          </select>
         </div>
       </div>
     </div>
@@ -128,25 +121,18 @@ exports[`Page <Flavors /> renders correctly 1`] = `
       <div
         className="text-right col"
       >
-        <div
-          className="select"
+        <select
+          onBlur={[Function]}
+          onChange={[Function]}
+          value={1}
         >
-          <span
-            className="arr"
-          />
-          <select
-            onBlur={[Function]}
-            onChange={[Function]}
+          <option
             value={1}
           >
-            <option
-              value={1}
-            >
-              Page 
-              1
-            </option>
-          </select>
-        </div>
+            Page 
+            1
+          </option>
+        </select>
       </div>
     </div>
   </div>

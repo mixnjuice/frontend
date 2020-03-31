@@ -126,9 +126,6 @@ exports[`<UserSettings /> renders correctly 1`] = `
       </div>
     </div>
     <div
-      className="row"
-    />
-    <div
       className="text-center row"
     >
       <div
