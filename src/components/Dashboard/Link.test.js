@@ -7,15 +7,6 @@ import { initialState } from 'reducers/dashboard';
 import ConnectedLink, { DashboardLink } from './Link';
 import { withMemoryRouter } from 'utils/testing';
 
-jest.mock('components/Pagination/Pagination', () => {
-  const pagination = require('utils/testing').mockComponent('Pagination');
-
-  return {
-    withPagination: () => () => pagination,
-    pagination
-  };
-});
-
 describe('Dashboard <Link />', () => {
   const mockStore = configureStore();
   const store = mockStore({ dashboard: initialState });
