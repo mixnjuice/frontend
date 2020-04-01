@@ -6,7 +6,7 @@ import configureStore from 'redux-mock-store';
 import { initialState } from 'reducers/roles';
 import { initialState as dashboardInitialState } from 'reducers/dashboard';
 import ConnectedRoleAdd, { RoleAdd } from './Add';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
 
 describe('Dashboard <RoleAdd />', () => {
   const defaultLayoutOptions = {

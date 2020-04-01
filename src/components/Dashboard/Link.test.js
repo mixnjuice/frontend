@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/dashboard';
 import ConnectedLink, { DashboardLink } from './Link';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
 
 describe('Dashboard <Link />', () => {
   const mockStore = configureStore();

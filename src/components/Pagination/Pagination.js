@@ -1,19 +1,25 @@
+import debounce from 'lodash.debounce';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row, FormControl } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const defaultState = {
-  limit: 20,
-  page: 1
+export const seekLocations = {
+  FIRST: 'First',
+  LAST: 'Last',
+  NEXT: 'Next',
+  PREV: 'Previous'
 };
 
 export const pagination = WrappedComponent =>
   class extends Component {
     static displayName = 'Pagination';
     static propTypes = {
-      actions: PropTypes.object.isRequired,
+      actions: PropTypes.shape({
+        action: PropTypes.func.isRequired
+      }).isRequired,
       collection: PropTypes.array.isRequired,
       pager: PropTypes.object.isRequired
     };
@@ -21,32 +27,34 @@ export const pagination = WrappedComponent =>
     constructor(props) {
       super(props);
 
-      this.state = defaultState;
-      this.handlePageChange = this.changePage.bind(this);
-      this.handleLimitChange = this.changeLimit.bind(this);
-      this.handleLimitUpdate = this.updateLimit.bind(this);
+      const { pager } = this.props;
+
+      this.state = {
+        limit: pager.limit,
+        page: pager.page
+      };
+      this.changePage = this.changePage.bind(this);
+      this.changeLimit = this.changeLimit.bind(this);
+      this.requestPage = debounce(this.requestPage.bind(this), 250);
+      this.handleSeek = this.handleSeek.bind(this);
     }
 
     componentDidMount() {
-      const { actions } = this.props;
-
-      actions.action(defaultState);
+      this.requestPage();
     }
 
-    pagerCounter() {
+    get pagerCounter() {
       const { pages } = this.props.pager;
 
       return [...Array(pages).keys()].map(value => value + 1);
     }
 
     changePage(page) {
-      const { actions, pager } = this.props;
       const {
         target: { value }
       } = page;
 
-      this.setState({ page: value });
-      actions.action({ ...pager, page: Number(value) });
+      this.setState({ page: parseInt(value, 10) }, this.requestPage);
     }
 
     changeLimit(limit) {
@@ -54,47 +62,92 @@ export const pagination = WrappedComponent =>
         target: { value }
       } = limit;
 
-      this.setState({ limit: value });
+      this.setState({ limit: parseInt(value, 10) }, this.requestPage);
     }
 
-    updateLimit() {
+    handleSeek(location) {
+      const { pages } = this.props.pager;
+      const { page: currentPage } = this.state;
+
+      let page;
+
+      switch (location) {
+        case seekLocations.FIRST:
+        default:
+          page = 1;
+          break;
+        case seekLocations.LAST:
+          page = pages;
+          break;
+        case seekLocations.NEXT:
+          page = Math.min(currentPage + 1, pages);
+          break;
+        case seekLocations.PREV:
+          page = Math.max(currentPage - 1, 1);
+          break;
+      }
+
+      this.setState({ page }, this.requestPage);
+    }
+
+    requestPage() {
       const { actions, pager } = this.props;
-      const { limit } = this.state;
+      const { limit, page } = this.state;
 
-      actions.action({ ...pager, limit: Number(limit) });
+      actions.action({ ...pager, limit, page });
     }
 
-    navigation() {
+    get navigation() {
       return (
-        <Container fluid>
-          <Row className="pb-2">
-            <Col xs={3}>
-              <input
-                type="number"
-                min="20"
-                max="200"
-                step="20"
-                className="form-control"
-                onChange={this.handleLimitChange}
-                onBlur={this.handleLimitUpdate}
-                value={this.state.limit}
-              />
-            </Col>
-            <Col className="text-right">
-              <select
-                value={this.state.page}
-                onChange={this.handlePageChange}
-                onBlur={this.handlePageChange}
-              >
-                {this.pagerCounter().map((value, i) => (
-                  <option value={value} key={i}>
-                    Page {value}
-                  </option>
-                ))}
-              </select>
-            </Col>
-          </Row>
-        </Container>
+        <Row className="pager pb-2">
+          <Col xs={{ offset: 6, size: 3 }} className="text-right">
+            <FormControl
+              className="pager-limit"
+              type="number"
+              min="20"
+              max="200"
+              step="20"
+              onChange={this.changeLimit}
+              value={this.state.limit}
+            />{' '}
+            rows per page
+          </Col>
+          <Col xs={3} className="text-right">
+            <Button
+              size="sm"
+              onClick={() => this.handleSeek(seekLocations.FIRST)}
+            >
+              <FontAwesomeIcon icon="angle-double-left" />
+            </Button>
+            <Button
+              size="sm"
+              onClick={() => this.handleSeek(seekLocations.PREV)}
+            >
+              <FontAwesomeIcon icon="angle-left" />
+            </Button>
+            <FormControl
+              className="pager-page"
+              type="number"
+              min={1}
+              max={this.state.page}
+              step={1}
+              onChange={this.changePage}
+              value={this.state.page}
+            />
+            <Button
+              size="sm"
+              onClick={() => this.handleSeek(seekLocations.NEXT)}
+            >
+              <FontAwesomeIcon icon="angle-right" />
+            </Button>
+            <Button
+              size="sm"
+              onClick={() => this.handleSeek(seekLocations.LAST)}
+            >
+              <FontAwesomeIcon icon="angle-double-right" />
+            </Button>
+          </Col>
+        </Row>
       );
     }
 
@@ -105,7 +158,7 @@ export const pagination = WrappedComponent =>
         <WrappedComponent
           collection={collection}
           pager={pager}
-          pagerNavigation={this.navigation()}
+          pagerNavigation={this.navigation}
           {...this.props}
         />
       );

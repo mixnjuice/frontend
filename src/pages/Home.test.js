@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
 import Home from './Home';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
 
 describe('<Home />', () => {
   const initialState = {};
