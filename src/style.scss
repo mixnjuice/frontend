@@ -204,23 +204,6 @@ hr {
   }
 }
 
-// Changing the style of the file upload input box
-.custom-file-label {
-  @include themed {
-    border: 1px solid theme("input-group-text-border");
-    background-color: theme("bg");
-    color: theme("gray-dark");
-  }
-}
-
-// the sub-box, e.g. the browse button
-.form-label::after {
-  @include themed {
-    background-color: theme("gray-lighter");
-    color: theme("gray-dark");
-  }
-}
-
 // Changing the column width of the ingredient percent input
 .recipe-percent {
   width: 27.5%;
@@ -273,13 +256,26 @@ input {
 
 // Style for file inputs
 .custom-file-input[type="file"] {
+  border-radius: 0.25rem;
+  padding: 5px;
+}
+
+// Changing the style of the file upload input box
+.custom-file-label {
   @include themed {
-    // border: 1px solid theme("input-group-text-border");
+    border: 1px solid theme("input-group-text-border");
+    background-color: theme("bg");
+    color: theme("gray-dark");
+  }
+  transition: none;
+}
+
+// the sub-box, e.g. the browse button
+.form-label::after {
+  @include themed {
     background-color: theme("gray-lighter");
     color: theme("gray-dark");
   }
-  border-radius: 0.25rem;
-  padding: 5px;
 }
 
 .recipeTitle {
