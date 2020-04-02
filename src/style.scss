@@ -3,6 +3,7 @@
 // Changes the font site-wide
 * {
   font-family: "Quicksand", sans-serif;
+  transition-duration: 0.8s;
 }
 
 // Forces scrollbar to always be present, to combat the center being
@@ -267,7 +268,6 @@ input {
     background-color: theme("bg");
     color: theme("gray-dark");
   }
-  transition: none;
 }
 
 // the sub-box, e.g. the browse button
