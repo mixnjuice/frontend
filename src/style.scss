@@ -270,7 +270,7 @@ input {
   }
 }
 
-// the sub-box, e.g. the browse button
+// The description box, e.g. the browse button
 .form-label::after {
   @include themed {
     background-color: theme("gray-lighter");
@@ -389,7 +389,6 @@ input {
   @include themed {
     &-primary {
       background: theme("main-accent");
-      // background: $main-accent;
     }
   }
 
@@ -567,7 +566,7 @@ input {
 
 .border-top {
   @include themed {
-    // couldn't figure out a way to do it without !important yet
+    // Normalize-scss forces us to use important here
     /* stylelint-disable-next-line */
     border-top: 1px solid theme("table-border") !important;
   }
@@ -575,7 +574,7 @@ input {
 
 .border-bottom {
   @include themed {
-    // couldn't figure out a way to do it without !important yet
+    // Normalize-scss forces us to use important here
     /* stylelint-disable-next-line */
     border-bottom: 1px solid theme("table-border") !important;
   }
