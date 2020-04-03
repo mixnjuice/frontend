@@ -7,14 +7,14 @@
 
 .toast-header {
   @include themed {
-    background-color: rgba(theme("toast-bg"), 0.85);
+    background-color: theme("toast-bg");
     color: theme("toast-fg");
   }
 }
 
 .toast {
   @include themed {
-    background-color: rgba(theme("toast-bg"), 0.85);
+    background-color: theme("toast-bg");
     color: theme("toast-fg");
   }
 }
