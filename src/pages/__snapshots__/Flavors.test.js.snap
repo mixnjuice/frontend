@@ -1,162 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Page <Flavors /> renders correctly 1`] = `
-<div
-  className="container"
->
-  <div
-    className="container-fluid"
-  >
-    <div
-      className="text-center row"
-    >
-      <div
-        className="col"
-      >
-        <h1>
-          Flavors
-        </h1>
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="text-left ml-2 mb-4 col"
-      >
-        <small>
-          Log in to Enable Flavor Stash
-        </small>
-      </div>
-    </div>
-    <div
-      className="container-fluid"
-    >
-      <div
-        className="pb-2 row"
-      >
-        <div
-          className="col-3"
-        >
-          <input
-            className="form-control"
-            max="200"
-            min="20"
-            onBlur={[Function]}
-            onChange={[Function]}
-            step="20"
-            type="number"
-            value={20}
-          />
-        </div>
-        <div
-          className="text-right col"
-        >
-          <select
-            onBlur={[Function]}
-            onChange={[Function]}
-            value={1}
-          >
-            <option
-              value={1}
-            >
-              Page 
-              1
-            </option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className="table-responsive"
-  >
-    <table
-      className="table table-sm table-striped table-bordered table-hover"
-    >
-      <thead>
-        <tr
-          className="text-center"
-        >
-          <th>
-            ID
-          </th>
-          <th>
-            Vendor
-          </th>
-          <th>
-            Name
-          </th>
-          <th>
-            Slug
-          </th>
-          <th>
-            Density
-          </th>
-        </tr>
-      </thead>
-      <tbody />
-    </table>
-  </div>
-  <div
-    className="container-fluid"
-  >
-    <div
-      className="pb-2 row"
-    >
-      <div
-        className="col-3"
-      >
-        <input
-          className="form-control"
-          max="200"
-          min="20"
-          onBlur={[Function]}
-          onChange={[Function]}
-          step="20"
-          type="number"
-          value={20}
-        />
-      </div>
-      <div
-        className="text-right col"
-      >
-        <select
-          onBlur={[Function]}
-          onChange={[Function]}
-          value={1}
-        >
-          <option
-            value={1}
-          >
-            Page 
-            1
-          </option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div
-    className="container-fluid"
-  >
-    <div
-      className="row"
-    >
-      <div
-        className="col"
-      >
-         
-        Flavors
-      </div>
-      <div
-        className="text-right col"
-      >
-         Pages
-      </div>
-    </div>
-  </div>
-</div>
-`;
+exports[`Page <Flavors /> renders correctly 1`] = `<Pagination />`;
 
 exports[`Page <Flavors /> renders correctly when stash is not loaded 1`] = `
 <div
@@ -182,17 +26,15 @@ exports[`Page <Flavors /> renders correctly when stash is not loaded 1`] = `
       <div
         className="text-left ml-2 mb-4 col"
       >
-        <i
-          className="fa fas-toggle-off"
-        />
+        <ToggleButton />
          
         <span>
           Enable Flavor Stash
         </span>
       </div>
     </div>
-    <p />
   </div>
+  <p />
   <div
     className="table-responsive"
   >
@@ -320,27 +162,7 @@ exports[`Page <Flavors /> renders correctly when stash is not loaded 1`] = `
     </table>
   </div>
   <p />
-  <div
-    className="container-fluid"
-  >
-    <div
-      className="row"
-    >
-      <div
-        className="col"
-      >
-        5
-         
-        Flavors
-      </div>
-      <div
-        className="text-right col"
-      >
-        1
-         Pages
-      </div>
-    </div>
-  </div>
+  <PagerInfo />
 </div>
 `;
 
@@ -373,8 +195,8 @@ exports[`Page <Flavors /> renders correctly when user is not logged in 1`] = `
         </small>
       </div>
     </div>
-    <p />
   </div>
+  <p />
   <div
     className="table-responsive"
   >
@@ -502,27 +324,7 @@ exports[`Page <Flavors /> renders correctly when user is not logged in 1`] = `
     </table>
   </div>
   <p />
-  <div
-    className="container-fluid"
-  >
-    <div
-      className="row"
-    >
-      <div
-        className="col"
-      >
-        5
-         
-        Flavors
-      </div>
-      <div
-        className="text-right col"
-      >
-        1
-         Pages
-      </div>
-    </div>
-  </div>
+  <PagerInfo />
 </div>
 `;
 

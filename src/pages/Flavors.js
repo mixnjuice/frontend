@@ -75,7 +75,6 @@ export class Flavors extends Component {
         onClick={e => this.handleStashToggle(e)}
         title={!stashToggle ? 'Enable Flavor Stash' : 'Disable Flavor Stash'}
         variant="switch"
-        iconOnly={true}
       />
     );
   }
@@ -126,7 +125,7 @@ export class Flavors extends Component {
     return (
       <Container>
         <Helmet title="Flavors" />
-        <Container fluid={true}>
+        <Container fluid>
           <Row className="text-center">
             <Col>
               <h1>Flavors</h1>
@@ -143,8 +142,8 @@ export class Flavors extends Component {
               )}
             </Col>
           </Row>
-          {pagerNavigation}
         </Container>
+        {pagerNavigation}
         <Table responsive striped bordered hover size="sm">
           <thead>
             <tr className="text-center">
