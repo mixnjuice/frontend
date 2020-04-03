@@ -5,7 +5,7 @@ import { Recipes } from './Recipes';
 
 jest.mock('react-bootstrap', () => ({
   ...jest.requireActual('react-bootstrap'),
-  OverlayTrigger: require('utils').mockComponent('OverlayTrigger')
+  OverlayTrigger: require('utils/testing').mockComponent('OverlayTrigger')
 }));
 
 describe('<Recipes />', () => {
