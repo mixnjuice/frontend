@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { getThemeName } from 'selectors/theme';
 import { connect } from 'react-redux';
 
-export default function withTheme(WrappedComponent) {
-  class ThemeHOC extends Component {
+export const theme = WrappedComponent =>
+  class extends Component {
+    static displayName = 'Theme';
     static propTypes = {
       theme: PropTypes.string
     };
@@ -26,11 +27,11 @@ export default function withTheme(WrappedComponent) {
     render() {
       return <WrappedComponent {...this.props} />;
     }
-  }
+  };
 
-  const mapStateToProps = state => ({
-    theme: getThemeName(state)
-  });
+export const mapStateToProps = state => ({
+  theme: getThemeName(state)
+});
 
-  return connect(mapStateToProps)(ThemeHOC);
-}
+export const withTheme = WrappedComponent => () =>
+  connect(mapStateToProps)(theme(WrappedComponent));

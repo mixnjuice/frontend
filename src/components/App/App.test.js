@@ -17,9 +17,9 @@ jest.mock('components/Header/Header', () =>
 jest.mock('components/ToastDrawer/ToastDrawer', () =>
   require('utils').mockComponent('ToastDrawer')
 );
-jest.mock('components/ThemeHOC/withTheme', () => Component => props => (
-  <Component {...props} />
-));
+jest.mock('components/Theme/Theme', () => ({
+  withTheme: WrappedComponent => props => <WrappedComponent {...props} />
+}));
 jest.mock('pages', () => {
   const { mockComponent } = require('utils');
 

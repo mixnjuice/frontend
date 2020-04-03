@@ -9,7 +9,7 @@ import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import ToastDrawer from 'components/ToastDrawer/ToastDrawer';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
-import withTheme from 'components/ThemeHOC/withTheme';
+import { withTheme } from 'components/Theme/Theme';
 import { actions as appActions } from 'reducers/application';
 import {
   Dashboard,
