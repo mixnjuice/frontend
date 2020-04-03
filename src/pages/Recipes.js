@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { actions } from 'reducers/application';
+import { actions } from 'reducers/toast';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,7 +24,7 @@ import flavorStash from '../data/flavorstash.json';
 
 export class Recipes extends Component {
   static propTypes = {
-    appActions: PropTypes.object.isRequired
+    toastActions: PropTypes.object.isRequired
   };
 
   constructor(props) {
@@ -40,7 +40,7 @@ export class Recipes extends Component {
     // Most of this is just placeholder to show proof of concept...
     // Whether or not a recipe is favorited depends on the user
     // so this will be changed once a user db is in place
-    const { appActions } = this.props;
+    const { toastActions } = this.props;
 
     let recipeSettings = {};
 
@@ -59,14 +59,14 @@ export class Recipes extends Component {
     recipeSettings.favorited = !recipeSettings.favorited;
     if (recipeSettings.favorited) {
       recipeSettings.favoriteIcon = ['fas', 'heart'];
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Success!',
         icon: null,
         message: `${recipeName} has been added to your favorites`
       });
     } else {
       recipeSettings.favoriteIcon = ['far', 'heart'];
-      appActions.popToast({
+      toastActions.popToast({
         title: 'Success!',
         icon: null,
         message: `${recipeName} has been removed from your favorites`
@@ -517,7 +517,7 @@ export class Recipes extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  appActions: bindActionCreators({ ...actions }, dispatch)
+  toastActions: bindActionCreators({ ...actions }, dispatch)
 });
 
 export default connect(null, mapDispatchToProps)(Recipes);

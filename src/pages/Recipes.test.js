@@ -15,13 +15,13 @@ describe('<Recipes />', () => {
   };
 
   it('renders correctly', () => {
-    const component = renderer.create(<Recipes appActions={actions} />);
+    const component = renderer.create(<Recipes toastActions={actions} />);
 
     expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('handles favorite clicks', () => {
-    const component = renderer.create(<Recipes appActions={actions} />);
+    const component = renderer.create(<Recipes toastActions={actions} />);
 
     const { instance } = component.root.findByType(Recipes);
 
@@ -41,7 +41,7 @@ describe('<Recipes />', () => {
   });
 
   it('handles view toggle', () => {
-    const component = renderer.create(<Recipes appActions={actions} />);
+    const component = renderer.create(<Recipes toastActions={actions} />);
 
     const { instance } = component.root.findByType(Recipes);
 
