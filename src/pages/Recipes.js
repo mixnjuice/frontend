@@ -117,47 +117,46 @@ export class Recipes extends Component {
       let comparisonIcon = {};
 
       recipe.flavors.map(recipeFlavor => {
-        for (let i = 0; i < flavorStash.length; i++) {
-          if (flavorStash[i].id === recipeFlavor.id) {
-            comparison.push({
-              id: recipeFlavor.id,
-              name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
-              inStash: true
-            });
-            flavorPopoverList.push(
-              <tr className="table-flavor-list" key={recipeFlavor.id}>
-                <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
-                <td>{recipeFlavor.percent}%</td>
-                <td>
-                  <FontAwesomeIcon
-                    icon={['fas', 'check-circle']}
-                    className="search-icon--check"
-                  />
-                </td>
-              </tr>
-            );
-            break;
-          }
+        const match = flavorStash.filter(
+          flavor => flavor.id === recipeFlavor.id
+        );
 
-          if (i === flavorStash.length - 1) {
-            comparison.push({
-              id: recipeFlavor.id,
-              name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
-              inStash: false
-            });
-            flavorPopoverList.push(
-              <tr className="table-flavor-list" key={recipeFlavor.id}>
-                <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
-                <td>{recipeFlavor.percent}%</td>
-                <td>
-                  <FontAwesomeIcon
-                    icon={['fas', 'times-circle']}
-                    className="search-icon--times"
-                  />
-                </td>
-              </tr>
-            );
-          }
+        if (match.length > 0) {
+          comparison.push({
+            id: recipeFlavor.id,
+            name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
+            inStash: true
+          });
+          flavorPopoverList.push(
+            <tr className="table-flavor-list" key={recipeFlavor.id}>
+              <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
+              <td>{recipeFlavor.percent}%</td>
+              <td>
+                <FontAwesomeIcon
+                  icon={['fas', 'check-circle']}
+                  className="search-icon--check"
+                />
+              </td>
+            </tr>
+          );
+        } else {
+          comparison.push({
+            id: recipeFlavor.id,
+            name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
+            inStash: false
+          });
+          flavorPopoverList.push(
+            <tr className="table-flavor-list" key={recipeFlavor.id}>
+              <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
+              <td>{recipeFlavor.percent}%</td>
+              <td>
+                <FontAwesomeIcon
+                  icon={['fas', 'times-circle']}
+                  className="search-icon--times"
+                />
+              </td>
+            </tr>
+          );
         }
       });
 
@@ -296,47 +295,46 @@ export class Recipes extends Component {
       let comparisonIcon = {};
 
       recipe.flavors.map(recipeFlavor => {
-        for (let i = 0; i < flavorStash.length; i++) {
-          if (flavorStash[i].id === recipeFlavor.id) {
-            comparison.push({
-              id: recipeFlavor.id,
-              name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
-              inStash: true
-            });
-            flavorPopoverList.push(
-              <tr className="table-flavor-list" key={recipeFlavor.id}>
-                <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
-                <td>{recipeFlavor.percent}%</td>
-                <td>
-                  <FontAwesomeIcon
-                    icon={['fas', 'check-circle']}
-                    className="search-icon--check"
-                  />
-                </td>
-              </tr>
-            );
-            break;
-          }
+        const match = flavorStash.filter(
+          flavor => flavor.id === recipeFlavor.id
+        );
 
-          if (i === flavorStash.length - 1) {
-            comparison.push({
-              id: recipeFlavor.id,
-              name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
-              inStash: false
-            });
-            flavorPopoverList.push(
-              <tr className="table-flavor-list" key={recipeFlavor.id}>
-                <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
-                <td>{recipeFlavor.percent}%</td>
-                <td>
-                  <FontAwesomeIcon
-                    icon={['fas', 'times-circle']}
-                    className="search-icon--times"
-                  />
-                </td>
-              </tr>
-            );
-          }
+        if (match.length > 0) {
+          comparison.push({
+            id: recipeFlavor.id,
+            name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
+            inStash: true
+          });
+          flavorPopoverList.push(
+            <tr className="table-flavor-list" key={recipeFlavor.id}>
+              <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
+              <td>{recipeFlavor.percent}%</td>
+              <td>
+                <FontAwesomeIcon
+                  icon={['fas', 'check-circle']}
+                  className="search-icon--check"
+                />
+              </td>
+            </tr>
+          );
+        } else {
+          comparison.push({
+            id: recipeFlavor.id,
+            name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
+            inStash: false
+          });
+          flavorPopoverList.push(
+            <tr className="table-flavor-list" key={recipeFlavor.id}>
+              <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
+              <td>{recipeFlavor.percent}%</td>
+              <td>
+                <FontAwesomeIcon
+                  icon={['fas', 'times-circle']}
+                  className="search-icon--times"
+                />
+              </td>
+            </tr>
+          );
         }
       });
 
