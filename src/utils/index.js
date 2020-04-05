@@ -1,6 +1,4 @@
 import dayjs from 'dayjs';
-import React, { createElement } from 'react';
-import { MemoryRouter } from 'react-router-dom';
 
 import { getApplication, getAuthorization } from 'selectors/application';
 
@@ -24,37 +22,6 @@ export function buildActions(reducer, actions) {
 }
 
 /**
- * Creates a mock component which takes a set of props specified at runtime.
- *
- * @param {string} name The component/element name (in PascalCase)
- * @param {object} props An object containing props to setup
- * @return {object} Mock component with specified name and props
- */
-export const mockComponent = (name, props = {}) => () =>
-  createElement(name, props, props.children);
-
-/**
- * Creates a mock component which will expose its props for snapshot testing purposes
- * @param {*} name The component/element name (in PascalCase)
- */
-export const mockComponentWithProps = name => props =>
-  createElement(name, props, props.children);
-
-/**
- * Wraps a React component in a <MemoryRouter> suitable for testing
- *
- * @param {Component} WrappedComponent React component to wrap
- */
-export const withMemoryRouter = (
-  WrappedComponent,
-  routerProps = {}
-) => props => (
-  <MemoryRouter {...routerProps}>
-    <WrappedComponent {...props} />
-  </MemoryRouter>
-);
-
-/**
  * Interpolate strings from the `params` object into the `url`.
  *
  * @param {object} endpoint Object with `url` and optional `params` object
@@ -75,6 +42,9 @@ export const buildUrl = endpoint => {
   }, `${baseUrl}${url}`);
 };
 
+/**
+ * Gets the initial Redux state from localStorage and the source code defaults.
+ */
 export const getInitialState = () => {
   // this needs to be require()d because an import results in a
   // circular dependency

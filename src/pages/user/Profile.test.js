@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Profile } from './Profile';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
 
 describe('<Profile />', () => {
   const match = { params: { id: 1 }, path: '/user/profile' };

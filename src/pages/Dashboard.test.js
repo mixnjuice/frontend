@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/dashboard';
 import ConnectedDashboard from './Dashboard';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
 
 describe('<Dashboard />', () => {
   const mockStore = configureStore();

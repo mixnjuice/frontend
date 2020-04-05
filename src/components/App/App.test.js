@@ -5,23 +5,23 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
 import ConnectedApp, { App } from './App';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
 import { initialState } from 'reducers/application';
 
 jest.mock('components/Footer/Footer', () =>
-  require('utils').mockComponent('Footer')
+  require('utils/testing').mockComponent('Footer')
 );
 jest.mock('components/Header/Header', () =>
-  require('utils').mockComponent('Header')
+  require('utils/testing').mockComponent('Header')
 );
 jest.mock('components/ToastDrawer/ToastDrawer', () =>
-  require('utils').mockComponent('ToastDrawer')
+  require('utils/testing').mockComponent('ToastDrawer')
 );
 jest.mock('components/Theme/Theme', () => ({
   withTheme: WrappedComponent => props => <WrappedComponent {...props} />
 }));
 jest.mock('pages', () => {
-  const { mockComponent } = require('utils');
+  const { mockComponent } = require('utils/testing');
 
   return {
     Dashboard: mockComponent('Dashboard'),

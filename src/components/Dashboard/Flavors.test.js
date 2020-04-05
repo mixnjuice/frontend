@@ -1,11 +1,19 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/flavors';
 import ConnectedFlavors from './Flavors';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter, withProvider } from 'utils/testing';
+
+jest.mock('components/Pagination/Pagination', () => {
+  const pagination = require('utils/testing').mockComponent('Pagination');
+
+  return {
+    withPagination: () => () => pagination,
+    pagination
+  };
+});
 
 describe('Dashboard <Flavors />', () => {
   const defaultLayoutOptions = {
@@ -18,15 +26,12 @@ describe('Dashboard <Flavors />', () => {
   const store = mockStore({ flavors: initialState, page: 1 });
 
   const RoutedFlavors = withMemoryRouter(ConnectedFlavors);
+  const DecoratedFlavors = withProvider(RoutedFlavors, store);
 
   it('renders correctly', () => {
     expect(
       renderer
-        .create(
-          <Provider store={store}>
-            <RoutedFlavors layoutOptions={defaultLayoutOptions} />
-          </Provider>
-        )
+        .create(<DecoratedFlavors layoutOptions={defaultLayoutOptions} />)
         .toJSON()
     ).toMatchSnapshot();
   });

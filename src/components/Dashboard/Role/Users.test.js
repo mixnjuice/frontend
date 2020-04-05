@@ -4,7 +4,12 @@ import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
 import ConnectedRoleUsers, { RoleUsers } from './Users';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
+
+jest.mock('components/Pagination/Pagination', () => ({
+  ...jest.requireActual('components/Pagination/Pagination'),
+  pagination: require('utils/testing').mockComponent('Pagination')
+}));
 
 describe('Dashboard <RoleUsers />', () => {
   const defaultLayoutOptions = {

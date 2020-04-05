@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { Header } from './Header';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
 // Prevent findDOMNode error in test from Dropdown component in react-bootstrap
 jest.mock('react-dom', () => ({
   findDOMNode: () => ({})
@@ -37,7 +37,7 @@ describe('<Header />', () => {
 
   it('can logoutUser', () => {
     const component = renderer.create(
-      <RoutedHeader actions={actions} loggedIn={true} />
+      <RoutedHeader actions={actions} loggedIn />
     );
     const { instance } = component.root.findByType(Header);
 
