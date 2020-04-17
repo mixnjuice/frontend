@@ -12,9 +12,9 @@ import { reducer as flavors, initialState as flavorsState } from './flavors';
 import { reducer as profile, initialState as profileState } from './profile';
 import { reducer as recipe, initialState as recipeState } from './recipe';
 import { reducer as roles, initialState as rolesState } from './roles';
+import { reducer as theme, initialState as themeState } from './theme';
 import { reducer as toast, initialState as toastState } from './toast';
 import { reducer as users, initialState as usersState } from './users';
-import { reducer as theme, initialState as themeState } from './theme';
 
 export const initialState = {
   application: applicationState,
@@ -24,9 +24,9 @@ export const initialState = {
   profile: profileState,
   recipe: recipeState,
   roles: rolesState,
+  theme: themeState,
   toast: toastState,
-  users: usersState,
-  theme: themeState
+  users: usersState
 };
 
 export default combineReducers({
@@ -37,7 +37,7 @@ export default combineReducers({
   profile,
   recipe,
   roles,
+  theme,
   toast,
-  users,
-  theme
+  users
 });
