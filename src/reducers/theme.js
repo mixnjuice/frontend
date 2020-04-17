@@ -17,16 +17,19 @@ export const initialState = {
 export const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     case types.TOGGLE_DARK_MODE:
-      if (state.name === 'default') {
-        return {
-          ...state,
-          name: 'dark'
-        };
-      } else {
-        return {
-          ...state,
-          name: 'default'
-        };
+      switch (state.name) {
+        case 'default':
+          return {
+            ...state,
+            name: 'dark'
+          };
+        case 'dark':
+          return {
+            ...state,
+            name: 'default'
+          };
+        default:
+          return { ...state, name: 'default' };
       }
     default:
       return state;
