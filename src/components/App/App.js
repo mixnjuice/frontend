@@ -44,10 +44,10 @@ export class App extends Component {
   render() {
     return (
       <Suspense fallback={<SuspenseFallback />}>
+        <Helmet defaultTitle="MixNJuice" titleTemplate="MixNJuice - %s" />
+        <Header />
+        <ToastDrawer />
         <ErrorBoundary>
-          <Helmet defaultTitle="MixNJuice" titleTemplate="MixNJuice - %s" />
-          <Header />
-          <ToastDrawer />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/login" component={Login} />
@@ -82,8 +82,8 @@ export class App extends Component {
             <PrivateRoute path="/user/:userName" component={Profile} />
             <Route component={NotFound} />
           </Switch>
-          <Footer />
         </ErrorBoundary>
+        <Footer />
       </Suspense>
     );
   }
