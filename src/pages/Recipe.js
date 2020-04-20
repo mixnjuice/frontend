@@ -247,7 +247,7 @@ export class Recipe extends Component {
               </Card.Body>
               <Card.Footer className="text-muted">
                 <span>
-                  Created by <a href={'/user?id=' + userId}>{user}</a> on {date}
+                  Created by <a href={`/user?id=${userId}`}>{user}</a> on {date}
                 </span>
               </Card.Footer>
             </Card>
