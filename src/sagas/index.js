@@ -6,6 +6,7 @@ import flavor from './flavor';
 import flavors from './flavors';
 import profile from './profile';
 import recipe from './recipe';
+import recipes from './recipes';
 import roles from './roles';
 import toast from './toast';
 import users from './users';
@@ -19,6 +20,7 @@ export default function* saga() {
       flavors,
       profile,
       recipe,
+      recipes,
       roles,
       toast,
       users
