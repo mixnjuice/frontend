@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { actions } from 'reducers/toast';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -19,12 +18,17 @@ import {
   Table
 } from 'react-bootstrap';
 
-import recipeList from '../data/generatedRecipes.json';
-import flavorStash from '../data/flavorstash.json';
+import { actions as toastActions } from 'reducers/toast';
+import { actions as recipesActions } from 'reducers/recipes';
+import { getRecipeList } from 'selectors/recipes';
 
 export class Recipes extends Component {
   static propTypes = {
-    toastActions: PropTypes.object.isRequired
+    actions: PropTypes.shape({
+      popToast: PropTypes.func.isRequired,
+      requestRecipes: PropTypes.func.isRequired
+    }).isRequired,
+    recipes: PropTypes.arrayOf(PropTypes.object).isRequired
   };
 
   constructor(props) {
@@ -36,11 +40,17 @@ export class Recipes extends Component {
     };
   }
 
+  componentDidMount() {
+    const { actions } = this.props;
+
+    actions.requestRecipes();
+  }
+
   handleFavoriteClick(recipeId, recipeName) {
     // Most of this is just placeholder to show proof of concept...
     // Whether or not a recipe is favorited depends on the user
     // so this will be changed once a user db is in place
-    const { toastActions } = this.props;
+    const { actions } = this.props;
 
     let recipeSettings = {};
 
@@ -59,14 +69,14 @@ export class Recipes extends Component {
     recipeSettings.favorited = !recipeSettings.favorited;
     if (recipeSettings.favorited) {
       recipeSettings.favoriteIcon = ['fas', 'heart'];
-      toastActions.popToast({
+      actions.popToast({
         title: 'Success!',
         icon: null,
         message: `${recipeName} has been added to your favorites`
       });
     } else {
       recipeSettings.favoriteIcon = ['far', 'heart'];
-      toastActions.popToast({
+      actions.popToast({
         title: 'Success!',
         icon: null,
         message: `${recipeName} has been removed from your favorites`
@@ -101,7 +111,13 @@ export class Recipes extends Component {
   }
 
   get renderResultCards() {
-    return recipeList.map((recipe, index) => {
+    const { recipes } = this.props;
+
+    if (!recipes) {
+      return null;
+    }
+
+    return recipes.map((recipe, index) => {
       if (index > 49) {
         return;
       }
@@ -116,49 +132,49 @@ export class Recipes extends Component {
 
       let comparisonIcon = {};
 
-      recipe.flavors.map(recipeFlavor => {
-        const match = flavorStash.filter(
-          flavor => flavor.id === recipeFlavor.id
-        );
+      // recipe.flavors.map(recipeFlavor => {
+      //   const match = flavorStash.filter(
+      //     flavor => flavor.id === recipeFlavor.id
+      //   );
 
-        if (match.length > 0) {
-          comparison.push({
-            id: recipeFlavor.id,
-            name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
-            inStash: true
-          });
-          flavorPopoverList.push(
-            <tr className="table-flavor-list" key={recipeFlavor.id}>
-              <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
-              <td>{recipeFlavor.percent}%</td>
-              <td>
-                <FontAwesomeIcon
-                  icon={['fas', 'check-circle']}
-                  className="search-icon--check"
-                />
-              </td>
-            </tr>
-          );
-        } else {
-          comparison.push({
-            id: recipeFlavor.id,
-            name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
-            inStash: false
-          });
-          flavorPopoverList.push(
-            <tr className="table-flavor-list" key={recipeFlavor.id}>
-              <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
-              <td>{recipeFlavor.percent}%</td>
-              <td>
-                <FontAwesomeIcon
-                  icon={['fas', 'times-circle']}
-                  className="search-icon--times"
-                />
-              </td>
-            </tr>
-          );
-        }
-      });
+      //   if (match.length > 0) {
+      //     comparison.push({
+      //       id: recipeFlavor.id,
+      //       name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
+      //       inStash: true
+      //     });
+      //     flavorPopoverList.push(
+      //       <tr className="table-flavor-list" key={recipeFlavor.id}>
+      //         <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
+      //         <td>{recipeFlavor.percent}%</td>
+      //         <td>
+      //           <FontAwesomeIcon
+      //             icon={['fas', 'check-circle']}
+      //             className="search-icon--check"
+      //           />
+      //         </td>
+      //       </tr>
+      //     );
+      //   } else {
+      //     comparison.push({
+      //       id: recipeFlavor.id,
+      //       name: `${recipeFlavor.abbreviation} ${recipeFlavor.name}`,
+      //       inStash: false
+      //     });
+      //     flavorPopoverList.push(
+      //       <tr className="table-flavor-list" key={recipeFlavor.id}>
+      //         <td>{`${recipeFlavor.abbreviation} ${recipeFlavor.name}`}</td>
+      //         <td>{recipeFlavor.percent}%</td>
+      //         <td>
+      //           <FontAwesomeIcon
+      //             icon={['fas', 'times-circle']}
+      //             className="search-icon--times"
+      //           />
+      //         </td>
+      //       </tr>
+      //     );
+      //   }
+      // });
 
       for (let i = 0; i < comparison.length; i++) {
         if (comparison[i].inStash) {
@@ -229,7 +245,7 @@ export class Recipes extends Component {
                   </Card.Text>
                   <Card.Text className="search-grid--card-text tags">
                     <span className="font-weight-bold">Tags:</span>
-                    {recipe.tags.map((tag, i) => {
+                    {/* {recipe.tags.map((tag, i) => {
                       if (i < 6) {
                         return (
                           <a key={`${tag}${i}`} href="/">
@@ -247,7 +263,7 @@ export class Recipes extends Component {
                       } else {
                         return;
                       }
-                    })}
+                    })} */}
                   </Card.Text>
                   <Card.Text>
                     <Button className="mx-2 button-animation">
@@ -411,8 +427,12 @@ export class Recipes extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  toastActions: bindActionCreators({ ...actions }, dispatch)
+const mapStateToProps = state => ({
+  recipes: getRecipeList(state)
 });
 
-export default connect(null, mapDispatchToProps)(Recipes);
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({ ...toastActions, ...recipesActions }, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Recipes);
