@@ -1,8 +1,8 @@
 import { Helmet } from 'react-helmet';
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, InputGroup, Button } from 'react-bootstrap';
-import { actions as themeActions } from 'reducers/theme';
-import { getThemeName } from 'selectors/theme';
+import { actions as appActions } from 'reducers/application';
+import { getTheme } from 'selectors/application';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ToggleButton from 'components/ToggleButton/ToggleButton';
@@ -150,11 +150,11 @@ export class UserSettings extends Component {
 }
 
 const mapStateToProps = state => ({
-  theme: getThemeName(state)
+  theme: getTheme(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(themeActions, dispatch)
+  actions: bindActionCreators(appActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserSettings);

@@ -6,8 +6,7 @@ import configureStore from 'redux-mock-store';
 
 import ConnectedApp, { App } from './App';
 import { withMemoryRouter } from 'utils/testing';
-import { initialState as initialApplicationState } from 'reducers/application';
-import { initialState as initialThemeState } from 'reducers/theme';
+import { initialState } from 'reducers/application';
 
 jest.mock('components/Footer/Footer', () =>
   require('utils/testing').mockComponent('Footer')
@@ -46,12 +45,11 @@ describe('<App />', () => {
   };
   const mockStore = configureStore();
   const store = mockStore({
-    application: initialApplicationState,
-    theme: initialThemeState
+    application: initialState
   });
   const authedStore = mockStore({
     application: {
-      ...initialApplicationState,
+      ...initialState,
       authorization: {
         accessToken: '1234',
         expiration: dayjs().add(60, 'minutes')
@@ -60,8 +58,7 @@ describe('<App />', () => {
         id: 123,
         name: 'Doe'
       }
-    },
-    theme: initialThemeState
+    }
   });
 
   afterEach(() => {

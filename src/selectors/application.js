@@ -26,6 +26,11 @@ export const getAuthorization = createSelector(
   application => application.authorization
 );
 
+export const getTheme = createSelector(
+  getApplication,
+  application => application.theme
+);
+
 export const getToken = createSelector(
   getAuthorization,
   authorization => authorization.accessToken

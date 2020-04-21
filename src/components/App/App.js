@@ -6,7 +6,7 @@ import React, { Component, Suspense } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
 import BodyClassName from 'react-body-classname';
-import { getThemeName } from 'selectors/theme';
+import { getTheme } from 'selectors/application';
 
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
@@ -108,7 +108,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  theme: getThemeName(state)
+  theme: getTheme(state)
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
