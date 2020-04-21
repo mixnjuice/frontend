@@ -49,31 +49,28 @@ class Request {
     this.execute = this.execute.bind(this);
   }
 
-  isUrlProtected(url) {
-    const unprotectedResources = ['oauth', 'register'];
+  /**
+   * Return an access token if available.
+   */
+  *getAccessToken() {
+    const authInfo = yield select(getAuthorization);
 
-    for (const resource of unprotectedResources) {
-      if (url.startsWith(`/${resource}`)) {
-        return false;
-      }
+    if (!authInfo) {
+      return null;
     }
 
-    return true;
+    const { accessToken, expiration } = authInfo;
+    const validToken = accessToken && dayjs().isBefore(expiration);
+
+    return validToken ? accessToken : null;
   }
 
   /**
-   * Fetches an access token or returns from the store if present
+   * Wait for an access token to be successfully requested.
    *
-   * @param {Number} timeout
+   * @param {number} timeout Number of milliseconds to wait for user to login
    */
-  *getAccessToken(timeout) {
-    const { accessToken, expiration } = yield select(getAuthorization);
-
-    // sanity check authorization information
-    if (accessToken && dayjs().isBefore(expiration)) {
-      return accessToken;
-    }
-
+  *waitForAccessToken(timeout) {
     try {
       const { authorization } = yield race({
         authorization: take(types.REQUEST_TOKEN_SUCCESS),
@@ -90,7 +87,26 @@ class Request {
     }
   }
 
-  *execute({ endpoint, data, headers, options = {} }) {
+  *makeRequest(url, method, data, headers, timeout) {
+    // start a race between the request and a timer, cancel the loser
+    const { response } = yield race({
+      response: call(axios, {
+        url,
+        method,
+        data,
+        headers
+      }),
+      timeout: delay(timeout)
+    });
+
+    if (!response) {
+      return { message: 'Request timed out!' };
+    }
+
+    return response;
+  }
+
+  *execute({ endpoint, data, headers = {}, options = {} }) {
     try {
       // ensure the endpoint was supplied
       if (!endpoint) {
@@ -108,39 +124,41 @@ class Request {
         return failureMessage('Endpoint is missing method!');
       }
 
-      // default timeout of 10 seconds
+      // default request timeout of 10 seconds
       const { timeout = 10000 } = options;
 
-      if (this.isUrlProtected(url)) {
-        const accessToken = yield* this.getAccessToken(timeout);
+      // build the request URL
+      const requestUrl = yield call(buildUrl, endpoint);
 
-        if (!accessToken) {
-          return failureMessage('Missing authorization information!');
-        }
+      let accessToken = yield* this.getAccessToken();
 
-        // destructured parameters are declared as var
-        if (!headers) {
-          headers = {};
-        }
-
+      if (accessToken) {
         headers.Authorization = `Bearer ${accessToken}`;
       }
 
-      const requestUrl = yield call(buildUrl, endpoint);
+      let response = yield* this.makeRequest(
+        requestUrl,
+        method,
+        data,
+        headers,
+        timeout
+      );
 
-      // start a race between the request and a timer, cancel the loser
-      const { response } = yield race({
-        response: call(axios, {
-          url: requestUrl,
-          headers,
-          method,
-          data
-        }),
-        timeout: delay(timeout)
-      });
+      if (!accessToken && response.status === 403) {
+        accessToken = yield* this.waitForAccessToken(timeout);
 
-      if (!response) {
-        return failureMessage('Request timed out!');
+        if (!accessToken) {
+          return failureMessage('Unable to obtain required token!');
+        } else {
+          headers.Authorization = `Bearer ${accessToken}`;
+          response = yield* this.makeRequest(
+            requestUrl,
+            method,
+            data,
+            headers,
+            timeout
+          );
+        }
       }
 
       const { status } = response;

@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/roles';
 import ConnectedRoleDelete, { RoleDelete } from './Delete';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
 
 describe('Dashboard <RoleDelete />', () => {
   const defaultLayoutOptions = {

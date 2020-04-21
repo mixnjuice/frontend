@@ -1,22 +1,23 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { pagination } from './Pagination';
+import { pagination, seekLocations } from './Pagination';
+
 // Prevent findDOMNode error in test from Dropdown component in react-bootstrap
 jest.mock('react-dom', () => ({
   findDOMNode: () => ({})
 }));
 
+jest.mock('lodash.debounce', () => fn => fn);
+
 describe('<Pagination />', () => {
   const actions = {
     action: jest.fn()
   };
-
   const page = {
     target: {
       value: 1
     }
   };
-
   const limit = {
     target: {
       value: 40
@@ -73,30 +74,97 @@ describe('<Pagination />', () => {
     collection
   };
 
-  const component = renderer.create(<Component {...props} />);
-  const { instance } = component.root.findByType(Component);
+  const createComponent = () => {
+    const component = renderer.create(<Component {...props} />);
+    const { instance } = component.root.findByType(Component);
 
-  instance.setState = jest.fn();
+    return { component, instance };
+  };
 
   it('renders correctly', () => {
-    expect(
-      renderer.create(<Component {...props} />).toJSON()
-    ).toMatchSnapshot();
-    expect(instance).toBeDefined();
+    const { component, instance } = createComponent();
+
+    expect(component.toJSON()).toMatchSnapshot();
+    expect(instance.state).toEqual({
+      limit: pager.limit,
+      page: pager.page
+    });
   });
 
   it('can changePage', () => {
+    const { instance } = createComponent();
+
+    instance.requestPage = jest.fn();
+
     instance.changePage(page);
-    expect(actions.action).toHaveBeenCalledWith({ ...pager, page: 1 });
+
+    expect(instance.requestPage).toHaveBeenCalled();
+    expect(instance.state.page).toEqual(page.target.value);
   });
 
   it('can changeLimit', () => {
+    const { instance } = createComponent();
+
+    instance.requestPage = jest.fn();
+
     instance.changeLimit(limit);
-    expect(instance.setState).toHaveBeenCalledWith({ limit: 40 });
+
+    expect(instance.requestPage).toHaveBeenCalled();
+    expect(instance.state.limit).toEqual(limit.target.value);
   });
 
-  it('can updateLimit', () => {
-    instance.updateLimit();
-    expect(actions.action).toHaveBeenCalledWith({ page: 1, limit: 20 });
+  it('can handleSeek', () => {
+    const { instance } = createComponent();
+
+    instance.requestPage = jest.fn();
+
+    // jump to first page
+    instance.handleSeek(seekLocations.FIRST);
+
+    expect(instance.requestPage).toHaveBeenCalled();
+    expect(instance.state.page).toBe(1);
+
+    // jump to last page
+    instance.handleSeek(seekLocations.LAST);
+
+    expect(instance.state.page).toBe(pager.pages);
+
+    // step back one page
+    instance.handleSeek(seekLocations.PREV);
+
+    expect(instance.state.page).toBe(pager.pages - 1);
+
+    // step forward one page
+    instance.handleSeek(seekLocations.NEXT);
+
+    expect(instance.state.page).toBe(pager.pages);
+
+    // ensure that we cannot go past the last page
+    instance.handleSeek(seekLocations.NEXT);
+
+    expect(instance.state.page).toBe(pager.pages);
+
+    // ensure that we cannot go past the first page
+    instance.handleSeek(seekLocations.FIRST);
+    instance.handleSeek(seekLocations.PREV);
+
+    expect(instance.state.page).toBe(1);
+  });
+
+  it('can requestPage', () => {
+    const { instance } = createComponent();
+
+    instance.requestPage();
+
+    expect(actions.action).toHaveBeenCalledWith(pager);
+
+    actions.action.mockReset();
+
+    instance.changeLimit(limit);
+
+    expect(actions.action).toHaveBeenCalledWith({
+      ...pager,
+      limit: limit.target.value
+    });
   });
 });

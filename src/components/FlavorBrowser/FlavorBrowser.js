@@ -32,11 +32,11 @@ export class FlavorBrowser extends Component {
       searchStash: ''
     };
 
-    this.debounceInterval = 250;
     this.baseClass = 'flavor-browser';
     this.renderItem = this.renderItem.bind(this);
     this.addIngredient = this.addIngredient.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
+    this.debouncedUpdate = debounce(this.debouncedUpdate.bind(this), 250);
   }
 
   componentDidMount() {
@@ -82,9 +82,13 @@ export class FlavorBrowser extends Component {
       target: { value }
     } = event;
 
-    this.setState({
+    this.debouncedUpdate({
       searchStash: value
     });
+  }
+
+  debouncedUpdate(state) {
+    this.setState(state);
   }
 
   get filteredStash() {
@@ -154,11 +158,7 @@ export class FlavorBrowser extends Component {
               name="searchStash"
               type="text"
               placeholder="Search stash..."
-              onChange={event => {
-                event.persist();
-
-                debounce(this.handleSearchChange, this.debounceInterval)(event);
-              }}
+              onChange={this.handleSearchChange}
             />
           </InputGroup>
         </Form.Group>

@@ -13,7 +13,7 @@ describe('request', () => {
     method: 'POST'
   };
   const authedEndpoint = {
-    url: '/api/user/current',
+    url: '/user/current',
     method: 'GET'
   };
   const authInfo = {
@@ -26,6 +26,21 @@ describe('request', () => {
     axios.reset();
     axios.mockClear();
   });
+
+  const mockRequest = (url, method, auth, timeout = defaultTimeout) =>
+    race({
+      response: call(axios, {
+        url,
+        method,
+        headers: auth
+          ? {
+              Authorization: `Bearer ${auth.accessToken}`
+            }
+          : {},
+        data: undefined
+      }),
+      timeout: delay(timeout)
+    });
 
   it('can handle success', () => {
     const response = {
@@ -41,16 +56,11 @@ describe('request', () => {
 
     result = gen.next(url);
 
-    expect(result.value).toEqual(
-      race({
-        response: call(axios, {
-          url,
-          method,
-          data: undefined
-        }),
-        timeout: delay(defaultTimeout)
-      })
-    );
+    expect(result.value).toEqual(select(getAuthorization));
+
+    result = gen.next(authInfo);
+
+    expect(result.value).toEqual(mockRequest(url, method, authInfo));
 
     result = gen.next({ response });
 
@@ -80,16 +90,11 @@ describe('request', () => {
 
     result = gen.next(url);
 
-    expect(result.value).toEqual(
-      race({
-        response: call(axios, {
-          url,
-          method,
-          data: undefined
-        }),
-        timeout: delay(defaultTimeout)
-      })
-    );
+    expect(result.value).toEqual(select(getAuthorization));
+
+    result = gen.next(authInfo);
+
+    expect(result.value).toEqual(mockRequest(url, method, authInfo));
 
     result = gen.next({ response });
 
@@ -119,16 +124,11 @@ describe('request', () => {
 
     result = gen.next(url);
 
-    expect(result.value).toEqual(
-      race({
-        response: call(axios, {
-          url,
-          method,
-          data: undefined
-        }),
-        timeout: delay(defaultTimeout)
-      })
-    );
+    expect(result.value).toEqual(select(getAuthorization));
+
+    result = gen.next(authInfo);
+
+    expect(result.value).toEqual(mockRequest(url, method, authInfo));
 
     result = gen.next({ response: axiosResponse });
     const { done, value } = result;
@@ -159,16 +159,11 @@ describe('request', () => {
 
     result = gen.next(url);
 
-    expect(result.value).toEqual(
-      race({
-        response: call(axios, {
-          url,
-          method,
-          data: undefined
-        }),
-        timeout: delay(defaultTimeout)
-      })
-    );
+    expect(result.value).toEqual(select(getAuthorization));
+
+    result = gen.next(authInfo);
+
+    expect(result.value).toEqual(mockRequest(url, method, authInfo));
 
     result = gen.next({ response: axiosResponse });
     const { done, value } = result;
@@ -180,6 +175,58 @@ describe('request', () => {
     expect(success).toBeFalsy();
     expect(response).not.toBeDefined();
     expect(error).toEqual(axiosResponse);
+  });
+
+  it('can handle forbidden response', () => {
+    const successResponse = {
+      status: 200,
+      data: {}
+    };
+    const forbiddenResponse = {
+      status: 403,
+      data: {
+        error: 'Forbidden'
+      }
+    };
+    const { url, method } = endpoint;
+    const gen = request.execute({ endpoint });
+
+    let result = gen.next();
+
+    expect(result.value).toEqual(call(buildUrl, endpoint));
+
+    result = gen.next(url);
+
+    expect(result.value).toEqual(select(getAuthorization));
+
+    result = gen.next();
+
+    expect(result.value).toEqual(mockRequest(url, method));
+
+    result = gen.next({ response: forbiddenResponse });
+
+    expect(result.value).toEqual(
+      race({
+        authorization: take(types.REQUEST_TOKEN_SUCCESS),
+        timeout: delay(defaultTimeout)
+      })
+    );
+
+    result = gen.next({
+      authorization: authInfo
+    });
+
+    expect(result.value).toEqual(mockRequest(url, method, authInfo));
+
+    result = gen.next({ response: successResponse });
+
+    expect(result).toEqual({
+      done: true,
+      value: {
+        success: true,
+        response: successResponse
+      }
+    });
   });
 
   it('can handle missing endpoint', () => {
@@ -254,16 +301,12 @@ describe('request', () => {
 
     result = gen.next(url);
 
-    expect(result.done).toBeFalsy();
+    expect(result.value).toEqual(select(getAuthorization));
+
+    result = gen.next();
+
     expect(result.value).toEqual(
-      race({
-        response: call(axios, {
-          url,
-          method,
-          data: undefined
-        }),
-        timeout: delay(options.timeout)
-      })
+      mockRequest(url, method, null, options.timeout)
     );
 
     result = gen.next({ timeout: 'Operation timed out!' });
@@ -272,7 +315,7 @@ describe('request', () => {
   });
 
   it('can handle unexpected error', () => {
-    const { url } = endpoint;
+    const { url, method } = endpoint;
     const gen = request.execute({ endpoint });
 
     let result = gen.next();
@@ -280,7 +323,16 @@ describe('request', () => {
     expect(result.value).toEqual(call(buildUrl, endpoint));
 
     result = gen.next(url);
+
+    expect(result.value).toEqual(select(getAuthorization));
+
+    result = gen.next();
+
+    expect(result.value).toEqual(mockRequest(url, method));
+
+    // this should never occur by axios
     result = gen.next(null);
+
     const { done, value } = result;
 
     expect(done).toBeTruthy();
@@ -298,65 +350,15 @@ describe('request', () => {
 
     let result = gen.next();
 
+    expect(result.value).toEqual(call(buildUrl, authedEndpoint));
+
+    result = gen.next(url);
+
     expect(result.value).toEqual(select(getAuthorization));
 
     result = gen.next(authInfo);
 
-    expect(result.value).toEqual(call(buildUrl, authedEndpoint));
-
-    result = gen.next(url);
-
-    expect(result.value).toEqual(
-      race({
-        response: call(axios, {
-          url,
-          method,
-          data: undefined,
-          headers: {
-            Authorization: `Bearer ${authInfo.accessToken}`
-          }
-        }),
-        timeout: delay(defaultTimeout)
-      })
-    );
-  });
-
-  it('can handle fetching auth info if missing', () => {
-    const { url, method } = authedEndpoint;
-    const gen = request.execute({ endpoint: authedEndpoint });
-
-    let result = gen.next();
-
-    expect(result.value).toEqual(select(getAuthorization));
-
-    result = gen.next({});
-
-    expect(result.value).toEqual(
-      race({
-        authorization: take(types.REQUEST_TOKEN_SUCCESS),
-        timeout: delay(defaultTimeout)
-      })
-    );
-
-    result = gen.next({ authorization: authInfo });
-
-    expect(result.value).toEqual(call(buildUrl, authedEndpoint));
-
-    result = gen.next(url);
-
-    expect(result.value).toEqual(
-      race({
-        response: call(axios, {
-          url,
-          method,
-          data: undefined,
-          headers: {
-            Authorization: `Bearer ${authInfo.accessToken}`
-          }
-        }),
-        timeout: delay(defaultTimeout)
-      })
-    );
+    expect(result.value).toEqual(mockRequest(url, method, authInfo));
   });
 
   it('can handle successful auth call', () => {
@@ -365,37 +367,38 @@ describe('request', () => {
 
     let result = gen.next();
 
+    expect(result.value).toEqual(call(buildUrl, authedEndpoint));
+
+    result = gen.next(url);
+
     expect(result.value).toEqual(select(getAuthorization));
 
     result = gen.next(authInfo);
+
+    expect(result.value).toEqual(mockRequest(url, method, authInfo));
+  });
+
+  it('can handle timeout in auth call', () => {
+    const response = {
+      status: 403,
+      data: {}
+    };
+    const { url, method } = authedEndpoint;
+    const gen = request.execute({ endpoint: authedEndpoint });
+
+    let result = gen.next();
 
     expect(result.value).toEqual(call(buildUrl, authedEndpoint));
 
     result = gen.next(url);
 
-    expect(result.value).toEqual(
-      race({
-        response: call(axios, {
-          url,
-          method,
-          data: undefined,
-          headers: {
-            Authorization: `Bearer ${authInfo.accessToken}`
-          }
-        }),
-        timeout: delay(defaultTimeout)
-      })
-    );
-  });
-
-  it('can handle failed auth call', () => {
-    const gen = request.execute({ endpoint: authedEndpoint });
-
-    let result = gen.next();
-
     expect(result.value).toEqual(select(getAuthorization));
 
-    result = gen.next({});
+    result = gen.next();
+
+    expect(result.value).toEqual(mockRequest(url, method));
+
+    result = gen.next({ response });
 
     expect(result.value).toEqual(
       race({
@@ -409,7 +412,7 @@ describe('request', () => {
     expect(result.value).toEqual({
       success: false,
       error: {
-        message: 'Missing authorization information!'
+        message: 'Unable to obtain required token!'
       }
     });
   });

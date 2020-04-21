@@ -6,10 +6,20 @@ import { initialState as appInitialState } from 'reducers/application';
 import { initialState as flavorInitialState } from 'reducers/flavor';
 import { initialState as flavorsInitialState } from 'reducers/flavors';
 import ConnectedFlavors, { Flavors } from './Flavors';
-import { withMemoryRouter } from 'utils';
+import { withMemoryRouter } from 'utils/testing';
 
+jest.mock('components/Pagination/Pagination', () => {
+  const pagination = require('utils/testing').mockComponent('Pagination');
+  const PagerInfo = require('utils/testing').mockComponent('PagerInfo');
+
+  return {
+    withPagination: () => () => pagination,
+    pagination,
+    PagerInfo
+  };
+});
 jest.mock('components/ToggleButton/ToggleButton', () =>
-  require('utils').mockComponent('ToggleButton')
+  require('utils/testing').mockComponent('ToggleButton')
 );
 
 describe('Page <Flavors />', () => {
