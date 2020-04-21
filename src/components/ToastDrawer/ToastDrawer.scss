@@ -5,14 +5,8 @@
   padding-right: 40px;
 }
 
+.toast,
 .toast-header {
-  @include themed {
-    background-color: theme("toast-bg");
-    color: theme("toast-fg");
-  }
-}
-
-.toast {
   @include themed {
     background-color: theme("toast-bg");
     color: theme("toast-fg");
