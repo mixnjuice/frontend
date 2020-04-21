@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { Form as FinalForm, Field } from 'react-final-form';
 import {
@@ -17,7 +18,6 @@ import {
 import ToggleButton from 'components/ToggleButton/ToggleButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { actions as flavorActions } from 'reducers/flavor';
-import { getFlavorNote } from 'selectors/note';
 import { getStash } from 'selectors/flavor';
 import Note from 'components/FlavorStash/Note';
 
@@ -33,11 +33,8 @@ export class FlavorStash extends Component {
     this.state = {
       expanded: {},
       editingStash: false,
-      editingNote: false,
-      notes: {},
       removed: {},
-      usage: {},
-      viewingNote: {}
+      usage: {}
     };
 
     this.handleRemoveFromStash = this.removeFromStash.bind(this);
@@ -123,13 +120,13 @@ export class FlavorStash extends Component {
     return (
       <Fragment>
         {!editingStash && (
-          <FontAwesomeIcon
+          <Button
+            className="button-animation"
+            size="sm"
             onClick={e => this.handleStashEditor(id, e)}
-            className="text-info"
-            icon="pen-square"
-            size="2x"
-            title="Edit Details"
-          />
+          >
+            <FontAwesomeIcon icon="pen" size="sm" title="Edit Details" />
+          </Button>
         )}
       </Fragment>
     );
@@ -230,11 +227,12 @@ export class FlavorStash extends Component {
                     type="submit"
                     disabled={submitting}
                   >
-                    <span>Save</span>
+                    <FontAwesomeIcon icon="save" size="sm" />
+                    &nbsp;<span>Save</span>
                   </Button>
                   <Button
                     onClick={e => this.handleStashEditor(false, e)}
-                    className="button-animation"
+                    className="button-animation button--cancel"
                     variant="danger"
                   >
                     <span>Cancel</span>
@@ -348,9 +346,7 @@ export class FlavorStash extends Component {
                           {this.stashIcon(
                             flavor.flavorId,
                             Boolean(!removed[flavor.flavorId])
-                          )}{' '}
-                          {this.noteIcon(flavor.flavorId)}{' '}
-                          {this.notesIcon(flavor.flavorId)}
+                          )}
                         </span>
                         <span className="float-right">
                           ID: {flavor.flavorId}
@@ -361,7 +357,15 @@ export class FlavorStash extends Component {
                 </Card>
               );
             })}
-            {!stash[0] && <div>Shit!</div>}
+            {!stash[0] && (
+              <Col className="text-center">
+                Navigate to{' '}
+                <Link to="/flavors" title="Flavors">
+                  Flavors
+                </Link>{' '}
+                to add to your Flavor Stash.
+              </Col>
+            )}
           </Col>
         </Row>
       </Container>
@@ -369,12 +373,11 @@ export class FlavorStash extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  stash: getStash(state),
-  notes: getFlavorNote(state)
+export const mapStateToProps = state => ({
+  stash: getStash(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators({ ...flavorActions }, dispatch)
 });
 

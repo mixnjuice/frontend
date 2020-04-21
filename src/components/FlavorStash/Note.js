@@ -36,26 +36,38 @@ export class Note extends Component {
   }
 
   addNoteIcon(id) {
+    const { edittingNote } = this.state;
+
     return (
-      <FontAwesomeIcon
-        onClick={e => this.handleNoteEditor(id, e)}
-        className="text-success"
-        icon="plus-square"
-        size="2x"
-        title="Add Flavor Note"
-      />
+      <Fragment>
+        {!edittingNote && (
+          <Button
+            className="button-animation"
+            size="sm"
+            onClick={e => this.handleNoteEditor(id, e)}
+          >
+            <FontAwesomeIcon icon="plus" size="sm" title="Add Flavor Note" />
+          </Button>
+        )}
+      </Fragment>
     );
   }
 
   editNoteIcon(id) {
+    const { edittingNote } = this.state;
+
     return (
-      <FontAwesomeIcon
-        onClick={e => this.handleNoteEditor(id, e)}
-        className="text-success"
-        icon="pen-square"
-        size="2x"
-        title="Edit Flavor Note"
-      />
+      <Fragment>
+        {!edittingNote && (
+          <Button
+            className="button-animation"
+            size="sm"
+            onClick={e => this.handleNoteEditor(id, e)}
+          >
+            <FontAwesomeIcon icon="pen" size="sm" title="Edit Flavor Note" />
+          </Button>
+        )}
+      </Fragment>
     );
   }
 
@@ -67,7 +79,9 @@ export class Note extends Component {
     const { actions } = this.props;
     const { note, update } = values;
 
-    if (update === true) {
+    if (!note) {
+      actions.deleteNote(values);
+    } else if (update === true) {
       actions.updateNote(values);
     } else {
       actions.createNote(values);
@@ -80,20 +94,19 @@ export class Note extends Component {
   noteEditor() {
     const { flavorId, note, userId } = this.props;
     const { updatedNote } = this.state;
-    const update = Boolean(note[flavorId].note);
+    const update = Boolean(note?.[flavorId]?.note);
 
     return (
       <FinalForm
         onSubmit={this.handleNoteSubmit}
         initialValues={{
           flavorId,
-          note: updatedNote || note[flavorId].note,
+          note: updatedNote || note?.[flavorId]?.note,
           update,
           userId
         }}
         render={({ handleSubmit, submitting }) => (
           <Form noValidate onSubmit={handleSubmit}>
-            <h3>Flavor Note:</h3>
             <Form.Row>
               <Field name="note">
                 {({ input }) => (
@@ -103,7 +116,6 @@ export class Note extends Component {
                         {...input}
                         as="textarea"
                         placeholder="Flavor Note"
-                        style={{ minHeight: '500px' }}
                       />
                     </InputGroup>
                   </Form.Group>
@@ -128,12 +140,12 @@ export class Note extends Component {
                     type="submit"
                     disabled={submitting}
                   >
-                    <span>Save</span>
+                    <FontAwesomeIcon icon="save" size="sm" />
+                    &nbsp;<span>Save</span>
                   </Button>
                   <Button
                     onClick={e => this.handleNoteEditor(false, e)}
-                    className="button-animation"
-                    variant="danger"
+                    className="button-animation button--cancel"
                   >
                     <span>Cancel</span>
                   </Button>

@@ -134,6 +134,8 @@ function* createNoteWorker({ flavorNote }) {
 }
 
 function* deleteNoteWorker({ flavorNote }) {
+  // eslint-disable-next-line no-console
+  console.log(flavorNote);
   try {
     let user = yield select(getUser);
 
@@ -146,28 +148,30 @@ function* deleteNoteWorker({ flavorNote }) {
       user = yield select(getUser);
     }
 
+    const { flavorId } = flavorNote;
+
+    // eslint-disable-next-line no-console
+    console.log(flavorId);
     const endpoint = {
-      url: `/user/${user.id}/flavor/${flavorNote.id}`,
+      url: `/user/${user.id}/note/${flavorId}`,
       method: 'DELETE'
     };
 
     const result = yield call(request.execute, { endpoint });
 
     if (result.success) {
-      yield put(actions.deleteNoteSuccess());
+      yield put(actions.deleteNoteSuccess(flavorId));
       yield put(
         toastActions.popToast({
           title: 'Note Update',
           icon: 'times-circle',
-          message: `Flavor ID ${flavorNote.id} successfully deleted!`
+          message: `Flavor ID ${flavorId} note successfully deleted!`
         })
       );
     } else if (result.error) {
       throw result.error;
     } else {
-      throw new Error(
-        `Failed to delete Flavor ID ${flavorNote.id} from the Note!`
-      );
+      throw new Error(`Failed to delete Flavor ID ${flavorId} note!`);
     }
   } catch (error) {
     const { message } = error;
@@ -215,7 +219,7 @@ function* updateNoteWorker({ flavorNote }) {
     const result = yield call(request.execute, { endpoint, data });
 
     if (result.success) {
-      yield put(actions.updateNoteSuccess());
+      yield put(actions.updateNoteSuccess(flavorId));
       yield put(
         toastActions.popToast({
           title: 'Note Update',

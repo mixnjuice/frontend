@@ -7,6 +7,10 @@ import {
   mapDispatchToProps
 } from './FlavorStash';
 
+jest.mock('components/ToggleButton/ToggleButton', () =>
+  require('utils').mockComponent('ToggleButton')
+);
+
 jest.mock('react-redux', () => {
   const { connect: rawConnect } = jest.requireActual('react-redux');
 
