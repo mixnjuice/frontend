@@ -3,7 +3,9 @@
 }
 
 .icon-toggle {
-  color: $teal;
+  @include themed {
+    color: theme("main-accent");
+  }
   margin: 0 5px;
 }
 
@@ -24,13 +26,15 @@
 
 /* The slider */
 .slider {
+  @include themed {
+    background-color: theme("gray-shadow");
+  }
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $shadow-grey;
   transition: 0.4s;
   --webkit-transition: 0.4s;
 
@@ -39,8 +43,10 @@
     --webkit-transition: none;
   }
 
-  &--teal {
-    background-color: $teal;
+  &--main-accent {
+    @include themed {
+      background-color: theme("main-accent");
+    }
   }
 
   &--grid-list {
@@ -58,13 +64,15 @@
 }
 
 .slider::before {
+  @include themed {
+    background-color: theme("white-themed");
+  }
   position: absolute;
   content: "";
   height: 26px;
   width: 26px;
   left: 4px;
   bottom: 4px;
-  background-color: $white;
   transition: 0.4s;
   --webkit-transition: 0.4s;
 
@@ -75,11 +83,15 @@
 }
 
 input:checked + .slider {
-  background-color: $teal;
+  @include themed {
+    background-color: theme("main-accent");
+  }
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px $teal;
+  @include themed {
+    box-shadow: 0 0 1px theme("main-accent");
+  }
 }
 
 input:checked + .slider::before {

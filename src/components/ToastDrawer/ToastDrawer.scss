@@ -4,3 +4,18 @@
   z-index: 100;
   padding-right: 40px;
 }
+
+.toast,
+.toast-header {
+  @include themed {
+    background-color: theme("toast-bg");
+    color: theme("toast-fg");
+  }
+}
+
+.close {
+  @include themed {
+    color: theme("toast-close");
+    text-shadow: theme("white-themed") 0 1px 0;
+  }
+}

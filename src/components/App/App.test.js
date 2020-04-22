@@ -44,7 +44,9 @@ describe('<App />', () => {
     initApp: jest.fn()
   };
   const mockStore = configureStore();
-  const store = mockStore({ application: initialState });
+  const store = mockStore({
+    application: initialState
+  });
   const authedStore = mockStore({
     application: {
       ...initialState,

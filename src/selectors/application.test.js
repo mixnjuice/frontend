@@ -7,6 +7,7 @@ import {
   isLoggingOut,
   getUser,
   getError,
+  getTheme,
   getToken,
   getTokenExpiration,
   getRegistration,
@@ -36,6 +37,10 @@ describe('application selectors', () => {
 
   it('can getError', () => {
     expect(getError(state)).toBe(initialState.error);
+  });
+
+  it('can getTheme', () => {
+    expect(getTheme(state)).toBe(initialState.theme);
   });
 
   it('can getToken', () => {

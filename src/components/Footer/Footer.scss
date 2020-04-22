@@ -1,3 +1,5 @@
 .page-footer {
-  background-color: $lighter-blue;
+  @include themed {
+    background-color: theme("alt-accent-lighter");
+  }
 }

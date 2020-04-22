@@ -248,6 +248,20 @@ describe('application reducer', () => {
     });
   });
 
+  it('has TOGGLE_DARK_MODE action', () => {
+    expect(actions.toggleDarkMode()).toEqual({
+      type: types.TOGGLE_DARK_MODE
+    });
+  });
+
+  it('reduces TOGGLE_DARK_MODE action', () => {
+    const action = actions.toggleDarkMode();
+
+    expect(reducer({}, action)).toEqual({ theme: 'default' });
+    expect(reducer({ theme: 'default' }, action)).toEqual({ theme: 'dark' });
+    expect(reducer({ theme: 'dark' }, action)).toEqual({ theme: 'default' });
+  });
+
   it('handles default case', () => {
     const test = { value: 'something' };
 

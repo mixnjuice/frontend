@@ -15,7 +15,9 @@
     }
 
     &--striped {
-      background-color: $lightest-blue;
+      @include themed {
+        background-color: theme("alt-accent-lightest");
+      }
     }
   }
 }

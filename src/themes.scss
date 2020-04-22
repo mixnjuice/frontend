@@ -1,0 +1,116 @@
+// Themes
+
+$themes: (
+  default: (
+    alt-accent-baby: map-get($blue, baby),
+    alt-accent-light: map-get($blue, light),
+    alt-accent-lighter: map-get($blue, lighter),
+    alt-accent-lightest: map-get($blue, lightest),
+    alt-accent: map-get($blue, themed),
+    bg: $white-pure,
+    black-themed: $black-pure,
+    button-border-color: $black-pure,
+    card-bg: $white-pure,
+    card-border: #dfdfdf,
+    card-footer-bg: #f7f7f7,
+    fg: map-get($gray, dark),
+    form-control-border: $black-pure,
+    gray-dark: map-get($gray, dark),
+    gray-light: map-get($gray, light),
+    gray-lighter: map-get($gray, lighter),
+    gray-lightest: map-get($gray, lightest),
+    gray-shadow: map-get($gray, shadow),
+    input-group-text-border: #ced4da,
+    main-accent: $teal,
+    red-light: map-get($red, light),
+    red-lighter: map-get($red, lighter),
+    select-border: map-get($gray, light),
+    select-box-bottom: map-get($gray, lighter),
+    select-box-top-bevel: $white-pure,
+    select-box-top: map-get($gray, lightest),
+    table-border: map-get($gray, light),
+    toast-bg: $white-pure,
+    toast-close: $black-pure,
+    toast-fg: #6c757d,
+    white-themed: $white-pure
+  ),
+  dark: (
+    alt-accent-baby: $teal,
+    alt-accent-light: #1761da,
+    alt-accent-lighter: #0f1e38,
+    alt-accent-lightest: #121925,
+    alt-accent: #1959c9,
+    bg: map-get($gray, darkest),
+    black-themed: map-get($gray, lighter),
+    button-border-color: map-get($gray, darkest),
+    card-bg: map-get($gray, darkest),
+    card-border: map-get($gray, dark),
+    card-footer-bg: map-get($gray, darker),
+    fg: map-get($gray, lighter),
+    form-control-border: #888,
+    gray-dark: map-get($gray, lighter),
+    gray-light: map-get($gray, mid),
+    gray-lighter: map-get($gray, dark),
+    gray-lightest: map-get($gray, darker),
+    gray-shadow: map-get($gray, darker),
+    input-group-text-border: map-get($gray, mid),
+    main-accent: $teal-dark,
+    red-light: map-get($red, light),
+    red-lighter: map-get($red, lighter),
+    select-border: map-get($gray, mid),
+    select-box-bottom: map-get($gray, darker),
+    select-box-top-bevel: map-get($gray, darker),
+    select-box-top: map-get($gray, dark),
+    table-border: map-get($gray, mid),
+    toast-bg: map-get($gray, dark),
+    toast-close: $white-pure,
+    toast-fg: map-get($gray, lighter),
+    white-themed: #ddd
+  )
+);
+
+// credit: https://medium.com/@dmitriy.borodiy/easy-color-theming-with-scss-bc38fd5734d1
+/* stylelint-disable */
+@mixin themed {
+  @each $theme, $map in $themes {
+    .theme--#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+// body rule needs special treatment, although this could probably be heavily simplified
+@mixin themed_body {
+  @each $theme, $map in $themes {
+    .theme--#{$theme} {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+/* stylelint-enable */
+
+@function theme($key) {
+  @return map-get($theme-map, $key);
+}

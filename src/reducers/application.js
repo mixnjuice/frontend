@@ -16,7 +16,8 @@ export const types = buildActions('application', [
   'LOGOUT_USER_FAILURE',
   'REGISTER_USER',
   'REGISTER_USER_SUCCESS',
-  'REGISTER_USER_FAILURE'
+  'REGISTER_USER_FAILURE',
+  'TOGGLE_DARK_MODE'
 ]);
 
 const initApp = () => ({
@@ -96,6 +97,10 @@ const registerUserFailure = error => ({
   error
 });
 
+const toggleDarkMode = () => ({
+  type: types.TOGGLE_DARK_MODE
+});
+
 export const actions = {
   initApp,
   loginUser,
@@ -112,7 +117,8 @@ export const actions = {
   logoutUserFailure,
   registerUser,
   registerUserSuccess,
-  registerUserFailure
+  registerUserFailure,
+  toggleDarkMode
 };
 
 export const initialState = {
@@ -129,7 +135,8 @@ export const initialState = {
     registering: false,
     complete: false,
     error: null
-  }
+  },
+  theme: 'default'
 };
 
 export const reducer = (state = initialState, action = {}) => {
@@ -213,6 +220,21 @@ export const reducer = (state = initialState, action = {}) => {
           error: action.error
         }
       };
+    case types.TOGGLE_DARK_MODE:
+      switch (state.theme) {
+        case 'default':
+          return {
+            ...state,
+            theme: 'dark'
+          };
+        case 'dark':
+          return {
+            ...state,
+            theme: 'default'
+          };
+        default:
+          return { ...state, theme: 'default' };
+      }
     default:
       return state;
   }

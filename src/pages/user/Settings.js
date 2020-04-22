@@ -1,8 +1,19 @@
 import { Helmet } from 'react-helmet';
 import React, { Component } from 'react';
 import { Container, Row, Col, Form, InputGroup, Button } from 'react-bootstrap';
+import { actions as appActions } from 'reducers/application';
+import { getTheme } from 'selectors/application';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import ToggleButton from 'components/ToggleButton/ToggleButton';
+import PropTypes from 'prop-types';
 
-export default class UserSettings extends Component {
+export class UserSettings extends Component {
+  static propTypes = {
+    actions: PropTypes.object.isRequired,
+    theme: PropTypes.string
+  };
+
   constructor(...args) {
     super(...args);
 
@@ -34,6 +45,7 @@ export default class UserSettings extends Component {
   }
 
   render() {
+    const { toggleDarkMode } = this.props.actions;
     return (
       <Container>
         <Helmet title="Your Settings" />
@@ -106,6 +118,21 @@ export default class UserSettings extends Component {
               </InputGroup>
             </Col>
           </Row>
+          <Row className="text-center">
+            <Col md="12" className="align-self-center">
+              Toggle Dark Mode
+              <ToggleButton
+                value={this.props.theme === 'default' ? false : true}
+                onClick={toggleDarkMode}
+                title={
+                  this.props.theme === 'default'
+                    ? 'Enable Dark Mode'
+                    : 'Disable Dark Mode'
+                }
+                variant="switch"
+              />
+            </Col>
+          </Row>
           <hr />
           <Row className="text-center">
             <Col />
@@ -122,3 +149,13 @@ export default class UserSettings extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  theme: getTheme(state)
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(appActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserSettings);
