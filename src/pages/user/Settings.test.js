@@ -1,7 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { UserSettings } from './Settings';
-import { withMemoryRouter } from 'utils/testing';
 
 describe('<UserSettings />', () => {
   const actions = {
@@ -12,11 +11,15 @@ describe('<UserSettings />', () => {
     actions
   };
 
-  const RoutedUserSettings = withMemoryRouter(UserSettings);
-
   it('renders correctly', () => {
     expect(
-      renderer.create(<RoutedUserSettings {...props} />).toJSON()
+      renderer.create(<UserSettings {...props} />).toJSON()
+    ).toMatchSnapshot();
+  });
+
+  it('renders correctly with dark mode enabled', () => {
+    expect(
+      renderer.create(<UserSettings {...props} theme="dark" />).toJSON()
     ).toMatchSnapshot();
   });
 });
