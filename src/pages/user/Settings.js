@@ -45,6 +45,7 @@ export class UserSettings extends Component {
   }
 
   render() {
+    const { toggleDarkMode } = this.props.actions;
     return (
       <Container>
         <Helmet title="Your Settings" />
@@ -122,7 +123,7 @@ export class UserSettings extends Component {
               Toggle Dark Mode
               <ToggleButton
                 value={this.props.theme === 'default' ? false : true}
-                onClick={() => this.props.actions.toggleDarkMode()}
+                onClick={toggleDarkMode}
                 title={
                   this.props.theme === 'default'
                     ? 'Enable Dark Mode'
