@@ -2,6 +2,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
+import unified from 'unified';
+import parse from 'remark-parse';
+import remark2react from 'remark-react';
 import { Form as FinalForm, Field } from 'react-final-form';
 import { Button, ButtonGroup, Col, Form, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -105,7 +108,7 @@ export class Note extends Component {
           update,
           userId
         }}
-        render={({ handleSubmit, submitting }) => (
+        render={({ handleSubmit, submitting, values }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Form.Row>
               <Field name="note">
@@ -121,6 +124,18 @@ export class Note extends Component {
                   </Form.Group>
                 )}
               </Field>
+            </Form.Row>
+            <Form.Row>
+              <h4>Preview:</h4>
+              <Col md="12">
+                {
+                  /* eslint-disable-next-line no-sync */
+                  unified()
+                    .use(parse)
+                    .use(remark2react)
+                    .processSync(values.note).result
+                }
+              </Col>
               <Field name="userId">
                 {({ input }) => <Form.Control {...input} type="hidden" />}
               </Field>
@@ -172,10 +187,17 @@ export class Note extends Component {
               : this.addNoteIcon(flavorId)}{' '}
             Flavor Notes
           </h3>
-          {!edittingNote &&
-            (note[flavorId] || updatedNote
-              ? updatedNote || note[flavorId].note
-              : 'Add a note!')}
+          {!edittingNote && (note[flavorId] || updatedNote) ? (
+            <Fragment>
+              {
+                /* eslint-disable-next-line no-sync */
+                unified()
+                  .use(parse)
+                  .use(remark2react)
+                  .processSync(updatedNote || note[flavorId].note).result
+              }
+            </Fragment>
+          ) : null}
           {edittingNote ? this.noteEditor() : null}
         </Fragment>
       );

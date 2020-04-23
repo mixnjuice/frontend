@@ -281,13 +281,14 @@ export class FlavorStash extends Component {
                 : `${minMillipercent} - ${maxMillipercent}`;
 
               return (
-                <Card key={index} className="mb-2">
-                  <Card.Header>
+                <Card key={index} className="mb-1">
+                  <Card.Body className="border-bottom">
                     <Row>
                       <Col>
                         <h3>
                           <a
-                            href="#expand"
+                            href={`#${flavor.flavorId}`}
+                            id={`flavor-${flavor.flavorId}`}
                             onClick={e => this.handleExpandFlavor(flavor, e)}
                           >
                             {flavor.Flavor.name} ({flavor.Flavor.Vendor.code})
@@ -305,17 +306,7 @@ export class FlavorStash extends Component {
                         <h5>Added: {this.date(flavor.created)}</h5>
                       </Col>
                     </Row>
-                    {!expanded[flavor.flavorId] && (
-                      <Row>
-                        <Col>
-                          {this.stashIcon(
-                            flavor.flavorId,
-                            Boolean(!removed[flavor.flavorId])
-                          )}
-                        </Col>
-                      </Row>
-                    )}
-                  </Card.Header>
+                  </Card.Body>
                   {expanded[flavor.flavorId] && (
                     <Fragment>
                       <Card.Body>
@@ -335,7 +326,7 @@ export class FlavorStash extends Component {
                         {editingStash === flavor.flavorId
                           ? this.stashEditor(flavor)
                           : ''}
-
+                        <hr />
                         <Note
                           flavorId={flavor.flavorId}
                           userId={flavor.userId}
