@@ -125,27 +125,29 @@ export class Note extends Component {
                 )}
               </Field>
             </Form.Row>
-            <Form.Row>
-              <h4>Preview:</h4>
-              <Col md="12">
-                {
-                  /* eslint-disable-next-line no-sync */
-                  unified()
-                    .use(parse)
-                    .use(remark2react)
-                    .processSync(values.note).result
-                }
-              </Col>
-              <Field name="userId">
-                {({ input }) => <Form.Control {...input} type="hidden" />}
-              </Field>
-              <Field name="flavorId">
-                {({ input }) => <Form.Control {...input} type="hidden" />}
-              </Field>
-              <Field name="update">
-                {({ input }) => <Form.Control {...input} type="hidden" />}
-              </Field>
-            </Form.Row>
+            {values?.note ? (
+              <Form.Row>
+                <h4>Preview:</h4>
+                <Col md="12">
+                  {
+                    /* eslint-disable-next-line no-sync */
+                    unified()
+                      .use(parse)
+                      .use(remark2react)
+                      .processSync(values.note).result
+                  }
+                </Col>
+              </Form.Row>
+            ) : null}
+            <Field name="userId">
+              {({ input }) => <Form.Control {...input} type="hidden" />}
+            </Field>
+            <Field name="flavorId">
+              {({ input }) => <Form.Control {...input} type="hidden" />}
+            </Field>
+            <Field name="update">
+              {({ input }) => <Form.Control {...input} type="hidden" />}
+            </Field>
             <Form.Row>
               <Form.Group>
                 <ButtonGroup>
