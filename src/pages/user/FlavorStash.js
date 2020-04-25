@@ -75,14 +75,24 @@ export class FlavorStash extends Component {
     this.setState({ removed });
   }
 
+  expandIcon(expanded) {
+    return (
+      <FontAwesomeIcon
+        rotation={expanded ? 90 : 270}
+        icon="chevron-left"
+        className={`mr-2 ${expanded ? 'arrow--up' : 'arrow--down'}`}
+      />
+    );
+  }
+
   stashIcon(id, has) {
     return (
       <ToggleButton
         value={has}
         onClick={
           has
-            ? e => this.handleRemoveFromStash(id, e)
-            : e => this.handleAddToStash(id, e)
+            ? () => this.handleRemoveFromStash(id)
+            : () => this.handleAddToStash(id)
         }
         title={has ? 'Remove from Stash' : 'Add to Stash'}
         variant="check"
@@ -119,7 +129,7 @@ export class FlavorStash extends Component {
 
     return (
       <Fragment>
-        {!editingStash && (
+        {!editingStash ? (
           <Button
             className="button-animation"
             size="sm"
@@ -127,17 +137,13 @@ export class FlavorStash extends Component {
           >
             <FontAwesomeIcon icon="pen" size="sm" title="Edit Details" />
           </Button>
-        )}
+        ) : null}
       </Fragment>
     );
   }
 
   handleStashEditor(id) {
-    if (id) {
-      this.setState({ editingStash: id });
-    } else {
-      this.setState({ editingStash: false });
-    }
+    this.setState({ editingStash: id ? id : false });
   }
 
   handleStashSubmit(values) {
@@ -171,14 +177,17 @@ export class FlavorStash extends Component {
 
   stashEditor(flavor) {
     const { flavorId, maxMillipercent, minMillipercent } = flavor;
+    const { usage } = this.state;
 
     return (
       <FinalForm
         onSubmit={this.handleStashSubmit}
         initialValues={{
           flavorId,
-          maxMillipercent: maxMillipercent / 1000,
-          minMillipercent: minMillipercent / 1000
+          maxMillipercent:
+            usage?.[flavorId]?.maxMillipercent || maxMillipercent / 1000,
+          minMillipercent:
+            usage?.[flavorId]?.minMillipercent || minMillipercent / 1000
         }}
         render={({ handleSubmit, submitting }) => (
           <Form noValidate onSubmit={handleSubmit}>
@@ -282,17 +291,20 @@ export class FlavorStash extends Component {
 
               return (
                 <Card key={index} className="mb-1">
-                  <Card.Body className="border-bottom">
+                  <Card.Body
+                    className="border-bottom cursor--pointer"
+                    onClick={e => this.handleExpandFlavor(flavor, e)}
+                  >
                     <Row>
                       <Col>
-                        <h3>
-                          <a
-                            href={`#${flavor.flavorId}`}
-                            id={`flavor-${flavor.flavorId}`}
-                            onClick={e => this.handleExpandFlavor(flavor, e)}
-                          >
-                            {flavor.Flavor.name} ({flavor.Flavor.Vendor.code})
-                          </a>
+                        <h3
+                          id={`flavor-${flavor.flavorId}`}
+                          className={
+                            expanded[flavor.flavorId] ? 'text--primary' : null
+                          }
+                        >
+                          {this.expandIcon(Boolean(expanded[flavor.flavorId]))}{' '}
+                          {flavor.Flavor.name} ({flavor.Flavor.Vendor.code})
                         </h3>
                       </Col>
                       {!expanded[flavor.flavorId] && (
@@ -307,6 +319,7 @@ export class FlavorStash extends Component {
                       </Col>
                     </Row>
                   </Card.Body>
+
                   {expanded[flavor.flavorId] && (
                     <Fragment>
                       <Card.Body>
@@ -334,13 +347,13 @@ export class FlavorStash extends Component {
                       </Card.Body>
                       <Card.Footer>
                         <span className="float-left">
+                          ID: {flavor.flavorId}
+                        </span>
+                        <span className="float-right">
                           {this.stashIcon(
                             flavor.flavorId,
                             Boolean(!removed[flavor.flavorId])
                           )}
-                        </span>
-                        <span className="float-right">
-                          ID: {flavor.flavorId}
                         </span>
                       </Card.Footer>
                     </Fragment>
