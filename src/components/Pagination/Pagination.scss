@@ -1,12 +1,14 @@
 .pager {
   &-limit {
     display: inline;
-    width: 80px;
+    width: unset;
+    max-width: 80px;
   }
 
   &-page {
     display: inline;
-    width: 80px;
+    width: unset;
+    max-width: 80px;
     margin: 0 8px;
   }
 
