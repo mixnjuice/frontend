@@ -13,7 +13,12 @@ import { getFlavorNote, isLoading } from 'selectors/note';
 
 export class Note extends Component {
   static propTypes = {
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.shape({
+      createNote: PropTypes.func.isRequired,
+      deleteNote: PropTypes.func.isRequired,
+      requestNote: PropTypes.func.isRequired,
+      updateNote: PropTypes.func.isRequired
+    }),
     flavorId: PropTypes.string.isRequired,
     loading: PropTypes.any.isRequired,
     note: PropTypes.object.isRequired,
@@ -24,11 +29,10 @@ export class Note extends Component {
     super(props);
 
     this.state = {
-      edittingNote: false,
+      editingNote: false,
       updatedNote: null
     };
 
-    this.handleNoteEditor = this.handleNoteEditor.bind(this);
     this.handleNoteSubmit = this.handleNoteSubmit.bind(this);
   }
 
@@ -39,15 +43,15 @@ export class Note extends Component {
   }
 
   addNoteIcon(id) {
-    const { edittingNote } = this.state;
+    const { editingNote } = this.state;
 
     return (
       <Fragment>
-        {!edittingNote && (
+        {!editingNote && (
           <Button
             className="button-animation"
             size="sm"
-            onClick={e => this.handleNoteEditor(id, e)}
+            onClick={() => this.handleNoteEditor(id)}
           >
             <FontAwesomeIcon icon="plus" size="sm" title="Add Flavor Note" />
           </Button>
@@ -57,15 +61,15 @@ export class Note extends Component {
   }
 
   editNoteIcon(id) {
-    const { edittingNote } = this.state;
+    const { editingNote } = this.state;
 
     return (
       <Fragment>
-        {!edittingNote && (
+        {!editingNote && (
           <Button
             className="button-animation"
             size="sm"
-            onClick={e => this.handleNoteEditor(id, e)}
+            onClick={() => this.handleNoteEditor(id)}
           >
             <FontAwesomeIcon icon="pen" size="sm" title="Edit Flavor Note" />
           </Button>
@@ -75,7 +79,7 @@ export class Note extends Component {
   }
 
   handleNoteEditor() {
-    this.setState({ edittingNote: !this.state.edittingNote });
+    this.setState({ editingNote: !this.state.editingNote });
   }
 
   handleNoteSubmit(values) {
@@ -177,7 +181,7 @@ export class Note extends Component {
 
   render() {
     const { note, flavorId, loading } = this.props;
-    const { edittingNote } = this.state;
+    const { editingNote } = this.state;
     const updatedNote = this.state.updatedNote;
 
     if (loading !== flavorId) {
@@ -189,7 +193,7 @@ export class Note extends Component {
               : this.addNoteIcon(flavorId)}{' '}
             Flavor Notes
           </h3>
-          {!edittingNote && (note[flavorId] || updatedNote) ? (
+          {!editingNote && (note[flavorId] || updatedNote) ? (
             <Fragment>
               {
                 /* eslint-disable-next-line no-sync */
@@ -200,7 +204,7 @@ export class Note extends Component {
               }
             </Fragment>
           ) : null}
-          {edittingNote ? this.noteEditor() : null}
+          {editingNote ? this.noteEditor() : null}
         </Fragment>
       );
     } else {
@@ -209,12 +213,12 @@ export class Note extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   loading: isLoading(state),
   note: getFlavorNote(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(
     {
       ...noteActions
