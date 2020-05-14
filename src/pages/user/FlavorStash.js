@@ -18,13 +18,19 @@ import {
 import ToggleButton from 'components/ToggleButton/ToggleButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { actions as flavorActions } from 'reducers/flavor';
-import { getStash } from 'selectors/flavor';
+import { getStash, isLoaded } from 'selectors/flavor';
 import Note from 'components/FlavorStash/Note';
 
 export class FlavorStash extends Component {
   static propTypes = {
-    actions: PropTypes.object.isRequired,
-    stash: PropTypes.array.isRequired
+    actions: PropTypes.shape({
+      addStash: PropTypes.func.isRequired,
+      removeStash: PropTypes.func.isRequired,
+      requestStash: PropTypes.func.isRequired,
+      updateStash: PropTypes.func.isRequired
+    }),
+    stash: PropTypes.array.isRequired,
+    stashLoaded: PropTypes.bool
   };
 
   constructor(props) {
@@ -34,21 +40,23 @@ export class FlavorStash extends Component {
       expanded: {},
       editingStash: false,
       removed: {},
-      usage: {}
+      usage: {},
+      viewingNote: {}
     };
 
     this.handleRemoveFromStash = this.removeFromStash.bind(this);
     this.handleAddToStash = this.addToStash.bind(this);
     this.handleStashEditor = this.handleStashEditor.bind(this);
     this.handleExpandFlavor = this.expandFlavor.bind(this);
-    this.handleNoteViewer = this.handleNoteViewer.bind(this);
     this.handleStashSubmit = this.handleStashSubmit.bind(this);
   }
 
   componentDidMount() {
-    const { actions } = this.props;
+    const { stashLoaded, actions } = this.props;
 
-    actions.requestStash();
+    if (!stashLoaded) {
+      actions.requestStash();
+    }
   }
 
   date(d) {
@@ -85,7 +93,7 @@ export class FlavorStash extends Component {
     );
   }
 
-  stashIcon(id, has) {
+  stashButton(id, has) {
     return (
       <ToggleButton
         value={has}
@@ -96,30 +104,6 @@ export class FlavorStash extends Component {
         }
         title={has ? 'Remove from Stash' : 'Add to Stash'}
         variant="check"
-      />
-    );
-  }
-
-  noteIcon(id) {
-    return (
-      <FontAwesomeIcon
-        onClick={e => this.handleNoteViewer(id, e)}
-        className="text-primary"
-        icon="sticky-note"
-        size="2x"
-        title="Flavor Note"
-      />
-    );
-  }
-
-  notesIcon(id) {
-    return (
-      <FontAwesomeIcon
-        onClick={e => this.handleAddToStash(id, e)}
-        className="text-warning"
-        icon="book"
-        size="2x"
-        title="Flavor Notes"
       />
     );
   }
@@ -167,11 +151,8 @@ export class FlavorStash extends Component {
     const { expanded } = this.state;
     const { flavorId } = flavor;
 
-    if (expanded[flavorId]) {
-      expanded[flavorId] = false;
-    } else {
-      expanded[flavorId] = true;
-    }
+    expanded[flavorId] = !expanded?.[flavorId];
+
     this.setState({ expanded });
   }
 
@@ -253,17 +234,6 @@ export class FlavorStash extends Component {
         )}
       />
     );
-  }
-
-  handleNoteViewer(id) {
-    const viewingNote = this.state.viewingNote;
-
-    if (id) {
-      viewingNote[id] = true;
-    } else {
-      viewingNote[id] = false;
-    }
-    this.setState({ ...viewingNote });
   }
 
   render() {
@@ -350,7 +320,7 @@ export class FlavorStash extends Component {
                           ID: {flavor.flavorId}
                         </span>
                         <span className="float-right">
-                          {this.stashIcon(
+                          {this.stashButton(
                             flavor.flavorId,
                             Boolean(!removed[flavor.flavorId])
                           )}
@@ -378,7 +348,8 @@ export class FlavorStash extends Component {
 }
 
 export const mapStateToProps = state => ({
-  stash: getStash(state)
+  stash: getStash(state),
+  stashLoaded: isLoaded(state)
 });
 
 export const mapDispatchToProps = dispatch => ({
