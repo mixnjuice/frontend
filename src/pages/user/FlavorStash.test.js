@@ -33,11 +33,11 @@ describe('<FlavorStash />', () => {
     actions,
     stash: [
       {
-        created: '2020-01-01',
+        created: '2020-01-01 12:00',
         Flavor: { name: 'Sweet Cream', Vendor: { code: 'CAP' } }
       },
       {
-        created: '2020-01-01',
+        created: '2020-01-01 12:00',
         Flavor: { name: 'Tatanka', Vendor: { code: 'FLV' } }
       }
     ],
