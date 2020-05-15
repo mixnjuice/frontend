@@ -4,22 +4,17 @@ import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
 import { Link, NavLink } from 'react-router-dom';
-import {
-  Dropdown,
-  Navbar,
-  Nav,
-  NavDropdown,
-  Container,
-  Row,
-  Col
-} from 'react-bootstrap';
+import { Dropdown, Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
 
 import { actions as appActions } from 'reducers/application';
 import { getUser, isLoggedIn } from 'selectors/application';
 
 export class Header extends Component {
   static propTypes = {
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.shape({
+      logoutUser: PropTypes.func.isRequired,
+      requestCurrentUser: PropTypes.func.isRequired
+    }).isRequired,
     loggedIn: PropTypes.bool.isRequired,
     user: PropTypes.object
   };
@@ -52,21 +47,6 @@ export class Header extends Component {
     );
   }
 
-  renderNavDropdownItem(to, text) {
-    return (
-      <NavDropdown.Item
-        as={NavLink}
-        exact
-        to={to}
-        className="nav--link-custom"
-        activeClassName="active"
-      >
-        {text}
-        <br />
-      </NavDropdown.Item>
-    );
-  }
-
   logoutUser() {
     const { actions } = this.props;
 
@@ -80,7 +60,7 @@ export class Header extends Component {
 
     const gravatar = new MD5().update(emailAddress).digest('hex');
 
-    return `https://www.gravatar.com/avatar/${gravatar}?s=50`;
+    return `https://www.gravatar.com/avatar/${gravatar}?s=50&d=mp`;
   }
 
   render() {
@@ -104,8 +84,8 @@ export class Header extends Component {
                     : null}
                   {this.renderNavItem('/flavors', 'Flavors')}
                   {loggedIn ? (
-                    <Dropdown alignRight className="my-auto">
-                      <Dropdown.Toggle as={Link} id="user-dropdown">
+                    <Dropdown alignRight className="nav--link-custom px-3">
+                      <Dropdown.Toggle as={Link} to="#" id="user-dropdown">
                         {user && (
                           <Fragment>
                             <img
