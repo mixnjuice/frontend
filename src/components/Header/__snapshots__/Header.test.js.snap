@@ -90,6 +90,11 @@ exports[`<Header /> renders logged in correctly 1`] = `
             >
               Flavors
             </a>
+          </div>
+          <div
+            className="ml-auto navbar-nav"
+            onKeyDown={[Function]}
+          >
             <div
               className="nav--link-custom px-3 dropdown"
               onKeyDown={[Function]}
@@ -306,6 +311,10 @@ exports[`<Header /> renders logged out correctly 1`] = `
               Register
             </a>
           </div>
+          <div
+            className="ml-auto navbar-nav"
+            onKeyDown={[Function]}
+          />
         </div>
       </nav>
     </div>

@@ -83,6 +83,14 @@ export class Header extends Component {
                     ? this.renderNavItem('/recipe/editor', 'Recipe Editor')
                     : null}
                   {this.renderNavItem('/flavors', 'Flavors')}
+                  {!loggedIn ? (
+                    <Fragment>
+                      {this.renderNavItem('/login', 'Login')}
+                      {this.renderNavItem('/register', 'Register')}
+                    </Fragment>
+                  ) : null}
+                </Nav>
+                <Nav className="ml-auto">
                   {loggedIn ? (
                     <Dropdown alignRight className="nav--link-custom px-3">
                       <Dropdown.Toggle as={Link} to="#" id="user-dropdown">
@@ -131,12 +139,6 @@ export class Header extends Component {
                         </Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
-                  ) : null}
-                  {!loggedIn ? (
-                    <Fragment>
-                      {this.renderNavItem('/login', 'Login')}
-                      {this.renderNavItem('/register', 'Register')}
-                    </Fragment>
                   ) : null}
                 </Nav>
               </Navbar.Collapse>
