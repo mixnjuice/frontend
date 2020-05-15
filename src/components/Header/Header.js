@@ -1,23 +1,43 @@
+import MD5 from 'md5.js';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import React, { Component, Fragment } from 'react';
 import { bindActionCreators } from 'redux';
-import { NavLink } from 'react-router-dom';
-import { Navbar, Nav, NavDropdown, Container, Row, Col } from 'react-bootstrap';
+import { Link, NavLink } from 'react-router-dom';
+import {
+  Dropdown,
+  Navbar,
+  Nav,
+  NavDropdown,
+  Container,
+  Row,
+  Col
+} from 'react-bootstrap';
 
 import { actions as appActions } from 'reducers/application';
-import { isLoggedIn } from 'selectors/application';
+import { getUser, isLoggedIn } from 'selectors/application';
 
 export class Header extends Component {
   static propTypes = {
     actions: PropTypes.object.isRequired,
-    loggedIn: PropTypes.bool.isRequired
+    loggedIn: PropTypes.bool.isRequired,
+    user: PropTypes.object
   };
+
   constructor(props) {
     super(props);
 
     this.logoutUser = this.logoutUser.bind(this);
   }
+
+  componentDidMount() {
+    const { actions, user } = this.props;
+
+    if (!user) {
+      actions.requestCurrentUser();
+    }
+  }
+
   renderNavItem(to, text) {
     return (
       <Nav.Link
@@ -53,8 +73,18 @@ export class Header extends Component {
     actions.logoutUser();
   }
 
+  get gravatar() {
+    const {
+      user: { emailAddress }
+    } = this.props;
+
+    const gravatar = new MD5().update(emailAddress).digest('hex');
+
+    return `https://www.gravatar.com/avatar/${gravatar}?s=50`;
+  }
+
   render() {
-    const { loggedIn } = this.props;
+    const { loggedIn, user } = this.props;
 
     return (
       <Container fluid className="mb-5">
@@ -74,35 +104,53 @@ export class Header extends Component {
                     : null}
                   {this.renderNavItem('/flavors', 'Flavors')}
                   {loggedIn ? (
-                    <NavDropdown title="User">
-                      {this.renderNavDropdownItem('/user/profile', 'Profile')}
-                      {this.renderNavDropdownItem('/user/recipes', 'Recipes')}
-                      {this.renderNavDropdownItem(
-                        '/user/favorites',
-                        'Favorites'
-                      )}
-                      {this.renderNavDropdownItem(
-                        '/user/flavor-stash',
-                        'Flavor Stash'
-                      )}
-                      {this.renderNavDropdownItem(
-                        '/user/shopping-list',
-                        'Shopping List'
-                      )}
-                      {this.renderNavDropdownItem('/user/settings', 'Settings')}
-
-                      {this.renderNavDropdownItem('/dashboard', 'Dashboard')}
-                      <NavDropdown.Item
-                        as={NavLink}
-                        to="#"
-                        className="nav--link-custom"
-                        activeClassName="active"
-                        onClick={this.logoutUser}
-                      >
-                        Logout
-                        <br />
-                      </NavDropdown.Item>
-                    </NavDropdown>
+                    <Dropdown alignRight className="my-auto">
+                      <Dropdown.Toggle as={Link} id="user-dropdown">
+                        {user && (
+                          <Fragment>
+                            <img
+                              alt="User"
+                              src={this.gravatar}
+                              className="rounded-circle"
+                            />
+                          </Fragment>
+                        )}
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu>
+                        <Dropdown.Item as={NavLink} to="/user/profile">
+                          Profile
+                        </Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item as={NavLink} to="/user/recipes">
+                          Recipes
+                        </Dropdown.Item>
+                        <Dropdown.Item as={NavLink} to="/user/favorites">
+                          Favorites
+                        </Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item as={NavLink} to="/user/shopping-list">
+                          Flavor Stash
+                        </Dropdown.Item>
+                        <Dropdown.Item as={NavLink} to="/user/shopping-list">
+                          Shopping List
+                        </Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item as={NavLink} to="/user/settings">
+                          Settings
+                        </Dropdown.Item>
+                        <Dropdown.Item as={NavLink} to="/dashboard">
+                          Dashboard
+                        </Dropdown.Item>
+                        <Dropdown.Divider />
+                        <Dropdown.Item
+                          as={NavLink}
+                          to="/login"
+                          onClick={this.logoutUser}
+                        >
+                          Logout
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                   ) : null}
                   {!loggedIn ? (
                     <Fragment>
@@ -121,11 +169,12 @@ export class Header extends Component {
 }
 
 const mapStateToProps = state => ({
-  loggedIn: isLoggedIn(state)
+  loggedIn: isLoggedIn(state),
+  user: getUser(state)
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(appActions, dispatch)
+  actions: bindActionCreators({ ...appActions }, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
