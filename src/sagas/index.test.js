@@ -6,7 +6,6 @@ import dashboard from './dashboard';
 import flavor from './flavor';
 import flavors from './flavors';
 import note from './note';
-import notes from './notes';
 import profile from './profile';
 import recipe from './recipe';
 import roles from './roles';
@@ -27,7 +26,6 @@ describe('index saga', () => {
           flavor,
           flavors,
           note,
-          notes,
           profile,
           recipe,
           roles,

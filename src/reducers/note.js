@@ -4,16 +4,13 @@ export const types = buildActions('note', [
   'REQUEST_LOADING',
   'REQUEST_NOTE',
   'REQUEST_NOTE_SUCCESS',
-  'REQUEST_NOTE_FAILURE',
+  'REQUEST_FAILURE',
   'CREATE_NOTE',
   'CREATE_NOTE_SUCCESS',
-  'CREATE_NOTE_FAILURE',
   'DELETE_NOTE',
   'DELETE_NOTE_SUCCESS',
-  'DELETE_NOTE_FAILURE',
   'UPDATE_NOTE',
-  'UPDATE_NOTE_SUCCESS',
-  'UPDATE_NOTE_FAILURE'
+  'UPDATE_NOTE_SUCCESS'
 ]);
 
 const requestLoading = flavorId => ({
@@ -31,8 +28,8 @@ const requestNoteSuccess = note => ({
   note
 });
 
-const requestNoteFailure = error => ({
-  type: types.REQUEST_NOTE_FAILURE,
+const requestFailure = error => ({
+  type: types.REQUEST_FAILURE,
   error
 });
 
@@ -46,11 +43,6 @@ const createNoteSuccess = note => ({
   note
 });
 
-const createNoteFailure = error => ({
-  type: types.CREATE_NOTE_FAILURE,
-  error
-});
-
 const deleteNote = flavorNote => ({
   type: types.DELETE_NOTE,
   flavorNote
@@ -59,11 +51,6 @@ const deleteNote = flavorNote => ({
 const deleteNoteSuccess = flavorId => ({
   type: types.DELETE_NOTE_SUCCESS,
   flavorId
-});
-
-const deleteNoteFailure = error => ({
-  type: types.DELETE_NOTE_FAILURE,
-  error
 });
 
 const updateNote = flavorNote => ({
@@ -76,25 +63,17 @@ const updateNoteSuccess = flavorId => ({
   flavorId
 });
 
-const updateNoteFailure = error => ({
-  type: types.UPDATE_NOTE_FAILURE,
-  error
-});
-
 export const actions = {
   requestLoading,
   requestNote,
   requestNoteSuccess,
-  requestNoteFailure,
+  requestFailure,
   createNote,
   createNoteSuccess,
-  createNoteFailure,
   deleteNote,
   deleteNoteSuccess,
-  deleteNoteFailure,
   updateNote,
-  updateNoteSuccess,
-  updateNoteFailure
+  updateNoteSuccess
 };
 
 export const initialState = {
@@ -116,7 +95,7 @@ export const reducer = (state = initialState, action = {}) => {
         collection: action.note,
         loading: false
       };
-    case types.REQUEST_NOTE_FAILURE:
+    case types.REQUEST_FAILURE:
       return {
         ...state,
         error: action.error
@@ -126,23 +105,14 @@ export const reducer = (state = initialState, action = {}) => {
         ...state,
         loading: false
       };
-    case types.CREATE_NOTE_FAILURE:
-      return {
-        ...state,
-        error: action.error
-      };
     case types.DELETE_NOTE_SUCCESS:
       return {
         ...state,
         collection: {
           ...state.collection,
           [action.flavorId]: null
-        }
-      };
-    case types.DELETE_NOTE_FAILURE:
-      return {
-        ...state,
-        error: action.error
+        },
+        loading: false
       };
     case types.UPDATE_NOTE_SUCCESS:
       return {
@@ -150,12 +120,8 @@ export const reducer = (state = initialState, action = {}) => {
         collection: {
           ...state.collection,
           [action.flavorId]: null
-        }
-      };
-    case types.UPDATE_NOTE_FAILURE:
-      return {
-        ...state,
-        error: action.error
+        },
+        loading: false
       };
     default:
       return state;

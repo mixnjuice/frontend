@@ -30,6 +30,19 @@ describe('note reducer', () => {
     expect(reducer({}, action)).toEqual({ loading: flavorId });
   });
 
+  it('has REQUEST_NOTE action', () => {
+    expect(actions.requestNote(note)).toEqual({
+      type: types.REQUEST_NOTE,
+      note
+    });
+  });
+
+  it('reduces REQUEST_NOTE action', () => {
+    const action = actions.requestNote(note);
+
+    expect(reducer({}, action)).toEqual({});
+  });
+
   it('has REQUEST_NOTE_SUCCESS action', () => {
     expect(actions.requestNoteSuccess(note)).toEqual({
       type: types.REQUEST_NOTE_SUCCESS,
@@ -82,6 +95,37 @@ describe('note reducer', () => {
     expect(reducer({}, action)).toEqual({});
   });
 
+  it('has CREATE_NOTE_SUCCESS action', () => {
+    expect(actions.createNoteSuccess(note)).toEqual({
+      type: types.CREATE_NOTE_SUCCESS,
+      note
+    });
+  });
+
+  it('reduces CREATE_NOTE_SUCCESS action', () => {
+    const action = actions.createNoteSuccess(flavorId);
+
+    expect(reducer({}, action)).toEqual({
+      loading: false
+    });
+  });
+
+  it('has DELETE_NOTE_SUCCESS action', () => {
+    expect(actions.deleteNoteSuccess(flavorId)).toEqual({
+      type: types.DELETE_NOTE_SUCCESS,
+      flavorId
+    });
+  });
+
+  it('reduces DELETE_NOTE_SUCCESS action', () => {
+    const action = actions.deleteNoteSuccess(flavorId);
+
+    expect(reducer({}, action)).toEqual({
+      collection: { [flavorId]: null },
+      loading: false
+    });
+  });
+
   it('has UPDATE_NOTE_SUCCESS action', () => {
     expect(actions.updateNoteSuccess(flavorId)).toEqual({
       type: types.UPDATE_NOTE_SUCCESS,
@@ -92,56 +136,21 @@ describe('note reducer', () => {
   it('reduces UPDATE_NOTE_SUCCESS action', () => {
     const action = actions.updateNoteSuccess(flavorId);
 
-    expect(reducer({}, action)).toEqual({ collection: { [flavorId]: null } });
+    expect(reducer({}, action)).toEqual({
+      collection: { [flavorId]: null },
+      loading: false
+    });
   });
 
-  it('has REQUEST_NOTE_FAILURE action', () => {
-    expect(actions.requestNoteFailure(error)).toEqual({
-      type: types.REQUEST_NOTE_FAILURE,
+  it('has REQUEST_FAILURE action', () => {
+    expect(actions.requestFailure(error)).toEqual({
+      type: types.REQUEST_FAILURE,
       error
     });
   });
 
   it('reduces REQUEST_NOTE_FAILURE action', () => {
-    const action = actions.requestNoteFailure(error);
-
-    expect(reducer({}, action)).toEqual({ error });
-  });
-
-  it('has CREATE_NOTE_FAILURE action', () => {
-    expect(actions.createNoteFailure(error)).toEqual({
-      type: types.CREATE_NOTE_FAILURE,
-      error
-    });
-  });
-
-  it('reduces CREATE_NOTE_FAILURE action', () => {
-    const action = actions.createNoteFailure(error);
-
-    expect(reducer({}, action)).toEqual({ error });
-  });
-
-  it('has DELETE_NOTE_FAILURE action', () => {
-    expect(actions.deleteNoteFailure(error)).toEqual({
-      type: types.DELETE_NOTE_FAILURE,
-      error
-    });
-  });
-
-  it('reduces DELETE_NOTE_FAILURE action', () => {
-    const action = actions.deleteNoteFailure(error);
-
-    expect(reducer({}, action)).toEqual({ error });
-  });
-  it('has UPDATE_NOTE_FAILURE action', () => {
-    expect(actions.updateNoteFailure(error)).toEqual({
-      type: types.UPDATE_NOTE_FAILURE,
-      error
-    });
-  });
-
-  it('reduces UPDATE_NOTE_FAILURE action', () => {
-    const action = actions.updateNoteFailure(error);
+    const action = actions.requestFailure(error);
 
     expect(reducer({}, action)).toEqual({ error });
   });

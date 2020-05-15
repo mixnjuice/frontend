@@ -1,11 +1,9 @@
-import { all, call, put, takeLatest, select, take } from 'redux-saga/effects';
-
+import { all, call, put, takeLatest, select } from 'redux-saga/effects';
 import request from 'utils/request';
-import { getUser } from 'selectors/application';
+import helper from 'utils/saga';
 import { getFlavorNote } from 'selectors/note';
 import { actions, types } from 'reducers/note';
-import { actions as appActions, types as appTypes } from 'reducers/application';
-import { actions as toastActions } from 'reducers/toast';
+import { getCurrentUser } from 'sagas/profile';
 
 function* requestNoteWorker({ note }) {
   try {
@@ -13,29 +11,24 @@ function* requestNoteWorker({ note }) {
 
     yield put(actions.requestLoading(flavorId));
 
-    const collection = yield select(getFlavorNote);
-
-    if (collection[flavorId]) {
-      return yield put(actions.requestNoteSuccess(collection));
-    }
-
-    let userId = null;
+    let userId;
 
     if (!note.userId) {
-      let user = yield select(getUser);
+      const user = yield call(getCurrentUser);
 
-      if (user === null) {
-        yield put(appActions.requestCurrentUser());
-        yield take([
-          appTypes.REQUEST_CURRENT_USER_SUCCESS,
-          appTypes.REQUEST_CURRENT_USER_FAILURE
-        ]);
-        user = yield select(getUser);
+      if (!user?.id) {
+        throw new Error('Must be logged in to utilize Flavor Stash');
       }
 
       userId = user.id;
     } else {
       userId = note.userId;
+    }
+
+    const collection = yield select(getFlavorNote);
+
+    if (collection[flavorId]) {
+      return yield put(actions.requestNoteSuccess(collection));
     }
 
     const endpoint = {
@@ -63,9 +56,7 @@ function* requestNoteWorker({ note }) {
       throw new Error('Request failed for an unspecified reason!');
     }
   } catch (error) {
-    // eslint-disable-next-line
-    console.dir(error);
-    yield put(actions.requestNoteFailure(error));
+    yield put(actions.requestFailure(error));
   }
 }
 
@@ -75,19 +66,11 @@ function* createNoteWorker({ flavorNote }) {
 
     yield put(actions.requestLoading(flavorId));
 
-    let user = yield select(getUser);
+    const user = yield call(getCurrentUser);
 
-    if (user === null) {
-      yield put(appActions.requestCurrentUser());
-      yield take([
-        appTypes.REQUEST_CURRENT_USER_SUCCESS,
-        appTypes.REQUEST_CURRENT_USER_FAILURE
-      ]);
-      user = yield select(getUser);
+    if (!user?.id) {
+      throw new Error('Must be logged in to utilize Flavor Stash');
     }
-
-    // eslint-disable-next-line no-console
-    console.log(JSON.stringify(flavorNote));
 
     const endpoint = {
       url: `/user/${user.id}/note`,
@@ -104,13 +87,10 @@ function* createNoteWorker({ flavorNote }) {
 
     if (result.success) {
       yield put(actions.createNoteSuccess());
-      yield put(
-        toastActions.popToast({
-          title: 'Note',
-          icon: 'times-circle',
-          message: `Flavor ID ${flavorId} Note successfully created!`
-        })
-      );
+      yield call(helper.toast, {
+        title: 'Note',
+        message: `Flavor ID ${flavorId} Note successfully created!`
+      });
     } else if (result.error) {
       throw result.error;
     } else {
@@ -119,39 +99,23 @@ function* createNoteWorker({ flavorNote }) {
   } catch (error) {
     const { message } = error;
 
-    // eslint-disable-next-line
-    console.dir(error);
-
-    yield put(actions.createNoteFailure(error));
-    yield put(
-      toastActions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
+    yield put(actions.requestFailure(error));
+    yield call(helper.errorToast, message);
   }
 }
 
 function* deleteNoteWorker({ flavorNote }) {
-  // eslint-disable-next-line no-console
-  console.log(flavorNote);
   try {
-    let user = yield select(getUser);
-
-    if (user === null) {
-      yield put(appActions.requestCurrentUser());
-      yield take([
-        appTypes.REQUEST_CURRENT_USER_SUCCESS,
-        appTypes.REQUEST_CURRENT_USER_FAILURE
-      ]);
-      user = yield select(getUser);
-    }
-
     const { flavorId } = flavorNote;
 
-    // eslint-disable-next-line no-console
-    console.log(flavorId);
+    yield put(actions.requestLoading(flavorId));
+
+    const user = yield call(getCurrentUser);
+
+    if (!user?.id) {
+      throw new Error('Must be logged in to utilize Flavor Stash');
+    }
+
     const endpoint = {
       url: `/user/${user.id}/note/${flavorId}`,
       method: 'DELETE'
@@ -161,13 +125,10 @@ function* deleteNoteWorker({ flavorNote }) {
 
     if (result.success) {
       yield put(actions.deleteNoteSuccess(flavorId));
-      yield put(
-        toastActions.popToast({
-          title: 'Note Update',
-          icon: 'times-circle',
-          message: `Flavor ID ${flavorId} note successfully deleted!`
-        })
-      );
+      yield call(helper.toast, {
+        title: 'Note',
+        message: `Flavor ID ${flavorId} note successfully deleted!`
+      });
     } else if (result.error) {
       throw result.error;
     } else {
@@ -176,34 +137,22 @@ function* deleteNoteWorker({ flavorNote }) {
   } catch (error) {
     const { message } = error;
 
-    // eslint-disable-next-line
-    console.dir(error);
-
-    yield put(actions.deleteNoteFailure(error));
-    yield put(
-      toastActions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
+    yield put(actions.requestFailure(error));
+    yield call(helper.errorToast, message);
   }
 }
 
 function* updateNoteWorker({ flavorNote }) {
   try {
-    let user = yield select(getUser);
-
-    if (user === null) {
-      yield put(appActions.requestCurrentUser());
-      yield take([
-        appTypes.REQUEST_CURRENT_USER_SUCCESS,
-        appTypes.REQUEST_CURRENT_USER_FAILURE
-      ]);
-      user = yield select(getUser);
-    }
-
     const { flavorId, note } = flavorNote;
+
+    yield put(actions.requestLoading(flavorId));
+
+    const user = yield call(getCurrentUser);
+
+    if (!user?.id) {
+      throw new Error('Must be logged in to utilize Flavor Stash');
+    }
 
     const data = {
       userId: user.id,
@@ -220,13 +169,10 @@ function* updateNoteWorker({ flavorNote }) {
 
     if (result.success) {
       yield put(actions.updateNoteSuccess(flavorId));
-      yield put(
-        toastActions.popToast({
-          title: 'Note Update',
-          icon: 'times-circle',
-          message: `Flavor ID ${flavorId} Note successfully updated!`
-        })
-      );
+      yield call(helper.toast, {
+        title: 'Note',
+        message: `Flavor ID ${flavorId} Note successfully updated!`
+      });
     } else if (result.error) {
       throw result.error;
     } else {
@@ -235,17 +181,8 @@ function* updateNoteWorker({ flavorNote }) {
   } catch (error) {
     const { message } = error;
 
-    // eslint-disable-next-line
-    console.dir(error);
-
-    yield put(actions.updateNoteFailure(error));
-    yield put(
-      toastActions.popToast({
-        title: 'Error',
-        icon: 'times-circle',
-        message
-      })
-    );
+    yield put(actions.requestFailure(error));
+    yield call(helper.errorToast, message);
   }
 }
 
