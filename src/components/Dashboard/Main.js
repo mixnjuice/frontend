@@ -17,7 +17,6 @@ import {
   Users,
   UserRoles,
   Vendors,
-  VendorAdd,
   VendorEdit,
   VendorDelete
 } from 'components/Dashboard';
@@ -99,7 +98,7 @@ class DashboardMain extends Component {
       case 'Vendors':
         return <Vendors layoutOptions={defaultLayoutOptions} />;
       case 'Vendor/Add':
-        return <VendorAdd layoutOptions={defaultLayoutOptions} />;
+        return <VendorEdit layoutOptions={defaultLayoutOptions} />;
       case 'Vendor/Edit':
         return (
           <VendorEdit layoutOptions={defaultLayoutOptions} vendorId={item} />

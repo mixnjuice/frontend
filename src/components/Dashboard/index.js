@@ -18,6 +18,5 @@ export RoleDeleteUser from './Role/DeleteUser';
 export Users from './Users';
 export UserRoles from './User/Roles';
 export Vendors from './Vendors';
-export VendorAdd from './Vendor/Add';
 export VendorEdit from './Vendor/Edit';
 export VendorDelete from './Vendor/Delete';

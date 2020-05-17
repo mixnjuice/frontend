@@ -2,6 +2,7 @@ import { all, put, call, select } from 'redux-saga/effects';
 import helper from 'utils/saga';
 import request from 'utils/request';
 import { actions } from 'reducers/vendor';
+import { actions as vendorsActions, initialState } from 'reducers/vendors';
 import saga, { watchers, workers } from './vendor';
 import { getVendor } from 'selectors/vendor';
 
@@ -114,6 +115,17 @@ describe('vendor sagas', () => {
     });
 
     expect(result.value).toEqual(
+      put(
+        vendorsActions.requestVendorsSuccess(
+          initialState.cache,
+          initialState.pager
+        )
+      )
+    );
+
+    result = gen.next();
+
+    expect(result.value).toEqual(
       call(helper.toast, {
         title: 'Vendor Created',
         message: `${data.name} vendor successfully created!`
@@ -185,6 +197,17 @@ describe('vendor sagas', () => {
     });
 
     expect(result.value).toEqual(
+      put(
+        vendorsActions.requestVendorsSuccess(
+          initialState.cache,
+          initialState.pager
+        )
+      )
+    );
+
+    result = gen.next();
+
+    expect(result.value).toEqual(
       call(helper.toast, {
         title: 'Edit Vendor',
         message: `${data.name} vendor successfully updated!`
@@ -251,6 +274,17 @@ describe('vendor sagas', () => {
     result = gen.next({
       success: true
     });
+
+    expect(result.value).toEqual(
+      put(
+        vendorsActions.requestVendorsSuccess(
+          initialState.cache,
+          initialState.pager
+        )
+      )
+    );
+
+    result = gen.next();
 
     expect(result.value).toEqual(
       call(helper.toast, {

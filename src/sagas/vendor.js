@@ -3,6 +3,7 @@ import request from 'utils/request';
 import helper from 'utils/saga';
 import { getVendor } from 'selectors/vendor';
 import { actions, types } from 'reducers/vendor';
+import { initialState, actions as vendorsActions } from 'reducers/vendors';
 
 function* requestVendorWorker({ vendorId }) {
   try {
@@ -49,6 +50,12 @@ function* createVendorWorker({ details: { name, slug, code } }) {
     const result = yield call(request.execute, { endpoint, data });
 
     if (result.success) {
+      yield put(
+        vendorsActions.requestVendorsSuccess(
+          initialState.cache,
+          initialState.pager
+        )
+      );
       yield call(helper.toast, {
         title: 'Vendor Created',
         message: `${name} vendor successfully created!`
@@ -80,6 +87,12 @@ function* updateVendorWorker({ details: { vendorId, name, slug, code } }) {
     const result = yield call(request.execute, { endpoint, data });
 
     if (result.success) {
+      yield put(
+        vendorsActions.requestVendorsSuccess(
+          initialState.cache,
+          initialState.pager
+        )
+      );
       yield call(helper.toast, {
         title: 'Edit Vendor',
         message: `${name} vendor successfully updated!`
@@ -106,6 +119,12 @@ function* deleteVendorWorker({ vendorId, name }) {
     const result = yield call(request.execute, { endpoint });
 
     if (result.success) {
+      yield put(
+        vendorsActions.requestVendorsSuccess(
+          initialState.cache,
+          initialState.pager
+        )
+      );
       yield call(helper.toast, {
         title: 'Delete Vendor',
         message: `${name} vendor successfully deleted!`
