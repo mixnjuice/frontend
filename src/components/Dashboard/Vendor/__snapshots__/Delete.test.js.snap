@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <VendorDelete /> renders correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Vendors &gt; Delete Vendor &gt; Tester
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <i
+      className="fa chevron-left"
+    />
+      
+    <a
+      href="#vendors"
+      onClick={[Function]}
+    >
+      <span>
+        Back
+      </span>
+    </a>
+    <form
+      className=""
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <label
+          className="form-label"
+        >
+          Delete
+        </label>
+        <h3>
+          Delete Vendor: 
+          Tester
+          ?
+        </h3>
+      </div>
+      <button
+        className="button-animation btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        <span>
+          Delete
+        </span>
+      </button>
+    </form>
+  </div>
+</div>
+`;

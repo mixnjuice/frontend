@@ -1,0 +1,123 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dashboard <VendorEdit /> renders correctly 1`] = `
+<div
+  className="card"
+  style={Object {}}
+>
+  <div
+    className="card-header"
+  >
+    Vendors &gt; Edit Yuckies
+  </div>
+  <div
+    className="card-body"
+  >
+    
+    
+    <i
+      className="fa chevron-left"
+    />
+      
+    <a
+      href="#vendors"
+      onClick={[Function]}
+    >
+      <span>
+        Back
+      </span>
+    </a>
+    <form
+      className=""
+      noValidate={true}
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-row"
+      >
+        <div
+          className="form-group col"
+        >
+          <label
+            className="form-label"
+            htmlFor="formGridName"
+          >
+            Name
+          </label>
+          <input
+            className="form-control"
+            id="formGridName"
+            name="name"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value="Yuckies"
+          />
+        </div>
+      </div>
+      <div
+        className="form-row"
+      >
+        <div
+          className="form-group col"
+        >
+          <label
+            className="form-label"
+            htmlFor="formGridSlug"
+          >
+            Slug
+          </label>
+          <input
+            className="form-control"
+            id="formGridSlug"
+            name="slug"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value="yuckies"
+          />
+        </div>
+        <div
+          className="form-group col"
+        >
+          <label
+            className="form-label"
+            htmlFor="formGridCode"
+          >
+            Code
+          </label>
+          <input
+            className="form-control"
+            id="formGridCode"
+            name="code"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onFocus={[Function]}
+            type="text"
+            value="YUK"
+          />
+        </div>
+      </div>
+      <button
+        className="button-animation btn btn-primary"
+        disabled={false}
+        type="submit"
+      >
+        <span>
+          Save
+        </span>
+      </button>
+      <pre>
+        {
+  "id": 20,
+  "name": "Yuckies",
+  "slug": "yuckies",
+  "code": "YUK"
+}
+      </pre>
+    </form>
+  </div>
+</div>
+`;

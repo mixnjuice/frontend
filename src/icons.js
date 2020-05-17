@@ -1,6 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faBezierCurve,
+  faBoxes,
   faCheck,
   faCheckSquare as fasCheckSquare,
   faChevronLeft,
@@ -46,6 +47,7 @@ import {
 
 library.add(
   faBezierCurve,
+  faBoxes,
   faCheck,
   faCheckSquare,
   faChevronLeft,

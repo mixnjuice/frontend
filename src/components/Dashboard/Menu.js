@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { DashboardLink as DashLink } from 'components/Dashboard';
 import { Accordion, Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -68,14 +68,30 @@ export class Menu extends Component {
             </h3>
           </Accordion.Toggle>
           <Accordion.Collapse eventKey="2">
-            <Card.Body>
-              <div>
-                <FontAwesomeIcon icon="eye-dropper" /> &nbsp;
-                <DashLink to="#flavors" name="Flavors">
-                  Flavors
-                </DashLink>
-              </div>
-            </Card.Body>
+            <Fragment>
+              <Card.Body className="border-bottom">
+                <div>
+                  <FontAwesomeIcon icon="boxes" /> &nbsp;
+                  <DashLink to="#vendors" name="Vendors">
+                    Vendors
+                  </DashLink>
+                </div>
+                <div>
+                  <FontAwesomeIcon icon="plus" /> &nbsp;
+                  <DashLink to="#vendors/add" name="Vendor/Add">
+                    Add Vendor
+                  </DashLink>
+                </div>
+              </Card.Body>
+              <Card.Body>
+                <div>
+                  <FontAwesomeIcon icon="eye-dropper" /> &nbsp;
+                  <DashLink to="#flavors" name="Flavors">
+                    Flavors
+                  </DashLink>
+                </div>
+              </Card.Body>
+            </Fragment>
           </Accordion.Collapse>
         </Card>
         <Card>

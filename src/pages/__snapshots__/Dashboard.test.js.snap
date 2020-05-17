@@ -157,6 +157,34 @@ exports[`<Dashboard /> renders correctly 1`] = `
             className="collapse"
           >
             <div
+              className="border-bottom card-body"
+            >
+              <div>
+                <i
+                  className="fa boxes"
+                />
+                  
+                <a
+                  href="#vendors"
+                  onClick={[Function]}
+                >
+                  Vendors
+                </a>
+              </div>
+              <div>
+                <i
+                  className="fa plus"
+                />
+                  
+                <a
+                  href="#vendors/add"
+                  onClick={[Function]}
+                >
+                  Add Vendor
+                </a>
+              </div>
+            </div>
+            <div
               className="card-body"
             >
               <div>
