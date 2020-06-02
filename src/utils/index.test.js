@@ -49,7 +49,7 @@ describe('utilities', () => {
       const accessToken = 'testing';
       const expiration = '2030-01-01T00:00:00.000Z';
 
-      localStorage.getItem.mockImplementation(key => {
+      localStorage.getItem.mockImplementation((key) => {
         if (key === 'accessToken') {
           return `"${accessToken}"`;
         } else if (key === 'expiration') {
@@ -76,7 +76,7 @@ describe('utilities', () => {
     });
 
     it('returns an empty object if token is expired', () => {
-      localStorage.getItem.mockImplementation(key => {
+      localStorage.getItem.mockImplementation((key) => {
         if (key === 'accessToken') {
           return '"testing"';
         } else if (key === 'expiration') {

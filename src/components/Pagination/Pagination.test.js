@@ -7,7 +7,7 @@ jest.mock('react-dom', () => ({
   findDOMNode: () => ({})
 }));
 
-jest.mock('lodash.debounce', () => fn => fn);
+jest.mock('lodash.debounce', () => (fn) => fn);
 
 describe('<Pagination />', () => {
   const actions = {

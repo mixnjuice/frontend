@@ -12,7 +12,7 @@ export const types = buildActions('users', [
   'REQUEST_USER_ROLES_FAILURE'
 ]);
 
-const requestUsers = pager => ({
+const requestUsers = (pager) => ({
   type: types.REQUEST_USERS,
   pager
 });
@@ -23,7 +23,7 @@ const requestUsersSuccess = (users, pager) => ({
   pager
 });
 
-const requestUsersFailure = error => ({
+const requestUsersFailure = (error) => ({
   type: types.REQUEST_USERS_FAILURE,
   error
 });
@@ -33,12 +33,12 @@ const requestUser = ({ userId }) => ({
   userId
 });
 
-const requestUserSuccess = user => ({
+const requestUserSuccess = (user) => ({
   type: types.REQUEST_USER_SUCCESS,
   user
 });
 
-const requestUserFailure = error => ({
+const requestUserFailure = (error) => ({
   type: types.REQUEST_USER_FAILURE,
   error
 });
@@ -48,12 +48,12 @@ const requestUserRoles = ({ userId }) => ({
   userId
 });
 
-const requestUserRolesSuccess = roles => ({
+const requestUserRolesSuccess = (roles) => ({
   type: types.REQUEST_USER_ROLES_SUCCESS,
   roles
 });
 
-const requestUserRolesFailure = error => ({
+const requestUserRolesFailure = (error) => ({
   type: types.REQUEST_USER_ROLES_FAILURE,
   error
 });

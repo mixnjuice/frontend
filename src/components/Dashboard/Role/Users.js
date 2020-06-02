@@ -98,9 +98,9 @@ export class RoleUsers extends Component {
   }
 }
 
-const mapStateToProps = state => ({ roleUsers: getRoleUsers(state) });
+const mapStateToProps = (state) => ({ roleUsers: getRoleUsers(state) });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(rolesActions, dispatch)
 });
 

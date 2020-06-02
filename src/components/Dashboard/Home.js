@@ -83,11 +83,11 @@ export class DashboardHome extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   stats: getStats(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(dashboardActions, dispatch)
 });
 

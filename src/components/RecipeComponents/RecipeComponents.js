@@ -40,7 +40,7 @@ export default class RecipeComponents extends Component {
           </tr>
         </thead>
         <tbody>
-          {components.map(component => (
+          {components.map((component) => (
             <tr key={component.name}>
               <td>{component.name}</td>
               <td>
