@@ -93,10 +93,10 @@ export class Recipe extends Component {
     const queryValues = queryString.parse(query);
     const pageId = parseFloat(queryValues.id);
 
-    const recipe = recipes.filter(e => e.id === pageId)[0];
+    const recipe = recipes.filter((e) => e.id === pageId)[0];
 
     recipe.flavorTotal = 0;
-    recipe.flavors.forEach(flavor => {
+    recipe.flavors.forEach((flavor) => {
       recipe.flavorTotal += flavor.percent;
     });
 
@@ -129,14 +129,14 @@ export class Recipe extends Component {
     const queryValues = queryString.parse(query);
     const pageId = parseFloat(queryValues.id);
 
-    const recipe = recipes?.filter?.(e => e.id === pageId)[0];
+    const recipe = recipes?.filter?.((e) => e.id === pageId)[0];
 
     let index = 0;
 
-    recipe.flavors.forEach(recipeFlavor => {
+    recipe.flavors.forEach((recipeFlavor) => {
       let stashIndex = 0;
 
-      flavorStash.forEach(stashFlavor => {
+      flavorStash.forEach((stashFlavor) => {
         if (recipeFlavor.id === stashFlavor.id) {
           recipe.flavors[index].inStash = true;
           return;
@@ -277,7 +277,7 @@ export class Recipe extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   appActions: bindActionCreators(actions, dispatch)
 });
 

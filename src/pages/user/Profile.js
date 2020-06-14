@@ -161,7 +161,7 @@ export class Profile extends Component {
                 </Form.Group>
                 <Form.Group as={Col}>
                   <Button
-                    onClick={e => this.handleEditor(false, e)}
+                    onClick={(e) => this.handleEditor(false, e)}
                     className="button-animation"
                     variant="primary"
                   >
@@ -248,7 +248,7 @@ export class Profile extends Component {
             ) : (
               !editing && (
                 <Button
-                  onClick={e => this.handleEditor(true, e)}
+                  onClick={(e) => this.handleEditor(true, e)}
                   className="button-animation mt-3"
                   variant="primary"
                 >
@@ -275,14 +275,14 @@ export class Profile extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   currentUser: getCurrentUser(state),
   loggedIn: isLoggedIn(state),
   collection: getUserProfile(state),
   editing: false
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(
     {
       ...appActions,

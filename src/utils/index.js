@@ -26,7 +26,7 @@ export function buildActions(reducer, actions) {
  *
  * @param {object} endpoint Object with `url` and optional `params` object
  */
-export const buildUrl = endpoint => {
+export const buildUrl = (endpoint) => {
   // this is defined by webpack.DefinePlugin
   const baseUrl = API_URL;
   const { url, params } = endpoint;

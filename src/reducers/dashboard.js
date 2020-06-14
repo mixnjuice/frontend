@@ -17,7 +17,7 @@ const requestDashboard = () => ({
   type: types.REQUEST_DASHBOARD
 });
 
-const requestDashboardSuccess = dashboardComponent => ({
+const requestDashboardSuccess = (dashboardComponent) => ({
   type: types.REQUEST_DASHBOARD_SUCCESS,
   dashboardComponent
 });
@@ -28,7 +28,7 @@ const selectDashboard = ({ name, item }) => ({
   item
 });
 
-const selectDashboardSuccess = dashboardComponent => ({
+const selectDashboardSuccess = (dashboardComponent) => ({
   type: types.SELECT_DASHBOARD_SUCCESS,
   dashboardComponent
 });
@@ -37,12 +37,12 @@ const requestMigrations = () => ({
   type: types.REQUEST_MIGRATIONS
 });
 
-const requestMigrationsSuccess = migrations => ({
+const requestMigrationsSuccess = (migrations) => ({
   type: types.REQUEST_MIGRATIONS_SUCCESS,
   migrations
 });
 
-const requestMigrationsFailure = error => ({
+const requestMigrationsFailure = (error) => ({
   type: types.REQUEST_MIGRATIONS_FAILURE,
   error
 });
@@ -51,12 +51,12 @@ const requestStats = () => ({
   type: types.REQUEST_STATS
 });
 
-const requestStatsSuccess = stats => ({
+const requestStatsSuccess = (stats) => ({
   type: types.REQUEST_STATS_SUCCESS,
   stats
 });
 
-const requestStatsFailure = error => ({
+const requestStatsFailure = (error) => ({
   type: types.REQUEST_STATS_FAILURE,
   error
 });

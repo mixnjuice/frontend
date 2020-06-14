@@ -1,4 +1,4 @@
-import nanoid from 'nanoid';
+import { nanoid } from 'nanoid';
 import { put, delay, takeEvery, all } from 'redux-saga/effects';
 
 import { actions, types } from 'reducers/toast';
@@ -31,5 +31,5 @@ export const watchers = {
 };
 
 export default function* saga() {
-  yield all(Object.values(watchers).map(watcher => watcher()));
+  yield all(Object.values(watchers).map((watcher) => watcher()));
 }

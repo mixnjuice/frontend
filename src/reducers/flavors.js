@@ -6,7 +6,7 @@ export const types = buildActions('flavors', [
   'REQUEST_FLAVORS_FAILURE'
 ]);
 
-const requestFlavors = pager => ({
+const requestFlavors = (pager) => ({
   type: types.REQUEST_FLAVORS,
   pager
 });
@@ -17,7 +17,7 @@ const requestFlavorsSuccess = (flavors, pager) => ({
   pager
 });
 
-const requestFlavorsFailure = error => ({
+const requestFlavorsFailure = (error) => ({
   type: types.REQUEST_FLAVORS_FAILURE,
   error
 });
