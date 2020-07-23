@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Header } from './Header';
+import Header from './Header';
 import { withMemoryRouter } from 'utils/testing';
 // Prevent findDOMNode error in test from Dropdown component in react-bootstrap
 jest.mock('react-dom', () => ({

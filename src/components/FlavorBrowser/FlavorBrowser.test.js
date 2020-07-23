@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import { FlavorBrowser } from './FlavorBrowser';
+import FlavorBrowser from './FlavorBrowser';
 
 describe('<FlavorBrowser />', () => {
   const actions = {

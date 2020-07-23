@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
-import ConnectedApp, { App } from './App';
+import ConnectedApp from './App';
 import { withMemoryRouter } from 'utils/testing';
 import { initialState } from 'reducers/application';
 
@@ -64,7 +64,7 @@ describe('<App />', () => {
   });
 
   it('calls initApp', () => {
-    const RoutedApp = withMemoryRouter(App);
+    const RoutedApp = withMemoryRouter(ConnectedApp);
 
     renderer.create(
       <Provider store={store}>
