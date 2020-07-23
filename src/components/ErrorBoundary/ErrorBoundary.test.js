@@ -1,33 +1,34 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import renderer from 'react-test-renderer';
 
 import ErrorBoundary from './ErrorBoundary';
-import { mockComponent } from 'utils/testing';
 
 describe('<ErrorBoundary />', () => {
-  const TestComponent = mockComponent('Test');
+  const TestComponent = () => <p>Test</p>;
+  const TestErrorComponent = (props) => props.bogus.something;
 
   it('renders the page if there is no error', () => {
-    const component = renderer.create(
+    const { getByText } = render(
       <ErrorBoundary>
         <TestComponent />
       </ErrorBoundary>
     );
 
-    expect(component.root.findByType(TestComponent)).toBeDefined();
+    expect(getByText('Test')).toBeInTheDocument();
   });
 
   it('renders an error page if there is an error', () => {
-    const component = renderer.create(
+    window.addEventListener('error', (event) => {
+      // suppress console message about this error
+      event.preventDefault();
+    });
+
+    const { asFragment } = render(
       <ErrorBoundary>
-        <TestComponent />
+        <TestErrorComponent />
       </ErrorBoundary>
     );
-    const instance = component.getInstance();
 
-    // instance.state.hasError = true;
-    instance.setState({ hasError: true });
-
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 });
