@@ -1,9 +1,9 @@
 import React from 'react';
-import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
-import ConnectedToastDrawer, { ToastDrawer } from './ToastDrawer';
+import ToastDrawer from './ToastDrawer';
+import { withProvider } from 'utils/testing';
 
 describe('<ToastDrawer />', () => {
   const queue = [
@@ -13,30 +13,22 @@ describe('<ToastDrawer />', () => {
       message: 'Ask me anything'
     }
   ];
+  const initialState = { toast: { queue } };
+  const mockStore = configureStore();
+  const store = mockStore(initialState);
 
   it('renders correctly', () => {
-    const props = { toasts: queue };
-    const component = renderer.create(<ToastDrawer {...props} />);
+    const ConnectedToastDrawer = withProvider(ToastDrawer, store);
+    const component = renderer.create(<ConnectedToastDrawer />);
 
     expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('renders null if empty', () => {
-    const props = { toasts: [] };
-    const component = renderer.create(<ToastDrawer {...props} />);
-
-    expect(component.toJSON()).toMatchSnapshot();
-  });
-
-  it('renders connected component correctly', () => {
-    const initialState = { toast: { queue } };
-    const mockStore = configureStore();
-    const store = mockStore(initialState);
-    const component = renderer.create(
-      <Provider store={store}>
-        <ConnectedToastDrawer />
-      </Provider>
-    );
+    const emptyState = { toast: { queue: [] } };
+    const emptyStore = mockStore(emptyState);
+    const ConnectedToastDrawer = withProvider(ToastDrawer, emptyStore);
+    const component = renderer.create(<ConnectedToastDrawer />);
 
     expect(component.toJSON()).toMatchSnapshot();
   });
