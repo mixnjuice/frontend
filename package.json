@@ -63,6 +63,8 @@
     "@storybook/addon-knobs": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/react": "^5.3.19",
+    "@testing-library/jest-dom": "^5.11.1",
+    "@testing-library/react": "^10.4.7",
     "autoprefixer": "^9.8.0",
     "babel-eslint": "^10.1.0",
     "babel-jest": "^26.0.1",
