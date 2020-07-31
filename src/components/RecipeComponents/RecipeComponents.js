@@ -2,14 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Table, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
-export function RecipeComponentTooltip({ density }) {
-  return <Tooltip>{density.toFixed(2)} g/mL</Tooltip>;
-}
-
-RecipeComponentTooltip.propTypes = {
-  density: PropTypes.number.isRequired
-};
-
 export default function RecipeComponents({ components }) {
   if (!Array.isArray(components) || components.length === 0) {
     return null;
@@ -42,7 +34,7 @@ export default function RecipeComponents({ components }) {
             <td className="text-right">
               <OverlayTrigger
                 placement="left"
-                overlay={<RecipeComponentTooltip density={component.density} />}
+                overlay={<Tooltip>{component.density.toFixed(2)} g/mL</Tooltip>}
               >
                 <span>{component.grams.toFixed(2)}</span>
               </OverlayTrigger>
@@ -52,7 +44,7 @@ export default function RecipeComponents({ components }) {
         <tr className="font-weight-bold">
           <td className="bt-2">Total</td>
           <td className="bt-2 text-right">100%</td>
-          <td className="bt-2 text-right">{Math.round(totalMl)} mL</td>
+          <td className="bt-2 text-right">{totalMl.toFixed(2)} mL</td>
           <td className="bt-2 text-right">{totalGrams.toFixed(2)} g</td>
         </tr>
       </tbody>
