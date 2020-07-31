@@ -23,7 +23,8 @@ export const types = buildActions('recipe', [
   'SET_NICOTINE_DILUENT_RATIO',
   'SET_RECIPE_NAME',
   'SET_RECIPE_INGREDIENTS',
-  'SET_RECIPE_PERCENTAGES'
+  'SET_RECIPE_PERCENTAGES',
+  'SET_USE_PRE_MIXED_BASE'
 ]);
 
 const createRecipe = () => ({
@@ -134,6 +135,11 @@ const setRecipePercentages = (percentages) => ({
   percentages
 });
 
+const setUsePreMixedBase = (usePreMixedBase) => ({
+  type: types.SET_USE_PRE_MIXED_BASE,
+  usePreMixedBase
+});
+
 export const actions = {
   createRecipe,
   createRecipeSuccess,
@@ -157,7 +163,8 @@ export const actions = {
   setNicotineDiluentRatio,
   setRecipeName,
   setRecipeIngredients,
-  setRecipePercentages
+  setRecipePercentages,
+  setUsePreMixedBase
 };
 
 export const initialState = {
@@ -177,7 +184,8 @@ export const initialState = {
   },
   settings: {
     nicotineStrength: 100,
-    nicotineDiluentRatio: 1
+    nicotineDiluentRatio: 1,
+    usePreMixedBase: false
   }
 };
 
@@ -290,6 +298,14 @@ export const reducer = (state = initialState, action = {}) => {
         active: {
           ...state.active,
           percentages: action.percentages
+        }
+      };
+    case types.SET_USE_PRE_MIXED_BASE:
+      return {
+        ...state,
+        settings: {
+          ...state.settings,
+          usePreMixedBase: action.usePreMixedBase
         }
       };
     default:
