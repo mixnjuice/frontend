@@ -25,7 +25,7 @@ exports[`<Header /> renders logged in correctly 1`] = `
         <button
           aria-controls="basic-navbar-nav"
           aria-label="Toggle navigation"
-          className="navbar-toggler"
+          className="navbar-toggler collapsed"
           onClick={[Function]}
           type="button"
         >
@@ -48,9 +48,7 @@ exports[`<Header /> renders logged in correctly 1`] = `
               disabled={false}
               href="/"
               onClick={[Function]}
-              role="tab"
               style={Object {}}
-              tabIndex={-1}
             >
               Home
             </a>
@@ -61,8 +59,6 @@ exports[`<Header /> renders logged in correctly 1`] = `
               disabled={false}
               href="/recipes"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Recipes
             </a>
@@ -73,8 +69,6 @@ exports[`<Header /> renders logged in correctly 1`] = `
               disabled={false}
               href="/recipe/editor"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Recipe Editor
             </a>
@@ -85,8 +79,6 @@ exports[`<Header /> renders logged in correctly 1`] = `
               disabled={false}
               href="/flavors"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Flavors
             </a>
@@ -107,98 +99,6 @@ exports[`<Header /> renders logged in correctly 1`] = `
                 id="user-dropdown"
                 onClick={[Function]}
               />
-              <div
-                className="dropdown-menu dropdown-menu-right"
-              >
-                <a
-                  aria-current={null}
-                  className="dropdown-item"
-                  disabled={false}
-                  href="/user/profile"
-                  onClick={[Function]}
-                >
-                  Profile
-                </a>
-                <div
-                  className="dropdown-divider"
-                  role="separator"
-                />
-                <a
-                  aria-current={null}
-                  className="dropdown-item"
-                  disabled={false}
-                  href="/user/recipes"
-                  onClick={[Function]}
-                >
-                  Recipes
-                </a>
-                <a
-                  aria-current={null}
-                  className="dropdown-item"
-                  disabled={false}
-                  href="/user/favorites"
-                  onClick={[Function]}
-                >
-                  Favorites
-                </a>
-                <div
-                  className="dropdown-divider"
-                  role="separator"
-                />
-                <a
-                  aria-current={null}
-                  className="dropdown-item"
-                  disabled={false}
-                  href="/user/shopping-list"
-                  onClick={[Function]}
-                >
-                  Flavor Stash
-                </a>
-                <a
-                  aria-current={null}
-                  className="dropdown-item"
-                  disabled={false}
-                  href="/user/shopping-list"
-                  onClick={[Function]}
-                >
-                  Shopping List
-                </a>
-                <div
-                  className="dropdown-divider"
-                  role="separator"
-                />
-                <a
-                  aria-current={null}
-                  className="dropdown-item"
-                  disabled={false}
-                  href="/user/settings"
-                  onClick={[Function]}
-                >
-                  Settings
-                </a>
-                <a
-                  aria-current={null}
-                  className="dropdown-item"
-                  disabled={false}
-                  href="/dashboard"
-                  onClick={[Function]}
-                >
-                  Dashboard
-                </a>
-                <div
-                  className="dropdown-divider"
-                  role="separator"
-                />
-                <a
-                  aria-current={null}
-                  className="dropdown-item"
-                  disabled={false}
-                  href="/login"
-                  onClick={[Function]}
-                >
-                  Logout
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -233,7 +133,7 @@ exports[`<Header /> renders logged out correctly 1`] = `
         <button
           aria-controls="basic-navbar-nav"
           aria-label="Toggle navigation"
-          className="navbar-toggler"
+          className="navbar-toggler collapsed"
           onClick={[Function]}
           type="button"
         >
@@ -256,9 +156,7 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/"
               onClick={[Function]}
-              role="tab"
               style={Object {}}
-              tabIndex={-1}
             >
               Home
             </a>
@@ -269,8 +167,6 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/recipes"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Recipes
             </a>
@@ -281,8 +177,6 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/flavors"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Flavors
             </a>
@@ -293,8 +187,6 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/login"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Login
             </a>
@@ -305,8 +197,6 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/register"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Register
             </a>
@@ -321,4 +211,3 @@ exports[`<Header /> renders logged out correctly 1`] = `
   </div>
 </div>
 `;
-
