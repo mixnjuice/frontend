@@ -1,20 +1,20 @@
-export const numeric = value => {
+export const numeric = (value) => {
   return Number.isInteger(value) ? undefined : 'numeric';
 };
 
-export const matches = fieldName => (value, allValues) =>
+export const matches = (fieldName) => (value, allValues) =>
   value === allValues[fieldName] ? undefined : 'matches';
 
-export const required = value => (value ? undefined : 'required');
+export const required = (value) => (value ? undefined : 'required');
 
-export const email = value =>
+export const email = (value) =>
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+$/.test(
     value
   )
     ? undefined
     : 'email';
 
-export const length = (minimum = 0, maximum = Infinity) => value => {
+export const length = (minimum = 0, maximum = Infinity) => (value) => {
   if (!value || !value.length) {
     return 'min-length';
   }
@@ -28,7 +28,7 @@ export const length = (minimum = 0, maximum = Infinity) => value => {
   }
 };
 
-export const between = (minimum = -Infinity, maximum = Infinity) => value => {
+export const between = (minimum = -Infinity, maximum = Infinity) => (value) => {
   if (!value) {
     return 'between';
   }

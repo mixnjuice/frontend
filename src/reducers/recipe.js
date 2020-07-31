@@ -46,7 +46,7 @@ const editRecipeSuccess = () => ({
   type: types.EDIT_RECIPE_SUCCESS
 });
 
-const editRecipeFailure = error => ({
+const editRecipeFailure = (error) => ({
   type: types.EDIT_RECIPE_FAILURE,
   error
 });
@@ -59,77 +59,77 @@ const revertRecipeSuccess = () => ({
   type: types.REVERT_RECIPE_SUCCESS
 });
 
-const revertRecipeFailure = error => ({
+const revertRecipeFailure = (error) => ({
   type: types.REVERT_RECIPE_FAILURE,
   error
 });
 
-const requestRecipe = id => ({
+const requestRecipe = (id) => ({
   type: types.REQUEST_RECIPE,
   id
 });
 
-const requestRecipeSuccess = recipe => ({
+const requestRecipeSuccess = (recipe) => ({
   type: types.REQUEST_RECIPE_SUCCESS,
   recipe
 });
 
-const requestRecipeFailure = error => ({
+const requestRecipeFailure = (error) => ({
   type: types.REQUEST_RECIPE_FAILURE,
   error
 });
 
-const updateRecipe = id => ({
+const updateRecipe = (id) => ({
   type: types.UPDATE_RECIPE,
   id
 });
 
-const updateRecipeSuccess = recipe => ({
+const updateRecipeSuccess = (recipe) => ({
   type: types.UPDATE_RECIPE_SUCCESS,
   recipe
 });
 
-const updateRecipeFailure = error => ({
+const updateRecipeFailure = (error) => ({
   type: types.UPDATE_RECIPE_FAILURE,
   error
 });
 
-const setDesiredNicotineStrength = nicotineStrength => ({
+const setDesiredNicotineStrength = (nicotineStrength) => ({
   type: types.SET_DESIRED_NICOTINE_STRENGTH,
   nicotineStrength
 });
 
-const setDesiredDiluentRatio = diluentRatio => ({
+const setDesiredDiluentRatio = (diluentRatio) => ({
   type: types.SET_DESIRED_DILUENT_RATIO,
   diluentRatio
 });
 
-const setDesiredVolume = volume => ({
+const setDesiredVolume = (volume) => ({
   type: types.SET_DESIRED_VOLUME,
   volume
 });
 
-const setNicotineStrength = nicotineStrength => ({
+const setNicotineStrength = (nicotineStrength) => ({
   type: types.SET_NICOTINE_STRENGTH,
   nicotineStrength
 });
 
-const setNicotineDiluentRatio = diluentRatio => ({
+const setNicotineDiluentRatio = (diluentRatio) => ({
   type: types.SET_NICOTINE_DILUENT_RATIO,
   diluentRatio
 });
 
-const setRecipeName = name => ({
+const setRecipeName = (name) => ({
   type: types.SET_RECIPE_NAME,
   name
 });
 
-const setRecipeIngredients = ingredients => ({
+const setRecipeIngredients = (ingredients) => ({
   type: types.SET_RECIPE_INGREDIENTS,
   ingredients
 });
 
-const setRecipePercentages = percentages => ({
+const setRecipePercentages = (percentages) => ({
   type: types.SET_RECIPE_PERCENTAGES,
   percentages
 });

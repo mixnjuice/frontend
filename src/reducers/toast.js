@@ -7,22 +7,22 @@ export const types = buildActions('toast', [
   'HIDE_TOAST'
 ]);
 
-const popToast = toast => ({
+const popToast = (toast) => ({
   type: types.POP_TOAST,
   toast
 });
 
-const addToast = toast => ({
+const addToast = (toast) => ({
   type: types.ADD_TOAST,
   toast
 });
 
-const removeToast = id => ({
+const removeToast = (id) => ({
   type: types.REMOVE_TOAST,
   id
 });
 
-const hideToast = id => ({
+const hideToast = (id) => ({
   type: types.HIDE_TOAST,
   id
 });
@@ -48,11 +48,11 @@ export const reducer = (state = initialState, action = {}) => {
     case types.REMOVE_TOAST:
       return {
         ...state,
-        queue: state.queue?.filter?.(toast => toast.id !== action.id)
+        queue: state.queue?.filter?.((toast) => toast.id !== action.id)
       };
     case types.HIDE_TOAST: {
       const originalToast = state.queue?.find?.(
-        toast => toast.id === action.id
+        (toast) => toast.id === action.id
       );
 
       if (!originalToast) {
@@ -64,7 +64,7 @@ export const reducer = (state = initialState, action = {}) => {
         show: false
       };
       const filteredToasts = state.queue?.filter?.(
-        toast => toast.id !== action.id
+        (toast) => toast.id !== action.id
       );
 
       return {

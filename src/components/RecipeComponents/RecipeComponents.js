@@ -30,41 +30,41 @@ export default class RecipeComponents extends Component {
     const totalGrams = components.reduce((acc, curr) => acc + curr.grams, 0);
 
     return (
-      <Table>
+      <Table striped>
         <thead>
           <tr>
             <th>Component</th>
-            <th>%</th>
-            <th>mL</th>
-            <th>g</th>
+            <th className="text-right">%</th>
+            <th className="text-right">mL</th>
+            <th className="text-right">g</th>
           </tr>
         </thead>
         <tbody>
-          {components.map(component => (
+          {components.map((component) => (
             <tr key={component.name}>
               <td>{component.name}</td>
-              <td>
+              <td className="text-right">
                 {component.percentage % 1 !== 0
                   ? component.percentage.toPrecision(2)
                   : Math.round(component.percentage)}
                 %
               </td>
-              <td>{component.milliliters.toFixed(2)} mL</td>
-              <td>
+              <td className="text-right">{component.milliliters.toFixed(2)}</td>
+              <td className="text-right">
                 <OverlayTrigger
                   placement="left"
                   overlay={this.renderTooltip(component.density)}
                 >
-                  <span>{component.grams.toFixed(2)} g</span>
+                  <span>{component.grams.toFixed(2)}</span>
                 </OverlayTrigger>
               </td>
             </tr>
           ))}
           <tr className="font-weight-bold">
             <td className="bt-2">Total</td>
-            <td className="bt-2">100%</td>
-            <td className="bt-2">{Math.round(totalMl)} mL</td>
-            <td className="bt-2">{totalGrams.toFixed(2)} g</td>
+            <td className="bt-2 text-right">100%</td>
+            <td className="bt-2 text-right">{Math.round(totalMl)} mL</td>
+            <td className="bt-2 text-right">{totalGrams.toFixed(2)} g</td>
           </tr>
         </tbody>
       </Table>

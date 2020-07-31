@@ -60,14 +60,14 @@ export class FlavorBrowser extends Component {
     }
 
     const existing = ingredients.find(
-      ingredient => ingredient.Flavor.id === name
+      (ingredient) => ingredient.Flavor.id === name
     );
 
     if (existing) {
       return;
     }
 
-    const toAdd = stash.find(flavor => flavor.Flavor.id === name);
+    const toAdd = stash.find((flavor) => flavor.Flavor.id === name);
 
     if (!toAdd) {
       return;
@@ -98,7 +98,7 @@ export class FlavorBrowser extends Component {
       return [];
     }
 
-    return stash.filter(flavor => {
+    return stash.filter((flavor) => {
       const {
         Flavor: {
           Vendor: { code: vendorCode, name: vendorName },
@@ -188,13 +188,13 @@ export class FlavorBrowser extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   stash: getStash(state),
   stashLoaded: isLoaded(state),
   recipe: getActiveRecipe(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(
     {
       ...flavorActions,

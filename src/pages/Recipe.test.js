@@ -15,7 +15,7 @@ describe('<Recipe />', () => {
     registerUser: jest.fn(),
     popToast: jest.fn()
   };
-  const props = search => ({
+  const props = (search) => ({
     location: {
       search
     }

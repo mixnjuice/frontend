@@ -14,7 +14,7 @@ export const types = buildActions('roles', [
   'CLEAR_COLLECTION'
 ]);
 
-const requestRoles = pager => ({
+const requestRoles = (pager) => ({
   type: types.REQUEST_ROLES,
   pager
 });
@@ -47,7 +47,7 @@ const requestRoleUsers = ({ roleId }) => ({
   roleId
 });
 
-const requestRoleUsersSuccess = roleUsers => ({
+const requestRoleUsersSuccess = (roleUsers) => ({
   type: types.REQUEST_ROLE_USERS_SUCCESS,
   roleUsers
 });
@@ -66,7 +66,7 @@ const deleteRoleUser = ({ userId, roleId, name }) => ({
   name
 });
 
-const requestFailure = error => ({
+const requestFailure = (error) => ({
   type: types.REQUEST_FAILURE,
   error
 });

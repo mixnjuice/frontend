@@ -28,7 +28,7 @@ export class ToastDrawer extends Component {
 
     return (
       <section className="toast-drawer">
-        {toasts.map(toast => {
+        {toasts.map((toast) => {
           const { id, title, message, icon, show } = toast;
 
           return (
@@ -46,7 +46,7 @@ export class ToastDrawer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   toasts: getQueue(state)
 });
 

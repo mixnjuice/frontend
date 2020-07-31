@@ -25,7 +25,7 @@ exports[`<Header /> renders logged in correctly 1`] = `
         <button
           aria-controls="basic-navbar-nav"
           aria-label="Toggle navigation"
-          className="navbar-toggler"
+          className="navbar-toggler collapsed"
           onClick={[Function]}
           type="button"
         >
@@ -48,9 +48,7 @@ exports[`<Header /> renders logged in correctly 1`] = `
               disabled={false}
               href="/"
               onClick={[Function]}
-              role="tab"
               style={Object {}}
-              tabIndex={-1}
             >
               Home
             </a>
@@ -61,8 +59,6 @@ exports[`<Header /> renders logged in correctly 1`] = `
               disabled={false}
               href="/recipes"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Recipes
             </a>
@@ -73,8 +69,6 @@ exports[`<Header /> renders logged in correctly 1`] = `
               disabled={false}
               href="/recipe/editor"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Recipe Editor
             </a>
@@ -85,8 +79,6 @@ exports[`<Header /> renders logged in correctly 1`] = `
               disabled={false}
               href="/flavors"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Flavors
             </a>
@@ -233,7 +225,7 @@ exports[`<Header /> renders logged out correctly 1`] = `
         <button
           aria-controls="basic-navbar-nav"
           aria-label="Toggle navigation"
-          className="navbar-toggler"
+          className="navbar-toggler collapsed"
           onClick={[Function]}
           type="button"
         >
@@ -256,9 +248,7 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/"
               onClick={[Function]}
-              role="tab"
               style={Object {}}
-              tabIndex={-1}
             >
               Home
             </a>
@@ -269,8 +259,6 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/recipes"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Recipes
             </a>
@@ -281,8 +269,6 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/flavors"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Flavors
             </a>
@@ -293,8 +279,6 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/login"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Login
             </a>
@@ -305,8 +289,6 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/register"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Register
             </a>

@@ -18,7 +18,7 @@ export class PrivateRoute extends ReactComponent {
     return (
       <Route
         {...routeProps}
-        render={props =>
+        render={(props) =>
           authenticated ? <Component {...props} /> : <Redirect to="/login" />
         }
       />
@@ -26,7 +26,7 @@ export class PrivateRoute extends ReactComponent {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   authenticated: isLoggedIn(state)
 });
 

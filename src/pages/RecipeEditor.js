@@ -75,7 +75,8 @@ export class RecipeEditor extends Component {
       target: { name }
     } = event;
 
-    return ingredients.find(ingredient => ingredient.id === name) !== undefined
+    return ingredients.find((ingredient) => ingredient.id === name) !==
+      undefined
       ? 'disabled'
       : null;
   }
@@ -273,7 +274,7 @@ export class RecipeEditor extends Component {
     });
 
     for (const [id, percentage] of percentageEntries) {
-      const ingredient = ingredients.find(ing => ing.Flavor.id === id);
+      const ingredient = ingredients.find((ing) => ing.Flavor.id === id);
       const name = `${ingredient.Flavor.Vendor.name} ${ingredient.Flavor.name}`;
       const milliliters = (percentage / 100) * desiredVolume;
       const grams = milliliters * densities.pg;
@@ -517,7 +518,7 @@ export class RecipeEditor extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   recipe: getActiveRecipe(state),
   nicotineStrength: getNicotineStrength(state),
   desiredNicotineStrength: getDesiredNicotineStrength(state),
@@ -526,7 +527,7 @@ const mapStateToProps = state => ({
   desiredDiluentRatio: getDesiredDiluentRatio(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(recipeActions, dispatch)
 });
 
