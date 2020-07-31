@@ -97,7 +97,7 @@ export class RecipeEditor extends Component {
   handleUserInput(event) {
     const { actions } = this.props;
     const {
-      target: { name, value }
+      target: { name, value, checked }
     } = event;
 
     switch (name) {
@@ -105,7 +105,7 @@ export class RecipeEditor extends Component {
         actions.setRecipeName(value);
         break;
       case 'usePreMixedBase':
-        actions.setUsePreMixedBase(value === 'on');
+        actions.setUsePreMixedBase(checked);
         break;
       case 'desiredVolume': {
         const volume = parseInt(value, 10);
@@ -449,6 +449,7 @@ export class RecipeEditor extends Component {
                     <Form.Group as={Col} md="8" controlId="">
                       <Form.Label>Use pre-mixed base</Form.Label>
                       <Form.Check
+                        type="checkbox"
                         name="usePreMixedBase"
                         onChange={this.handleUserInput}
                       />
