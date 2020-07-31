@@ -163,7 +163,6 @@ exports[`<Register /> renders connected component correctly 1`] = `
           <label
             className="form-check-label"
             title=""
-            type="checkbox"
           >
             I agree to comply with the Terms of Service
           </label>
@@ -354,7 +353,6 @@ exports[`<Register /> renders correctly 1`] = `
           <label
             className="form-check-label"
             title=""
-            type="checkbox"
           >
             I agree to comply with the Terms of Service
           </label>

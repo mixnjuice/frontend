@@ -83,7 +83,7 @@ export class RoleAddUser extends Component {
             <Form.Control
               as="select"
               name="userId"
-              onChange={e => this.handleChange(e)}
+              onChange={(e) => this.handleChange(e)}
               value={userId}
             >
               <option value="0" key="x">
@@ -122,11 +122,11 @@ export class RoleAddUser extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   collection: getAllUsers(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(
     {
       ...rolesActions,

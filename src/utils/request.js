@@ -11,7 +11,7 @@ import { getAuthorization } from 'selectors/application';
  *
  * @param {object} response The response body
  */
-const successResponse = response => ({
+const successResponse = (response) => ({
   success: true,
   response
 });
@@ -21,7 +21,7 @@ const successResponse = response => ({
  *
  * @param {string} message A string indicating the error message.
  */
-const failureMessage = message => ({
+const failureMessage = (message) => ({
   success: false,
   error: {
     message
@@ -33,7 +33,7 @@ const failureMessage = message => ({
  *
  * @param {Error|object} error An object describing the error
  */
-const failureResponse = error => ({
+const failureResponse = (error) => ({
   success: false,
   error
 });
