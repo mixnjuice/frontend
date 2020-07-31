@@ -33,7 +33,7 @@ export default function App() {
 
   useEffect(() => {
     dispatch(appActions.initApp());
-  }, [appActions, dispatch]);
+  }, [dispatch]);
 
   return (
     <Suspense fallback={<SuspenseFallback />}>
