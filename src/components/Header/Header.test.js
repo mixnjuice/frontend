@@ -1,7 +1,10 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import renderer from 'react-test-renderer';
+import configureStore from 'redux-mock-store';
+
 import Header from './Header';
-import { withMemoryRouter } from 'utils/testing';
+import { withMemoryRouter, withProvider } from 'utils/testing';
+
 // Prevent findDOMNode error in test from Dropdown component in react-bootstrap
 jest.mock('react-dom', () => ({
   findDOMNode: () => ({})
@@ -12,7 +15,11 @@ describe('<Header />', () => {
     logoutUser: jest.fn(),
     requestCurrentUser: jest.fn()
   };
+  const initialState = {};
+  const mockStore = configureStore();
+  const store = mockStore(initialState);
   const RoutedHeader = withMemoryRouter(Header);
+  const ConnectedHeader = withProvider(RoutedHeader, store);
 
   it('renders logged out correctly', () => {
     const props = {
@@ -21,7 +28,7 @@ describe('<Header />', () => {
     };
 
     expect(
-      renderer.create(<RoutedHeader {...props} />).toJSON()
+      render(<ConnectedHeader {...props} />).asFragment()
     ).toMatchSnapshot();
   });
 
@@ -32,14 +39,12 @@ describe('<Header />', () => {
     };
 
     expect(
-      renderer.create(<RoutedHeader {...props} />).toJSON()
+      render(<ConnectedHeader {...props} />).asFragment()
     ).toMatchSnapshot();
   });
 
   it('can logoutUser', () => {
-    const component = renderer.create(
-      <RoutedHeader actions={actions} loggedIn />
-    );
+    const component = render(<ConnectedHeader actions={actions} loggedIn />);
     const { instance } = component.root.findByType(Header);
 
     expect(instance).toBeDefined();
