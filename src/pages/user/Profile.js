@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router-dom';
 import { Form as FinalForm, Field } from 'react-final-form';
 import {
   Container,
@@ -200,11 +199,7 @@ export class Profile extends Component {
         <Helmet title="Your Profile" />
         <Row className="text-center">
           <Col>
-            <p>
-              This is what other users see when they look at your profile.
-              <br />
-              <Link to="/user-settings">Click here to edit your profile</Link>
-            </p>
+            <p>This is what other users see when they look at your profile.</p>
           </Col>
         </Row>
         <Row className="text-center mb-3">
