@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { Container } from 'react-bootstrap';
 
 export default class ErrorBoundary extends Component {
   static propTypes = {
@@ -25,7 +26,11 @@ export default class ErrorBoundary extends Component {
 
   render() {
     if (this.state.hasError) {
-      return <h1>Something went wrong. Please refresh the page.</h1>;
+      return (
+        <Container className="text-center">
+          <h1>Something went wrong. Please refresh the page.</h1>
+        </Container>
+      );
     }
 
     return this.props.children;
