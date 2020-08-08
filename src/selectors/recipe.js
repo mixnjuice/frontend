@@ -69,3 +69,8 @@ export const getDesiredVolume = createSelector(
   getDesired,
   (desired) => desired.volume
 );
+
+export const getUsePreMixedBase = createSelector(
+  getSettings,
+  (settings) => settings.usePreMixedBase
+);
