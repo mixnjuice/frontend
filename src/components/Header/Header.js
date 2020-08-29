@@ -116,7 +116,7 @@ export class Header extends Component {
                           Favorites
                         </Dropdown.Item>
                         <Dropdown.Divider />
-                        <Dropdown.Item as={NavLink} to="/user/shopping-list">
+                        <Dropdown.Item as={NavLink} to="/user/flavor-stash">
                           Flavor Stash
                         </Dropdown.Item>
                         <Dropdown.Item as={NavLink} to="/user/shopping-list">
