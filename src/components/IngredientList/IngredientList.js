@@ -33,7 +33,7 @@ export class IngredientList extends Component {
     const { ingredients, actions } = this.props;
 
     actions.setRecipeIngredients(
-      ingredients.filter(ingredient => ingredient.Flavor.id !== id)
+      ingredients.filter((ingredient) => ingredient.Flavor.id !== id)
     );
   }
 
@@ -50,7 +50,7 @@ export class IngredientList extends Component {
     }
 
     const index = ingredients.findIndex(
-      ingredient => ingredient.Flavor.id === name
+      (ingredient) => ingredient.Flavor.id === name
     );
 
     if (index > -1) {
@@ -68,7 +68,7 @@ export class IngredientList extends Component {
     return (
       <Table striped className="ingredient-list">
         <tbody>
-          {ingredients.map(ingredient => {
+          {ingredients.map((ingredient) => {
             const {
               flavorId: id,
               Flavor: { name, Vendor: vendor }
@@ -113,7 +113,7 @@ export class IngredientList extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(recipeActions, dispatch)
 });
 

@@ -63,12 +63,12 @@ export class FlavorStash extends Component {
   }
 }
 
-export const mapStateToProps = state => ({
+export const mapStateToProps = (state) => ({
   stash: getStash(state),
   stashLoaded: isLoaded(state)
 });
 
-export const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(flavorActions, dispatch)
 });
 

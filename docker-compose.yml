@@ -6,9 +6,10 @@ services:
     container_name: mixnjuice-frontend
     restart: always
     environment:
-      VIRTUAL_HOST: ${FRONTEND_HOST}
-      VIRTUAL_PORT: ${FRONTEND_PORT}
-      LETSENCRYPT_HOST: ${FRONTEND_HOST}
+      - VIRTUAL_HOST
+      - VIRTUAL_PORT
+      - LETSENCRYPT_HOST
+      - API_URL
     networks:
       - proxy_proxy
 networks:

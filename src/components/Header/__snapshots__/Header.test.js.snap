@@ -25,7 +25,7 @@ exports[`<Header /> renders logged in correctly 1`] = `
         <button
           aria-controls="basic-navbar-nav"
           aria-label="Toggle navigation"
-          className="navbar-toggler"
+          className="navbar-toggler collapsed"
           onClick={[Function]}
           type="button"
         >
@@ -48,9 +48,7 @@ exports[`<Header /> renders logged in correctly 1`] = `
               disabled={false}
               href="/"
               onClick={[Function]}
-              role="tab"
               style={Object {}}
-              tabIndex={-1}
             >
               Home
             </a>
@@ -61,8 +59,6 @@ exports[`<Header /> renders logged in correctly 1`] = `
               disabled={false}
               href="/recipes"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Recipes
             </a>
@@ -73,8 +69,6 @@ exports[`<Header /> renders logged in correctly 1`] = `
               disabled={false}
               href="/recipe/editor"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Recipe Editor
             </a>
@@ -85,113 +79,26 @@ exports[`<Header /> renders logged in correctly 1`] = `
               disabled={false}
               href="/flavors"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Flavors
             </a>
+          </div>
+          <div
+            className="ml-auto navbar-nav"
+            onKeyDown={[Function]}
+          >
             <div
-              className="dropdown nav-item"
+              className="nav--link-custom px-3 dropdown"
               onKeyDown={[Function]}
             >
               <a
                 aria-expanded={false}
                 aria-haspopup={true}
-                className="dropdown-toggle nav-link"
-                data-rb-event-key={null}
-                href="#"
+                className="dropdown-toggle"
+                href="/"
+                id="user-dropdown"
                 onClick={[Function]}
-                onKeyDown={[Function]}
-                role="tab"
-                tabIndex={-1}
-              >
-                User
-              </a>
-              <div
-                className="dropdown-menu"
-              >
-                <a
-                  aria-current={null}
-                  className="nav--link-custom dropdown-item"
-                  disabled={false}
-                  href="/user/profile"
-                  onClick={[Function]}
-                >
-                  Profile
-                  <br />
-                </a>
-                <a
-                  aria-current={null}
-                  className="nav--link-custom dropdown-item"
-                  disabled={false}
-                  href="/user/recipes"
-                  onClick={[Function]}
-                >
-                  Recipes
-                  <br />
-                </a>
-                <a
-                  aria-current={null}
-                  className="nav--link-custom dropdown-item"
-                  disabled={false}
-                  href="/user/favorites"
-                  onClick={[Function]}
-                >
-                  Favorites
-                  <br />
-                </a>
-                <a
-                  aria-current={null}
-                  className="nav--link-custom dropdown-item"
-                  disabled={false}
-                  href="/user/flavor-stash"
-                  onClick={[Function]}
-                >
-                  Flavor Stash
-                  <br />
-                </a>
-                <a
-                  aria-current={null}
-                  className="nav--link-custom dropdown-item"
-                  disabled={false}
-                  href="/user/shopping-list"
-                  onClick={[Function]}
-                >
-                  Shopping List
-                  <br />
-                </a>
-                <a
-                  aria-current={null}
-                  className="nav--link-custom dropdown-item"
-                  disabled={false}
-                  href="/user/settings"
-                  onClick={[Function]}
-                >
-                  Settings
-                  <br />
-                </a>
-                <a
-                  aria-current={null}
-                  className="nav--link-custom dropdown-item"
-                  disabled={false}
-                  href="/dashboard"
-                  onClick={[Function]}
-                >
-                  Dashboard
-                  <br />
-                </a>
-                <a
-                  aria-current="page"
-                  className="nav--link-custom dropdown-item active"
-                  disabled={false}
-                  href="/"
-                  onClick={[Function]}
-                  style={Object {}}
-                >
-                  Logout
-                  <br />
-                </a>
-              </div>
+              />
             </div>
           </div>
         </div>
@@ -226,7 +133,7 @@ exports[`<Header /> renders logged out correctly 1`] = `
         <button
           aria-controls="basic-navbar-nav"
           aria-label="Toggle navigation"
-          className="navbar-toggler"
+          className="navbar-toggler collapsed"
           onClick={[Function]}
           type="button"
         >
@@ -249,9 +156,7 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/"
               onClick={[Function]}
-              role="tab"
               style={Object {}}
-              tabIndex={-1}
             >
               Home
             </a>
@@ -262,8 +167,6 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/recipes"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Recipes
             </a>
@@ -274,8 +177,6 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/flavors"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Flavors
             </a>
@@ -286,8 +187,6 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/login"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Login
             </a>
@@ -298,12 +197,14 @@ exports[`<Header /> renders logged out correctly 1`] = `
               disabled={false}
               href="/register"
               onClick={[Function]}
-              role="tab"
-              tabIndex={-1}
             >
               Register
             </a>
           </div>
+          <div
+            className="ml-auto navbar-nav"
+            onKeyDown={[Function]}
+          />
         </div>
       </nav>
     </div>

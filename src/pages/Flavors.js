@@ -56,7 +56,7 @@ export class Flavors extends Component {
     const { stashToggle } = this.state;
 
     if (!stashMap) {
-      stash.map(flavor => {
+      stash.map((flavor) => {
         holdings[flavor.flavorId] = true;
       });
 
@@ -72,7 +72,7 @@ export class Flavors extends Component {
     return (
       <ToggleButton
         value={stashToggle}
-        onClick={e => this.handleStashToggle(e)}
+        onClick={(e) => this.handleStashToggle(e)}
         title={!stashToggle ? 'Enable Flavor Stash' : 'Disable Flavor Stash'}
         variant="switch"
       />
@@ -109,8 +109,8 @@ export class Flavors extends Component {
         value={has}
         onClick={
           has
-            ? e => this.handleRemoveFromStash(id, e)
-            : e => this.handleAddToStash(id, e)
+            ? (e) => this.handleRemoveFromStash(id, e)
+            : (e) => this.handleAddToStash(id, e)
         }
         title={has ? 'Remove from Stash' : 'Add to Stash'}
         variant="check"
@@ -181,13 +181,13 @@ export class Flavors extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   loggedIn: isLoggedIn(state),
   stash: getStash(state),
   stashLoaded: isLoaded(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({ ...appActions, ...flavorActions }, dispatch)
 });
 

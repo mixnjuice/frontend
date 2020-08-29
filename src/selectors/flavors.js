@@ -1,18 +1,18 @@
 import { createSelector } from 'reselect';
 
-export const getFlavors = state => state.flavors;
+export const getFlavors = (state) => state.flavors;
 
 export const getAllFlavors = createSelector(
   getFlavors,
-  flavors => flavors.collection
+  (flavors) => flavors.collection
 );
 
 export const getCachedFlavors = createSelector(
   getFlavors,
-  flavors => flavors.cache
+  (flavors) => flavors.cache
 );
 
 export const getFlavorsPager = createSelector(
   getFlavors,
-  flavors => flavors.pager
+  (flavors) => flavors.pager
 );

@@ -26,7 +26,8 @@ import {
   getDesiredNicotineStrength,
   getDesiredVolume,
   getNicotineDiluentRatio,
-  getDesiredDiluentRatio
+  getDesiredDiluentRatio,
+  getUsePreMixedBase
 } from 'selectors/recipe';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -38,7 +39,8 @@ export class RecipeEditor extends Component {
       setNicotineStrength: PropTypes.func.isRequired,
       setDesiredDiluentRatio: PropTypes.func.isRequired,
       setNicotineDiluentRatio: PropTypes.func.isRequired,
-      setDesiredNicotineStrength: PropTypes.func.isRequired
+      setDesiredNicotineStrength: PropTypes.func.isRequired,
+      setUsePreMixedBase: PropTypes.func.isRequired
     }).isRequired,
     recipe: PropTypes.shape({
       id: PropTypes.string,
@@ -47,10 +49,11 @@ export class RecipeEditor extends Component {
       percentages: PropTypes.arrayOf(PropTypes.object).isRequired
     }),
     nicotineStrength: PropTypes.number.isRequired,
-    desiredNicotineStrength: PropTypes.number.isRequired,
+    desiredNicotineStrength: PropTypes.number,
     desiredVolume: PropTypes.number.isRequired,
-    desiredDiluentRatio: PropTypes.number.isRequired,
-    nicotineDiluentRatio: PropTypes.number.isRequired
+    desiredDiluentRatio: PropTypes.number,
+    nicotineDiluentRatio: PropTypes.number.isRequired,
+    usePreMixedBase: PropTypes.bool.isRequired
   };
 
   constructor(props) {
@@ -75,7 +78,8 @@ export class RecipeEditor extends Component {
       target: { name }
     } = event;
 
-    return ingredients.find(ingredient => ingredient.id === name) !== undefined
+    return ingredients.find((ingredient) => ingredient.id === name) !==
+      undefined
       ? 'disabled'
       : null;
   }
@@ -93,12 +97,15 @@ export class RecipeEditor extends Component {
   handleUserInput(event) {
     const { actions } = this.props;
     const {
-      target: { name, value }
+      target: { name, value, checked }
     } = event;
 
     switch (name) {
       case 'name':
         actions.setRecipeName(value);
+        break;
+      case 'usePreMixedBase':
+        actions.setUsePreMixedBase(checked);
         break;
       case 'desiredVolume': {
         const volume = parseInt(value, 10);
@@ -173,42 +180,54 @@ export class RecipeEditor extends Component {
       nicotineStrength,
       desiredDiluentRatio,
       nicotineDiluentRatio,
-      recipe: { percentages }
+      recipe: { percentages },
+      usePreMixedBase
     } = this.props;
 
     let flavorPercent = 0;
 
-    if (percentages.length > 0) {
-      flavorPercent = percentages.reduce((acc, curr) => {
-        return acc + curr.millipercent / 100;
+    const percentageEntries = Object.entries(percentages);
+
+    if (percentageEntries.length > 0) {
+      flavorPercent = percentageEntries.reduce((acc, [, curr]) => {
+        return acc + curr / 100;
       }, 0);
     }
 
-    // determine how many mg of nicotine we need
-    const nicotineMg = desiredNicotineStrength * desiredVolume;
-    // determine how many mL of nicotine base we need
-    const baseNicotineMl = nicotineMg / nicotineStrength;
-    // calculate the percentage of the final mix that will be nicotine
-    const nicotinePercent = baseNicotineMl / desiredVolume;
-    // determine how much of that is VG
-    const nicotineVgPercent = nicotinePercent * nicotineDiluentRatio;
-    const nicotinePgPercent = nicotinePercent * (1 - nicotineDiluentRatio);
-    // figure out the remaining amounts of VG and PG
-    const remainingVgPercent = desiredDiluentRatio - nicotineVgPercent;
-    const remainingPgPercent =
-      1 - desiredDiluentRatio - flavorPercent - nicotinePgPercent;
+    if (!usePreMixedBase) {
+      // determine how many mg of nicotine we need
+      const nicotineMg = desiredNicotineStrength * desiredVolume;
+      // determine how many mL of nicotine base we need
+      const baseNicotineMl = nicotineMg / nicotineStrength;
+      // calculate the percentage of the final mix that will be nicotine
+      const nicotinePercent = baseNicotineMl / desiredVolume;
+      // determine how much of that is VG
+      const nicotineVgPercent = nicotinePercent * nicotineDiluentRatio;
+      const nicotinePgPercent = nicotinePercent * (1 - nicotineDiluentRatio);
+      // figure out the remaining amounts of VG and PG
+      const remainingVgPercent = desiredDiluentRatio - nicotineVgPercent;
+      const remainingPgPercent =
+        1 - desiredDiluentRatio - flavorPercent - nicotinePgPercent;
 
-    // return false if there is too much flavor
-    if (remainingVgPercent < 0 || remainingPgPercent < 0) {
-      return false;
+      // return false if there is too much flavor
+      if (remainingVgPercent < 0 || remainingPgPercent < 0) {
+        return false;
+      }
+
+      return {
+        nicotine: nicotinePercent * 100,
+        flavor: flavorPercent * 100,
+        vg: remainingVgPercent * 100,
+        pg: remainingPgPercent * 100
+      };
+    } else {
+      return {
+        nicotine: (1 - flavorPercent) * 100,
+        flavor: flavorPercent * 100,
+        vg: 0,
+        pg: 0
+      };
     }
-
-    return {
-      nicotine: nicotinePercent * 100,
-      flavor: flavorPercent * 100,
-      vg: remainingVgPercent * 100,
-      pg: remainingPgPercent * 100
-    };
   }
 
   get components() {
@@ -218,7 +237,8 @@ export class RecipeEditor extends Component {
       nicotineStrength,
       desiredNicotineStrength,
       nicotineDiluentRatio,
-      recipe: { ingredients, percentages: ingredientPercentages }
+      recipe: { ingredients, percentages: ingredientPercentages },
+      usePreMixedBase
     } = this.props;
 
     if (!percentages) {
@@ -238,42 +258,71 @@ export class RecipeEditor extends Component {
     const nicotineDensity =
       (1 - nicotineDiluentRatio) * densities.pgNic +
       nicotineDiluentRatio * densities.vgNic;
-    // determine how many mg of nicotine we need
-    const nicotineMg = desiredNicotineStrength * desiredVolume;
-    // determine how many mL of nicotine base we need
-    const nicotineMl = nicotineMg / nicotineStrength;
-    const nicotineGrams = nicotineMl * nicotineDensity;
-    const vgMl = (percentages.vg / 100) * desiredVolume;
-    const vgGrams = vgMl * densities.vg;
-    const pgMl = (percentages.pg / 100) * desiredVolume;
-    const pgGrams = pgMl * densities.pg;
 
-    result.push({
-      name: `${nicotineStrength} mg/mL nicotine`,
-      density: nicotineDensity,
-      percentage: percentages.nicotine,
-      milliliters: nicotineMl,
-      grams: nicotineGrams
-    });
+    if (!usePreMixedBase) {
+      // determine how many mg of nicotine we need
+      const nicotineMg = desiredNicotineStrength * desiredVolume;
+      // determine how many mL of nicotine base we need
+      const nicotineMl = nicotineMg / nicotineStrength;
+      const nicotineGrams = nicotineMl * nicotineDensity;
+      const vgMl = (percentages.vg / 100) * desiredVolume;
+      const vgGrams = vgMl * densities.vg;
+      const pgMl = (percentages.pg / 100) * desiredVolume;
+      const pgGrams = pgMl * densities.pg;
 
-    result.push({
-      name: 'Vegetable glycerin',
-      density: densities.vg,
-      percentage: percentages.vg,
-      milliliters: vgMl,
-      grams: vgGrams
-    });
+      result.push({
+        name: `${nicotineStrength} mg/mL nicotine`,
+        density: nicotineDensity,
+        percentage: percentages.nicotine,
+        milliliters: nicotineMl,
+        grams: nicotineGrams
+      });
 
-    result.push({
-      name: 'Propylene glycol',
-      density: densities.pg,
-      percentage: percentages.pg,
-      milliliters: pgMl,
-      grams: pgGrams
-    });
+      result.push({
+        name: 'Vegetable glycerin',
+        density: densities.vg,
+        percentage: percentages.vg,
+        milliliters: vgMl,
+        grams: vgGrams
+      });
+
+      result.push({
+        name: 'Propylene glycol',
+        density: densities.pg,
+        percentage: percentages.pg,
+        milliliters: pgMl,
+        grams: pgGrams
+      });
+    } else {
+      let flavorPercent = 0;
+
+      if (percentageEntries.length > 0) {
+        flavorPercent = percentageEntries.reduce((acc, [, curr]) => {
+          return acc + curr / 100;
+        }, 0);
+      }
+
+      const basePercent = 1 - flavorPercent;
+      const nicotineMl = desiredVolume * basePercent;
+      const nicotineGrams = nicotineMl * nicotineDensity;
+
+      result.push({
+        name: `${nicotineStrength} mg/mL nicotine base`,
+        density: nicotineDensity,
+        percentage: basePercent * 100,
+        milliliters: nicotineMl,
+        grams: nicotineGrams
+      });
+    }
 
     for (const [id, percentage] of percentageEntries) {
-      const ingredient = ingredients.find(ing => ing.Flavor.id === id);
+      const ingredient = ingredients.find((ing) => ing.Flavor.id === id);
+
+      if (!ingredient) {
+        // eslint-disable-next-line
+        continue;
+      }
+
       const name = `${ingredient.Flavor.Vendor.name} ${ingredient.Flavor.name}`;
       const milliliters = (percentage / 100) * desiredVolume;
       const grams = milliliters * densities.pg;
@@ -321,7 +370,8 @@ export class RecipeEditor extends Component {
       nicotineStrength,
       nicotineDiluentRatio,
       desiredDiluentRatio,
-      recipe: { percentages: ingredientPercentages }
+      recipe: { percentages: ingredientPercentages },
+      usePreMixedBase
     } = this.props;
     const { collapsed } = this.state;
     const { percentages, components } = this;
@@ -396,6 +446,14 @@ export class RecipeEditor extends Component {
                         </Form.Control.Feedback>
                       </InputGroup>
                     </Form.Group>
+                    <Form.Group as={Col} md="8" controlId="">
+                      <Form.Label>Use pre-mixed base</Form.Label>
+                      <Form.Check
+                        type="checkbox"
+                        name="usePreMixedBase"
+                        onChange={this.handleUserInput}
+                      />
+                    </Form.Group>
                   </Form.Row>
                   <Form.Row>
                     <Form.Group as={Col} md="4" controlId="nicotineStrength">
@@ -425,38 +483,40 @@ export class RecipeEditor extends Component {
                       />
                     </Form.Group>
                   </Form.Row>
-                  <Form.Row>
-                    <Form.Group
-                      as={Col}
-                      md="4"
-                      controlId="desiredNicotineStrength"
-                    >
-                      <Form.Label>Desired Strength</Form.Label>
-                      <InputGroup>
-                        <Form.Control
-                          name="desiredNicotineStrength"
-                          type="number"
-                          value={desiredNicotineStrength}
+                  {!usePreMixedBase && (
+                    <Form.Row>
+                      <Form.Group
+                        as={Col}
+                        md="4"
+                        controlId="desiredNicotineStrength"
+                      >
+                        <Form.Label>Desired Strength</Form.Label>
+                        <InputGroup>
+                          <Form.Control
+                            name="desiredNicotineStrength"
+                            type="number"
+                            value={desiredNicotineStrength}
+                            onChange={this.handleUserInput}
+                            placeholder="0"
+                            required
+                          />
+                          <InputGroup.Append>
+                            <InputGroup.Text id="amount-unit">
+                              mg/mL
+                            </InputGroup.Text>
+                          </InputGroup.Append>
+                        </InputGroup>
+                      </Form.Group>
+                      <Form.Group as={Col} md="8">
+                        <Form.Label>Desired VG/PG ratio</Form.Label>
+                        <SplitSlider
+                          name="desiredDiluentRatio"
+                          initialValue={desiredDiluentRatio * 100}
                           onChange={this.handleUserInput}
-                          placeholder="0"
-                          required
                         />
-                        <InputGroup.Append>
-                          <InputGroup.Text id="amount-unit">
-                            mg/mL
-                          </InputGroup.Text>
-                        </InputGroup.Append>
-                      </InputGroup>
-                    </Form.Group>
-                    <Form.Group as={Col} md="8">
-                      <Form.Label>Desired VG/PG ratio</Form.Label>
-                      <SplitSlider
-                        name="desiredDiluentRatio"
-                        initialValue={desiredDiluentRatio * 100}
-                        onChange={this.handleUserInput}
-                      />
-                    </Form.Group>
-                  </Form.Row>
+                      </Form.Group>
+                    </Form.Row>
+                  )}
                 </Col>
                 <Col md="6">
                   <Container>
@@ -517,16 +577,17 @@ export class RecipeEditor extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   recipe: getActiveRecipe(state),
   nicotineStrength: getNicotineStrength(state),
   desiredNicotineStrength: getDesiredNicotineStrength(state),
   desiredVolume: getDesiredVolume(state),
   nicotineDiluentRatio: getNicotineDiluentRatio(state),
-  desiredDiluentRatio: getDesiredDiluentRatio(state)
+  desiredDiluentRatio: getDesiredDiluentRatio(state),
+  usePreMixedBase: getUsePreMixedBase(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(recipeActions, dispatch)
 });
 

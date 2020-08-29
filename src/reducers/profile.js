@@ -11,17 +11,17 @@ export const types = buildActions('profile', [
   'MAP_USER_NAMES_TO_USER_IDS'
 ]);
 
-const requestProfile = user => ({
+const requestProfile = (user) => ({
   type: types.REQUEST_PROFILE,
   user
 });
 
-const requestProfileSuccess = profile => ({
+const requestProfileSuccess = (profile) => ({
   type: types.REQUEST_PROFILE_SUCCESS,
   profile
 });
 
-const requestProfileFailure = error => ({
+const requestProfileFailure = (error) => ({
   type: types.REQUEST_PROFILE_FAILURE,
   error
 });
@@ -30,22 +30,22 @@ const requestCurrentUserProfile = () => ({
   type: types.REQUEST_CURRENT_USER_PROFILE
 });
 
-const updateProfile = profile => ({
+const updateProfile = (profile) => ({
   type: types.UPDATE_PROFILE,
   profile
 });
 
-const updateProfileSuccess = profile => ({
+const updateProfileSuccess = (profile) => ({
   type: types.UPDATE_PROFILE_SUCCESS,
   profile
 });
 
-const updateProfileFailure = error => ({
+const updateProfileFailure = (error) => ({
   type: types.UPDATE_PROFILE_FAILURE,
   error
 });
 
-const mapUserNamesToUserIds = userNames => ({
+const mapUserNamesToUserIds = (userNames) => ({
   type: types.MAP_USER_NAMES_TO_USER_IDS,
   userNames
 });
