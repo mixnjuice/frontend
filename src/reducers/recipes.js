@@ -6,17 +6,17 @@ export const types = buildActions('recipe', [
   'REQUEST_RECIPES_FAILURE'
 ]);
 
-const requestRecipes = id => ({
+const requestRecipes = (id) => ({
   type: types.REQUEST_RECIPES,
   id
 });
 
-const requestRecipesSuccess = recipes => ({
+const requestRecipesSuccess = (recipes) => ({
   type: types.REQUEST_RECIPES_SUCCESS,
   recipes
 });
 
-const requestRecipesFailure = error => ({
+const requestRecipesFailure = (error) => ({
   type: types.REQUEST_RECIPES_FAILURE,
   error
 });

@@ -427,11 +427,11 @@ export class Recipes extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   recipes: getRecipeList(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators({ ...toastActions, ...recipesActions }, dispatch)
 });
 
