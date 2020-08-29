@@ -13,7 +13,7 @@ export const seekLocations = {
   PREV: 'Previous'
 };
 
-export const pagination = WrappedComponent =>
+export const pagination = (WrappedComponent) =>
   class extends Component {
     static displayName = 'Pagination';
     static propTypes = {
@@ -46,7 +46,7 @@ export const pagination = WrappedComponent =>
     get pagerCounter() {
       const { pages } = this.props.pager;
 
-      return [...Array(pages).keys()].map(value => value + 1);
+      return [...Array(pages).keys()].map((value) => value + 1);
     }
 
     changePage(page) {
@@ -165,20 +165,18 @@ export const pagination = WrappedComponent =>
     }
   };
 
-export const mapStateToProps = (dataSelector, pagerSelector) => state => ({
+export const mapStateToProps = (dataSelector, pagerSelector) => (state) => ({
   collection: dataSelector(state),
   pager: pagerSelector(state)
 });
 
-export const mapDispatchToProps = action => dispatch => ({
+export const mapDispatchToProps = (action) => (dispatch) => ({
   actions: bindActionCreators({ action }, dispatch)
 });
 
-export const withPagination = (
-  action,
-  dataSelector,
-  pagerSelector
-) => WrappedComponent =>
+export const withPagination = (action, dataSelector, pagerSelector) => (
+  WrappedComponent
+) =>
   connect(
     mapStateToProps(dataSelector, pagerSelector),
     mapDispatchToProps(action)

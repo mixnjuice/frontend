@@ -117,7 +117,7 @@ export class FlavorStash extends Component {
           <Button
             className="button-animation"
             size="sm"
-            onClick={e => this.handleStashEditor(id, e)}
+            onClick={(e) => this.handleStashEditor(id, e)}
           >
             <FontAwesomeIcon icon="pen" size="sm" title="Edit Details" />
           </Button>
@@ -221,7 +221,7 @@ export class FlavorStash extends Component {
                     &nbsp;<span>Save</span>
                   </Button>
                   <Button
-                    onClick={e => this.handleStashEditor(false, e)}
+                    onClick={(e) => this.handleStashEditor(false, e)}
                     className="button-animation button--cancel"
                     variant="danger"
                   >
@@ -263,7 +263,7 @@ export class FlavorStash extends Component {
                 <Card key={index} className="mb-1">
                   <Card.Body
                     className="border-bottom cursor--pointer"
-                    onClick={e => this.handleExpandFlavor(flavor, e)}
+                    onClick={(e) => this.handleExpandFlavor(flavor, e)}
                   >
                     <Row>
                       <Col>
@@ -347,13 +347,13 @@ export class FlavorStash extends Component {
   }
 }
 
-export const mapStateToProps = state => ({
+export const mapStateToProps = (state) => ({
   stash: getStash(state),
   stashLoaded: isLoaded(state)
 });
 
-export const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({ ...flavorActions }, dispatch)
+export const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(flavorActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FlavorStash);

@@ -16,7 +16,7 @@ export const mockComponent = (name, props = {}) => () =>
  * Creates a mock component which will expose its props for snapshot testing purposes
  * @param {*} name The component/element name (in PascalCase)
  */
-export const mockComponentWithProps = name => props =>
+export const mockComponentWithProps = (name) => (props) =>
   createElement(name, props, props.children);
 
 /**
@@ -24,10 +24,9 @@ export const mockComponentWithProps = name => props =>
  *
  * @param {Component} WrappedComponent React component to wrap
  */
-export const withMemoryRouter = (
-  WrappedComponent,
-  routerProps = {}
-) => props => (
+export const withMemoryRouter = (WrappedComponent, routerProps = {}) => (
+  props
+) => (
   <MemoryRouter {...routerProps}>
     <WrappedComponent {...props} />
   </MemoryRouter>
@@ -39,7 +38,7 @@ export const withMemoryRouter = (
  * @param {Component} WrappedComponent React component to wrap
  * @param {object} store Mock store
  */
-export const withProvider = (WrappedComponent, store) => props => (
+export const withProvider = (WrappedComponent, store) => (props) => (
   <Provider store={store}>
     <WrappedComponent {...props} />
   </Provider>

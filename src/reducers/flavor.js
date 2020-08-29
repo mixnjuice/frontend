@@ -14,22 +14,22 @@ const requestStash = () => ({
   type: types.REQUEST_STASH
 });
 
-const requestStashSuccess = stash => ({
+const requestStashSuccess = (stash) => ({
   type: types.REQUEST_STASH_SUCCESS,
   stash
 });
 
-const addStash = flavor => ({
+const addStash = (flavor) => ({
   type: types.ADD_STASH,
   flavor
 });
 
-const removeStash = flavor => ({
+const removeStash = (flavor) => ({
   type: types.REMOVE_STASH,
   flavor
 });
 
-const updateStash = flavor => ({
+const updateStash = (flavor) => ({
   type: types.UPDATE_STASH,
   flavor
 });
@@ -38,7 +38,7 @@ const updateStashSuccess = () => ({
   type: types.UPDATE_STASH_SUCCESS
 });
 
-const requestFailure = error => ({
+const requestFailure = (error) => ({
   type: types.REQUEST_FAILURE,
   error
 });

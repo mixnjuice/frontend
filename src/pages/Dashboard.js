@@ -43,11 +43,11 @@ export class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   dashboardComponent: getDashboardComponent(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(dashboardActions, dispatch)
 });
 

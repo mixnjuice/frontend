@@ -89,7 +89,7 @@ export class App extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(appActions, dispatch)
 });
 

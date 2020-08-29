@@ -90,7 +90,7 @@ export default class UserSettings extends Component {
                     name="profilePic"
                     type="file"
                     className="custom-file-input"
-                    onChange={event => this.handleFileInput(event)}
+                    onChange={(event) => this.handleFileInput(event)}
                   />
                   <Form.Label className="custom-file-label text-left">
                     {this.state.filename

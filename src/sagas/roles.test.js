@@ -489,7 +489,7 @@ describe('roles sagas', () => {
     const result = gen.next();
 
     expect(result.value).toEqual(
-      all(Object.values(watchers).map(watcher => watcher()))
+      all(Object.values(watchers).map((watcher) => watcher()))
     );
   });
 });

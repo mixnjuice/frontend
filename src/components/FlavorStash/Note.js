@@ -165,7 +165,7 @@ export class Note extends Component {
                     &nbsp;<span>Save</span>
                   </Button>
                   <Button
-                    onClick={e => this.handleNoteEditor(false, e)}
+                    onClick={(e) => this.handleNoteEditor(false, e)}
                     className="button-animation button--cancel"
                   >
                     <span>Cancel</span>
@@ -213,12 +213,12 @@ export class Note extends Component {
   }
 }
 
-export const mapStateToProps = state => ({
+export const mapStateToProps = (state) => ({
   loading: isLoading(state),
   note: getFlavorNote(state)
 });
 
-export const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(
     {
       ...noteActions

@@ -112,12 +112,12 @@ export class Login extends Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   loggingIn: isLoggingIn(state),
   loggedIn: isLoggedIn(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   actions: bindActionCreators(appActions, dispatch)
 });
 
