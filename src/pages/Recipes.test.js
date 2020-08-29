@@ -2,6 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import { Recipes } from './Recipes';
+import recipeList from '../data/recipes.json';
 
 jest.mock('react-bootstrap', () => ({
   ...jest.requireActual('react-bootstrap'),
@@ -11,17 +12,22 @@ jest.mock('react-bootstrap', () => ({
 describe('<Recipes />', () => {
   const actions = {
     registerUser: jest.fn(),
-    popToast: jest.fn()
+    popToast: jest.fn(),
+    requestRecipes: jest.fn()
   };
 
   it('renders correctly', () => {
-    const component = renderer.create(<Recipes toastActions={actions} />);
+    const component = renderer.create(
+      <Recipes actions={actions} recipes={recipeList} />
+    );
 
     expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('handles favorite clicks', () => {
-    const component = renderer.create(<Recipes toastActions={actions} />);
+    const component = renderer.create(
+      <Recipes actions={actions} recipes={recipeList} />
+    );
 
     const { instance } = component.root.findByType(Recipes);
 
@@ -41,7 +47,9 @@ describe('<Recipes />', () => {
   });
 
   it('handles view toggle', () => {
-    const component = renderer.create(<Recipes toastActions={actions} />);
+    const component = renderer.create(
+      <Recipes actions={actions} recipes={recipeList} />
+    );
 
     const { instance } = component.root.findByType(Recipes);
 
