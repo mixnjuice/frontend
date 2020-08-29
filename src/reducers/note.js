@@ -13,52 +13,52 @@ export const types = buildActions('note', [
   'UPDATE_NOTE_SUCCESS'
 ]);
 
-const requestLoading = flavorId => ({
+const requestLoading = (flavorId) => ({
   type: types.REQUEST_LOADING,
   flavorId
 });
 
-const requestNote = note => ({
+const requestNote = (note) => ({
   type: types.REQUEST_NOTE,
   note
 });
 
-const requestNoteSuccess = note => ({
+const requestNoteSuccess = (note) => ({
   type: types.REQUEST_NOTE_SUCCESS,
   note
 });
 
-const requestFailure = error => ({
+const requestFailure = (error) => ({
   type: types.REQUEST_FAILURE,
   error
 });
 
-const createNote = flavorNote => ({
+const createNote = (flavorNote) => ({
   type: types.CREATE_NOTE,
   flavorNote
 });
 
-const createNoteSuccess = note => ({
+const createNoteSuccess = (note) => ({
   type: types.CREATE_NOTE_SUCCESS,
   note
 });
 
-const deleteNote = flavorNote => ({
+const deleteNote = (flavorNote) => ({
   type: types.DELETE_NOTE,
   flavorNote
 });
 
-const deleteNoteSuccess = flavorId => ({
+const deleteNoteSuccess = (flavorId) => ({
   type: types.DELETE_NOTE_SUCCESS,
   flavorId
 });
 
-const updateNote = flavorNote => ({
+const updateNote = (flavorNote) => ({
   type: types.UPDATE_NOTE,
   flavorNote
 });
 
-const updateNoteSuccess = flavorId => ({
+const updateNoteSuccess = (flavorId) => ({
   type: types.UPDATE_NOTE_SUCCESS,
   flavorId
 });
