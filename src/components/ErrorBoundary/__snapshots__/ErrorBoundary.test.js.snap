@@ -1,7 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ErrorBoundary /> renders an error page if there is an error 1`] = `
-<h1>
-  Something went wrong. Please refresh the page.
-</h1>
+<div
+  className="jumbotron"
+>
+  <h1>
+    <i
+      className="fa exclamation-triangle"
+    />
+     Something went wrong. Please refresh the page.
+  </h1>
+</div>
 `;
