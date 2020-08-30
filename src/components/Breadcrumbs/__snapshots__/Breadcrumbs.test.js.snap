@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Breadcrumbs /> renders admin in correctly 1`] = `
+<nav
+  aria-label="breadcrumb"
+>
+  <ol
+    className="breadcrumb"
+  >
+    <li
+      className="breadcrumb-item"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+    </li>
+    <li
+      className="breadcrumb-item"
+    >
+      <a
+        href="/admin"
+        onClick={[Function]}
+      >
+        Admin
+      </a>
+    </li>
+    <li
+      className="breadcrumb-item"
+    >
+      <a
+        href="/admin/stuff"
+        onClick={[Function]}
+      >
+        Admin Page
+      </a>
+    </li>
+    <li
+      aria-current="page"
+      className="breadcrumb-item active"
+    >
+      <span
+        className="active"
+      >
+        Admin Stuff
+      </span>
+    </li>
+  </ol>
+</nav>
+`;
+
+exports[`<Breadcrumbs /> renders home correctly 1`] = `
+<nav
+  aria-label="breadcrumb"
+>
+  <ol
+    className="breadcrumb"
+  >
+    <li
+      className="breadcrumb-item"
+    >
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Home
+      </a>
+    </li>
+    <li
+      aria-current="page"
+      className="breadcrumb-item active"
+    >
+      <span
+        className="active"
+      >
+        User Stuff
+      </span>
+    </li>
+  </ol>
+</nav>
+`;
