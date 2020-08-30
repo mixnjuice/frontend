@@ -21,7 +21,7 @@ describe('<Breadcrumbs />', () => {
     ).toMatchSnapshot();
   });
 
-  it('renders admin in correctly', () => {
+  it('renders admin correctly', () => {
     const props = {
       base: 'admin',
       links: [{ name: 'Admin Page', url: '/admin/stuff' }],
