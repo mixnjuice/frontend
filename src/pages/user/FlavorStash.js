@@ -179,12 +179,10 @@ export class FlavorStash extends Component {
                   <Form.Group as={Col}>
                     <InputGroup>
                       <InputGroup.Prepend>
-                        <InputGroup.Text id="inputGroupPrepend">
-                          Min
-                        </InputGroup.Text>
+                        <InputGroup.Text>Min</InputGroup.Text>
                       </InputGroup.Prepend>
                       <Form.Control {...input} type="number" step="0.1" />
-                      <InputGroup.Text id="inputGroupAppend">%</InputGroup.Text>
+                      <InputGroup.Text>%</InputGroup.Text>
                     </InputGroup>
                   </Form.Group>
                 )}
@@ -194,12 +192,10 @@ export class FlavorStash extends Component {
                   <Form.Group as={Col}>
                     <InputGroup>
                       <InputGroup.Prepend>
-                        <InputGroup.Text id="inputGroupPrepend">
-                          Max
-                        </InputGroup.Text>
+                        <InputGroup.Text>Max</InputGroup.Text>
                       </InputGroup.Prepend>
                       <Form.Control {...input} type="number" step="0.1" />
-                      <InputGroup.Text id="inputGroupAppend">%</InputGroup.Text>
+                      <InputGroup.Text>%</InputGroup.Text>
                     </InputGroup>
                   </Form.Group>
                 )}
