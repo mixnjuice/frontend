@@ -10,6 +10,8 @@ import recipe from './recipe';
 import roles from './roles';
 import toast from './toast';
 import users from './users';
+import vendor from './vendor';
+import vendors from './vendors';
 
 describe('index saga', () => {
   it('forks all sagas', () => {
@@ -28,7 +30,9 @@ describe('index saga', () => {
           recipe,
           roles,
           toast,
-          users
+          users,
+          vendor,
+          vendors
         ].map(fork)
       )
     );

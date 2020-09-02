@@ -9,6 +9,8 @@ import recipe from './recipe';
 import roles from './roles';
 import toast from './toast';
 import users from './users';
+import vendor from './vendor';
+import vendors from './vendors';
 
 export default function* saga() {
   yield all(
@@ -21,7 +23,9 @@ export default function* saga() {
       recipe,
       roles,
       toast,
-      users
+      users,
+      vendor,
+      vendors
     ].map(fork)
   );
 }
