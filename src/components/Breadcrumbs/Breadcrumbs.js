@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Breadcrumbs({ active, base, links }) {
   Breadcrumbs.propTypes = {
     base: PropTypes.string,
-    links: PropTypes.array,
+    links: PropTypes.arrayOf(PropTypes.object),
     active: PropTypes.string
   };
 
