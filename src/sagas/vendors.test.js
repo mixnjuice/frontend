@@ -15,43 +15,6 @@ describe('vendors sagas', () => {
   };
 
   it('handles success in requestVendorsWorker', () => {
-    /* const gen = workers.requestVendorsWorker({ pager });
-
-    let result = gen.next(pager);
-
-    expect(result.value).toEqual(select(getVendorsPager));
-
-    result = gen.next(count);
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: countEndpoint })
-    );
-
-    result = gen.next({
-      success: true,
-      response: {
-        data: 25
-      }
-    });
-
-    expect(result.value).toEqual(select(getCachedVendors));
-
-    result = gen.next(vendors);
-
-    expect(result.value).toEqual(
-      call(request.execute, { endpoint: vendorsEndpoint })
-    );
-
-    result = gen.next({
-      success: true,
-      response: {
-        data: vendors
-      }
-    });
-
-    expect(result.value).toEqual(
-      put(actions.requestVendorsSuccess(vendors, pager))
-    );*/
     const response = { cached: vendors, pager };
     const gen = workers.requestVendorsWorker({ pager });
 
