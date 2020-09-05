@@ -101,7 +101,7 @@ describe('vendor sagas', () => {
   };
 
   it('handles success in createVendorWorker', () => {
-    const gen = workers.createVendorWorker({ details });
+    const gen = workers.createVendorWorker({ vendor: details });
 
     let result = gen.next(data);
 
@@ -135,7 +135,7 @@ describe('vendor sagas', () => {
 
   it('handles request failure in createVendorWorker', () => {
     const error = new Error('An error occurred.');
-    const gen = workers.createVendorWorker({ details });
+    const gen = workers.createVendorWorker({ vendor: details });
 
     let result = gen.next(data);
 
@@ -154,7 +154,7 @@ describe('vendor sagas', () => {
   it('handles unexpected error in createVendorWorker', () => {
     const error = new Error('An error occurred.');
     const { message } = error;
-    const gen = workers.createVendorWorker({ details });
+    const gen = workers.createVendorWorker({ vendor: details });
 
     let result = gen.next(data);
 
@@ -180,12 +180,12 @@ describe('vendor sagas', () => {
   };
 
   it('handles success in updateVendorWorker', () => {
-    details.vendorId = 1;
+    vendor.vendorId = 1;
     const gen = workers.updateVendorWorker({
-      details
+      vendor
     });
 
-    let result = gen.next(details);
+    let result = gen.next(vendor);
 
     expect(result.value).toEqual(
       call(request.execute, { endpoint: updateEndpoint, data })
@@ -217,9 +217,9 @@ describe('vendor sagas', () => {
 
   it('handles request failure in updateVendorWorker', () => {
     const error = new Error('An error occurred.');
-    const gen = workers.updateVendorWorker({ details });
+    const gen = workers.updateVendorWorker({ vendor: details });
 
-    let result = gen.next(details);
+    let result = gen.next(vendor);
 
     expect(result.value).toEqual(
       call(request.execute, { endpoint: updateEndpoint, data })
@@ -234,12 +234,12 @@ describe('vendor sagas', () => {
   });
 
   it('handles unexpected error in updateVendorWorker', () => {
-    details.vendorId = 1;
+    vendor.vendorId = 1;
     const error = new Error('An error occurred.');
     const { message } = error;
-    const gen = workers.updateVendorWorker({ details });
+    const gen = workers.updateVendorWorker({ vendor: details });
 
-    let result = gen.next(details);
+    let result = gen.next(vendor);
 
     expect(result.value).toEqual(
       call(request.execute, { endpoint: updateEndpoint, data })

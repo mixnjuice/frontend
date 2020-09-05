@@ -19,9 +19,9 @@ const requestVendorSuccess = (vendor) => ({
   vendor
 });
 
-const createVendor = (details) => ({
+const createVendor = (vendor) => ({
   type: types.CREATE_VENDOR,
-  details
+  vendor
 });
 
 const deleteVendor = ({ vendorId, name }) => ({
@@ -30,9 +30,9 @@ const deleteVendor = ({ vendorId, name }) => ({
   name
 });
 
-const updateVendor = (details) => ({
+const updateVendor = (vendor) => ({
   type: types.UPDATE_VENDOR,
-  details
+  vendor
 });
 
 const requestFailure = (error) => ({

@@ -36,7 +36,7 @@ function* requestVendorWorker({ vendorId }) {
   }
 }
 
-function* createVendorWorker({ details: { name, slug, code } }) {
+function* createVendorWorker({ vendor: { name, slug, code } }) {
   try {
     const endpoint = {
       url: '/vendor',
@@ -73,7 +73,7 @@ function* createVendorWorker({ details: { name, slug, code } }) {
   }
 }
 
-function* updateVendorWorker({ details: { vendorId, name, slug, code } }) {
+function* updateVendorWorker({ vendor: { vendorId, name, slug, code } }) {
   try {
     const endpoint = {
       url: `/vendor/${vendorId}`,
