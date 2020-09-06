@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import path from 'path';
 import webpack from 'webpack';
 import { CLIEngine } from 'eslint';
