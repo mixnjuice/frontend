@@ -2,12 +2,13 @@ import { Helmet } from 'react-helmet';
 import React, { Suspense, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { ErrorBoundary } from 'react-error-boundary';
 
 import Footer from 'components/Footer/Footer';
 import Header from 'components/Header/Header';
 import ToastDrawer from 'components/ToastDrawer/ToastDrawer';
 import PrivateRoute from 'components/PrivateRoute/PrivateRoute';
-import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary';
+import ErrorFallback from 'components/ErrorFallback/ErrorFallback';
 import { actions as appActions } from 'reducers/application';
 import {
   Dashboard,
@@ -37,7 +38,7 @@ export default function App() {
 
   return (
     <Suspense fallback={<SuspenseFallback />}>
-      <ErrorBoundary>
+      <ErrorBoundary FallbackComponent={ErrorFallback}>
         <Helmet defaultTitle="MixNJuice" titleTemplate="MixNJuice - %s" />
         <Header />
         <ToastDrawer />
