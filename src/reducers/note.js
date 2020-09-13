@@ -38,9 +38,9 @@ const createNote = (flavorNote) => ({
   flavorNote
 });
 
-const createNoteSuccess = (note) => ({
+const createNoteSuccess = (flavor) => ({
   type: types.CREATE_NOTE_SUCCESS,
-  note
+  flavor
 });
 
 const deleteNote = (flavorNote) => ({
@@ -58,9 +58,9 @@ const updateNote = (flavorNote) => ({
   flavorNote
 });
 
-const updateNoteSuccess = (flavorId) => ({
+const updateNoteSuccess = (flavor) => ({
   type: types.UPDATE_NOTE_SUCCESS,
-  flavorId
+  flavor
 });
 
 export const actions = {
@@ -103,6 +103,13 @@ export const reducer = (state = initialState, action = {}) => {
     case types.CREATE_NOTE_SUCCESS:
       return {
         ...state,
+        collection: {
+          ...state.collection,
+          [action.flavor.flavorId]: {
+            flavorId: action.flavor.flavorId,
+            note: action.flavor.note
+          }
+        },
         loading: false
       };
     case types.DELETE_NOTE_SUCCESS:
@@ -119,7 +126,10 @@ export const reducer = (state = initialState, action = {}) => {
         ...state,
         collection: {
           ...state.collection,
-          [action.flavorId]: null
+          [action.flavor.flavorId]: {
+            flavorId: action.flavor.flavorId,
+            note: action.flavor.note
+          }
         },
         loading: false
       };

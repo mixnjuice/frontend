@@ -29,8 +29,7 @@ export class Note extends Component {
     super(props);
 
     this.state = {
-      editingNote: false,
-      updatedNote: null
+      editing: false
     };
 
     this.handleNoteSubmit = this.handleNoteSubmit.bind(this);
@@ -43,15 +42,15 @@ export class Note extends Component {
   }
 
   addNoteIcon(id) {
-    const { editingNote } = this.state;
+    const { editing } = this.state;
 
     return (
       <Fragment>
-        {!editingNote && (
+        {!editing && (
           <Button
             className="button-animation"
             size="sm"
-            onClick={() => this.handleNoteEditor(id)}
+            onClick={() => this.handleToggleEditing(id)}
           >
             <FontAwesomeIcon icon="plus" size="sm" title="Add Flavor Note" />
           </Button>
@@ -61,15 +60,15 @@ export class Note extends Component {
   }
 
   editNoteIcon(id) {
-    const { editingNote } = this.state;
+    const { editing } = this.state;
 
     return (
       <Fragment>
-        {!editingNote && (
+        {!editing && (
           <Button
             className="button-animation"
             size="sm"
-            onClick={() => this.handleNoteEditor(id)}
+            onClick={() => this.handleToggleEditing(id)}
           >
             <FontAwesomeIcon icon="pen" size="sm" title="Edit Flavor Note" />
           </Button>
@@ -78,8 +77,8 @@ export class Note extends Component {
     );
   }
 
-  handleNoteEditor() {
-    this.setState({ editingNote: !this.state.editingNote });
+  handleToggleEditing() {
+    this.setState({ editing: !this.state.editing });
   }
 
   handleNoteSubmit(values) {
@@ -93,14 +92,12 @@ export class Note extends Component {
     } else {
       actions.createNote(values);
     }
-    this.setState({ updatedNote: note || '' });
 
-    this.handleNoteEditor();
+    this.handleToggleEditing();
   }
 
   noteEditor() {
     const { flavorId, note, userId } = this.props;
-    const { updatedNote } = this.state;
     const update = Boolean(note?.[flavorId]?.note);
 
     return (
@@ -108,7 +105,7 @@ export class Note extends Component {
         onSubmit={this.handleNoteSubmit}
         initialValues={{
           flavorId,
-          note: updatedNote || note?.[flavorId]?.note,
+          note: note?.[flavorId]?.note,
           update,
           userId
         }}
@@ -165,7 +162,7 @@ export class Note extends Component {
                     &nbsp;<span>Save</span>
                   </Button>
                   <Button
-                    onClick={(e) => this.handleNoteEditor(false, e)}
+                    onClick={(e) => this.handleToggleEditing(false, e)}
                     className="button-animation button--cancel"
                   >
                     <span>Cancel</span>
@@ -181,30 +178,29 @@ export class Note extends Component {
 
   render() {
     const { note, flavorId, loading } = this.props;
-    const { editingNote } = this.state;
-    const updatedNote = this.state.updatedNote;
+    const { editing } = this.state;
 
     if (loading !== flavorId) {
       return (
         <Fragment>
           <h3>
-            {note[flavorId] || updatedNote
+            {note[flavorId]
               ? this.editNoteIcon(flavorId)
               : this.addNoteIcon(flavorId)}{' '}
             Flavor Notes
           </h3>
-          {!editingNote && (note[flavorId] || updatedNote) ? (
+          {!editing && note[flavorId] ? (
             <Fragment>
               {
                 /* eslint-disable-next-line no-sync */
                 unified()
                   .use(parse)
                   .use(remark2react)
-                  .processSync(updatedNote || note[flavorId].note).result
+                  .processSync(note[flavorId].note).result
               }
             </Fragment>
           ) : null}
-          {editingNote ? this.noteEditor() : null}
+          {editing ? this.noteEditor() : null}
         </Fragment>
       );
     } else {
@@ -219,12 +215,7 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(
-    {
-      ...noteActions
-    },
-    dispatch
-  )
+  actions: bindActionCreators(noteActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Note);

@@ -40,8 +40,7 @@ export class FlavorStash extends Component {
       expanded: {},
       editingStash: false,
       removed: {},
-      usage: {},
-      viewingNote: {}
+      usage: {}
     };
 
     this.handleRemoveFromStash = this.removeFromStash.bind(this);
@@ -179,7 +178,9 @@ export class FlavorStash extends Component {
                   <Form.Group as={Col}>
                     <InputGroup>
                       <InputGroup.Prepend>
-                        <InputGroup.Text>Min</InputGroup.Text>
+                        <InputGroup.Text id="inputGroupPrepend">
+                          Min
+                        </InputGroup.Text>
                       </InputGroup.Prepend>
                       <Form.Control {...input} type="number" step="0.1" />
                       <InputGroup.Text>%</InputGroup.Text>
@@ -192,7 +193,9 @@ export class FlavorStash extends Component {
                   <Form.Group as={Col}>
                     <InputGroup>
                       <InputGroup.Prepend>
-                        <InputGroup.Text>Max</InputGroup.Text>
+                        <InputGroup.Text id="inputGroupPrepend">
+                          Max
+                        </InputGroup.Text>
                       </InputGroup.Prepend>
                       <Form.Control {...input} type="number" step="0.1" />
                       <InputGroup.Text>%</InputGroup.Text>

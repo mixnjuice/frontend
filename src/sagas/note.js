@@ -86,11 +86,12 @@ function* createNoteWorker({ flavorNote }) {
     const result = yield call(request.execute, { endpoint, data });
 
     if (result.success) {
-      yield put(actions.createNoteSuccess());
+      yield put(actions.createNoteSuccess({ flavorId, note }));
       yield call(helper.toast, {
         title: 'Note',
         message: `Flavor ID ${flavorId} Note successfully created!`
       });
+      yield put(actions.requestNote({ flavorId }));
     } else if (result.error) {
       throw result.error;
     } else {
@@ -168,7 +169,7 @@ function* updateNoteWorker({ flavorNote }) {
     const result = yield call(request.execute, { endpoint, data });
 
     if (result.success) {
-      yield put(actions.updateNoteSuccess(flavorId));
+      yield put(actions.updateNoteSuccess({ flavorId, note }));
       yield call(helper.toast, {
         title: 'Note',
         message: `Flavor ID ${flavorId} Note successfully updated!`
