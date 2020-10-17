@@ -84,7 +84,6 @@ export default function Header() {
               <Nav>
                 <HeaderNavItem to="/" text="Home" />
                 <HeaderNavItem to="/recipes" text="Recipes" />
-
                 {loggedIn ? (
                   <HeaderNavItem to="/recipe/editor" text="Recipe Editor" />
                 ) : null}
