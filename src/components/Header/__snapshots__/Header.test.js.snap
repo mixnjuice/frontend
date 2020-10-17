@@ -1,5 +1,99 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Header /> can render gravatar 1`] = `
+<DocumentFragment>
+  <div
+    class="mb-5 container-fluid"
+  >
+    <div
+      class="navigation-container row"
+    >
+      <div
+        class="col"
+      >
+        <nav
+          class="navbar navbar-expand-lg navbar-light"
+        >
+          <span
+            class="pt-0 navbar-brand"
+          >
+            <img
+              alt="logo"
+              class="image--logo"
+              src="/media/logo.svg"
+            />
+          </span>
+          <button
+            aria-controls="basic-navbar-nav"
+            aria-label="Toggle navigation"
+            class="navbar-toggler collapsed"
+            type="button"
+          >
+            <span
+              class="navbar-toggler-icon"
+            />
+          </button>
+          <div
+            class="navbar-collapse collapse"
+          >
+            <div
+              class="navbar-nav"
+            >
+              <a
+                aria-current="page"
+                class="nav--link-custom px-3 nav-link active"
+                href="/"
+              >
+                Home
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/recipes"
+              >
+                Recipes
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/recipe/editor"
+              >
+                Recipe Editor
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/flavors"
+              >
+                Flavors
+              </a>
+            </div>
+            <div
+              class="ml-auto navbar-nav"
+            >
+              <div
+                class="nav--link-custom px-3 dropdown"
+              >
+                <a
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  class="dropdown-toggle"
+                  href="/"
+                  id="user-dropdown"
+                >
+                  <img
+                    alt="User"
+                    class="rounded-circle"
+                    src="https://www.gravatar.com/avatar/6114a57951ce2eefc79a1b3d7918a6f5?s=50&d=mp"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`<Header /> renders logged in correctly 1`] = `
 <div
   className="mb-5 container-fluid"

@@ -1,69 +1,78 @@
-import { render } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import dayjs from 'dayjs';
 import React from 'react';
 import configureStore from 'redux-mock-store';
+import { useDispatch } from 'react-redux';
 
 import Header from './Header';
+import { actions as appActions } from 'reducers/application';
 import { withMemoryRouter, withProvider } from 'utils/testing';
 
-// Prevent findDOMNode error in test from Dropdown component in react-bootstrap
-jest.mock('react-dom', () => ({
-  findDOMNode: () => ({})
-}));
+jest.mock('react-redux', () => {
+  const dispatch = jest.fn();
+
+  return {
+    ...jest.requireActual('react-redux'),
+    useDispatch: jest.fn(() => dispatch)
+  };
+});
 
 describe('<Header />', () => {
-  const actions = {
-    logoutUser: jest.fn(),
-    requestCurrentUser: jest.fn()
+  const loggedInState = {
+    application: {
+      authorization: {
+        accessToken: '1234',
+        expiration: dayjs().add(1, 'hour')
+      },
+      user: {
+        emailAddress: 'jest@mixnjuice.com'
+      }
+    }
   };
-  const initialState = {};
+  const loggedOutState = {
+    application: {
+      authorization: {},
+      user: null
+    }
+  };
   const mockStore = configureStore();
-  const store = mockStore(initialState);
+  const loggedInStore = mockStore(loggedInState);
+  const loggedOutStore = mockStore(loggedOutState);
   const RoutedHeader = withMemoryRouter(Header);
-  const ConnectedHeader = withProvider(RoutedHeader, store);
+  const LoggedInHeader = withProvider(RoutedHeader, loggedInStore);
+  const LoggedOutHeader = withProvider(RoutedHeader, loggedOutStore);
 
   it('renders logged out correctly', () => {
-    const props = {
-      actions,
-      loggedIn: false
-    };
-
-    expect(
-      render(<ConnectedHeader {...props} />).asFragment()
-    ).toMatchSnapshot();
+    expect(render(<LoggedOutHeader />).asFragment()).toMatchSnapshot();
   });
 
   it('renders logged in correctly', () => {
-    const props = {
-      actions,
-      loggedIn: true
-    };
-
-    expect(
-      render(<ConnectedHeader {...props} />).asFragment()
-    ).toMatchSnapshot();
+    expect(render(<LoggedInHeader />).asFragment()).toMatchSnapshot();
   });
 
-  it('can logoutUser', () => {
-    const component = render(<ConnectedHeader actions={actions} loggedIn />);
-    const { instance } = component.root.findByType(Header);
+  it('can logoutUser', async () => {
+    const dispatch = useDispatch();
+    const { getByText, getByAltText } = render(<LoggedInHeader />);
+    const userBadge = getByAltText('User');
 
-    expect(instance).toBeDefined();
-    instance.logoutUser();
-    expect(actions.logoutUser).toHaveBeenCalledWith();
+    expect(userBadge).toBeInTheDocument();
+
+    userEvent.click(userBadge);
+
+    await waitFor(() => getByText('Logout'));
+    getByText('Logout').click();
+
+    await waitFor(() => {
+      expect(dispatch).toHaveBeenCalledWith(appActions.logoutUser());
+    });
   });
 
   it('can render gravatar', () => {
-    const props = {
-      actions,
-      loggedIn: true,
-      user: { id: 1, emailAddress: 'jest@mixnjuice.com' }
-    };
-    const component = renderer.create(<RoutedHeader {...props} />);
-    const { instance } = component.root.findByType(Header);
+    const { getByAltText, asFragment } = render(<LoggedInHeader />);
+    const gravatar = getByAltText('User');
 
-    expect(instance).toBeDefined();
-    expect(instance.gravatar).toEqual(
-      'https://www.gravatar.com/avatar/6114a57951ce2eefc79a1b3d7918a6f5?s=50&d=mp'
-    );
+    expect(gravatar).toBeInTheDocument();
+    expect(asFragment()).toMatchSnapshot();
   });
 });
