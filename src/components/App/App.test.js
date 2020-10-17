@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
-import ConnectedApp from './App';
+import App from './App';
 import { withMemoryRouter } from 'utils/testing';
 import { initialState } from 'reducers/application';
 
@@ -64,7 +64,7 @@ describe('<App />', () => {
   });
 
   it('calls initApp', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp);
+    const RoutedApp = withMemoryRouter(App);
 
     renderer.create(
       <Provider store={store}>
@@ -76,7 +76,7 @@ describe('<App />', () => {
   });
 
   it('renders home by default', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp);
+    const RoutedApp = withMemoryRouter(App);
     const component = renderer.create(
       <Provider store={store}>
         <RoutedApp />
@@ -87,7 +87,7 @@ describe('<App />', () => {
   });
 
   it('renders login page', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/login']
     });
     const component = renderer.create(
@@ -100,7 +100,7 @@ describe('<App />', () => {
   });
 
   it('renders register page', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/register']
     });
     const component = renderer.create(
@@ -113,7 +113,7 @@ describe('<App />', () => {
   });
 
   it('renders profile page', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/profile']
     });
     const component = renderer.create(
@@ -126,7 +126,7 @@ describe('<App />', () => {
   });
 
   it('renders user recipes page', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/recipes']
     });
     const component = renderer.create(
@@ -139,7 +139,7 @@ describe('<App />', () => {
   });
 
   it('renders favorites page', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/favorites']
     });
     const component = renderer.create(
@@ -152,7 +152,7 @@ describe('<App />', () => {
   });
 
   it('renders flavor stash page', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/flavor-stash']
     });
     const component = renderer.create(
@@ -165,7 +165,7 @@ describe('<App />', () => {
   });
 
   it('renders user settings page', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/settings']
     });
     const component = renderer.create(
@@ -178,7 +178,7 @@ describe('<App />', () => {
   });
 
   it('renders shopping list page', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/shopping-list']
     });
     const component = renderer.create(
@@ -191,7 +191,7 @@ describe('<App />', () => {
   });
 
   it('renders recipe editor page', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/recipe/editor']
     });
     const component = renderer.create(
@@ -204,7 +204,7 @@ describe('<App />', () => {
   });
 
   it('renders dashboard page', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/dashboard']
     });
     const component = renderer.create(
@@ -217,7 +217,7 @@ describe('<App />', () => {
   });
 
   it('renders flavors page', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/flavors']
     });
     const component = renderer.create(
@@ -230,7 +230,7 @@ describe('<App />', () => {
   });
 
   it('renders recipe page', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/recipe']
     });
     const component = renderer.create(
@@ -243,7 +243,7 @@ describe('<App />', () => {
   });
 
   it('redirects to login for private route', () => {
-    const RoutedApp = withMemoryRouter(ConnectedApp, {
+    const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/recipes']
     });
     const component = renderer.create(
