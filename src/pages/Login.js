@@ -32,16 +32,17 @@ export function Login({ lastLocation }) {
       <FinalForm
         onSubmit={doSubmit}
         render={({ handleSubmit, submitting }) => (
-          <Form noValidate onSubmit={handleSubmit}>
+          <Form noValidate onSubmit={handleSubmit} data-testid="login-form">
             <Field
               name="emailAddress"
               validate={composeValidators(required, email)}
             >
               {({ input, meta }) => (
                 <Form.Group>
-                  <Form.Label>Email address</Form.Label>
+                  <Form.Label htmlFor="email-address">Email address</Form.Label>
                   <Form.Control
                     {...input}
+                    id="email-address"
                     type="email"
                     placeholder="someone@widgets.co"
                     isInvalid={meta.error && meta.touched}
@@ -62,9 +63,10 @@ export function Login({ lastLocation }) {
             >
               {({ input, meta }) => (
                 <Form.Group>
-                  <Form.Label>Password</Form.Label>
+                  <Form.Label htmlFor="password">Password</Form.Label>
                   <Form.Control
                     {...input}
+                    id="password"
                     type="password"
                     isInvalid={meta.error && meta.touched}
                   />
