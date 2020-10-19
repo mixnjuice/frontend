@@ -1,5 +1,4 @@
-import { render, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import dayjs from 'dayjs';
 import React from 'react';
 import configureStore from 'redux-mock-store';
@@ -58,7 +57,7 @@ describe('<Header />', () => {
 
     expect(userBadge).toBeInTheDocument();
 
-    userEvent.click(userBadge);
+    fireEvent.click(userBadge);
 
     await waitFor(() => getByText('Logout'));
     getByText('Logout').click();
