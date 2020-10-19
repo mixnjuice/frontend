@@ -1,257 +1,220 @@
+import { render, waitFor } from '@testing-library/react';
 import dayjs from 'dayjs';
 import React from 'react';
-import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
+import { useDispatch } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
 import App from './App';
-import { withMemoryRouter } from 'utils/testing';
-import { initialState } from 'reducers/application';
+import { withMemoryRouter, withProvider } from 'utils/testing';
+import { actions as appActions } from 'reducers/application';
+import { initialState } from 'reducers';
 
-jest.mock('components/Footer/Footer', () =>
-  require('utils/testing').mockComponent('Footer')
-);
-jest.mock('components/Header/Header', () =>
-  require('utils/testing').mockComponent('Header')
-);
 jest.mock('components/ToastDrawer/ToastDrawer', () =>
-  require('utils/testing').mockComponent('ToastDrawer')
+  require('utils/testing').mockComponent('toast-drawer')
 );
-jest.mock('pages', () => {
-  const { mockComponent } = require('utils/testing');
+jest.mock('react-redux', () => {
+  const dispatch = jest.fn();
 
   return {
-    Dashboard: mockComponent('Dashboard'),
-    Favorites: mockComponent('Favorites'),
-    Flavors: mockComponent('Flavors'),
-    FlavorStash: mockComponent('FlavorStash'),
-    Home: mockComponent('Home'),
-    Login: mockComponent('Login'),
-    NotFound: mockComponent('NotFound'),
-    Profile: mockComponent('Profile'),
-    Recipe: mockComponent('Recipe'),
-    RecipeEditor: mockComponent('RecipeEditor'),
-    Recipes: mockComponent('Recipes'),
-    Register: mockComponent('Register'),
-    ShoppingList: mockComponent('ShoppingList'),
-    UserRecipes: mockComponent('UserRecipes'),
-    UserSettings: mockComponent('UserSettings')
+    ...jest.requireActual('react-redux'),
+    useDispatch: jest.fn(() => dispatch)
   };
 });
 
 describe('<App />', () => {
-  const actions = {
-    initApp: jest.fn()
-  };
   const mockStore = configureStore();
-  const store = mockStore({ application: initialState });
+  const store = mockStore(initialState);
   const authedStore = mockStore({
+    ...initialState,
     application: {
-      ...initialState,
+      ...initialState.application,
       authorization: {
         accessToken: '1234',
         expiration: dayjs().add(60, 'minutes')
       },
       user: {
         id: 123,
-        name: 'Doe'
+        name: 'Doe',
+        emailAddress: 'jest@mixnjuice.com'
       }
     }
   });
 
-  afterEach(() => {
-    actions.initApp.mockReset();
-  });
-
   it('calls initApp', () => {
+    const dispatch = useDispatch();
     const RoutedApp = withMemoryRouter(App);
+    const ConnectedApp = withProvider(RoutedApp, store);
 
-    renderer.create(
-      <Provider store={store}>
-        <RoutedApp actions={actions} />
-      </Provider>
-    );
+    render(<ConnectedApp />);
 
-    expect(actions.initApp).toHaveBeenCalled();
+    expect(dispatch).toHaveBeenCalledWith(appActions.initApp());
   });
 
   it('renders home by default', () => {
     const RoutedApp = withMemoryRouter(App);
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, store);
+    const { getByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(getByText('Welcome to MixNJuice!')).toBeInTheDocument();
   });
 
-  it('renders login page', () => {
+  it('renders login page', async () => {
     const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/login']
     });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, store);
+    const { getAllByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {
+      expect(getAllByText('Login')[0]).toBeInTheDocument();
+    });
   });
 
-  it('renders register page', () => {
+  it('renders register page', async () => {
     const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/register']
     });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, store);
+    const { getByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {
+      expect(getByText('User Registration')).toBeInTheDocument();
+    });
   });
 
-  it('renders profile page', () => {
+  it('renders profile page', async () => {
     const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/profile']
     });
-    const component = renderer.create(
-      <Provider store={authedStore}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, authedStore);
+    const { getByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {
+      expect(
+        getByText(
+          'This is what other users see when they look at your profile.'
+        )
+      ).toBeInTheDocument();
+    });
   });
 
-  it('renders user recipes page', () => {
+  it('renders user recipes page', async () => {
     const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/recipes']
     });
-    const component = renderer.create(
-      <Provider store={authedStore}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, authedStore);
+    const { getByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {
+      expect(getByText('Recipes')).toBeInTheDocument();
+    });
   });
 
-  it('renders favorites page', () => {
+  it('renders favorites page', async () => {
     const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/favorites']
     });
-    const component = renderer.create(
-      <Provider store={authedStore}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, authedStore);
+    const { getByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {
+      expect(getByText('User Favorites')).toBeInTheDocument();
+    });
   });
 
-  it('renders flavor stash page', () => {
+  it('renders flavor stash page', async () => {
     const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/flavor-stash']
     });
-    const component = renderer.create(
-      <Provider store={authedStore}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, authedStore);
+    const { getByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {
+      expect(getByText('No flavors in stash.')).toBeInTheDocument();
+    });
   });
 
-  it('renders user settings page', () => {
+  it('renders user settings page', async () => {
     const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/settings']
     });
-    const component = renderer.create(
-      <Provider store={authedStore}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, authedStore);
+    const { getByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {
+      expect(getByText('User Settings')).toBeInTheDocument();
+    });
   });
 
-  it('renders shopping list page', () => {
+  it('renders shopping list page', async () => {
     const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/shopping-list']
     });
-    const component = renderer.create(
-      <Provider store={authedStore}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, authedStore);
+    const { getByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {
+      expect(getByText('Shopping List')).toBeInTheDocument();
+    });
   });
 
-  it('renders recipe editor page', () => {
+  it('renders recipe editor page', async () => {
     const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/recipe/editor']
     });
-    const component = renderer.create(
-      <Provider store={authedStore}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, authedStore);
+    const { getByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {
+      expect(getByText('Recipe Editor')).toBeInTheDocument();
+    });
   });
 
-  it('renders dashboard page', () => {
+  it('renders dashboard page', async () => {
     const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/dashboard']
     });
-    const component = renderer.create(
-      <Provider store={authedStore}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, authedStore);
+    const { getAllByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {
+      expect(getAllByText('Dashboard')[1]).toBeInTheDocument();
+    });
   });
 
-  it('renders flavors page', () => {
+  it('renders flavors page', async () => {
     const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/flavors']
     });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, store);
+    const { getAllByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
-  });
-
-  it('renders recipe page', () => {
-    const RoutedApp = withMemoryRouter(App, {
-      initialEntries: ['/recipe']
+    await waitFor(() => {
+      expect(getAllByText('Flavors')[1]).toBeInTheDocument();
     });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedApp />
-      </Provider>
-    );
-
-    expect(component.toJSON()).toMatchSnapshot();
   });
 
-  it('redirects to login for private route', () => {
+  it('renders recipe page', async () => {
+    const RoutedApp = withMemoryRouter(App, {
+      initialEntries: ['/recipe/1']
+    });
+    const ConnectedApp = withProvider(RoutedApp, store);
+    const { getByText } = render(<ConnectedApp />);
+
+    await waitFor(() => {
+      expect(getByText('Not Found')).toBeInTheDocument();
+    });
+  });
+
+  it('redirects to login for private route', async () => {
     const RoutedApp = withMemoryRouter(App, {
       initialEntries: ['/user/recipes']
     });
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedApp />
-      </Provider>
-    );
+    const ConnectedApp = withProvider(RoutedApp, store);
+    const { getByText } = render(<ConnectedApp />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    await waitFor(() => {
+      expect(getByText('Email address')).toBeInTheDocument();
+    });
   });
 });
