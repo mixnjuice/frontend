@@ -51,8 +51,8 @@ export default function UserSettings() {
               <Form.Control
                 name="username"
                 type="text"
-                defaultValue={this.state.username}
-                placeholder={this.state.username}
+                defaultValue={settings.username}
+                placeholder={settings.username}
                 aria-describedby="Username"
               />
             </InputGroup>
@@ -65,8 +65,8 @@ export default function UserSettings() {
               <Form.Control
                 name="e-mail"
                 type="email"
-                defaultValue={this.state.email}
-                placeholder={this.state.email}
+                defaultValue={settings.email}
+                placeholder={settings.email}
                 aria-describedby="E-mail address"
               />
             </InputGroup>
@@ -92,9 +92,7 @@ export default function UserSettings() {
                   onChange={(event) => handleFileInput(event)}
                 />
                 <Form.Label className="custom-file-label text-left">
-                  {this.state.filename
-                    ? this.state.filename
-                    : 'Choose a picture'}
+                  {settings.filename ? settings.filename : 'Choose a picture'}
                 </Form.Label>
               </div>
               <InputGroup.Prepend>
