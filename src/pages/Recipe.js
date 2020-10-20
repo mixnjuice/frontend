@@ -256,8 +256,8 @@ export class Recipe extends Component {
         <Row>
           <Col lg={{ span: 8, offset: 2 }} xs={{ span: 12 }}>
             <RecipeDetails
-              maxVG={maxVG}
-              percentVG={percentVG}
+              maxVg={maxVG}
+              percentVg={percentVG}
               shakeAndVape={shakeAndVape}
               steepDays={steepDays}
               flavors={flavors}

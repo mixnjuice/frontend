@@ -16,8 +16,8 @@ describe('<RecipeDetails />', () => {
     ];
     const component = renderer.create(
       <RecipeDetails
-        maxVG={false}
-        percentVG={75}
+        maxVg={false}
+        percentVg={75}
         shakeAndVape={false}
         steepDays={7}
         flavors={flavors}
