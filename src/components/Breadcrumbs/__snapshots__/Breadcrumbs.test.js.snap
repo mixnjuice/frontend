@@ -1,83 +1,83 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Breadcrumbs /> renders admin correctly 1`] = `
-<nav
-  aria-label="breadcrumb"
->
-  <ol
-    className="breadcrumb"
+<DocumentFragment>
+  <nav
+    aria-label="breadcrumb"
   >
-    <li
-      className="breadcrumb-item"
+    <ol
+      class="breadcrumb"
     >
-      <a
-        href="/"
-        onClick={[Function]}
+      <li
+        class="breadcrumb-item"
       >
-        Home
-      </a>
-    </li>
-    <li
-      className="breadcrumb-item"
-    >
-      <a
-        href="/admin"
-        onClick={[Function]}
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumb-item"
       >
-        Admin
-      </a>
-    </li>
-    <li
-      className="breadcrumb-item"
-    >
-      <a
-        href="/admin/stuff"
-        onClick={[Function]}
+        <a
+          href="/admin"
+        >
+          Admin
+        </a>
+      </li>
+      <li
+        class="breadcrumb-item"
       >
-        Admin Page
-      </a>
-    </li>
-    <li
-      aria-current="page"
-      className="breadcrumb-item active"
-    >
-      <span
-        className="active"
+        <a
+          href="/admin/stuff"
+        >
+          Admin Page
+        </a>
+      </li>
+      <li
+        aria-current="page"
+        class="breadcrumb-item active"
       >
-        Admin Stuff
-      </span>
-    </li>
-  </ol>
-</nav>
+        <span
+          class="active"
+        >
+          Admin Stuff
+        </span>
+      </li>
+    </ol>
+  </nav>
+</DocumentFragment>
 `;
 
 exports[`<Breadcrumbs /> renders home correctly 1`] = `
-<nav
-  aria-label="breadcrumb"
->
-  <ol
-    className="breadcrumb"
+<DocumentFragment>
+  <nav
+    aria-label="breadcrumb"
   >
-    <li
-      className="breadcrumb-item"
+    <ol
+      class="breadcrumb"
     >
-      <a
-        href="/"
-        onClick={[Function]}
+      <li
+        class="breadcrumb-item"
       >
-        Home
-      </a>
-    </li>
-    <li
-      aria-current="page"
-      className="breadcrumb-item active"
-    >
-      <span
-        className="active"
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        aria-current="page"
+        class="breadcrumb-item active"
       >
-        User Stuff
-      </span>
-    </li>
-  </ol>
-</nav>
+        <span
+          class="active"
+        >
+          User Stuff
+        </span>
+      </li>
+    </ol>
+  </nav>
+</DocumentFragment>
 `;

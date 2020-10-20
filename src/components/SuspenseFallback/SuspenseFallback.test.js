@@ -1,17 +1,18 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import renderer from 'react-test-renderer';
 
 import SuspenseFallback from './SuspenseFallback';
 import { withMemoryRouter } from 'utils/testing';
+
 jest.mock('components/Header/Header', () =>
-  require('utils/testing').mockComponent('Header')
+  require('utils/testing').mockComponent('header')
 );
 
 describe('<SuspenseFallback />', () => {
   it('renders correctly', () => {
     const RoutedFallback = withMemoryRouter(SuspenseFallback);
-    const component = renderer.create(<RoutedFallback />);
+    const { asFragment } = render(<RoutedFallback />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 });

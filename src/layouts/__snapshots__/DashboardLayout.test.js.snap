@@ -1,21 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Dashboad <Layout /> renders correctly 1`] = `
-<div
-  className="card"
-  style={Object {}}
->
+<DocumentFragment>
   <div
-    className="card-header"
+    class="card"
   >
-    Not Found :(
+    <div
+      class="card-header"
+    >
+      Not Found :(
+    </div>
+    <div
+      class="card-body"
+    >
+      Children go here
+    </div>
   </div>
-  <div
-    className="card-body"
-  >
-    
-    
-    Children go here
-  </div>
-</div>
+</DocumentFragment>
 `;

@@ -1,5 +1,5 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import renderer from 'react-test-renderer';
 
 import RecipeDetails from './RecipeDetails';
 
@@ -14,7 +14,7 @@ describe('<RecipeDetails />', () => {
         inStash: true
       }
     ];
-    const component = renderer.create(
+    const { asFragment } = render(
       <RecipeDetails
         maxVg={false}
         percentVg={75}
@@ -24,6 +24,6 @@ describe('<RecipeDetails />', () => {
       />
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 });

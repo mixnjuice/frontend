@@ -89,6 +89,7 @@ export default class ToggleButton extends Component {
     return (
       <Button
         {...buttonProps}
+        data-testid="toggle-button"
         title={title}
         onClick={this.handleClick}
         className={classes}

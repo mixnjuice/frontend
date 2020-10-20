@@ -1,12 +1,12 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import renderer from 'react-test-renderer';
 
 import NotFound from './NotFound';
 
 describe('<NotFound />', () => {
   it('renders correctly', () => {
-    const component = renderer.create(<NotFound />);
+    const { asFragment } = render(<NotFound />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 });

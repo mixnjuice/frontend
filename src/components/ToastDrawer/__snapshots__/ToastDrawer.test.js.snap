@@ -1,48 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ToastDrawer /> renders correctly 1`] = `
-<section
-  className="toast-drawer"
->
-  <div
-    aria-atomic="true"
-    aria-live="assertive"
-    className="fade toast show"
-    role="alert"
+<DocumentFragment>
+  <section
+    class="toast-drawer"
   >
     <div
-      className="toast-header"
+      aria-atomic="true"
+      aria-live="assertive"
+      class="fade toast show"
+      role="alert"
     >
-      <strong
-        className="mr-auto"
+      <div
+        class="toast-header"
       >
-        I am a toast
-      </strong>
-      <button
-        className="close ml-2 mb-1"
-        data-dismiss="toast"
-        onClick={[Function]}
-        type="button"
+        <strong
+          class="mr-auto"
+        >
+          I am a toast
+        </strong>
+        <button
+          class="close ml-2 mb-1"
+          data-dismiss="toast"
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+          <span
+            class="sr-only"
+          >
+            Close
+          </span>
+        </button>
+      </div>
+      <div
+        class="toast-body"
       >
-        <span
-          aria-hidden="true"
-        >
-          ×
-        </span>
-        <span
-          className="sr-only"
-        >
-          Close
-        </span>
-      </button>
+        Ask me anything
+      </div>
     </div>
-    <div
-      className="toast-body"
-    >
-      Ask me anything
-    </div>
-  </div>
-</section>
+  </section>
+</DocumentFragment>
 `;
 
-exports[`<ToastDrawer /> renders null if empty 1`] = `null`;
+exports[`<ToastDrawer /> renders null if empty 1`] = `<DocumentFragment />`;

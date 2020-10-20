@@ -1,11 +1,8 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import renderer from 'react-test-renderer';
+
 import Breadcrumbs from './Breadcrumbs';
 import { withMemoryRouter } from 'utils/testing';
-// Prevent findDOMNode error in test from Dropdown component in react-bootstrap
-jest.mock('react-dom', () => ({
-  findDOMNode: () => ({})
-}));
 
 describe('<Breadcrumbs />', () => {
   const RoutedBreadcrumbs = withMemoryRouter(Breadcrumbs);
@@ -16,9 +13,9 @@ describe('<Breadcrumbs />', () => {
       active: 'User Stuff'
     };
 
-    expect(
-      renderer.create(<RoutedBreadcrumbs {...props} />).toJSON()
-    ).toMatchSnapshot();
+    const { asFragment } = render(<RoutedBreadcrumbs {...props} />);
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders admin correctly', () => {
@@ -28,8 +25,8 @@ describe('<Breadcrumbs />', () => {
       active: 'Admin Stuff'
     };
 
-    expect(
-      renderer.create(<RoutedBreadcrumbs {...props} />).toJSON()
-    ).toMatchSnapshot();
+    const { asFragment } = render(<RoutedBreadcrumbs {...props} />);
+
+    expect(asFragment()).toMatchSnapshot();
   });
 });
