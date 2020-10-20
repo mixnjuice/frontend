@@ -1,48 +1,69 @@
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import React from 'react';
-import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
+import { useDispatch } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import ConnectedRegister, { Register } from './Register';
-import { initialState } from 'reducers/application';
-import { withMemoryRouter } from 'utils/testing';
+import Register from './Register';
+import { initialState, actions as appActions } from 'reducers/application';
+import { withMemoryRouter, withProvider } from 'utils/testing';
+
+jest.mock('react-redux', () => {
+  const dispatch = jest.fn();
+
+  return {
+    ...jest.requireActual('react-redux'),
+    useDispatch: jest.fn(() => dispatch)
+  };
+});
 
 describe('<Register />', () => {
-  const actions = {
-    registerUser: jest.fn()
-  };
-  const props = {
-    registering: false
-  };
   const mockStore = configureStore();
   const store = mockStore({ application: initialState });
-  const RoutedRegister = withMemoryRouter(ConnectedRegister);
+  const RoutedRegister = withMemoryRouter(Register);
+  const ConnectedRegister = withProvider(RoutedRegister, store);
 
   it('renders correctly', () => {
-    const component = renderer.create(<Register {...props} />);
+    const { asFragment } = render(<ConnectedRegister />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('renders connected component correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedRegister />
-      </Provider>
-    );
+  it('can handleSubmit', async () => {
+    const dispatch = useDispatch();
+    const username = 'jestuser';
+    const emailAddress = 'jest@mixnjuice.com';
+    const password = 'testpass';
+    const { getByTestId, getByLabelText } = render(<ConnectedRegister />);
 
-    expect(component.toJSON()).toMatchSnapshot();
-  });
+    fireEvent.change(getByLabelText('Username'), {
+      target: { value: username }
+    });
+    fireEvent.change(getByLabelText('Email Address'), {
+      target: { value: emailAddress }
+    });
+    fireEvent.change(getByLabelText('Confirm Email Address'), {
+      target: { value: emailAddress }
+    });
+    fireEvent.change(getByLabelText('Password'), {
+      target: { value: password }
+    });
+    fireEvent.change(getByLabelText('Confirm Password'), {
+      target: { value: password }
+    });
+    fireEvent.click(getByTestId('terms-checkbox'));
+    fireEvent.submit(getByTestId('register-form'));
 
-  it('can handleSubmit', () => {
-    const formData = { test: 'value' };
-    const component = renderer.create(
-      <Register actions={actions} {...props} />
-    );
-    const { instance } = component.root.findByType(Register);
-
-    expect(instance).toBeDefined();
-    instance.handleSubmit(formData);
-    expect(actions.registerUser).toHaveBeenCalledWith(formData);
+    await waitFor(() => {
+      expect(dispatch).toHaveBeenCalledWith(
+        appActions.registerUser({
+          emailAddress: emailAddress,
+          emailAddressConfirm: emailAddress,
+          password: password,
+          passwordConfirm: password,
+          termsAgreed: true,
+          username
+        })
+      );
+    });
   });
 });

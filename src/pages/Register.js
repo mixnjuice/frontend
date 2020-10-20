@@ -29,7 +29,7 @@ export default function Register() {
       <FinalForm
         onSubmit={handleSubmit}
         render={({ handleSubmit: submit, submitting }) => (
-          <Form noValidate onSubmit={submit}>
+          <Form noValidate onSubmit={submit} data-testid="register-form">
             <Form.Row>
               <Field
                 name="username"
@@ -37,7 +37,7 @@ export default function Register() {
               >
                 {({ input, meta }) => (
                   <Form.Group as={Col} md="4">
-                    <Form.Label>Username</Form.Label>
+                    <Form.Label htmlFor="username">Username</Form.Label>
                     <InputGroup>
                       <InputGroup.Prepend>
                         <InputGroup.Text id="inputGroupPrepend">
@@ -46,6 +46,7 @@ export default function Register() {
                       </InputGroup.Prepend>
                       <Form.Control
                         {...input}
+                        id="username"
                         type="text"
                         placeholder="Username"
                         aria-describedby="inputGroupPrepend"
@@ -70,9 +71,12 @@ export default function Register() {
               >
                 {({ input, meta }) => (
                   <Form.Group as={Col} md="6">
-                    <Form.Label>Email Address</Form.Label>
+                    <Form.Label htmlFor="email-address">
+                      Email Address
+                    </Form.Label>
                     <Form.Control
                       {...input}
+                      id="email-address"
                       type="email"
                       placeholder="Enter email"
                       isInvalid={meta.error && meta.touched}
@@ -99,10 +103,13 @@ export default function Register() {
                 )}
               >
                 {({ input, meta }) => (
-                  <Form.Group as={Col} md="6" controlId="emailConf">
-                    <Form.Label>Confirm Email Address</Form.Label>
+                  <Form.Group as={Col} md="6">
+                    <Form.Label htmlFor="email-address-confirm">
+                      Confirm Email Address
+                    </Form.Label>
                     <Form.Control
                       {...input}
+                      id="email-address-confirm"
                       type="email"
                       placeholder="Confirm Enter email"
                       isInvalid={meta.error && meta.touched}
@@ -133,9 +140,10 @@ export default function Register() {
               >
                 {({ input, meta }) => (
                   <Form.Group as={Col} md="6">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label htmlFor="password">Password</Form.Label>
                     <Form.Control
                       {...input}
+                      id="password"
                       type="password"
                       placeholder="Enter Password"
                       isInvalid={meta.error && meta.touched}
@@ -154,9 +162,12 @@ export default function Register() {
               >
                 {({ input, meta }) => (
                   <Form.Group as={Col} md="6">
-                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Label htmlFor="password-confirm">
+                      Confirm Password
+                    </Form.Label>
                     <Form.Control
                       {...input}
+                      id="password-confirm"
                       type="password"
                       placeholder="Confirm Password"
                       isInvalid={meta.error && meta.touched}
@@ -181,6 +192,7 @@ export default function Register() {
                   <Form.Group>
                     <Form.Check
                       {...input}
+                      data-testid="terms-checkbox"
                       label="I agree to comply with the Terms of Service"
                       isInvalid={meta.error && meta.touched}
                     />
