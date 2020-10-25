@@ -38,9 +38,9 @@ const createNote = (flavorNote) => ({
   flavorNote
 });
 
-const createNoteSuccess = (flavor) => ({
+const createNoteSuccess = (flavorNote) => ({
   type: types.CREATE_NOTE_SUCCESS,
-  flavor
+  flavorNote
 });
 
 const deleteNote = (flavorNote) => ({
@@ -105,9 +105,9 @@ export const reducer = (state = initialState, action = {}) => {
         ...state,
         collection: {
           ...state.collection,
-          [action.flavor.flavorId]: {
-            flavorId: action.flavor.flavorId,
-            note: action.flavor.note
+          [action.flavorNote.flavorId]: {
+            flavorId: action.flavorNote.flavorId,
+            note: action.flavorNote.note
           }
         },
         loading: false

@@ -96,16 +96,22 @@ describe('note reducer', () => {
   });
 
   it('has CREATE_NOTE_SUCCESS action', () => {
-    expect(actions.createNoteSuccess(note)).toEqual({
+    expect(actions.createNoteSuccess(flavorNote)).toEqual({
       type: types.CREATE_NOTE_SUCCESS,
-      note
+      flavorNote
     });
   });
 
   it('reduces CREATE_NOTE_SUCCESS action', () => {
-    const action = actions.createNoteSuccess(flavorId);
+    const action = actions.createNoteSuccess({ flavorId, note });
 
     expect(reducer({}, action)).toEqual({
+      collection: {
+        [flavorId]: {
+          flavorId,
+          note
+        }
+      },
       loading: false
     });
   });
@@ -129,15 +135,20 @@ describe('note reducer', () => {
   it('has UPDATE_NOTE_SUCCESS action', () => {
     expect(actions.updateNoteSuccess(flavorId)).toEqual({
       type: types.UPDATE_NOTE_SUCCESS,
-      flavorId
+      flavor: flavorId
     });
   });
 
   it('reduces UPDATE_NOTE_SUCCESS action', () => {
-    const action = actions.updateNoteSuccess(flavorId);
+    const action = actions.updateNoteSuccess({ flavorId, note });
 
     expect(reducer({}, action)).toEqual({
-      collection: { [flavorId]: null },
+      collection: {
+        [flavorId]: {
+          flavorId,
+          note
+        }
+      },
       loading: false
     });
   });

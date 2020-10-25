@@ -34,9 +34,9 @@ describe('note sagas', () => {
   };
 
   const note = {
-    userId: 1,
     flavorId: 1,
-    note: 'Shnacks !?\n\n### It probably sucks'
+    note: 'Shnacks !?\n\n### It probably sucks',
+    userId: 1
   };
 
   const flavorId = 1;
@@ -156,14 +156,16 @@ describe('note sagas', () => {
       method: 'POST'
     };
 
-    const data = note;
+    const data = { userId: 1, flavorId, note };
 
     const message = {
       title: 'Note',
       message: `Flavor ID 1 Note successfully created!`
     };
 
-    const gen = workers.createNoteWorker({ flavorNote: { ...note } });
+    const gen = workers.createNoteWorker({
+      flavorNote: { flavorId, note }
+    });
 
     let result = gen.next();
 
@@ -186,7 +188,9 @@ describe('note sagas', () => {
       success: true
     });
 
-    expect(result.value).toEqual(put(actions.createNoteSuccess()));
+    expect(result.value).toEqual(
+      put(actions.createNoteSuccess({ flavorId, note }))
+    );
 
     result = gen.next();
 
@@ -268,13 +272,13 @@ describe('note sagas', () => {
       url: `/user/${user.id}/note/${flavorId}`,
       method: 'PUT'
     };
-
+    const data = { userId: 1, flavorId, note };
     const message = {
       title: 'Note',
       message: `Flavor ID ${flavorId} Note successfully updated!`
     };
 
-    const gen = workers.updateNoteWorker({ flavorNote: { ...note } });
+    const gen = workers.updateNoteWorker({ flavorNote: { flavorId, note } });
 
     let result = gen.next();
 
@@ -289,7 +293,7 @@ describe('note sagas', () => {
     expect(result.value).toEqual(
       call(request.execute, {
         endpoint,
-        data: note
+        data
       })
     );
 
@@ -297,7 +301,9 @@ describe('note sagas', () => {
       success: true
     });
 
-    expect(result.value).toEqual(put(actions.updateNoteSuccess(flavorId)));
+    expect(result.value).toEqual(
+      put(actions.updateNoteSuccess({ flavorId, note }))
+    );
 
     result = gen.next();
 
@@ -324,7 +330,7 @@ describe('note sagas', () => {
     const result = gen.next();
 
     expect(result.value).toEqual(
-      all(Object.values(watchers).map(watcher => watcher()))
+      all(Object.values(watchers).map((watcher) => watcher()))
     );
   });
 });

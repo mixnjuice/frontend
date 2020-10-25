@@ -50,7 +50,7 @@ describe('<Note />', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('calls requestStash on mount', () => {
+  it('calls requestNote on mount', () => {
     renderer.create(<RoutedNote {...props} stashLoaded={false} />);
 
     expect(actions.requestNote).toHaveBeenCalled();
@@ -86,31 +86,30 @@ describe('<Note />', () => {
 
   it('can get note edit icon', () => {
     expect(instance).toBeDefined();
-    instance.state.editingNote = false;
+    instance.state.editing = false;
     expect(instance.editNoteIcon(2)).toMatchSnapshot();
   });
 
   it('can get add note icon', () => {
     expect(instance).toBeDefined();
-    instance.state.editingNote = false;
+    instance.state.editing = false;
     expect(instance.editNoteIcon(1)).toMatchSnapshot();
   });
 
   it('can handle note editor', () => {
     expect(instance).toBeDefined();
-    instance.handleNoteEditor();
-    expect(instance.state.editingNote).toEqual(true);
+    instance.handleToggleEditing();
+    expect(instance.state.editing).toEqual(true);
   });
 
   it('can handleNoteSubmit create', () => {
     expect(instance).toBeDefined();
     const values = { flavorId: 2, note: 'Yummy', update: false };
 
-    instance.handleNoteEditor = jest.fn();
+    instance.handleToggleEditing = jest.fn();
     instance.handleNoteSubmit(values);
     expect(actions.createNote).toBeCalledWith(values);
-    expect(instance.state.updatedNote).toEqual('Yummy');
-    expect(instance.handleNoteEditor).toHaveBeenCalled();
+    expect(instance.handleToggleEditing).toHaveBeenCalled();
   });
 
   it('can handleNoteSubmit update', () => {
@@ -119,8 +118,7 @@ describe('<Note />', () => {
 
     instance.handleNoteSubmit(values);
     expect(actions.updateNote).toBeCalledWith(values);
-    expect(instance.state.updatedNote).toEqual('Yummy!');
-    expect(instance.handleNoteEditor).toHaveBeenCalled();
+    expect(instance.handleToggleEditing).toHaveBeenCalled();
   });
 
   it('can handleNoteSubmit delete', () => {
@@ -129,7 +127,6 @@ describe('<Note />', () => {
 
     instance.handleNoteSubmit(values);
     expect(actions.deleteNote).toBeCalledWith(values);
-    expect(instance.state.updatedNote).toEqual('');
-    expect(instance.handleNoteEditor).toHaveBeenCalled();
+    expect(instance.handleToggleEditing).toHaveBeenCalled();
   });
 });
