@@ -1,10 +1,9 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
 import Home from './Home';
-import { withMemoryRouter } from 'utils/testing';
+import { withMemoryRouter, withProvider } from 'utils/testing';
 
 describe('<Home />', () => {
   const initialState = {};
@@ -13,12 +12,9 @@ describe('<Home />', () => {
 
   it('renders correctly', () => {
     const RoutedHome = withMemoryRouter(Home);
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedHome />
-      </Provider>
-    );
+    const ConnectedHome = withProvider(RoutedHome, store);
+    const { getByText } = render(<ConnectedHome />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(getByText('Welcome to MixNJuice!')).toBeInTheDocument();
   });
 });

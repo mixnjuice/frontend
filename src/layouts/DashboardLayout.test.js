@@ -1,5 +1,5 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import renderer from 'react-test-renderer';
 
 import Layout from './DashboardLayout';
 
@@ -12,7 +12,7 @@ describe('Dashboad <Layout />', () => {
   };
 
   it('renders correctly', () => {
-    const component = renderer.create(
+    const { asFragment } = render(
       <Layout
         pageTitle="Not Found"
         header="Not Found :("
@@ -22,6 +22,6 @@ describe('Dashboad <Layout />', () => {
       </Layout>
     );
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 });

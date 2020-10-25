@@ -1,10 +1,9 @@
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import React from 'react';
-import renderer from 'react-test-renderer';
 
 import ToggleButton from './ToggleButton';
 
 describe('<ToggleButton />', () => {
-  const event = { test: true };
   const props = {
     onClick: jest.fn(),
     variant: 'check',
@@ -12,50 +11,57 @@ describe('<ToggleButton />', () => {
   };
 
   it('can render "check" variant', () => {
-    const tree = renderer.create(<ToggleButton {...props} />).toJSON();
+    const { asFragment } = render(<ToggleButton {...props} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('uses "check" variant as default', () => {
-    const component = renderer.create(<ToggleButton {...props} />);
-    const instance = component.getInstance();
+    const { getByTestId } = render(<ToggleButton {...props} />);
 
-    expect(instance.props.variant).toEqual('check');
+    expect(getByTestId('toggle-button')).toBeInTheDocument();
   });
 
-  it('calls onClick on click', () => {
-    const component = renderer.create(<ToggleButton {...props} />);
-    const instance = component.getInstance();
+  it('calls onClick on click', async () => {
+    const { getByRole } = render(<ToggleButton {...props} />);
+    const button = getByRole('button');
 
+    expect(button).toBeInTheDocument();
     expect(props.onClick).not.toHaveBeenCalled();
-    instance.handleClick(event);
-    expect(props.onClick).toHaveBeenCalledWith(event);
+    fireEvent.click(button);
+
+    await waitFor(() => {
+      expect(props.onClick).toHaveBeenCalled();
+    });
   });
 
   it('can render with icon-only prop', () => {
-    const newProps = {};
-
-    Object.assign(newProps, {
+    const newProps = {
       ...props,
       iconOnly: true
-    });
-    const tree = renderer.create(<ToggleButton {...newProps} />).toJSON();
+    };
+    const { asFragment } = render(<ToggleButton {...newProps} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('can render "switch" variant', () => {
-    props.variant = 'switch';
-    const tree = renderer.create(<ToggleButton {...props} />).toJSON();
+    const newProps = {
+      ...props,
+      variant: 'switch'
+    };
+    const { asFragment } = render(<ToggleButton {...newProps} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('can render "grid-list" variant', () => {
-    props.variant = 'grid-list';
-    const tree = renderer.create(<ToggleButton {...props} />).toJSON();
+    const newProps = {
+      ...props,
+      variant: 'grid-list'
+    };
+    const { asFragment } = render(<ToggleButton {...newProps} />);
 
-    expect(tree).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 });

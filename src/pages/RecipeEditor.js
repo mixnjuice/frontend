@@ -46,7 +46,7 @@ export class RecipeEditor extends Component {
       id: PropTypes.string,
       name: PropTypes.string,
       ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
-      percentages: PropTypes.arrayOf(PropTypes.object).isRequired
+      percentages: PropTypes.object.isRequired
     }),
     nicotineStrength: PropTypes.number.isRequired,
     desiredNicotineStrength: PropTypes.number,

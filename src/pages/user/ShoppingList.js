@@ -1,14 +1,12 @@
-import { Helmet } from 'react-helmet';
-import React, { Component } from 'react';
+import React from 'react';
 import { Container } from 'react-bootstrap';
+import { Helmet } from 'react-helmet';
 
-export default class ShoppingList extends Component {
-  render() {
-    return (
-      <Container>
-        <Helmet title="Shopping List" />
-        <h1>Shopping List</h1>
-      </Container>
-    );
-  }
+export default function ShoppingList() {
+  return (
+    <Container>
+      <Helmet title="Shopping List" />
+      <h1>Shopping List</h1>
+    </Container>
+  );
 }

@@ -1,77 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SplitSlider /> renders component correctly 1`] = `
-<div
-  className="split-slider input-group"
->
+<DocumentFragment>
   <div
-    className="progress-container"
+    class="split-slider input-group"
   >
     <div
-      className="progress"
-      draggable={true}
-      onClick={[Function]}
-      onDrag={[Function]}
-      onDragEnd={[Function]}
-      onDragEnter={[Function]}
-      onDragOver={[Function]}
-      onDragStart={[Function]}
+      class="progress-container"
     >
       <div
-        aria-valuemax={100}
-        aria-valuemin={0}
-        aria-valuenow={50}
-        className="progress-bar bg-success"
-        role="progressbar"
-        style={
-          Object {
-            "width": "50%",
-          }
-        }
+        class="progress"
+        draggable="true"
       >
-        VG
-      </div>
-      <div
-        aria-valuemax={100}
-        aria-valuemin={0}
-        aria-valuenow={50}
-        className="progress-bar bg-warning"
-        role="progressbar"
-        style={
-          Object {
-            "width": "50%",
-          }
-        }
-      >
-        PG
+        <div
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow="50"
+          class="progress-bar bg-success"
+          role="progressbar"
+          style="width: 50%;"
+        >
+          VG
+        </div>
+        <div
+          aria-valuemax="100"
+          aria-valuemin="0"
+          aria-valuenow="50"
+          class="progress-bar bg-warning"
+          role="progressbar"
+          style="width: 50%;"
+        >
+          PG
+        </div>
       </div>
     </div>
-  </div>
-  <input
-    className="form-control"
-    name="left"
-    onChange={[Function]}
-    value={50}
-  />
-  <input
-    className="form-control"
-    name="right"
-    onChange={[Function]}
-    value={50}
-  />
-  <div
-    className="input-group-append"
-  >
-    <button
-      className="btn btn-primary"
-      disabled={false}
-      onClick={[Function]}
-      type="button"
+    <input
+      class="form-control"
+      name="left"
+      value="50"
+    />
+    <input
+      class="form-control"
+      name="right"
+      value="50"
+    />
+    <div
+      class="input-group-append"
     >
-      <i
-        className="fa undo"
-      />
-    </button>
+      <button
+        class="btn btn-primary"
+        type="button"
+      >
+        <i
+          class="fa undo"
+        />
+      </button>
+    </div>
   </div>
-</div>
+</DocumentFragment>
 `;

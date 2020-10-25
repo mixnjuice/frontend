@@ -14,7 +14,7 @@ export class IngredientList extends Component {
       setRecipePercentages: PropTypes.func.isRequired
     }),
     ingredients: PropTypes.arrayOf(PropTypes.object).isRequired,
-    percentages: PropTypes.arrayOf(PropTypes.number).isRequired
+    percentages: PropTypes.object.isRequired
   };
 
   static defaultProps = {

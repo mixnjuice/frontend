@@ -3,9 +3,7 @@ import { all, put, delay, takeEvery } from 'redux-saga/effects';
 import { actions, types } from 'reducers/toast';
 import toastSaga, { workers, watchers } from 'sagas/toast';
 
-jest.mock('nanoid', () => ({
-  nanoid: jest.fn(() => 'testing')
-}));
+jest.mock('nanoid', () => ({ nanoid: () => 'testing' }));
 
 describe('toast sagas', () => {
   it('runs popToastWorker', () => {

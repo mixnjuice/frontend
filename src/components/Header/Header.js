@@ -1,162 +1,155 @@
 import MD5 from 'md5.js';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import React, { Component, Fragment } from 'react';
-import { bindActionCreators } from 'redux';
+import { useDispatch, useSelector } from 'react-redux';
+import React, { Fragment, useCallback } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Dropdown, Navbar, Nav, Container, Row, Col } from 'react-bootstrap';
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Container,
+  Row,
+  Col,
+  Dropdown
+} from 'react-bootstrap';
 
 import { actions as appActions } from 'reducers/application';
 import { getUser, isLoggedIn } from 'selectors/application';
 
-export class Header extends Component {
-  static propTypes = {
-    actions: PropTypes.shape({
-      logoutUser: PropTypes.func.isRequired,
-      requestCurrentUser: PropTypes.func.isRequired
-    }).isRequired,
-    loggedIn: PropTypes.bool.isRequired,
-    user: PropTypes.object
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.logoutUser = this.logoutUser.bind(this);
-  }
-
-  componentDidMount() {
-    const { actions, user } = this.props;
-
-    if (!user) {
-      actions.requestCurrentUser();
-    }
-  }
-
-  renderNavItem(to, text) {
-    return (
-      <Nav.Link
-        as={NavLink}
-        exact
-        to={to}
-        className="nav--link-custom px-3"
-        activeClassName="active"
-      >
-        {text}
-      </Nav.Link>
-    );
-  }
-
-  logoutUser() {
-    const { actions } = this.props;
-
-    actions.logoutUser();
-  }
-
-  get gravatar() {
-    const {
-      user: { emailAddress }
-    } = this.props;
-
-    const gravatar = new MD5().update(emailAddress).digest('hex');
-
-    return `https://www.gravatar.com/avatar/${gravatar}?s=50&d=mp`;
-  }
-
-  render() {
-    const { loggedIn, user } = this.props;
-
-    return (
-      <Container fluid className="mb-5">
-        <Row className="navigation-container">
-          <Col>
-            <Navbar expand="lg">
-              <Navbar.Brand className="pt-0">
-                <img src="/media/logo.svg" alt="logo" className="image--logo" />
-              </Navbar.Brand>
-              <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse>
-                <Nav>
-                  {this.renderNavItem('/', 'Home')}
-                  {this.renderNavItem('/recipes', 'Recipes')}
-                  {loggedIn
-                    ? this.renderNavItem('/recipe/editor', 'Recipe Editor')
-                    : null}
-                  {this.renderNavItem('/flavors', 'Flavors')}
-                  {!loggedIn ? (
-                    <Fragment>
-                      {this.renderNavItem('/login', 'Login')}
-                      {this.renderNavItem('/register', 'Register')}
-                    </Fragment>
-                  ) : null}
-                </Nav>
-                <Nav className="ml-auto">
-                  {loggedIn ? (
-                    <Dropdown alignRight className="nav--link-custom px-3">
-                      <Dropdown.Toggle as={Link} to="#" id="user-dropdown">
-                        {user && (
-                          <Fragment>
-                            <img
-                              alt="User"
-                              src={this.gravatar}
-                              className="rounded-circle"
-                            />
-                          </Fragment>
-                        )}
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu>
-                        <Dropdown.Item as={NavLink} to="/user/profile">
-                          Profile
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item as={NavLink} to="/user/recipes">
-                          Recipes
-                        </Dropdown.Item>
-                        <Dropdown.Item as={NavLink} to="/user/favorites">
-                          Favorites
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item as={NavLink} to="/user/flavor-stash">
-                          Flavor Stash
-                        </Dropdown.Item>
-                        <Dropdown.Item as={NavLink} to="/user/shopping-list">
-                          Shopping List
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item as={NavLink} to="/user/settings">
-                          Settings
-                        </Dropdown.Item>
-                        <Dropdown.Item as={NavLink} to="/dashboard">
-                          Dashboard
-                        </Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Item
-                          as={NavLink}
-                          to="/login"
-                          onClick={this.logoutUser}
-                        >
-                          Logout
-                        </Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
-                  ) : null}
-                </Nav>
-              </Navbar.Collapse>
-            </Navbar>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
+export function HeaderNavItem({ to, text }) {
+  return (
+    <Nav.Link
+      as={NavLink}
+      exact
+      to={to}
+      className="nav--link-custom px-3"
+      activeClassName="active"
+    >
+      {text}
+    </Nav.Link>
+  );
 }
 
-const mapStateToProps = (state) => ({
-  loggedIn: isLoggedIn(state),
-  user: getUser(state)
-});
+HeaderNavItem.propTypes = {
+  to: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators(appActions, dispatch)
-});
+export function HeaderNavDropdownItem({ to, text }) {
+  return (
+    <NavDropdown.Item
+      as={NavLink}
+      exact
+      to={to}
+      className="nav--link-custom"
+      activeClassName="active"
+    >
+      {text}
+      <br />
+    </NavDropdown.Item>
+  );
+}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+HeaderNavDropdownItem.propTypes = {
+  to: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired
+};
+
+export default function Header() {
+  const dispatch = useDispatch();
+  const logoutUser = useCallback(() => {
+    dispatch(appActions.logoutUser());
+  }, [dispatch]);
+  const loggedIn = useSelector(isLoggedIn);
+  const user = useSelector(getUser);
+
+  let gravatarUrl = '';
+
+  if (user) {
+    const emailHash = new MD5().update(user.emailAddress).digest('hex');
+
+    gravatarUrl = `https://www.gravatar.com/avatar/${emailHash}?s=50&d=mp`;
+  }
+
+  return (
+    <Container fluid className="mb-5">
+      <Row className="navigation-container">
+        <Col>
+          <Navbar expand="lg">
+            <Navbar.Brand className="pt-0">
+              <img src="/media/logo.svg" alt="logo" className="image--logo" />
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse>
+              <Nav>
+                <HeaderNavItem to="/" text="Home" />
+                <HeaderNavItem to="/recipes" text="Recipes" />
+                {loggedIn ? (
+                  <HeaderNavItem to="/recipe/editor" text="Recipe Editor" />
+                ) : null}
+                <HeaderNavItem to="/flavors" text="Flavors" />
+                {!loggedIn ? (
+                  <Fragment>
+                    <HeaderNavItem to="/login" text="Login" />
+                    <HeaderNavItem to="/register" text="Register" />
+                  </Fragment>
+                ) : null}
+              </Nav>
+              <Nav className="ml-auto">
+                {loggedIn ? (
+                  <Dropdown alignRight className="nav--link-custom px-3">
+                    <Dropdown.Toggle as={Link} to="#" id="user-dropdown">
+                      {user && (
+                        <Fragment>
+                          <img
+                            alt="User"
+                            src={gravatarUrl}
+                            className="rounded-circle"
+                          />
+                        </Fragment>
+                      )}
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                      <Dropdown.Item as={NavLink} to="/user/profile">
+                        Profile
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item as={NavLink} to="/user/recipes">
+                        Recipes
+                      </Dropdown.Item>
+                      <Dropdown.Item as={NavLink} to="/user/favorites">
+                        Favorites
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item as={NavLink} to="/user/flavor-stash">
+                        Flavor Stash
+                      </Dropdown.Item>
+                      <Dropdown.Item as={NavLink} to="/user/shopping-list">
+                        Shopping List
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item as={NavLink} to="/user/settings">
+                        Settings
+                      </Dropdown.Item>
+                      <Dropdown.Item as={NavLink} to="/dashboard">
+                        Dashboard
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item
+                        as={NavLink}
+                        to="/login"
+                        onClick={logoutUser}
+                      >
+                        Logout
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                ) : null}
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+        </Col>
+      </Row>
+    </Container>
+  );
+}

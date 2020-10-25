@@ -4,6 +4,7 @@ module.exports = {
   coverageDirectory: './coverage',
   coverageReporters: ['html', 'text-summary', 'lcov'],
   setupFiles: ['jest-localstorage-mock', 'jest-prop-type-error'],
+  setupFilesAfterEnv: ['./test-setup.js'],
   modulePaths: ['<rootDir>/src/'],
   globals: {
     API_URL: 'http://localhost:3000'

@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+
 import {
   reducer as application,
   initialState as applicationState
@@ -14,6 +15,7 @@ import { reducer as recipe, initialState as recipeState } from './recipe';
 import { reducer as roles, initialState as rolesState } from './roles';
 import { reducer as toast, initialState as toastState } from './toast';
 import { reducer as users, initialState as usersState } from './users';
+import { getInitialState } from 'utils';
 
 export const initialState = {
   application: applicationState,
@@ -27,7 +29,7 @@ export const initialState = {
   users: usersState
 };
 
-export default combineReducers({
+const reducer = combineReducers({
   application,
   dashboard,
   flavor,
@@ -38,3 +40,11 @@ export default combineReducers({
   toast,
   users
 });
+
+export default function (state, action) {
+  if (action.type === 'application/INIT_APP') {
+    state = getInitialState();
+  }
+
+  return reducer(state, action);
+}

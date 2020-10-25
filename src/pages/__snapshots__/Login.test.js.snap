@@ -1,63 +1,72 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Login /> renders correctly 1`] = `
-<div
-  className="container"
->
-  <h1>
-    Login
-  </h1>
-  <form
-    className=""
-    noValidate={true}
-    onSubmit={[Function]}
+<DocumentFragment>
+  <div
+    class="container"
   >
-    <div
-      className="form-group"
+    <h1>
+      Login
+    </h1>
+    <form
+      class=""
+      data-testid="login-form"
+      novalidate=""
     >
-      <label
-        className="form-label"
+      <div
+        class="form-group"
       >
-        Email address
-      </label>
-      <input
-        className="form-control"
-        name="emailAddress"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        placeholder="someone@widgets.co"
-        type="email"
-        value=""
-      />
-    </div>
-    <div
-      className="form-group"
-    >
-      <label
-        className="form-label"
+        <label
+          class="form-label"
+          for="email-address"
+        >
+          Email address
+        </label>
+        <input
+          class="form-control"
+          id="email-address"
+          name="emailAddress"
+          placeholder="someone@widgets.co"
+          type="email"
+          value=""
+        />
+        <div
+          class="invalid-feedback"
+        >
+          This field is required
+        </div>
+      </div>
+      <div
+        class="form-group"
       >
-        Password
-      </label>
-      <input
-        className="form-control"
-        name="password"
-        onBlur={[Function]}
-        onChange={[Function]}
-        onFocus={[Function]}
-        type="password"
-        value=""
-      />
-    </div>
-    <button
-      className="button-animation btn btn-primary"
-      disabled={false}
-      type="submit"
-    >
-      <span>
-        Login
-      </span>
-    </button>
-  </form>
-</div>
+        <label
+          class="form-label"
+          for="password"
+        >
+          Password
+        </label>
+        <input
+          class="form-control"
+          id="password"
+          name="password"
+          type="password"
+          value=""
+        />
+        <div
+          class="invalid-feedback"
+        >
+          This field is required
+        </div>
+      </div>
+      <button
+        class="button-animation btn btn-primary"
+        type="submit"
+      >
+        <span>
+          Login
+        </span>
+      </button>
+    </form>
+  </div>
+</DocumentFragment>
 `;

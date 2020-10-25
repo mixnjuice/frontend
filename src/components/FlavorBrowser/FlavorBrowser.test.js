@@ -1,14 +1,22 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { render } from '@testing-library/react';
+import { useDispatch } from 'react-redux';
+import configureStore from 'redux-mock-store';
 
-import { FlavorBrowser } from './FlavorBrowser';
+import FlavorBrowser from './FlavorBrowser';
+import { actions as flavorActions } from 'reducers/flavor';
+import { withProvider } from 'utils/testing';
+
+jest.mock('react-redux', () => {
+  const dispatch = jest.fn();
+
+  return {
+    ...jest.requireActual('react-redux'),
+    useDispatch: jest.fn(() => dispatch)
+  };
+});
 
 describe('<FlavorBrowser />', () => {
-  const actions = {
-    requestStash: jest.fn(),
-    setRecipeIngredients: jest.fn(),
-    setRecipePercentages: jest.fn()
-  };
   const stash = [
     {
       Flavor: {
@@ -28,27 +36,41 @@ describe('<FlavorBrowser />', () => {
   const recipe = {
     ingredients: []
   };
-  const props = {
-    stashLoaded: true,
-    actions,
-    recipe,
-    stash
-  };
-
-  beforeEach(() => {
-    actions.requestStash.mockReset();
-    actions.setRecipeIngredients.mockReset();
-  });
+  const mockStore = configureStore();
 
   it('renders correctly', () => {
-    const component = renderer.create(<FlavorBrowser {...props} />);
+    const initialState = {
+      flavor: {
+        loaded: true,
+        stash
+      },
+      recipe: {
+        activeRecipe: recipe
+      }
+    };
+    const store = mockStore(initialState);
+    const ConnectedFlavorBrowser = withProvider(FlavorBrowser, store);
+    const { asFragment } = render(<ConnectedFlavorBrowser />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('calls requestStash if stash is not loaded', () => {
-    renderer.create(<FlavorBrowser actions={actions} stashLoaded={false} />);
+  it('loads stash if necessary', async () => {
+    const unloadedState = {
+      flavor: {
+        loaded: false,
+        stash: []
+      },
+      recipe: {
+        activeRecipe: recipe
+      }
+    };
+    const unloadedStore = mockStore(unloadedState);
+    const ConnectedFlavorBrowser = withProvider(FlavorBrowser, unloadedStore);
+    const dispatch = useDispatch();
 
-    expect(actions.requestStash).toHaveBeenCalled();
+    render(<ConnectedFlavorBrowser />);
+
+    expect(dispatch).toHaveBeenCalledWith(flavorActions.requestStash());
   });
 });

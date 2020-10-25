@@ -1,24 +1,20 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
 import { initialState } from 'reducers/dashboard';
-import ConnectedDashboard from './Dashboard';
-import { withMemoryRouter } from 'utils/testing';
+import Dashboard from './Dashboard';
+import { withMemoryRouter, withProvider } from 'utils/testing';
 
 describe('<Dashboard />', () => {
   const mockStore = configureStore();
   const store = mockStore({ dashboard: initialState });
-  const RoutedDashboard = withMemoryRouter(ConnectedDashboard);
+  const RoutedDashboard = withMemoryRouter(Dashboard);
+  const ConnectedDashboard = withProvider(RoutedDashboard, store);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedDashboard />
-      </Provider>
-    );
+    const { asFragment } = render(<ConnectedDashboard />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 });

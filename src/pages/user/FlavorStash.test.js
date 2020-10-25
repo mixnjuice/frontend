@@ -1,85 +1,66 @@
+import { render, waitFor } from '@testing-library/react';
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { useDispatch } from 'react-redux';
+import configureStore from 'redux-mock-store';
 
-import {
-  FlavorStash,
-  mapStateToProps,
-  mapDispatchToProps
-} from './FlavorStash';
+import FlavorStash from './FlavorStash';
+import { actions as flavorActions } from 'reducers/flavor';
+import { withProvider } from 'utils/testing';
+import { initialState } from 'reducers';
 
 jest.mock('react-redux', () => {
-  const { connect: rawConnect } = jest.requireActual('react-redux');
+  const dispatch = jest.fn();
 
   return {
-    connect: jest.fn(rawConnect)
+    ...jest.requireActual('react-redux'),
+    useDispatch: jest.fn(() => dispatch)
   };
 });
 
 describe('<FlavorStash />', () => {
-  const actions = {
-    requestStash: jest.fn()
-  };
-  const props = {
-    actions,
-    stash: [
-      {
-        created: '2020-01-01',
-        Flavor: { name: 'Sweet Cream', Vendor: { code: 'CAP' } }
-      },
-      {
-        created: '2020-01-01',
-        Flavor: { name: 'Tatanka', Vendor: { code: 'FLV' } }
-      }
-    ],
-    stashLoaded: true
-  };
+  const mockStore = configureStore();
+  const emptyStore = mockStore(initialState);
+  const stashStore = mockStore({
+    ...initialState,
+    flavor: {
+      ...initialState.flavor,
+      stash: [
+        {
+          created: '2020-01-01T00:00:00',
+          Flavor: {
+            id: 1,
+            name: 'Sweet Cream',
+            Vendor: { code: 'CAP' }
+          }
+        },
+        {
+          created: '2020-01-01T00:00:00',
+          Flavor: {
+            id: 2,
+            name: 'Tatanka',
+            Vendor: { code: 'FLV' }
+          }
+        }
+      ]
+    }
+  });
 
   it('can render', () => {
-    const tree = renderer.create(<FlavorStash {...props} />).toJSON();
+    const ConnectedStash = withProvider(FlavorStash, stashStore);
+    const { asFragment } = render(<ConnectedStash />);
 
-    expect(tree).toMatchSnapshot();
-    expect(actions.requestStash).not.toHaveBeenCalled();
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('can render with an empty stash', () => {
-    const tree = renderer
-      .create(<FlavorStash {...props} stash={[]} />)
-      .toJSON();
+  it('can render with an empty stash', async () => {
+    const dispatch = useDispatch();
+    const ConnectedStash = withProvider(FlavorStash, emptyStore);
+    const { asFragment } = render(<ConnectedStash />);
 
-    expect(tree).toMatchSnapshot();
-  });
+    await waitFor(() => {
+      expect(dispatch).toHaveBeenCalledWith(flavorActions.requestStash());
+    });
 
-  it('calls requestStash on mount', () => {
-    renderer.create(<FlavorStash {...props} stashLoaded={false} />);
-
-    expect(actions.requestStash).toHaveBeenCalled();
-  });
-
-  it('can mapStateToProps', () => {
-    const stash = [];
-    const loaded = true;
-    const state = {
-      flavor: {
-        stash,
-        loaded
-      }
-    };
-    const expected = {
-      stash,
-      stashLoaded: loaded
-    };
-
-    expect(mapStateToProps(state)).toEqual(expected);
-  });
-
-  it('can mapDispatchToProps', () => {
-    const dispatch = jest.fn();
-    const expected = {
-      actions: expect.objectContaining({
-        requestStash: expect.any(Function)
-      })
-    };
-
-    expect(mapDispatchToProps(dispatch)).toEqual(expected);
+    expect(asFragment()).toMatchSnapshot();
   });
 });

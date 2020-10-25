@@ -1,213 +1,271 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Header /> renders logged in correctly 1`] = `
-<div
-  className="mb-5 container-fluid"
->
+exports[`<Header /> can render gravatar 1`] = `
+<DocumentFragment>
   <div
-    className="navigation-container row"
+    class="mb-5 container-fluid"
   >
     <div
-      className="col"
+      class="navigation-container row"
     >
-      <nav
-        className="navbar navbar-expand-lg navbar-light"
+      <div
+        class="col"
       >
-        <span
-          className="pt-0 navbar-brand"
-        >
-          <img
-            alt="logo"
-            className="image--logo"
-            src="/media/logo.svg"
-          />
-        </span>
-        <button
-          aria-controls="basic-navbar-nav"
-          aria-label="Toggle navigation"
-          className="navbar-toggler collapsed"
-          onClick={[Function]}
-          type="button"
+        <nav
+          class="navbar navbar-expand-lg navbar-light"
         >
           <span
-            className="navbar-toggler-icon"
-          />
-        </button>
-        <div
-          aria-expanded={null}
-          className="navbar-collapse collapse"
-        >
-          <div
-            className="navbar-nav"
-            onKeyDown={[Function]}
+            class="pt-0 navbar-brand"
           >
-            <a
-              aria-current="page"
-              className="nav--link-custom px-3 nav-link active"
-              data-rb-event-key={null}
-              disabled={false}
-              href="/"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Home
-            </a>
-            <a
-              aria-current={null}
-              className="nav--link-custom px-3 nav-link"
-              data-rb-event-key={null}
-              disabled={false}
-              href="/recipes"
-              onClick={[Function]}
-            >
-              Recipes
-            </a>
-            <a
-              aria-current={null}
-              className="nav--link-custom px-3 nav-link"
-              data-rb-event-key={null}
-              disabled={false}
-              href="/recipe/editor"
-              onClick={[Function]}
-            >
-              Recipe Editor
-            </a>
-            <a
-              aria-current={null}
-              className="nav--link-custom px-3 nav-link"
-              data-rb-event-key={null}
-              disabled={false}
-              href="/flavors"
-              onClick={[Function]}
-            >
-              Flavors
-            </a>
-          </div>
+            <img
+              alt="logo"
+              class="image--logo"
+              src="/media/logo.svg"
+            />
+          </span>
+          <button
+            aria-controls="basic-navbar-nav"
+            aria-label="Toggle navigation"
+            class="navbar-toggler collapsed"
+            type="button"
+          >
+            <span
+              class="navbar-toggler-icon"
+            />
+          </button>
           <div
-            className="ml-auto navbar-nav"
-            onKeyDown={[Function]}
+            class="navbar-collapse collapse"
           >
             <div
-              className="nav--link-custom px-3 dropdown"
-              onKeyDown={[Function]}
+              class="navbar-nav"
             >
               <a
-                aria-expanded={false}
-                aria-haspopup={true}
-                className="dropdown-toggle"
+                aria-current="page"
+                class="nav--link-custom px-3 nav-link active"
                 href="/"
-                id="user-dropdown"
-                onClick={[Function]}
-              />
+              >
+                Home
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/recipes"
+              >
+                Recipes
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/recipe/editor"
+              >
+                Recipe Editor
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/flavors"
+              >
+                Flavors
+              </a>
+            </div>
+            <div
+              class="ml-auto navbar-nav"
+            >
+              <div
+                class="nav--link-custom px-3 dropdown"
+              >
+                <a
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  class="dropdown-toggle"
+                  href="/"
+                  id="user-dropdown"
+                >
+                  <img
+                    alt="User"
+                    class="rounded-circle"
+                    src="https://www.gravatar.com/avatar/6114a57951ce2eefc79a1b3d7918a6f5?s=50&d=mp"
+                  />
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </div>
   </div>
-</div>
+</DocumentFragment>
+`;
+
+exports[`<Header /> renders logged in correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="mb-5 container-fluid"
+  >
+    <div
+      class="navigation-container row"
+    >
+      <div
+        class="col"
+      >
+        <nav
+          class="navbar navbar-expand-lg navbar-light"
+        >
+          <span
+            class="pt-0 navbar-brand"
+          >
+            <img
+              alt="logo"
+              class="image--logo"
+              src="/media/logo.svg"
+            />
+          </span>
+          <button
+            aria-controls="basic-navbar-nav"
+            aria-label="Toggle navigation"
+            class="navbar-toggler collapsed"
+            type="button"
+          >
+            <span
+              class="navbar-toggler-icon"
+            />
+          </button>
+          <div
+            class="navbar-collapse collapse"
+          >
+            <div
+              class="navbar-nav"
+            >
+              <a
+                aria-current="page"
+                class="nav--link-custom px-3 nav-link active"
+                href="/"
+              >
+                Home
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/recipes"
+              >
+                Recipes
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/recipe/editor"
+              >
+                Recipe Editor
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/flavors"
+              >
+                Flavors
+              </a>
+            </div>
+            <div
+              class="ml-auto navbar-nav"
+            >
+              <div
+                class="nav--link-custom px-3 dropdown"
+              >
+                <a
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                  class="dropdown-toggle"
+                  href="/"
+                  id="user-dropdown"
+                >
+                  <img
+                    alt="User"
+                    class="rounded-circle"
+                    src="https://www.gravatar.com/avatar/6114a57951ce2eefc79a1b3d7918a6f5?s=50&d=mp"
+                  />
+                </a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`<Header /> renders logged out correctly 1`] = `
-<div
-  className="mb-5 container-fluid"
->
+<DocumentFragment>
   <div
-    className="navigation-container row"
+    class="mb-5 container-fluid"
   >
     <div
-      className="col"
+      class="navigation-container row"
     >
-      <nav
-        className="navbar navbar-expand-lg navbar-light"
+      <div
+        class="col"
       >
-        <span
-          className="pt-0 navbar-brand"
-        >
-          <img
-            alt="logo"
-            className="image--logo"
-            src="/media/logo.svg"
-          />
-        </span>
-        <button
-          aria-controls="basic-navbar-nav"
-          aria-label="Toggle navigation"
-          className="navbar-toggler collapsed"
-          onClick={[Function]}
-          type="button"
+        <nav
+          class="navbar navbar-expand-lg navbar-light"
         >
           <span
-            className="navbar-toggler-icon"
-          />
-        </button>
-        <div
-          aria-expanded={null}
-          className="navbar-collapse collapse"
-        >
-          <div
-            className="navbar-nav"
-            onKeyDown={[Function]}
+            class="pt-0 navbar-brand"
           >
-            <a
-              aria-current="page"
-              className="nav--link-custom px-3 nav-link active"
-              data-rb-event-key={null}
-              disabled={false}
-              href="/"
-              onClick={[Function]}
-              style={Object {}}
-            >
-              Home
-            </a>
-            <a
-              aria-current={null}
-              className="nav--link-custom px-3 nav-link"
-              data-rb-event-key={null}
-              disabled={false}
-              href="/recipes"
-              onClick={[Function]}
-            >
-              Recipes
-            </a>
-            <a
-              aria-current={null}
-              className="nav--link-custom px-3 nav-link"
-              data-rb-event-key={null}
-              disabled={false}
-              href="/flavors"
-              onClick={[Function]}
-            >
-              Flavors
-            </a>
-            <a
-              aria-current={null}
-              className="nav--link-custom px-3 nav-link"
-              data-rb-event-key={null}
-              disabled={false}
-              href="/login"
-              onClick={[Function]}
-            >
-              Login
-            </a>
-            <a
-              aria-current={null}
-              className="nav--link-custom px-3 nav-link"
-              data-rb-event-key={null}
-              disabled={false}
-              href="/register"
-              onClick={[Function]}
-            >
-              Register
-            </a>
-          </div>
+            <img
+              alt="logo"
+              class="image--logo"
+              src="/media/logo.svg"
+            />
+          </span>
+          <button
+            aria-controls="basic-navbar-nav"
+            aria-label="Toggle navigation"
+            class="navbar-toggler collapsed"
+            type="button"
+          >
+            <span
+              class="navbar-toggler-icon"
+            />
+          </button>
           <div
-            className="ml-auto navbar-nav"
-            onKeyDown={[Function]}
-          />
-        </div>
-      </nav>
+            class="navbar-collapse collapse"
+          >
+            <div
+              class="navbar-nav"
+            >
+              <a
+                aria-current="page"
+                class="nav--link-custom px-3 nav-link active"
+                href="/"
+              >
+                Home
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/recipes"
+              >
+                Recipes
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/flavors"
+              >
+                Flavors
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/login"
+              >
+                Login
+              </a>
+              <a
+                class="nav--link-custom px-3 nav-link"
+                href="/register"
+              >
+                Register
+              </a>
+            </div>
+            <div
+              class="ml-auto navbar-nav"
+            />
+          </div>
+        </nav>
+      </div>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;
