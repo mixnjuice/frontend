@@ -13,6 +13,7 @@ import {
   Dropdown
 } from 'react-bootstrap';
 
+import Logo from 'media/logo.svg';
 import { actions as appActions } from 'reducers/application';
 import { getUser, isLoggedIn } from 'selectors/application';
 
@@ -77,7 +78,7 @@ export default function Header() {
         <Col>
           <Navbar expand="lg">
             <Navbar.Brand className="pt-0">
-              <img src="/media/logo.svg" alt="logo" className="image--logo" />
+              <img src={Logo} alt="logo" className="image--logo" />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse>

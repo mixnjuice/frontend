@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, CardGroup, Card } from 'react-bootstrap';
 
+import ImageOne from 'media/card-test-1.jpg';
+import ImageTwo from 'media/card-test-2.jpg';
+import ImageThree from 'media/card-test-3.jpg';
+import ImageFour from 'media/card-test-4.jpeg';
+import ImageFive from 'media/card-test-5.jpeg';
+
 export default function NewRecipes() {
   return (
     <Row className="text-center">
@@ -11,7 +17,7 @@ export default function NewRecipes() {
           <Card>
             <Card.Img
               variant="top"
-              src="/media/card-test-1.jpg"
+              src={ImageOne}
               className="img-fluid w-75 mx-auto"
             />
             <Card.Body>
@@ -32,7 +38,7 @@ export default function NewRecipes() {
           <Card>
             <Card.Img
               variant="top"
-              src="/media/card-test-2.jpg"
+              src={ImageTwo}
               className="img-fluid w-75 mx-auto"
             />
             <Card.Body>
@@ -53,7 +59,7 @@ export default function NewRecipes() {
           <Card>
             <Card.Img
               variant="top"
-              src="/media/card-test-3.jpg"
+              src={ImageThree}
               className="img-fluid w-75 mx-auto"
             />
             <Card.Body>
@@ -74,7 +80,7 @@ export default function NewRecipes() {
           <Card>
             <Card.Img
               variant="top"
-              src="/media/card-test-4.jpeg"
+              src={ImageFour}
               className="img-fluid w-75 mx-auto"
             />
             <Card.Body>
@@ -95,7 +101,7 @@ export default function NewRecipes() {
           <Card>
             <Card.Img
               variant="top"
-              src="/media/card-test-5.jpeg"
+              src={ImageFive}
               className="img-fluid w-75 mx-auto"
             />
             <Card.Body>
