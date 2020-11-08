@@ -106,7 +106,7 @@ export default {
         ]
       },
       {
-        test: /\.(png|svg|jpe?g|)$/,
+        test: /\.(png|svg|jpe?g|webp)$/,
         use: ['file-loader']
       }
     ]

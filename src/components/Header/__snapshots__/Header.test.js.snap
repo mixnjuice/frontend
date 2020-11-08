@@ -20,7 +20,7 @@ exports[`<Header /> can render gravatar 1`] = `
             <img
               alt="logo"
               class="image--logo"
-              src="/media/logo.svg"
+              src=""
             />
           </span>
           <button
@@ -114,7 +114,7 @@ exports[`<Header /> renders logged in correctly 1`] = `
             <img
               alt="logo"
               class="image--logo"
-              src="/media/logo.svg"
+              src=""
             />
           </span>
           <button
@@ -208,7 +208,7 @@ exports[`<Header /> renders logged out correctly 1`] = `
             <img
               alt="logo"
               class="image--logo"
-              src="/media/logo.svg"
+              src=""
             />
           </span>
           <button
