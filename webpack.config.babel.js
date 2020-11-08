@@ -4,6 +4,7 @@ import webpack from 'webpack';
 import { CLIEngine } from 'eslint';
 import HtmlPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
+import FaviconsPlugin from 'favicons-webpack-plugin';
 import StylelintPlugin from 'stylelint-webpack-plugin';
 import MiniCSSExtractPlugin from 'mini-css-extract-plugin';
 import { CleanWebpackPlugin as CleanPlugin } from 'clean-webpack-plugin';
@@ -28,6 +29,7 @@ const plugins = [
   new HtmlPlugin({
     template: './src/index.html'
   }),
+  new FaviconsPlugin('./src/media/favicon.png'),
   new MiniCSSExtractPlugin({
     filename: '[name].css'
   }),
@@ -102,6 +104,10 @@ export default {
             options: { minimize: true }
           }
         ]
+      },
+      {
+        test: /\.(png|svg|jpe?g|webp)$/,
+        use: ['file-loader']
       }
     ]
   },

@@ -2,6 +2,8 @@ import { Helmet } from 'react-helmet';
 import React, { useState, useCallback } from 'react';
 import { Container, Row, Col, Form, InputGroup, Button } from 'react-bootstrap';
 
+import Logo from 'media/logo.svg';
+
 export default function UserSettings() {
   const [settings, setSettings] = useState({
     username: 'xXTeddyBearSlayer69Xx',
@@ -75,11 +77,7 @@ export default function UserSettings() {
         </Row>
         <Row className="text-center">
           <Col md="3" className="align-self-center">
-            <img
-              src="/media/harold.jpeg"
-              alt="Current profile pic"
-              className="w-50"
-            />
+            <img src={Logo} alt="Current profile pic" className="w-50" />
           </Col>
           <Col md="6" className="align-self-center">
             <h3>Profile Picture</h3>

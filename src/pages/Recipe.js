@@ -16,6 +16,7 @@ import {
 } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import ImageOne from 'media/card-test-1.jpg';
 import recipes from '../data/recipes.json';
 import flavorStash from '../data/flavorstash.json';
 import RecipeDetails from 'components/RecipeDetails/RecipeDetails';
@@ -226,11 +227,7 @@ export class Recipe extends Component {
               <Card.Body>
                 <Row>
                   <Col md={{ span: 5 }} xs={{ span: 12 }}>
-                    <img
-                      src="/media/card-test-1.jpg"
-                      alt="card test"
-                      className="w-75"
-                    />
+                    <img src={ImageOne} alt="card test" className="w-75" />
                   </Col>
                   <Col md={{ span: 7 }} xs={{ span: 12 }}>
                     <Card.Title>Version {version}</Card.Title>

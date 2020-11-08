@@ -1,6 +1,8 @@
 import React from 'react';
 import { Row, Col, Card, Button } from 'react-bootstrap';
 
+import Logo from 'media/logo.svg';
+
 export default function FeaturedMixer() {
   return (
     <Row className="text-center">
@@ -11,7 +13,7 @@ export default function FeaturedMixer() {
           <Card.Body>
             <Row>
               <Col>
-                <img src="/media/harold.jpeg" alt="" className="w-50" />
+                <img src={Logo} alt="" className="w-50" />
               </Col>
               <Col>
                 <Card.Title>I&apos;m not creative enough</Card.Title>

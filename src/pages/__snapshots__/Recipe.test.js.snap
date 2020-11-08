@@ -133,7 +133,7 @@ exports[`<Recipe /> renders correctly 1`] = `
               <img
                 alt="card test"
                 className="w-75"
-                src="/media/card-test-1.jpg"
+                src=""
               />
             </div>
             <div
