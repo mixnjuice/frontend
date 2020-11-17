@@ -39,14 +39,13 @@ describe('<IngredientList />', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('percent changes and calls dispatch', () => {
+  it('calls dispatch for percentage change', () => {
     const mockDispatch = jest.fn();
 
     useDispatch.mockReturnValue(mockDispatch);
 
-    const { asFragment, getByTestId } = render(<IngredientList {...props} />);
+    const { getByTestId } = render(<IngredientList {...props} />);
 
-    expect(asFragment()).toMatchSnapshot();
     expect(getByTestId('ingredient-A-percent')).not.toBeNull();
 
     fireEvent.change(getByTestId('ingredient-A-percent'), {
@@ -59,18 +58,15 @@ describe('<IngredientList />', () => {
         A: 5.0
       })
     );
-
-    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('removes from list', () => {
+  it('calls dispatch to remove from list', () => {
     const mockDispatch = jest.fn();
 
     useDispatch.mockReturnValue(mockDispatch);
 
-    const { asFragment, getByTestId } = render(<IngredientList {...props} />);
+    const { getByTestId } = render(<IngredientList {...props} />);
 
-    expect(asFragment()).toMatchSnapshot();
     expect(getByTestId('ingredient-C-remove')).not.toBeNull();
 
     fireEvent.click(getByTestId('ingredient-C-remove'));
@@ -80,7 +76,5 @@ describe('<IngredientList />', () => {
         props.ingredients.filter((ingredient) => ingredient.Flavor.id !== 'C')
       )
     );
-
-    expect(asFragment()).toMatchSnapshot();
   });
 });
