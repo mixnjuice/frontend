@@ -76,6 +76,7 @@ export default function IngredientList({ ingredients, percentages }) {
                     onChange={handlePercentChange}
                     placeholder="0"
                     required
+                    data-testid={`ingredient-${id}-percent`}
                   />
                   <InputGroup.Append>
                     <InputGroup.Text>%</InputGroup.Text>
@@ -87,6 +88,7 @@ export default function IngredientList({ ingredients, percentages }) {
                   size="sm"
                   className="button-animation"
                   onClick={() => removeIngredient(id)}
+                  data-testid={`ingredient-${id}-remove`}
                 >
                   <FontAwesomeIcon icon="trash" size="xs" title="remove" />
                 </Button>
