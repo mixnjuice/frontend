@@ -6,7 +6,14 @@ import { actions as recipeActions } from 'reducers/recipe';
 
 import IngredientList from './IngredientList';
 
-jest.mock('react-redux');
+jest.mock('react-redux', () => {
+  const dispatch = jest.fn();
+
+  return {
+    ...jest.requireActual('react-redux'),
+    useDispatch: jest.fn(() => dispatch)
+  };
+});
 
 describe('<IngredientList />', () => {
   const props = {
@@ -40,10 +47,6 @@ describe('<IngredientList />', () => {
   });
 
   it('calls dispatch for percentage change', () => {
-    const mockDispatch = jest.fn();
-
-    useDispatch.mockReturnValue(mockDispatch);
-
     const { getByTestId } = render(<IngredientList {...props} />);
 
     expect(getByTestId('ingredient-A-percent')).not.toBeNull();
@@ -52,7 +55,7 @@ describe('<IngredientList />', () => {
       target: { name: 'A', value: '5.0' }
     });
 
-    expect(mockDispatch).toHaveBeenCalledWith(
+    expect(useDispatch()).toHaveBeenCalledWith(
       recipeActions.setRecipePercentages({
         ...props.percentages,
         A: 5.0
@@ -61,17 +64,13 @@ describe('<IngredientList />', () => {
   });
 
   it('calls dispatch to remove from list', () => {
-    const mockDispatch = jest.fn();
-
-    useDispatch.mockReturnValue(mockDispatch);
-
     const { getByTestId } = render(<IngredientList {...props} />);
 
     expect(getByTestId('ingredient-C-remove')).not.toBeNull();
 
     fireEvent.click(getByTestId('ingredient-C-remove'));
 
-    expect(mockDispatch).toHaveBeenCalledWith(
+    expect(useDispatch()).toHaveBeenCalledWith(
       recipeActions.setRecipeIngredients(
         props.ingredients.filter((ingredient) => ingredient.Flavor.id !== 'C')
       )
