@@ -58,7 +58,7 @@ function Switch(props) {
   );
 }
 
-Switch.propTypes = propTypes;
+Switch.propTypes = propTypesWithIcon;
 Switch.defaultProps = defaultProps;
 
 function GridList(props) {
@@ -79,7 +79,7 @@ function GridList(props) {
   );
 }
 
-GridList.propTypes = propTypes;
+GridList.propTypes = propTypesWithIcon;
 GridList.defaultProps = defaultProps;
 
 function ButtonElement(props) {
