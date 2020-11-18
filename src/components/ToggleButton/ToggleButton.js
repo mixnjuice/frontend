@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React from 'react';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -8,127 +8,157 @@ export const toggleButtonProps = {
   variants: ['check', 'circle', 'switch', 'grid-list']
 };
 
-export default class ToggleButton extends Component {
-  static propTypes = {
-    className: PropTypes.string,
-    buttonProps: PropTypes.object,
-    iconProps: PropTypes.object,
-    title: PropTypes.string.isRequired,
-    value: PropTypes.bool,
-    iconOnly: PropTypes.bool,
-    variant: PropTypes.oneOf(toggleButtonProps.variants),
-    onClick: PropTypes.func
-  };
+function Switch(props) {
+  const { className, value, title, onClick } = props;
 
-  static defaultProps = {
-    buttonProps: {},
-    iconProps: {},
-    value: false,
-    variant: 'check'
-  };
+  return (
+    <label className="switch my-auto mx-1">
+      <input type="checkbox" checked={value} onChange={onClick} name={title} />
+      <span className={classNames(className, 'slider slider--round')}></span>
+    </label>
+  );
+}
 
-  constructor(props) {
-    super(props);
+Switch.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  value: PropTypes.bool,
+  onClick: PropTypes.func
+};
 
-    this.handleClick = this.handleClick.bind(this);
-  }
+Switch.defaultProps = {
+  value: false
+};
 
-  get icon() {
-    return this.props.value ? ['fas', 'check-square'] : ['far', 'square'];
-  }
+function GridList(props) {
+  const { className } = props;
 
-  handleClick(event) {
-    const { onClick } = this.props;
-
-    if (onClick) {
-      onClick(event);
-    }
-  }
-
-  switch(classes) {
-    const { className, value, title } = this.props;
-    const joinedClasses = classNames(
-      className,
-      classes,
-      'slider slider--round'
-    );
-
-    return (
-      <label className="switch my-auto mx-1">
-        <input
-          type="checkbox"
-          checked={value}
-          onChange={this.handleClick}
-          name={title}
-        />
-        <span className={joinedClasses}></span>
-      </label>
-    );
-  }
-
-  get gridList() {
-    return (
-      <div className="slider--grid-list">
-        <FontAwesomeIcon
-          icon={['fas', 'list']}
-          className="slider-icon--grid-list"
-        />
-        {this.switch('slider--teal')}
-        <FontAwesomeIcon
-          icon={['fas', 'th']}
-          className="slider-icon--grid-list"
-        />
-      </div>
-    );
-  }
-
-  get button() {
-    const { buttonProps, className, iconProps, title } = this.props;
-    const classes = classNames(className, 'btn-toggle');
-
-    return (
-      <Button
-        {...buttonProps}
-        data-testid="toggle-button"
-        title={title}
-        onClick={this.handleClick}
-        className={classes}
-      >
-        <FontAwesomeIcon size="lg" {...iconProps} icon={this.icon} />
-      </Button>
-    );
-  }
-
-  get iconOnly() {
-    const { className, iconProps, title } = this.props;
-    const classes = classNames(className, 'icon-toggle');
-
-    return (
+  return (
+    <div className="slider--grid-list">
       <FontAwesomeIcon
-        size="lg"
-        {...iconProps}
-        icon={this.icon}
-        title={title}
-        onClick={this.handleClick}
-        className={classes}
+        icon={['fas', 'list']}
+        className="slider-icon--grid-list"
       />
-    );
+      <Switch {...props} className={classNames(className, 'slider--teal')} />
+      <FontAwesomeIcon
+        icon={['fas', 'th']}
+        className="slider-icon--grid-list"
+      />
+    </div>
+  );
+}
+
+GridList.propTypes = {
+  className: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  value: PropTypes.bool,
+  onClick: PropTypes.func
+};
+
+GridList.defaultProps = {
+  value: false
+};
+
+function ButtonElement(props) {
+  const { buttonProps, className, iconProps, title, icon, onClick } = props;
+  const classes = classNames(className, 'btn-toggle');
+
+  return (
+    <Button
+      {...buttonProps}
+      data-testid="toggle-button"
+      title={title}
+      onClick={onClick}
+      className={classes}
+    >
+      <FontAwesomeIcon size="lg" {...iconProps} icon={icon} />
+    </Button>
+  );
+}
+
+ButtonElement.propTypes = {
+  className: PropTypes.string,
+  buttonProps: PropTypes.object,
+  icon: PropTypes.arrayOf(PropTypes.string).isRequired,
+  iconProps: PropTypes.object,
+  title: PropTypes.string.isRequired,
+  onClick: PropTypes.func
+};
+
+ButtonElement.defaultProps = {
+  buttonProps: {},
+  iconProps: {}
+};
+
+function IconOnly({ icon, iconProps, title, onClick, className }) {
+  return (
+    <FontAwesomeIcon
+      size="lg"
+      {...iconProps}
+      icon={icon}
+      title={title}
+      onClick={onClick}
+      className={classNames(className, 'icon-toggle')}
+    />
+  );
+}
+
+IconOnly.propTypes = {
+  className: PropTypes.string,
+  buttonProps: PropTypes.object,
+  iconProps: PropTypes.object,
+  icon: PropTypes.arrayOf(PropTypes.string).isRequired,
+  title: PropTypes.string.isRequired,
+  value: PropTypes.bool,
+  iconOnly: PropTypes.bool,
+  variant: PropTypes.oneOf(toggleButtonProps.variants),
+  onClick: PropTypes.func
+};
+
+IconOnly.defaultProps = {
+  buttonProps: {},
+  iconProps: {},
+  value: false,
+  variant: 'check'
+};
+
+export default function ToggleButton(props) {
+  const { iconOnly, variant, value, onClick } = props;
+
+  const derivedProps = {
+    ...props,
+    icon: value ? ['fas', 'check-square'] : ['far', 'square'],
+    onClick: (event) => onClick && onClick(event)
+  };
+
+  if (iconOnly) {
+    return <IconOnly {...derivedProps} />;
   }
 
-  render() {
-    const { iconOnly, variant } = this.props;
-
-    if (iconOnly) {
-      return this.iconOnly;
-    }
-
-    switch (variant) {
-      case 'switch':
-        return this.switch();
-      case 'grid-list':
-        return this.gridList;
-      default:
-        return this.button;
-    }
+  switch (variant) {
+    case 'switch':
+      return <Switch {...derivedProps} />;
+    case 'grid-list':
+      return <GridList {...derivedProps} />;
+    default:
+      return <ButtonElement {...derivedProps} />;
   }
 }
+
+ToggleButton.propTypes = {
+  className: PropTypes.string,
+  buttonProps: PropTypes.object,
+  iconProps: PropTypes.object,
+  title: PropTypes.string.isRequired,
+  value: PropTypes.bool,
+  iconOnly: PropTypes.bool,
+  variant: PropTypes.oneOf(toggleButtonProps.variants),
+  onClick: PropTypes.func
+};
+
+ToggleButton.defaultProps = {
+  buttonProps: {},
+  iconProps: {},
+  value: false,
+  variant: 'check'
+};
