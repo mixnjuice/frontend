@@ -52,7 +52,6 @@ function GridList(props) {
 
 function ButtonElement(props) {
   const { buttonProps, className, iconProps, title, icon, onClick } = props;
-  const classes = classNames(className, 'btn-toggle');
 
   return (
     <Button
@@ -60,7 +59,7 @@ function ButtonElement(props) {
       data-testid="toggle-button"
       title={title}
       onClick={onClick}
-      className={classes}
+      className={classNames(className, 'btn-toggle')}
     >
       <FontAwesomeIcon size="lg" {...iconProps} icon={icon} />
     </Button>
