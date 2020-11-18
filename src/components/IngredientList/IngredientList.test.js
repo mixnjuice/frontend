@@ -41,8 +41,6 @@ describe('<IngredientList />', () => {
   it('renders correctly', () => {
     const { asFragment } = render(<IngredientList {...props} />);
 
-    useDispatch.mockReturnValue(jest.fn());
-
     expect(asFragment()).toMatchSnapshot();
   });
 
