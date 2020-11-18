@@ -8,6 +8,19 @@ export const toggleButtonProps = {
   variants: ['check', 'circle', 'switch', 'grid-list']
 };
 
+function IconOnly({ icon, iconProps, title, onClick, className }) {
+  return (
+    <FontAwesomeIcon
+      size="lg"
+      {...iconProps}
+      icon={icon}
+      title={title}
+      onClick={onClick}
+      className={classNames(className, 'icon-toggle')}
+    />
+  );
+}
+
 function Switch(props) {
   const { className, value, title, onClick } = props;
 
@@ -18,17 +31,6 @@ function Switch(props) {
     </label>
   );
 }
-
-Switch.propTypes = {
-  className: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  value: PropTypes.bool,
-  onClick: PropTypes.func
-};
-
-Switch.defaultProps = {
-  value: false
-};
 
 function GridList(props) {
   const { className } = props;
@@ -48,17 +50,6 @@ function GridList(props) {
   );
 }
 
-GridList.propTypes = {
-  className: PropTypes.string,
-  title: PropTypes.string.isRequired,
-  value: PropTypes.bool,
-  onClick: PropTypes.func
-};
-
-GridList.defaultProps = {
-  value: false
-};
-
 function ButtonElement(props) {
   const { buttonProps, className, iconProps, title, icon, onClick } = props;
   const classes = classNames(className, 'btn-toggle');
@@ -75,52 +66,6 @@ function ButtonElement(props) {
     </Button>
   );
 }
-
-ButtonElement.propTypes = {
-  className: PropTypes.string,
-  buttonProps: PropTypes.object,
-  icon: PropTypes.arrayOf(PropTypes.string).isRequired,
-  iconProps: PropTypes.object,
-  title: PropTypes.string.isRequired,
-  onClick: PropTypes.func
-};
-
-ButtonElement.defaultProps = {
-  buttonProps: {},
-  iconProps: {}
-};
-
-function IconOnly({ icon, iconProps, title, onClick, className }) {
-  return (
-    <FontAwesomeIcon
-      size="lg"
-      {...iconProps}
-      icon={icon}
-      title={title}
-      onClick={onClick}
-      className={classNames(className, 'icon-toggle')}
-    />
-  );
-}
-
-IconOnly.propTypes = {
-  className: PropTypes.string,
-  buttonProps: PropTypes.object,
-  iconProps: PropTypes.object,
-  icon: PropTypes.arrayOf(PropTypes.string).isRequired,
-  title: PropTypes.string.isRequired,
-  value: PropTypes.bool,
-  iconOnly: PropTypes.bool,
-  variant: PropTypes.oneOf(toggleButtonProps.variants),
-  onClick: PropTypes.func
-};
-
-IconOnly.defaultProps = {
-  buttonProps: {},
-  iconProps: {},
-  value: false,
-  variant: 'check'
-};
 
 export default function ToggleButton(props) {
   const { iconOnly, variant, value, onClick } = props;
@@ -145,7 +90,7 @@ export default function ToggleButton(props) {
   }
 }
 
-ToggleButton.propTypes = {
+IconOnly.propTypes = Switch.propTypes = GridList.propTypes = ButtonElement.propTypes = ToggleButton.propTypes = {
   className: PropTypes.string,
   buttonProps: PropTypes.object,
   iconProps: PropTypes.object,
@@ -156,7 +101,7 @@ ToggleButton.propTypes = {
   onClick: PropTypes.func
 };
 
-ToggleButton.defaultProps = {
+IconOnly.defaultProps = Switch.defaultProps = GridList.defaultProps = ButtonElement.defaultProps = ToggleButton.defaultProps = {
   buttonProps: {},
   iconProps: {},
   value: false,
