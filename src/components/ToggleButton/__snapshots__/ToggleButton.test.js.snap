@@ -27,6 +27,7 @@ exports[`<ToggleButton /> can render "grid-list" variant 1`] = `
       class="switch my-auto mx-1"
     >
       <input
+        data-testid="toggle-button"
         name="Toggle me real good!"
         type="checkbox"
       />
@@ -47,6 +48,7 @@ exports[`<ToggleButton /> can render "switch" variant 1`] = `
     class="switch my-auto mx-1"
   >
     <input
+      data-testid="toggle-button"
       name="Toggle me real good!"
       type="checkbox"
     />

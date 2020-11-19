@@ -30,7 +30,7 @@ const defaultProps = {
   iconProps: {},
   value: false,
   variant: 'check',
-  'data-testid': null
+  'data-testid': 'toggle-button'
 };
 
 function IconOnly(props) {
@@ -102,7 +102,7 @@ function ButtonElement(props) {
       title={title}
       onClick={onClick}
       className={classNames(className, 'btn-toggle')}
-      data-testid={props['data-testid'] ?? 'toggle-button'}
+      data-testid={props['data-testid']}
     >
       <FontAwesomeIcon size="lg" {...iconProps} icon={icon} />
     </Button>
