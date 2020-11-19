@@ -200,7 +200,11 @@ describe('Page <Flavors />', () => {
     getStash.mockReturnValue(stash);
     isLoaded.mockReturnValue(true);
 
-    const { asFragment } = render(<ReduxConnectedFlavors {...props} />);
+    const { asFragment, getByTestId } = render(
+      <ReduxConnectedFlavors {...props} />
+    );
+
+    fireEvent.click(getByTestId('stash-toggle'));
 
     expect(asFragment()).toMatchSnapshot();
   });

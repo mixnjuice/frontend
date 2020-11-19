@@ -866,7 +866,7 @@ exports[`Page <Flavors /> renders current user flavors correctly 1`] = `
           >
             <input
               data-testid="stash-toggle"
-              name="Enable Flavor Stash"
+              name="Disable Flavor Stash"
               type="checkbox"
             />
             <span
@@ -892,6 +892,9 @@ exports[`Page <Flavors /> renders current user flavors correctly 1`] = `
             class="text-center"
           >
             <th>
+              Stash
+            </th>
+            <th>
               ID
             </th>
             <th>
@@ -910,6 +913,20 @@ exports[`Page <Flavors /> renders current user flavors correctly 1`] = `
         </thead>
         <tbody>
           <tr>
+            <td
+              class="text-center"
+            >
+              <button
+                class="btn-toggle btn btn-primary"
+                data-testid="stash-icon-1"
+                title="Remove from Stash"
+                type="button"
+              >
+                <i
+                  class="fa fas-check-square"
+                />
+              </button>
+            </td>
             <td
               class="text-center"
             >
@@ -932,6 +949,20 @@ exports[`Page <Flavors /> renders current user flavors correctly 1`] = `
             <td
               class="text-center"
             >
+              <button
+                class="btn-toggle btn btn-primary"
+                data-testid="stash-icon-2"
+                title="Remove from Stash"
+                type="button"
+              >
+                <i
+                  class="fa fas-check-square"
+                />
+              </button>
+            </td>
+            <td
+              class="text-center"
+            >
               2
             </td>
             <td>
@@ -948,6 +979,20 @@ exports[`Page <Flavors /> renders current user flavors correctly 1`] = `
             />
           </tr>
           <tr>
+            <td
+              class="text-center"
+            >
+              <button
+                class="btn-toggle btn btn-primary"
+                data-testid="stash-icon-3"
+                title="Remove from Stash"
+                type="button"
+              >
+                <i
+                  class="fa fas-check-square"
+                />
+              </button>
+            </td>
             <td
               class="text-center"
             >
@@ -970,6 +1015,20 @@ exports[`Page <Flavors /> renders current user flavors correctly 1`] = `
             <td
               class="text-center"
             >
+              <button
+                class="btn-toggle btn btn-primary"
+                data-testid="stash-icon-4"
+                title="Remove from Stash"
+                type="button"
+              >
+                <i
+                  class="fa fas-check-square"
+                />
+              </button>
+            </td>
+            <td
+              class="text-center"
+            >
               4
             </td>
             <td>
@@ -986,6 +1045,20 @@ exports[`Page <Flavors /> renders current user flavors correctly 1`] = `
             />
           </tr>
           <tr>
+            <td
+              class="text-center"
+            >
+              <button
+                class="btn-toggle btn btn-primary"
+                data-testid="stash-icon-5"
+                title="Add to Stash"
+                type="button"
+              >
+                <i
+                  class="fa far-square"
+                />
+              </button>
+            </td>
             <td
               class="text-center"
             >
