@@ -1,8 +1,17 @@
 import { render, fireEvent } from '@testing-library/react';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
+import configureStore from 'redux-mock-store';
 
-import { actions as flavorActions } from 'reducers/flavor';
+import { initialState as appInitialState } from 'reducers/application';
+import {
+  initialState as flavorInitialState,
+  actions as flavorActions
+} from 'reducers/flavor';
+import { initialState as flavorsInitialState } from 'reducers/flavors';
+
+import { isLoggedIn } from 'selectors/application';
+import { getStash, isLoaded } from 'selectors/flavor';
 
 import { Flavors } from './Flavors';
 
@@ -11,12 +20,30 @@ jest.mock('react-redux', () => {
 
   return {
     ...jest.requireActual('react-redux'),
-    useDispatch: jest.fn(() => dispatch),
-    useSelector: jest.fn()
+    useDispatch: jest.fn(() => dispatch)
+  };
+});
+
+jest.mock('selectors/application', () => {
+  return {
+    isLoggedIn: jest.fn()
+  };
+});
+
+jest.mock('selectors/flavor', () => {
+  return {
+    getStash: jest.fn(),
+    isLoaded: jest.fn()
   };
 });
 
 describe('Page <Flavors />', () => {
+  const mockStore = configureStore();
+  const store = mockStore({
+    application: appInitialState,
+    flavor: flavorInitialState,
+    flavors: flavorsInitialState
+  });
   const collection = [
     {
       id: '1',
@@ -135,51 +162,57 @@ describe('Page <Flavors />', () => {
     pagerNavigation
   };
 
+  const ReduxConnectedFlavors = (flavorsProps) => (
+    <Provider store={store}>
+      <Flavors {...flavorsProps} />
+    </Provider>
+  );
+
   beforeEach(() => {
     useDispatch().mockClear();
-    useSelector.mockClear();
+    isLoggedIn.mockClear();
+    getStash.mockClear();
+    isLoaded.mockClear();
   });
 
   it('renders correctly when stash is not loaded', () => {
-    useSelector
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce([])
-      .mockReturnValueOnce(false);
+    isLoggedIn.mockReturnValue(true);
+    getStash.mockReturnValue([]);
+    isLoaded.mockReturnValue(false);
 
-    const { asFragment } = render(<Flavors {...props} />);
+    const { asFragment } = render(<ReduxConnectedFlavors {...props} />);
 
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders correctly when user is not logged in', () => {
-    useSelector.mockReturnValueOnce(false).mockReturnValue(null);
+    isLoggedIn.mockReturnValue(false);
+    getStash.mockReturnValue([]);
+    isLoaded.mockReturnValue(false);
 
-    const { asFragment } = render(<Flavors {...props} />);
+    const { asFragment } = render(<ReduxConnectedFlavors {...props} />);
 
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders current user flavors correctly', () => {
-    useSelector
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(stash)
-      .mockReturnValueOnce(true);
+    isLoggedIn.mockReturnValue(true);
+    getStash.mockReturnValue(stash);
+    isLoaded.mockReturnValue(true);
 
-    const { asFragment } = render(<Flavors {...props} />);
+    const { asFragment } = render(<ReduxConnectedFlavors {...props} />);
 
     expect(asFragment()).toMatchSnapshot();
   });
 
   it('can handle stashToggle', () => {
-    useSelector
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(stash)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(stash)
-      .mockReturnValueOnce(true);
+    isLoggedIn.mockReturnValue(true);
+    getStash.mockReturnValue(stash);
+    isLoaded.mockReturnValue(true);
 
-    const { asFragment, getByTestId } = render(<Flavors {...props} />);
+    const { asFragment, getByTestId } = render(
+      <ReduxConnectedFlavors {...props} />
+    );
 
     expect(asFragment()).toMatchSnapshot();
 
@@ -189,12 +222,11 @@ describe('Page <Flavors />', () => {
   });
 
   it('can handle addToStash', () => {
-    useSelector
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce([])
-      .mockReturnValueOnce(true);
+    isLoggedIn.mockReturnValue(true);
+    getStash.mockReturnValue([]);
+    isLoaded.mockReturnValue(true);
 
-    const { getByTestId } = render(<Flavors {...props} />);
+    const { getByTestId } = render(<ReduxConnectedFlavors {...props} />);
 
     fireEvent.click(getByTestId('stash-toggle'));
     fireEvent.click(getByTestId(`stash-icon-2`));
@@ -205,12 +237,11 @@ describe('Page <Flavors />', () => {
   });
 
   it('can handle removeFromStash', () => {
-    useSelector
-      .mockReturnValueOnce(true)
-      .mockReturnValueOnce(stash)
-      .mockReturnValueOnce(true);
+    isLoggedIn.mockReturnValue(true);
+    getStash.mockReturnValue(stash);
+    isLoaded.mockReturnValue(true);
 
-    const { getByTestId } = render(<Flavors {...props} />);
+    const { getByTestId } = render(<ReduxConnectedFlavors {...props} />);
 
     fireEvent.click(getByTestId('stash-toggle'));
     fireEvent.click(getByTestId(`stash-icon-2`));
