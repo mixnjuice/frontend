@@ -218,11 +218,11 @@ describe('Page <Flavors />', () => {
       <ReduxConnectedFlavors {...props} />
     );
 
-    expect(asFragment()).toMatchSnapshot();
+    const firstRender = asFragment();
 
     fireEvent.click(getByTestId('stash-toggle'));
 
-    expect(asFragment()).toMatchSnapshot();
+    expect(firstRender).toMatchDiffSnapshot(asFragment());
   });
 
   it('can handle addToStash', () => {
