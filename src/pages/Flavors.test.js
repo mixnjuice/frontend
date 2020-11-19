@@ -175,7 +175,17 @@ describe('Page <Flavors />', () => {
     isLoaded.mockClear();
   });
 
-  it('renders correctly when stash is not loaded', () => {
+  it('has "log in" call to action when user is not logged in', () => {
+    isLoggedIn.mockReturnValue(false);
+    getStash.mockReturnValue([]);
+    isLoaded.mockReturnValue(false);
+
+    const { getByText } = render(<ReduxConnectedFlavors {...props} />);
+
+    expect(getByText(/log in/i)).toBeDefined();
+  });
+
+  it('matches snapshot when stash is not loaded', () => {
     isLoggedIn.mockReturnValue(true);
     getStash.mockReturnValue([]);
     isLoaded.mockReturnValue(false);
@@ -185,17 +195,7 @@ describe('Page <Flavors />', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('renders correctly when user is not logged in', () => {
-    isLoggedIn.mockReturnValue(false);
-    getStash.mockReturnValue([]);
-    isLoaded.mockReturnValue(false);
-
-    const { asFragment } = render(<ReduxConnectedFlavors {...props} />);
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('renders current user flavors correctly (after stash toggle)', () => {
+  it("matches snapshot diff of user's stash (after toggle)", () => {
     isLoggedIn.mockReturnValue(true);
     getStash.mockReturnValue(stash);
     isLoaded.mockReturnValue(true);
@@ -211,7 +211,7 @@ describe('Page <Flavors />', () => {
     expect(firstRender).toMatchDiffSnapshot(asFragment());
   });
 
-  it('can handle addToStash', () => {
+  it('dispatches addToStash after ingredient is added', () => {
     isLoggedIn.mockReturnValue(true);
     getStash.mockReturnValue([]);
     isLoaded.mockReturnValue(true);
@@ -226,7 +226,7 @@ describe('Page <Flavors />', () => {
     );
   });
 
-  it('can handle removeFromStash', () => {
+  it('dispatches removeFromStash after ingredient is removed', () => {
     isLoggedIn.mockReturnValue(true);
     getStash.mockReturnValue(stash);
     isLoaded.mockReturnValue(true);
