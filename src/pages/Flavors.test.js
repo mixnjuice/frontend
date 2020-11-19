@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { actions as flavorActions } from 'reducers/flavor';
 
-import PaginatedFlavors, { Flavors } from './Flavors';
+import { Flavors } from './Flavors';
 
 jest.mock('react-redux', () => {
   const dispatch = jest.fn();
@@ -13,17 +13,6 @@ jest.mock('react-redux', () => {
     ...jest.requireActual('react-redux'),
     useDispatch: jest.fn(() => dispatch),
     useSelector: jest.fn()
-  };
-});
-
-jest.mock('components/Pagination/Pagination', () => {
-  const pagination = () => <div>Pagination</div>;
-  const PagerInfo = () => <div>PagerInfo</div>;
-
-  return {
-    withPagination: () => () => pagination,
-    pagination,
-    PagerInfo
   };
 });
 
@@ -151,12 +140,6 @@ describe('Page <Flavors />', () => {
     useSelector.mockClear();
   });
 
-  it('renders correctly', () => {
-    const { asFragment } = render(<PaginatedFlavors />);
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
   it('renders correctly when stash is not loaded', () => {
     useSelector
       .mockReturnValueOnce(true)
@@ -189,6 +172,9 @@ describe('Page <Flavors />', () => {
 
   it('can handle stashToggle', () => {
     useSelector
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce(stash)
+      .mockReturnValueOnce(true)
       .mockReturnValueOnce(true)
       .mockReturnValueOnce(stash)
       .mockReturnValueOnce(true);

@@ -172,8 +172,23 @@ exports[`Page <Flavors /> can handle stashToggle 1`] = `
       </table>
     </div>
     <p />
-    <div>
-      PagerInfo
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col"
+        >
+          5 Flavors
+        </div>
+        <div
+          class="text-right col"
+        >
+          1 Pages
+        </div>
+      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -204,9 +219,22 @@ exports[`Page <Flavors /> can handle stashToggle 2`] = `
         <div
           class="text-left ml-2 mb-4 col"
         >
-          <small>
-            Log in to Enable Flavor Stash
-          </small>
+          <label
+            class="switch my-auto mx-1"
+          >
+            <input
+              data-testid="stash-toggle"
+              name="Disable Flavor Stash"
+              type="checkbox"
+            />
+            <span
+              class="slider slider--round"
+            />
+          </label>
+           
+          <span>
+            Enable Flavor Stash
+          </span>
         </div>
       </div>
     </div>
@@ -221,6 +249,9 @@ exports[`Page <Flavors /> can handle stashToggle 2`] = `
           <tr
             class="text-center"
           >
+            <th>
+              Stash
+            </th>
             <th>
               ID
             </th>
@@ -408,17 +439,24 @@ exports[`Page <Flavors /> can handle stashToggle 2`] = `
       </table>
     </div>
     <p />
-    <div>
-      PagerInfo
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col"
+        >
+          5 Flavors
+        </div>
+        <div
+          class="text-right col"
+        >
+          1 Pages
+        </div>
+      </div>
     </div>
-  </div>
-</DocumentFragment>
-`;
-
-exports[`Page <Flavors /> renders correctly 1`] = `
-<DocumentFragment>
-  <div>
-    Pagination
   </div>
 </DocumentFragment>
 `;
@@ -595,8 +633,23 @@ exports[`Page <Flavors /> renders correctly when stash is not loaded 1`] = `
       </table>
     </div>
     <p />
-    <div>
-      PagerInfo
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col"
+        >
+          5 Flavors
+        </div>
+        <div
+          class="text-right col"
+        >
+          1 Pages
+        </div>
+      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -761,8 +814,23 @@ exports[`Page <Flavors /> renders correctly when user is not logged in 1`] = `
       </table>
     </div>
     <p />
-    <div>
-      PagerInfo
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col"
+        >
+          5 Flavors
+        </div>
+        <div
+          class="text-right col"
+        >
+          1 Pages
+        </div>
+      </div>
     </div>
   </div>
 </DocumentFragment>
@@ -940,8 +1008,23 @@ exports[`Page <Flavors /> renders current user flavors correctly 1`] = `
       </table>
     </div>
     <p />
-    <div>
-      PagerInfo
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col"
+        >
+          5 Flavors
+        </div>
+        <div
+          class="text-right col"
+        >
+          1 Pages
+        </div>
+      </div>
     </div>
   </div>
 </DocumentFragment>
