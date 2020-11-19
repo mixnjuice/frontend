@@ -195,21 +195,7 @@ describe('Page <Flavors />', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('renders current user flavors correctly', () => {
-    isLoggedIn.mockReturnValue(true);
-    getStash.mockReturnValue(stash);
-    isLoaded.mockReturnValue(true);
-
-    const { asFragment, getByTestId } = render(
-      <ReduxConnectedFlavors {...props} />
-    );
-
-    fireEvent.click(getByTestId('stash-toggle'));
-
-    expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('can handle stashToggle', () => {
+  it('renders current user flavors correctly (after stash toggle)', () => {
     isLoggedIn.mockReturnValue(true);
     getStash.mockReturnValue(stash);
     isLoaded.mockReturnValue(true);
