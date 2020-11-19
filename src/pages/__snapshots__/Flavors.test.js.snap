@@ -1,331 +1,948 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Page <Flavors /> renders correctly 1`] = `<Pagination />`;
+exports[`Page <Flavors /> can handle stashToggle 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="text-center row"
+      >
+        <div
+          class="col"
+        >
+          <h1>
+            Flavors
+          </h1>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="text-left ml-2 mb-4 col"
+        >
+          <label
+            class="switch my-auto mx-1"
+          >
+            <input
+              data-testid="stash-toggle"
+              name="Enable Flavor Stash"
+              type="checkbox"
+            />
+            <span
+              class="slider slider--round"
+            />
+          </label>
+           
+          <span>
+            Enable Flavor Stash
+          </span>
+        </div>
+      </div>
+    </div>
+    <p />
+    <div
+      class="table-responsive"
+    >
+      <table
+        class="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr
+            class="text-center"
+          >
+            <th>
+              ID
+            </th>
+            <th>
+              Vendor
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Slug
+            </th>
+            <th>
+              Density
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              class="text-center"
+            >
+              1
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Bears
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              2
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Fish
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              3
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Acai
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              4
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Amaretto
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              5
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Anise
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p />
+    <div>
+      PagerInfo
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Page <Flavors /> can handle stashToggle 2`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="text-center row"
+      >
+        <div
+          class="col"
+        >
+          <h1>
+            Flavors
+          </h1>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="text-left ml-2 mb-4 col"
+        >
+          <small>
+            Log in to Enable Flavor Stash
+          </small>
+        </div>
+      </div>
+    </div>
+    <p />
+    <div
+      class="table-responsive"
+    >
+      <table
+        class="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr
+            class="text-center"
+          >
+            <th>
+              ID
+            </th>
+            <th>
+              Vendor
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Slug
+            </th>
+            <th>
+              Density
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              class="text-center"
+            >
+              <button
+                class="btn-toggle btn btn-primary"
+                data-testid="stash-icon-1"
+                title="Remove from Stash"
+                type="button"
+              >
+                <i
+                  class="fa fas-check-square"
+                />
+              </button>
+            </td>
+            <td
+              class="text-center"
+            >
+              1
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Bears
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              <button
+                class="btn-toggle btn btn-primary"
+                data-testid="stash-icon-2"
+                title="Remove from Stash"
+                type="button"
+              >
+                <i
+                  class="fa fas-check-square"
+                />
+              </button>
+            </td>
+            <td
+              class="text-center"
+            >
+              2
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Fish
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              <button
+                class="btn-toggle btn btn-primary"
+                data-testid="stash-icon-3"
+                title="Remove from Stash"
+                type="button"
+              >
+                <i
+                  class="fa fas-check-square"
+                />
+              </button>
+            </td>
+            <td
+              class="text-center"
+            >
+              3
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Acai
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              <button
+                class="btn-toggle btn btn-primary"
+                data-testid="stash-icon-4"
+                title="Remove from Stash"
+                type="button"
+              >
+                <i
+                  class="fa fas-check-square"
+                />
+              </button>
+            </td>
+            <td
+              class="text-center"
+            >
+              4
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Amaretto
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              <button
+                class="btn-toggle btn btn-primary"
+                data-testid="stash-icon-5"
+                title="Add to Stash"
+                type="button"
+              >
+                <i
+                  class="fa far-square"
+                />
+              </button>
+            </td>
+            <td
+              class="text-center"
+            >
+              5
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Anise
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p />
+    <div>
+      PagerInfo
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Page <Flavors /> renders correctly 1`] = `
+<DocumentFragment>
+  <div>
+    Pagination
+  </div>
+</DocumentFragment>
+`;
 
 exports[`Page <Flavors /> renders correctly when stash is not loaded 1`] = `
-<div
-  className="container"
->
+<DocumentFragment>
   <div
-    className="container-fluid"
+    class="container"
   >
     <div
-      className="text-center row"
+      class="container-fluid"
     >
       <div
-        className="col"
+        class="text-center row"
       >
-        <h1>
-          Flavors
-        </h1>
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="text-left ml-2 mb-4 col"
-      >
-        <ToggleButton />
-         
-        <span>
-          Enable Flavor Stash
-        </span>
-      </div>
-    </div>
-  </div>
-  <p />
-  <div
-    className="table-responsive"
-  >
-    <table
-      className="table table-sm table-striped table-bordered table-hover"
-    >
-      <thead>
-        <tr
-          className="text-center"
+        <div
+          class="col"
         >
-          <th>
-            ID
-          </th>
-          <th>
-            Vendor
-          </th>
-          <th>
-            Name
-          </th>
-          <th>
-            Slug
-          </th>
-          <th>
-            Density
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td
-            className="text-center"
+          <h1>
+            Flavors
+          </h1>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="text-left ml-2 mb-4 col"
+        >
+          <label
+            class="switch my-auto mx-1"
           >
-            1
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            27 Bears
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
+            <input
+              data-testid="stash-toggle"
+              name="Enable Flavor Stash"
+              type="checkbox"
+            />
+            <span
+              class="slider slider--round"
+            />
+          </label>
+           
+          <span>
+            Enable Flavor Stash
+          </span>
+        </div>
+      </div>
+    </div>
+    <p />
+    <div
+      class="table-responsive"
+    >
+      <table
+        class="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr
+            class="text-center"
           >
-            2
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            27 Fish
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            3
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            Acai
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            4
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            Amaretto
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            5
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            Anise
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-      </tbody>
-    </table>
+            <th>
+              ID
+            </th>
+            <th>
+              Vendor
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Slug
+            </th>
+            <th>
+              Density
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              class="text-center"
+            >
+              1
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Bears
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              2
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Fish
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              3
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Acai
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              4
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Amaretto
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              5
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Anise
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p />
+    <div>
+      PagerInfo
+    </div>
   </div>
-  <p />
-  <PagerInfo />
-</div>
+</DocumentFragment>
 `;
 
 exports[`Page <Flavors /> renders correctly when user is not logged in 1`] = `
-<div
-  className="container"
->
+<DocumentFragment>
   <div
-    className="container-fluid"
+    class="container"
   >
     <div
-      className="text-center row"
+      class="container-fluid"
     >
       <div
-        className="col"
+        class="text-center row"
       >
-        <h1>
-          Flavors
-        </h1>
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="text-left ml-2 mb-4 col"
-      >
-        <small>
-          Log in to Enable Flavor Stash
-        </small>
-      </div>
-    </div>
-  </div>
-  <p />
-  <div
-    className="table-responsive"
-  >
-    <table
-      className="table table-sm table-striped table-bordered table-hover"
-    >
-      <thead>
-        <tr
-          className="text-center"
+        <div
+          class="col"
         >
-          <th>
-            ID
-          </th>
-          <th>
-            Vendor
-          </th>
-          <th>
-            Name
-          </th>
-          <th>
-            Slug
-          </th>
-          <th>
-            Density
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td
-            className="text-center"
+          <h1>
+            Flavors
+          </h1>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="text-left ml-2 mb-4 col"
+        >
+          <small>
+            Log in to Enable Flavor Stash
+          </small>
+        </div>
+      </div>
+    </div>
+    <p />
+    <div
+      class="table-responsive"
+    >
+      <table
+        class="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr
+            class="text-center"
           >
-            1
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            27 Bears
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            2
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            27 Fish
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            3
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            Acai
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            4
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            Amaretto
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            5
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            Anise
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-      </tbody>
-    </table>
+            <th>
+              ID
+            </th>
+            <th>
+              Vendor
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Slug
+            </th>
+            <th>
+              Density
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              class="text-center"
+            >
+              1
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Bears
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              2
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Fish
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              3
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Acai
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              4
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Amaretto
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              5
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Anise
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p />
+    <div>
+      PagerInfo
+    </div>
   </div>
-  <p />
-  <PagerInfo />
-</div>
+</DocumentFragment>
 `;
 
-exports[`Page <Flavors /> renders current user flavors correctly 1`] = `[Function]`;
+exports[`Page <Flavors /> renders current user flavors correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="text-center row"
+      >
+        <div
+          class="col"
+        >
+          <h1>
+            Flavors
+          </h1>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="text-left ml-2 mb-4 col"
+        >
+          <label
+            class="switch my-auto mx-1"
+          >
+            <input
+              data-testid="stash-toggle"
+              name="Enable Flavor Stash"
+              type="checkbox"
+            />
+            <span
+              class="slider slider--round"
+            />
+          </label>
+           
+          <span>
+            Enable Flavor Stash
+          </span>
+        </div>
+      </div>
+    </div>
+    <p />
+    <div
+      class="table-responsive"
+    >
+      <table
+        class="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr
+            class="text-center"
+          >
+            <th>
+              ID
+            </th>
+            <th>
+              Vendor
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Slug
+            </th>
+            <th>
+              Density
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              class="text-center"
+            >
+              1
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Bears
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              2
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Fish
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              3
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Acai
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              4
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Amaretto
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              5
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Anise
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p />
+    <div>
+      PagerInfo
+    </div>
+  </div>
+</DocumentFragment>
+`;

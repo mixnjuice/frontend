@@ -1,16 +1,24 @@
+import { render, fireEvent } from '@testing-library/react';
 import React from 'react';
-import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
-import configureStore from 'redux-mock-store';
-import { initialState as appInitialState } from 'reducers/application';
-import { initialState as flavorInitialState } from 'reducers/flavor';
-import { initialState as flavorsInitialState } from 'reducers/flavors';
-import ConnectedFlavors, { Flavors } from './Flavors';
-import { withMemoryRouter } from 'utils/testing';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { actions as flavorActions } from 'reducers/flavor';
+
+import PaginatedFlavors, { Flavors } from './Flavors';
+
+jest.mock('react-redux', () => {
+  const dispatch = jest.fn();
+
+  return {
+    ...jest.requireActual('react-redux'),
+    useDispatch: jest.fn(() => dispatch),
+    useSelector: jest.fn()
+  };
+});
 
 jest.mock('components/Pagination/Pagination', () => {
-  const pagination = require('utils/testing').mockComponent('Pagination');
-  const PagerInfo = require('utils/testing').mockComponent('PagerInfo');
+  const pagination = () => <div>Pagination</div>;
+  const PagerInfo = () => <div>PagerInfo</div>;
 
   return {
     withPagination: () => () => pagination,
@@ -18,19 +26,8 @@ jest.mock('components/Pagination/Pagination', () => {
     PagerInfo
   };
 });
-jest.mock('components/ToggleButton/ToggleButton', () =>
-  require('utils/testing').mockComponent('ToggleButton')
-);
 
 describe('Page <Flavors />', () => {
-  const mockStore = configureStore();
-  const actions = {
-    requestStash: jest.fn(),
-    requestFlavors: jest.fn(),
-    addStash: jest.fn(),
-    removeStash: jest.fn()
-  };
-
   const collection = [
     {
       id: '1',
@@ -139,126 +136,101 @@ describe('Page <Flavors />', () => {
       }
     }
   ];
-  const pager = { count: 5, limit: 20, page: 1, pages: 1 };
-  const store = mockStore({
-    actions,
-    application: appInitialState,
-    flavor: flavorInitialState,
-    flavors: flavorsInitialState
-  });
 
+  const pager = { count: 5, limit: 20, page: 1, pages: 1 };
   const pagerNavigation = <p></p>;
 
-  const notLoggedInProps = {
-    actions,
-    collection,
-    loggedIn: false,
-    pager,
-    pagerNavigation,
-    stash,
-    stashLoaded: false
-  };
-
-  const noStashProps = {
-    actions,
-    collection,
-    loggedIn: true,
-    pager,
-    pagerNavigation,
-    stash,
-    stashLoaded: false
-  };
-
   const props = {
-    actions,
     collection,
-    loggedIn: true,
     pager,
-    pagerNavigation,
-    stash,
-    stashLoaded: true
+    pagerNavigation
   };
 
-  const RoutedConnectedFlavors = withMemoryRouter(ConnectedFlavors);
-  const RoutedFlavors = withMemoryRouter(Flavors);
+  beforeEach(() => {
+    useDispatch().mockClear();
+    useSelector.mockClear();
+  });
 
   it('renders correctly', () => {
-    expect(
-      renderer
-        .create(
-          <Provider store={store}>
-            <RoutedConnectedFlavors />
-          </Provider>
-        )
-        .toJSON()
-    ).toMatchSnapshot();
+    const { asFragment } = render(<PaginatedFlavors />);
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders correctly when stash is not loaded', () => {
-    expect(
-      renderer.create(<RoutedFlavors {...noStashProps} />).toJSON()
-    ).toMatchSnapshot();
+    useSelector
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce([])
+      .mockReturnValueOnce(false);
+
+    const { asFragment } = render(<Flavors {...props} />);
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('renders correctly when user is not logged in', () => {
-    expect(
-      renderer.create(<RoutedFlavors {...notLoggedInProps} />).toJSON()
-    ).toMatchSnapshot();
+    useSelector.mockReturnValueOnce(false).mockReturnValue(null);
+
+    const { asFragment } = render(<Flavors {...props} />);
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  const component = renderer.create(<RoutedFlavors {...props} />);
-
-  const { instance } = component.root.findByType(Flavors);
-
   it('renders current user flavors correctly', () => {
-    const tree = renderer.create(<RoutedFlavors {...props} />).toJSON;
+    useSelector
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce(stash)
+      .mockReturnValueOnce(true);
 
-    expect(tree).toMatchSnapshot();
+    const { asFragment } = render(<Flavors {...props} />);
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('can handle stashToggle', () => {
-    const event = {
-      target: { name: 'stashToggle', checked: true }
-    };
+    useSelector
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce(stash)
+      .mockReturnValueOnce(true);
 
-    expect(instance.handleStashToggle).toBeDefined();
-    instance.handleStashToggle(event);
-    expect(instance.state.holdings).toEqual({
-      1: true,
-      2: true,
-      3: true,
-      4: true
-    });
-    expect(instance.state.stashToggle).toEqual(true);
+    const { asFragment, getByTestId } = render(<Flavors {...props} />);
+
+    expect(asFragment()).toMatchSnapshot();
+
+    fireEvent.click(getByTestId('stash-toggle'));
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('can handle addToStash', () => {
-    const id = 5;
+    useSelector
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce([])
+      .mockReturnValueOnce(true);
 
-    expect(instance.addToStash).toBeDefined();
-    instance.addToStash(id);
-    expect(actions.addStash).toBeCalledWith({ id });
-    expect(instance.state.holdings).toEqual({
-      1: true,
-      2: true,
-      3: true,
-      4: true,
-      5: true
-    });
+    const { getByTestId } = render(<Flavors {...props} />);
+
+    fireEvent.click(getByTestId('stash-toggle'));
+    fireEvent.click(getByTestId(`stash-icon-2`));
+
+    expect(useDispatch()).toHaveBeenLastCalledWith(
+      flavorActions.addStash({ id: '2' })
+    );
   });
 
   it('can handle removeFromStash', () => {
-    const id = 5;
+    useSelector
+      .mockReturnValueOnce(true)
+      .mockReturnValueOnce(stash)
+      .mockReturnValueOnce(true);
 
-    expect(instance.removeFromStash).toBeDefined();
-    instance.removeFromStash(id);
-    expect(actions.removeStash).toBeCalledWith({ id });
-    expect(instance.state.holdings).toEqual({
-      1: true,
-      2: true,
-      3: true,
-      4: true,
-      5: false
-    });
+    const { getByTestId } = render(<Flavors {...props} />);
+
+    fireEvent.click(getByTestId('stash-toggle'));
+    fireEvent.click(getByTestId(`stash-icon-2`));
+
+    expect(useDispatch()).toHaveBeenLastCalledWith(
+      flavorActions.removeStash({ id: '2' })
+    );
   });
 });

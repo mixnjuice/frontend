@@ -16,7 +16,8 @@ const propTypes = {
   value: PropTypes.bool,
   iconOnly: PropTypes.bool,
   variant: PropTypes.oneOf(toggleButtonProps.variants),
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  'data-testid': PropTypes.string
 };
 
 const propTypesWithIcon = {
@@ -28,10 +29,13 @@ const defaultProps = {
   buttonProps: {},
   iconProps: {},
   value: false,
-  variant: 'check'
+  variant: 'check',
+  'data-testid': null
 };
 
-function IconOnly({ icon, iconProps, title, onClick, className }) {
+function IconOnly(props) {
+  const { icon, iconProps, title, onClick, className } = props;
+
   return (
     <FontAwesomeIcon
       size="lg"
@@ -40,6 +44,7 @@ function IconOnly({ icon, iconProps, title, onClick, className }) {
       title={title}
       onClick={onClick}
       className={classNames(className, 'icon-toggle')}
+      data-testid={props['data-testid']}
     />
   );
 }
@@ -52,7 +57,13 @@ function Switch(props) {
 
   return (
     <label className="switch my-auto mx-1">
-      <input type="checkbox" checked={value} onChange={onClick} name={title} />
+      <input
+        type="checkbox"
+        checked={value}
+        onChange={onClick}
+        name={title}
+        data-testid={props['data-testid']}
+      />
       <span className={classNames(className, 'slider slider--round')}></span>
     </label>
   );
@@ -88,10 +99,10 @@ function ButtonElement(props) {
   return (
     <Button
       {...buttonProps}
-      data-testid="toggle-button"
       title={title}
       onClick={onClick}
       className={classNames(className, 'btn-toggle')}
+      data-testid={props['data-testid'] ?? 'toggle-button'}
     >
       <FontAwesomeIcon size="lg" {...iconProps} icon={icon} />
     </Button>
