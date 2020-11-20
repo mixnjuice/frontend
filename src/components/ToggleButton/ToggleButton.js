@@ -16,7 +16,8 @@ const propTypes = {
   value: PropTypes.bool,
   iconOnly: PropTypes.bool,
   variant: PropTypes.oneOf(toggleButtonProps.variants),
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  testId: PropTypes.string
 };
 
 const propTypesWithIcon = {
@@ -28,10 +29,11 @@ const defaultProps = {
   buttonProps: {},
   iconProps: {},
   value: false,
-  variant: 'check'
+  variant: 'check',
+  testId: 'toggle-button'
 };
 
-function IconOnly({ icon, iconProps, title, onClick, className }) {
+function IconOnly({ icon, iconProps, title, onClick, className, testId }) {
   return (
     <FontAwesomeIcon
       size="lg"
@@ -40,6 +42,7 @@ function IconOnly({ icon, iconProps, title, onClick, className }) {
       title={title}
       onClick={onClick}
       className={classNames(className, 'icon-toggle')}
+      data-testid={testId}
     />
   );
 }
@@ -47,12 +50,16 @@ function IconOnly({ icon, iconProps, title, onClick, className }) {
 IconOnly.propTypes = propTypesWithIcon;
 IconOnly.defaultProps = defaultProps;
 
-function Switch(props) {
-  const { className, value, title, onClick } = props;
-
+function Switch({ className, value, title, onClick, testId }) {
   return (
     <label className="switch my-auto mx-1">
-      <input type="checkbox" checked={value} onChange={onClick} name={title} />
+      <input
+        type="checkbox"
+        checked={value}
+        onChange={onClick}
+        name={title}
+        data-testid={testId}
+      />
       <span className={classNames(className, 'slider slider--round')}></span>
     </label>
   );
@@ -82,16 +89,22 @@ function GridList(props) {
 GridList.propTypes = propTypesWithIcon;
 GridList.defaultProps = defaultProps;
 
-function ButtonElement(props) {
-  const { buttonProps, className, iconProps, title, icon, onClick } = props;
-
+function ButtonElement({
+  buttonProps,
+  className,
+  iconProps,
+  title,
+  icon,
+  onClick,
+  testId
+}) {
   return (
     <Button
       {...buttonProps}
-      data-testid="toggle-button"
       title={title}
       onClick={onClick}
       className={classNames(className, 'btn-toggle')}
+      data-testid={testId}
     >
       <FontAwesomeIcon size="lg" {...iconProps} icon={icon} />
     </Button>
