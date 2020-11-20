@@ -169,10 +169,7 @@ describe('Page <Flavors />', () => {
   );
 
   beforeEach(() => {
-    useDispatch().mockClear();
-    isLoggedIn.mockClear();
-    getStash.mockClear();
-    isLoaded.mockClear();
+    jest.clearAllMocks();
   });
 
   it('has "log in" call to action when user is not logged in', () => {
@@ -182,7 +179,7 @@ describe('Page <Flavors />', () => {
 
     const { getByText } = render(<ReduxConnectedFlavors {...props} />);
 
-    expect(getByText(/log in/i)).toBeDefined();
+    expect(getByText(/log in/i)).toBeInTheDocument();
   });
 
   it('matches snapshot when stash is not loaded', () => {
@@ -195,7 +192,7 @@ describe('Page <Flavors />', () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("matches snapshot diff of user's stash (after toggle)", () => {
+  it('ensure clicking stash toggle button updates the page', () => {
     isLoggedIn.mockReturnValue(true);
     getStash.mockReturnValue(stash);
     isLoaded.mockReturnValue(true);

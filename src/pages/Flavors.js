@@ -14,7 +14,7 @@ import { getAllFlavors, getFlavorsPager } from 'selectors/flavors';
 function StashToggle({ value, onClick }) {
   return (
     <ToggleButton
-      data-testid="stash-toggle"
+      testId="stash-toggle"
       value={value}
       onClick={onClick}
       title={!value ? 'Enable Flavor Stash' : 'Disable Flavor Stash'}
@@ -31,7 +31,7 @@ StashToggle.propTypes = {
 function StashIcon({ id, has, onAdd, onRemove }) {
   return (
     <ToggleButton
-      data-testid={`stash-icon-${id}`}
+      testId={`stash-icon-${id}`}
       value={has}
       onClick={() => (has ? onRemove(id) : onAdd(id))}
       title={has ? 'Remove from Stash' : 'Add to Stash'}
@@ -57,11 +57,17 @@ export function Flavors({ collection, pager, pagerNavigation }) {
   const [stashToggle, setStashToggle] = useState(false);
   const [holdings, setHoldings] = useState({});
 
+  // The stashLoaded variable is not listed in the dependency list
+  // because the original Class Component maintained the state of
+  // the user's stash changes in component state, and adding the
+  // stashLoaded dependency will change the behavior of this component
+  // to where it calls the GET stash endpoint with every add/remove
+  // from stash because of the way the reducer/sagas are implemented
   useEffect(() => {
     if (loggedIn && !stashLoaded) {
       dispatch(flavorActions.requestStash());
     }
-  }, [dispatch, loggedIn, stashLoaded]);
+  }, [dispatch, loggedIn]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleStashToggle = useCallback(() => {
     if (Object.keys(holdings).length === 0) {

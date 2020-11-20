@@ -17,7 +17,7 @@ const propTypes = {
   iconOnly: PropTypes.bool,
   variant: PropTypes.oneOf(toggleButtonProps.variants),
   onClick: PropTypes.func,
-  'data-testid': PropTypes.string
+  testId: PropTypes.string
 };
 
 const propTypesWithIcon = {
@@ -30,12 +30,10 @@ const defaultProps = {
   iconProps: {},
   value: false,
   variant: 'check',
-  'data-testid': 'toggle-button'
+  testId: 'toggle-button'
 };
 
-function IconOnly(props) {
-  const { icon, iconProps, title, onClick, className } = props;
-
+function IconOnly({ icon, iconProps, title, onClick, className, testId }) {
   return (
     <FontAwesomeIcon
       size="lg"
@@ -44,7 +42,7 @@ function IconOnly(props) {
       title={title}
       onClick={onClick}
       className={classNames(className, 'icon-toggle')}
-      data-testid={props['data-testid']}
+      data-testid={testId}
     />
   );
 }
@@ -52,9 +50,7 @@ function IconOnly(props) {
 IconOnly.propTypes = propTypesWithIcon;
 IconOnly.defaultProps = defaultProps;
 
-function Switch(props) {
-  const { className, value, title, onClick } = props;
-
+function Switch({ className, value, title, onClick, testId }) {
   return (
     <label className="switch my-auto mx-1">
       <input
@@ -62,7 +58,7 @@ function Switch(props) {
         checked={value}
         onChange={onClick}
         name={title}
-        data-testid={props['data-testid']}
+        data-testid={testId}
       />
       <span className={classNames(className, 'slider slider--round')}></span>
     </label>
@@ -93,16 +89,22 @@ function GridList(props) {
 GridList.propTypes = propTypesWithIcon;
 GridList.defaultProps = defaultProps;
 
-function ButtonElement(props) {
-  const { buttonProps, className, iconProps, title, icon, onClick } = props;
-
+function ButtonElement({
+  buttonProps,
+  className,
+  iconProps,
+  title,
+  icon,
+  onClick,
+  testId
+}) {
   return (
     <Button
       {...buttonProps}
       title={title}
       onClick={onClick}
       className={classNames(className, 'btn-toggle')}
-      data-testid={props['data-testid']}
+      data-testid={testId}
     >
       <FontAwesomeIcon size="lg" {...iconProps} icon={icon} />
     </Button>

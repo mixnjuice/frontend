@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Page <Flavors /> matches snapshot diff of user's stash (after toggle) 1`] = `
+exports[`Page <Flavors /> ensure clicking stash toggle button updates the page 1`] = `
 "Snapshot Diff:
 - First value
 + Second value
