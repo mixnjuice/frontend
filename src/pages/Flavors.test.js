@@ -1,7 +1,9 @@
 import { render, fireEvent } from '@testing-library/react';
 import React from 'react';
-import { Provider, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import configureStore from 'redux-mock-store';
+
+import { withProvider } from 'utils/testing';
 
 import { initialState as appInitialState } from 'reducers/application';
 import {
@@ -162,11 +164,7 @@ describe('Page <Flavors />', () => {
     pagerNavigation
   };
 
-  const ReduxConnectedFlavors = (flavorsProps) => (
-    <Provider store={store}>
-      <Flavors {...flavorsProps} />
-    </Provider>
-  );
+  const ReduxConnectedFlavors = withProvider(Flavors, store);
 
   beforeEach(() => {
     jest.clearAllMocks();
