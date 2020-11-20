@@ -120,15 +120,6 @@ export default function Note({ flavorId, userId }) {
                 </Col>
               </Form.Row>
             ) : null}
-            <Field name="userId">
-              {({ input }) => <Form.Control {...input} type="hidden" />}
-            </Field>
-            <Field name="flavorId">
-              {({ input }) => <Form.Control {...input} type="hidden" />}
-            </Field>
-            <Field name="update">
-              {({ input }) => <Form.Control {...input} type="hidden" />}
-            </Field>
             <Form.Row>
               <Form.Group>
                 <ButtonGroup>
