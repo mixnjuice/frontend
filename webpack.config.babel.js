@@ -34,7 +34,7 @@ const plugins = [
     filename: '[name].css'
   }),
   new webpack.DefinePlugin({
-    API_URL: JSON.stringify(dev || !apiUrl ? 'http://localhost:3000' : apiUrl)
+    API_URL: JSON.stringify(!apiUrl ? 'http://localhost:3000' : apiUrl)
   })
 ];
 
