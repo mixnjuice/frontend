@@ -1,8 +1,12 @@
 {
   "name": "@mixnjuice/frontend",
   "version": "0.1.0",
-  "description": "",
+  "description": "The Mixnjuice front-end UI",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mixnjuice/frontend.git"
+  },
   "scripts": {
     "storybook": "start-storybook",
     "build": "cross-env NODE_ENV=production webpack",
