@@ -85,11 +85,13 @@ export default {
           {
             loader: 'postcss-loader',
             options: {
-              ident: 'postcss',
-              plugins: [
-                require('autoprefixer'),
-                require('postcss-flexbugs-fixes')
-              ],
+              postcssOptions: {
+                ident: 'postcss',
+                plugins: [
+                  require('autoprefixer'),
+                  require('postcss-flexbugs-fixes')
+                ]
+              },
               sourceMap: dev
             }
           },
