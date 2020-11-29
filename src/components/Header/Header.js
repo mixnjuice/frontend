@@ -12,10 +12,12 @@ import {
   Col,
   Dropdown
 } from 'react-bootstrap';
+import { animated } from 'react-spring';
 
 import Logo from 'media/logo.svg';
 import { actions as appActions } from 'reducers/application';
 import { getUser, isLoggedIn } from 'selectors/application';
+import useHoverBounce from 'components/HoverBounce/useHoverBounce';
 
 export function HeaderNavItem({ to, text }) {
   return (
@@ -57,6 +59,9 @@ HeaderNavDropdownItem.propTypes = {
 };
 
 export default function Header() {
+  const [dropdownStyle, dropdownTrigger] = useHoverBounce({
+    y: 20
+  });
   const dispatch = useDispatch();
   const logoutUser = useCallback(() => {
     dispatch(appActions.logoutUser());
@@ -98,18 +103,24 @@ export default function Header() {
               </Nav>
               <Nav className="ml-auto">
                 {loggedIn ? (
-                  <Dropdown alignRight className="nav--link-custom px-3">
-                    <Dropdown.Toggle as={Link} to="#" id="user-dropdown">
-                      {user && (
-                        <Fragment>
-                          <img
-                            alt="User"
-                            src={gravatarUrl}
-                            className="rounded-circle"
-                          />
-                        </Fragment>
-                      )}
-                    </Dropdown.Toggle>
+                  <Dropdown
+                    alignRight
+                    className="nav--link-custom px-3"
+                    onMouseEnter={dropdownTrigger}
+                  >
+                    <animated.span style={dropdownStyle}>
+                      <Dropdown.Toggle as={Link} to="#" id="user-dropdown">
+                        {user && (
+                          <Fragment>
+                            <img
+                              alt="User"
+                              src={gravatarUrl}
+                              className="rounded-circle"
+                            />
+                          </Fragment>
+                        )}
+                      </Dropdown.Toggle>
+                    </animated.span>
                     <Dropdown.Menu>
                       <Dropdown.Item as={NavLink} to="/user/profile">
                         Profile
