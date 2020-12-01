@@ -6,20 +6,25 @@ export const types = buildActions('flavors', [
   'REQUEST_FLAVORS_FAILURE'
 ]);
 
-const requestFlavors = (pager) => ({
+const requestFlavors = (filter) => ({
   type: types.REQUEST_FLAVORS,
-  pager
+  payload: {
+    filter
+  }
 });
 
-const requestFlavorsSuccess = (flavors, pager) => ({
+const requestFlavorsSuccess = (collection) => ({
   type: types.REQUEST_FLAVORS_SUCCESS,
-  flavors,
-  pager
+  payload: {
+    collection
+  }
 });
 
 const requestFlavorsFailure = (error) => ({
   type: types.REQUEST_FLAVORS_FAILURE,
-  error
+  payload: {
+    error
+  }
 });
 
 export const actions = {
@@ -29,32 +34,28 @@ export const actions = {
 };
 
 export const initialState = {
-  cache: [],
   collection: [],
-  pager: {
-    count: null,
-    limit: 100,
-    page: 1,
-    pages: null
-  }
+  loading: false,
+  loaded: false,
+  filter: ''
 };
 
 export const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case types.REQUEST_FLAVORS:
+      return {
+        ...state,
+        ...action.payload,
+        loading: true,
+        loaded: false
+      };
+    case types.REQUEST_FLAVORS_FAILURE:
     case types.REQUEST_FLAVORS_SUCCESS:
       return {
         ...state,
-        cache: action.flavors,
-        collection: action.flavors[action.pager.page],
-        pager: {
-          ...state.pager,
-          ...action.pager
-        }
-      };
-    case types.REQUEST_FLAVORS_FAILURE:
-      return {
-        ...state,
-        error: action.error
+        ...action.payload,
+        loading: false,
+        loaded: true
       };
     default:
       return state;

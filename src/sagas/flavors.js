@@ -1,27 +1,20 @@
 import { all, call, put, takeLatest, select } from 'redux-saga/effects';
-import helper from 'utils/saga';
-import { getCachedFlavors, getFlavorsPager } from 'selectors/flavors';
+
+import { getFilter } from 'selectors/flavors';
 import { actions, types } from 'reducers/flavors';
+import request from 'utils/request';
+import helper from 'utils/saga';
 
-function* requestFlavorsWorker({ pager }) {
+function* requestFlavorsWorker() {
   try {
-    const cached = yield select(getCachedFlavors);
-    const store = yield select(getFlavorsPager);
+    const filter = yield select(getFilter);
+    const endpoint = {
+      url: `/flavors?limit=100&offset=1&filter=${filter}`,
+      method: 'GET'
+    };
+    const { response } = yield call(request.execute, { endpoint });
 
-    const response = yield call(helper.pager, {
-      cached,
-      pager: {
-        ...pager,
-        store
-      },
-      route: {
-        count: '/flavors/count',
-        data: '/flavors/'
-      },
-      type: 'Flavors'
-    });
-
-    yield put(actions.requestFlavorsSuccess(response.cached, response.pager));
+    yield put(actions.requestFlavorsSuccess(response.data));
   } catch (error) {
     const { message } = error;
 

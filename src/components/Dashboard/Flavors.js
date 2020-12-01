@@ -4,7 +4,7 @@ import { Table } from 'react-bootstrap';
 import { DashboardLayout as Layout } from 'components/Dashboard';
 import { PagerInfo, withPagination } from 'components/Pagination/Pagination';
 import { actions as flavorsActions } from 'reducers/flavors';
-import { getAllFlavors, getFlavorsPager } from 'selectors/flavors';
+import { getCollection } from 'selectors/flavors';
 
 export class Flavors extends Component {
   static propTypes = {
@@ -57,6 +57,5 @@ export class Flavors extends Component {
 
 export default withPagination(
   flavorsActions.requestFlavors,
-  getAllFlavors,
-  getFlavorsPager
+  getCollection
 )(Flavors);
