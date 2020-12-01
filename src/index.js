@@ -22,7 +22,7 @@ const composer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const sagaMiddleware = createSagaMiddleware();
 const enhancers = composer(applyMiddleware(sagaMiddleware));
 
-export const store = createStore(rootReducer, getInitialState(), enhancers);
+const store = createStore(rootReducer, getInitialState(), enhancers);
 
 if (module.hot) {
   module.hot.accept('./reducers', () => {
@@ -42,5 +42,3 @@ ReactDOM.render(
   </Router>,
   document.getElementById('root')
 );
-
-export default App;

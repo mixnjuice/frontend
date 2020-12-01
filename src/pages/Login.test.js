@@ -1,40 +1,51 @@
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import React from 'react';
-import { Provider } from 'react-redux';
-import renderer from 'react-test-renderer';
+import { useDispatch } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import { initialState } from 'reducers/application';
-import ConnectedLogin, { Login } from './Login';
-import { withMemoryRouter } from 'utils/testing';
+import Login from './Login';
+import { initialState, actions as appActions } from 'reducers/application';
+import { withMemoryRouter, withProvider } from 'utils/testing';
+
+jest.mock('react-redux', () => {
+  const dispatch = jest.fn();
+
+  return {
+    ...jest.requireActual('react-redux'),
+    useDispatch: jest.fn(() => dispatch)
+  };
+});
 
 describe('<Login />', () => {
-  const actions = {
-    loginUser: jest.fn()
-  };
   const mockStore = configureStore();
   const store = mockStore({ application: initialState });
-  const RoutedLogin = withMemoryRouter(ConnectedLogin);
+  const RoutedLogin = withMemoryRouter(Login);
+  const ConnectedLogin = withProvider(RoutedLogin, store);
 
   it('renders correctly', () => {
-    const component = renderer.create(
-      <Provider store={store}>
-        <RoutedLogin />
-      </Provider>
-    );
+    const { asFragment } = render(<ConnectedLogin />);
 
-    expect(component.toJSON()).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('can handleSubmit', () => {
+  it('can handleSubmit', async () => {
     const emailAddress = 'some@one.org';
-    const password = 'testing';
-    const component = renderer.create(
-      <Login actions={actions} loggingIn={false} loggedIn={false} />
-    );
-    const { instance } = component.root.findByType(Login);
+    const password = 'testpass';
+    const dispatch = useDispatch();
+    const { getByTestId, getByLabelText } = render(<ConnectedLogin />);
 
-    expect(instance).toBeDefined();
-    instance.handleSubmit({ emailAddress, password });
-    expect(actions.loginUser).toHaveBeenCalledWith(emailAddress, password);
+    fireEvent.change(getByLabelText('Email address'), {
+      target: { value: emailAddress }
+    });
+    fireEvent.change(getByLabelText('Password'), {
+      target: { value: password }
+    });
+    fireEvent.submit(getByTestId('login-form'));
+
+    await waitFor(() => {
+      expect(dispatch).toHaveBeenCalledWith(
+        appActions.loginUser(emailAddress, password)
+      );
+    });
   });
 });

@@ -1,12 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<NotFound /> renders correctly 1`] = `
-Array [
-  <h1>
-    Not Found
-  </h1>,
-  <p>
-    You requested a resource which could not be located.
-  </p>,
-]
+<DocumentFragment>
+  <div
+    class="container"
+  >
+    <h1>
+      Not Found
+    </h1>
+    <p>
+      You requested a resource which could not be located.
+    </p>
+  </div>
+</DocumentFragment>
 `;

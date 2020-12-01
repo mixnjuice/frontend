@@ -1,0 +1,147 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IngredientList /> renders correctly 1`] = `
+<DocumentFragment>
+  <table
+    class="ingredient-list table table-striped"
+  >
+    <tbody>
+      <tr>
+        <td>
+          A_VENDOR A_NAME
+        </td>
+        <td
+          class="recipe-percent"
+        >
+          <div
+            class="input-group"
+          >
+            <input
+              class="form-control"
+              data-testid="ingredient-A-percent"
+              name="A"
+              placeholder="0"
+              required=""
+              step="0.1"
+              type="number"
+              value=""
+            />
+            <div
+              class="input-group-append"
+            >
+              <span
+                class="input-group-text"
+              >
+                %
+              </span>
+            </div>
+          </div>
+        </td>
+        <td
+          class="text-right"
+        >
+          <button
+            class="button-animation btn btn-primary btn-sm"
+            data-testid="ingredient-A-remove"
+            type="button"
+          >
+            <i
+              class="fa trash"
+            />
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          B_VENDOR B_NAME
+        </td>
+        <td
+          class="recipe-percent"
+        >
+          <div
+            class="input-group"
+          >
+            <input
+              class="form-control"
+              data-testid="ingredient-B-percent"
+              name="B"
+              placeholder="0"
+              required=""
+              step="0.1"
+              type="number"
+              value=""
+            />
+            <div
+              class="input-group-append"
+            >
+              <span
+                class="input-group-text"
+              >
+                %
+              </span>
+            </div>
+          </div>
+        </td>
+        <td
+          class="text-right"
+        >
+          <button
+            class="button-animation btn btn-primary btn-sm"
+            data-testid="ingredient-B-remove"
+            type="button"
+          >
+            <i
+              class="fa trash"
+            />
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          C_VENDOR C_NAME
+        </td>
+        <td
+          class="recipe-percent"
+        >
+          <div
+            class="input-group"
+          >
+            <input
+              class="form-control"
+              data-testid="ingredient-C-percent"
+              name="C"
+              placeholder="0"
+              required=""
+              step="0.1"
+              type="number"
+              value=""
+            />
+            <div
+              class="input-group-append"
+            >
+              <span
+                class="input-group-text"
+              >
+                %
+              </span>
+            </div>
+          </div>
+        </td>
+        <td
+          class="text-right"
+        >
+          <button
+            class="button-animation btn btn-primary btn-sm"
+            data-testid="ingredient-C-remove"
+            type="button"
+          >
+            <i
+              class="fa trash"
+            />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</DocumentFragment>
+`;

@@ -1,331 +1,356 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Page <Flavors /> renders correctly 1`] = `<Pagination />`;
+exports[`Page <Flavors /> ensure clicking stash toggle button updates the page 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
 
-exports[`Page <Flavors /> renders correctly when stash is not loaded 1`] = `
-<div
-  className="container"
->
-  <div
-    className="container-fluid"
-  >
-    <div
-      className="text-center row"
-    >
-      <div
-        className="col"
-      >
-        <h1>
-          Flavors
-        </h1>
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="text-left ml-2 mb-4 col"
-      >
-        <ToggleButton />
-         
-        <span>
-          Enable Flavor Stash
-        </span>
-      </div>
-    </div>
-  </div>
-  <p />
-  <div
-    className="table-responsive"
-  >
-    <table
-      className="table table-sm table-striped table-bordered table-hover"
-    >
-      <thead>
-        <tr
-          className="text-center"
-        >
-          <th>
-            ID
-          </th>
-          <th>
-            Vendor
-          </th>
-          <th>
-            Name
-          </th>
-          <th>
-            Slug
-          </th>
-          <th>
-            Density
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td
-            className="text-center"
-          >
-            1
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            27 Bears
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            2
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            27 Fish
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            3
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            Acai
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            4
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            Amaretto
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            5
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            Anise
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p />
-  <PagerInfo />
-</div>
+@@ -25,11 +25,11 @@
+            <label
+              class=\\"switch my-auto mx-1\\"
+            >
+              <input
+                data-testid=\\"stash-toggle\\"
+-               name=\\"Enable Flavor Stash\\"
++               name=\\"Disable Flavor Stash\\"
+                type=\\"checkbox\\"
+              />
+              <span
+                class=\\"slider slider--round\\"
+              />
+@@ -51,10 +51,13 @@
+          <thead>
+            <tr
+              class=\\"text-center\\"
+            >
+              <th>
++               Stash
++             </th>
++             <th>
+                ID
+              </th>
+              <th>
+                Vendor
+              </th>
+@@ -71,11 +74,25 @@
+          </thead>
+          <tbody>
+            <tr>
+              <td
+                class=\\"text-center\\"
++             >
++               <button
++                 class=\\"btn-toggle btn btn-primary\\"
++                 data-testid=\\"stash-icon-1\\"
++                 title=\\"Remove from Stash\\"
++                 type=\\"button\\"
+                >
++                 <i
++                   class=\\"fa fas-check-square\\"
++                 />
++               </button>
++             </td>
++             <td
++               class=\\"text-center\\"
++             >
+                1
+              </td>
+              <td>
+                Capella
+              </td>
+@@ -91,10 +108,24 @@
+            </tr>
+            <tr>
+              <td
+                class=\\"text-center\\"
+              >
++               <button
++                 class=\\"btn-toggle btn btn-primary\\"
++                 data-testid=\\"stash-icon-2\\"
++                 title=\\"Remove from Stash\\"
++                 type=\\"button\\"
++               >
++                 <i
++                   class=\\"fa fas-check-square\\"
++                 />
++               </button>
++             </td>
++             <td
++               class=\\"text-center\\"
++             >
+                2
+              </td>
+              <td>
+                Capella
+              </td>
+@@ -110,10 +141,24 @@
+            </tr>
+            <tr>
+              <td
+                class=\\"text-center\\"
+              >
++               <button
++                 class=\\"btn-toggle btn btn-primary\\"
++                 data-testid=\\"stash-icon-3\\"
++                 title=\\"Remove from Stash\\"
++                 type=\\"button\\"
++               >
++                 <i
++                   class=\\"fa fas-check-square\\"
++                 />
++               </button>
++             </td>
++             <td
++               class=\\"text-center\\"
++             >
+                3
+              </td>
+              <td>
+                Capella
+              </td>
+@@ -128,11 +173,25 @@
+              />
+            </tr>
+            <tr>
+              <td
+                class=\\"text-center\\"
++             >
++               <button
++                 class=\\"btn-toggle btn btn-primary\\"
++                 data-testid=\\"stash-icon-4\\"
++                 title=\\"Remove from Stash\\"
++                 type=\\"button\\"
+                >
++                 <i
++                   class=\\"fa fas-check-square\\"
++                 />
++               </button>
++             </td>
++             <td
++               class=\\"text-center\\"
++             >
+                4
+              </td>
+              <td>
+                Capella
+              </td>
+@@ -145,10 +204,24 @@
+              <td
+                class=\\"text-center\\"
+              />
+            </tr>
+            <tr>
++             <td
++               class=\\"text-center\\"
++             >
++               <button
++                 class=\\"btn-toggle btn btn-primary\\"
++                 data-testid=\\"stash-icon-5\\"
++                 title=\\"Add to Stash\\"
++                 type=\\"button\\"
++               >
++                 <i
++                   class=\\"fa far-square\\"
++                 />
++               </button>
++             </td>
+              <td
+                class=\\"text-center\\"
+              >
+                5
+              </td>"
 `;
 
-exports[`Page <Flavors /> renders correctly when user is not logged in 1`] = `
-<div
-  className="container"
->
+exports[`Page <Flavors /> matches snapshot when stash is not loaded 1`] = `
+<DocumentFragment>
   <div
-    className="container-fluid"
+    class="container"
   >
     <div
-      className="text-center row"
+      class="container-fluid"
     >
       <div
-        className="col"
+        class="text-center row"
       >
-        <h1>
-          Flavors
-        </h1>
-      </div>
-    </div>
-    <div
-      className="row"
-    >
-      <div
-        className="text-left ml-2 mb-4 col"
-      >
-        <small>
-          Log in to Enable Flavor Stash
-        </small>
-      </div>
-    </div>
-  </div>
-  <p />
-  <div
-    className="table-responsive"
-  >
-    <table
-      className="table table-sm table-striped table-bordered table-hover"
-    >
-      <thead>
-        <tr
-          className="text-center"
+        <div
+          class="col"
         >
-          <th>
-            ID
-          </th>
-          <th>
-            Vendor
-          </th>
-          <th>
-            Name
-          </th>
-          <th>
-            Slug
-          </th>
-          <th>
-            Density
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td
-            className="text-center"
+          <h1>
+            Flavors
+          </h1>
+        </div>
+      </div>
+      <div
+        class="row"
+      >
+        <div
+          class="text-left ml-2 mb-4 col"
+        >
+          <label
+            class="switch my-auto mx-1"
           >
-            1
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            27 Bears
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
+            <input
+              data-testid="stash-toggle"
+              name="Enable Flavor Stash"
+              type="checkbox"
+            />
+            <span
+              class="slider slider--round"
+            />
+          </label>
+           
+          <span>
+            Enable Flavor Stash
+          </span>
+        </div>
+      </div>
+    </div>
+    <p />
+    <div
+      class="table-responsive"
+    >
+      <table
+        class="table table-sm table-striped table-bordered table-hover"
+      >
+        <thead>
+          <tr
+            class="text-center"
           >
-            2
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            27 Fish
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            3
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            Acai
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            4
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            Amaretto
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-        <tr>
-          <td
-            className="text-center"
-          >
-            5
-          </td>
-          <td>
-            Capella
-          </td>
-          <td>
-            Anise
-          </td>
-          <td
-            className="text-center"
-          />
-          <td
-            className="text-center"
-          />
-        </tr>
-      </tbody>
-    </table>
+            <th>
+              ID
+            </th>
+            <th>
+              Vendor
+            </th>
+            <th>
+              Name
+            </th>
+            <th>
+              Slug
+            </th>
+            <th>
+              Density
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td
+              class="text-center"
+            >
+              1
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Bears
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              2
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              27 Fish
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              3
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Acai
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              4
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Amaretto
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+          <tr>
+            <td
+              class="text-center"
+            >
+              5
+            </td>
+            <td>
+              Capella
+            </td>
+            <td>
+              Anise
+            </td>
+            <td
+              class="text-center"
+            />
+            <td
+              class="text-center"
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p />
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col"
+        >
+          5 Flavors
+        </div>
+        <div
+          class="text-right col"
+        >
+          1 Pages
+        </div>
+      </div>
+    </div>
   </div>
-  <p />
-  <PagerInfo />
-</div>
+</DocumentFragment>
 `;
-
-exports[`Page <Flavors /> renders current user flavors correctly 1`] = `[Function]`;

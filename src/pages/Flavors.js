@@ -1,198 +1,180 @@
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Helmet } from 'react-helmet';
-import React, { Component, Fragment } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { PagerInfo, withPagination } from 'components/Pagination/Pagination';
 import { Col, Container, Row, Table } from 'react-bootstrap';
 import ToggleButton from 'components/ToggleButton/ToggleButton';
-import { actions as appActions } from 'reducers/application';
 import { actions as flavorActions } from 'reducers/flavor';
 import { actions as flavorsActions } from 'reducers/flavors';
 import { isLoggedIn } from 'selectors/application';
 import { getStash, isLoaded } from 'selectors/flavor';
 import { getAllFlavors, getFlavorsPager } from 'selectors/flavors';
 
-export class Flavors extends Component {
-  static propTypes = {
-    actions: PropTypes.object.isRequired,
-    collection: PropTypes.array.isRequired,
-    loggedIn: PropTypes.bool.isRequired,
-    pager: PropTypes.object.isRequired,
-    pagerNavigation: PropTypes.node.isRequired,
-    stash: PropTypes.array,
-    stashLoaded: PropTypes.bool.isRequired
-  };
-
-  constructor(props) {
-    super(props);
-
-    this.state = { stashToggle: false };
-
-    const { loggedIn } = this.props;
-
-    if (loggedIn) {
-      this.handleStashToggle = this.handleStashToggle.bind(this);
-      this.handleAddToStash = this.addToStash.bind(this);
-      this.handleRemoveFromStash = this.removeFromStash.bind(this);
-    }
-  }
-
-  componentDidMount() {
-    const { actions, loggedIn, stashLoaded } = this.props;
-
-    if (loggedIn) {
-      if (!stashLoaded) {
-        actions.requestStash();
-      }
-    }
-  }
-
-  handleStashToggle() {
-    const { stash } = this.props;
-    const { holdings: stashMap } = this.state;
-    const holdings = {};
-
-    const { stashToggle } = this.state;
-
-    if (!stashMap) {
-      stash.map((flavor) => {
-        holdings[flavor.flavorId] = true;
-      });
-
-      this.setState({ stashToggle: !stashToggle, holdings });
-    } else {
-      this.setState({ stashToggle: !stashToggle });
-    }
-  }
-
-  get stashToggle() {
-    const { stashToggle } = this.state;
-
-    return (
-      <ToggleButton
-        value={stashToggle}
-        onClick={(e) => this.handleStashToggle(e)}
-        title={!stashToggle ? 'Enable Flavor Stash' : 'Disable Flavor Stash'}
-        variant="switch"
-      />
-    );
-  }
-
-  addToStash(id) {
-    const { actions } = this.props;
-
-    actions.addStash({ id });
-
-    const { holdings } = this.state;
-
-    holdings[id] = true;
-
-    this.setState({ holdings });
-  }
-
-  removeFromStash(id) {
-    const { actions } = this.props;
-
-    actions.removeStash({ id });
-
-    const { holdings } = this.state;
-
-    holdings[id] = false;
-
-    this.setState({ holdings });
-  }
-
-  stashIcon(id, has) {
-    return (
-      <ToggleButton
-        value={has}
-        onClick={
-          has
-            ? (e) => this.handleRemoveFromStash(id, e)
-            : (e) => this.handleAddToStash(id, e)
-        }
-        title={has ? 'Remove from Stash' : 'Add to Stash'}
-        variant="check"
-      />
-    );
-  }
-
-  render() {
-    const { collection, loggedIn, pager, pagerNavigation } = this.props;
-    const { holdings, stashToggle } = this.state;
-
-    return (
-      <Container>
-        <Helmet title="Flavors" />
-        <Container fluid>
-          <Row className="text-center">
-            <Col>
-              <h1>Flavors</h1>
-            </Col>
-          </Row>
-          <Row>
-            <Col className="text-left ml-2 mb-4">
-              {loggedIn ? (
-                <Fragment>
-                  {this.stashToggle} <span>Enable Flavor Stash</span>
-                </Fragment>
-              ) : (
-                <small>Log in to Enable Flavor Stash</small>
-              )}
-            </Col>
-          </Row>
-        </Container>
-        {pagerNavigation}
-        <Table responsive striped bordered hover size="sm">
-          <thead>
-            <tr className="text-center">
-              {loggedIn ? stashToggle && <th>Stash</th> : null}
-              <th>ID</th>
-              <th>Vendor</th>
-              <th>Name</th>
-              <th>Slug</th>
-              <th>Density</th>
-            </tr>
-          </thead>
-          <tbody>
-            {collection.map((flavor, index) => {
-              return (
-                <tr key={index}>
-                  {stashToggle ? (
-                    <td className="text-center">
-                      {this.stashIcon(flavor.id, Boolean(holdings[flavor.id]))}
-                    </td>
-                  ) : null}
-                  <td className="text-center">{flavor.id}</td>
-                  <td>{flavor.Vendor.name}</td>
-                  <td>{flavor.name}</td>
-                  <td className="text-center">{flavor.slug}</td>
-                  <td className="text-center">{flavor.density}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </Table>
-        {pagerNavigation}
-        <PagerInfo contentType="Flavors" pager={pager} />
-      </Container>
-    );
-  }
+function StashToggle({ value, onClick }) {
+  return (
+    <ToggleButton
+      testId="stash-toggle"
+      value={value}
+      onClick={onClick}
+      title={!value ? 'Enable Flavor Stash' : 'Disable Flavor Stash'}
+      variant="switch"
+    />
+  );
 }
 
-const mapStateToProps = (state) => ({
-  loggedIn: isLoggedIn(state),
-  stash: getStash(state),
-  stashLoaded: isLoaded(state)
-});
+StashToggle.propTypes = {
+  value: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  actions: bindActionCreators({ ...appActions, ...flavorActions }, dispatch)
-});
+function StashIcon({ id, has, onAdd, onRemove }) {
+  return (
+    <ToggleButton
+      testId={`stash-icon-${id}`}
+      value={has}
+      onClick={() => (has ? onRemove(id) : onAdd(id))}
+      title={has ? 'Remove from Stash' : 'Add to Stash'}
+      variant="check"
+    />
+  );
+}
+
+StashIcon.propTypes = {
+  id: PropTypes.string.isRequired,
+  has: PropTypes.bool.isRequired,
+  onAdd: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired
+};
+
+export function Flavors({ collection, pager, pagerNavigation }) {
+  const dispatch = useDispatch();
+
+  const loggedIn = useSelector(isLoggedIn);
+  const stash = useSelector(getStash);
+  const stashLoaded = useSelector(isLoaded);
+
+  const [stashToggle, setStashToggle] = useState(false);
+  const [holdings, setHoldings] = useState({});
+
+  // The stashLoaded variable is not listed in the dependency list
+  // because the original Class Component maintained the state of
+  // the user's stash changes in component state, and adding the
+  // stashLoaded dependency will change the behavior of this component
+  // to where it calls the GET stash endpoint with every add/remove
+  // from stash because of the way the reducer/sagas are implemented
+  useEffect(() => {
+    if (loggedIn && !stashLoaded) {
+      dispatch(flavorActions.requestStash());
+    }
+  }, [dispatch, loggedIn]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const handleStashToggle = useCallback(() => {
+    if (Object.keys(holdings).length === 0) {
+      setHoldings(
+        stash.reduce((acc, flavor) => ({ ...acc, [flavor.flavorId]: true }), {})
+      );
+    }
+
+    setStashToggle((s) => !s);
+  }, [stash, holdings, setStashToggle]);
+
+  const handleAddToStash = useCallback(
+    (id) => {
+      dispatch(flavorActions.addStash({ id }));
+
+      setHoldings((s) => ({
+        ...s,
+        [id]: true
+      }));
+    },
+    [dispatch, setHoldings]
+  );
+
+  const handleRemoveFromStash = useCallback(
+    (id) => {
+      dispatch(flavorActions.removeStash({ id }));
+
+      setHoldings((s) => ({
+        ...s,
+        [id]: false
+      }));
+    },
+    [dispatch, setHoldings]
+  );
+
+  return (
+    <Container>
+      <Helmet title="Flavors" />
+      <Container fluid>
+        <Row className="text-center">
+          <Col>
+            <h1>Flavors</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col className="text-left ml-2 mb-4">
+            {loggedIn ? (
+              <>
+                <StashToggle value={stashToggle} onClick={handleStashToggle} />{' '}
+                <span>Enable Flavor Stash</span>
+              </>
+            ) : (
+              <small>Log in to Enable Flavor Stash</small>
+            )}
+          </Col>
+        </Row>
+      </Container>
+      {pagerNavigation}
+      <Table responsive striped bordered hover size="sm">
+        <thead>
+          <tr className="text-center">
+            {loggedIn && stashToggle && <th>Stash</th>}
+            <th>ID</th>
+            <th>Vendor</th>
+            <th>Name</th>
+            <th>Slug</th>
+            <th>Density</th>
+          </tr>
+        </thead>
+        <tbody>
+          {collection.map((flavor) => {
+            return (
+              <tr key={flavor.id}>
+                {stashToggle && (
+                  <td className="text-center">
+                    <StashIcon
+                      id={flavor.id}
+                      has={holdings[flavor.id] === true}
+                      onAdd={handleAddToStash}
+                      onRemove={handleRemoveFromStash}
+                    />
+                  </td>
+                )}
+                <td className="text-center">{flavor.id}</td>
+                <td>{flavor.Vendor.name}</td>
+                <td>{flavor.name}</td>
+                <td className="text-center">{flavor.slug}</td>
+                <td className="text-center">{flavor.density}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
+      {pagerNavigation}
+      <PagerInfo contentType="Flavors" pager={pager} />
+    </Container>
+  );
+}
+
+Flavors.propTypes = {
+  collection: PropTypes.array.isRequired,
+  pager: PropTypes.object.isRequired,
+  pagerNavigation: PropTypes.node.isRequired
+};
 
 export default withPagination(
   flavorsActions.requestFlavors,
   getAllFlavors,
   getFlavorsPager
-)(connect(mapStateToProps, mapDispatchToProps)(Flavors));
+)(Flavors);

@@ -1,136 +1,98 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FlavorBrowser /> renders correctly 1`] = `
-Array [
+<DocumentFragment>
   <div
-    className="form-group col-md-6 col-sm-9"
+    class="form-group col-md-6 col-sm-9"
   >
     <div
-      className="input-group"
+      class="input-group"
     >
       <div
-        className="input-group-prepend"
+        class="input-group-prepend"
       >
         <span
-          className="input-group-text"
+          class="input-group-text"
         >
           <i
-            className="fa search"
+            class="fa search"
           />
         </span>
       </div>
       <input
-        className="form-control"
+        class="form-control"
         id="searchStash"
         name="searchStash"
-        onChange={[Function]}
         placeholder="Search stash..."
         type="text"
       />
     </div>
-  </div>,
+  </div>
   <div
-    className="flavor-browser border-bottom border-top pr-0 col-md-12"
+    class="flavor-browser border-bottom border-top pr-0 col-md-12"
   >
     <div
-      onScroll={[Function]}
-      style={
-        Object {
-          "WebkitOverflowScrolling": "touch",
-          "direction": "ltr",
-          "height": 200,
-          "overflow": "auto",
-          "position": "relative",
-          "width": undefined,
-          "willChange": "transform",
-        }
-      }
+      style="position: relative; height: 200px; overflow: auto; will-change: transform; direction: ltr;"
     >
       <div
-        style={
-          Object {
-            "height": 60,
-            "pointerEvents": undefined,
-            "width": "100%",
-          }
-        }
+        style="height: 60px; width: 100%;"
       >
         <div
-          className="flavor-browser-item flavor-browser-item--striped row"
-          style={
-            Object {
-              "height": 30,
-              "left": "15px",
-              "position": "absolute",
-              "top": 0,
-              "width": "100%",
-            }
-          }
+          class="flavor-browser-item flavor-browser-item--striped row"
+          style="position: absolute; left: 15px; top: 0px; height: 30px; width: 100%;"
         >
           <div
-            className="flavor-browser-item-vendor col-md-2 col-sm-3"
+            class="flavor-browser-item-vendor col-md-2 col-sm-3"
           >
             CAP
           </div>
           <div
-            className="col-md-6 col-sm-7"
+            class="col-md-6 col-sm-7"
           >
             Test
           </div>
           <div
-            className="col-md-4 col-sm-2"
+            class="col-md-4 col-sm-2"
           >
             <button
-              className="button-animation btn btn-primary btn-sm"
-              disabled={false}
-              onClick={[Function]}
+              class="button-animation btn btn-primary btn-sm"
               type="button"
             >
               <i
-                className="fa plus"
+                class="fa plus"
               />
             </button>
           </div>
         </div>
         <div
-          className="flavor-browser-item row"
-          style={
-            Object {
-              "height": 30,
-              "left": "15px",
-              "position": "absolute",
-              "top": 30,
-              "width": "100%",
-            }
-          }
+          class="flavor-browser-item row"
+          style="position: absolute; left: 15px; top: 30px; height: 30px; width: 100%;"
         >
           <div
-            className="flavor-browser-item-vendor col-md-2 col-sm-3"
+            class="flavor-browser-item-vendor col-md-2 col-sm-3"
           >
             FLV
           </div>
           <div
-            className="col-md-6 col-sm-7"
+            class="col-md-6 col-sm-7"
           >
             Another
           </div>
           <div
-            className="col-md-4 col-sm-2"
+            class="col-md-4 col-sm-2"
           >
             <button
-              className="button-animation btn btn-primary btn-sm"
-              disabled={false}
-              onClick={[Function]}
+              class="button-animation btn btn-primary btn-sm"
               type="button"
             >
               <i
-                className="fa plus"
+                class="fa plus"
               />
             </button>
           </div>
         </div>
       </div>
     </div>
-  </div>,
-]
+  </div>
+</DocumentFragment>
 `;

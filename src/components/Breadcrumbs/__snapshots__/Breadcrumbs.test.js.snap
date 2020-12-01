@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Breadcrumbs /> renders admin correctly 1`] = `
+<DocumentFragment>
+  <nav
+    aria-label="breadcrumb"
+  >
+    <ol
+      class="breadcrumb"
+    >
+      <li
+        class="breadcrumb-item"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        class="breadcrumb-item"
+      >
+        <a
+          href="/admin"
+        >
+          Admin
+        </a>
+      </li>
+      <li
+        class="breadcrumb-item"
+      >
+        <a
+          href="/admin/stuff"
+        >
+          Admin Page
+        </a>
+      </li>
+      <li
+        aria-current="page"
+        class="breadcrumb-item active"
+      >
+        <span
+          class="active"
+        >
+          Admin Stuff
+        </span>
+      </li>
+    </ol>
+  </nav>
+</DocumentFragment>
+`;
+
+exports[`<Breadcrumbs /> renders home correctly 1`] = `
+<DocumentFragment>
+  <nav
+    aria-label="breadcrumb"
+  >
+    <ol
+      class="breadcrumb"
+    >
+      <li
+        class="breadcrumb-item"
+      >
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+      <li
+        aria-current="page"
+        class="breadcrumb-item active"
+      >
+        <span
+          class="active"
+        >
+          User Stuff
+        </span>
+      </li>
+    </ol>
+  </nav>
+</DocumentFragment>
+`;

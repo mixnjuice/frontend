@@ -1,63 +1,68 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ToggleButton /> can render "check" variant 1`] = `
-<button
-  className="btn-toggle btn btn-primary"
-  disabled={false}
-  onClick={[Function]}
-  title="Toggle me real good!"
-  type="button"
->
-  <i
-    className="fa far-square"
-  />
-</button>
+<DocumentFragment>
+  <button
+    class="btn-toggle btn btn-primary"
+    data-testid="toggle-button"
+    title="Toggle me real good!"
+    type="button"
+  >
+    <i
+      class="fa far-square"
+    />
+  </button>
+</DocumentFragment>
 `;
 
 exports[`<ToggleButton /> can render "grid-list" variant 1`] = `
-<div
-  className="slider--grid-list"
->
-  <i
-    className="fa fas-list"
-  />
-  <label
-    className="switch my-auto mx-1"
+<DocumentFragment>
+  <div
+    class="slider--grid-list"
   >
-    <input
-      checked={false}
-      name="Toggle me real good!"
-      onChange={[Function]}
-      type="checkbox"
+    <i
+      class="fa fas-list"
     />
-    <span
-      className="slider--teal slider slider--round"
+    <label
+      class="switch my-auto mx-1"
+    >
+      <input
+        data-testid="toggle-button"
+        name="Toggle me real good!"
+        type="checkbox"
+      />
+      <span
+        class="slider--teal slider slider--round"
+      />
+    </label>
+    <i
+      class="fa fas-th"
     />
-  </label>
-  <i
-    className="fa fas-th"
-  />
-</div>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`<ToggleButton /> can render "switch" variant 1`] = `
-<label
-  className="switch my-auto mx-1"
->
-  <input
-    checked={false}
-    name="Toggle me real good!"
-    onChange={[Function]}
-    type="checkbox"
-  />
-  <span
-    className="slider slider--round"
-  />
-</label>
+<DocumentFragment>
+  <label
+    class="switch my-auto mx-1"
+  >
+    <input
+      data-testid="toggle-button"
+      name="Toggle me real good!"
+      type="checkbox"
+    />
+    <span
+      class="slider slider--round"
+    />
+  </label>
+</DocumentFragment>
 `;
 
 exports[`<ToggleButton /> can render with icon-only prop 1`] = `
-<i
-  className="fa far-square"
-/>
+<DocumentFragment>
+  <i
+    class="fa far-square"
+  />
+</DocumentFragment>
 `;

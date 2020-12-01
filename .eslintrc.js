@@ -19,6 +19,7 @@ module.exports = {
     'plugin:jsx-a11y/recommended',
     'plugin:jest/recommended',
     'plugin:import/errors',
+    'plugin:react-hooks/recommended',
     'prettier',
     'prettier/react'
   ],

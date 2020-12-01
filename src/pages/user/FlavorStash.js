@@ -286,6 +286,7 @@ export default function FlavorStash() {
                 Flavors
               </Link>{' '}
               to add to your Flavor Stash.
+              <p>No flavors in stash.</p>
             </Col>
           )}
         </Col>

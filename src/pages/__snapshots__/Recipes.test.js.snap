@@ -1,19 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Recipes /> renders correctly 1`] = `
-<div
-  className="container"
->
+<DocumentFragment>
   <div
-    className="text-center row"
+    class="container"
   >
     <div
-      className="col"
+      class="text-center row"
     >
-      <h1>
-        Recipes search page
-      </h1>
+      <div
+        class="col"
+      >
+        <h1>
+          Recipes search page
+        </h1>
+      </div>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;

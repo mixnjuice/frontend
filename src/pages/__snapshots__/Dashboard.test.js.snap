@@ -1,309 +1,294 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Dashboard /> renders correctly 1`] = `
-<div
-  className="container"
->
+<DocumentFragment>
   <div
-    className="row"
+    class="container"
   >
     <div
-      className="col"
-    >
-      <h1>
-        Dashboard
-      </h1>
-    </div>
-  </div>
-  <div
-    className="row"
-  >
-    <div
-      className="col-md-3 col-12"
+      class="row"
     >
       <div
-        className="accordion"
+        class="col"
+      >
+        <h1>
+          Dashboard
+        </h1>
+      </div>
+    </div>
+    <div
+      class="row"
+    >
+      <div
+        class="col-md-3 col-12"
       >
         <div
-          className="card"
+          class="accordion"
         >
           <div
-            className="card-body"
-          >
-            <i
-              className="fa tachometer-alt"
-            />
-              
-            <a
-              href="#home"
-              onClick={[Function]}
-            >
-              Dashboard
-            </a>
-          </div>
-        </div>
-        <div
-          className="card"
-        >
-          <div
-            className="card-header"
-            onClick={[Function]}
-          >
-            <h3>
-              <i
-                className="fa user-shield"
-              />
-               Roles
-            </h3>
-          </div>
-          <div
-            aria-expanded={null}
-            className="collapse"
+            class="card"
           >
             <div
-              className="card-body"
-            >
-              <div>
-                <i
-                  className="fa user-shield"
-                />
-                  
-                <a
-                  href="#roles"
-                  onClick={[Function]}
-                >
-                  Roles
-                </a>
-              </div>
-              <div>
-                <i
-                  className="fa plus"
-                />
-                  
-                <a
-                  href="#roles/add"
-                  onClick={[Function]}
-                >
-                  Add Role
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="card"
-        >
-          <div
-            className="card-header"
-            onClick={[Function]}
-          >
-            <h3>
-              <i
-                className="fa users"
-              />
-               Users
-            </h3>
-          </div>
-          <div
-            aria-expanded={null}
-            className="collapse"
-          >
-            <div
-              className="card-body"
-            >
-              <div>
-                <i
-                  className="fa users-cog"
-                />
-                  
-                <a
-                  href="#users"
-                  onClick={[Function]}
-                >
-                  Users
-                </a>
-              </div>
-              <div>
-                <i
-                  className="fa plus"
-                />
-                  
-                <a
-                  href="#users/add"
-                  onClick={[Function]}
-                >
-                  Add User
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="card"
-        >
-          <div
-            className="card-header"
-            onClick={[Function]}
-          >
-            <h3>
-              <i
-                className="fa bezier-curve"
-              />
-               Ingredients
-            </h3>
-          </div>
-          <div
-            aria-expanded={null}
-            className="collapse"
-          >
-            <div
-              className="card-body"
-            >
-              <div>
-                <i
-                  className="fa eye-dropper"
-                />
-                  
-                <a
-                  href="#flavors"
-                  onClick={[Function]}
-                >
-                  Flavors
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className="card"
-        >
-          <div
-            className="card-header"
-            onClick={[Function]}
-          >
-            <h3>
-              <i
-                className="fa database"
-              />
-               Database
-            </h3>
-          </div>
-          <div
-            aria-expanded={null}
-            className="collapse"
-          >
-            <div
-              className="card-body"
+              class="card-body"
             >
               <i
-                className="fa clock"
+                class="fa tachometer-alt"
               />
                 
               <a
-                href="#migrations"
-                onClick={[Function]}
+                href="#home"
               >
-                Migration History
+                Dashboard
               </a>
+            </div>
+          </div>
+          <div
+            class="card"
+          >
+            <div
+              class="card-header"
+            >
+              <h3>
+                <i
+                  class="fa user-shield"
+                />
+                 Roles
+              </h3>
+            </div>
+            <div
+              class="collapse"
+            >
+              <div
+                class="card-body"
+              >
+                <div>
+                  <i
+                    class="fa user-shield"
+                  />
+                    
+                  <a
+                    href="#roles"
+                  >
+                    Roles
+                  </a>
+                </div>
+                <div>
+                  <i
+                    class="fa plus"
+                  />
+                    
+                  <a
+                    href="#roles/add"
+                  >
+                    Add Role
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card"
+          >
+            <div
+              class="card-header"
+            >
+              <h3>
+                <i
+                  class="fa users"
+                />
+                 Users
+              </h3>
+            </div>
+            <div
+              class="collapse"
+            >
+              <div
+                class="card-body"
+              >
+                <div>
+                  <i
+                    class="fa users-cog"
+                  />
+                    
+                  <a
+                    href="#users"
+                  >
+                    Users
+                  </a>
+                </div>
+                <div>
+                  <i
+                    class="fa plus"
+                  />
+                    
+                  <a
+                    href="#users/add"
+                  >
+                    Add User
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card"
+          >
+            <div
+              class="card-header"
+            >
+              <h3>
+                <i
+                  class="fa bezier-curve"
+                />
+                 Ingredients
+              </h3>
+            </div>
+            <div
+              class="collapse"
+            >
+              <div
+                class="card-body"
+              >
+                <div>
+                  <i
+                    class="fa eye-dropper"
+                  />
+                    
+                  <a
+                    href="#flavors"
+                  >
+                    Flavors
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="card"
+          >
+            <div
+              class="card-header"
+            >
+              <h3>
+                <i
+                  class="fa database"
+                />
+                 Database
+              </h3>
+            </div>
+            <div
+              class="collapse"
+            >
+              <div
+                class="card-body"
+              >
+                <i
+                  class="fa clock"
+                />
+                  
+                <a
+                  href="#migrations"
+                >
+                  Migration History
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div
-      className="col-md-9 col-12"
-    >
       <div
-        className="card-columns"
+        class="col-md-9 col-12"
       >
         <div
-          className="card bg-danger text-white"
+          class="card-columns"
         >
           <div
-            className="card-header"
+            class="card bg-danger text-white"
           >
-            Users: 
+            <div
+              class="card-header"
+            >
+              Users: 
+            </div>
+            <div
+              class="card-body"
+            >
+              <h3>
+                Activated Users: 
+              </h3>
+              <h3>
+                Inactive Users: NaN
+              </h3>
+              <h3>
+                Active Tokens: 
+              </h3>
+            </div>
           </div>
           <div
-            className="card-body"
+            class="card bg-primary text-white"
           >
-            <h3>
-              Activated Users: 
-            </h3>
-            <h3>
-              Inactive Users: 
-              NaN
-            </h3>
-            <h3>
-              Active Tokens: 
-            </h3>
+            <div
+              class="card-body"
+            >
+              <h2>
+                Tags: 
+              </h2>
+            </div>
+          </div>
+          <div
+            class="card bg-secondary text-white"
+          >
+            <div
+              class="card-body"
+            >
+              <h2>
+                Vendors: 
+              </h2>
+            </div>
+          </div>
+          <div
+            class="card bg-info text-white"
+          >
+            <div
+              class="card-header"
+            >
+              Flavors: 
+            </div>
+            <div
+              class="card-body"
+            >
+              <h2>
+                Tags: 
+              </h2>
+            </div>
+          </div>
+          <div
+            class="card bg-warning text-white"
+          >
+            <div
+              class="card-header"
+            >
+              Recipes: 
+            </div>
+            <div
+              class="card-body"
+            >
+              <h2>
+                Tags: 
+              </h2>
+            </div>
           </div>
         </div>
-        <div
-          className="card bg-primary text-white"
+        <a
+          href="#home"
+          title="Refresh Stats"
         >
-          <div
-            className="card-body"
-          >
-            <h2>
-              Tags: 
-            </h2>
-          </div>
-        </div>
-        <div
-          className="card bg-secondary text-white"
-        >
-          <div
-            className="card-body"
-          >
-            <h2>
-              Vendors: 
-            </h2>
-          </div>
-        </div>
-        <div
-          className="card bg-info text-white"
-        >
-          <div
-            className="card-header"
-          >
-            Flavors: 
-          </div>
-          <div
-            className="card-body"
-          >
-            <h2>
-              Tags: 
-            </h2>
-          </div>
-        </div>
-        <div
-          className="card bg-warning text-white"
-        >
-          <div
-            className="card-header"
-          >
-            Recipes: 
-          </div>
-          <div
-            className="card-body"
-          >
-            <h2>
-              Tags: 
-            </h2>
-          </div>
-        </div>
+          <i
+            class="fa sync"
+          />
+        </a>
       </div>
-      <a
-        href="#home"
-        onClick={[Function]}
-        title="Refresh Stats"
-      >
-        <i
-          className="fa sync"
-        />
-      </a>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;

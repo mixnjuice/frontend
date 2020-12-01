@@ -1,16 +1,14 @@
+import { render } from '@testing-library/react';
 import React from 'react';
-import renderer from 'react-test-renderer';
 
 import SplitSlider from './SplitSlider';
 
 describe('<SplitSlider />', () => {
   it('renders component correctly', () => {
-    const tree = renderer
-      .create(
-        <SplitSlider name="test" initialValue={50} onChange={jest.fn()} />
-      )
-      .toJSON();
+    const { asFragment } = render(
+      <SplitSlider name="test" initialValue={50} onChange={jest.fn()} />
+    );
 
-    expect(tree).toMatchSnapshot();
+    expect(asFragment()).toMatchSnapshot();
   });
 });

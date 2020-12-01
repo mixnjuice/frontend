@@ -9,6 +9,7 @@
 // offset when switching between pages
 html {
   overflow-y: scroll;
+  height: 100%;
 }
 
 // Setting the scrollbar width
@@ -29,8 +30,13 @@ html {
 
 // Full page background color
 body {
+  height: 100%;
   background-color: $white;
   //background: linear-gradient(180deg, $light-blue 0%, $white 18%, $white 100%);
+
+  > div {
+    height: 100%;
+  }
 }
 
 // Style for links

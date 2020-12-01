@@ -9,7 +9,7 @@ jobs:
   build:
     working_directory: ~/mixnjuice-frontend
     docker:
-      - image: circleci/node:latest
+      - image: circleci/node:lts
     steps:
       - checkout
       - run:
