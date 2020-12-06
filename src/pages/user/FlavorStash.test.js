@@ -5,7 +5,7 @@ import configureStore from 'redux-mock-store';
 
 import FlavorStash from './FlavorStash';
 import { actions as flavorActions } from 'reducers/flavor';
-import { withProvider } from 'utils/testing';
+import { withMemoryRouter, withProvider } from 'utils/testing';
 import { initialState } from 'reducers';
 
 jest.mock('react-redux', () => {
@@ -54,7 +54,9 @@ describe('<FlavorStash />', () => {
 
   it('can render with an empty stash', async () => {
     const dispatch = useDispatch();
-    const ConnectedStash = withProvider(FlavorStash, emptyStore);
+    const ConnectedStash = withMemoryRouter(
+      withProvider(FlavorStash, emptyStore)
+    );
     const { asFragment } = render(<ConnectedStash />);
 
     await waitFor(() => {

@@ -414,6 +414,10 @@ input {
   margin: 5px 0;
 }
 
+.button--cancel {
+  background-color: $light-red;
+}
+
 .container--recipe .row {
   margin: 5px 0;
 }
@@ -435,4 +439,20 @@ input {
 
 .image--logo {
   width: 12rem;
+}
+
+.cursor--pointer {
+  cursor: pointer;
+}
+
+.arrow--down {
+  color: $teal;
+}
+
+.arrow--up {
+  color: $shadow-grey;
+}
+
+.text--primary {
+  color: $teal;
 }

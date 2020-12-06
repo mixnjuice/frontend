@@ -4,6 +4,7 @@ import application from './application';
 import dashboard from './dashboard';
 import flavor from './flavor';
 import flavors from './flavors';
+import note from './note';
 import profile from './profile';
 import recipe from './recipe';
 import roles from './roles';
@@ -17,6 +18,7 @@ export default function* saga() {
       dashboard,
       flavor,
       flavors,
+      note,
       profile,
       recipe,
       roles,
