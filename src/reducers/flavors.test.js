@@ -1,54 +1,64 @@
 import { reducer, types, actions } from './flavors';
 
 describe('flavors reducer', () => {
-  const flavors = [true];
-  const cache = [true];
-  const pager = {
-    count: 100,
-    limit: 20,
-    page: 1,
-    pages: 5
-  };
-  const collection = undefined;
+  const collection = [];
+  const filter = 'test';
   const error = { message: 'Failed' };
 
   it('has REQUEST_FLAVORS action', () => {
-    expect(actions.requestFlavors(pager)).toEqual({
+    expect(actions.requestFlavors(filter)).toEqual({
       type: types.REQUEST_FLAVORS,
-      pager
+      payload: {
+        filter
+      }
     });
   });
 
   it('reduces REQUEST_FLAVORS action', () => {
-    const action = actions.requestFlavors(pager);
+    const action = actions.requestFlavors(filter);
 
-    expect(reducer({}, action)).toEqual({});
+    expect(reducer({}, action)).toEqual({
+      filter,
+      loading: true,
+      loaded: false
+    });
   });
 
   it('has REQUEST_FLAVORS_SUCCESS action', () => {
-    expect(actions.requestFlavorsSuccess(flavors, pager)).toEqual({
+    expect(actions.requestFlavorsSuccess(collection)).toEqual({
       type: types.REQUEST_FLAVORS_SUCCESS,
-      flavors,
-      pager
+      payload: {
+        collection
+      }
     });
   });
 
   it('reduces REQUEST_FLAVORS_SUCCESS action', () => {
-    const action = actions.requestFlavorsSuccess(flavors, pager);
+    const action = actions.requestFlavorsSuccess(collection);
 
-    expect(reducer({}, action)).toEqual({ cache, collection, pager });
+    expect(reducer({}, action)).toEqual({
+      loaded: true,
+      loading: false,
+      collection
+    });
   });
 
   it('has REQUEST_FLAVORS_FAILURE action', () => {
     expect(actions.requestFlavorsFailure(error)).toEqual({
       type: types.REQUEST_FLAVORS_FAILURE,
-      error
+      payload: {
+        error
+      }
     });
   });
 
   it('reduces REQUEST_FLAVORS_FAILURE action', () => {
     const action = actions.requestFlavorsFailure(error);
 
-    expect(reducer({}, action)).toEqual({ error });
+    expect(reducer({}, action)).toEqual({
+      loaded: true,
+      loading: false,
+      error
+    });
   });
 });

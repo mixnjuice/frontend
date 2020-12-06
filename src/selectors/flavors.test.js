@@ -1,9 +1,10 @@
 import { initialState } from 'reducers/flavors';
 import {
   getFlavors,
-  getAllFlavors,
-  getCachedFlavors,
-  getFlavorsPager
+  getCollection,
+  getFilter,
+  isLoaded,
+  isLoading
 } from './flavors';
 
 describe('flavors selectors', () => {
@@ -13,15 +14,19 @@ describe('flavors selectors', () => {
     expect(getFlavors(state)).toBe(state.flavors);
   });
 
-  it('can getAllFlavors', () => {
-    expect(getAllFlavors(state)).toBe(initialState.collection);
+  it('can getCollectio n', () => {
+    expect(getCollection(state)).toBe(initialState.collection);
   });
 
-  it('can getCachedFlavors', () => {
-    expect(getCachedFlavors(state)).toBe(initialState.cache);
+  it('can getFilter', () => {
+    expect(getFilter(state)).toBe(initialState.filter);
   });
 
-  it('can getFlavorsPager', () => {
-    expect(getFlavorsPager(state)).toBe(initialState.pager);
+  it('can isLoaded', () => {
+    expect(isLoaded(state)).toBe(initialState.loaded);
+  });
+
+  it('can isLoading', () => {
+    expect(isLoading(state)).toBe(initialState.loading);
   });
 });

@@ -1,53 +1,59 @@
-import { all, put, call, select } from 'redux-saga/effects';
-import helper from 'utils/saga';
-import { actions } from 'reducers/flavors';
+import { all, call, put, select } from 'redux-saga/effects';
+
 import saga, { watchers, workers } from './flavors';
-import { getCachedFlavors, getFlavorsPager } from 'selectors/flavors';
+import { actions } from 'reducers/flavors';
+import { getFilter } from 'selectors/flavors';
+import request from 'utils/request';
 
 describe('flavors sagas', () => {
-  const flavors = { flavors: true };
-
-  const pager = {
-    count: 861,
-    limit: 20,
-    page: 1,
-    pages: 40
+  const filter = 'test';
+  const endpoint = {
+    url: `/flavors?limit=100&offset=1&filter=${filter}`,
+    method: 'GET'
+  };
+  const flavors = [];
+  const error = 'Failure';
+  const success = {
+    success: true,
+    response: {
+      data: flavors
+    }
+  };
+  const failure = {
+    success: false,
+    error
   };
 
   it('handles success in requestFlavorsWorker', () => {
-    const response = { cached: flavors, pager };
-    const gen = workers.requestFlavorsWorker({ pager });
+    const gen = workers.requestFlavorsWorker();
 
     let result = gen.next();
 
-    expect(result.value).toEqual(select(getCachedFlavors));
+    expect(result.value).toEqual(select(getFilter));
 
-    result = gen.next(flavors);
+    result = gen.next(filter);
 
-    expect(result.value).toEqual(select(getFlavorsPager));
+    expect(result.value).toEqual(call(request.execute, { endpoint }));
 
-    result = gen.next(pager);
+    result = gen.next(success);
 
-    expect(result.value).toEqual(
-      call(helper.pager, {
-        cached: flavors,
-        pager: {
-          ...pager,
-          store: pager
-        },
-        route: {
-          count: '/flavors/count',
-          data: '/flavors/'
-        },
-        type: 'Flavors'
-      })
-    );
+    expect(result.value).toEqual(put(actions.requestFlavorsSuccess(flavors)));
+  });
 
-    result = gen.next(response);
+  it('handles failure in requestFlavorsWorker', () => {
+    const gen = workers.requestFlavorsWorker();
 
-    expect(result.value).toEqual(
-      put(actions.requestFlavorsSuccess(flavors, pager))
-    );
+    let result = gen.next();
+
+    expect(result.value).toEqual(select(getFilter));
+
+    result = gen.next(filter);
+
+    expect(result.value).toEqual(call(request.execute, { endpoint }));
+
+    result = gen.next(failure);
+
+    expect(result.value).toEqual(put(actions.requestFlavorsFailure(error)));
   });
 
   it('forks all watchers', () => {

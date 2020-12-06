@@ -5,17 +5,13 @@ import configureStore from 'redux-mock-store';
 
 import { withProvider } from 'utils/testing';
 
-import { initialState as appInitialState } from 'reducers/application';
-import {
-  initialState as flavorInitialState,
-  actions as flavorActions
-} from 'reducers/flavor';
-import { initialState as flavorsInitialState } from 'reducers/flavors';
+import { initialState } from 'reducers';
+import { actions as flavorActions } from 'reducers/flavor';
 
 import { isLoggedIn } from 'selectors/application';
 import { getStash, isLoaded } from 'selectors/flavor';
 
-import { Flavors } from './Flavors';
+import Flavors from './Flavors';
 
 jest.mock('react-redux', () => {
   const dispatch = jest.fn();
@@ -40,12 +36,6 @@ jest.mock('selectors/flavor', () => {
 });
 
 describe('Page <Flavors />', () => {
-  const mockStore = configureStore();
-  const store = mockStore({
-    application: appInitialState,
-    flavor: flavorInitialState,
-    flavors: flavorsInitialState
-  });
   const collection = [
     {
       id: '1',
@@ -154,30 +144,19 @@ describe('Page <Flavors />', () => {
       }
     }
   ];
+  const mockStore = configureStore();
+  const store = mockStore({
+    ...initialState,
+    flavors: {
+      collection,
+      loaded: true
+    }
+  });
 
-  const pager = { count: 5, limit: 20, page: 1, pages: 1 };
-  const pagerNavigation = <p></p>;
-
-  const props = {
-    collection,
-    pager,
-    pagerNavigation
-  };
-
-  const ReduxConnectedFlavors = withProvider(Flavors, store);
+  const ConnectedFlavors = withProvider(Flavors, store);
 
   beforeEach(() => {
     jest.clearAllMocks();
-  });
-
-  it('has "log in" call to action when user is not logged in', () => {
-    isLoggedIn.mockReturnValue(false);
-    getStash.mockReturnValue([]);
-    isLoaded.mockReturnValue(false);
-
-    const { getByText } = render(<ReduxConnectedFlavors {...props} />);
-
-    expect(getByText(/log in/i)).toBeInTheDocument();
   });
 
   it('matches snapshot when stash is not loaded', () => {
@@ -185,25 +164,9 @@ describe('Page <Flavors />', () => {
     getStash.mockReturnValue([]);
     isLoaded.mockReturnValue(false);
 
-    const { asFragment } = render(<ReduxConnectedFlavors {...props} />);
+    const { asFragment } = render(<ConnectedFlavors />);
 
     expect(asFragment()).toMatchSnapshot();
-  });
-
-  it('ensure clicking stash toggle button updates the page', () => {
-    isLoggedIn.mockReturnValue(true);
-    getStash.mockReturnValue(stash);
-    isLoaded.mockReturnValue(true);
-
-    const { asFragment, getByTestId } = render(
-      <ReduxConnectedFlavors {...props} />
-    );
-
-    const firstRender = asFragment();
-
-    fireEvent.click(getByTestId('stash-toggle'));
-
-    expect(firstRender).toMatchDiffSnapshot(asFragment());
   });
 
   it('dispatches addToStash after ingredient is added', () => {
@@ -211,9 +174,8 @@ describe('Page <Flavors />', () => {
     getStash.mockReturnValue([]);
     isLoaded.mockReturnValue(true);
 
-    const { getByTestId } = render(<ReduxConnectedFlavors {...props} />);
+    const { getByTestId } = render(<ConnectedFlavors />);
 
-    fireEvent.click(getByTestId('stash-toggle'));
     fireEvent.click(getByTestId(`stash-icon-2`));
 
     expect(useDispatch()).toHaveBeenLastCalledWith(
@@ -226,9 +188,8 @@ describe('Page <Flavors />', () => {
     getStash.mockReturnValue(stash);
     isLoaded.mockReturnValue(true);
 
-    const { getByTestId } = render(<ReduxConnectedFlavors {...props} />);
+    const { getByTestId } = render(<ConnectedFlavors />);
 
-    fireEvent.click(getByTestId('stash-toggle'));
     fireEvent.click(getByTestId(`stash-icon-2`));
 
     expect(useDispatch()).toHaveBeenLastCalledWith(

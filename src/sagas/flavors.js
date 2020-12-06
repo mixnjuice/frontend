@@ -12,9 +12,23 @@ function* requestFlavorsWorker() {
       url: `/flavors?limit=100&offset=1&filter=${filter}`,
       method: 'GET'
     };
-    const { response } = yield call(request.execute, { endpoint });
+    const result = yield call(request.execute, {
+      endpoint
+    });
 
-    yield put(actions.requestFlavorsSuccess(response.data));
+    if (result.success) {
+      const { data } = result.response;
+
+      if (!data) {
+        yield put(actions.requestFlavorsSuccess([]));
+      }
+
+      yield put(actions.requestFlavorsSuccess(data));
+    } else if (result.error) {
+      throw result.error;
+    } else {
+      throw new Error('Request failed for an unspecified reason!');
+    }
   } catch (error) {
     const { message } = error;
 
