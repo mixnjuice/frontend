@@ -1,3 +1,4 @@
+import debounce from 'lodash.debounce';
 import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import React, { useEffect, useState, useCallback } from 'react';
@@ -11,7 +12,6 @@ import { actions as flavorsActions } from 'reducers/flavors';
 import { isLoggedIn } from 'selectors/application';
 import { getStash, isLoaded as isStashLoaded } from 'selectors/flavor';
 import { getCollection, isLoaded as areFlavorsLoaded } from 'selectors/flavors';
-import debounce from 'lodash.debounce';
 
 function StashIcon({ id, has, onAdd, onRemove }) {
   return (
