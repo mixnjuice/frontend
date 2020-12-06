@@ -2,31 +2,16 @@ import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
 import React, { useEffect, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { PagerInfo, withPagination } from 'components/Pagination/Pagination';
-import { Col, Container, Row, Table } from 'react-bootstrap';
+import { Col, Container, FormControl, Row } from 'react-bootstrap';
+import { FixedSizeList as List } from 'react-window';
+
 import ToggleButton from 'components/ToggleButton/ToggleButton';
 import { actions as flavorActions } from 'reducers/flavor';
 import { actions as flavorsActions } from 'reducers/flavors';
 import { isLoggedIn } from 'selectors/application';
-import { getStash, isLoaded } from 'selectors/flavor';
-import { getAllFlavors, getFlavorsPager } from 'selectors/flavors';
-
-function StashToggle({ value, onClick }) {
-  return (
-    <ToggleButton
-      testId="stash-toggle"
-      value={value}
-      onClick={onClick}
-      title={!value ? 'Enable Flavor Stash' : 'Disable Flavor Stash'}
-      variant="switch"
-    />
-  );
-}
-
-StashToggle.propTypes = {
-  value: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired
-};
+import { getStash, isLoaded as isStashLoaded } from 'selectors/flavor';
+import { getCollection, isLoaded as areFlavorsLoaded } from 'selectors/flavors';
+import debounce from 'lodash.debounce';
 
 function StashIcon({ id, has, onAdd, onRemove }) {
   return (
@@ -47,37 +32,45 @@ StashIcon.propTypes = {
   onRemove: PropTypes.func.isRequired
 };
 
-export function Flavors({ collection, pager, pagerNavigation }) {
+export default function Flavors() {
   const dispatch = useDispatch();
 
+  const flavors = useSelector(getCollection);
+  const flavorsLoaded = useSelector(areFlavorsLoaded);
   const loggedIn = useSelector(isLoggedIn);
   const stash = useSelector(getStash);
-  const stashLoaded = useSelector(isLoaded);
+  const stashLoaded = useSelector(isStashLoaded);
 
-  const [stashToggle, setStashToggle] = useState(false);
+  const [filter, setFilter] = useState('');
+  const debouncedSetFilter = debounce((value) => {
+    setFilter(value);
+
+    if (value.length >= 3) {
+      dispatch(flavorsActions.requestFlavors(value));
+    }
+  }, 250);
   const [holdings, setHoldings] = useState({});
 
-  // The stashLoaded variable is not listed in the dependency list
-  // because the original Class Component maintained the state of
-  // the user's stash changes in component state, and adding the
-  // stashLoaded dependency will change the behavior of this component
-  // to where it calls the GET stash endpoint with every add/remove
-  // from stash because of the way the reducer/sagas are implemented
   useEffect(() => {
     if (loggedIn && !stashLoaded) {
       dispatch(flavorActions.requestStash());
-    }
-  }, [dispatch, loggedIn]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const handleStashToggle = useCallback(() => {
-    if (Object.keys(holdings).length === 0) {
+    } else if (loggedIn) {
       setHoldings(
         stash.reduce((acc, flavor) => ({ ...acc, [flavor.flavorId]: true }), {})
       );
     }
+  }, [dispatch, loggedIn, stashLoaded, flavors, setHoldings, stash, filter]);
 
-    setStashToggle((s) => !s);
-  }, [stash, holdings, setStashToggle]);
+  const handleFilterChange = useCallback(
+    (event) => {
+      const {
+        target: { value }
+      } = event;
+
+      debouncedSetFilter(value);
+    },
+    [debouncedSetFilter]
+  );
 
   const handleAddToStash = useCallback(
     (id) => {
@@ -103,6 +96,33 @@ export function Flavors({ collection, pager, pagerNavigation }) {
     [dispatch, setHoldings]
   );
 
+  const FlavorItem = ({ index, style }) => {
+    const flavor = flavors[index];
+    const inStash = holdings[flavor.id] === true;
+
+    return (
+      <Row style={style}>
+        <Col className="text-center">
+          <StashIcon
+            id={flavor.id}
+            has={inStash}
+            onAdd={handleAddToStash}
+            onRemove={handleRemoveFromStash}
+          />
+        </Col>
+        <Col>{flavor.Vendor.name}</Col>
+        <Col>{flavor.name}</Col>
+        <Col>{flavor.slug}</Col>
+        <Col className="text-right">{flavor.density} g/mL</Col>
+      </Row>
+    );
+  };
+
+  FlavorItem.propTypes = {
+    index: PropTypes.number.isRequired,
+    style: PropTypes.object
+  };
+
   return (
     <Container>
       <Helmet title="Flavors" />
@@ -113,68 +133,14 @@ export function Flavors({ collection, pager, pagerNavigation }) {
           </Col>
         </Row>
         <Row>
-          <Col className="text-left ml-2 mb-4">
-            {loggedIn ? (
-              <>
-                <StashToggle value={stashToggle} onClick={handleStashToggle} />{' '}
-                <span>Enable Flavor Stash</span>
-              </>
-            ) : (
-              <small>Log in to Enable Flavor Stash</small>
-            )}
-          </Col>
+          <FormControl type="text" onChange={handleFilterChange} />
         </Row>
       </Container>
-      {pagerNavigation}
-      <Table responsive striped bordered hover size="sm">
-        <thead>
-          <tr className="text-center">
-            {loggedIn && stashToggle && <th>Stash</th>}
-            <th>ID</th>
-            <th>Vendor</th>
-            <th>Name</th>
-            <th>Slug</th>
-            <th>Density</th>
-          </tr>
-        </thead>
-        <tbody>
-          {collection.map((flavor) => {
-            return (
-              <tr key={flavor.id}>
-                {stashToggle && (
-                  <td className="text-center">
-                    <StashIcon
-                      id={flavor.id}
-                      has={holdings[flavor.id] === true}
-                      onAdd={handleAddToStash}
-                      onRemove={handleRemoveFromStash}
-                    />
-                  </td>
-                )}
-                <td className="text-center">{flavor.id}</td>
-                <td>{flavor.Vendor.name}</td>
-                <td>{flavor.name}</td>
-                <td className="text-center">{flavor.slug}</td>
-                <td className="text-center">{flavor.density}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-      {pagerNavigation}
-      <PagerInfo contentType="Flavors" pager={pager} />
+      {flavorsLoaded && (
+        <List height={600} itemSize={40} itemCount={flavors?.length}>
+          {FlavorItem}
+        </List>
+      )}
     </Container>
   );
 }
-
-Flavors.propTypes = {
-  collection: PropTypes.array.isRequired,
-  pager: PropTypes.object.isRequired,
-  pagerNavigation: PropTypes.node.isRequired
-};
-
-export default withPagination(
-  flavorsActions.requestFlavors,
-  getAllFlavors,
-  getFlavorsPager
-)(Flavors);
